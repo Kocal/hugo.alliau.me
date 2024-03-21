@@ -1,16 +1,23 @@
 html {
     font-size: 62.5%;
-    font-family: ui-serif,Georgia,Cambria,Times New Roman,Times,serif;
+    font-family:
+        ui-serif,
+        Georgia,
+        Cambria,
+        Times New Roman,
+        Times,
+        serif;
     font-variation-settings: normal;
     -webkit-font-smoothing: antialiased;
-
 }
 
 body {
     height: 100dvh;
     margin: 0 auto;
     max-width: 56rem;
-    background: radial-gradient(circle, #f0f9ff, #f0f9ffdd), url(../images/noise.webp) center/cover;
+    background:
+        radial-gradient(circle, #f0f9ff, #f0f9ffdd),
+        url(../images/noise.webp) center/cover;
 
     color: #082f49;
     font-size: 2.3rem;
