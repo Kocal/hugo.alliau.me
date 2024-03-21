@@ -1,6 +1,6 @@
-# Open Graph Image Generator
+# hugo.alliau.me
 
-This project is a simple Open Graph image generator, it allows you to generate Open Graph images for a given URL.
+My website.
 
 ## Requirements
 
