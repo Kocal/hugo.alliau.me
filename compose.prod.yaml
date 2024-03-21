@@ -1,0 +1,15 @@
+version: "3.6"
+
+volumes:
+  ###> doctrine/doctrine-bundle ###
+  #database_data:
+  ###< doctrine/doctrine-bundle ###
+
+services:
+  php:
+    build:
+      context: .
+      target: frankenphp_prod
+    environment:
+      APP_SECRET: ${APP_SECRET}
+      SERVER_NAME: ${SERVER_NAME}
