@@ -1,3 +1,32 @@
+html {
+    font-size: 62.5%;
+    font-family:
+        ui-serif,
+        Georgia,
+        Cambria,
+        Times New Roman,
+        Times,
+        serif;
+    font-variation-settings: normal;
+    -webkit-font-smoothing: antialiased;
+}
+
 body {
-    background-color: skyblue;
+    height: 100dvh;
+    margin: 0 auto;
+    max-width: 56rem;
+    background:
+        radial-gradient(circle, #f0f9ff, #f0f9ffdd),
+        url(../images/noise.webp) center/cover;
+
+    color: #082f49;
+    font-size: 2.3rem;
+    line-height: 1.4;
+}
+
+@media (max-width: 56rem) {
+    body {
+        padding: 0 1rem;
+        font-size: 1.8rem;
+    }
 }
