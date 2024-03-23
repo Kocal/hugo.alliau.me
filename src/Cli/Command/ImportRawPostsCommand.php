@@ -83,14 +83,11 @@ final class ImportRawPostsCommand extends Command
 
         $frontmatter = Yaml::parse($frontmatter, Yaml::PARSE_DATETIME);
 
-        dump($frontmatter);
-
         $post = $this->postRepository->findOneBy(['title' => $frontmatter['title']]) ?? new Post();
         $post->setTitle($frontmatter['title']);
         $post->setTags($frontmatter['tags']);
         $post->setDescription($frontmatter['description']);
         $post->setPublishedAt($frontmatter['date']);
-        $post->setContent($content);
         $post->setSlug($this->slugger->slug($frontmatter['date']->format('Y-m-d') . '-' . $frontmatter['title'])->lower()->toString());
 
         if (is_array($frontmatter['dependencies'] ?? null)) {
@@ -100,6 +97,13 @@ final class ImportRawPostsCommand extends Command
         if (is_string($frontmatter['proficiencyLevel'] ?? null)) {
             $post->getSeo()->setProficiencyLevel($frontmatter['proficiencyLevel']);
         }
+
+        $content = s($content)
+            ->replace('# {{ $frontmatter.title }}', '')
+            ->trim()
+            ->toString();
+
+        $post->setContent($content);
 
         $violations = $this->validator->validate($post);
         if (count($violations) > 0) {
