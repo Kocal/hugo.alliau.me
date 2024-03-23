@@ -1,0 +1,15 @@
+<article {{ attributes }}>
+    <header>
+        <h2>
+            <a href="{{ path(constant('App\\Domain\\Routing\\ValueObject\\RouteName::BLOG_POST_VIEW'), {slug: post.slug}) }}">
+                {{ post.title }}
+            </a>
+        </h2>
+    </header>
+
+    <p>{{ post.description }}</p>
+
+    <footer>
+        <twig:PostMeta :post="post" />
+    </footer>
+</article>

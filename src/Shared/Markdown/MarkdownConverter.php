@@ -2,7 +2,6 @@
 
 namespace App\Shared\Markdown;
 
-use Doctrine\DBAL\Portability\Converter;
 use League\CommonMark\Environment\Environment;
 use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
 use League\CommonMark\Extension\GithubFlavoredMarkdownExtension;

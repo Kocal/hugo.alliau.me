@@ -7,21 +7,7 @@
         <header>
             <h1>{{ post.title }}</h1>
 
-            <p>
-                <time datetime="{{ post.publishedAt|date('c') }}">
-                    {{ post.publishedAt|date('l, F j, Y') }}
-                </time>
-            </p>
-
-            {% if post.tags is not empty %}
-                <div>
-                    {% for tag in post.tags %}
-                        <a href="{{ path(constant('App\\Domain\\Routing\\ValueObject\\RouteName::BLOG_TAG_VIEW'), { tag }) }}">
-                            {{- tag -}}
-                        </a>
-                    {% endfor %}
-                </div>
-            {% endif %}
+            <twig:PostMeta :post="post" />
         </header>
 
         <section>
