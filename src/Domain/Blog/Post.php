@@ -28,7 +28,7 @@ class Post
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank]
-    private ?string $excerpt = null;
+    private ?string $description = null;
 
     #[ORM\Column(type: Types::TEXT)]
     #[Assert\NotBlank]
@@ -45,6 +45,15 @@ class Post
 
     #[ORM\Column]
     private array $tags = [];
+
+    #[ORM\Embedded(class: PostSeo::class)]
+    #[Assert\Valid]
+    private PostSeo $seo;
+
+    public function __construct()
+    {
+        $this->seo = new PostSeo();
+    }
 
     public function getId(): ?int
     {
@@ -75,14 +84,14 @@ class Post
         return $this;
     }
 
-    public function getExcerpt(): ?string
+    public function getDescription(): ?string
     {
-        return $this->excerpt;
+        return $this->description;
     }
 
-    public function setExcerpt(string $excerpt): static
+    public function setDescription(string $description): static
     {
-        $this->excerpt = $excerpt;
+        $this->description = $description;
 
         return $this;
     }
@@ -145,6 +154,18 @@ class Post
         $this->tags = $tags;
 
         return $this;
+    }
+
+    public function setSeo(PostSeo $seo): static
+    {
+        $this->seo = $seo;
+
+        return $this;
+    }
+
+    public function getSeo(): PostSeo
+    {
+        return $this->seo;
     }
 
     #[ORM\PrePersist]

@@ -6,20 +6,17 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
-#[ORM\Entity()]
-#[ORM\Table(name: 'blog_post_seo')]
+#[ORM\Embeddable]
 class PostSeo
 {
+    /**
+     * Valid "proficiencyLevel" enum values from BlogPost (schema.org).
+     */
     public const PROFICIENCY_LEVEL = [
-        'beginner',
-        'intermediate',
-        'advanced',
+        'Beginner',
+        'Intermediate',
+        'Expert',
     ];
-
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column]
-    private ?int $id = null;
 
     #[ORM\Column(type: Types::JSON)]
     private array $dependencies = [];
@@ -27,11 +24,6 @@ class PostSeo
     #[ORM\Column(length: 255)]
     #[Assert\Choice(choices: self::PROFICIENCY_LEVEL)]
     private ?string $proficiencyLevel = null;
-
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
 
     public function getDependencies(): array
     {

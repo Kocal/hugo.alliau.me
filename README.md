@@ -41,18 +41,14 @@ $ symfony serve
   - `id`: `int` (primary key)
   - `title`: `string`
   - `slug`: `string`
-  - `excerpt`: `text` (plaintext)
+  - `description`: `text` (plaintext)
   - `content`: `text` (Markdown)
   - `created_at`: `datetime`
   - `updated_at`: `datetime`
   - `published_at`: `datetime`
   - `tags`: `ManyToOne` with `Blog/Tag`
   - `seo`: `OneToOne` with `Blog/PostSeo`
-
-- `Blog/Tag`:
-  - `id`: `int` (primary key)
-  - `name`: `string` (unique)
-  - `slug`: `string` (unique)
+  - TODO: `author`
 
 - `Blog/PostSeo`:
   - `id`: `int` (primary key)
