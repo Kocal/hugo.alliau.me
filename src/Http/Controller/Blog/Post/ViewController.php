@@ -19,7 +19,7 @@ final class ViewController extends AbstractController
         Request $request,
     ): Response
     {
-        return $this->render("blog/post/view/index.html.twig", [
+        return $this->render("blog/posts/view/index.html.twig", [
             'post' => $post,
         ]);
     }

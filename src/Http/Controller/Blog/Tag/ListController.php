@@ -8,20 +8,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route("/blog/tags/{tag}", name: RouteName::BLOG_TAG_VIEW)]
-final class ViewController extends AbstractController
+#[Route("/blog/tags", name: RouteName::BLOG_TAG_LIST)]
+final class ListController extends AbstractController
 {
     public function __invoke(
-        string $tag,
         PostRepository $postRepository
     ): Response
     {
-        return $this->render("blog/tags/view/index.html.twig", [
-            'tag' => $tag,
+        return $this->render("blog/tags/list/index.html.twig", [
             'tags' => $postRepository->findAllTags(),
-            'posts' => $postRepository->findLatest(
-                tags: [$tag]
-            ),
         ]);
     }
 }

@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Posts tagged with "{{ tag }}" &bullet; Hugo Alliaume's Blog{% endblock %}
+
+{% block body %}
+    <h1>Posts tagged with "{{ tag }}"</h1>
+    <ul>
+        {% for tag in tags %}
+            <li>
+                <a href="{{ path(app.current_route, { 'tag': tag.tag }) }}">
+                    {{- tag.tag ~ ' (' ~tag.occurences ~')' -}}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    {% for post in posts %}
+        <twig:Post :post="post" />
+    {% endfor %}
+
+{% endblock %}

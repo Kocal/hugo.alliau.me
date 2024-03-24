@@ -13,6 +13,7 @@
         "doctrine/doctrine-migrations-bundle": "^3.3",
         "doctrine/orm": "^3.1",
         "league/commonmark": "^2.4",
+        "martin-georgiev/postgresql-for-doctrine": "^2.4",
         "runtime/frankenphp-symfony": "^0.2.0",
         "symfony/asset": "7.0.*",
         "symfony/asset-mapper": "7.0.*",
