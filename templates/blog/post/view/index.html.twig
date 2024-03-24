@@ -2,6 +2,21 @@
 
 {% block title %}{{ post.title }}{% endblock %}
 
+{% block open_graph %}
+    {% set canonical_url = url(app.current_route, app.current_route_parameters) %}
+    <meta property="og:url" content="{{ canonical_url }}">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{ post.title }}">
+    <meta property="og:description" content="{{ post.description }}">
+    <meta property="og:image" content="https://open-graph-image-generator.kocal.fr/image?url={{ canonical_url }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="twitter:domain" content="hugo.alliau.me">
+    <meta property="twitter:url" content="{{ canonical_url }}">
+    <meta name="twitter:title" content="{{ post.title }}">
+    <meta name="twitter:description" content="{{ post.description }}">
+    <meta property="twitter:image" content="https://open-graph-image-generator.kocal.fr/image?url={{ canonical_url }}">
+{% endblock %}
+
 {% block body %}
     <article>
         <header>
