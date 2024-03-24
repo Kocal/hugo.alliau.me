@@ -42,22 +42,38 @@ class PostRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return list<array{ tag: string, occurences: int }>
+     * @return list<string>
      */
-    public function findAllTags(): array
+    public function findTags(): array
     {
         $rsm = new ResultSetMapping();
         $rsm->addScalarResult('tag', 'tag');
-        $rsm->addScalarResult('occurences', 'occurences');
 
         $nativeQuery = $this->getEntityManager()->createNativeQuery(<<<SQL
-            SELECT tag, COUNT(tag) AS occurences
+            SELECT DISTINCT JSONB_ARRAY_ELEMENTS_TEXT(tags) AS tag
+            FROM {$this->getEntityManager()->getClassMetadata(Post::class)->getTableName()}
+SQL, $rsm);
+
+        return $nativeQuery->getSingleColumnResult();
+    }
+
+    /**
+     * @return list<array{ tag: string, occurrences: int }>
+     */
+    public function findTagsAndOccurrences(): array
+    {
+        $rsm = new ResultSetMapping();
+        $rsm->addScalarResult('tag', 'tag');
+        $rsm->addScalarResult('occurrences', 'occurrences');
+
+        $nativeQuery = $this->getEntityManager()->createNativeQuery(<<<SQL
+            SELECT tag, COUNT(tag) AS occurrences
             FROM (
                 SELECT JSONB_ARRAY_ELEMENTS_TEXT(tags) AS tag
                 FROM {$this->getEntityManager()->getClassMetadata(Post::class)->getTableName()}
             ) 
             GROUP BY tag
-            ORDER BY occurences DESC
+            ORDER BY occurrences DESC
 SQL, $rsm);
 
         return $nativeQuery->execute();

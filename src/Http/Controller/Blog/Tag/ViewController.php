@@ -18,7 +18,7 @@ final class ViewController extends AbstractController
     {
         return $this->render("blog/tags/view/index.html.twig", [
             'tag' => $tag,
-            'tags' => $postRepository->findAllTags(),
+            'tags' => $postRepository->findTagsAndOccurrences(),
             'posts' => $postRepository->findLatest(
                 tags: [$tag]
             ),

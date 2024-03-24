@@ -26,6 +26,9 @@
             "migrations/.gitignore"
         ]
     },
+    "presta/sitemap-bundle": {
+        "version": "v4.1.1"
+    },
     "symfony/asset-mapper": {
         "version": "7.0",
         "recipe": {

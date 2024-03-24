@@ -8,7 +8,7 @@
         {% for tag in tags %}
             <li>
                 <a href="{{ path(app.current_route, { 'tag': tag.tag }) }}">
-                    {{- tag.tag ~ ' (' ~tag.occurences ~')' -}}
+                    {{- tag.tag ~ ' (' ~tag.occurrences ~')' -}}
                 </a>
             </li>
         {% endfor %}

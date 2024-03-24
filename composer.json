@@ -14,6 +14,7 @@
         "doctrine/orm": "^3.1",
         "league/commonmark": "^2.4",
         "martin-georgiev/postgresql-for-doctrine": "^2.4",
+        "presta/sitemap-bundle": "^4.1",
         "runtime/frankenphp-symfony": "^0.2.0",
         "symfony/asset": "7.0.*",
         "symfony/asset-mapper": "7.0.*",

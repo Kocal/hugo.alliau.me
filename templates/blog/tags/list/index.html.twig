@@ -9,7 +9,7 @@
         {% for tag in tags %}
             <li>
                 <a href="{{ path(constant('App\\Domain\\Routing\\ValueObject\\RouteName::BLOG_TAG_VIEW'), { tag: tag.tag }) }}">
-                    {{- tag.tag ~ ' (' ~tag.occurences ~')' -}}
+                    {{- tag.tag ~ ' (' ~tag.occurrences ~')' -}}
                 </a>
             </li>
         {% endfor %}

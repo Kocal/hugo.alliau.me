@@ -16,7 +16,7 @@ final class ListController extends AbstractController
     ): Response
     {
         return $this->render("blog/tags/list/index.html.twig", [
-            'tags' => $postRepository->findAllTags(),
+            'tags' => $postRepository->findTagsAndOccurrences(),
         ]);
     }
 }
