@@ -1,20 +1,51 @@
-{% extends 'base.html.twig' %}
+{% extends 'blog/base.html.twig' %}
 
 {% block title %}{{ post.title }}{% endblock %}
 
+{% set post_url = url(app.current_route, app.current_route_parameters) %}
+
 {% block open_graph %}
-    {% set canonical_url = url(app.current_route, app.current_route_parameters) %}
-    <meta property="og:url" content="{{ canonical_url }}">
+    <meta property="og:url" content="{{ post_url }}">
     <meta property="og:type" content="website">
     <meta property="og:title" content="{{ post.title }}">
     <meta property="og:description" content="{{ post.description }}">
-    <meta property="og:image" content="https://open-graph-image-generator.kocal.fr/image?url={{ canonical_url }}">
+    <meta property="og:image" content="https://open-graph-image-generator.kocal.fr/image?url={{ post_url }}">
     <meta name="twitter:card" content="summary_large_image">
     <meta property="twitter:domain" content="{{ app.request.host }}">
-    <meta property="twitter:url" content="{{ canonical_url }}">
+    <meta property="twitter:url" content="{{ post_url }}">
     <meta name="twitter:title" content="{{ post.title }}">
     <meta name="twitter:description" content="{{ post.description }}">
-    <meta property="twitter:image" content="https://open-graph-image-generator.kocal.fr/image?url={{ canonical_url }}">
+    <meta property="twitter:image" content="https://open-graph-image-generator.kocal.fr/image?url={{ post_url }}">
+{% endblock %}
+
+{% block json_ld %}
+    {{ parent() }}
+    {{ json_ld({
+        '@context': 'https://schema.org',
+        '@type': 'TechArticle',
+        headline: post.title,
+        abstract: post.description,
+        datePublished: post.publishedAt|date('c'),
+        author: {
+            '@id': absolute_url('/#me'),
+        },
+        publisher: {
+            '@id': absolute_url('/#me'),
+        },
+        keywords: post.tags,
+        ...(post.seo.dependencies ? {
+            dependencies: post.seo.dependencies,
+        } : {}),
+        ...(post.seo.proficiencyLevel ? {
+            proficiencyLevel: post.seo.proficiencyLevel,
+        } : {}),
+        image: {
+            '@type': 'ImageObject',
+            url: 'https://open-graph-image-generator.kocal.fr/image?url=' ~ post_url,
+            width: 1200,
+            height: 630,
+        },
+    }) }}
 {% endblock %}
 
 {% block body %}

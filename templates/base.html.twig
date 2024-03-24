@@ -27,6 +27,32 @@
 
         {% block open_graph %}
         {% endblock %}
+
+        {% block json_ld %}
+            {{ json_ld({
+                '@context': "https://schema.org",
+                '@type': "WebSite",
+                name: "Hugo Alliaume's Website",
+                url: url(constant('App\\Domain\\Routing\\ValueObject\\RouteName::HOME')),
+                publisher: {
+                    '@id': absolute_url('/#me'),
+                }
+            }) }}
+
+            {{ json_ld({
+                '@id': absolute_url('/#me'),
+                '@type': 'Person',
+                name: 'Hugo Alliaume',
+                url: absolute_url('/'),
+                jobTitle: 'Senior Software Developer & Expert Technique',
+                email: 'hugo@alliau.me',
+                sameAs: [
+                    'https://github.com/Kocal',
+                    'https://twitter.com/HugoAlliaume',
+                    'https://mastodon.social/@Kocal',
+                ]
+            }) }}
+        {% endblock %}
     </head>
     <body>
         {% block body %}

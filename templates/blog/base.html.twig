@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block json_ld %}
+    {{ parent() }}
+    {{ json_ld({
+        '@context': "https://schema.org",
+        '@type': "Blog",
+        name: "Hugo Alliaume's Blog",
+        url: url(constant('App\\Domain\\Routing\\ValueObject\\RouteName::BLOG_HOME')),
+    }) }}
+{% endblock %}
+
