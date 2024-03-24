@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+    <channel>
+        <title>Hugo Alliaume's Blog</title>
+        <link>https://hugo.alliau.me/blog</link>
+        <description>My Personal Blog</description>
+        <lastBuildDate>{{ 'now'|date(constant('DATE_ATOM')) }}</lastBuildDate>
+        <copyright>Hugo Alliaume</copyright>
+        {% for post in posts %}
+            <item>
+                <title><![CDATA[{{ post.title }}]]></title>
+                <link>{{ url(constant('App\\Domain\\Routing\\ValueObject\\RouteName::BLOG_POST_VIEW'), { slug: post.slug }) }}</link>
+                <guid>{{ url(constant('App\\Domain\\Routing\\ValueObject\\RouteName::BLOG_POST_VIEW'), { slug: post.slug }) }}</guid>
+                <pubDate>{{ post.publishedAt|date(constant('DATE_ATOM')) }}</pubDate>
+                <description><![CDATA[{{ post.description }}]]></description>
+            </item>
+        {% endfor %}
+    </channel>
+</rss>
