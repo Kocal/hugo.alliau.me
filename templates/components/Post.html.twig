@@ -1,7 +1,7 @@
 <article {{ attributes }}>
     <header>
         <h2>
-            <a href="{{ path(constant('App\\Domain\\Routing\\ValueObject\\RouteName::BLOG_POST_VIEW'), {slug: post.slug}) }}">
+            <a href="{{ prefetch(path(constant('App\\Domain\\Routing\\ValueObject\\RouteName::BLOG_POST_VIEW'), {slug: post.slug})) }}">
                 {{ post.title }}
             </a>
         </h2>
