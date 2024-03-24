@@ -8,6 +8,7 @@ services:
     environment:
       APP_SECRET: ${APP_SECRET}
       SERVER_NAME: ${SERVER_NAME}
+      DATABASE_URL: ${DATABASE_URL}
       APP_DEFAULT_URI: ${APP_DEFAULT_URI}
 
   ###> doctrine/doctrine-bundle ###
