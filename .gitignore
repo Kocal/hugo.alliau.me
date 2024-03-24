@@ -1,3 +1,4 @@
+/public/sitemap.*
 
 ###> symfony/framework-bundle ###
 /.env.local

@@ -1,18 +1,57 @@
 <!DOCTYPE html>
-<html lang="{{ app.request.locale }}">
+<html lang="{{ app.request.locale }}" dir="ltr">
     <head>
         <meta charset="UTF-8">
         <title>{{ block('title') }} </title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="icon" type="image/svg+xml" href="{{ asset('assets/images/icons/favicon.svg') }}">
-        <link rel="icon" type="image/png" href="{{ asset('assets/images/icons/favicon-32x32.png') }}">
-        <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/images/icons/apple-touch-icon.png') }}">
 
         {% block stylesheets %}
         {% endblock %}
 
         {% block javascripts %}
             {% block importmap %}{{ importmap('app') }}{% endblock %}
+
+            <script async src="{{ dns_prefetch('https://www.googletagmanager.com') }}/gtag/js?id=G-Z8KN175TJZ"></script>
+            <script>window.dataLayer=window.dataLayer||[],window.gtag=function(){dataLayer.push(arguments)},gtag("js",new Date),gtag("config","G-Z8KN175TJZ");</script>
+        {% endblock %}
+
+        <link rel="icon" type="image/svg+xml" href="{{ asset('assets/images/icons/favicon.svg') }}">
+        <link rel="icon" type="image/png" href="{{ asset('assets/images/icons/favicon-32x32.png') }}">
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/images/icons/apple-touch-icon.png') }}">
+        <link rel="canonical" href="{{ app.request.uri }}">
+        <meta name="msapplication-TileColor" content="#000000">
+        <meta name="theme-color" content="#000000">
+
+        <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ path(constant('App\\Domain\\Routing\\ValueObject\\RouteName::BLOG_RSS')) }}">
+
+        {% block open_graph %}
+        {% endblock %}
+
+        {% block json_ld %}
+            {{ json_ld({
+                '@context': "https://schema.org",
+                '@type': "WebSite",
+                name: "Hugo Alliaume's Website",
+                url: url(constant('App\\Domain\\Routing\\ValueObject\\RouteName::HOME')),
+                publisher: {
+                    '@id': absolute_url('/#me'),
+                }
+            }) }}
+
+            {{ json_ld({
+                '@id': absolute_url('/#me'),
+                '@type': 'Person',
+                name: 'Hugo Alliaume',
+                url: absolute_url('/'),
+                jobTitle: 'Senior Software Developer & Expert Technique',
+                email: 'hugo@alliau.me',
+                sameAs: [
+                    'https://github.com/Kocal',
+                    'https://twitter.com/HugoAlliaume',
+                    'https://mastodon.social/@Kocal',
+                ]
+            }) }}
         {% endblock %}
     </head>
     <body>

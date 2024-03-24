@@ -1,10 +1,5 @@
 version: "3.6"
 
-volumes:
-  ###> doctrine/doctrine-bundle ###
-  #database_data:
-  ###< doctrine/doctrine-bundle ###
-
 services:
   php:
     build:
@@ -13,3 +8,15 @@ services:
     environment:
       APP_SECRET: ${APP_SECRET}
       SERVER_NAME: ${SERVER_NAME}
+      ROUTER_DEFAULT_URI: ${ROUTER_DEFAULT_URI}
+
+  ###> doctrine/doctrine-bundle ###
+  database:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_USER: ${POSTGRES_USER}
+    volumes:
+      - ./docker/db/data:/var/lib/postgresql/data:rw
+###< doctrine/doctrine-bundle ###

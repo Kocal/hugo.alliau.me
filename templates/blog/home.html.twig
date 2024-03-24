@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hugo Alliaume's Blog{% endblock %}
+
+{% block body %}
+    <h1>Blog</h1>
+
+    {% for post in posts %}
+        <twig:Post :post="post" />
+    {% endfor %}
+
+{% endblock %}

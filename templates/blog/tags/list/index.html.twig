@@ -1,0 +1,18 @@
+{% extends 'blog/base.html.twig' %}
+
+{% block title %}Tags &bullet; Hugo Alliaume's Blog{% endblock %}
+
+{% block body %}
+    <h1>Tags</h1>
+
+    <ul>
+        {% for tag in tags %}
+            <li>
+                <a href="{{ path(constant('App\\Domain\\Routing\\ValueObject\\RouteName::BLOG_TAG_VIEW'), { tag: tag.tag }) }}">
+                    {{- tag.tag ~ ' (' ~tag.occurrences ~')' -}}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

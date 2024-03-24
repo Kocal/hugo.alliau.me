@@ -34,3 +34,23 @@ Run the project:
 $ docker compose up -d
 $ symfony serve
 ```
+
+## Database schema
+
+- `Blog/Post`:
+  - `id`: `int` (primary key)
+  - `title`: `string`
+  - `slug`: `string`
+  - `description`: `text` (plaintext)
+  - `content`: `text` (Markdown)
+  - `created_at`: `datetime`
+  - `updated_at`: `datetime`
+  - `published_at`: `datetime`
+  - `tags`: `ManyToOne` with `Blog/Tag`
+  - `seo`: `OneToOne` with `Blog/PostSeo`
+  - TODO: `author`
+
+- `Blog/PostSeo`:
+  - `id`: `int` (primary key)
+  - `dependencies`: `string[]`
+  - `proficiencyLevel`: `enum`
