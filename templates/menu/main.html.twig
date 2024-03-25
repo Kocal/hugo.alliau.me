@@ -1,4 +1,4 @@
-<nav role="navigation" aria-label="Main">
+<nav role="navigation" aria-label="Main" class="flex-1">
     <ul class="flex gap-x-1 sm:gap-x-2">
         {% for child in item.children %}
             {% set is_current = matcher.isCurrent(child) or matcher.isAncestor(child) %}
