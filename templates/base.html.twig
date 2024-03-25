@@ -19,8 +19,6 @@
         <link rel="icon" type="image/png" href="{{ asset('images/icons/favicon-32x32.png') }}">
         <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/icons/apple-touch-icon.png') }}">
         <link rel="canonical" href="{{ app.request.uri }}">
-        <meta name="msapplication-TileColor" content="#000000">
-        <meta name="theme-color" content="#000000">
 
         <link rel="sitemap" type="application/xml" href="/sitemap.xml">
         <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ path(constant('App\\Domain\\Routing\\ValueObject\\RouteName::BLOG_RSS')) }}">
@@ -54,8 +52,24 @@
             }) }}
         {% endblock %}
     </head>
-    <body>
+    <body class="antialiased text-slate-600 bg-white">
         {% block body %}
+
+            <header class="bg-sky-600 text-sky-50">
+                <div class="container mx-auto px-3 flex items-center gap-x-3 sm:gap-x-5">
+                    <a href="{{ path(constant('App\\Domain\\Routing\\ValueObject\\RouteName::HOME')) }}" class="text-xl sm:text-2xl font-bold my-3">
+                        Hugo Alliaume
+                    </a>
+
+                    {{ knp_menu_render('main', {
+                        template: 'menu/main.html.twig',
+                    }) }}
+
+                    <twig:UX:Icon name="bi:github" />
+                    <twig:UX:Icon name="bi:linkedin" />
+                    <twig:UX:Icon name="bi:twitter-x" />
+                </div>
+            </header>
 
             {% block main %}{% endblock %}
 
