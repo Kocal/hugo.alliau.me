@@ -3,37 +3,56 @@
 {% block title %}Hugo Alliaume{% endblock %}
 
 {% block main %}
-    <section itemscope itemtype="https://schema.org/Person">
-        <h2>À propos</h2>
-        <p>
-            <span itemprop="name">Hugo Alliaume</span>,
-            <span itemprop="disambiguatingDescription">bientôt 30 ans, développeur web full-stack depuis une quinzaine d'années.</span>
-        </p>
-        <p>
+    <main class="container mx-auto p-2 max-w-screen-lg">
+        <div class="flex flex-col gap-y-2 sm:gap-y-4 justify-center">
+            <twig:Card itemscope itemtype="https://schema.org/Person">
+                <div class="prose">
+                    <h1>À propos</h1>
+                    <p>
+                        <span itemprop="name">Hugo Alliaume</span>,
+                        <span itemprop="disambiguatingDescription">bientôt 30 ans, développeur web full-stack depuis une quinzaine d'années.</span>
+                    </p>
+                    <p>
             <span itemprop="disambiguatingDescription">
-                Je suis spécialisé dans le développement d'applications web, principalement avec les technologies PHP/Symfony et JavaScript.
+                Je me suis spécialisé dans le développement d'applications web, principalement avec les technologies PHP/Symfony et JavaScript,
+                et également dans l'optimisation des performances web (<a href="https://www.blackfire.io/">Blackfire</a>, <a
+                        href="https://www.webpagetest.org/">WebPageTest</a>, <a
+                        href="https://developer.chrome.com/docs/crux">CrUX</a>, ...).
             </span>
-        </p>
-    </section>
+                    </p>
+                </div>
+            </twig:Card>
 
-    <section>
-        <h2>Curriculum vitæ</h2>
-        <p>
-            Vous pouvez consulter mon <a href="{{ prefetch('/cv') }}">CV</a> pour en savoir plus sur mon parcours professionnel et mes compétences.
-        </p>
-    </section>
+            <twig:Card>
+                <div class="prose">
+                    <h2>Curriculum vitæ</h2>
+                    <p>
+                        Vous pouvez consulter mon <a href="{{ prefetch('/cv') }}">CV</a> pour en savoir plus sur mon
+                        parcours
+                        professionnel et mes compétences.
+                    </p>
+                </div>
+            </twig:Card>
 
-    <section>
-        <h2>Blog</h2>
-        <p>
-            Je tiens un <a href="{{ prefetch('/blog') }}">blog technique</a>, où je partage mes découvertes et mes expériences en développement web.
-        </p>
-    </section>
+            <twig:Card>
+                <div class="prose">
+                    <h2>Blog</h2>
+                    <p>
+                        Je tiens un <a href="{{ prefetch('/blog') }}">blog technique</a>, où je partage mes découvertes
+                        et mes expériences en développement web.
+                    </p>
+                </div>
+            </twig:Card>
 
-    <section>
-        <h2>Réseaux sociaux</h2>
-        <p>
-            Vous pouvez me suivre sur <a href="https://twitter.com/hugoalliaume">X (anciennement Twitter)</a> et <a href="https://github.com/Kocal">GitHub</a>.
-        </p>
-    </section>
+            <twig:Card>
+                <div class="prose">
+                    <h2>Réseaux sociaux</h2>
+                    <p>
+                        Vous pouvez me suivre sur <a href="https://twitter.com/hugoalliaume">X (anciennement Twitter)</a> et <a
+                                href="https://github.com/Kocal">GitHub</a>.
+                    </p>
+                </div>
+            </twig:Card>
+        </div>
+    </main>
 {% endblock %}
