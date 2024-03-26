@@ -2,6 +2,10 @@
 
 {% block title %}CV &bullet; Hugo Alliaume{% endblock %}
 
+{% block seo %}
+    <meta name="description" content="CV de Hugo Alliaume, développeur web full-stack.">
+{% endblock %}
+
 {# {% block json_ld %} #}
 {#    {{ parent() }} #}
 {#    {{ json_ld({ #}
@@ -11,7 +15,6 @@
 {#        url: url(constant('App\\Domain\\Routing\\ValueObject\\RouteName::BLOG_HOME')), #}
 {#    }) }} #}
 {# {% endblock %} #}
-
 
 {% block main %}
     <main>

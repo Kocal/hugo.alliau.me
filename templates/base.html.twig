@@ -23,8 +23,7 @@
         <link rel="sitemap" type="application/xml" href="/sitemap.xml">
         <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ path(constant('App\\Domain\\Routing\\ValueObject\\RouteName::BLOG_RSS')) }}">
 
-        {% block open_graph %}
-        {% endblock %}
+        {% block seo %}{% endblock %}
 
         {% block json_ld %}
             {{ json_ld({
@@ -49,6 +48,9 @@
                     'https://twitter.com/HugoAlliaume',
                     'https://mastodon.social/@Kocal',
                     'https://www.linkedin.com/in/%F0%9F%9A%B4-hugo-alliaume-34b475166/',
+                ],
+                publishingPrinciples: [
+                    url(constant('App\\Domain\\Routing\\ValueObject\\RouteName::BLOG_HOME')),
                 ]
             }) }}
         {% endblock %}

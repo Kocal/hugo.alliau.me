@@ -2,57 +2,56 @@
 
 {% block title %}Hugo Alliaume{% endblock %}
 
+{% block seo %}
+    <meta name="description" content="Site personnel de Hugo Alliaume, développeur web full-stack.">
+{% endblock %}
+
 {% block main %}
     <main class="container mx-auto p-2 max-w-screen-lg">
-        <div class="flex flex-col gap-y-2 sm:gap-y-4 justify-center">
-            <twig:Card itemscope itemtype="https://schema.org/Person">
-                <div class="prose">
-                    <h1>À propos</h1>
-                    <p>
-                        <span itemprop="name">Hugo Alliaume</span>,
-                        <span itemprop="disambiguatingDescription">bientôt 30 ans, développeur web full-stack depuis une quinzaine d'années.</span>
-                    </p>
-                    <p>
-            <span itemprop="disambiguatingDescription">
-                Je me suis spécialisé dans le développement d'applications web, principalement avec les technologies PHP/Symfony et JavaScript,
-                et également dans l'optimisation des performances web (<a href="https://www.blackfire.io/">Blackfire</a>, <a
-                        href="https://www.webpagetest.org/">WebPageTest</a>, <a
-                        href="https://developer.chrome.com/docs/crux">CrUX</a>, ...).
-            </span>
-                    </p>
-                </div>
-            </twig:Card>
+        <twig:Card class="p-2 sm:p-4">
+            <h1 class="text-3xl sm:text-4xl font-extrabold mb-5">
+                À propos
+            </h1>
 
-            <twig:Card>
-                <div class="prose">
-                    <h2>Curriculum vitæ</h2>
-                    <p>
-                        Vous pouvez consulter mon <a href="{{ prefetch('/cv') }}">CV</a> pour en savoir plus sur mon
-                        parcours
-                        professionnel et mes compétences.
-                    </p>
-                </div>
-            </twig:Card>
+            <div class="prose max-w-none">
+                <p>
+                    Hugo Alliaume,
+                    <span itemprop="disambiguatingDescription">bientôt 30 ans, développeur web full-stack depuis une quinzaine d'années.</span>
+                </p>
+                <p itemprop="disambiguatingDescription">
+                    Je me suis spécialisé dans le développement d'applications web, principalement avec les technologies
+                    PHP/Symfony et JavaScript,
+                    et également dans l'optimisation des performances web (<a
+                            href="https://www.blackfire.io/">Blackfire</a>,
+                    <a href="https://www.webpagetest.org/">WebPageTest</a>,
+                    <a href="https://developer.chrome.com/docs/crux">CrUX</a>, ...).
+                </p>
+            </div>
 
-            <twig:Card>
-                <div class="prose">
-                    <h2>Blog</h2>
-                    <p>
-                        Je tiens un <a href="{{ prefetch('/blog') }}">blog technique</a>, où je partage mes découvertes
-                        et mes expériences en développement web.
-                    </p>
-                </div>
-            </twig:Card>
+            <h2 class="text-2xl sm:text-3xl font-bold my-4">Curriculum vitæ</h2>
+            <div class="prose max-w-none">
+                <p>
+                    Vous pouvez consulter mon <a href="{{ prefetch('/cv') }}">CV</a> pour en savoir plus sur mon
+                    parcours professionnel et mes compétences.
+                </p>
+            </div>
 
-            <twig:Card>
-                <div class="prose">
-                    <h2>Réseaux sociaux</h2>
-                    <p>
-                        Vous pouvez me suivre sur <a href="https://twitter.com/hugoalliaume">X (anciennement Twitter)</a> et <a
-                                href="https://github.com/Kocal">GitHub</a>.
-                    </p>
-                </div>
-            </twig:Card>
-        </div>
+            <h2 class="text-2xl sm:text-3xl font-bold my-4">Blog</h2>
+            <div class="prose max-w-none">
+                <p>
+                    Je tiens un <a href="{{ prefetch('/blog') }}">blog technique</a>, où je partage mes découvertes
+                    et mes expériences en développement web.
+                </p>
+            </div>
+
+            <h2 class="text-2xl sm:text-3xl font-bold my-4">Réseaux sociaux</h2>
+            <div class="prose max-w-none">
+                <p>
+                    Vous pouvez me suivre sur <a href="https://twitter.com/hugoalliaume">X (anciennement Twitter)</a>,
+                    <a href="https://mastodon.social/@Kocal">Mastodon</a>,
+                    et <a href="https://github.com/Kocal">GitHub</a>.
+                </p>
+            </div>
+        </twig:Card>
     </main>
 {% endblock %}
