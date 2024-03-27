@@ -1,6 +1,6 @@
 <div{{ attributes }} class="flex flex-col gap-2">
     <div class="flex items-center gap-x-2">
-        <twig:UX:Icon name="bi:clock" class="shrink-0"/>
+        <twig:UX:Icon name="bi:clock" aria-label="Publication date" class="shrink-0"/>
 
         <time datetime="{{ post.publishedAt|date('c') }}">
             {{ post.publishedAt|format_datetime('long', 'none') }}
@@ -11,12 +11,11 @@
         <ul class="flex flex-row flex-wrap gap-1">
             {% for tag in post.tags %}
                 <li>
-                    <a
-                        href="{{ path(constant('App\\Domain\\Routing\\ValueObject\\RouteName::BLOG_TAG_VIEW'), { tag }) }}"
-                        class="block px-2 py-1 text-sm font-medium text-sky-50 bg-sky-600 rounded-lg hover:bg-sky-700"
-                    >
-                        {{- tag -}}
-                    </a>
+                    <twig:Badge>
+                        <a href="{{ path(constant('App\\Domain\\Routing\\ValueObject\\RouteName::BLOG_TAG_VIEW'), { tag }) }}">
+                            {{- tag -}}
+                        </a>
+                    </twig:Badge>
                 </li>
             {% endfor %}
         </ul>
