@@ -21,8 +21,6 @@ final class MenuBuilder
         $menu = $this->factory->createItem('root');
 
         $menu->addChild('Blog', ['route' => RouteName::BLOG_HOME]);
-        $menu->getChild('Blog')->addChild('Tags', ['route' => RouteName::BLOG_TAG_LIST]);
-
         $menu->addChild('CV', ['route' => RouteName::CV_HOME]);
 
         return $menu;
