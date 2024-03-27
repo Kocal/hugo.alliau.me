@@ -2,11 +2,38 @@
 
 {% block title %}Hugo Alliaume's Blog{% endblock %}
 
-{% block body %}
-    <h1>Blog</h1>
+{% block seo %}
+    <meta name="description" content="Blog technique de Hugo Alliaume, développeur web full-stack.">
+{% endblock %}
 
-    {% for post in posts %}
-        <twig:Post :post="post" />
-    {% endfor %}
+{% block main %}
+<main class="container mx-auto p-2 max-w-screen-lg">
 
+    <twig:Card class="p-2 sm:p-4">
+        <h1 class="text-3xl sm:text-4xl font-extrabold mb-5">
+            Blog
+        </h1>
+
+        <div class="divide-y divide-y-4 divide-sky-100">
+            {% for post in posts %}
+                <article class="py-4 sm:py-6 first:pt-0 first:sm:pt-0 last:pb-0 last:pb-0">
+                    <header>
+                        <h2 class="text-2xl sm:text-3xl font-bold mb-4">
+                            <a href="{{ prefetch(path(constant('App\\Domain\\Routing\\ValueObject\\RouteName::BLOG_POST_VIEW'), {slug: post.slug})) }}">
+                                {{ post.title }}
+                            </a>
+                        </h2>
+                    </header>
+
+                    <p>{{ post.description }}</p>
+
+                    <footer class="mt-4">
+                        <twig:PostMeta :post="post" />
+                    </footer>
+                </article>
+            {% endfor %}
+        </div>
+    </twig:Card>
+
+</main>
 {% endblock %}

@@ -4,7 +4,8 @@
 
 {% set post_url = url(app.current_route, app.current_route_parameters) %}
 
-{% block open_graph %}
+{% block seo %}
+    <meta property="description" content="{{ post.description }}">
     <meta property="og:url" content="{{ post_url }}">
     <meta property="og:type" content="website">
     <meta property="og:title" content="{{ post.title }}">
@@ -48,17 +49,31 @@
     }) }}
 {% endblock %}
 
-{% block body %}
+{% block main %}
+<main class="container mx-auto p-2 max-w-screen-lg">
+
     <article>
-        <header>
-            <h1>{{ post.title }}</h1>
+        <twig:Card class="p-2 sm:p-4">
+            <header>
+                <h1 class="text-3xl sm:text-4xl font-extrabold mb-5">
+                    {{ post.title }}
+                </h1>
 
-            <twig:PostMeta :post="post" />
-        </header>
+                <twig:PostMeta :post="post"/>
+            </header>
 
-        <section>
-            {{ post.content|markdown }}
-        </section>
+            <div class="bg-sky-100 my-2 sm:my-3" style="height: 2px"></div>
 
+            <section class="prose max-w-none">
+                {{ post.content|markdown }}
+            </section>
+        </twig:Card>
+
+        {# TODO: comments #}
+        {# <footer>  #}
+        {#    <twig:Card> #}
+        {#        ... #}
+        {#    </twig:Card> #}
+        {# </footer>  #}
     </article>
 {% endblock %}

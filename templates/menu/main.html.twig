@@ -1,0 +1,16 @@
+<nav role="navigation" aria-label="Main" class="flex-1">
+    <ul class="flex gap-x-1 sm:gap-x-2">
+        {% for child in item.children %}
+            {% set is_current = matcher.isCurrent(child) or matcher.isAncestor(child) %}
+            <li>
+                <a
+                    href="{{ child.uri }}"
+                    class="block text-md sm:text-lg px-2 py-1 rounded-lg hover:bg-sky-700 {{ is_current ? 'bg-sky-700' }}"
+                    {% if is_current %}aria-current="page"{% endif %}
+                >
+                    {{ child.label ?? child.name }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</nav>

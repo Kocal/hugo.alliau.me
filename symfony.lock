@@ -26,6 +26,9 @@
             "migrations/.gitignore"
         ]
     },
+    "knplabs/knp-menu-bundle": {
+        "version": "v3.3.0"
+    },
     "presta/sitemap-bundle": {
         "version": "v4.1.1"
     },
@@ -146,6 +149,18 @@
             "templates/base.html.twig"
         ]
     },
+    "symfony/ux-icons": {
+        "version": "2.9999999",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "2.17",
+            "ref": "803a3bbd5893f9584969ab8670290cdfb6a0a5b5"
+        },
+        "files": [
+            "assets/icons/symfony.svg"
+        ]
+    },
     "symfony/ux-twig-component": {
         "version": "2.16",
         "recipe": {
@@ -182,6 +197,9 @@
             "config/packages/web_profiler.yaml",
             "config/routes/web_profiler.yaml"
         ]
+    },
+    "symfonycasts/tailwind-bundle": {
+        "version": "v0.5.1"
     },
     "twig/extra-bundle": {
         "version": "v3.8.0"

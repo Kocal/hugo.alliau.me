@@ -2,6 +2,10 @@
 
 {% block title %}CV &bullet; Hugo Alliaume{% endblock %}
 
+{% block seo %}
+    <meta name="description" content="CV de Hugo Alliaume, développeur web full-stack.">
+{% endblock %}
+
 {# {% block json_ld %} #}
 {#    {{ parent() }} #}
 {#    {{ json_ld({ #}
@@ -12,441 +16,427 @@
 {#    }) }} #}
 {# {% endblock %} #}
 
-
-{% block body %}
-    <main>
+{% block main %}
+    <main class="container mx-auto p-2 max-w-screen-lg flex flex-col gap-2 sm:gap-4">
         <section>
-            <div>
-                <h1>Hugo Alliaume</h1>
+            <twig:Card class="p-2 sm:p-4 flex">
+
+                <div class="flex-1">
+                    <h1 class="text-3xl sm:text-4xl font-extrabold mb-5">Hugo Alliaume</h1>
+
+                    <div>
+                        <p>Développeur web full-stack passionné et contributeur open-source</p>
+                        <a href="https://www.google.com/maps/place/Villefranche-sur-Saône+France"
+                           class="inline-flex gap-x-2">
+                            <twig:UX:Icon name="bi:globe" height="1.5em" width="1.5em"/>
+                            Villefranche-sur-Saône, France
+                        </a>
+                    </div>
+
+                    <ul class="flex gap-x-2">
+                        <li>
+                            <a href="mailto:hugo@alliau.me" title="Contact">
+                                <twig:UX:Icon name="bi:envelope" height="1.5em" width="1.5em"/>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/Kocal" title="GitHub">
+                                <twig:UX:Icon name="bi:github" height="1.5em" width="1.5em"/>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/%F0%9F%9A%B4-hugo-alliaume-34b475166/"
+                               title="LinkedIn">
+                                <twig:UX:Icon name="bi:linkedin" height="1.5em" width="1.5em"/>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com/HugoAlliaume" title="X (Twitter)">
+                                <twig:UX:Icon name="bi:twitter-x" height="1.5em" width="1.5em"/>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com/HugoAlliaume" title="Mastodon">
+                                <twig:UX:Icon name="bi:mastodon" height="1.5em" width="1.5em"/>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
 
                 <div>
-                    <p>Développeur web full-stack passionné et contributeur open-source</p>
-                    <a
-                            href="https://www.google.com/maps/place/Villefranche-sur-Saône+France"
-                    >
-                        <svg
-                                aria-hidden="true"
-                                data-qwikest-icon=""
-                                fill="none"
-                                height="1em"
-                                stroke="currentColor"
-                                stroke-width="1.5"
-                                viewBox="0 0 24 24"
-                                width="1em"
-                                xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <path
-                                    d="M20.893 13.393l-1.135-1.135a2.252 2.252 0 01-.421-.585l-1.08-2.16a.414.414 0 00-.663-.107.827.827 0 01-.812.21l-1.273-.363a.89.89 0 00-.738 1.595l.587.39c.59.395.674 1.23.172 1.732l-.2.2c-.212.212-.33.498-.33.796v.41c0 .409-.11.809-.32 1.158l-1.315 2.191a2.11 2.11 0 01-1.81 1.025 1.055 1.055 0 01-1.055-1.055v-1.172c0-.92-.56-1.747-1.414-2.089l-.655-.261a2.25 2.25 0 01-1.383-2.46l.007-.042a2.25 2.25 0 01.29-.787l.09-.15a2.25 2.25 0 012.37-1.048l1.178.236a1.125 1.125 0 001.302-.795l.208-.73a1.125 1.125 0 00-.578-1.315l-.665-.332-.091.091a2.25 2.25 0 01-1.591.659h-.18c-.249 0-.487.1-.662.274a.931.931 0 01-1.458-1.137l1.411-2.353a2.25 2.25 0 00.286-.76m11.928 9.869A9 9 0 008.965 3.525m11.928 9.868A9 9 0 118.965 3.525"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                            ></path>
-                        </svg>
-                        Villefranche-sur-Saône, France</a
-                    >
+                    <img
+                            src="{{ asset('images/hugo-alliaume.jpeg') }}"
+                            width="200"
+                            height="200"
+                            decoding="async"
+                            loading="lazy"
+                            alt="Hugo Alliaume"
+                            class="rounded-full shadow-lg"
+                    />
                 </div>
-                <div>
-                    <a href="mailto:hugo@alliau.me" title="Contact">
-                        <svg
-                                aria-hidden="true"
-                                data-qwikest-icon=""
-                                fill="none"
-                                height="1em"
-                                stroke="currentColor"
-                                stroke-width="1.5"
-                                viewBox="0 0 24 24"
-                                width="1em"
-                                xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <path
-                                    d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                            ></path>
-                        </svg> </a
-                    ><a href="https://github.com/Kocal" title="GitHub">
-                        <svg
-                                data-qwikest-icon=""
-                                fill="currentColor"
-                                height="1em"
-                                stroke="none"
-                                viewBox="0 0 496 512"
-                                width="1em"
-                                xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <path
-                                    d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"
-                            ></path>
-                        </svg> </a
-                    ><a
-                            href="https://www.linkedin.com/in/%F0%9F%9A%B4-hugo-alliaume-34b475166/"
-                            title="LinkedIn"
-                    >
-                        <svg
-                                data-qwikest-icon=""
-                                fill="currentColor"
-                                height="1em"
-                                stroke="none"
-                                viewBox="0 0 448 512"
-                                width="1em"
-                                xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <path
-                                    d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"
-                            ></path>
-                        </svg> </a
-                    ><a href="https://twitter.com/HugoAlliaume" title="X (Twitter)">
-                        <svg
-                                data-qwikest-icon=""
-                                fill="currentColor"
-                                height="1em"
-                                stroke="none"
-                                viewBox="0 0 512 512"
-                                width="1em"
-                                xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <path
-                                    d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"
-                            ></path>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-            <div>
-                <img
-                        src="{{ asset('images/hugo-alliaume.jpeg') }}"
-                        width="400"
-                        height="400"
-                        decoding="async"
-                        loading="lazy"
-                        alt="Hugo Alliaume"
-                />
-            </div>
+            </twig:Card>
         </section>
+
         <section>
-            <h2>Expériences professionnelles</h2>
-
-            <div>
-                <div>
-                    <header>
-                        <h3>
-            <span
-            ><a rel="noreferrer noopener" href="https://wamiz.com/">Wamiz</a
-                ><span></span
-                ></span>
-                        </h3>
-                        <span
-                        ><time datetime="Mon, 01 Jan 2024 00:00:00 GMT">janv. 2024</time> -
-            Présent</span
-                        >
-                    </header>
-                    <p>Senior Software Developer &amp; Expert Technique</p>
-
-                    <div>
-                        <p>
-                            Un mélange de mes deux précédents postes chez Wamiz, mais avec des
-                            choses en moins mais beaucoup plus de temps dédié à de la tech.
-                            Identifier et suivi de l'évolution des performances webs, plus
-                            particulièrement l'INP (Interaction to Next Paint), critère
-                            important pour le ranking Google en mars 2024.
-                        </p>
-                    </div>
-
-                    <div><span>Télétravail</span><span>Performance web</span></div>
-                </div>
+            <twig:Card class="p-2 sm:p-4">
+                <h2 class="text-2xl sm:text-3xl font-bold mb-4">Expériences professionnelles</h2>
 
                 <div>
-                    <header>
-                        <h3>
-            <span
-            ><a rel="noreferrer noopener" href="https://wamiz.com/">Wamiz</a
-                ><span></span
-                ></span>
-                        </h3>
-                        <span
-                        ><time datetime="Tue, 01 Jun 2021 00:00:00 GMT">juin 2021</time>
-            -
-            <time datetime="Sun, 31 Dec 2023 00:00:00 GMT"
-            >déc. 2023</time
-            ></span
-                        >
-                    </header>
-                    <p>Lead Développeur web full-stack</p>
-
                     <div>
-                        <p>
-                            Répondre aux besoin et résoudre les soucis rencontrés par l'équipe.
-                            Accompagner techniquement l'équipe au besoin, et les faire monter en
-                            compétence. Superviser et assurer le suivi technique des projets,
-                            maîtriser l'impact du code sur les performances applicatives.
-                            Garantir une bonne couverture du code par des tests automatisés,
-                            m'assurer de la qualité du code.
-                        </p>
+                        <header>
+                            <h3 class="text-xl sm:text-2xl font-bold mb-4">
+      <span>
+        <a rel="noreferrer noopener" href="https://wamiz.com/">Wamiz</a>
+        <span></span>
+      </span>
+                            </h3>
+                            <span>
+      <time datetime="Mon, 01 Jan 2024 00:00:00 GMT">janv. 2024</time>
+      - Présent
+    </span>
+                        </header>
+                        <p>Senior Software Developer &amp; Expert Technique</p>
+
+                        <div>
+                            <p>
+                                Un mélange de mes deux précédents postes chez Wamiz, mais avec des choses en moins, mais
+                                beaucoup plus de temps dédié à de la tech. Identifier
+                                et suivi de l'évolution des performances webs, plus particulièrement l'INP (Interaction
+                                to Next Paint), critère important pour le ranking Google
+                                en mars 2024.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>Télétravail</span>
+                            <span>Performance web</span>
+                        </div>
                     </div>
 
                     <div>
-                        <span>Télétravail</span><span>Performance web</span
-                        ><span>Accompagnement technique</span>
+                        <header>
+                            <h3 class="text-xl sm:text-2xl font-bold mb-4">
+      <span>
+        <a rel="noreferrer noopener" href="https://wamiz.com/">Wamiz</a>
+        <span></span>
+      </span>
+                            </h3>
+                            <span>
+      <time datetime="Tue, 01 Jun 2021 00:00:00 GMT">juin 2021</time>
+      -
+      <time datetime="Sun, 31 Dec 2023 00:00:00 GMT">déc. 2023</time>
+    </span>
+                        </header>
+                        <p>Lead Développeur web full-stack</p>
+
+                        <div>
+                            <p>
+                                Répondre aux besoins et résoudre les soucis rencontrés par l'équipe. Accompagner
+                                techniquement l'équipe au besoin, et les faire monter en
+                                compétence. Superviser et assurer le suivi technique des projets, maîtriser l'impact du
+                                code sur les performances applicatives. Garantir une
+                                bonne couverture du code par des tests automatisés, m'assurer de la qualité du code.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>Télétravail</span>
+                            <span>Performance web</span>
+                            <span>Accompagnement technique</span>
+                        </div>
                     </div>
+
+                    <div>
+                        <header>
+                            <h3 class="text-xl sm:text-2xl font-bold mb-4">
+      <span>
+        <a rel="noreferrer noopener" href="https://wamiz.com/">Wamiz</a>
+        <span></span>
+      </span>
+                            </h3>
+                            <span>
+      <time datetime="Tue, 01 Jun 2021 00:00:00 GMT">juin 2021</time>
+      -
+      <time datetime="Sun, 31 Dec 2023 00:00:00 GMT">déc. 2023</time>
+    </span>
+                        </header>
+                        <p>Développeur web full-stack</p>
+
+                        <div>
+                            <p>
+                                Évolution et maintenance de nos sites, mise en place de nouvelles stacks de
+                                développement en local et CI, respect des bonnes pratiques de
+                                développement, garantir l'ajout et la pertinence de tests automatisés, revues de code,
+                                accompagnement technique de l'équipe, monitoring via
+                                Blackfire et Datadog. Interventions dans les différentes phases de conception afin de
+                                mener les projets à bien. Diverses contributions à
+                                l'open-source (Symfony 6, Symfony UX Translator, ...)
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>Télétravail</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <header>
+                            <h3 class="text-xl sm:text-2xl font-bold mb-4">
+<span>
+<a rel="noreferrer noopener" href="https://www.y-proximite.fr">Y-proximité</a>
+<span></span>
+</span>
+</h3>
+<span>
+<time datetime="Fri, 01 Sep 2017 00:00:00 GMT">sept. 2017</time>
+-
+<time datetime="Fri, 28 May 2021 00:00:00 GMT">mai 2021</time>
+</span>
+                        </header>
+                        <p>Développeur web full-stack</p>
+
+                        <div>
+                            <p>
+                                Référent PHP et JavaScript de l'équipe, maintenance et évolution d'une vingtaine de
+                                projets. Introduction et optimisation pratiques de qualité
+                                avec les outils adéquat, et mise en place d'une CI. Migration de notre environnement de
+                                développement de Vagrant à du Docker hybride, afin de
+                                gagner en vélocité et expérience développement. Diverses contributions à l'open-source
+                                (Symfony Webpack Encore, Rollup, DefinitelyTyped, ...)
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>Présentiel</span>
+                            <span>Télétravail partiel</span>
+                        </div>
+                    </div>
+
                 </div>
-
-                <div>
-                    <header>
-                        <h3>
-            <span
-            ><a rel="noreferrer noopener" href="https://wamiz.com/">Wamiz</a
-                ><span></span
-                ></span>
-                        </h3>
-                        <span
-                        ><time datetime="Tue, 01 Jun 2021 00:00:00 GMT">juin 2021</time>
-            -
-            <time datetime="Sun, 31 Dec 2023 00:00:00 GMT"
-            >déc. 2023</time
-            ></span
-                        >
-                    </header>
-                    <p>Développeur web full-stack</p>
-
-                    <div>
-                        <p>
-                            Évolution et maintenance de nos sites, mise en place de nouvelles
-                            stacks de développement en local et CI, respect des bonnes pratiques
-                            de développement, garantir l'ajout et la pertinence de tests
-                            automatisés, revues de code, accompagnement technique de l'équipe,
-                            monitoring via Blackfire et Datadog. Interventions dans les
-                            différentes phases de conception afin de mener les projets à bien.
-                            Diverses contributions à l'open-source (Symfony 6, Symfony UX
-                            Translator, ...)
-                        </p>
-                    </div>
-
-                    <div>
-                        <span>Télétravail</span>
-                    </div>
-                </div>
-
-                <div>
-                    <header>
-                        <h3>
-            <span
-            ><a rel="noreferrer noopener" href="https://www.y-proximite.fr"
-                >Y-proximité</a
-                ><span></span
-                ></span>
-                        </h3>
-                        <span
-                        ><time datetime="Fri, 01 Sep 2017 00:00:00 GMT">sept. 2017</time>
-            -
-            <time datetime="Fri, 28 May 2021 00:00:00 GMT">mai 2021</time></span
-                        >
-                    </header>
-                    <p>Développeur web full-stack</p>
-
-                    <div>
-                        <p>
-                            Référent PHP et JavaScript de l'équipe, maintenance et évolution
-                            d'une vingtaine de projets. Introduction et optimisation pratiques
-                            de qualité avec les outils adéquat, et mise en place d'une CI.
-                            Migration de notre environnement de développement de Vagrant à du
-                            Docker hybride, afin de gagner en vélocité et expérience
-                            développement. Diverses contributions à l'open-source (Symfony
-                            Webpack Encore, Rollup, DefinitelyTyped, ...)
-                        </p>
-                    </div>
-
-                    <div><span>Présentiel</span><span>Télétravail partiel</span></div>
-                </div>
-            </div>
+            </twig:Card>
         </section>
-        <section>
-            <h2>Skills</h2>
 
-            <div>
-                <span>PHP</span><span>Symfony</span><span>JavaScript</span
-                ><span>TypeScript</span><span>Vue.js</span
-                ><span>Performances web back &amp; front</span
-                ><span>Tests automatisés</span><span>Bonnes pratiques</span
-                ><span>CI &amp; CD</span>
-            </div>
+        <section>
+            <twig:Card class="p-2 sm:p-4">
+
+                <h2 class="text-2xl sm:text-3xl font-bold mb-4">Skills</h2>
+
+                <ul class="flex flex-wrap gap-2">
+                    <li>
+                        <span class="px-2 py-1 text-md font-medium text-sky-50 bg-sky-600 rounded-lg">PHP</span>
+                    </li>
+                    <li>
+                        <span class="px-2 py-1 text-md font-medium text-sky-50 bg-sky-600 rounded-lg">Symfony</span>
+                    </li>
+                    <li>
+                        <span class="px-2 py-1 text-md font-medium text-sky-50 bg-sky-600 rounded-lg">JavaScript</span>
+                    </li>
+                    <li>
+                        <span class="px-2 py-1 text-md font-medium text-sky-50 bg-sky-600 rounded-lg">TypeScript</span>
+                    </li>
+                    <li>
+                        <span class="px-2 py-1 text-md font-medium text-sky-50 bg-sky-600 rounded-lg">Vue.js</span>
+                    </li>
+                    <li>
+                        <span class="px-2 py-1 text-md font-medium text-sky-50 bg-sky-600 rounded-lg">Performances web back &amp; front</span>
+                    </li>
+                    <li>
+                        <span class="px-2 py-1 text-md font-medium text-sky-50 bg-sky-600 rounded-lg">Tests automatisés</span>
+                    </li>
+                    <li>
+                        <span class="px-2 py-1 text-md font-medium text-sky-50 bg-sky-600 rounded-lg">Cypress</span>
+                    </li>
+                    <li>
+                        <span class="px-2 py-1 text-md font-medium text-sky-50 bg-sky-600 rounded-lg">Bonnes pratiques</span>
+                    </li>
+                    <li>
+                        <span class="px-2 py-1 text-md font-medium text-sky-50 bg-sky-600 rounded-lg">CI &amp; CD</span>
+                    </li>
+                </ul>
+            </twig:Card>
         </section>
+
         <section>
-            <h2>Projets</h2>
+            <twig:Card class="p-2 sm:p-4">
 
-            <div>
-                <div>
-                    <h3>
-                        <a href="https://github.com/Kocal/open-graph-image-generator"
-                        >OpenGraph Image Generator</a
-                        >
-                    </h3>
-
-                    <p>2023</p>
-
-                    <div>
-                        <p>
-                            Un service web qui permet de générer des images OpenGraph à la
-                            volée, en utilisant le moteur de rendu de Chrome.
-                        </p>
-                    </div>
-
-                    <div>
-                        <span>Projet Personnel</span><span>Symfony</span><span>PHP</span
-                        ><span>Panther</span>
-                    </div>
-                </div>
+                <h2 class="text-2xl sm:text-3xl font-bold mb-4">Projets</h2>
 
                 <div>
-                    <h3>
-                        <a href="https://github.com/Kocal/eslint-config-generator"
-                        >ESLint Config Generator</a
-                        >
-                    </h3>
-
-                    <p>2020</p>
-
                     <div>
-                        <p>
-                            Un générateur de configuration dogmatique pour ESLint, basé sur
-                            AirBnb et supporte TypeScript et Vue.js.
-                        </p>
+                        <h3 class="text-xl sm:text-2xl font-bold mb-4">
+                            <a href="https://github.com/Kocal/open-graph-image-generator"
+                            >OpenGraph Image Generator</a
+                            >
+                        </h3>
+
+                        <p>2023</p>
+
+                        <div>
+                            <p>
+                                Un service web qui permet de générer des images OpenGraph à la
+                                volée, en utilisant le moteur de rendu de Chrome.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>Projet Personnel</span><span>Symfony</span><span>PHP</span
+                            ><span>Panther</span>
+                        </div>
                     </div>
 
                     <div>
-                        <span>Projet Personnel</span><span>ESLint</span><span>JavaScript</span
-                        ><span>Mono-repo</span>
+                        <h3 class="text-xl sm:text-2xl font-bold mb-4">
+                            <a href="https://github.com/Kocal/eslint-config-generator"
+                            >ESLint Config Generator</a
+                            >
+                        </h3>
+
+                        <p>2020</p>
+
+                        <div>
+                            <p>
+                                Un générateur de configuration dogmatique pour ESLint, basé sur
+                                AirBnb et supporte TypeScript et Vue.js.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>Projet Personnel</span><span>ESLint</span><span>JavaScript</span
+                            ><span>Mono-repo</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl sm:text-2xl font-bold mb-4">
+                            <a href="https://github.com/Kocal/SymfonyMailerTesting"
+                            >Symfony Mailer Testing</a
+                            >
+                        </h3>
+
+                        <p>2020</p>
+
+                        <div>
+                            <p>
+                                Un bundle Symfony permettant de tester facilement dans Cypress et
+                                Behat, l'envoi d'e-mails avec Symfony Mailer.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>Développeur web full-stack</span><span>Bundle Symfony</span
+                            ><span>PHP</span><span>Tests automatisés</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl sm:text-2xl font-bold mb-4">
+                            <a href="https://github.com/Kocal/web-extension-library"
+                            >web-extension-library</a
+                            >
+                        </h3>
+
+                        <p>2018</p>
+
+                        <div>
+                            <p>
+                                Une librairie JavaScript proposant une API pratique permettant de
+                                faciliter l'écriture d'extension web cross-browser.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>Projet personnel</span><span>Extension Web</span
+                            ><span>JavaScript</span><span>TypeScript</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl sm:text-2xl font-bold mb-4">
+                            <a href="https://github.com/Kocal/vue-web-extension"
+                            >vue-web-extension</a
+                            >
+                        </h3>
+
+                        <p>2018</p>
+
+                        <div>
+                            <p>
+                                Un boilerplate permettant de créer des extensions web Vue.js, avec
+                                Vue-CLI, TypeScript et ESLint.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>Projet personnel</span><span>Extension Web</span
+                            ><span>JavaScript</span><span>TypeScript</span><span>Vue.js</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl sm:text-2xl font-bold mb-4">
+                            <a href="https://github.com/Kocal/jsdoc-vuejs">jsdoc-vuejs</a>
+                        </h3>
+
+                        <p>2017</p>
+
+                        <div>
+                            <p>
+                                Un plugin JSDoc permettant la génération d'une documentation API
+                                pour les composants Vue.js 2 et 3.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>Développeur web full-stack</span><span>Plugin JSDoc</span
+                            ><span>JavaScript</span><span>Vue.js</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl sm:text-2xl font-bold mb-4">
+                            <a
+                                    href="https://chromewebstore.google.com/detail/autologin-webmail-numeric/odnfbbmmfaabccelbmfngimaldbddinm?hl=fr&amp;pli=1"
+                            >AutoLogin-Webmail-Numericable</a
+                            >
+                        </h3>
+
+                        <p>2016</p>
+
+                        <div>
+                            <p>
+                                Une extension web permettant de se connecter automatiquement à la
+                                boîte mail de Numericable, chose non possible nativement.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>Projet personnel</span><span>Extension Web</span
+                            ><span>JavaScript</span><span>Expérience utilisateur</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl sm:text-2xl font-bold mb-4">
+                            <a href="https://jvflux.fr/JVCMaster">JVCMaster</a>
+                        </h3>
+
+                        <p>2012</p>
+
+                        <div>
+                            <p>
+                                Une extension web populaire permettant qui proposait des
+                                fonctionnalités supplémentaires et innovantes sur les forums de
+                                JeuxVideo.com (avant Respawn).
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>Projet personnel</span><span>Extension Web</span
+                            ><span>JavaScript</span>
+                        </div>
                     </div>
                 </div>
-
-                <div>
-                    <h3>
-                        <a href="https://github.com/Kocal/SymfonyMailerTesting"
-                        >Symfony Mailer Testing</a
-                        >
-                    </h3>
-
-                    <p>2020</p>
-
-                    <div>
-                        <p>
-                            Un bundle Symfony permettant de tester facilement dans Cypress et
-                            Behat, l'envoi d'e-mails avec Symfony Mailer.
-                        </p>
-                    </div>
-
-                    <div>
-                        <span>Développeur web full-stack</span><span>Bundle Symfony</span
-                        ><span>PHP</span><span>Tests automatisés</span>
-                    </div>
-                </div>
-
-                <div>
-                    <h3>
-                        <a href="https://github.com/Kocal/web-extension-library"
-                        >web-extension-library</a
-                        >
-                    </h3>
-
-                    <p>2018</p>
-
-                    <div>
-                        <p>
-                            Une librairie JavaScript proposant une API pratique permettant de
-                            faciliter l'écriture d'extension web cross-browser.
-                        </p>
-                    </div>
-
-                    <div>
-                        <span>Projet personnel</span><span>Extension Web</span
-                        ><span>JavaScript</span><span>TypeScript</span>
-                    </div>
-                </div>
-
-                <div>
-                    <h3>
-                        <a href="https://github.com/Kocal/vue-web-extension"
-                        >vue-web-extension</a
-                        >
-                    </h3>
-
-                    <p>2018</p>
-
-                    <div>
-                        <p>
-                            Un boilerplate permettant de créer des extensions web Vue.js, avec
-                            Vue-CLI, TypeScript et ESLint.
-                        </p>
-                    </div>
-
-                    <div>
-                        <span>Projet personnel</span><span>Extension Web</span
-                        ><span>JavaScript</span><span>TypeScript</span><span>Vue.js</span>
-                    </div>
-                </div>
-
-                <div>
-                    <h3>
-                        <a href="https://github.com/Kocal/jsdoc-vuejs">jsdoc-vuejs</a>
-                    </h3>
-
-                    <p>2017</p>
-
-                    <div>
-                        <p>
-                            Un plugin JSDoc permettant la génération d'une documentation API
-                            pour les composants Vue.js 2 et 3.
-                        </p>
-                    </div>
-
-                    <div>
-                        <span>Développeur web full-stack</span><span>Plugin JSDoc</span
-                        ><span>JavaScript</span><span>Vue.js</span>
-                    </div>
-                </div>
-
-                <div>
-                    <h3>
-                        <a
-                                href="https://chromewebstore.google.com/detail/autologin-webmail-numeric/odnfbbmmfaabccelbmfngimaldbddinm?hl=fr&amp;pli=1"
-                        >AutoLogin-Webmail-Numericable</a
-                        >
-                    </h3>
-
-                    <p>2016</p>
-
-                    <div>
-                        <p>
-                            Une extension web permettant de se connecter automatiquement à la
-                            boîte mail de Numericable, chose non possible nativement.
-                        </p>
-                    </div>
-
-                    <div>
-                        <span>Projet personnel</span><span>Extension Web</span
-                        ><span>JavaScript</span><span>Expérience utilisateur</span>
-                    </div>
-                </div>
-
-                <div>
-                    <h3>
-                        <a href="https://jvflux.fr/JVCMaster">JVCMaster</a>
-                    </h3>
-
-                    <p>2012</p>
-
-                    <div>
-                        <p>
-                            Une extension web populaire permettant qui proposait des
-                            fonctionnalités supplémentaires et innovantes sur les forums de
-                            JeuxVideo.com (avant Respawn).
-                        </p>
-                    </div>
-
-                    <div>
-                        <span>Projet personnel</span><span>Extension Web</span
-                        ><span>JavaScript</span>
-                    </div>
-                </div>
-            </div>
+            </twig:Card>
         </section>
     </main>
 {% endblock %}

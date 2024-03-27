@@ -2,17 +2,22 @@
 
 {% block title %}Tags &bullet; Hugo Alliaume's Blog{% endblock %}
 
-{% block body %}
-    <h1>Tags</h1>
+{% block main %}
+    <main class="container mx-auto p-2 max-w-screen-lg">
 
-    <ul>
-        {% for tag in tags %}
-            <li>
-                <a href="{{ path(constant('App\\Domain\\Routing\\ValueObject\\RouteName::BLOG_TAG_VIEW'), { tag: tag.tag }) }}">
-                    {{- tag.tag ~ ' (' ~tag.occurrences ~')' -}}
-                </a>
-            </li>
-        {% endfor %}
-    </ul>
+        <twig:Card class="p-2 sm:p-4">
+            <h1 class="text-3xl sm:text-4xl font-extrabold mb-5">
+                Tags
+            </h1>
 
+            <ul>
+                {% for tag in tags %}
+                    <li>
+                        <a href="{{ path(app.current_route, { 'tag': tag.tag }) }}">
+                            {{- tag.tag ~ ' (' ~tag.occurrences ~')' -}}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+    </main>
 {% endblock %}
