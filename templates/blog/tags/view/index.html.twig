@@ -3,19 +3,45 @@
 {% block title %}Posts tagged with "{{ tag }}" &bullet; Hugo Alliaume's Blog{% endblock %}
 
 {% block main %}
-    <h1>Posts tagged with "{{ tag }}"</h1>
-    <ul>
-        {% for tag in tags %}
-            <li>
-                <a href="{{ path(app.current_route, { 'tag': tag.tag }) }}">
-                    {{- tag.tag ~ ' (' ~tag.occurrences ~')' -}}
-                </a>
-            </li>
-        {% endfor %}
-    </ul>
+    <main class="container mx-auto p-2 max-w-screen-lg">
 
-    {% for post in posts %}
-        <twig:Post :post="post" />
-    {% endfor %}
+        <twig:Card class="p-2 sm:p-4">
+            <h1 class="text-3xl sm:text-4xl font-extrabold mb-5">
+                Posts tagged with "{{ tag }}"
+            </h1>
 
+            <ul>
+                {% for tag in tags %}
+                    <li>
+                        <a href="{{ path(app.current_route, { 'tag': tag.tag }) }}">
+                            {{- tag.tag ~ ' (' ~tag.occurrences ~')' -}}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+
+            <hr class="my-3">
+
+            <div class="divide-y divide-y-4 divide-sky-100">
+                {% for post in posts %}
+                    <article class="py-4 sm:py-6 first:pt-0 first:sm:pt-0 last:pb-0 last:pb-0">
+                        <header>
+                            <h2 class="text-2xl sm:text-3xl font-bold mb-4">
+                                <a href="{{ prefetch(path(constant('App\\Domain\\Routing\\ValueObject\\RouteName::BLOG_POST_VIEW'), {slug: post.slug})) }}">
+                                    {{ post.title }}
+                                </a>
+                            </h2>
+                        </header>
+
+                        <p>{{ post.description }}</p>
+
+                        <footer class="mt-4">
+                            <twig:PostMeta :post="post" />
+                        </footer>
+                    </article>
+                {% endfor %}
+            </div>
+
+        </twig:Card>
+    </main>
 {% endblock %}
