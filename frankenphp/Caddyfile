@@ -39,13 +39,16 @@
     redir /feed.atom  https://hugo.alliau.me/blog/rss.xml 301
     redir /tag/aws                              https://hugo.alliau.me/blog/tags/amazon-aws                        301
     redir /tag/aws/                             https://hugo.alliau.me/blog/tags/amazon-aws                        301
+    redir /tags/amazon-aws                      https://hugo.alliau.me/blog/tags/amazon-aws                        301
+    redir /tags/amazon-aws.html                 https://hugo.alliau.me/blog/tags/amazon-aws                        301
     redir /tags                                 https://hugo.alliau.me/blog/tags                                   301
     redir /tags.html                            https://hugo.alliau.me/blog/tags                                   301
-    redir /tags/aws                             https://hugo.alliau.me/blog/tags/amazon-aws                        301
     redir /tags/blackfire                       https://hugo.alliau.me/blog/tags/blackfire                         301
     redir /tags/blackfire.html                  https://hugo.alliau.me/blog/tags/blackfire                         301
     redir /tags/browsershot.html                https://hugo.alliau.me/blog/tags/browsershot                       301
+    redir /tags/browsershot                     https://hugo.alliau.me/blog/tags/browsershot                       301
     redir /tags/chrome.html                     https://hugo.alliau.me/blog/tags/chrome                            301
+    redir /tags/chrome                          https://hugo.alliau.me/blog/tags/chrome                            301
     redir /tags/continuous-integration          https://hugo.alliau.me/blog/tags/continuous-integration            301
     redir /tags/continuous-integration.html     https://hugo.alliau.me/blog/tags/continuous-integration            301
     redir /tags/database.html                   https://hugo.alliau.me/blog/tags/database                          301
