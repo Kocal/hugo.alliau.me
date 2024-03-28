@@ -18,7 +18,7 @@
         <link rel="icon" type="image/svg+xml" href="{{ asset('images/icons/favicon.svg') }}">
         <link rel="icon" type="image/png" href="{{ asset('images/icons/favicon-32x32.png') }}">
         <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/icons/apple-touch-icon.png') }}">
-        <link rel="canonical" href="{{ app.request.uri }}">
+        <link rel="canonical" href="{{ app.request.pathInfo }}">
 
         <link rel="sitemap" type="application/xml" href="/sitemap.xml">
         <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ path(constant('App\\Domain\\Routing\\ValueObject\\RouteName::BLOG_RSS')) }}">
