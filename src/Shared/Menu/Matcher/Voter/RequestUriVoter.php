@@ -13,7 +13,7 @@ final class RequestUriVoter implements VoterInterface
     public function __construct(
         RequestStack $requestStack,
     ) {
-        $this->uri = $requestStack->getMainRequest()?->getRequestUri();
+        $this->uri = $requestStack->getMainRequest()?->getPathInfo();
     }
 
     public function matchItem(ItemInterface $item): ?bool
