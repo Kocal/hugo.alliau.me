@@ -20,7 +20,17 @@ final class MenuBuilder
     {
         $menu = $this->factory->createItem('root');
 
-        $menu->addChild('Blog', ['route' => RouteName::BLOG_HOME]);
+        $menu->addChild('Blog', [
+            'route' => RouteName::BLOG_HOME,
+            'extras' => [
+                'routes' => [
+                    ['route' => RouteName::BLOG_POST_VIEW],
+                    ['route' => RouteName::BLOG_TAG_LIST],
+                    ['route' => RouteName::BLOG_TAG_VIEW],
+                ]
+            ]
+        ]);
+
         $menu->addChild('CV', ['route' => RouteName::CV_HOME]);
 
         return $menu;
