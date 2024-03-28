@@ -10,4 +10,12 @@ module.exports = {
   plugins: [
     require('@tailwindcss/typography'),
   ],
+  safelist: [
+      'custom-container',
+      'custom-container__title',
+      'custom-container--info',
+      'custom-container--tip',
+      'custom-container--warning',
+      'custom-container--danger',
+  ]
 }

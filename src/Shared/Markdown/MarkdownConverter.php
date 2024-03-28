@@ -2,6 +2,7 @@
 
 namespace App\Shared\Markdown;
 
+use App\Shared\Markdown\Extension\CustomContainer\CustomContainerExtension;
 use League\CommonMark\Environment\Environment;
 use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
 use League\CommonMark\Extension\GithubFlavoredMarkdownExtension;
@@ -24,6 +25,7 @@ class MarkdownConverter {
         $environment->addExtension(new GithubFlavoredMarkdownExtension());
         $environment->addExtension(new HeadingPermalinkExtension());
         $environment->addExtension(new TableOfContentsExtension());
+        $environment->addExtension(new CustomContainerExtension());
 
         $this->converter = new CommonMarkMarkdownConverter($environment);
     }

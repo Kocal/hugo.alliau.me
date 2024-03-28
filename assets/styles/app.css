@@ -1,3 +1,37 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .custom-container {
+        padding: 1rem;
+        border-radius: 0.5rem;
+    }
+
+    .custom-container__title {
+        margin: theme('spacing.0') theme('spacing.0') theme('spacing.2') theme('spacing.0');
+        text-transform: uppercase;
+        font-weight: theme('fontWeight.bold');
+        font-size: theme('fontSize.sm');
+    }
+
+    .custom-container--info {
+        color: theme('colors.gray.900');
+        background-color: theme('colors.gray.100');
+    }
+
+    .custom-container--tip {
+        color: theme('colors.sky.900');
+        background-color: theme('colors.sky.100');
+    }
+
+    .custom-container--warning {
+        color: theme('colors.yellow.900');
+        background-color: theme('colors.yellow.50');
+    }
+
+    .custom-container--danger {
+        color: theme('colors.red.900');
+        background-color: theme('colors.red.100');
+    }
+}
