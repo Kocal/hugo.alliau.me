@@ -2,9 +2,14 @@
 
 namespace App\Shared\Markdown;
 
+use App\Shared\Markdown\EventListener\FencedCodeListener;
 use App\Shared\Markdown\Extension\CustomContainer\CustomContainerExtension;
+use App\Shared\Markdown\Extension\FencedCode\Renderer\FencedCodeRenderer;
 use League\CommonMark\Environment\Environment;
+use League\CommonMark\Event\DocumentParsedEvent;
+use League\CommonMark\Event\DocumentPreRenderEvent;
 use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
+use League\CommonMark\Extension\CommonMark\Node\Block\FencedCode;
 use League\CommonMark\Extension\GithubFlavoredMarkdownExtension;
 use League\CommonMark\Extension\HeadingPermalink\HeadingPermalinkExtension;
 use League\CommonMark\Extension\TableOfContents\TableOfContentsExtension;
@@ -26,6 +31,7 @@ class MarkdownConverter {
         $environment->addExtension(new HeadingPermalinkExtension());
         $environment->addExtension(new TableOfContentsExtension());
         $environment->addExtension(new CustomContainerExtension());
+        $environment->addRenderer(FencedCode::class, new FencedCodeRenderer());
 
         $this->converter = new CommonMarkMarkdownConverter($environment);
     }

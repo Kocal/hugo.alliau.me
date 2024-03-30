@@ -37,4 +37,25 @@ return [
     'shiki/langs/bash.mjs' => [
         'version' => '1.2.1',
     ],
+    '@hotwired/stimulus' => [
+        'version' => '3.2.2',
+    ],
+    '@symfony/stimulus-bundle' => [
+        'path' => './vendor/symfony/stimulus-bundle/assets/dist/loader.js',
+    ],
+    'shiki/langs/sql.mjs' => [
+        'version' => '1.2.1',
+    ],
+    'shiki/wasm' => [
+        'version' => '1.2.1',
+    ],
+    '@shikijs/core/wasm-inlined' => [
+        'version' => '1.2.1',
+    ],
+    'shiki/themes/github-light.mjs' => [
+        'version' => '1.2.1',
+    ],
+    '@shikijs/transformers' => [
+        'version' => '1.2.1',
+    ],
 ];

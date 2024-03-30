@@ -5,7 +5,21 @@ module.exports = {
     "./templates/**/*.html.twig",
   ],
   theme: {
-    extend: {},
+      extend: {
+          typography: {
+              DEFAULT: {
+                  css: {
+                      // We don't want to apply any styles to the `pre` and `pre code` tags, as we want to
+                      // handle the styling ourselves.
+                      pre: null,
+                      'pre code': null,
+                      'code': {
+                          fontWeight: '500',
+                      },
+                  },
+              },
+          },
+      },
   },
   plugins: [
     require('@tailwindcss/typography'),
@@ -17,5 +31,6 @@ module.exports = {
       'custom-container--tip',
       'custom-container--warning',
       'custom-container--danger',
+      'not-prose',
   ]
 }

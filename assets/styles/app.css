@@ -2,6 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer global {
+    /* Block code */
+    pre {
+        overflow-x: auto;
+        position: relative;
+        padding: theme('spacing.3') 0;
+        background-color: theme('colors.gray.50');
+        border-radius: theme('borderRadius.md');
+
+        code[data-language] {
+            display: block;
+            padding: 0 theme('spacing.3');
+            min-width: 100%;
+            width: fit-content;
+
+            &:before {
+                content: attr(data-language) !important;
+                position: absolute;
+                top: 2px;
+                right: 8px;
+                font-size: theme('fontSize.xs');
+                color: theme('colors.gray.700');
+            }
+
+            .line.highlighted {
+                background-color: rgba(0, 0, 0, .04);
+                display: inline-block;
+                width: calc(100% + 2 * theme('spacing.3'));
+                margin: 0 calc(-1 * theme('spacing.3'));
+                padding: 0 theme('spacing.3');
+            }
+        }
+    }
+
+    /* Inline code */
+    :not(pre) > code {
+        font-weight: theme('fontWeight.bold') !important;
+    }
+}
+
 @layer components {
     .custom-container {
         padding: 1rem;
