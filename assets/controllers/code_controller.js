@@ -76,20 +76,21 @@ const transformers = [
 
 /* stimulusFetch: 'lazy' */
 export default class extends Controller {
-    connect() {
-        // The FencedCodeRendered (from league/commonmark) will wrap the code block in a `pre` tag,
-        // and Shiki outputs a `pre` tag as well. So we need to find the `pre` tag and replace it.
-        const pre = this.element.tagName === 'PRE' ? this.element : this.element.closest('pre');
-        if (!pre) {
-            return;
-        }
+    static values = {
+        language: String,
+        meta: String,
+    }
 
-        const language = this.element.getAttribute('data-language');
-        const meta = this.element.getAttribute('data-meta');
+    static targets = ['pre', 'code'];
+
+    connect() {
+        const language = this.languageValue;
+        const meta = this.metaValue;
 
         const lineOptions = attrsToLines(meta)
+        const code = this.codeTarget.textContent;
 
-        pre.outerHTML = highlighter.codeToHtml(this.element.textContent, {
+        this.preTarget.outerHTML = highlighter.codeToHtml(code, {
             lang: language,
             theme: 'github-light',
             meta: {
