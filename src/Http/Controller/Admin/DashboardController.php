@@ -2,7 +2,7 @@
 
 namespace App\Http\Controller\Admin;
 
-use App\Domain\Blog as Blog;
+use App\Domain\CV as CV;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -29,6 +29,9 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
-        //yield MenuItem::linkToCrud('The Label', 'fas fa-list', Blog\Post::class);
+
+        yield MenuItem::section('CV');
+        yield MenuItem::linkToCrud('Professional experiences', 'fas fa-briefcase', CV\ProfessionalExperience::class);
+        yield MenuItem::linkToCrud('Projects', 'fas fa-gears', CV\Project::class);
     }
 }
