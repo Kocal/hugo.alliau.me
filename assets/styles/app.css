@@ -3,6 +3,67 @@
 @tailwind utilities;
 
 @layer components {
+    /* Block code */
+    .language {
+        position: relative;
+
+        .lang {
+            position: absolute;
+            top: 2px;
+            right: 8px;
+            font-size: theme('fontSize.xs');
+            font-weight: theme('fontWeight.bold');
+            color: theme('colors.gray.600');
+            z-index: 1;
+        }
+
+        /*.copy {*/
+        /*    position: absolute;*/
+        /*    z-index: 1;*/
+        /*    bottom: theme('spacing.2');*/
+        /*    right: theme('spacing.2');*/
+        /*    padding: theme('spacing.2');*/
+        /*    background-color: theme('colors.gray.200');*/
+        /*    border-radius: theme('borderRadius.md');*/
+        /*    transition: opacity 0.2s;*/
+        /*    opacity: 0;*/
+        /*}*/
+
+        /*&:hover .copy {*/
+        /*    opacity: 1;*/
+        /*}*/
+
+        pre {
+            overflow-x: auto;
+            position: relative;
+            padding: theme('spacing.3') 0;
+            background-color: theme('colors.gray.50');
+            border-radius: theme('borderRadius.md');
+
+            code {
+                display: block;
+                padding: 0 theme('spacing.3');
+                min-width: 100%;
+                width: fit-content;
+
+                .line.highlighted {
+                    background-color: rgba(0, 0, 0, .04);
+                    display: inline-block;
+                    width: calc(100% + 2 * theme('spacing.3'));
+                    margin: 0 calc(-1 * theme('spacing.3'));
+                    padding: 0 theme('spacing.3');
+                }
+            }
+        }
+    }
+
+    /* Inline code */
+    :not(pre) > code {
+        font-weight: theme('fontWeight.bold') !important;
+    }
+}
+
+@layer components {
     .custom-container {
         padding: 1rem;
         border-radius: 0.5rem;
