@@ -7,6 +7,21 @@
     .language {
         position: relative;
 
+        .lines-number-wrapper {
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            width: theme('spacing.10');
+            padding: theme('spacing.3') 0;
+            text-align: center;
+            color: theme('colors.gray.500');
+            font-family: monospace;
+            border-right: 1px solid theme('colors.gray.300');
+            user-select: none;
+            background-color: theme('colors.gray.50');
+        }
+
         .lang {
             position: absolute;
             top: 2px;
@@ -42,9 +57,10 @@
 
             code {
                 display: block;
-                padding: 0 theme('spacing.3');
+                padding: 0 theme('spacing.3') 0 calc(theme('spacing.3') + theme('spacing.8'));
                 min-width: 100%;
                 width: fit-content;
+                font-size: initial;
 
                 .line.highlighted {
                     background-color: rgba(0, 0, 0, .04);

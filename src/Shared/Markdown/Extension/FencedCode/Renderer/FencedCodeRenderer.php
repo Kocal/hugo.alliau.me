@@ -20,6 +20,9 @@ final class FencedCodeRenderer implements NodeRendererInterface
         $language = $matches['language'];
         $meta = $matches['meta'] ?? '';
 
+        $linesCount = count(explode("\n", trim($node->getLiteral())));
+        $lines = range(1, $linesCount);
+
         return new HtmlElement(
             'div',
             [
@@ -30,6 +33,16 @@ final class FencedCodeRenderer implements NodeRendererInterface
             ],
             [
                 new HtmlElement('span', ['class' => 'lang'], $language),
+                new HtmlElement(
+                    'div',
+                    [
+                        'class' => 'lines-number-wrapper',
+                    ],
+                    array_map(
+                        fn($line) => new HtmlElement('span', [], $line) . '<br>',
+                        $lines
+                    )
+                ),
                 new HtmlElement(
                     'pre',
                     [
