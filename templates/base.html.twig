@@ -30,7 +30,7 @@
                 '@context': "https://schema.org",
                 '@type': "WebSite",
                 name: "Hugo Alliaume's Website",
-                url: url(constant('App\\Domain\\Routing\\ValueObject\\RouteName::HOME')),
+                url: absolute_url(constant('App\\Domain\\Routing\\ValueObject\\RouteName::HOME')),
                 publisher: {
                     '@id': absolute_url('/#me'),
                 }
@@ -50,7 +50,7 @@
                     'https://www.linkedin.com/in/%F0%9F%9A%B4-hugo-alliaume-34b475166/',
                 ],
                 publishingPrinciples: [
-                    url(constant('App\\Domain\\Routing\\ValueObject\\RouteName::BLOG_HOME')),
+                    absolute_url(constant('App\\Domain\\Routing\\ValueObject\\RouteName::BLOG_HOME')),
                 ]
             }) }}
         {% endblock %}

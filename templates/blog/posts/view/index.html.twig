@@ -2,7 +2,7 @@
 
 {% block title %}{{ post.title }}{% endblock %}
 
-{% set post_url = url(app.current_route, app.current_route_parameters) %}
+{% set post_url = absolute_url(app.current_route, app.current_route_parameters) %}
 
 {% block seo %}
     <meta name="description" content="{{ post.description }}">
