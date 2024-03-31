@@ -21,11 +21,11 @@ final class GitHubEmojisInlineParser implements InlineParserInterface
     {
         $inlineContext->getCursor()->advanceBy($inlineContext->getFullMatchLength());
 
-        $emojiName = s($inlineContext->getFullMatch())->trim(':')->toString();
+        $match = $inlineContext->getFullMatch();
 
         $inlineContext->getContainer()->appendChild(
             new Text(
-                self::getEmojis()[$emojiName]
+                self::getEmojis()[str_replace(':', '', $match)] ?? $match,
             )
         );
 
