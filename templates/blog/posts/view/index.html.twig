@@ -5,7 +5,7 @@
 {% set post_url = url(app.current_route, app.current_route_parameters) %}
 
 {% block seo %}
-    <meta property="description" content="{{ post.description }}">
+    <meta name="description" content="{{ post.description }}">
     <meta property="og:url" content="{{ post_url }}">
     <meta property="og:type" content="website">
     <meta property="og:title" content="{{ post.title }}">
