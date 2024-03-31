@@ -6,7 +6,7 @@ module.exports = {
   ],
   theme: {
       extend: {
-          typography: {
+          typography: ({ theme }) => ({
               DEFAULT: {
                   css: {
                       // We don't want to apply any styles to the `pre` and `pre code` tags, as we want to
@@ -16,21 +16,24 @@ module.exports = {
                       'code': {
                           fontWeight: '500',
                       },
+                      '--tw-prose-bullets': theme('colors.gray[500]'),
                   },
               },
-          },
+          }),
       },
   },
   plugins: [
     require('@tailwindcss/typography'),
   ],
   safelist: [
+      'not-prose',
       'custom-container',
       'custom-container__title',
       'custom-container--info',
       'custom-container--tip',
       'custom-container--warning',
       'custom-container--danger',
-      'not-prose',
+      'table-of-contents',
+      'heading-permalink',
   ]
 }

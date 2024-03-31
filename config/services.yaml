@@ -20,6 +20,7 @@ services:
             - '../src/*/*.php'
             - '../src/*/ValueObject/*.php'
             - '../src/Kernel.php'
+            - '../src/Shared/Markdown/Extension/GitHubEmojis/data/*.php'
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

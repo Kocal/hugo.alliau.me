@@ -10,33 +10,57 @@ use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
 use League\CommonMark\Extension\CommonMark\Node\Block\FencedCode;
 use League\CommonMark\Extension\GithubFlavoredMarkdownExtension;
 use League\CommonMark\Extension\HeadingPermalink\HeadingPermalinkExtension;
+use League\CommonMark\Extension\TableOfContents\Node\TableOfContents;
 use League\CommonMark\Extension\TableOfContents\TableOfContentsExtension;
-use League\CommonMark\MarkdownConverter as CommonMarkMarkdownConverter;
+use League\CommonMark\Node\Query;
+use League\CommonMark\Parser\MarkdownParser;
+use League\CommonMark\Renderer\HtmlRenderer;
 
 class MarkdownConverter {
 
-    private CommonMarkMarkdownConverter  $converter; 
+
+    private Environment $environment;
+    private MarkdownParser $parser;
 
     public function __construct()
     {
-        $environment = new Environment([
+        $this->environment = new Environment([
             'heading_permalink' => [
-                'insert' => 'after',
-            ]
+                'apply_id_to_heading' => true,
+                'symbol' => '#'
+            ],
         ]);
-        $environment->addExtension(new CommonMarkCoreExtension());
-        $environment->addExtension(new GithubFlavoredMarkdownExtension());
-        $environment->addExtension(new HeadingPermalinkExtension());
-        $environment->addExtension(new TableOfContentsExtension());
-        $environment->addExtension(new CustomContainerExtension());
-        $environment->addExtension(new GitHubEmojisExtension());
-        $environment->addRenderer(FencedCode::class, new FencedCodeRenderer());
+        $this->environment->addExtension(new CommonMarkCoreExtension());
+        $this->environment->addExtension(new GithubFlavoredMarkdownExtension());
+        $this->environment->addExtension(new HeadingPermalinkExtension());
+        $this->environment->addExtension(new TableOfContentsExtension());
+        $this->environment->addExtension(new CustomContainerExtension());
+        $this->environment->addExtension(new GitHubEmojisExtension());
+        $this->environment->addRenderer(FencedCode::class, new FencedCodeRenderer());
 
-        $this->converter = new CommonMarkMarkdownConverter($environment);
+        $this->parser = new MarkdownParser($this->environment);
     }
 
-    public function __invoke(string $input): string
+    /**
+     * @return array{ rendered_content: string, rendered_toc: null|string }
+     */
+    public function __invoke(string $input): array
     {
-        return $this->converter->convert($input);
+        $document = $this->parser->parse($input);
+
+        $toc = (new Query())
+            ->where(Query::type(TableOfContents::class))
+            ->findOne($document);
+
+        if ($toc) {
+            $toc->detach();
+        }
+
+        $htmlRenderer = new HtmlRenderer($this->environment);
+
+        return [
+            'rendered_content' => $htmlRenderer->renderNodes([$document]),
+            'rendered_toc' => $toc ? $htmlRenderer->renderNodes([$toc]) : null,
+        ];
     }
 }
