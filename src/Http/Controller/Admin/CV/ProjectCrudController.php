@@ -21,6 +21,7 @@ class ProjectCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
+            IdField::new('id')->setDisabled(),
             TextField::new('name'),
             UrlField::new('url'),
             TextEditorField::new('description'),

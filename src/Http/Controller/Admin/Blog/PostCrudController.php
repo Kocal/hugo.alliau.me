@@ -24,7 +24,7 @@ class PostCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
+            IdField::new('id')->setDisabled(),
             TextField::new('title'),
             SlugField::new('slug')
                 ->setTargetFieldName('title'),
