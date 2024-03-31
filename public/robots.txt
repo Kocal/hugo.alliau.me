@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://hugo.alliau.me/sitemap.xml
