@@ -27,14 +27,21 @@
 	}
 
 	redir /_posts/2020-01-02-generate-pdfs-on-amazon-aws-with-php-and-puppeteer.html                                https://hugo.alliau.me/blog/posts/2020-01-02-generate-pdfs-on-amazon-aws-with-php-and-puppeteer                                            301
+	redir /2020/01/02/generate-pdfs-on-amazon-aws-with-php-and-puppeteer/                                           https://hugo.alliau.me/blog/posts/2020-01-02-generate-pdfs-on-amazon-aws-with-php-and-puppeteer                                            301
+	redir /blog/posts/2020-01-02-generate-pdfs-on-amazon-aws-with-php-and-puppeteer.md                              https://hugo.alliau.me/blog/posts/2020-01-02-generate-pdfs-on-amazon-aws-with-php-and-puppeteer                                            301
+    redir /posts/2021-04-26-migration-stack-developpement                                                           https://hugo.alliau.me/blog/posts/2021-04-26-migration-de-notre-stack-de-developpement-vers-docker                                         301
     redir /2021/04/26/migration-stack-developpement//1000                                                           https://hugo.alliau.me/blog/posts/2021-04-26-migration-de-notre-stack-de-developpement-vers-docker                                         301
+    redir /blog/posts/2021-04-26-migration-stack-developpement.md                                                   https://hugo.alliau.me/blog/posts/2021-04-26-migration-de-notre-stack-de-developpement-vers-docker                                         301
+    redir /posts/2021-04-26-migration-stack-developpement.html                                                      https://hugo.alliau.me/blog/posts/2021-04-26-migration-de-notre-stack-de-developpement-vers-docker                                         301
     redir /2021/05/04/migration-to-github-native-dependabot-solutions-for-auto-merge-and-action-secrets/            https://hugo.alliau.me/blog/posts/2021-05-04-migration-to-github-native-dependabot-solutions-for-auto-merge-and-action-secrets             301
     redir /2022/01/07/doctrine-setmaxresults-and-collections-associations-are-on-a-boat/                            https://hugo.alliau.me/blog/posts/2022-01-07-doctrine-querybuilder-setmaxresults-and-collections-associations-are-on-a-boat                301
     redir /posts/2020-04-21-generate-pdfs-on-amazon-aws-with-php-and-puppeteer-the-best-way.html                    https://hugo.alliau.me/blog/posts/2020-04-21-generate-pdfs-on-amazon-aws-with-php-and-puppeteer-the-best-way                               301
+    redir /blog/posts/2020-04-21-generate-pdfs-on-amazon-aws-with-php-and-puppeteer-the-best-way.md                 https://hugo.alliau.me/blog/posts/2020-04-21-generate-pdfs-on-amazon-aws-with-php-and-puppeteer-the-best-way                               301
     redir /posts/2021-05-04-migration-to-github-native-dependabot-solutions-for-auto-merge-and-action-secrets.html  https://hugo.alliau.me/blog/posts/2021-05-04-migration-to-github-native-dependabot-solutions-for-auto-merge-and-action-secrets             301
     redir /posts/2022-01-07-doctrine-setmaxresults-and-collections-associations-are-on-a-boat.html                  https://hugo.alliau.me/blog/posts/2022-01-07-doctrine-querybuilder-setmaxresults-and-collections-associations-are-on-a-boat                301
     redir /posts/2023-07-19-how-to-use-php-cs-fixer-ruleset-with-easy-coding-standard.html                          https://hugo.alliau.me/blog/posts/2023-07-19-how-to-use-php-cs-fixer-ruleset-with-easy-coding-standard                                     301
     redir /posts/2023-10-21-blackfire-and-symfony-cli.html                                                          https://hugo.alliau.me/blog/posts/2023-10-21-profiling-curl-http-requests-and-symfony-commands-with-blackfire-when-using-the-symfony-cli   301
+    redir /blog/posts/2023-10-21-blackfire-and-symfony-cli.md                                                       https://hugo.alliau.me/blog/posts/2023-10-21-profiling-curl-http-requests-and-symfony-commands-with-blackfire-when-using-the-symfony-cli   301
     redir /posts/2023-11-12-listen-to-doctrine-events-on-entities-given-a-php-attribute.html                        https://hugo.alliau.me/blog/posts/2023-11-12-listen-to-doctrine-events-on-entities-using-a-php-attribute                                   301
     redir /feed.atom  https://hugo.alliau.me/blog/rss.xml 301
     redir /tag/aws                              https://hugo.alliau.me/blog/tags/amazon-aws                        301
@@ -62,6 +69,7 @@
     redir /tags/github.html                     https://hugo.alliau.me/blog/tags/github                            301
     redir /tags/makefile                        https://hugo.alliau.me/blog/tags/makefile                          301
     redir /tags/makefile.html                   https://hugo.alliau.me/blog/tags/makefile                          301
+    redir /tag/php                             https://hugo.alliau.me/blog/tags/php                               301
     redir /tags/php                             https://hugo.alliau.me/blog/tags/php                               301
     redir /tags/php.html                        https://hugo.alliau.me/blog/tags/php                               301
     redir /tags/profiling.html                  https://hugo.alliau.me/blog/tags/profiling                         301
