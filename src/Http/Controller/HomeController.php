@@ -5,14 +5,27 @@ namespace App\Http\Controller;
 use App\Domain\Routing\ValueObject\RouteName;
 use Presta\SitemapBundle\Sitemap\Url\UrlConcrete;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
 final class HomeController extends AbstractController
 {
+    use CacheMethodsTrait;
+
     #[Route("/", name: RouteName::HOME, options: ['sitemap' => ['priority' => 0.5, 'changefreq' => UrlConcrete::CHANGEFREQ_YEARLY]])]
-    public function __invoke(): Response
+    public function __invoke(
+        Request $request,
+    ): Response
     {
-        return $this->render("home.html.twig");
+        $response = new Response();
+        $response->setEtag(self::computeEtag('home'));
+        $response->setPublic();
+
+        if ($response->isNotModified($request)) {
+            return $response;
+        }
+
+        return $this->render("home.html.twig", [], $response);
     }
 }
