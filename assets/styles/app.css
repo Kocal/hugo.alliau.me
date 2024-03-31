@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/**
+ * Code blocks
+ */
 @layer components {
     /* Block code */
     .language {
@@ -79,6 +82,9 @@
     }
 }
 
+/**
+ * Custom container
+ */
 @layer components {
     .custom-container {
         padding: 1rem;
@@ -110,5 +116,28 @@
     .custom-container--danger {
         color: theme('colors.red.900');
         background-color: theme('colors.red.100');
+    }
+}
+
+@layer components {
+    .heading-permalink {
+        transform: translate3d(-100%, -50%, 0);
+        color: theme('colors.gray.500');
+        text-decoration: none !important;
+        margin-right: theme('spacing.1');
+    }
+
+    *:hover > .heading-permalink {
+        opacity: 1;
+    }
+    
+    @media screen(md) {
+        .heading-permalink {
+            position: absolute;
+            opacity: 0;
+            top: 50%;
+            transition: opacity 0.2s;
+            margin-right: 0;
+        }
     }
 }

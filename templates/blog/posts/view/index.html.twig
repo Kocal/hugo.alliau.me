@@ -50,30 +50,44 @@
 {% endblock %}
 
 {% block main %}
-<main class="container mx-auto p-2 max-w-screen-lg">
+<div class="container mx-auto p-2 sm:max-w-screen-xl sm:grid sm:grid-cols-12 gap-2">
+    <main class="max-w-full sm:col-span-9">
+        <article>
+            <twig:Card class="p-2 sm:py-4 sm:pl-5">
+                <header>
+                    <h1 class="text-3xl sm:text-4xl font-extrabold mb-5">
+                        {{ post.title }}
+                    </h1>
 
-    <article>
-        <twig:Card class="p-2 sm:p-4">
-            <header>
-                <h1 class="text-3xl sm:text-4xl font-extrabold mb-5">
-                    {{ post.title }}
-                </h1>
+                    <twig:PostMeta :post="post"/>
+                </header>
 
-                <twig:PostMeta :post="post"/>
-            </header>
+                <div class="bg-sky-100 my-2 sm:my-3" style="height: 2px"></div>
 
-            <div class="bg-sky-100 my-2 sm:my-3" style="height: 2px"></div>
+                <section class="prose prose-headings:relative max-w-none">
+                    {{ rendered_content|raw }}
+                </section>
+            </twig:Card>
 
-            <section class="prose max-w-none">
-                {{ post.content|markdown }}
-            </section>
+            {# TODO: comments #}
+            {# <footer>  #}
+            {#    <twig:Card> #}
+            {#        ... #}
+            {#    </twig:Card> #}
+            {# </footer>  #}
+        </article>
+    </main>
+
+    <aside class="hidden sm:block sm:col-span-3">
+        <twig:Card class="p-2 sticky top-2">
+            <h3 class="text-xl sm:text-2xl font-bold mb-4">
+                Table of contents
+            </h3>
+
+            <div class="prose prose-sm prose-ul:pl-4 prose-ul:m-0 prose-li:mx-0 prose-li:my-1 prose-li:p-0">
+                {{ rendered_toc|raw }}
+            </div>
         </twig:Card>
-
-        {# TODO: comments #}
-        {# <footer>  #}
-        {#    <twig:Card> #}
-        {#        ... #}
-        {#    </twig:Card> #}
-        {# </footer>  #}
-    </article>
+    </aside>
+</div>
 {% endblock %}
