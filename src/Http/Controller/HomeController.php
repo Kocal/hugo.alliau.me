@@ -21,6 +21,7 @@ final class HomeController extends AbstractController
     {
         $response = new Response();
         $response->setEtag(self::computeEtag('home'));
+        $response->setMaxAge(60 * 60 * 24 * 365);
         $response->setPublic();
 
         if ($response->isNotModified($request)) {
