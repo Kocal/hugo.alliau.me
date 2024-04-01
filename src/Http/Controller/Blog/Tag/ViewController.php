@@ -8,9 +8,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route("/blog/tags/{tag}", name: RouteName::BLOG_TAG_VIEW)]
 final class ViewController extends AbstractController
 {
+    #[Route("/blog/tags/{tag}", name: RouteName::BLOG_TAG_VIEW, methods: ['GET'])]
     public function __invoke(
         string $tag,
         PostRepository $postRepository
@@ -19,7 +19,7 @@ final class ViewController extends AbstractController
         return $this->render("blog/tags/view/index.html.twig", [
             'tag' => $tag,
             'tags' => $postRepository->findTagsAndOccurrences(),
-            'posts' => $postRepository->findLatest(
+            'posts' => $postRepository->findLatestPublished(
                 tags: [$tag]
             ),
         ]);

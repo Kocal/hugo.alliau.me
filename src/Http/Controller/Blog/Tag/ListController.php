@@ -8,9 +8,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route("/blog/tags", name: RouteName::BLOG_TAG_LIST)]
 final class ListController extends AbstractController
 {
+    #[Route("/blog/tags", name: RouteName::BLOG_TAG_LIST, methods: ['GET'])]
     public function __invoke(
         PostRepository $postRepository
     ): Response

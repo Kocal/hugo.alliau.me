@@ -6,6 +6,7 @@ use App\Domain\Blog\Post;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Query\ResultSetMapping;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 use function Symfony\Component\Clock\now;
@@ -20,16 +21,20 @@ class PostRepository extends ServiceEntityRepository
         parent::__construct($registry, Post::class);
     }
 
+    public function getOneLatestPublished(): Post
+    {
+        return $this->getLatestPublishedQueryBuilder()
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getSingleResult();
+    }
+
     /**
      * @return iterable<Post>
      */
-    public function findLatest(array $tags = []): iterable
+    public function findLatestPublished(array $tags = []): iterable
     {
-        $qb = $this->createQueryBuilder('post')
-            ->where('post.publishedAt IS NOT NULL')
-            ->andWhere('post.publishedAt <= :now')
-            ->orderBy('post.publishedAt', 'DESC')
-            ->setParameter('now', now(), Types::DATETIME_IMMUTABLE);
+        $qb = $this->getLatestPublishedQueryBuilder();
 
         if ($tags !== []) {
             $qb->andWhere('CONTAINS(post.tags, :tags) = true')
@@ -77,5 +82,14 @@ SQL, $rsm);
 SQL, $rsm);
 
         return $nativeQuery->execute();
+    }
+
+    private function getLatestPublishedQueryBuilder(): QueryBuilder
+    {
+        return $this->createQueryBuilder('post')
+            ->where('post.publishedAt IS NOT NULL')
+            ->andWhere('post.publishedAt <= :now')
+            ->orderBy('post.publishedAt', 'DESC')
+            ->setParameter('now', now(), Types::DATETIME_IMMUTABLE);
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Domain\Blog;
 
 use App\Domain\Blog\Repository\PostRepository;
+use App\Http\Cache\ETagable;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -10,7 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\Entity(repositoryClass: PostRepository::class)]
 #[ORM\Table(name: 'blog_post')]
 #[ORM\HasLifecycleCallbacks]
-class Post
+class Post implements ETagable
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -179,5 +180,10 @@ class Post
     public function preUpdate(): void
     {
         $this->updatedAt = new \DateTimeImmutable();
+    }
+
+    #[\Override] public function computeETag(): string
+    {
+        return 'post:' . $this->id . ':' . ($this->updatedAt?->format('U') ?? '0');
     }
 }

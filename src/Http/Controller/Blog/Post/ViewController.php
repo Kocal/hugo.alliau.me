@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class ViewController extends AbstractController
 {
-    #[Route("/blog/posts/{slug}", name: RouteName::BLOG_POST_VIEW)]
+    #[Route("/blog/posts/{slug}", name: RouteName::BLOG_POST_VIEW, methods: ['GET'])]
     public function __invoke(
         #[MapEntity(mapping: ['slug' => 'slug'])]
         Post $post,

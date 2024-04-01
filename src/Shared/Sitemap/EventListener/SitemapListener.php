@@ -23,7 +23,7 @@ final readonly class SitemapListener
         $urls = $event->getUrlContainer();
         $urlGenerator = $event->getUrlGenerator();
 
-        foreach ($this->postRepository->findLatest() as $post) {
+        foreach ($this->postRepository->findLatestPublished() as $post) {
             $urls->addUrl(
                 new UrlConcrete(
                     $urlGenerator->generate(RouteName::BLOG_POST_VIEW, ['slug' => $post->getSlug()], UrlGeneratorInterface::ABSOLUTE_URL),
