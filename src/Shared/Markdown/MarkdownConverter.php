@@ -27,7 +27,8 @@ class MarkdownConverter {
         $this->environment = new Environment([
             'heading_permalink' => [
                 'apply_id_to_heading' => true,
-                'symbol' => '​'
+                'symbol' => '​',
+                'aria_hidden' => false,
             ],
         ]);
         $this->environment->addExtension(new CommonMarkCoreExtension());
