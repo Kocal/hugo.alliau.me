@@ -81,6 +81,12 @@
 	root * /app/public
 	encode zstd br gzip
 
+    @assets {
+        files
+        path *.css *.js *.svg *.png *.jpg *.jpeg *.gif *.webp *.ico *.woff *.woff2 *.ttf *.otf *.eot
+    }
+    header @static Cache-Control max-age=5184000
+
 	#mercure {
 	#	# Transport to use (default to Bolt)
 	#	transport_url {$MERCURE_TRANSPORT_URL:bolt:///data/mercure.db}
