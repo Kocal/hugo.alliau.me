@@ -81,7 +81,11 @@
 	root * /app/public
 	encode zstd br gzip
 
-   
+   	 @assets {
+		file
+		path *.css *.js *.svg *.png *.jpg *.jpeg *.gif *.webp *.ico *.woff *.woff2 *.ttf *.otf *.eot
+	 }
+	 header @assets Cache-Control "public, max-age=31536000, immutable"
 
 	#mercure {
 	#	# Transport to use (default to Bolt)
@@ -106,10 +110,4 @@
 	header ?Permissions-Policy "browsing-topics=()"
 
 	php_server
-
-	 @assets {
-		files
-		path *.css *.js *.svg *.png *.jpg *.jpeg *.gif *.webp *.ico *.woff *.woff2 *.ttf *.otf *.eot
-	 }
-	  header @static Cache-Control "public, max-age=31536000, immutable"
 }
