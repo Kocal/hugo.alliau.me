@@ -15,6 +15,7 @@
         "easycorp/easyadmin-bundle": "^4.9",
         "knplabs/knp-menu-bundle": "^3.3",
         "league/commonmark": "^2.4",
+        "league/flysystem-bundle": "^3.3",
         "martin-georgiev/postgresql-for-doctrine": "^2.4",
         "presta/sitemap-bundle": "^4.1",
         "runtime/frankenphp-symfony": "^0.2.0",
