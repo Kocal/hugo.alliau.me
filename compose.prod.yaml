@@ -11,6 +11,9 @@ services:
       DATABASE_URL: ${DATABASE_URL}
       APP_DEFAULT_URI: ${APP_DEFAULT_URI}
 
+    volumes:
+      - ./var/storage:/app/var/storage:rw
+
   ###> doctrine/doctrine-bundle ###
   database:
     image: postgres:16-alpine
