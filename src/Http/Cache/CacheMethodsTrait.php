@@ -4,10 +4,10 @@ namespace App\Http\Cache;
 
 trait CacheMethodsTrait
 {
-    private static function computeEtag(string|ETagable ...$content): string
+    private static function computeEtag(string|CacheableEntity ...$content): string
     {
-        $data = array_map(function (string|ETagable $content): string {
-            return $content instanceof ETagable ? $content->computeETag() : $content;
+        $data = array_map(static function (string|CacheableEntity $content): string {
+            return $content instanceof CacheableEntity ? $content->getEtag() : $content;
         }, $content);
 
         return hash('xxh3', implode('', $data));
