@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Shared\Sitemap\EventListener;
+namespace App\Domain\Application\EventListener;
 
 use App\Domain\Blog\Repository\PostRepository;
 use App\Domain\Routing\ValueObject\RouteName;
