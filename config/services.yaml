@@ -21,7 +21,12 @@ services:
             - '../src/*/ValueObject/*.php'
             - '../src/Kernel.php'
             - '../src/Shared/Markdown/Extension/GitHubEmojis/data/*.php'
+            - '../src/Http/Cache/{CacheableEntity,CacheMethodsTrait}.php'
 
     App\Shared\Twig\Environment:
         parent: twig
         decorates: twig
+
+    App\Http\Cache\HttpCache:
+        factory: '@App\Http\Cache\HttpCacheFactory'
+        arguments: ['%env(HTTP_CACHE_ADAPTER)%']

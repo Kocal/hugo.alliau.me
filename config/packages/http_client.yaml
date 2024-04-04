@@ -1,0 +1,6 @@
+framework:
+    http_client:
+        scoped_clients:
+            cloudflare.client:
+                base_uri: 'https://api.cloudflare.com/client/v4/'
+                auth_bearer: '%env(CLOUDFLARE_API_TOKEN)%'
