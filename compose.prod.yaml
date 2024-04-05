@@ -10,6 +10,9 @@ services:
       SERVER_NAME: ${SERVER_NAME}
       DATABASE_URL: ${DATABASE_URL}
       APP_DEFAULT_URI: ${APP_DEFAULT_URI}
+      HTTP_CACHE_ADAPTER: ${HTTP_CACHE_ADAPTER}
+      CLOUDFLARE_API_TOKEN: ${CLOUDFLARE_API_TOKEN}
+      CLOUDFLARE_ZONE_ID: ${CLOUDFLARE_ZONE_ID}
 
     volumes:
       - ./var/storage:/app/var/storage:rw
