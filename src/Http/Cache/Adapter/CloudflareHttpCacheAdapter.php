@@ -2,12 +2,11 @@
 
 namespace App\Http\Cache\Adapter;
 
-use App\Http\Cache\HttpCache;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\DependencyInjection\Attribute\Target;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
-final class CloudflareHttpCacheAdapter implements HttpCache
+final class CloudflareHttpCacheAdapter implements HttpCacheAdapter
 {
     public function __construct(
         #[Target('cloudflare.client')]
@@ -19,11 +18,13 @@ final class CloudflareHttpCacheAdapter implements HttpCache
 
     #[\Override] public function clearUrls(string ...$urls): void
     {
-        $this->httpClient->request('POST', 'zones/{zone_id}/purge_cache', [
-            'vars' => ['zone_id' => $this->zoneId],
-            'json' => [
-                'files' => $urls,
-            ],
-        ]);
+        foreach(array_chunk($urls, 30) as $chunk) {
+            $this->httpClient->request('POST', 'zones/{zone_id}/purge_cache', [
+                'vars' => ['zone_id' => $this->zoneId],
+                'json' => [
+                    'files' => $chunk,
+                ],
+            ]);
+        }
     }
 }

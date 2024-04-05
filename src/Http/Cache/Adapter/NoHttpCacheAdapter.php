@@ -2,9 +2,7 @@
 
 namespace App\Http\Cache\Adapter;
 
-use App\Http\Cache\HttpCache;
-
-final class NoHttpCacheAdapter implements HttpCache
+final class NoHttpCacheAdapter implements HttpCacheAdapter
 {
     #[\Override] public function clearUrls(string ...$urls): void
     {
