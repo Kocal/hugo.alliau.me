@@ -3,7 +3,9 @@
 namespace App\Domain\Blog;
 
 use App\Domain\Blog\Repository\PostRepository;
+use App\Domain\Routing\ValueObject\RouteName;
 use App\Http\Cache\CacheableEntity;
+use App\Http\Cache\ValueObject\CacheItem;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -185,5 +187,14 @@ class Post implements CacheableEntity
     #[\Override] public function getEtag(): string
     {
         return 'post:' . $this->id . ':' . ($this->updatedAt?->format('U') ?? '0');
+    }
+
+    #[\Override] public function getCacheItems(): array
+    {
+        return [
+            CacheItem::fromRoute(RouteName::BLOG_HOME),
+            CacheItem::fromRoute(RouteName::BLOG_POST_VIEW, ['slug' => $this->slug]),
+            ...array_map(static fn (string $tag) => CacheItem::fromRoute(RouteName::BLOG_TAG_VIEW, ['tag' => $tag]), $this->tags),
+        ];
     }
 }

@@ -19,7 +19,7 @@ final class HttpCache
     {
         $normalized = $this->normalize(...$cacheItems);
 
-        $this->httpCacheAdapter->clearUrls($normalized['urls']);
+        $this->httpCacheAdapter->clearUrls(...$normalized['urls']);
     }
 
     private function normalize(CacheItem ...$cacheItem): array
