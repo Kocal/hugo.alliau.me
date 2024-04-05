@@ -4,6 +4,7 @@ namespace App\Http\Cache;
 
 use App\Http\Cache\Adapter\HttpCacheAdapter;
 use App\Http\Cache\ValueObject\CacheItem;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 final class HttpCache
@@ -11,6 +12,7 @@ final class HttpCache
     public function __construct(
         private HttpCacheAdapter $httpCacheAdapter,
         private UrlGeneratorInterface $urlGenerator,
+        private LoggerInterface $logger,
     )
     {
     }
@@ -18,6 +20,11 @@ final class HttpCache
     public function clearFor(CacheItem ...$cacheItems): void
     {
         $normalized = $this->normalize(...$cacheItems);
+
+        $this->logger->info('Clearing HTTP cache.', [
+            'adapter' => $this->httpCacheAdapter::class,
+            'urls' => $normalized['urls'],
+        ]);
 
         $this->httpCacheAdapter->clearUrls(...$normalized['urls']);
     }
