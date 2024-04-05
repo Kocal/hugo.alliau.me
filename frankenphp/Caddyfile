@@ -43,7 +43,8 @@
     redir /posts/2023-10-21-blackfire-and-symfony-cli.html                                                          https://hugo.alliau.me/blog/posts/2023-10-21-profiling-curl-http-requests-and-symfony-commands-with-blackfire-when-using-the-symfony-cli   301
     redir /blog/posts/2023-10-21-blackfire-and-symfony-cli.md                                                       https://hugo.alliau.me/blog/posts/2023-10-21-profiling-curl-http-requests-and-symfony-commands-with-blackfire-when-using-the-symfony-cli   301
     redir /posts/2023-11-12-listen-to-doctrine-events-on-entities-given-a-php-attribute.html                        https://hugo.alliau.me/blog/posts/2023-11-12-listen-to-doctrine-events-on-entities-using-a-php-attribute                                   301
-    redir /feed.atom  https://hugo.alliau.me/blog/rss.xml 301
+    redir /feed.atom  https://hugo.alliau.me/blog/rss.xml     301
+    redir /rss.xml    https://hugo.alliau.me/blog/rss.xml     301
     redir /tag/aws                              https://hugo.alliau.me/blog/tags/amazon-aws                        301
     redir /tag/aws/                             https://hugo.alliau.me/blog/tags/amazon-aws                        301
     redir /tags/amazon-aws                      https://hugo.alliau.me/blog/tags/amazon-aws                        301
