@@ -1,0 +1,11 @@
+{
+  "require-dev": {
+    "phpstan/phpstan": "^1.10"
+  },
+  "config": {
+    "platform": {
+      "php": "8.3"
+    },
+    "optimize-autoloader": true
+  }
+}
