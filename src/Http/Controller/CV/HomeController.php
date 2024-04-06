@@ -11,12 +11,16 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class HomeController extends AbstractController
 {
-    #[Route("/cv", name: RouteName::CV_HOME, options: ['sitemap' => ['priority' => 0.7, 'changefreq' => UrlConcrete::CHANGEFREQ_MONTHLY]], methods: ['GET'], format: 'html')]
+    #[Route("/cv", name: RouteName::CV_HOME, options: [
+        'sitemap' => [
+            'priority' => 0.7,
+            'changefreq' => UrlConcrete::CHANGEFREQ_MONTHLY,
+        ],
+    ], methods: ['GET'], format: 'html')]
     public function __invoke(
         PostRepository $postRepository,
-        string         $_format,
-    ): Response
-    {
+        string $_format,
+    ): Response {
         return $this->render("cv/home.html.twig");
     }
 }

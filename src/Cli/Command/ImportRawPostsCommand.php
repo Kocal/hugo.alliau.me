@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Cli\Command;
@@ -31,7 +32,7 @@ final class ImportRawPostsCommand extends Command
         'https://raw.githubusercontent.com/Kocal/blog/main/posts/2022-01-07-doctrine-setmaxresults-and-collections-associations-are-on-a-boat.md',
         'https://raw.githubusercontent.com/Kocal/blog/main/posts/2023-07-19-how-to-use-php-cs-fixer-ruleset-with-easy-coding-standard.md',
         'https://raw.githubusercontent.com/Kocal/blog/main/posts/2023-10-21-blackfire-and-symfony-cli.md',
-        'https://raw.githubusercontent.com/Kocal/blog/main/posts/2023-11-12-listen-to-doctrine-events-on-entities-given-a-php-attribute.md'
+        'https://raw.githubusercontent.com/Kocal/blog/main/posts/2023-11-12-listen-to-doctrine-events-on-entities-given-a-php-attribute.md',
     ];
 
     private SymfonyStyle $io;
@@ -42,8 +43,7 @@ final class ImportRawPostsCommand extends Command
         private PostRepository $postRepository,
         private ValidatorInterface $validator,
         private SluggerInterface $slugger,
-    )
-    {
+    ) {
         parent::__construct();
     }
 
@@ -83,7 +83,9 @@ final class ImportRawPostsCommand extends Command
 
         $frontmatter = Yaml::parse($frontmatter, Yaml::PARSE_DATETIME);
 
-        $post = $this->postRepository->findOneBy(['title' => $frontmatter['title']]) ?? new Post();
+        $post = $this->postRepository->findOneBy([
+            'title' => $frontmatter['title'],
+        ]) ?? new Post();
         $post->setTitle($frontmatter['title']);
         $post->setTags($frontmatter['tags']);
         $post->setDescription($frontmatter['description']);

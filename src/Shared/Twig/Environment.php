@@ -29,9 +29,9 @@ final class Environment extends \Twig\Environment
 
         $globalsProperty = $ref->getProperty('globals');
 
-        $resolvedGlobalsProperty  = $ref->getProperty('resolvedGlobals');
+        $resolvedGlobalsProperty = $ref->getProperty('resolvedGlobals');
 
-        $extensionSetProperty  = $ref->getProperty('extensionSet');
+        $extensionSetProperty = $ref->getProperty('extensionSet');
         $extensionSet = $extensionSetProperty->getValue($this);
 
         $refExtensionSet = (new \ReflectionObject($extensionSet));

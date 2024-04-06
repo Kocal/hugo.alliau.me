@@ -15,14 +15,18 @@ final class HomeController extends AbstractController
 {
     use CacheMethodsTrait;
 
-    #[Route("/blog", name: RouteName::BLOG_HOME, options: ['sitemap' => ['priority' => 0.7, 'changefreq' => UrlConcrete::CHANGEFREQ_WEEKLY]], methods: ['GET'], format: 'html')]
+    #[Route("/blog", name: RouteName::BLOG_HOME, options: [
+        'sitemap' => [
+            'priority' => 0.7,
+            'changefreq' => UrlConcrete::CHANGEFREQ_WEEKLY,
+        ],
+    ], methods: ['GET'], format: 'html')]
     #[Route("/blog/rss.xml", name: RouteName::BLOG_RSS, methods: ['GET'], format: 'xml')]
     public function __invoke(
-        string         $_format,
-        Request        $request,
+        string $_format,
+        Request $request,
         PostRepository $postRepository,
-    ): Response
-    {
+    ): Response {
         $latestPost = $postRepository->getOneLatestPublished();
 
         $response = new Response();

@@ -27,7 +27,9 @@ class Project
     #[ORM\Column(type: Types::DATE_IMMUTABLE)]
     private ?\DateTimeImmutable $date = null;
 
-    #[ORM\Column(type: Types::JSON, options: ['jsonb' => true])]
+    #[ORM\Column(type: Types::JSON, options: [
+        'jsonb' => true,
+    ])]
     private array $techStack = [];
 
     public function getId(): ?int

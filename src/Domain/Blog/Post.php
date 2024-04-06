@@ -46,7 +46,9 @@ class Post implements CacheableEntity
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $publishedAt = null;
 
-    #[ORM\Column(type: Types::JSON, options: ['jsonb' => true])]
+    #[ORM\Column(type: Types::JSON, options: [
+        'jsonb' => true,
+    ])]
     private array $tags = [];
 
     #[ORM\Embedded(class: PostSeo::class)]
@@ -184,17 +186,23 @@ class Post implements CacheableEntity
         $this->updatedAt = new \DateTimeImmutable();
     }
 
-    #[\Override] public function getEtag(): string
+    #[\Override]
+    public function getEtag(): string
     {
         return 'post:' . $this->id . ':' . ($this->updatedAt?->format('U') ?? '0');
     }
 
-    #[\Override] public function getCacheItems(): array
+    #[\Override]
+    public function getCacheItems(): array
     {
         return [
             CacheItem::fromRoute(RouteName::BLOG_HOME),
-            CacheItem::fromRoute(RouteName::BLOG_POST_VIEW, ['slug' => $this->slug]),
-            ...array_map(static fn (string $tag) => CacheItem::fromRoute(RouteName::BLOG_TAG_VIEW, ['tag' => $tag]), $this->tags),
+            CacheItem::fromRoute(RouteName::BLOG_POST_VIEW, [
+                'slug' => $this->slug,
+            ]),
+            ...array_map(static fn (string $tag) => CacheItem::fromRoute(RouteName::BLOG_TAG_VIEW, [
+                'tag' => $tag,
+            ]), $this->tags),
             CacheItem::fromRoute(RouteName::BLOG_RSS),
         ];
     }

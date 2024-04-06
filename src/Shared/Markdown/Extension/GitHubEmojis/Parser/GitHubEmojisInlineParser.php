@@ -6,7 +6,6 @@ use League\CommonMark\Node\Inline\Text;
 use League\CommonMark\Parser\Inline\InlineParserInterface;
 use League\CommonMark\Parser\Inline\InlineParserMatch;
 use League\CommonMark\Parser\InlineParserContext;
-use function Symfony\Component\String\s;
 
 final class GitHubEmojisInlineParser implements InlineParserInterface
 {

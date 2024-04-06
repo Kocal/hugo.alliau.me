@@ -32,14 +32,16 @@ final class FencedCodeRenderer implements NodeRendererInterface
                 'data-code-meta-value' => $meta,
             ],
             [
-                new HtmlElement('span', ['class' => 'lang'], $language),
+                new HtmlElement('span', [
+                    'class' => 'lang',
+                ], $language),
                 new HtmlElement(
                     'div',
                     [
                         'class' => 'lines-number-wrapper',
                     ],
                     array_map(
-                        fn($line) => new HtmlElement('span', [], $line) . '<br>',
+                        fn ($line) => new HtmlElement('span', [], $line) . '<br>',
                         $lines
                     )
                 ),

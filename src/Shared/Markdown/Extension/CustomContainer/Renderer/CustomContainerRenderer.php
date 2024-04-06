@@ -6,14 +6,12 @@ use App\Shared\Markdown\Extension\CustomContainer\Node\CustomContainer;
 use League\CommonMark\Node\Node;
 use League\CommonMark\Renderer\ChildNodeRendererInterface;
 use League\CommonMark\Renderer\NodeRendererInterface;
-use League\CommonMark\Util\HtmlElement;
-use League\CommonMark\Util\Xml;
 
 final class CustomContainerRenderer implements NodeRendererInterface
 {
     public function render(Node $node, ChildNodeRendererInterface $childRenderer)
     {
-        if (!($node instanceof CustomContainer)) {
+        if (! ($node instanceof CustomContainer)) {
             throw new \InvalidArgumentException('Incompatible node type: ' . \get_class($node));
         }
 

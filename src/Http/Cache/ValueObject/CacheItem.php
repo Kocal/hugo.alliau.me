@@ -31,5 +31,4 @@ final readonly class CacheItem
         public CacheableEntity|null $entity = null,
     ) {
     }
-
 }

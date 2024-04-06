@@ -8,7 +8,9 @@ final class JsonLdExtension extends AbstractExtension
 {
     public function getFunctions(): iterable
     {
-        yield new \Twig\TwigFunction('json_ld', [$this, 'jsonLd'], ['is_safe' => ['html']]);
+        yield new \Twig\TwigFunction('json_ld', [$this, 'jsonLd'], [
+            'is_safe' => ['html'],
+        ]);
     }
 
     public function jsonLd(array $data): string

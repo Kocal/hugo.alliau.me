@@ -18,7 +18,9 @@ class PostSeo
         'Expert',
     ];
 
-    #[ORM\Column(type: Types::JSON, options: ['jsonb' => true])]
+    #[ORM\Column(type: Types::JSON, options: [
+        'jsonb' => true,
+    ])]
     private array $dependencies = [];
 
     #[ORM\Column(length: 255)]

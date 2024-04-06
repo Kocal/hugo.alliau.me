@@ -13,8 +13,7 @@ final class HttpCache
         private HttpCacheAdapter $httpCacheAdapter,
         private UrlGeneratorInterface $urlGenerator,
         private LoggerInterface $logger,
-    )
-    {
+    ) {
     }
 
     public function clearFor(CacheItem ...$cacheItems): void
