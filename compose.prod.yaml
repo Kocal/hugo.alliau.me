@@ -13,6 +13,7 @@ services:
       HTTP_CACHE_ADAPTER: ${HTTP_CACHE_ADAPTER}
       CLOUDFLARE_API_TOKEN: ${CLOUDFLARE_API_TOKEN}
       CLOUDFLARE_ZONE_ID: ${CLOUDFLARE_ZONE_ID}
+      TRUSTED_PROXIES: ${TRUSTED_PROXIES}
 
     volumes:
       - ./var/storage:/app/var/storage:rw
