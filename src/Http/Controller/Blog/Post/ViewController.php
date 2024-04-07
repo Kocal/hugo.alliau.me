@@ -18,12 +18,13 @@ final class ViewController extends AbstractController
 
     #[Route("/blog/posts/{slug}", name: RouteName::BLOG_POST_VIEW, methods: ['GET'])]
     public function __invoke(
-        #[MapEntity(mapping: ['slug' => 'slug'])]
+        #[MapEntity(mapping: [
+            'slug' => 'slug',
+        ])]
         Post $post,
         Request $request,
         MarkdownConverter $markdownConverter,
-    ): Response
-    {
+    ): Response {
         $response = new Response();
         $response->setEtag(self::computeEtag($post));
         $response->setLastModified($post->getPublishedAt());

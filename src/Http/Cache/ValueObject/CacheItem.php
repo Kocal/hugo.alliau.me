@@ -6,6 +6,9 @@ use App\Http\Cache\CacheableEntity;
 
 final readonly class CacheItem
 {
+    /**
+     * @param array<string,mixed> $parameters
+     */
     public static function fromRoute(string $route, array $parameters = []): self
     {
         return new self(route: $route, parameters: $parameters);
@@ -23,6 +26,7 @@ final readonly class CacheItem
         public string|null $route = null,
         /**
          * @internal
+         * @var array<string, mixed>
          */
         public array $parameters = [],
         /**
@@ -31,5 +35,4 @@ final readonly class CacheItem
         public CacheableEntity|null $entity = null,
     ) {
     }
-
 }

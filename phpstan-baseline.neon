@@ -1,0 +1,81 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Cannot cast mixed to string\\.$#"
+			count: 2
+			path: src/Cli/Command/AdminCreate.php
+
+		-
+			message: "#^Method App\\\\Domain\\\\Blog\\\\PostSeo\\:\\:getDependencies\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Domain/Blog/PostSeo.php
+
+		-
+			message: "#^Method App\\\\Domain\\\\Blog\\\\Repository\\\\PostRepository\\:\\:findTags\\(\\) should return array\\<string\\> but returns array\\.$#"
+			count: 1
+			path: src/Domain/Blog/Repository/PostRepository.php
+
+		-
+			message: "#^Method App\\\\Domain\\\\Blog\\\\Repository\\\\PostRepository\\:\\:findTagsAndOccurrences\\(\\) should return array\\<int, array\\{tag\\: string, occurrences\\: int\\}\\> but returns mixed\\.$#"
+			count: 1
+			path: src/Domain/Blog/Repository/PostRepository.php
+
+		-
+			message: "#^Method App\\\\Domain\\\\Blog\\\\Repository\\\\PostRepository\\:\\:getOneLatestPublished\\(\\) should return App\\\\Domain\\\\Blog\\\\Post but returns mixed\\.$#"
+			count: 1
+			path: src/Domain/Blog/Repository/PostRepository.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Cache\\\\HttpCacheAdapterFactory\\:\\:__invoke\\(\\) should return App\\\\Http\\\\Cache\\\\Adapter\\\\HttpCacheAdapter but returns mixed\\.$#"
+			count: 1
+			path: src/Http/Cache/HttpCacheAdapterFactory.php
+
+		-
+			message: "#^Parameter \\#1 \\$input of callable App\\\\Shared\\\\Markdown\\\\MarkdownConverter expects string, string\\|null given\\.$#"
+			count: 1
+			path: src/Http/Controller/Blog/Post/ViewController.php
+
+		-
+			message: "#^Parameter \\#3 \\$contents of class League\\\\CommonMark\\\\Util\\\\HtmlElement constructor expects array\\<Stringable\\>\\|string\\|Stringable\\|null, array\\<int, string\\> given\\.$#"
+			count: 1
+			path: src/Shared/Markdown/Extension/FencedCode/Renderer/FencedCodeRenderer.php
+
+		-
+			message: "#^Parameter \\#3 \\$contents of class League\\\\CommonMark\\\\Util\\\\HtmlElement constructor expects array\\<Stringable\\>\\|string\\|Stringable\\|null, int\\<1, max\\> given\\.$#"
+			count: 1
+			path: src/Shared/Markdown/Extension/FencedCode/Renderer/FencedCodeRenderer.php
+
+		-
+			message: "#^Cannot call method getProperty\\(\\) on ReflectionClass\\|false\\.$#"
+			count: 3
+			path: src/Shared/Twig/Environment.php
+
+		-
+			message: "#^Method App\\\\Shared\\\\Twig\\\\Environment\\:\\:mergeGlobals\\(\\) has parameter \\$context with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Shared/Twig/Environment.php
+
+		-
+			message: "#^Method App\\\\Shared\\\\Twig\\\\Environment\\:\\:mergeGlobals\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Shared/Twig/Environment.php
+
+		-
+			message: "#^Method App\\\\Shared\\\\Twig\\\\Environment\\:\\:refreshGlobals\\(\\) has parameter \\$freshGlobals with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Shared/Twig/Environment.php
+
+		-
+			message: "#^Parameter \\#1 \\$object of class ReflectionObject constructor expects object, mixed given\\.$#"
+			count: 1
+			path: src/Shared/Twig/Environment.php
+
+		-
+			message: "#^Parameter \\#1 \\$object of method ReflectionProperty\\:\\:getValue\\(\\) expects object\\|null, mixed given\\.$#"
+			count: 1
+			path: src/Shared/Twig/Environment.php
+
+		-
+			message: "#^Parameter \\#1 \\.\\.\\.\\$arrays of function array_merge expects array, mixed given\\.$#"
+			count: 3
+			path: src/Shared/Twig/Environment.php

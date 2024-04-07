@@ -8,15 +8,13 @@ use App\Http\Cache\ValueObject\CacheItem;
 use EasyCorp\Bundle\EasyAdminBundle\Event\AfterEntityDeletedEvent;
 use EasyCorp\Bundle\EasyAdminBundle\Event\AfterEntityPersistedEvent;
 use EasyCorp\Bundle\EasyAdminBundle\Event\AfterEntityUpdatedEvent;
-use Psr\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\EventDispatcher\Attribute\AsEventListener;
 
 final class AdminEntityListener
 {
     public function __construct(
         private HttpCache $httpCache,
-    )
-    {
+    ) {
     }
 
     #[AsEventListener]

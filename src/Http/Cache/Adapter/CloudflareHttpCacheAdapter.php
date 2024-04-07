@@ -16,11 +16,14 @@ final class CloudflareHttpCacheAdapter implements HttpCacheAdapter
     ) {
     }
 
-    #[\Override] public function clearUrls(string ...$urls): void
+    #[\Override]
+    public function clearUrls(string ...$urls): void
     {
-        foreach(array_chunk($urls, 30) as $chunk) {
+        foreach (array_chunk($urls, 30) as $chunk) {
             $this->httpClient->request('POST', 'zones/{zone_id}/purge_cache', [
-                'vars' => ['zone_id' => $this->zoneId],
+                'vars' => [
+                    'zone_id' => $this->zoneId,
+                ],
                 'json' => [
                     'files' => $chunk,
                 ],

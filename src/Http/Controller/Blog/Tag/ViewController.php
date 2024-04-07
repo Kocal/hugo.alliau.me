@@ -14,8 +14,7 @@ final class ViewController extends AbstractController
     public function __invoke(
         string $tag,
         PostRepository $postRepository
-    ): Response
-    {
+    ): Response {
         return $this->render("blog/tags/view/index.html.twig", [
             'tag' => $tag,
             'tags' => $postRepository->findTagsAndOccurrences(),

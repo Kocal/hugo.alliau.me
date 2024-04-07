@@ -12,9 +12,10 @@ use function Symfony\Component\String\s;
 
 final class FencedCodeRenderer implements NodeRendererInterface
 {
-    public function render(Node $node, ChildNodeRendererInterface $childRenderer)
+    public function render(Node $node, ChildNodeRendererInterface $childRenderer): HtmlElement
     {
         FencedCode::assertInstanceOf($node);
+        /** @var FencedCode $node */
 
         $matches = s($node->getInfo())->match('/^(?P<language>\w+)(?P<meta>.*)/');
         $language = $matches['language'];
@@ -32,14 +33,16 @@ final class FencedCodeRenderer implements NodeRendererInterface
                 'data-code-meta-value' => $meta,
             ],
             [
-                new HtmlElement('span', ['class' => 'lang'], $language),
+                new HtmlElement('span', [
+                    'class' => 'lang',
+                ], $language),
                 new HtmlElement(
                     'div',
                     [
                         'class' => 'lines-number-wrapper',
                     ],
                     array_map(
-                        fn($line) => new HtmlElement('span', [], $line) . '<br>',
+                        fn (int $line) => new HtmlElement('span', [], $line) . '<br>',
                         $lines
                     )
                 ),

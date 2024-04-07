@@ -13,8 +13,7 @@ final class HttpCache
         private HttpCacheAdapter $httpCacheAdapter,
         private UrlGeneratorInterface $urlGenerator,
         private LoggerInterface $logger,
-    )
-    {
+    ) {
     }
 
     public function clearFor(CacheItem ...$cacheItems): void
@@ -29,6 +28,9 @@ final class HttpCache
         $this->httpCacheAdapter->clearUrls(...$normalized['urls']);
     }
 
+    /**
+     * @return array{urls: list<string>}
+     */
     private function normalize(CacheItem ...$cacheItem): array
     {
         $normalized = [

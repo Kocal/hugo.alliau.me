@@ -16,13 +16,12 @@ final class HttpCacheAdapterFactory
             'no' => NoHttpCacheAdapter::class,
         ])]
         private ContainerInterface $adapters
-    )
-    {
+    ) {
     }
 
     public function __invoke(string $adapter): HttpCacheAdapter
     {
-        if (!$this->adapters->has($adapter)) {
+        if (! $this->adapters->has($adapter)) {
             throw new \InvalidArgumentException(sprintf('Adapter "%s" not found.', $adapter));
         }
 

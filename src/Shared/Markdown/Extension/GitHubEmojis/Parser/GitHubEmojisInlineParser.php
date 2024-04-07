@@ -6,10 +6,12 @@ use League\CommonMark\Node\Inline\Text;
 use League\CommonMark\Parser\Inline\InlineParserInterface;
 use League\CommonMark\Parser\Inline\InlineParserMatch;
 use League\CommonMark\Parser\InlineParserContext;
-use function Symfony\Component\String\s;
 
 final class GitHubEmojisInlineParser implements InlineParserInterface
 {
+    /**
+     * @var array<string, string>
+     */
     private static array $emojis = [];
 
     public function getMatchDefinition(): InlineParserMatch
@@ -32,6 +34,9 @@ final class GitHubEmojisInlineParser implements InlineParserInterface
         return true;
     }
 
+    /**
+     * @return array<string, string>
+     */
     private static function getEmojis(): array
     {
         if (self::$emojis === []) {

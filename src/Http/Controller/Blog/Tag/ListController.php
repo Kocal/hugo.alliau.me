@@ -13,8 +13,7 @@ final class ListController extends AbstractController
     #[Route("/blog/tags", name: RouteName::BLOG_TAG_LIST, methods: ['GET'])]
     public function __invoke(
         PostRepository $postRepository
-    ): Response
-    {
+    ): Response {
         return $this->render("blog/tags/list/index.html.twig", [
             'tags' => $postRepository->findTagsAndOccurrences(),
         ]);

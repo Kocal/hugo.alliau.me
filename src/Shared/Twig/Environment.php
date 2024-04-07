@@ -10,6 +10,9 @@ use Twig\Extension\GlobalsInterface;
  */
 final class Environment extends \Twig\Environment
 {
+    /**
+     * @var class-string<GlobalsInterface>[]
+     */
     private $extensionsToRefreshGlobals = [EasyAdminTwigExtension::class];
 
     public function mergeGlobals(array $context): array
@@ -29,9 +32,9 @@ final class Environment extends \Twig\Environment
 
         $globalsProperty = $ref->getProperty('globals');
 
-        $resolvedGlobalsProperty  = $ref->getProperty('resolvedGlobals');
+        $resolvedGlobalsProperty = $ref->getProperty('resolvedGlobals');
 
-        $extensionSetProperty  = $ref->getProperty('extensionSet');
+        $extensionSetProperty = $ref->getProperty('extensionSet');
         $extensionSet = $extensionSetProperty->getValue($this);
 
         $refExtensionSet = (new \ReflectionObject($extensionSet));

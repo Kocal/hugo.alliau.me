@@ -27,7 +27,12 @@ class Project
     #[ORM\Column(type: Types::DATE_IMMUTABLE)]
     private ?\DateTimeImmutable $date = null;
 
-    #[ORM\Column(type: Types::JSON, options: ['jsonb' => true])]
+    /**
+     * @var array<string>
+     */
+    #[ORM\Column(type: Types::JSON, options: [
+        'jsonb' => true,
+    ])]
     private array $techStack = [];
 
     public function getId(): ?int
@@ -83,11 +88,17 @@ class Project
         return $this;
     }
 
+    /**
+     * @return string[]
+     */
     public function getTechStack(): array
     {
         return $this->techStack;
     }
 
+    /**
+     * @param string[] $techStack
+     */
     public function setTechStack(array $techStack): static
     {
         $this->techStack = $techStack;

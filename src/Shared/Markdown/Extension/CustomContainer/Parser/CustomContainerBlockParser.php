@@ -16,11 +16,12 @@ use function Symfony\Component\String\s;
 final class CustomContainerBlockParser extends AbstractBlockContinueParser
 {
     private CustomContainer $customContainer;
+
     private bool $finished = false;
 
     public static function createBlockStartParser(): BlockStartParserInterface
     {
-        return new class implements BlockStartParserInterface {
+        return new class() implements BlockStartParserInterface {
             public function tryStart(Cursor $cursor, MarkdownParserStateInterface $parserState): ?BlockStart
             {
                 if ($cursor->isIndented()) {
@@ -77,7 +78,6 @@ final class CustomContainerBlockParser extends AbstractBlockContinueParser
         if (null !== $cursor->match('/^:::$/')) {
             $this->finished = true;
         }
-
 
         return BlockContinue::at($cursor);
     }

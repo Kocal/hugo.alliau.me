@@ -16,10 +16,10 @@ use League\CommonMark\Node\Query;
 use League\CommonMark\Parser\MarkdownParser;
 use League\CommonMark\Renderer\HtmlRenderer;
 
-class MarkdownConverter {
-
-
+class MarkdownConverter
+{
     private Environment $environment;
+
     private MarkdownParser $parser;
 
     public function __construct()

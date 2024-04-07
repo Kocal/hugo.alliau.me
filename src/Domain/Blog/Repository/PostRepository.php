@@ -8,7 +8,6 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Query\ResultSetMapping;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
-
 use function Symfony\Component\Clock\now;
 
 /**
@@ -30,6 +29,7 @@ class PostRepository extends ServiceEntityRepository
     }
 
     /**
+     * @param list<string> $tags
      * @return iterable<Post>
      */
     public function findLatestPublished(array $tags = []): iterable
@@ -47,7 +47,7 @@ class PostRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return list<string>
+     * @return array<string>
      */
     public function findTags(): array
     {
