@@ -10,6 +10,9 @@ use Twig\Extension\GlobalsInterface;
  */
 final class Environment extends \Twig\Environment
 {
+    /**
+     * @var class-string<GlobalsInterface>[]
+     */
     private $extensionsToRefreshGlobals = [EasyAdminTwigExtension::class];
 
     public function mergeGlobals(array $context): array

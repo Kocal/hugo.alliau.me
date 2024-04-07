@@ -18,6 +18,9 @@ final class MenuBuilder
     ) {
     }
 
+    /**
+     * @param array<string, mixed> $options
+     */
     public function createMainMenu(array $options): ItemInterface
     {
         $menu = $this->factory->createItem('root');

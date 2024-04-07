@@ -28,6 +28,9 @@ final class HttpCache
         $this->httpCacheAdapter->clearUrls(...$normalized['urls']);
     }
 
+    /**
+     * @return array{urls: list<string>}
+     */
     private function normalize(CacheItem ...$cacheItem): array
     {
         $normalized = [

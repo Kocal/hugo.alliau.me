@@ -28,8 +28,8 @@ final class AdminCreate extends Command
     {
         $io = new SymfonyStyle($input, $output);
 
-        $username = $io->ask('Username');
-        $password = $io->askHidden('Password');
+        $username = (string) $io->ask('Username');
+        $password = (string) $io->askHidden('Password');
 
         $user = new User();
         $user->setUsername($username);

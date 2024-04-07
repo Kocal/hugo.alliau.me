@@ -18,11 +18,17 @@ class PostSeo
         'Expert',
     ];
 
+    /**
+     * @var array<string>
+     */
     #[ORM\Column(type: Types::JSON, options: [
         'jsonb' => true,
     ])]
     private array $dependencies = [];
 
+    /**
+     * @var value-of<self::PROFICIENCY_LEVEL>|null
+     */
     #[ORM\Column(length: 255)]
     #[Assert\Choice(choices: self::PROFICIENCY_LEVEL)]
     private ?string $proficiencyLevel = null;
@@ -32,6 +38,9 @@ class PostSeo
         return $this->dependencies;
     }
 
+    /**
+     * @param array<string> $dependencies
+     */
     public function setDependencies(array $dependencies): static
     {
         $this->dependencies = $dependencies;
@@ -44,7 +53,10 @@ class PostSeo
         return $this->proficiencyLevel;
     }
 
-    public function setProficiencyLevel(string $proficiencyLevel): static
+    /**
+     * @param value-of<self::PROFICIENCY_LEVEL>|null $proficiencyLevel
+     */
+    public function setProficiencyLevel(string|null $proficiencyLevel): static
     {
         $this->proficiencyLevel = $proficiencyLevel;
 

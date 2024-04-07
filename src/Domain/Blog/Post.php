@@ -46,6 +46,9 @@ class Post implements CacheableEntity
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $publishedAt = null;
 
+    /**
+     * @var array<string>
+     */
     #[ORM\Column(type: Types::JSON, options: [
         'jsonb' => true,
     ])]
@@ -149,11 +152,17 @@ class Post implements CacheableEntity
         return $this;
     }
 
+    /**
+     * @return string[]
+     */
     public function getTags(): array
     {
         return $this->tags;
     }
 
+    /**
+     * @param string[] $tags
+     */
     public function setTags(array $tags): static
     {
         $this->tags = $tags;

@@ -29,6 +29,7 @@ class PostRepository extends ServiceEntityRepository
     }
 
     /**
+     * @param list<string> $tags
      * @return iterable<Post>
      */
     public function findLatestPublished(array $tags = []): iterable
@@ -46,7 +47,7 @@ class PostRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return list<string>
+     * @return array<string>
      */
     public function findTags(): array
     {

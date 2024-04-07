@@ -41,6 +41,9 @@ class ProfessionalExperience
     #[Assert\GreaterThan(propertyPath: 'startDate')]
     private ?\DateTimeImmutable $endDate = null;
 
+    /**
+     * @var array<string>
+     */
     #[ORM\Column(type: Types::JSON, options: [
         'jsonb' => true,
     ])]
@@ -123,11 +126,17 @@ class ProfessionalExperience
         return $this;
     }
 
+    /**
+     * @return string[]
+     */
     public function getBadges(): array
     {
         return $this->badges;
     }
 
+    /**
+     * @param string[] $badges
+     */
     public function setBadges(array $badges): static
     {
         $this->badges = $badges;
