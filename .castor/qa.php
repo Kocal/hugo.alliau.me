@@ -11,11 +11,11 @@ import(__DIR__ . '/../tools/easy-coding-standard/castor.php');
 import(__DIR__ . '/../tools/phpstan/castor.php');
 
 #[AsTask(description: 'Runs all QA tasks')]
-function all(): int
+function all(bool $dryRun = false, bool $generateBaseline = false): int
 {
     install();
-    $cs = \qa\ecs\ecs();
-    $phpstan = \qa\phpstan\phpstan();
+    $cs = \qa\ecs\ecs(dryRun: $dryRun);
+    $phpstan = \qa\phpstan\phpstan(generateBaseline: $generateBaseline);
     // $phpunit = phpunit();
 
     return max($cs, $phpstan/* , $phpunit */);
