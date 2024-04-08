@@ -10,15 +10,7 @@
                 Posts tagged with "{{ tag }}"
             </h1>
 
-            <ul>
-                {% for tag in tags %}
-                    <li>
-                        <a href="{{ path(app.current_route, { 'tag': tag.tag }) }}">
-                            {{- tag.tag ~ ' (' ~tag.occurrences ~')' -}}
-                        </a>
-                    </li>
-                {% endfor %}
-            </ul>
+            <twig:CloudOfTags :tags="tags" />
 
             <hr class="my-3">
 
