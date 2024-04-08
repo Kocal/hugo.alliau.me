@@ -209,6 +209,7 @@ class Post implements CacheableEntity
             CacheItem::fromRoute(RouteName::BLOG_POST_VIEW, [
                 'slug' => $this->slug,
             ]),
+            CacheItem::fromRoute(RouteName::BLOG_TAG_LIST),
             ...array_map(static fn (string $tag) => CacheItem::fromRoute(RouteName::BLOG_TAG_VIEW, [
                 'tag' => $tag,
             ]), $this->tags),

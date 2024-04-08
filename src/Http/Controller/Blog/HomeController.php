@@ -32,7 +32,7 @@ final class HomeController extends AbstractController
         $response = new Response();
         $response->setEtag(self::computeEtag($latestPost));
         $response->setLastModified($latestPost->getPublishedAt());
-        $response->setMaxAge(60 * 60 * 24 * 7);
+        $response->setMaxAge(60 * 60 * 24 * 14);
         $response->setPublic();
 
         if ($response->isNotModified($request)) {

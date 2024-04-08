@@ -30,9 +30,9 @@ class PostRepository extends ServiceEntityRepository
 
     /**
      * @param list<string> $tags
-     * @return iterable<Post>
+     * @return list<Post>
      */
-    public function findLatestPublished(array $tags = []): iterable
+    public function findLatestPublished(array $tags = []): array
     {
         $qb = $this->getLatestPublishedQueryBuilder();
 
@@ -43,7 +43,7 @@ class PostRepository extends ServiceEntityRepository
 
         $query = $qb->getQuery();
 
-        return $query->toIterable();
+        return $query->getResult();
     }
 
     /**
