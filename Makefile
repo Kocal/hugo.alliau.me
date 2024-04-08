@@ -106,3 +106,4 @@ phpstan:
 phpstan.generate-baseline:
 	$(PHP) vendor/bin/phpstan analyse --generate-baseline
 
+-include $(ROOT_DIR)/Makefile.local
