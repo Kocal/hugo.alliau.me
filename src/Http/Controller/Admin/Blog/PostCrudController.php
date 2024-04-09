@@ -8,6 +8,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\CodeEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
@@ -40,7 +41,10 @@ class PostCrudController extends AbstractCrudController
         yield SlugField::new('slug')->setTargetFieldName('title')->onlyOnForms();
         yield DateTimeField::new('publishedAt');
         yield TextareaField::new('description');
-        yield TextareaField::new('content')->onlyOnForms();
+        yield CodeEditorField::new('content')
+            ->onlyOnForms()
+            ->setLanguage('markdown')
+        ;
 
         yield FormField::addColumn('col-xxl-4');
         yield FormField::addFieldset('SEO');
