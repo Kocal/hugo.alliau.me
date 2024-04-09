@@ -3,7 +3,6 @@
 namespace App\Http\Controller\Admin\CV;
 
 use App\Domain\CV\ProfessionalExperience;
-use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
@@ -19,7 +18,6 @@ class ProfessionalExperienceCrudController extends AbstractCrudController
     {
         return ProfessionalExperience::class;
     }
-
 
     public function configureFields(string $pageName): iterable
     {
