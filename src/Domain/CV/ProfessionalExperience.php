@@ -41,6 +41,12 @@ class ProfessionalExperience
     #[Assert\GreaterThan(propertyPath: 'startDate')]
     private ?\DateTimeImmutable $endDate = null;
 
+    #[ORM\Column]
+    private ?\DateTimeImmutable $createdAt = null;
+
+    #[ORM\Column]
+    private ?\DateTimeImmutable $updatedAt = null;
+
     /**
      * @var array<string>
      */
@@ -142,5 +148,28 @@ class ProfessionalExperience
         $this->badges = $badges;
 
         return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeImmutable
+    {
+        return $this->updatedAt;
+    }
+
+    #[ORM\PrePersist]
+    public function prePersist(): void
+    {
+        $this->createdAt = new \DateTimeImmutable();
+        $this->updatedAt = new \DateTimeImmutable();
+    }
+
+    #[ORM\PreUpdate]
+    public function preUpdate(): void
+    {
+        $this->updatedAt = new \DateTimeImmutable();
     }
 }
