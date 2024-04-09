@@ -8,6 +8,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\UrlField;
@@ -26,7 +27,7 @@ class ProfessionalExperienceCrudController extends AbstractCrudController
         yield FormField::addColumn('col-xxl-8');
         yield FormField::addFieldset('Job Information');
         yield TextField::new('jobName');
-        yield TextEditorField::new('description')->onlyOnForms();
+        yield TextareaField::new('description')->onlyOnForms();
         yield DateField::new('startDate')->setColumns(6);
         yield DateField::new('endDate')->setColumns(6);
         yield ArrayField::new('badges');

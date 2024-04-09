@@ -20,7 +20,6 @@
     <main class="container mx-auto p-2 max-w-screen-lg flex flex-col gap-2 sm:gap-4">
         <section>
             <twig:Card class="p-2 sm:p-4 flex">
-
                 <div class="flex-1">
                     <h1 class="text-3xl sm:text-4xl font-extrabold mb-5">Hugo Alliaume</h1>
 
@@ -62,7 +61,6 @@
                         </li>
                     </ul>
                 </div>
-
                 <div>
                     <img
                             src="{{ asset('images/hugo-alliaume.jpeg') }}"
@@ -79,140 +77,54 @@
 
         <section>
             <twig:Card class="p-2 sm:p-4">
-                <h2 class="text-2xl sm:text-3xl font-bold mb-4">Expériences professionnelles</h2>
+                <h2 class="text-2xl sm:text-3xl font-bold mb-4">
+                    Expériences professionnelles
+                </h2>
 
-                <div>
-                    <div>
-                        <header>
-                            <h3 class="text-xl sm:text-2xl font-bold mb-4">
-      <span>
-        <a rel="noreferrer noopener" href="https://wamiz.com/">Wamiz</a>
-        <span></span>
-      </span>
-                            </h3>
-                            <span>
-      <time datetime="Mon, 01 Jan 2024 00:00:00 GMT">janv. 2024</time>
-      - Présent
-    </span>
-                        </header>
-                        <p>Senior Software Developer &amp; Expert Technique</p>
+                <div class="flex flex-col gap-4">
+                    {% for professional_experience in professional_experiences %}
+                        <section>
+                            <header>
+                                <a
+                                        class="block text-xl sm:text-2xl font-bold"
+                                        href="{{ professional_experience.url }}"
+                                        rel="noreferrer noopener"
+                                >
+                                    {{ professional_experience.company }}
 
-                        <div>
-                            <p>
-                                Un mélange de mes deux précédents postes chez Wamiz, mais avec des choses en moins, mais
-                                beaucoup plus de temps dédié à de la tech. Identifier
-                                et suivi de l'évolution des performances webs, plus particulièrement l'INP (Interaction
-                                to Next Paint), critère important pour le ranking Google
-                                en mars 2024.
-                            </p>
-                        </div>
+                                    <small>
+                                        &bullet; {{ professional_experience.jobName }}
+                                    </small>
+                                </a>
 
-                        <div>
-                            <span>Télétravail</span>
-                            <span>Performance web</span>
-                        </div>
-                    </div>
+                                <span class="uppercase text-sm font-bold">
+                                    <time datetime="{{ professional_experience.startDate|date }}">{{ professional_experience.startDate|format_datetime('medium', 'none') }}</time>
+                                    -
+                                    {% if professional_experience.endDate is null %}
+                                        <span>Présent</span>
+                                    {% else %}
+                                        <time datetime="{{ professional_experience.endDate|date }}">{{ professional_experience.endDate|format_datetime('medium', 'none') }}</time>
+                                    {% endif %}
+                                </span>
+                            </header>
 
-                    <div>
-                        <header>
-                            <h3 class="text-xl sm:text-2xl font-bold mb-4">
-      <span>
-        <a rel="noreferrer noopener" href="https://wamiz.com/">Wamiz</a>
-        <span></span>
-      </span>
-                            </h3>
-                            <span>
-      <time datetime="Tue, 01 Jun 2021 00:00:00 GMT">juin 2021</time>
-      -
-      <time datetime="Sun, 31 Dec 2023 00:00:00 GMT">déc. 2023</time>
-    </span>
-                        </header>
-                        <p>Lead Développeur web full-stack</p>
+                            <div class="my-2">
+                                {{ professional_experience.description|nl2br }}
+                            </div>
 
-                        <div>
-                            <p>
-                                Répondre aux besoins et résoudre les soucis rencontrés par l'équipe. Accompagner
-                                techniquement l'équipe au besoin, et les faire monter en
-                                compétence. Superviser et assurer le suivi technique des projets, maîtriser l'impact du
-                                code sur les performances applicatives. Garantir une
-                                bonne couverture du code par des tests automatisés, m'assurer de la qualité du code.
-                            </p>
-                        </div>
-
-                        <div>
-                            <span>Télétravail</span>
-                            <span>Performance web</span>
-                            <span>Accompagnement technique</span>
-                        </div>
-                    </div>
-
-                    <div>
-                        <header>
-                            <h3 class="text-xl sm:text-2xl font-bold mb-4">
-      <span>
-        <a rel="noreferrer noopener" href="https://wamiz.com/">Wamiz</a>
-        <span></span>
-      </span>
-                            </h3>
-                            <span>
-      <time datetime="Tue, 01 Jun 2021 00:00:00 GMT">juin 2021</time>
-      -
-      <time datetime="Sun, 31 Dec 2023 00:00:00 GMT">déc. 2023</time>
-    </span>
-                        </header>
-                        <p>Développeur web full-stack</p>
-
-                        <div>
-                            <p>
-                                Évolution et maintenance de nos sites, mise en place de nouvelles stacks de
-                                développement en local et CI, respect des bonnes pratiques de
-                                développement, garantir l'ajout et la pertinence de tests automatisés, revues de code,
-                                accompagnement technique de l'équipe, monitoring via
-                                Blackfire et Datadog. Interventions dans les différentes phases de conception afin de
-                                mener les projets à bien. Diverses contributions à
-                                l'open-source (Symfony 6, Symfony UX Translator, ...)
-                            </p>
-                        </div>
-
-                        <div>
-                            <span>Télétravail</span>
-                        </div>
-                    </div>
-
-                    <div>
-                        <header>
-                            <h3 class="text-xl sm:text-2xl font-bold mb-4">
-<span>
-<a rel="noreferrer noopener" href="https://www.y-proximite.fr">Y-proximité</a>
-<span></span>
-</span>
-</h3>
-<span>
-<time datetime="Fri, 01 Sep 2017 00:00:00 GMT">sept. 2017</time>
--
-<time datetime="Fri, 28 May 2021 00:00:00 GMT">mai 2021</time>
-</span>
-                        </header>
-                        <p>Développeur web full-stack</p>
-
-                        <div>
-                            <p>
-                                Référent PHP et JavaScript de l'équipe, maintenance et évolution d'une vingtaine de
-                                projets. Introduction et optimisation pratiques de qualité
-                                avec les outils adéquat, et mise en place d'une CI. Migration de notre environnement de
-                                développement de Vagrant à du Docker hybride, afin de
-                                gagner en vélocité et expérience développement. Diverses contributions à l'open-source
-                                (Symfony Webpack Encore, Rollup, DefinitelyTyped, ...)
-                            </p>
-                        </div>
-
-                        <div>
-                            <span>Présentiel</span>
-                            <span>Télétravail partiel</span>
-                        </div>
-                    </div>
-
-                </div>
+                            <footer>
+                                <ul class="flex flex-wrap gap-2">
+                                    {% for badge in professional_experience.badges %}
+                                        <li>
+                                            <twig:Badge class="block" size="sm">
+                                                {{ badge }}
+                                            </twig:Badge>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </footer>
+                        </section>
+                    {% endfor %}
             </twig:Card>
         </section>
 
@@ -222,36 +134,16 @@
                 <h2 class="text-2xl sm:text-3xl font-bold mb-4">Skills</h2>
 
                 <ul class="flex flex-wrap gap-2">
-                    <li>
-                        <span class="px-2 py-1 text-md font-medium text-sky-50 bg-sky-600 rounded-lg">PHP</span>
-                    </li>
-                    <li>
-                        <span class="px-2 py-1 text-md font-medium text-sky-50 bg-sky-600 rounded-lg">Symfony</span>
-                    </li>
-                    <li>
-                        <span class="px-2 py-1 text-md font-medium text-sky-50 bg-sky-600 rounded-lg">JavaScript</span>
-                    </li>
-                    <li>
-                        <span class="px-2 py-1 text-md font-medium text-sky-50 bg-sky-600 rounded-lg">TypeScript</span>
-                    </li>
-                    <li>
-                        <span class="px-2 py-1 text-md font-medium text-sky-50 bg-sky-600 rounded-lg">Vue.js</span>
-                    </li>
-                    <li>
-                        <span class="px-2 py-1 text-md font-medium text-sky-50 bg-sky-600 rounded-lg">Performances web back &amp; front</span>
-                    </li>
-                    <li>
-                        <span class="px-2 py-1 text-md font-medium text-sky-50 bg-sky-600 rounded-lg">Tests automatisés</span>
-                    </li>
-                    <li>
-                        <span class="px-2 py-1 text-md font-medium text-sky-50 bg-sky-600 rounded-lg">Cypress</span>
-                    </li>
-                    <li>
-                        <span class="px-2 py-1 text-md font-medium text-sky-50 bg-sky-600 rounded-lg">Bonnes pratiques</span>
-                    </li>
-                    <li>
-                        <span class="px-2 py-1 text-md font-medium text-sky-50 bg-sky-600 rounded-lg">CI &amp; CD</span>
-                    </li>
+                    <li><twig:Badge class="block">PHP</twig:Badge></li>
+                    <li><twig:Badge class="block">Symfony</twig:Badge></li>
+                    <li><twig:Badge class="block">JavaScript</twig:Badge></li>
+                    <li><twig:Badge class="block">TypeScript</twig:Badge></li>
+                    <li><twig:Badge class="block">Vue.js</twig:Badge></li>
+                    <li><twig:Badge class="block">Performances web back &amp; front</twig:Badge></li>
+                    <li><twig:Badge class="block">Tests automatisés</twig:Badge></li>
+                    <li><twig:Badge class="block">Cypress</twig:Badge></li>
+                    <li><twig:Badge class="block">Bonnes pratiques</twig:Badge></li>
+                    <li><twig:Badge class="block">CI &amp; CD</twig:Badge></li>
                 </ul>
             </twig:Card>
         </section>
@@ -261,180 +153,33 @@
 
                 <h2 class="text-2xl sm:text-3xl font-bold mb-4">Projets</h2>
 
-                <div>
-                    <div>
-                        <h3 class="text-xl sm:text-2xl font-bold mb-4">
-                            <a href="https://github.com/Kocal/open-graph-image-generator"
-                            >OpenGraph Image Generator</a
-                            >
-                        </h3>
-
-                        <p>2023</p>
-
+                <div class="grid sm:grid-cols-3 gap-3">
+                    {% for project in projects %}
                         <div>
-                            <p>
-                                Un service web qui permet de générer des images OpenGraph à la
-                                volée, en utilisant le moteur de rendu de Chrome.
-                            </p>
+                            <header>
+                                <h3 class="text-xl sm:text-2xl font-bold">
+                                    <a href="{{ project.url }}">{{ project.name }}</a>
+                                </h3>
+                                <span class="uppercase text-sm font-bold">{{ project.date|date('Y') }}</span>
+                            </header>
+
+                            <div class="my-2">
+                                {{ project.description }}
+                            </div>
+
+                            <footer>
+                                <ul class="flex flex-wrap gap-2">
+                                    {% for tech in project.techStack %}
+                                        <li>
+                                            <twig:Badge class="block" size="sm">
+                                                {{ tech }}
+                                            </twig:Badge>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </footer>
                         </div>
-
-                        <div>
-                            <span>Projet Personnel</span><span>Symfony</span><span>PHP</span
-                            ><span>Panther</span>
-                        </div>
-                    </div>
-
-                    <div>
-                        <h3 class="text-xl sm:text-2xl font-bold mb-4">
-                            <a href="https://github.com/Kocal/eslint-config-generator"
-                            >ESLint Config Generator</a
-                            >
-                        </h3>
-
-                        <p>2020</p>
-
-                        <div>
-                            <p>
-                                Un générateur de configuration dogmatique pour ESLint, basé sur
-                                AirBnb et supporte TypeScript et Vue.js.
-                            </p>
-                        </div>
-
-                        <div>
-                            <span>Projet Personnel</span><span>ESLint</span><span>JavaScript</span
-                            ><span>Mono-repo</span>
-                        </div>
-                    </div>
-
-                    <div>
-                        <h3 class="text-xl sm:text-2xl font-bold mb-4">
-                            <a href="https://github.com/Kocal/SymfonyMailerTesting"
-                            >Symfony Mailer Testing</a
-                            >
-                        </h3>
-
-                        <p>2020</p>
-
-                        <div>
-                            <p>
-                                Un bundle Symfony permettant de tester facilement dans Cypress et
-                                Behat, l'envoi d'e-mails avec Symfony Mailer.
-                            </p>
-                        </div>
-
-                        <div>
-                            <span>Développeur web full-stack</span><span>Bundle Symfony</span
-                            ><span>PHP</span><span>Tests automatisés</span>
-                        </div>
-                    </div>
-
-                    <div>
-                        <h3 class="text-xl sm:text-2xl font-bold mb-4">
-                            <a href="https://github.com/Kocal/web-extension-library"
-                            >web-extension-library</a
-                            >
-                        </h3>
-
-                        <p>2018</p>
-
-                        <div>
-                            <p>
-                                Une librairie JavaScript proposant une API pratique permettant de
-                                faciliter l'écriture d'extension web cross-browser.
-                            </p>
-                        </div>
-
-                        <div>
-                            <span>Projet personnel</span><span>Extension Web</span
-                            ><span>JavaScript</span><span>TypeScript</span>
-                        </div>
-                    </div>
-
-                    <div>
-                        <h3 class="text-xl sm:text-2xl font-bold mb-4">
-                            <a href="https://github.com/Kocal/vue-web-extension"
-                            >vue-web-extension</a
-                            >
-                        </h3>
-
-                        <p>2018</p>
-
-                        <div>
-                            <p>
-                                Un boilerplate permettant de créer des extensions web Vue.js, avec
-                                Vue-CLI, TypeScript et ESLint.
-                            </p>
-                        </div>
-
-                        <div>
-                            <span>Projet personnel</span><span>Extension Web</span
-                            ><span>JavaScript</span><span>TypeScript</span><span>Vue.js</span>
-                        </div>
-                    </div>
-
-                    <div>
-                        <h3 class="text-xl sm:text-2xl font-bold mb-4">
-                            <a href="https://github.com/Kocal/jsdoc-vuejs">jsdoc-vuejs</a>
-                        </h3>
-
-                        <p>2017</p>
-
-                        <div>
-                            <p>
-                                Un plugin JSDoc permettant la génération d'une documentation API
-                                pour les composants Vue.js 2 et 3.
-                            </p>
-                        </div>
-
-                        <div>
-                            <span>Développeur web full-stack</span><span>Plugin JSDoc</span
-                            ><span>JavaScript</span><span>Vue.js</span>
-                        </div>
-                    </div>
-
-                    <div>
-                        <h3 class="text-xl sm:text-2xl font-bold mb-4">
-                            <a
-                                    href="https://chromewebstore.google.com/detail/autologin-webmail-numeric/odnfbbmmfaabccelbmfngimaldbddinm?hl=fr&amp;pli=1"
-                            >AutoLogin-Webmail-Numericable</a
-                            >
-                        </h3>
-
-                        <p>2016</p>
-
-                        <div>
-                            <p>
-                                Une extension web permettant de se connecter automatiquement à la
-                                boîte mail de Numericable, chose non possible nativement.
-                            </p>
-                        </div>
-
-                        <div>
-                            <span>Projet personnel</span><span>Extension Web</span
-                            ><span>JavaScript</span><span>Expérience utilisateur</span>
-                        </div>
-                    </div>
-
-                    <div>
-                        <h3 class="text-xl sm:text-2xl font-bold mb-4">
-                            <a href="https://jvflux.fr/JVCMaster">JVCMaster</a>
-                        </h3>
-
-                        <p>2012</p>
-
-                        <div>
-                            <p>
-                                Une extension web populaire permettant qui proposait des
-                                fonctionnalités supplémentaires et innovantes sur les forums de
-                                JeuxVideo.com (avant Respawn).
-                            </p>
-                        </div>
-
-                        <div>
-                            <span>Projet personnel</span><span>Extension Web</span
-                            ><span>JavaScript</span>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </twig:Card>
         </section>
