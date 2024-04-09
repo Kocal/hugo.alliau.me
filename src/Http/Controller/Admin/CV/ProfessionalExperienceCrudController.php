@@ -3,9 +3,11 @@
 namespace App\Http\Controller\Admin\CV;
 
 use App\Domain\CV\ProfessionalExperience;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -21,16 +23,19 @@ class ProfessionalExperienceCrudController extends AbstractCrudController
 
     public function configureFields(string $pageName): iterable
     {
-        return [
-            IdField::new('id')->setDisabled(),
-            TextField::new('company'),
-            UrlField::new('url'),
-            TextField::new('jobName'),
-            TextEditorField::new('description'),
-            DateField::new('startDate'),
-            DateField::new('endDate'),
-            ArrayField::new('badges'),
-        ];
-    }
+        yield IdField::new('id')->hideOnForm();
 
+        yield FormField::addColumn('col-xxl-8');
+        yield FormField::addFieldset('Job Information');
+        yield TextField::new('jobName');
+        yield TextEditorField::new('description')->onlyOnForms();
+        yield DateField::new('startDate')->setColumns(6);
+        yield DateField::new('endDate')->setColumns(6);
+        yield ArrayField::new('badges');
+
+        yield FormField::addColumn('col-xxl-4');
+        yield FormField::addFieldset('Company Information');
+        yield TextField::new('company');
+        yield UrlField::new('url');
+    }
 }

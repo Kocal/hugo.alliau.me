@@ -4,10 +4,12 @@ namespace App\Http\Controller\Admin\Blog;
 
 use App\Domain\Blog\Post;
 use App\Domain\Blog\PostSeo;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
@@ -20,19 +22,30 @@ class PostCrudController extends AbstractCrudController
         return Post::class;
     }
 
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->setDefaultSort(['publishedAt' => 'DESC'])
+        ;
+    }
+
     public function configureFields(string $pageName): iterable
     {
-        return [
-            IdField::new('id')->setDisabled(),
-            TextField::new('title'),
-            SlugField::new('slug')
-                ->setTargetFieldName('title'),
-            TextareaField::new('description'),
-            TextareaField::new('content'),
-            DateTimeField::new('publishedAt'),
-            ArrayField::new('seo.dependencies'),
-            ChoiceField::new('seo.proficiencyLevel')
-                ->setChoices(array_combine(PostSeo::PROFICIENCY_LEVEL, PostSeo::PROFICIENCY_LEVEL)),
-        ];
+        yield IdField::new('id')->hideOnForm();
+
+        yield FormField::addColumn('col-xxl-8');
+        yield TextField::new('title');
+        yield SlugField::new('slug')->setTargetFieldName('title')->onlyOnForms();
+        yield DateTimeField::new('publishedAt');
+        yield TextareaField::new('description');
+        yield TextareaField::new('content')->onlyOnForms();
+
+        yield FormField::addColumn('col-xxl-4');
+        yield FormField::addFieldset('SEO');
+        yield ArrayField::new('seo.dependencies')
+            ->setLabel('Dependencies');
+        yield ChoiceField::new('seo.proficiencyLevel')
+            ->setLabel('Proficiency Level')
+            ->setChoices(array_combine(PostSeo::PROFICIENCY_LEVEL, PostSeo::PROFICIENCY_LEVEL));
     }
 }

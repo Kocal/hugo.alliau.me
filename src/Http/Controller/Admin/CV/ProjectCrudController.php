@@ -20,13 +20,11 @@ class ProjectCrudController extends AbstractCrudController
 
     public function configureFields(string $pageName): iterable
     {
-        return [
-            IdField::new('id')->setDisabled(),
-            TextField::new('name'),
-            UrlField::new('url'),
-            TextEditorField::new('description'),
-            DateField::new('date'),
-            ArrayField::new('techStack'),
-        ];
+        yield IdField::new('id')->hideOnForm();
+        yield TextField::new('name');
+        yield UrlField::new('url');
+        yield TextEditorField::new('description')->onlyOnForms();
+        yield DateField::new('date');
+        yield ArrayField::new('techStack');
     }
 }
