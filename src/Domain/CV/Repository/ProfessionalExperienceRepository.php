@@ -15,4 +15,24 @@ class ProfessionalExperienceRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, ProfessionalExperience::class);
     }
+
+    /**
+     * @return list<ProfessionalExperience>
+     */
+    public function findAll(): array
+    {
+        $qb = $this->createQueryBuilder('professional_experience')
+            ->orderBy('professional_experience.startDate', 'DESC');
+
+        return $qb->getQuery()->getResult();
+    }
+
+    public function findOneLatest(): ProfessionalExperience|null
+    {
+        $qb = $this->createQueryBuilder('professional_experience')
+            ->orderBy('professional_experience.startDate', 'DESC')
+            ->setMaxResults(1);
+
+        return $qb->getQuery()->getOneOrNullResult();
+    }
 }

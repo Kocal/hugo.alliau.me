@@ -3,13 +3,16 @@
 namespace App\Domain\CV;
 
 use App\Domain\CV\Repository\ProfessionalExperienceRepository;
+use App\Domain\Routing\ValueObject\RouteName;
+use App\Http\Cache\CacheableEntity;
+use App\Http\Cache\ValueObject\CacheItem;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ProfessionalExperienceRepository::class)]
 #[ORM\Table(name: 'cv_professional_experience')]
-class ProfessionalExperience
+class ProfessionalExperience implements CacheableEntity
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -171,5 +174,19 @@ class ProfessionalExperience
     public function preUpdate(): void
     {
         $this->updatedAt = new \DateTimeImmutable();
+    }
+
+    #[\Override]
+    public function getEtag(): string
+    {
+        return 'cv:professional_experience:' . $this->id . ':' . ($this->updatedAt?->format('U') ?? '0');
+    }
+
+    #[\Override]
+    public function getCacheItems(): array
+    {
+        return [
+            CacheItem::fromRoute(RouteName::CV_HOME),
+        ];
     }
 }

@@ -15,4 +15,21 @@ class ProjectRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Project::class);
     }
+
+    public function findAll(): array
+    {
+        $qb = $this->createQueryBuilder('project')
+            ->orderBy('project.date', 'DESC');
+
+        return $qb->getQuery()->getResult();
+    }
+
+    public function findOneLatest(): Project|null
+    {
+        $qb = $this->createQueryBuilder('project')
+            ->orderBy('project.date', 'DESC')
+            ->setMaxResults(1);
+
+        return $qb->getQuery()->getOneOrNullResult();
+    }
 }

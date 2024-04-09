@@ -184,7 +184,7 @@ class Post implements CacheableEntity
     #[\Override]
     public function getEtag(): string
     {
-        return 'post:' . $this->id . ':' . ($this->updatedAt?->format('U') ?? '0');
+        return 'blog:post:' . $this->id . ':' . ($this->updatedAt?->format('U') ?? '0');
     }
 
     #[\Override]

@@ -3,12 +3,15 @@
 namespace App\Domain\CV;
 
 use App\Domain\CV\Repository\ProjectRepository;
+use App\Domain\Routing\ValueObject\RouteName;
+use App\Http\Cache\CacheableEntity;
+use App\Http\Cache\ValueObject\CacheItem;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ProjectRepository::class)]
 #[ORM\Table(name: 'cv_project')]
-class Project
+class Project implements CacheableEntity
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -133,5 +136,19 @@ class Project
     public function preUpdate(): void
     {
         $this->updatedAt = new \DateTimeImmutable();
+    }
+
+    #[\Override]
+    public function getEtag(): string
+    {
+        return 'cv:professional_experience:' . $this->id . ':' . ($this->updatedAt?->format('U') ?? '0');
+    }
+
+    #[\Override]
+    public function getCacheItems(): array
+    {
+        return [
+            CacheItem::fromRoute(RouteName::CV_HOME),
+        ];
     }
 }
