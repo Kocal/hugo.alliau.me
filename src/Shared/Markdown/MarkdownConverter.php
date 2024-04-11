@@ -6,6 +6,7 @@ use App\Shared\Markdown\Extension\CustomContainer\CustomContainerExtension;
 use App\Shared\Markdown\Extension\FencedCode\Renderer\FencedCodeRenderer;
 use App\Shared\Markdown\Extension\GitHubEmojis\GitHubEmojisExtension;
 use League\CommonMark\Environment\Environment;
+use League\CommonMark\Extension\Attributes\AttributesExtension;
 use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
 use League\CommonMark\Extension\CommonMark\Node\Block\FencedCode;
 use League\CommonMark\Extension\GithubFlavoredMarkdownExtension;
@@ -37,6 +38,7 @@ class MarkdownConverter
         $this->environment->addExtension(new TableOfContentsExtension());
         $this->environment->addExtension(new CustomContainerExtension());
         $this->environment->addExtension(new GitHubEmojisExtension());
+        $this->environment->addExtension(new AttributesExtension());
         $this->environment->addRenderer(FencedCode::class, new FencedCodeRenderer());
 
         $this->parser = new MarkdownParser($this->environment);
