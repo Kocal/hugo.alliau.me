@@ -37,8 +37,16 @@ final class ViewController extends AbstractController
 
         [
             'rendered_content' => $renderedContent,
-            'rendered_toc' => $renderedToc
+            'rendered_toc' => $renderedToc,
+            'web_links' => $webLinks,
         ] = ($markdownConverter)($post->getContent());
+
+
+        foreach ($webLinks as $webLink) {
+            $webLink = $webLink->withRel('preload');
+
+            $this->addLink($request, $webLink);
+        }
 
         return $this->render("blog/posts/view/index.html.twig", [
             'post' => $post,
