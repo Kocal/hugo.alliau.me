@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Shared\Markdown\Extension\TempestHighlight\Renderer;
@@ -26,7 +27,7 @@ final class CodeBlockRendererDecorator implements NodeRendererInterface
         $output = $this->codeBlockRenderer->render($node, $childRenderer);
 
         // Replace the gutter's end space with nothing, as we don't want it to be selectable
-        $output = s($output)->replaceMatches(self::$RE_REMOVE_GUTTER_END_SPACE, static fn(array $matches) => s($matches[0])->trim()->toString());
+        $output = s($output)->replaceMatches(self::$RE_REMOVE_GUTTER_END_SPACE, static fn (array $matches) => s($matches[0])->trim()->toString());
 
         // Add a tabindex to the pre tag to make it focusable
         $output = $output->replace('<pre', '<pre tabindex="0"');
