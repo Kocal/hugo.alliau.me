@@ -41,7 +41,6 @@ final class ViewController extends AbstractController
             'web_links' => $webLinks,
         ] = ($markdownConverter)($post->getContent());
 
-
         foreach ($webLinks as $webLink) {
             $webLink = $webLink->withRel('preload');
 
