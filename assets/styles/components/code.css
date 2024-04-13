@@ -1,0 +1,43 @@
+/* TODO: find why I can't use Tailwind `theme()` in this file */
+
+@layer components {
+    pre {
+        overflow: auto;
+        border: 1px solid #eaeaea !important;
+        border-radius: 6px;
+        max-height: 100dvh
+    }
+
+    pre[data-lang] {
+        position: relative;
+
+        &:before {
+            content: attr(data-lang);
+            background-color: #eaeaea;
+            font-weight: bolder;
+            position: absolute;
+            right: 2ch;
+            font-size: 12px;
+            text-transform: uppercase;
+            padding: 2px 5px;
+            border-bottom-left-radius: 6px;
+            border-bottom-right-radius: 6px;
+            transition: transform 0.2s ease-in-out;
+            transform: translateY(-100%);
+        }
+
+        &:hover:before,
+        &:focus:before,
+        &:active:before {
+            transform: translateY(0);
+        }
+    }
+
+    .hl-gutter {
+        user-select: none;
+        font-size: initial !important; /* Should not be important, but necessary due to "@layer components" */
+        border-right: 1px solid #eaeaea !important; /* Should not be important, but necessary due to "@layer components" */
+        margin-right: 1ch;
+        background-color: #f8f8f8;
+    }
+}

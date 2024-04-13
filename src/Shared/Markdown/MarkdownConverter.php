@@ -3,8 +3,8 @@
 namespace App\Shared\Markdown;
 
 use App\Shared\Markdown\Extension\CustomContainer\CustomContainerExtension;
-use App\Shared\Markdown\Extension\FencedCode\Renderer\FencedCodeRenderer;
 use App\Shared\Markdown\Extension\GitHubEmojis\GitHubEmojisExtension;
+use App\Shared\Markdown\Extension\TempestHighlight\Renderer\CodeBlockRendererDecorator;
 use League\CommonMark\Environment\Environment;
 use League\CommonMark\Extension\Attributes\AttributesExtension;
 use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
@@ -24,6 +24,7 @@ use Psr\Link\LinkInterface;
 use Symfony\Component\WebLink\Link;
 use Tempest\Highlight\CommonMark\CodeBlockRenderer;
 use Tempest\Highlight\CommonMark\InlineCodeBlockRenderer;
+use Tempest\Highlight\Highlighter;
 
 class MarkdownConverter
 {
@@ -47,9 +48,11 @@ class MarkdownConverter
         $this->environment->addExtension(new CustomContainerExtension());
         $this->environment->addExtension(new GitHubEmojisExtension());
         $this->environment->addExtension(new AttributesExtension());
-        $this->environment->addRenderer(FencedCode::class, new CodeBlockRenderer());
+        $this->environment->addRenderer(FencedCode::class, new CodeBlockRendererDecorator(new CodeBlockRenderer(
+            (new Highlighter())
+                ->withGutter()
+        )));
         $this->environment->addRenderer(Code::class, new InlineCodeBlockRenderer());
-        // $this->environment->addRenderer(FencedCode::class, new FencedCodeRenderer());
 
         $this->parser = new MarkdownParser($this->environment);
     }
@@ -92,18 +95,16 @@ class MarkdownConverter
         $webLinks = [];
 
         $imagesWithHighPriority = (new Query())
-            ->where(function(Node $node) {
+            ->where(function (Node $node) {
                 return $node instanceof Image && $node->data->get('attributes.fetchpriority', '') === 'high';
             })
-            ->findAll($document)
-        ;
+            ->findAll($document);
 
         foreach ($imagesWithHighPriority as $image) {
             $webLinks[] = (new Link())
                 ->withHref($image->getUrl())
                 ->withAttribute('as', 'image')
-                ->withAttribute('fetchpriority', 'high')
-            ;
+                ->withAttribute('fetchpriority', 'high');
         }
 
         return $webLinks;
