@@ -1,5 +1,9 @@
 {% extends 'blog/base.html.twig' %}
 
+{% block importmap %}
+    {{ importmap(['app', 'app-post']) }}
+{% endblock %}
+
 {% block title %}{{ post.title }}{% endblock %}
 
 {% set post_url = url(app.current_route, app.current_route_parameters) %}

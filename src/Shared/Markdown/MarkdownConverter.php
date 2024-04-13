@@ -9,6 +9,7 @@ use League\CommonMark\Environment\Environment;
 use League\CommonMark\Extension\Attributes\AttributesExtension;
 use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
 use League\CommonMark\Extension\CommonMark\Node\Block\FencedCode;
+use League\CommonMark\Extension\CommonMark\Node\Inline\Code;
 use League\CommonMark\Extension\CommonMark\Node\Inline\Image;
 use League\CommonMark\Extension\GithubFlavoredMarkdownExtension;
 use League\CommonMark\Extension\HeadingPermalink\HeadingPermalinkExtension;
@@ -21,6 +22,8 @@ use League\CommonMark\Parser\MarkdownParser;
 use League\CommonMark\Renderer\HtmlRenderer;
 use Psr\Link\LinkInterface;
 use Symfony\Component\WebLink\Link;
+use Tempest\Highlight\CommonMark\CodeBlockRenderer;
+use Tempest\Highlight\CommonMark\InlineCodeBlockRenderer;
 
 class MarkdownConverter
 {
@@ -44,7 +47,9 @@ class MarkdownConverter
         $this->environment->addExtension(new CustomContainerExtension());
         $this->environment->addExtension(new GitHubEmojisExtension());
         $this->environment->addExtension(new AttributesExtension());
-        $this->environment->addRenderer(FencedCode::class, new FencedCodeRenderer());
+        $this->environment->addRenderer(FencedCode::class, new CodeBlockRenderer());
+        $this->environment->addRenderer(Code::class, new InlineCodeBlockRenderer());
+        // $this->environment->addRenderer(FencedCode::class, new FencedCodeRenderer());
 
         $this->parser = new MarkdownParser($this->environment);
     }

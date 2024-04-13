@@ -1,0 +1,1 @@
+import '../vendor/tempest/highlight/src/Themes/github-light.css';
