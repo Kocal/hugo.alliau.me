@@ -85,17 +85,14 @@
                     {% for professional_experience in professional_experiences %}
                         <section>
                             <header>
-                                <a
-                                        class="block text-xl sm:text-2xl font-bold"
-                                        href="{{ professional_experience.url }}"
-                                        rel="noreferrer noopener"
-                                >
-                                    {{ professional_experience.company }}
-
+                                <span class="block text-xl sm:text-2xl font-bold"> 
+                                    <a href="{{ professional_experience.url }}" rel="noreferrer noopener">
+                                        {{ professional_experience.company }}
+                                    </a>
                                     <small>
                                         &bullet; {{ professional_experience.jobName }}
                                     </small>
-                                </a>
+                                </span>
 
                                 <span class="uppercase text-sm font-bold">
                                     <time datetime="{{ professional_experience.startDate|date }}">{{ professional_experience.startDate|format_datetime('medium', 'none') }}</time>
