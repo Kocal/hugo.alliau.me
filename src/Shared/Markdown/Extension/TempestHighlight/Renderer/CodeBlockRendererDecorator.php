@@ -15,7 +15,7 @@ final class CodeBlockRendererDecorator implements NodeRendererInterface
     /**
      * https://regex101.com/r/KowUzi/1
      */
-    private static $RE_REMOVE_GUTTER_END_SPACE = '/<span class="hl-gutter[^"]*">\s*\d+<\/span>\s{1}/';
+    private const string RE_REMOVE_GUTTER_END_SPACE = '/<span class="hl-gutter[^"]*">\s*\d+<\/span>\s{1}/';
 
     public function __construct(
         private CodeBlockRenderer $codeBlockRenderer,
@@ -27,7 +27,7 @@ final class CodeBlockRendererDecorator implements NodeRendererInterface
         $output = $this->codeBlockRenderer->render($node, $childRenderer);
 
         // Replace the gutter's end space with nothing, as we don't want it to be selectable
-        $output = s($output)->replaceMatches(self::$RE_REMOVE_GUTTER_END_SPACE, static fn (array $matches) => s($matches[0])->trim()->toString());
+        $output = s($output)->replaceMatches(self::RE_REMOVE_GUTTER_END_SPACE, static fn (array $matches) => s($matches[0])->trim()->toString());
 
         // Add a tabindex to the pre tag to make it focusable
         $output = $output->replace('<pre', '<pre tabindex="0"');
