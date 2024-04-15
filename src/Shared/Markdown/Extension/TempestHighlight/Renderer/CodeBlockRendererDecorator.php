@@ -17,14 +17,17 @@ final class CodeBlockRendererDecorator implements NodeRendererInterface
      */
     private const string RE_REMOVE_GUTTER_END_SPACE = '/<span class="hl-gutter[^"]*">\s*\d+<\/span>\s{1}/';
 
+    /**
+     * @param (\Closure(): CodeBlockRenderer) $getCodeBlockRenderer
+     */
     public function __construct(
-        private CodeBlockRenderer $codeBlockRenderer,
+        private \Closure $getCodeBlockRenderer,
     ) {
     }
 
     public function render(Node $node, ChildNodeRendererInterface $childRenderer)
     {
-        $output = $this->codeBlockRenderer->render($node, $childRenderer);
+        $output = ($this->getCodeBlockRenderer)()->render($node, $childRenderer);
 
         // Replace the gutter's end space with nothing, as we don't want it to be selectable
         $output = s($output)->replaceMatches(self::RE_REMOVE_GUTTER_END_SPACE, static fn (array $matches) => s($matches[0])->trim()->toString());

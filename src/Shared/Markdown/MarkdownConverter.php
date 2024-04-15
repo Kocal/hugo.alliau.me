@@ -48,10 +48,12 @@ class MarkdownConverter
         $this->environment->addExtension(new CustomContainerExtension());
         $this->environment->addExtension(new GitHubEmojisExtension());
         $this->environment->addExtension(new AttributesExtension());
-        $this->environment->addRenderer(FencedCode::class, new CodeBlockRendererDecorator(new CodeBlockRenderer(
-            (new Highlighter())
-                ->withGutter()
-        )));
+        $this->environment->addRenderer(FencedCode::class, new CodeBlockRendererDecorator(
+            static fn() => new CodeBlockRenderer(
+                (new Highlighter())
+                    ->withGutter()
+            ),
+        ));
         $this->environment->addRenderer(Code::class, new InlineCodeBlockRenderer());
 
         $this->parser = new MarkdownParser($this->environment);
