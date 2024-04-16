@@ -1,5 +1,18 @@
-<span {{ attributes.defaults({
-    class: 'px-2 py-1 font-medium text-sky-50 bg-sky-600 rounded-lg'
-}) }}>
-    {{ block('content') }}
-</span>
+{% props color = 'primary', size = 'regular', href = false %}
+
+{% set style_badge = cva({
+    base: 'font-medium',
+    variants: {
+        color: {
+            primary: 'text-primary-50 bg-primary-600'
+        },
+        size: {
+            sm: 'px-1 py-0.5 rounded-md text-sm',
+            regular: 'px-2 py-1 rounded-lg',
+        },
+    },
+}) %}
+
+<{{ href ? 'a' : 'span' }} class="{{ style_badge.apply({ color, size, hoverable: not href }, attributes.render('class') ?? '') }}" {{ attributes.defaults({ href }) }}>
+    {{- block('content') -}}
+</{{ href ? 'a' : 'span' }}>

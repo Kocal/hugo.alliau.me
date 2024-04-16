@@ -63,10 +63,10 @@
                         {{ post.title }}
                     </h1>
 
-                    <twig:PostMeta :post="post"/>
+                    <twig:PostMeta :post="post" tag-size="regular"/>
                 </header>
 
-                <div class="bg-sky-100 my-2 sm:my-3" style="height: 2px"></div>
+                <div class="bg-primary-100 my-2 sm:my-3" style="height: 2px"></div>
 
                 <section class="prose prose-headings:relative max-w-none">
                     {{ rendered_content|raw }}

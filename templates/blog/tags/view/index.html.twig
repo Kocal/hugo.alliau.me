@@ -10,11 +10,7 @@
                 Posts tagged with "{{ tag }}"
             </h1>
 
-            <twig:CloudOfTags :tags="tags" />
-
-            <hr class="my-3">
-
-            <div class="divide-y divide-y-4 divide-sky-100">
+            <div class="flex flex-col gap-2">
                 {% for post in posts %}
                     <article class="py-4 sm:py-6 first:pt-0 first:sm:pt-0 last:pb-0 last:pb-0">
                         <header>
@@ -31,9 +27,13 @@
                             <twig:PostMeta :post="post" />
                         </footer>
                     </article>
+
+                    {% if not loop.last %}
+                        <twig:ListItemSeparator />
+                    {% endif %}
+
                 {% endfor %}
             </div>
-
         </twig:Card>
     </main>
 {% endblock %}

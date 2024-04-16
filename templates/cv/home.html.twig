@@ -10,56 +10,57 @@
     <main class="container mx-auto p-2 max-w-screen-lg flex flex-col gap-2 sm:gap-4">
         <section>
             <twig:Card class="p-2 sm:p-4 flex">
-                <div class="flex-1">
-                    <h1 class="text-3xl sm:text-4xl font-extrabold mb-5">Hugo Alliaume</h1>
+                <div class="flex-1 flex flex-col justify-between gap-2">
+                    <h1 class="text-3xl sm:text-4xl font-extrabold">Hugo Alliaume</h1>
 
                     <div>
                         <p>Développeur web full-stack passionné et contributeur open-source</p>
-                        <a href="https://www.google.com/maps/place/Villefranche-sur-Saône+France"
-                           class="inline-flex gap-x-2">
-                            <twig:UX:Icon name="bi:globe" height="1.5em" width="1.5em"/>
-                            Villefranche-sur-Saône, France
-                        </a>
+                        <p>
+                            <twig:Link href="https://www.google.com/maps/place/Villefranche-sur-Saône+France" class="inline-flex items-center gap-x-2">
+                                <twig:UX:Icon name="flowbite:map-pin-alt-solid" height="1em" width="1em"/>
+                                Villefranche-sur-Saône, France
+                            </twig:Link>
+                        </p>
                     </div>
 
                     <ul class="flex gap-x-2">
                         <li>
-                            <a href="mailto:hugo@alliau.me" title="Contact">
+                            <twig:Link href="mailto:hugo@alliau.me" title="Contact">
                                 <twig:UX:Icon name="bi:envelope" height="1.5em" width="1.5em"/>
-                            </a>
+                            </twig:Link>
                         </li>
                         <li>
-                            <a href="https://github.com/Kocal" title="GitHub">
+                            <twig:Link href="https://github.com/Kocal" title="GitHub">
                                 <twig:UX:Icon name="bi:github" height="1.5em" width="1.5em"/>
-                            </a>
+                            </twig:Link>
                         </li>
                         <li>
-                            <a href="https://www.linkedin.com/in/%F0%9F%9A%B4-hugo-alliaume-34b475166/"
+                            <twig:Link href="https://www.linkedin.com/in/%F0%9F%9A%B4-hugo-alliaume-34b475166/"
                                title="LinkedIn">
                                 <twig:UX:Icon name="bi:linkedin" height="1.5em" width="1.5em"/>
-                            </a>
+                            </twig:Link>
                         </li>
                         <li>
-                            <a href="https://twitter.com/HugoAlliaume" title="X (Twitter)">
+                            <twig:Link href="https://twitter.com/HugoAlliaume" title="X (Twitter)">
                                 <twig:UX:Icon name="bi:twitter-x" height="1.5em" width="1.5em"/>
-                            </a>
+                            </twig:Link>
                         </li>
                         <li>
-                            <a href="https://twitter.com/HugoAlliaume" title="Mastodon">
+                            <twig:Link href="https://twitter.com/HugoAlliaume" title="Mastodon">
                                 <twig:UX:Icon name="bi:mastodon" height="1.5em" width="1.5em"/>
-                            </a>
+                            </twig:Link>
                         </li>
                     </ul>
                 </div>
                 <div>
                     <img
-                            src="{{ asset('images/hugo-alliaume.jpeg') }}"
-                            width="200"
-                            height="200"
-                            decoding="async"
-                            loading="lazy"
-                            alt="Hugo Alliaume"
-                            class="rounded-full shadow-lg"
+                        src="{{ asset('images/hugo-alliaume.jpeg') }}"
+                        width="150"
+                        height="150"
+                        decoding="async"
+                        loading="lazy"
+                        alt="Hugo Alliaume"
+                        class="rounded-full shadow-lg"
                     />
                 </div>
             </twig:Card>
@@ -71,7 +72,7 @@
                     Expériences professionnelles
                 </h2>
 
-                <div class="flex flex-col gap-4">
+                <div class="flex flex-col gap-4 sm:gap-5">
                     {% for professional_experience in professional_experiences %}
                         <section>
                             <header>
@@ -111,7 +112,12 @@
                                 </ul>
                             </footer>
                         </section>
+
+                        {% if not loop.last %}
+                            <twig:ListItemSeparator />
+                        {% endif %}
                     {% endfor %}
+                </div>
             </twig:Card>
         </section>
 
@@ -126,11 +132,15 @@
                     <li><twig:Badge class="block">JavaScript</twig:Badge></li>
                     <li><twig:Badge class="block">TypeScript</twig:Badge></li>
                     <li><twig:Badge class="block">Vue.js</twig:Badge></li>
-                    <li><twig:Badge class="block">Performances web back &amp; front</twig:Badge></li>
+                    <li><twig:Badge class="block">Webperfs back &amp; front</twig:Badge></li>
                     <li><twig:Badge class="block">Tests automatisés</twig:Badge></li>
                     <li><twig:Badge class="block">Cypress</twig:Badge></li>
                     <li><twig:Badge class="block">Bonnes pratiques</twig:Badge></li>
+                    <li><twig:Badge class="block">SOLID</twig:Badge></li>
                     <li><twig:Badge class="block">CI &amp; CD</twig:Badge></li>
+                    <li><twig:Badge class="block">Technique</twig:Badge></li>
+                    <li><twig:Badge class="block">Leadership</twig:Badge></li>
+                    <li><twig:Badge class="block">DevOps</twig:Badge></li>
                 </ul>
             </twig:Card>
         </section>
@@ -142,7 +152,7 @@
 
                 <div class="grid sm:grid-cols-3 gap-3">
                     {% for project in projects %}
-                        <div>
+                        <div class="flex flex-col gap-2">
                             <header>
                                 <h3 class="text-xl sm:text-2xl font-bold">
                                     <a href="{{ project.url }}">{{ project.name }}</a>
@@ -150,7 +160,7 @@
                                 <span class="uppercase text-sm font-bold">{{ project.date|date('Y') }}</span>
                             </header>
 
-                            <div class="my-2">
+                            <div>
                                 {{ project.description }}
                             </div>
 

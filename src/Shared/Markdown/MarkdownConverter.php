@@ -65,12 +65,13 @@ class MarkdownConverter
     public function __invoke(string $input): array
     {
         $document = $this->parser->parse($input);
+        $toc = $this->extractToc($document);
 
         $htmlRenderer = new HtmlRenderer($this->environment);
 
         return [
             'rendered_content' => $htmlRenderer->renderNodes([$document]),
-            'rendered_toc' => ($toc = $this->extractToc($document)) ? $htmlRenderer->renderNodes([$toc]) : null,
+            'rendered_toc' => $toc ? $htmlRenderer->renderNodes([$toc]) : null,
             'web_links' => $this->getWebLinks($document),
         ];
     }
