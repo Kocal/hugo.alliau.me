@@ -1,0 +1,11 @@
+{
+    "require-dev": {
+        "vincentlanglet/twig-cs-fixer": "^2.6.0"
+    },
+    "config": {
+        "platform": {
+            "php": "8.3"
+        },
+        "optimize-autoloader": true
+    }
+}

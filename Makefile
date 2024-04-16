@@ -74,10 +74,12 @@ cs.fix: cs.back.fix
 ## Coding style - Check backend coding style
 cs.back:
 	$(PHP) tools/easy-coding-standard/vendor/bin/ecs check
+	$(PHP) tools/twig-cs-fixer/vendor/bin/twig-cs-fixer
 
 ## Coding style - Check backend coding style and fix issues
 cs.back.fix:
 	$(PHP) tools/easy-coding-standard/vendor/bin/ecs check --fix
+	$(PHP) tools/twig-cs-fixer/vendor/bin/twig-cs-fixer --fix
 
 ##########
 # Linter #
