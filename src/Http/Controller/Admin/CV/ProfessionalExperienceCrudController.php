@@ -3,6 +3,7 @@
 namespace App\Http\Controller\Admin\CV;
 
 use App\Domain\CV\ProfessionalExperience;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
@@ -17,6 +18,16 @@ class ProfessionalExperienceCrudController extends AbstractCrudController
     public static function getEntityFqcn(): string
     {
         return ProfessionalExperience::class;
+    }
+
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->setDefaultSort([
+                'startDate' => 'DESC',
+            ])
+            ->showEntityActionsInlined()
+        ;
     }
 
     public function configureFields(string $pageName): iterable
