@@ -30,7 +30,9 @@
     redir /2020/01/02/generate-pdfs-on-amazon-aws-with-php-and-puppeteer/                                           https://hugo.alliau.me/blog/posts/2020-01-02-generate-pdfs-on-amazon-aws-with-php-and-puppeteer                                            301
     redir /blog/posts/2020-01-02-generate-pdfs-on-amazon-aws-with-php-and-puppeteer.md                              https://hugo.alliau.me/blog/posts/2020-01-02-generate-pdfs-on-amazon-aws-with-php-and-puppeteer                                            301
     redir /posts/2020-01-02-generate-pdfs-on-amazon-aws-with-php-and-puppeteer                                      https://hugo.alliau.me/blog/posts/2020-01-02-generate-pdfs-on-amazon-aws-with-php-and-puppeteer                                            301
+    redir /2020/01/02/generate-pdfs-on-amazon-aws-with-php-and-puppeteer/                                           https://hugo.alliau.me/blog/posts/2020-01-02-generate-pdfs-on-amazon-aws-with-php-and-puppeteer                                            301
     redir /posts/2021-04-26-migration-stack-developpement                                                           https://hugo.alliau.me/blog/posts/2021-04-26-migration-de-notre-stack-de-developpement-vers-docker                                         301
+    redir /2021/04/26/migration-stack-developpement/                                                                https://hugo.alliau.me/blog/posts/2021-04-26-migration-de-notre-stack-de-developpement-vers-docker                                         301
     redir /2021/04/26/migration-stack-developpement//1000                                                           https://hugo.alliau.me/blog/posts/2021-04-26-migration-de-notre-stack-de-developpement-vers-docker                                         301
     redir /blog/posts/2021-04-26-migration-stack-developpement.md                                                   https://hugo.alliau.me/blog/posts/2021-04-26-migration-de-notre-stack-de-developpement-vers-docker                                         301
     redir /posts/2021-04-26-migration-stack-developpement.html                                                      https://hugo.alliau.me/blog/posts/2021-04-26-migration-de-notre-stack-de-developpement-vers-docker                                         301
@@ -45,6 +47,7 @@
     redir /posts/2022-01-07-doctrine-setmaxresults-and-collections-associations-are-on-a-boat                       https://hugo.alliau.me/blog/posts/2022-01-07-doctrine-querybuilder-setmaxresults-and-collections-associations-are-on-a-boat                301
     redir /posts/2022-01-07-doctrine-setmaxresults-and-collections-associations-are-on-a-boat.html                  https://hugo.alliau.me/blog/posts/2022-01-07-doctrine-querybuilder-setmaxresults-and-collections-associations-are-on-a-boat                301
     redir /posts/2023-07-19-how-to-use-php-cs-fixer-ruleset-with-easy-coding-standard.html                          https://hugo.alliau.me/blog/posts/2023-07-19-how-to-use-php-cs-fixer-ruleset-with-easy-coding-standard                                     301
+    redir /posts/2023-07-19-how-to-use-php-cs-fixer-ruleset-with-easy-coding-standard                               https://hugo.alliau.me/blog/posts/2023-07-19-how-to-use-php-cs-fixer-ruleset-with-easy-coding-standard                                     301
     redir /posts/2023-10-21-blackfire-and-symfony-cli.html                                                          https://hugo.alliau.me/blog/posts/2023-10-21-profiling-curl-http-requests-and-symfony-commands-with-blackfire-when-using-the-symfony-cli   301
     redir /blog/posts/2023-10-21-blackfire-and-symfony-cli.md                                                       https://hugo.alliau.me/blog/posts/2023-10-21-profiling-curl-http-requests-and-symfony-commands-with-blackfire-when-using-the-symfony-cli   301
     redir /posts/2023-11-12-listen-to-doctrine-events-on-entities-given-a-php-attribute                             https://hugo.alliau.me/blog/posts/2023-11-12-listen-to-doctrine-events-on-entities-using-a-php-attribute                                   301
@@ -72,6 +75,8 @@
     redir /tag/dependabot                       https://hugo.alliau.me/blog/tags/dependabot                        301
     redir /tags/dependabot                      https://hugo.alliau.me/blog/tags/dependabot                        301
     redir /tags/dependabot.html                 https://hugo.alliau.me/blog/tags/dependabot                        301
+    redir /tags/dependencies                    https://hugo.alliau.me/blog/tags/dependencies                      301
+    redir /tags/dependencies.html               https://hugo.alliau.me/blog/tags/dependencies                      301
     redir /tag/doctrine                         https://hugo.alliau.me/blog/tags/doctrine                          301
     redir /tags/doctrine                        https://hugo.alliau.me/blog/tags/doctrine                          301
     redir /tags/doctrine%20entity%20listener.html   https://hugo.alliau.me/blog/tags/doctrine%20entity%20listener  301
@@ -102,6 +107,7 @@
     redir /tags/virtual-machine.html            https://hugo.alliau.me/blog/tags/virtual-machine                   301
     redir /tags/virtual%20machine.html          https://hugo.alliau.me/blog/tags/virtual-machine                   301
     redir /tags/virtual%20machine/              https://hugo.alliau.me/blog/tags/virtual-machine                   301
+    redir /blog/posts/home                      https://hugo.alliau.me/blog                                        301 
 
 	root * /app/public
 	encode zstd br gzip
