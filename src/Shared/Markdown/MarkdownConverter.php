@@ -49,7 +49,7 @@ class MarkdownConverter
         $this->environment->addExtension(new GitHubEmojisExtension());
         $this->environment->addExtension(new AttributesExtension());
         $this->environment->addRenderer(FencedCode::class, new CodeBlockRendererDecorator(
-            static fn() => new CodeBlockRenderer(
+            static fn () => new CodeBlockRenderer(
                 (new Highlighter())
                     ->withGutter()
             ),

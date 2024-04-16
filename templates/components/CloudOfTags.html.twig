@@ -5,10 +5,10 @@
         <li>
             <twig:Badge>
                 <a
-                    href="{{ path( constant('App\\Domain\\Routing\\ValueObject\\RouteName::BLOG_TAG_VIEW'), { tag: tag.tag }) }}"
+                    href="{{ path(constant('App\\Domain\\Routing\\ValueObject\\RouteName::BLOG_TAG_VIEW'), {tag: tag.tag}) }}"
                     title="{{ ('View all posts tagged with "' ~ tag.tag ~ '"')|e('html_attr') }}"
                 >
-                    {{- tag.tag ~ ' (' ~tag.occurrences ~')' -}}
+                    {{- tag.tag ~ ' (' ~ tag.occurrences ~ ')' -}}
                 </a>
             </twig:Badge>
         </li>
