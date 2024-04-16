@@ -10,20 +10,14 @@ My website.
 
 ## Installation
 
-1. Clone the repository and configure the environment:
-```shell
-symfony local:server:ca:install
-symfony local:proxy:domain:attach hugo.alliau.me
-```
-
+1. Clone the repository
 2. Create a `.env.local` file and configure the environment (if needed):
 ```shell
-$ cp .env .env.local
+cp .env .env.local
 ```
-
-3. Install the dependencies with Composer:
+3. Install the environment and project
 ```shell
-$ symfony composer install
+make install
 ```
 
 ## Usage
@@ -31,26 +25,6 @@ $ symfony composer install
 Run the project:
 
 ```shell
-$ docker compose up -d
-$ symfony serve
+make start
+symfony serve
 ```
-
-## Database schema
-
-- `Blog/Post`:
-  - `id`: `int` (primary key)
-  - `title`: `string`
-  - `slug`: `string`
-  - `description`: `text` (plaintext)
-  - `content`: `text` (Markdown)
-  - `created_at`: `datetime`
-  - `updated_at`: `datetime`
-  - `published_at`: `datetime`
-  - `tags`: `ManyToOne` with `Blog/Tag`
-  - `seo`: `OneToOne` with `Blog/PostSeo`
-  - TODO: `author`
-
-- `Blog/PostSeo`:
-  - `id`: `int` (primary key)
-  - `dependencies`: `string[]`
-  - `proficiencyLevel`: `enum`
