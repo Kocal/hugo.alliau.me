@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c046f7c4ac797ea679a68635b7292865",
+    "content-hash": "55923218b2ce1f42adaa13da7e8a23ab",
     "packages": [
         {
             "name": "composer/semver",
@@ -7967,16 +7967,16 @@
         },
         {
             "name": "tempest/highlight",
-            "version": "1.3.4",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tempestphp/highlight.git",
-                "reference": "6116e314a170469f55fc559c9739b140a4ace582"
+                "reference": "93d40fad805b320fb5f3a77599911388400ce20e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tempestphp/highlight/zipball/6116e314a170469f55fc559c9739b140a4ace582",
-                "reference": "6116e314a170469f55fc559c9739b140a4ace582",
+                "url": "https://api.github.com/repos/tempestphp/highlight/zipball/93d40fad805b320fb5f3a77599911388400ce20e",
+                "reference": "93d40fad805b320fb5f3a77599911388400ce20e",
                 "shasum": ""
             },
             "require": {
@@ -8008,7 +8008,7 @@
             "description": "Fast, extensible, server-side code highlighting",
             "support": {
                 "issues": "https://github.com/tempestphp/highlight/issues",
-                "source": "https://github.com/tempestphp/highlight/tree/1.3.4"
+                "source": "https://github.com/tempestphp/highlight/tree/2.0.0"
             },
             "funding": [
                 {
@@ -8016,7 +8016,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-04-12T07:38:31+00:00"
+            "time": "2024-04-16T07:35:42+00:00"
         },
         {
             "name": "twig/extra-bundle",
