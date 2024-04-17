@@ -37,5 +37,8 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::section('CV');
         yield MenuItem::linkToCrud('Professional experiences', 'fas fa-briefcase', CV\ProfessionalExperience::class);
         yield MenuItem::linkToCrud('Projects', 'fas fa-gears', CV\Project::class);
+
+        yield MenuItem::section('Tools');
+        yield MenuItem::linkToUrl('Clear HTTP Cache', 'fas fa-server', '/admin/http-cache-clear');
     }
 }

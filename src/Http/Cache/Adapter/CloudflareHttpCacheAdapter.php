@@ -19,6 +19,29 @@ final class CloudflareHttpCacheAdapter implements HttpCacheAdapter
     }
 
     #[\Override]
+    public function clearAll(): void
+    {
+        $this->logger->info('Purging all HTTP cache.', [
+            'adapter' => self::class,
+        ]);
+
+        $response = $this->httpClient->request('POST', 'zones/{zone_id}/purge_cache', [
+            'vars' => [
+                'zone_id' => $this->zoneId,
+            ],
+            'json' => [
+                'purge_everything' => true,
+            ],
+        ]);
+
+        $this->logger->info('Purged all HTTP cache.', [
+            'adapter' => self::class,
+            'status' => $response->getStatusCode(),
+            'response' => $response->toArray(false),
+        ]);
+    }
+
+    #[\Override]
     public function clearUrls(string ...$urls): void
     {
         foreach (array_chunk($urls, 30) as $chunk) {

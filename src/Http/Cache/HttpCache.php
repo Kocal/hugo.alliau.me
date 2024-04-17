@@ -16,6 +16,15 @@ final class HttpCache
     ) {
     }
 
+    public function clearAll(): void
+    {
+        $this->logger->info('Clearing all HTTP cache.', [
+            'adapter' => $this->httpCacheAdapter::class,
+        ]);
+
+        $this->httpCacheAdapter->clearAll();
+    }
+
     public function clearFor(CacheItem ...$cacheItems): void
     {
         $normalized = $this->normalize(...$cacheItems);
