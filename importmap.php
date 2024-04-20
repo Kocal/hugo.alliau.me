@@ -26,4 +26,8 @@ return [
     '@symfony/stimulus-bundle' => [
         'path' => './vendor/symfony/stimulus-bundle/assets/dist/loader.js',
     ],
+    'code-highlight/github-light-default.css' => [
+        'path' => './vendor/tempest/highlight/src/Themes/Css/github-light-default.css',
+        'type' => 'css',
+    ],
 ];
