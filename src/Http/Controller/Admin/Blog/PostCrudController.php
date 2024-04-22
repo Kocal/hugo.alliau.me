@@ -40,7 +40,6 @@ class PostCrudController extends AbstractCrudController
         yield FormField::addColumn('col-xxl-8');
         yield TextField::new('title');
         yield SlugField::new('slug')->setTargetFieldName('title')->onlyOnForms();
-        yield DateTimeField::new('publishedAt');
         yield TextareaField::new('description');
         yield CodeEditorField::new('content')
             ->onlyOnForms()
@@ -48,6 +47,10 @@ class PostCrudController extends AbstractCrudController
         ;
 
         yield FormField::addColumn('col-xxl-4');
+        yield FormField::addFieldset('Publishing');
+        yield ChoiceField::new('status');
+        yield DateTimeField::new('publishedAt');
+
         yield FormField::addFieldset('SEO');
         yield ArrayField::new('seo.dependencies')
             ->setLabel('Dependencies');

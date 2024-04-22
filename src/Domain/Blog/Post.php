@@ -12,6 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: PostRepository::class)]
 #[ORM\Table(name: 'blog_post')]
+#[ORM\Index(columns: ['status', 'published_at'])]
 #[ORM\HasLifecycleCallbacks]
 class Post implements CacheableEntity
 {
@@ -57,6 +58,11 @@ class Post implements CacheableEntity
     #[ORM\Embedded(class: PostSeo::class)]
     #[Assert\Valid]
     private PostSeo $seo;
+
+    #[ORM\Column(options: [
+        'default' => PostStatus::DRAFT,
+    ])]
+    private PostStatus $status = PostStatus::DRAFT;
 
     public function __construct()
     {
@@ -166,6 +172,18 @@ class Post implements CacheableEntity
     public function getSeo(): PostSeo
     {
         return $this->seo;
+    }
+
+    public function setStatus(PostStatus $status): static
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    public function getStatus(): PostStatus
+    {
+        return $this->status;
     }
 
     #[ORM\PrePersist]

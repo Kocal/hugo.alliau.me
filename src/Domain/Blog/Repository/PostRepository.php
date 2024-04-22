@@ -3,6 +3,7 @@
 namespace App\Domain\Blog\Repository;
 
 use App\Domain\Blog\Post;
+use App\Domain\Blog\PostStatus;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Query\ResultSetMapping;
@@ -87,9 +88,11 @@ SQL, $rsm);
     private function getLatestPublishedQueryBuilder(): QueryBuilder
     {
         return $this->createQueryBuilder('post')
-            ->where('post.publishedAt IS NOT NULL')
+            ->where('post.status = :status')
+            ->andWhere('post.publishedAt IS NOT NULL')
             ->andWhere('post.publishedAt <= :now')
             ->orderBy('post.publishedAt', 'DESC')
+            ->setParameter('status', PostStatus::PUBLISHED)
             ->setParameter('now', now(), Types::DATETIME_IMMUTABLE);
     }
 }
