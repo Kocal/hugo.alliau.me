@@ -3,6 +3,7 @@
 namespace App\Http\Controller\Blog\Post;
 
 use App\Domain\Blog\Post;
+use App\Domain\Blog\PostStatus;
 use App\Domain\Routing\ValueObject\RouteName;
 use App\Http\Cache\CacheMethodsTrait;
 use App\Shared\Markdown\MarkdownConverter;
@@ -30,6 +31,16 @@ final class ViewController extends AbstractController
         $response->setLastModified($post->getPublishedAt());
         $response->setMaxAge(60 * 60 * 24 * 30);
         $response->setPublic();
+
+        if ($post->getStatus() === PostStatus::DRAFT) {
+            if (! $request->query->has('preview')) {
+                throw $this->createNotFoundException();
+            }
+
+            $response->setPrivate();
+            $response->setMaxAge(0);
+            $response->headers->set('X-Robots-Tag', 'noindex, nofollow');
+        }
 
         if ($response->isNotModified($request)) {
             return $response;
