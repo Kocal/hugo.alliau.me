@@ -29,7 +29,7 @@ class PostSeo
     /**
      * @var value-of<self::PROFICIENCY_LEVEL>|null
      */
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     #[Assert\Choice(choices: self::PROFICIENCY_LEVEL)]
     private ?string $proficiencyLevel = null;
 
