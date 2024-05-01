@@ -12,6 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ProfessionalExperienceRepository::class)]
 #[ORM\Table(name: 'cv_professional_experience')]
+#[ORM\HasLifecycleCallbacks]
 class ProfessionalExperience implements CacheableEntity
 {
     #[ORM\Id]
