@@ -7,20 +7,24 @@
 {% endblock %}
 
 {% block main %}
-    <main class="container mx-auto p-2 max-w-screen-lg flex flex-col gap-2 sm:gap-4">
-        <section>
+    <main class="container mx-auto p-2 max-w-screen-xl grid grid-cols-1 sm:grid-cols-[256px_1fr] gap-2 sm:gap-4">
+        <div class="flex flex-col gap-2 sm:gap-4">
             <twig:Card class="p-2 sm:p-4 flex">
                 <div class="flex-1 flex flex-col justify-between gap-2">
-                    <h1 class="text-3xl sm:text-4xl font-extrabold">Hugo Alliaume</h1>
+                    <img
+                        src="{{ asset('images/hugo-alliaume.jpeg') }}"
+                        width="130"
+                        height="130"
+                        decoding="async"
+                        loading="lazy"
+                        alt="Hugo Alliaume"
+                        class="rounded-full mx-auto shadow-lg"
+                    />
+
+                    <h1 class="text-2xl sm:text-3xl font-extrabold">Hugo Alliaume</h1>
 
                     <div>
-                        <p>Développeur web full-stack passionné et contributeur open-source</p>
-                        <p>
-                            <twig:Link href="https://www.google.com/maps/place/Villefranche-sur-Saône+France" class="inline-flex items-center gap-x-2">
-                                <twig:UX:Icon name="flowbite:map-pin-alt-solid" height="1em" width="1em"/>
-                                Villefranche-sur-Saône, France
-                            </twig:Link>
-                        </p>
+                        <p>Développeur web full-stack passionné, et contributeur open-source.</p>
                     </div>
 
                     <ul class="flex gap-x-2">
@@ -35,8 +39,7 @@
                             </twig:Link>
                         </li>
                         <li>
-                            <twig:Link href="https://www.linkedin.com/in/%F0%9F%9A%B4-hugo-alliaume-34b475166/"
-                               title="LinkedIn">
+                            <twig:Link href="https://www.linkedin.com/in/%F0%9F%9A%B4-hugo-alliaume-34b475166/" title="LinkedIn">
                                 <twig:UX:Icon name="bi:linkedin" height="1.5em" width="1.5em"/>
                             </twig:Link>
                         </li>
@@ -52,23 +55,34 @@
                         </li>
                     </ul>
                 </div>
-                <div>
-                    <img
-                        src="{{ asset('images/hugo-alliaume.jpeg') }}"
-                        width="150"
-                        height="150"
-                        decoding="async"
-                        loading="lazy"
-                        alt="Hugo Alliaume"
-                        class="rounded-full shadow-lg"
-                    />
-                </div>
             </twig:Card>
-        </section>
 
-        <section>
             <twig:Card class="p-2 sm:p-4">
-                <h2 class="text-2xl sm:text-3xl font-bold mb-4">
+
+                <h2 class="text-xl sm:text-2xl font-bold mb-4">Skills</h2>
+
+                <ul class="flex flex-wrap gap-2">
+                    <li><twig:Badge class="block" size="sm" color="gray">PHP</twig:Badge></li>
+                    <li><twig:Badge class="block" size="sm" color="gray">Symfony</twig:Badge></li>
+                    <li><twig:Badge class="block" size="sm" color="gray">JavaScript</twig:Badge></li>
+                    <li><twig:Badge class="block" size="sm" color="gray">TypeScript</twig:Badge></li>
+                    <li><twig:Badge class="block" size="sm" color="gray">Vue.js</twig:Badge></li>
+                    <li><twig:Badge class="block" size="sm" color="gray">Tests automatisés</twig:Badge></li>
+                    <li><twig:Badge class="block" size="sm" color="gray">Cypress</twig:Badge></li>
+                    <li><twig:Badge class="block" size="sm" color="gray">CI &amp; CD</twig:Badge></li>
+                    <li><twig:Badge class="block" size="sm" color="gray">SOLID</twig:Badge></li>
+                    <li><twig:Badge class="block" size="sm" color="gray">Bonnes pratiques</twig:Badge></li>
+                    <li><twig:Badge class="block" size="sm" color="gray">Webperfs back &amp; front</twig:Badge></li>
+                    <li><twig:Badge class="block" size="sm" color="gray">Technique</twig:Badge></li>
+                    <li><twig:Badge class="block" size="sm" color="gray">Leadership</twig:Badge></li>
+                    <li><twig:Badge class="block" size="sm" color="gray">DevOps</twig:Badge></li>
+                </ul>
+            </twig:Card>
+        </div>
+
+        <div class="flex flex-col gap-2 sm:gap-4">
+            <twig:Card class="p-2 sm:p-4">
+                <h2 class="text-xl sm:text-2xl font-bold mb-4">
                     Expériences professionnelles
                 </h2>
 
@@ -86,12 +100,12 @@
                                 </span>
 
                                 <span class="uppercase text-sm font-bold">
-                                    <time datetime="{{ professional_experience.startDate|date }}">{{ professional_experience.startDate|format_datetime('medium', 'none') }}</time>
+                                    <time datetime="{{ professional_experience.startDate|date }}">{{ professional_experience.startDate|format_datetime('medium', 'none', locale='fr') }}</time>
                                     -
                                     {% if professional_experience.endDate is null %}
                                         <span>Présent</span>
                                     {% else %}
-                                        <time datetime="{{ professional_experience.endDate|date }}">{{ professional_experience.endDate|format_datetime('medium', 'none') }}</time>
+                                        <time datetime="{{ professional_experience.endDate|date }}">{{ professional_experience.endDate|format_datetime('medium', 'none', locale='fr') }}</time>
                                     {% endif %}
                                 </span>
                             </header>
@@ -104,7 +118,7 @@
                                 <ul class="flex flex-wrap gap-2">
                                     {% for badge in professional_experience.badges %}
                                         <li>
-                                            <twig:Badge class="block" size="sm">
+                                            <twig:Badge class="block" size="sm" color="gray">
                                                 {{ badge }}
                                             </twig:Badge>
                                         </li>
@@ -119,38 +133,12 @@
                     {% endfor %}
                 </div>
             </twig:Card>
-        </section>
 
-        <section>
             <twig:Card class="p-2 sm:p-4">
 
-                <h2 class="text-2xl sm:text-3xl font-bold mb-4">Skills</h2>
+                <h2 class="text-xl sm:text-2xl font-bold mb-4">Projets</h2>
 
-                <ul class="flex flex-wrap gap-2">
-                    <li><twig:Badge class="block">PHP</twig:Badge></li>
-                    <li><twig:Badge class="block">Symfony</twig:Badge></li>
-                    <li><twig:Badge class="block">JavaScript</twig:Badge></li>
-                    <li><twig:Badge class="block">TypeScript</twig:Badge></li>
-                    <li><twig:Badge class="block">Vue.js</twig:Badge></li>
-                    <li><twig:Badge class="block">Webperfs back &amp; front</twig:Badge></li>
-                    <li><twig:Badge class="block">Tests automatisés</twig:Badge></li>
-                    <li><twig:Badge class="block">Cypress</twig:Badge></li>
-                    <li><twig:Badge class="block">Bonnes pratiques</twig:Badge></li>
-                    <li><twig:Badge class="block">SOLID</twig:Badge></li>
-                    <li><twig:Badge class="block">CI &amp; CD</twig:Badge></li>
-                    <li><twig:Badge class="block">Technique</twig:Badge></li>
-                    <li><twig:Badge class="block">Leadership</twig:Badge></li>
-                    <li><twig:Badge class="block">DevOps</twig:Badge></li>
-                </ul>
-            </twig:Card>
-        </section>
-
-        <section>
-            <twig:Card class="p-2 sm:p-4">
-
-                <h2 class="text-2xl sm:text-3xl font-bold mb-4">Projets</h2>
-
-                <div class="grid sm:grid-cols-3 gap-3">
+                <div class="grid sm:grid-cols-2 gap-3">
                     {% for project in projects %}
                         <div class="flex flex-col gap-2">
                             <header>
@@ -168,7 +156,7 @@
                                 <ul class="flex flex-wrap gap-2">
                                     {% for tech in project.techStack %}
                                         <li>
-                                            <twig:Badge class="block" size="sm">
+                                            <twig:Badge class="block" size="sm" color="gray">
                                                 {{ tech }}
                                             </twig:Badge>
                                         </li>
@@ -179,6 +167,7 @@
                     {% endfor %}
                 </div>
             </twig:Card>
-        </section>
+        </div>
+
     </main>
 {% endblock %}
