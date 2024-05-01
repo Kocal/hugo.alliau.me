@@ -25,10 +25,6 @@ services:
             - '../src/Shared/Markdown/Extension/GitHubEmojis/data/*.php'
             - '../src/Http/Cache/{CacheableEntity,CacheMethodsTrait}.php'
 
-    App\Shared\Twig\Environment:
-        parent: twig
-        decorates: twig
-
     App\Http\Cache\Adapter\HttpCacheAdapter:
         factory: '@App\Http\Cache\HttpCacheAdapterFactory'
         arguments: ['%env(HTTP_CACHE_ADAPTER)%']
