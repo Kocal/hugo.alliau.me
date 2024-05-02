@@ -35,5 +35,4 @@ Run the project:
 
 ```shell
 make start
-symfony serve
 ```

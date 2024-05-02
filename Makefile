@@ -20,19 +20,12 @@ DC := USER_ID=$(USER) GROUP_ID=$(GROUP) $(shell docker compose --env-file /dev/n
 ## Install everything needed to start the project
 install:
 	$(SF) local:server:ca:install
-	$(SF) proxy:domain:attach hugo.alliau.me
-
 	$(MAKE) start
 	$(MAKE) app.install
 
 ## Start the environment
 start:
-	$(SF) local:proxy:start
-	$(DC) up --detach
-
-	@echo
-	@$(call message_success, You can now run the Symfony server with \"symfony serve\" command.)
-	@echo
+	$(SF) serve
 
 ## Stop the environment
 stop:
