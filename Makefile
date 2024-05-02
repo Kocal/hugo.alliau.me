@@ -25,6 +25,7 @@ install:
 
 ## Start the environment
 start:
+	$(SF) proxy:start
 	$(SF) serve
 
 ## Stop the environment
