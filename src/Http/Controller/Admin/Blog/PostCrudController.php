@@ -41,6 +41,8 @@ class PostCrudController extends AbstractCrudController
         yield TextField::new('title');
         yield SlugField::new('slug')->setTargetFieldName('title')->onlyOnForms();
         yield TextareaField::new('description');
+        yield ArrayField::new('tags')
+            ->onlyOnForms();
         yield CodeEditorField::new('content')
             ->onlyOnForms()
             ->setLanguage('markdown')
