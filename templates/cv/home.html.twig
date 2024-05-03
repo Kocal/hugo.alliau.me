@@ -27,32 +27,21 @@
                         <p>Développeur web full-stack passionné, et contributeur open-source.</p>
                     </div>
 
-                    <ul class="flex gap-x-2">
-                        <li>
-                            <a href="mailto:hugo@alliau.me" title="Contact">
-                                <twig:UX:Icon name="bi:envelope" height="1.5em" width="1.5em"/>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://github.com/Kocal" title="GitHub">
-                                <twig:UX:Icon name="bi:github" height="1.5em" width="1.5em"/>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.linkedin.com/in/%F0%9F%9A%B4-hugo-alliaume-34b475166/" title="LinkedIn">
-                                <twig:UX:Icon name="bi:linkedin" height="1.5em" width="1.5em"/>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://twitter.com/HugoAlliaume" title="X (Twitter)">
-                                <twig:UX:Icon name="bi:twitter-x" height="1.5em" width="1.5em"/>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://twitter.com/HugoAlliaume" title="Mastodon">
-                                <twig:UX:Icon name="bi:mastodon" height="1.5em" width="1.5em"/>
-                            </a>
-                        </li>
+                    <ul class="flex flex-col gap-x-2 gap-y-0.5">
+                        {% for network in [
+                            { name: 'Contact', href: 'mailto:hugo@alliau.me', icon: 'bi:envelope', label: 'hugo[at]alliau.me' },
+                            { name: 'GitHub', href: 'https://github.com/Kocal', icon: 'bi:github', label: '@Kocal' },
+                            { name: 'LinkedIn', href: 'https://www.linkedin.com/in/%F0%9F%9A%B4-hugo-alliaume-34b475166/', icon: 'bi:linkedin', label: 'Hugo Alliaume' },
+                            { name: 'X (Twitter)', href: 'https://twitter.com/HugoAlliaume', icon: 'bi:twitter-x', label: '@HugoAlliaume' },
+                            { name: 'Mastodon', href: 'https://mastodon.social/@Kocal', icon: 'bi:mastodon', label: '@Kocal' },
+                        ] %}
+                            <li>
+                                <a href="{{ network.href }}" title="{{ network.name }}" class="hover:text-primary-700">
+                                    <twig:UX:Icon :name="network.icon" class="inline mr-1" width="1.2em" height="1.2em" />
+                                    <span>{{ network.label }}</span>
+                                </a>
+                            </li>
+                        {% endfor %}
                     </ul>
                 </div>
             </twig:Card>
@@ -62,20 +51,21 @@
                 <h2 class="text-xl sm:text-2xl font-bold mb-4">Skills</h2>
 
                 <ul class="flex flex-wrap gap-2">
-                    <li><twig:Badge class="block" size="sm" color="gray">PHP</twig:Badge></li>
-                    <li><twig:Badge class="block" size="sm" color="gray">Symfony</twig:Badge></li>
-                    <li><twig:Badge class="block" size="sm" color="gray">JavaScript</twig:Badge></li>
-                    <li><twig:Badge class="block" size="sm" color="gray">TypeScript</twig:Badge></li>
-                    <li><twig:Badge class="block" size="sm" color="gray">Vue.js</twig:Badge></li>
-                    <li><twig:Badge class="block" size="sm" color="gray">Tests automatisés</twig:Badge></li>
-                    <li><twig:Badge class="block" size="sm" color="gray">Cypress</twig:Badge></li>
-                    <li><twig:Badge class="block" size="sm" color="gray">CI &amp; CD</twig:Badge></li>
-                    <li><twig:Badge class="block" size="sm" color="gray">SOLID</twig:Badge></li>
-                    <li><twig:Badge class="block" size="sm" color="gray">Bonnes pratiques</twig:Badge></li>
-                    <li><twig:Badge class="block" size="sm" color="gray">Webperfs back &amp; front</twig:Badge></li>
-                    <li><twig:Badge class="block" size="sm" color="gray">Technique</twig:Badge></li>
-                    <li><twig:Badge class="block" size="sm" color="gray">Leadership</twig:Badge></li>
-                    <li><twig:Badge class="block" size="sm" color="gray">DevOps</twig:Badge></li>
+                    {% for skill in [
+                        'PHP', 'Symfony',
+                        'JavaScript', 'TypeScript', 'Vue',
+                        'Tests automatisés', 'Cypress', 'PHPUnit',
+                        'CI & CD', 'DevOps',
+                        'SOLID', 'Bonnes pratiques',
+                        'Webperfs back & front',
+                        'Technique', 'Leadership'
+                    ] %}
+                        <li>
+                            <twig:Badge class="block" size="sm" color="gray">
+                                {{ skill }}
+                            </twig:Badge>
+                        </li>
+                    {% endfor %}
                 </ul>
             </twig:Card>
         </div>
