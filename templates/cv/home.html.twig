@@ -48,7 +48,7 @@
 
             <twig:Card class="p-2 sm:p-4">
 
-                <h2 class="text-xl sm:text-2xl font-bold mb-4">Skills</h2>
+                <h2 class="text-2xl sm:text-3xl font-bold mb-4">Skills</h2>
 
                 <ul class="flex flex-wrap gap-2">
                     {% for skill in [
@@ -72,7 +72,7 @@
 
         <div class="flex flex-col gap-2 sm:gap-4">
             <twig:Card class="p-2 sm:p-4">
-                <h2 class="text-xl sm:text-2xl font-bold mb-4">
+                <h2 class="text-2xl sm:text-3xl font-bold mb-4">
                     Expériences professionnelles
                 </h2>
 
@@ -80,18 +80,19 @@
                     {% for professional_experience in professional_experiences %}
                         <section>
                             <header>
-                                <span class="block text-xl sm:text-2xl font-bold"> 
-                                    <a href="{{ professional_experience.url }}" rel="noreferrer noopener">
-                                        {{ professional_experience.company }}
-                                    </a>
+                                <span class="block text-xl sm:text-2xl font-bold">
+                                    {{ professional_experience.jobName }}
                                     <small>
-                                        &bullet; {{ professional_experience.jobName }}
+                                        &bullet;
+                                        <a href="{{ professional_experience.url }}" rel="noreferrer noopener">
+                                            {{ professional_experience.company }}
+                                        </a>
                                     </small>
                                 </span>
 
                                 <span class="uppercase text-sm font-bold">
                                     <time datetime="{{ professional_experience.startDate|date }}">{{ professional_experience.startDate|format_datetime(pattern='MMM yyyy', locale='fr') }}</time>
-                                    -
+                                    &rightarrow;
                                     {% if professional_experience.endDate is null %}
                                         <span>Présent</span>
                                     {% else %}
@@ -126,9 +127,9 @@
 
             <twig:Card class="p-2 sm:p-4">
 
-                <h2 class="text-xl sm:text-2xl font-bold mb-4">Projets</h2>
+                <h2 class="text-2xl sm:text-3xl font-bold mb-4">Projets</h2>
 
-                <div class="grid sm:grid-cols-2 gap-3">
+                <div class="grid sm:grid-cols-2 gap-4">
                     {% for project in projects %}
                         <div class="flex flex-col gap-2">
                             <header>
