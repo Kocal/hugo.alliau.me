@@ -96,10 +96,10 @@ lint.back:
 
 ## PHPStan - Run PHPStan
 phpstan:
-	$(PHP) vendor/bin/phpstan analyse
+	$(PHP) tools/phpstan/vendor/bin/phpstan analyse
 
 ## PHPStan - Run PHPStan and update the baseline
 phpstan.generate-baseline:
-	$(PHP) vendor/bin/phpstan analyse --generate-baseline
+	$(PHP) tools/phpstan/vendor/bin/phpstan analyse --generate-baseline
 
 -include $(ROOT_DIR)/Makefile.local

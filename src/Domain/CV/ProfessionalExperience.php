@@ -52,7 +52,7 @@ class ProfessionalExperience implements CacheableEntity
     private ?\DateTimeImmutable $updatedAt = null;
 
     /**
-     * @var array<string>
+     * @var list<string>
      */
     #[ORM\Column(type: Types::JSON, options: [
         'jsonb' => true,
@@ -137,7 +137,7 @@ class ProfessionalExperience implements CacheableEntity
     }
 
     /**
-     * @return string[]
+     * @return list<string>
      */
     public function getBadges(): array
     {
@@ -145,11 +145,11 @@ class ProfessionalExperience implements CacheableEntity
     }
 
     /**
-     * @param string[] $badges
+     * @param array<string> $badges
      */
     public function setBadges(array $badges): static
     {
-        $this->badges = $badges;
+        $this->badges = array_values($badges);
 
         return $this;
     }

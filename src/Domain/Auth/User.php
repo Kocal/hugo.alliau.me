@@ -70,11 +70,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @param list<string> $roles
+     * @param array<string> $roles
      */
     public function setRoles(array $roles): static
     {
-        $this->roles = $roles;
+        $this->roles = array_values($roles);
 
         return $this;
     }

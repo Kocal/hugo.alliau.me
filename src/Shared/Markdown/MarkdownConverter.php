@@ -20,6 +20,7 @@ use League\CommonMark\Node\Node;
 use League\CommonMark\Node\Query;
 use League\CommonMark\Parser\MarkdownParser;
 use League\CommonMark\Renderer\HtmlRenderer;
+use Psr\Link\EvolvableLinkInterface;
 use Psr\Link\LinkInterface;
 use Symfony\Component\WebLink\Link;
 use Tempest\Highlight\CommonMark\CodeBlockRenderer;
@@ -60,7 +61,7 @@ class MarkdownConverter
     }
 
     /**
-     * @return array{ rendered_content: string, rendered_toc: null|string }
+     * @return array{ rendered_content: string, rendered_toc: null|string, web_links: list<LinkInterface|EvolvableLinkInterface> }
      */
     public function __invoke(string $input): array
     {

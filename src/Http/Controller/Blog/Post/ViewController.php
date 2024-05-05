@@ -7,6 +7,7 @@ use App\Domain\Blog\PostStatus;
 use App\Domain\Routing\ValueObject\RouteName;
 use App\Http\Cache\CacheMethodsTrait;
 use App\Shared\Markdown\MarkdownConverter;
+use Psr\Link\EvolvableLinkInterface;
 use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -53,7 +54,9 @@ final class ViewController extends AbstractController
         ] = ($markdownConverter)($post->getContent());
 
         foreach ($webLinks as $webLink) {
-            $webLink = $webLink->withRel('preload');
+            if ($webLink instanceof EvolvableLinkInterface) {
+                $webLink = $webLink->withRel('preload');
+            }
 
             $this->addLink($request, $webLink);
         }

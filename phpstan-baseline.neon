@@ -6,11 +6,6 @@ parameters:
 			path: src/Cli/Command/AdminCreate.php
 
 		-
-			message: "#^Method App\\\\Domain\\\\Blog\\\\PostSeo\\:\\:getDependencies\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Domain/Blog/PostSeo.php
-
-		-
 			message: "#^Method App\\\\Domain\\\\Blog\\\\Repository\\\\PostRepository\\:\\:findTags\\(\\) should return array\\<string\\> but returns array\\.$#"
 			count: 1
 			path: src/Domain/Blog/Repository/PostRepository.php
@@ -24,6 +19,16 @@ parameters:
 			message: "#^Method App\\\\Domain\\\\Blog\\\\Repository\\\\PostRepository\\:\\:getOneLatestPublished\\(\\) should return App\\\\Domain\\\\Blog\\\\Post but returns mixed\\.$#"
 			count: 1
 			path: src/Domain/Blog/Repository/PostRepository.php
+
+		-
+			message: "#^Method App\\\\Domain\\\\CV\\\\Repository\\\\ProfessionalExperienceRepository\\:\\:findOneLatest\\(\\) should return App\\\\Domain\\\\CV\\\\ProfessionalExperience\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/Domain/CV/Repository/ProfessionalExperienceRepository.php
+
+		-
+			message: "#^Method App\\\\Domain\\\\CV\\\\Repository\\\\ProjectRepository\\:\\:findOneLatest\\(\\) should return App\\\\Domain\\\\CV\\\\Project\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/Domain/CV/Repository/ProjectRepository.php
 
 		-
 			message: "#^Method App\\\\Http\\\\Cache\\\\HttpCacheAdapterFactory\\:\\:__invoke\\(\\) should return App\\\\Http\\\\Cache\\\\Adapter\\\\HttpCacheAdapter but returns mixed\\.$#"
@@ -46,36 +51,11 @@ parameters:
 			path: src/Shared/Markdown/Extension/FencedCode/Renderer/FencedCodeRenderer.php
 
 		-
-			message: "#^Cannot call method getProperty\\(\\) on ReflectionClass\\|false\\.$#"
-			count: 3
-			path: src/Shared/Twig/Environment.php
-
-		-
-			message: "#^Method App\\\\Shared\\\\Twig\\\\Environment\\:\\:mergeGlobals\\(\\) has parameter \\$context with no value type specified in iterable type array\\.$#"
+			message: "#^Parameter \\#1 \\$string of function Symfony\\\\Component\\\\String\\\\s expects string\\|null, string\\|Stringable\\|null given\\.$#"
 			count: 1
-			path: src/Shared/Twig/Environment.php
+			path: src/Shared/Markdown/Extension/TempestHighlight/Renderer/CodeBlockRendererDecorator.php
 
 		-
-			message: "#^Method App\\\\Shared\\\\Twig\\\\Environment\\:\\:mergeGlobals\\(\\) return type has no value type specified in iterable type array\\.$#"
+			message: "#^Call to an undefined method League\\\\CommonMark\\\\Node\\\\Node\\:\\:getUrl\\(\\)\\.$#"
 			count: 1
-			path: src/Shared/Twig/Environment.php
-
-		-
-			message: "#^Method App\\\\Shared\\\\Twig\\\\Environment\\:\\:refreshGlobals\\(\\) has parameter \\$freshGlobals with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Shared/Twig/Environment.php
-
-		-
-			message: "#^Parameter \\#1 \\$object of class ReflectionObject constructor expects object, mixed given\\.$#"
-			count: 1
-			path: src/Shared/Twig/Environment.php
-
-		-
-			message: "#^Parameter \\#1 \\$object of method ReflectionProperty\\:\\:getValue\\(\\) expects object\\|null, mixed given\\.$#"
-			count: 1
-			path: src/Shared/Twig/Environment.php
-
-		-
-			message: "#^Parameter \\#1 \\.\\.\\.\\$arrays of function array_merge expects array, mixed given\\.$#"
-			count: 3
-			path: src/Shared/Twig/Environment.php
+			path: src/Shared/Markdown/MarkdownConverter.php

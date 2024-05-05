@@ -19,7 +19,7 @@ class PostSeo
     ];
 
     /**
-     * @var array<string>
+     * @var list<string>
      */
     #[ORM\Column(type: Types::JSON, options: [
         'jsonb' => true,
@@ -33,6 +33,9 @@ class PostSeo
     #[Assert\Choice(choices: self::PROFICIENCY_LEVEL)]
     private ?string $proficiencyLevel = null;
 
+    /**
+     * @return list<string>
+     */
     public function getDependencies(): array
     {
         return $this->dependencies;
@@ -43,7 +46,7 @@ class PostSeo
      */
     public function setDependencies(array $dependencies): static
     {
-        $this->dependencies = $dependencies;
+        $this->dependencies = array_values($dependencies);
 
         return $this;
     }

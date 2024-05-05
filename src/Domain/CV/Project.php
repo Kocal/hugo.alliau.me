@@ -32,7 +32,7 @@ class Project implements CacheableEntity
     private ?\DateTimeImmutable $date = null;
 
     /**
-     * @var array<string>
+     * @var list<string>
      */
     #[ORM\Column(type: Types::JSON, options: [
         'jsonb' => true,
@@ -99,7 +99,7 @@ class Project implements CacheableEntity
     }
 
     /**
-     * @return string[]
+     * @return list<string>
      */
     public function getTechStack(): array
     {
@@ -107,11 +107,11 @@ class Project implements CacheableEntity
     }
 
     /**
-     * @param string[] $techStack
+     * @param array<string> $techStack
      */
     public function setTechStack(array $techStack): static
     {
-        $this->techStack = $techStack;
+        $this->techStack = array_values($techStack);
 
         return $this;
     }
