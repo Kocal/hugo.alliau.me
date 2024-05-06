@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\Auth\Authenticator;
+namespace App\Auth\Domain\Authenticator;
 
 use App\Domain\Routing\ValueObject\RouteName;
 use Symfony\Component\HttpFoundation\RedirectResponse;

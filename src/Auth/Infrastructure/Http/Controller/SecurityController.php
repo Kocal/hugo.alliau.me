@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controller;
+namespace App\Auth\Infrastructure\Http\Controller;
 
 use App\Domain\Routing\ValueObject\RouteName;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

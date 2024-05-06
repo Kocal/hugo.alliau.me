@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Domain\Auth;
+namespace App\Auth\Domain;
 
-use App\Domain\Auth\Repository\UserRepository;
+use App\Auth\Domain\Repository\UserRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
