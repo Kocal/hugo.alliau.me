@@ -27,12 +27,12 @@ doctrine:
             #    dir: '%kernel.project_dir%/src/Entity'
             #    prefix: 'App\Entity'
             #    alias: App
-            App\Domain:
+            App:
               is_bundle: false
               type: attribute
-              dir: '%kernel.project_dir%/src/Domain'
-              prefix: 'App\Domain'
-              alias: Domain
+              dir: '%kernel.project_dir%/src'
+              prefix: 'App\'
+              alias: App
         controller_resolver:
             auto_mapping: false
 

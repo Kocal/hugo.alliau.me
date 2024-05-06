@@ -2,7 +2,7 @@
 
 namespace App\Shared\Menu;
 
-use App\Domain\Routing\ValueObject\RouteName;
+use App\Routing\Domain\ValueObject\RouteName;
 use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;
 use Symfony\Component\DependencyInjection\Attribute\AutoconfigureTag;

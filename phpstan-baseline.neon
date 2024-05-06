@@ -3,42 +3,42 @@ parameters:
 		-
 			message: "#^Cannot cast mixed to string\\.$#"
 			count: 2
-			path: src/Cli/Command/AdminCreate.php
+			path: src/Admin/Infrastructure/Cli/Command/AdminCreate.php
 
 		-
-			message: "#^Method App\\\\Domain\\\\Blog\\\\Repository\\\\PostRepository\\:\\:findTags\\(\\) should return array\\<string\\> but returns array\\.$#"
+			message: "#^Method App\\\\Blog\\\\Domain\\\\Repository\\\\PostRepository\\:\\:findTags\\(\\) should return array\\<string\\> but returns array\\.$#"
 			count: 1
-			path: src/Domain/Blog/Repository/PostRepository.php
+			path: src/Blog/Domain/Repository/PostRepository.php
 
 		-
-			message: "#^Method App\\\\Domain\\\\Blog\\\\Repository\\\\PostRepository\\:\\:findTagsAndOccurrences\\(\\) should return array\\<int, array\\{tag\\: string, occurrences\\: int\\}\\> but returns mixed\\.$#"
+			message: "#^Method App\\\\Blog\\\\Domain\\\\Repository\\\\PostRepository\\:\\:findTagsAndOccurrences\\(\\) should return array\\<int, array\\{tag\\: string, occurrences\\: int\\}\\> but returns mixed\\.$#"
 			count: 1
-			path: src/Domain/Blog/Repository/PostRepository.php
+			path: src/Blog/Domain/Repository/PostRepository.php
 
 		-
-			message: "#^Method App\\\\Domain\\\\Blog\\\\Repository\\\\PostRepository\\:\\:getOneLatestPublished\\(\\) should return App\\\\Domain\\\\Blog\\\\Post but returns mixed\\.$#"
+			message: "#^Method App\\\\Blog\\\\Domain\\\\Repository\\\\PostRepository\\:\\:getOneLatestPublished\\(\\) should return App\\\\Blog\\\\Domain\\\\Post but returns mixed\\.$#"
 			count: 1
-			path: src/Domain/Blog/Repository/PostRepository.php
-
-		-
-			message: "#^Method App\\\\Domain\\\\CV\\\\Repository\\\\ProfessionalExperienceRepository\\:\\:findOneLatest\\(\\) should return App\\\\Domain\\\\CV\\\\ProfessionalExperience\\|null but returns mixed\\.$#"
-			count: 1
-			path: src/Domain/CV/Repository/ProfessionalExperienceRepository.php
-
-		-
-			message: "#^Method App\\\\Domain\\\\CV\\\\Repository\\\\ProjectRepository\\:\\:findOneLatest\\(\\) should return App\\\\Domain\\\\CV\\\\Project\\|null but returns mixed\\.$#"
-			count: 1
-			path: src/Domain/CV/Repository/ProjectRepository.php
-
-		-
-			message: "#^Method App\\\\Http\\\\Cache\\\\HttpCacheAdapterFactory\\:\\:__invoke\\(\\) should return App\\\\Http\\\\Cache\\\\Adapter\\\\HttpCacheAdapter but returns mixed\\.$#"
-			count: 1
-			path: src/Http/Cache/HttpCacheAdapterFactory.php
+			path: src/Blog/Domain/Repository/PostRepository.php
 
 		-
 			message: "#^Parameter \\#1 \\$input of callable App\\\\Shared\\\\Markdown\\\\MarkdownConverter expects string, string\\|null given\\.$#"
 			count: 1
-			path: src/Http/Controller/Blog/Post/ViewController.php
+			path: src/Blog/Infrastructure/Http/Controller/Post/ViewController.php
+
+		-
+			message: "#^Method App\\\\CV\\\\Domain\\\\Repository\\\\ProfessionalExperienceRepository\\:\\:findOneLatest\\(\\) should return App\\\\CV\\\\Domain\\\\ProfessionalExperience\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/CV/Domain/Repository/ProfessionalExperienceRepository.php
+
+		-
+			message: "#^Method App\\\\CV\\\\Domain\\\\Repository\\\\ProjectRepository\\:\\:findOneLatest\\(\\) should return App\\\\CV\\\\Domain\\\\Project\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/CV/Domain/Repository/ProjectRepository.php
+
+		-
+			message: "#^Method App\\\\Shared\\\\Http\\\\Cache\\\\HttpCacheAdapterFactory\\:\\:__invoke\\(\\) should return App\\\\Shared\\\\Http\\\\Cache\\\\Adapter\\\\HttpCacheAdapter but returns mixed\\.$#"
+			count: 1
+			path: src/Shared/Http/Cache/HttpCacheAdapterFactory.php
 
 		-
 			message: "#^Parameter \\#3 \\$contents of class League\\\\CommonMark\\\\Util\\\\HtmlElement constructor expects array\\<Stringable\\>\\|string\\|Stringable\\|null, array\\<int, string\\> given\\.$#"

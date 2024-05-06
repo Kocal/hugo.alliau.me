@@ -2,7 +2,7 @@
 
 namespace App\Shared\Twig\Components;
 
-use App\Domain\Blog\Post as BlogPost;
+use App\Blog\Domain\Post as BlogPost;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 
 #[AsTwigComponent]

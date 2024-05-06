@@ -25,6 +25,6 @@ services:
             - '../src/Shared/Markdown/Extension/GitHubEmojis/data/*.php'
             - '../src/Http/Cache/{CacheableEntity,CacheMethodsTrait}.php'
 
-    App\Http\Cache\Adapter\HttpCacheAdapter:
-        factory: '@App\Http\Cache\HttpCacheAdapterFactory'
+    App\Shared\Http\Cache\Adapter\HttpCacheAdapter:
+        factory: '@App\Shared\Http\Cache\HttpCacheAdapterFactory'
         arguments: ['%env(HTTP_CACHE_ADAPTER)%']
