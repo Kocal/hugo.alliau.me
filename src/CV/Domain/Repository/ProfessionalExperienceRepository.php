@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Domain\CV\Repository;
+namespace App\CV\Domain\Repository;
 
-use App\Domain\CV\ProfessionalExperience;
+use App\CV\Domain\ProfessionalExperience;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -17,7 +17,7 @@ class ProfessionalExperienceRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return list<ProfessionalExperience>
+     * @return ProfessionalExperience
      */
     public function findAll(): array
     {

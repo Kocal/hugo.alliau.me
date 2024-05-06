@@ -3,7 +3,7 @@
 namespace App\Http\Controller\Admin;
 
 use App\Blog as Blog;
-use App\Domain\CV as CV;
+use App\CV as CV;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -35,8 +35,8 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Posts', 'fas fa-newspaper', Blog\Domain\Post::class);
 
         yield MenuItem::section('CV');
-        yield MenuItem::linkToCrud('Professional experiences', 'fas fa-briefcase', CV\ProfessionalExperience::class);
-        yield MenuItem::linkToCrud('Projects', 'fas fa-gears', CV\Project::class);
+        yield MenuItem::linkToCrud('Professional experiences', 'fas fa-briefcase', CV\Domain\ProfessionalExperience::class);
+        yield MenuItem::linkToCrud('Projects', 'fas fa-gears', CV\Domain\Project::class);
 
         yield MenuItem::section('Tools');
         yield MenuItem::linkToUrl('Clear HTTP Cache', 'fas fa-server', '/admin/http-cache-clear');

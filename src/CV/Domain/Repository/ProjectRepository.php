@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Domain\CV\Repository;
+namespace App\CV\Domain\Repository;
 
-use App\Domain\CV\Project;
+use App\CV\Domain\Project;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 

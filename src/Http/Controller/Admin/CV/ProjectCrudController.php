@@ -2,7 +2,7 @@
 
 namespace App\Http\Controller\Admin\CV;
 
-use App\Domain\CV\Project;
+use App\CV\Domain\Project;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;

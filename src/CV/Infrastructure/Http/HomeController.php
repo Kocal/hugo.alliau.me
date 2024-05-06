@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controller\CV;
+namespace App\CV\Infrastructure\Http;
 
-use App\Domain\CV\Repository\ProfessionalExperienceRepository;
-use App\Domain\CV\Repository\ProjectRepository;
+use App\CV\Domain\Repository\ProfessionalExperienceRepository;
+use App\CV\Domain\Repository\ProjectRepository;
 use App\Domain\Routing\ValueObject\RouteName;
 use App\Http\Cache\CacheMethodsTrait;
 use Presta\SitemapBundle\Sitemap\Url\UrlConcrete;

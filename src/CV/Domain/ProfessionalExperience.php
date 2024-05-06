@@ -1,18 +1,19 @@
 <?php
 
-namespace App\Domain\CV;
+namespace App\CV\Domain;
 
-use App\Domain\CV\Repository\ProjectRepository;
+use App\CV\Domain\Repository\ProfessionalExperienceRepository;
 use App\Domain\Routing\ValueObject\RouteName;
 use App\Http\Cache\CacheableEntity;
 use App\Http\Cache\ValueObject\CacheItem;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
-#[ORM\Entity(repositoryClass: ProjectRepository::class)]
-#[ORM\Table(name: 'cv_project')]
+#[ORM\Entity(repositoryClass: ProfessionalExperienceRepository::class)]
+#[ORM\Table(name: 'cv_professional_experience')]
 #[ORM\HasLifecycleCallbacks]
-class Project implements CacheableEntity
+class ProfessionalExperience implements CacheableEntity
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -20,24 +21,29 @@ class Project implements CacheableEntity
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $name = null;
+    #[Assert\NotBlank()]
+    private ?string $company = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank()]
+    #[Assert\Url()]
     private ?string $url = null;
 
+    #[ORM\Column(length: 255)]
+    #[Assert\NotBlank()]
+    private ?string $jobName = null;
+
     #[ORM\Column(type: Types::TEXT)]
+    #[Assert\NotBlank()]
     private ?string $description = null;
 
     #[ORM\Column(type: Types::DATE_IMMUTABLE)]
-    private ?\DateTimeImmutable $date = null;
+    #[Assert\NotBlank()]
+    private ?\DateTimeImmutable $startDate = null;
 
-    /**
-     * @var list<string>
-     */
-    #[ORM\Column(type: Types::JSON, options: [
-        'jsonb' => true,
-    ])]
-    private array $techStack = [];
+    #[ORM\Column(type: Types::DATE_IMMUTABLE, nullable: true)]
+    #[Assert\GreaterThan(propertyPath: 'startDate')]
+    private ?\DateTimeImmutable $endDate = null;
 
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
@@ -45,19 +51,27 @@ class Project implements CacheableEntity
     #[ORM\Column]
     private ?\DateTimeImmutable $updatedAt = null;
 
+    /**
+     * @var list<string>
+     */
+    #[ORM\Column(type: Types::JSON, options: [
+        'jsonb' => true,
+    ])]
+    private array $badges = [];
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getCompany(): ?string
     {
-        return $this->name;
+        return $this->company;
     }
 
-    public function setName(string $name): static
+    public function setCompany(string $company): static
     {
-        $this->name = $name;
+        $this->company = $company;
 
         return $this;
     }
@@ -74,6 +88,18 @@ class Project implements CacheableEntity
         return $this;
     }
 
+    public function getJobName(): ?string
+    {
+        return $this->jobName;
+    }
+
+    public function setJobName(string $jobName): static
+    {
+        $this->jobName = $jobName;
+
+        return $this;
+    }
+
     public function getDescription(): ?string
     {
         return $this->description;
@@ -86,14 +112,26 @@ class Project implements CacheableEntity
         return $this;
     }
 
-    public function getDate(): ?\DateTimeImmutable
+    public function getStartDate(): ?\DateTimeImmutable
     {
-        return $this->date;
+        return $this->startDate;
     }
 
-    public function setDate(\DateTimeImmutable $date): static
+    public function setStartDate(\DateTimeImmutable $startDate): static
     {
-        $this->date = $date;
+        $this->startDate = $startDate;
+
+        return $this;
+    }
+
+    public function getEndDate(): ?\DateTimeImmutable
+    {
+        return $this->endDate;
+    }
+
+    public function setEndDate(?\DateTimeImmutable $endDate): static
+    {
+        $this->endDate = $endDate;
 
         return $this;
     }
@@ -101,17 +139,17 @@ class Project implements CacheableEntity
     /**
      * @return list<string>
      */
-    public function getTechStack(): array
+    public function getBadges(): array
     {
-        return $this->techStack;
+        return $this->badges;
     }
 
     /**
-     * @param array<string> $techStack
+     * @param array<string> $badges
      */
-    public function setTechStack(array $techStack): static
+    public function setBadges(array $badges): static
     {
-        $this->techStack = array_values($techStack);
+        $this->badges = array_values($badges);
 
         return $this;
     }
