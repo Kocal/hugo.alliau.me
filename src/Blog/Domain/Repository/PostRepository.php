@@ -31,7 +31,7 @@ class PostRepository extends ServiceEntityRepository
 
     /**
      * @param list<string> $tags
-     * @return Post
+     * @return list<Post>
      */
     public function findLatestPublished(array $tags = []): array
     {

@@ -17,7 +17,7 @@ class ProfessionalExperienceRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return ProfessionalExperience
+     * @return list<ProfessionalExperience>
      */
     public function findAll(): array
     {

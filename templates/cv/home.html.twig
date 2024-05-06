@@ -29,11 +29,11 @@
 
                     <ul class="flex flex-col gap-x-2 gap-y-0.5">
                         {% for network in [
-                            { name: 'Contact', href: 'mailto:hugo@alliau.me', icon: 'bi:envelope', label: 'hugo[at]alliau.me' },
-                            { name: 'GitHub', href: 'https://github.com/Kocal', icon: 'bi:github', label: '@Kocal' },
-                            { name: 'LinkedIn', href: 'https://www.linkedin.com/in/%F0%9F%9A%B4-hugo-alliaume-34b475166/', icon: 'bi:linkedin', label: 'Hugo Alliaume' },
-                            { name: 'X (Twitter)', href: 'https://twitter.com/HugoAlliaume', icon: 'bi:twitter-x', label: '@HugoAlliaume' },
-                            { name: 'Mastodon', href: 'https://mastodon.social/@Kocal', icon: 'bi:mastodon', label: '@Kocal' },
+                            {name: 'Contact', href: 'mailto:hugo@alliau.me', icon: 'bi:envelope', label: 'hugo[at]alliau.me'},
+                            {name: 'GitHub', href: 'https://github.com/Kocal', icon: 'bi:github', label: '@Kocal'},
+                            {name: 'LinkedIn', href: 'https://www.linkedin.com/in/%F0%9F%9A%B4-hugo-alliaume-34b475166/', icon: 'bi:linkedin', label: 'Hugo Alliaume'},
+                            {name: 'X (Twitter)', href: 'https://twitter.com/HugoAlliaume', icon: 'bi:twitter-x', label: '@HugoAlliaume'},
+                            {name: 'Mastodon', href: 'https://mastodon.social/@Kocal', icon: 'bi:mastodon', label: '@Kocal'},
                         ] %}
                             <li>
                                 <a href="{{ network.href }}" title="{{ network.name }}" class="hover:text-primary-700 dark:hover:text-slate-400">
@@ -91,12 +91,12 @@
                                 </span>
 
                                 <span class="uppercase text-sm font-bold">
-                                    <time datetime="{{ professional_experience.startDate|date }}">{{ professional_experience.startDate|format_datetime(pattern='MMM yyyy', locale='fr') }}</time>
+                                    <time datetime="{{ professional_experience.startDate|date }}">{{ professional_experience.startDate|format_datetime(pattern = 'MMM yyyy', locale = 'fr') }}</time>
                                     &rightarrow;
                                     {% if professional_experience.endDate is null %}
                                         <span>Présent</span>
                                     {% else %}
-                                        <time datetime="{{ professional_experience.endDate|date }}">{{ professional_experience.endDate|format_datetime(pattern='MMM yyyy', locale='fr') }}</time>
+                                        <time datetime="{{ professional_experience.endDate|date }}">{{ professional_experience.endDate|format_datetime(pattern = 'MMM yyyy', locale = 'fr') }}</time>
                                     {% endif %}
                                 </span>
                             </header>
