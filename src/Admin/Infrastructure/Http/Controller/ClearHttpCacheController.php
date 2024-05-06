@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Admin\Infrastructure\Http;
+namespace App\Admin\Infrastructure\Http\Controller;
 
 use App\Shared\Http\Cache\HttpCache;
 use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;

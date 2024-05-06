@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Admin\Infrastructure\Http;
+namespace App\Admin\Infrastructure\Http\Controller;
 
 use App\Blog as Blog;
 use App\CV as CV;

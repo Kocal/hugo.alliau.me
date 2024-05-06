@@ -1,6 +1,6 @@
 <?php
 
-namespace App\CV\Infrastructure\Http;
+namespace App\CV\Infrastructure\Http\Controller;
 
 use App\CV\Domain\Repository\ProfessionalExperienceRepository;
 use App\CV\Domain\Repository\ProjectRepository;

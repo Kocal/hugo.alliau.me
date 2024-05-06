@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Home\Infrastructure\Http;
+namespace App\Home\Infrastructure\Http\Controller;
 
 use App\Routing\Domain\ValueObject\RouteName;
 use App\Shared\Http\Cache\CacheMethodsTrait;

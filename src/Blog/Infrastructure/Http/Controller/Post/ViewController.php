@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Blog\Infrastructure\Http\Post;
+namespace App\Blog\Infrastructure\Http\Controller\Post;
 
 use App\Blog\Domain\Post;
 use App\Blog\Domain\PostStatus;

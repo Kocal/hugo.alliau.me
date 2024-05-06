@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Blog\Infrastructure\Http;
+namespace App\Blog\Infrastructure\Http\Controller;
 
 use App\Blog\Domain\Repository\PostRepository;
 use App\Routing\Domain\ValueObject\RouteName;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Admin\Infrastructure\Http\Blog;
+namespace App\Admin\Infrastructure\Http\Controller\Blog;
 
 use App\Blog\Domain\Post;
 use App\Blog\Domain\PostSeo;

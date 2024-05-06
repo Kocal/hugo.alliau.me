@@ -1,5 +1,29 @@
-controllers:
+controllers_admin:
     resource:
-        path: ../src/Http/Controller/
-        namespace: App\Http\Controller
+        path: ../src/Admin/Infrastructure/Http/Controller/
+        namespace: App\Admin\Infrastructure\Http\Controller
+    type: attribute
+
+controllers_auth:
+    resource:
+        path: ../src/Auth/Infrastructure/Http/Controller/
+        namespace: App\Auth\Infrastructure\Http\Controller
+    type: attribute
+
+controllers_blog:
+    resource:
+        path: ../src/Blog/Infrastructure/Http/Controller/
+        namespace: App\Blog\Infrastructure\Http\Controller
+    type: attribute
+
+controllers_cv:
+    resource:
+        path: ../src/Cv/Infrastructure/Http/Controller/
+        namespace: App\Cv\Infrastructure\Http\Controller
+    type: attribute
+
+controllers_home:
+    resource:
+        path: ../src/Home/Infrastructure/Http/Controller/
+        namespace: App\Home\Infrastructure\Http\Controller
     type: attribute
