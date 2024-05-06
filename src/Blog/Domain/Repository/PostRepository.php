@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Domain\Blog\Repository;
+namespace App\Blog\Domain\Repository;
 
-use App\Domain\Blog\Post;
-use App\Domain\Blog\PostStatus;
+use App\Blog\Domain\Post;
+use App\Blog\Domain\PostStatus;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Query\ResultSetMapping;
@@ -31,7 +31,7 @@ class PostRepository extends ServiceEntityRepository
 
     /**
      * @param list<string> $tags
-     * @return list<Post>
+     * @return Post
      */
     public function findLatestPublished(array $tags = []): array
     {

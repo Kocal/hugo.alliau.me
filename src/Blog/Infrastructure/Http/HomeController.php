@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controller\Blog;
+namespace App\Blog\Infrastructure\Http;
 
-use App\Domain\Blog\Repository\PostRepository;
+use App\Blog\Domain\Repository\PostRepository;
 use App\Domain\Routing\ValueObject\RouteName;
 use App\Http\Cache\CacheMethodsTrait;
 use Presta\SitemapBundle\Sitemap\Url\UrlConcrete;

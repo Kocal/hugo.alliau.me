@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Domain\Blog;
+namespace App\Blog\Domain;
 
-use App\Domain\Blog\Repository\PostRepository;
+use App\Blog\Domain\Repository\PostRepository;
 use App\Domain\Routing\ValueObject\RouteName;
 use App\Http\Cache\CacheableEntity;
 use App\Http\Cache\ValueObject\CacheItem;

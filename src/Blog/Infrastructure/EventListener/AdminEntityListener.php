@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\Application\EventListener;
+namespace App\Blog\Infrastructure\EventListener;
 
 use App\Http\Cache\CacheableEntity;
 use App\Http\Cache\HttpCache;

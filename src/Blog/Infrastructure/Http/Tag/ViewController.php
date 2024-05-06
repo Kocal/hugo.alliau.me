@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controller\Blog\Tag;
+namespace App\Blog\Infrastructure\Http\Tag;
 
-use App\Domain\Blog\Repository\PostRepository;
+use App\Blog\Domain\Repository\PostRepository;
 use App\Domain\Routing\ValueObject\RouteName;
 use App\Http\Cache\CacheMethodsTrait;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -10,18 +10,27 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-final class ListController extends AbstractController
+final class ViewController extends AbstractController
 {
     use CacheMethodsTrait;
 
-    #[Route("/blog/tags", name: RouteName::BLOG_TAG_LIST, methods: ['GET'])]
+    #[Route("/blog/tags/{tag}", name: RouteName::BLOG_TAG_VIEW, methods: ['GET'])]
     public function __invoke(
         Request $request,
+        string $tag,
         PostRepository $postRepository
     ): Response {
+        $posts = $postRepository->findLatestPublished(
+            tags: [$tag]
+        );
+
+        if ($posts === []) {
+            throw $this->createNotFoundException();
+        }
+
         $response = new Response();
-        $response->setEtag(self::computeEtag('tags:list'));
-        $response->setLastModified($postRepository->getOneLatestPublished()->getPublishedAt());
+        $response->setEtag(self::computeEtag('tags:view:' . $tag));
+        $response->setLastModified(current($posts)->getPublishedAt());
         $response->setMaxAge(60 * 60 * 24 * 30);
         $response->setPublic();
 
@@ -29,8 +38,10 @@ final class ListController extends AbstractController
             return $response;
         }
 
-        return $this->render("blog/tags/list/index.html.twig", [
+        return $this->render("blog/tags/view/index.html.twig", [
+            'tag' => $tag,
             'tags' => $postRepository->findTagsAndOccurrences(),
+            'posts' => $posts,
         ], $response);
     }
 }

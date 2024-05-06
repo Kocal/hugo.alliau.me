@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controller\Blog\Post;
+namespace App\Blog\Infrastructure\Http\Post;
 
-use App\Domain\Blog\Post;
-use App\Domain\Blog\PostStatus;
+use App\Blog\Domain\Post;
+use App\Blog\Domain\PostStatus;
 use App\Domain\Routing\ValueObject\RouteName;
 use App\Http\Cache\CacheMethodsTrait;
 use App\Shared\Markdown\MarkdownConverter;

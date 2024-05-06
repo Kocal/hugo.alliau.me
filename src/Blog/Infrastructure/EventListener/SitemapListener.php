@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Domain\Application\EventListener;
+namespace App\Blog\Infrastructure\EventListener;
 
-use App\Domain\Blog\Repository\PostRepository;
+use App\Blog\Domain\Repository\PostRepository;
 use App\Domain\Routing\ValueObject\RouteName;
 use Presta\SitemapBundle\Event\SitemapPopulateEvent;
 use Presta\SitemapBundle\Sitemap\Url\UrlConcrete;

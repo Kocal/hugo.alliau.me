@@ -2,8 +2,8 @@
 
 namespace App\Http\Controller\Admin\Blog;
 
-use App\Domain\Blog\Post;
-use App\Domain\Blog\PostSeo;
+use App\Blog\Domain\Post;
+use App\Blog\Domain\PostSeo;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\Blog;
+namespace App\Blog\Domain;
 
 enum PostStatus: string
 {
