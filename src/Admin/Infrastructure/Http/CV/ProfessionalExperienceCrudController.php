@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controller\Admin\CV;
+namespace App\Admin\Infrastructure\Http\CV;
 
 use App\CV\Domain\ProfessionalExperience;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
