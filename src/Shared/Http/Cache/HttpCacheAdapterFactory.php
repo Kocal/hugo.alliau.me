@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Cache;
+namespace App\Shared\Http\Cache;
 
-use App\Http\Cache\Adapter\CloudflareHttpCacheAdapter;
-use App\Http\Cache\Adapter\HttpCacheAdapter;
-use App\Http\Cache\Adapter\NoHttpCacheAdapter;
+use App\Shared\Http\Cache\Adapter\CloudflareHttpCacheAdapter;
+use App\Shared\Http\Cache\Adapter\HttpCacheAdapter;
+use App\Shared\Http\Cache\Adapter\NoHttpCacheAdapter;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\DependencyInjection\Attribute\AutowireLocator;
 

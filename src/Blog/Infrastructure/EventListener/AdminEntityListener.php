@@ -2,9 +2,9 @@
 
 namespace App\Blog\Infrastructure\EventListener;
 
-use App\Http\Cache\CacheableEntity;
-use App\Http\Cache\HttpCache;
-use App\Http\Cache\ValueObject\CacheItem;
+use App\Shared\Http\Cache\CacheableEntity;
+use App\Shared\Http\Cache\HttpCache;
+use App\Shared\Http\Cache\ValueObject\CacheItem;
 use EasyCorp\Bundle\EasyAdminBundle\Event\AfterEntityDeletedEvent;
 use EasyCorp\Bundle\EasyAdminBundle\Event\AfterEntityPersistedEvent;
 use EasyCorp\Bundle\EasyAdminBundle\Event\AfterEntityUpdatedEvent;

@@ -3,7 +3,7 @@
 namespace App\Blog\Infrastructure\EventListener;
 
 use App\Blog\Domain\Repository\PostRepository;
-use App\Domain\Routing\ValueObject\RouteName;
+use App\Routing\Domain\ValueObject\RouteName;
 use Presta\SitemapBundle\Event\SitemapPopulateEvent;
 use Presta\SitemapBundle\Sitemap\Url\UrlConcrete;
 use Symfony\Component\EventDispatcher\Attribute\AsEventListener;

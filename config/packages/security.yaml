@@ -20,7 +20,7 @@ security:
             provider: app_user_provider
             custom_authenticator: App\Auth\Domain\Authenticator\LoginFormAuthenticator
             logout:
-                path: !php/const App\Domain\Routing\ValueObject\RouteName::LOGOUT
+                path: !php/const App\Routing\Domain\ValueObject\RouteName::LOGOUT
                 # where to redirect after logout
                 # target: app_any_route
 

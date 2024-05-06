@@ -4,8 +4,8 @@ namespace App\Blog\Infrastructure\Http\Post;
 
 use App\Blog\Domain\Post;
 use App\Blog\Domain\PostStatus;
-use App\Domain\Routing\ValueObject\RouteName;
-use App\Http\Cache\CacheMethodsTrait;
+use App\Routing\Domain\ValueObject\RouteName;
+use App\Shared\Http\Cache\CacheMethodsTrait;
 use App\Shared\Markdown\MarkdownConverter;
 use Psr\Link\EvolvableLinkInterface;
 use Symfony\Bridge\Doctrine\Attribute\MapEntity;

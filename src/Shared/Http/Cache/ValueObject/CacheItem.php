@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Cache\ValueObject;
+namespace App\Shared\Http\Cache\ValueObject;
 
-use App\Http\Cache\CacheableEntity;
+use App\Shared\Http\Cache\CacheableEntity;
 
 final readonly class CacheItem
 {

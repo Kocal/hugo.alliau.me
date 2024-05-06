@@ -2,7 +2,7 @@
 
 namespace App\Admin\Infrastructure\Http;
 
-use App\Http\Cache\HttpCache;
+use App\Shared\Http\Cache\HttpCache;
 use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;

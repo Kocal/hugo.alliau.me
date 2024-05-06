@@ -3,9 +3,9 @@
 namespace App\CV\Domain;
 
 use App\CV\Domain\Repository\ProjectRepository;
-use App\Domain\Routing\ValueObject\RouteName;
-use App\Http\Cache\CacheableEntity;
-use App\Http\Cache\ValueObject\CacheItem;
+use App\Routing\Domain\ValueObject\RouteName;
+use App\Shared\Http\Cache\CacheableEntity;
+use App\Shared\Http\Cache\ValueObject\CacheItem;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 

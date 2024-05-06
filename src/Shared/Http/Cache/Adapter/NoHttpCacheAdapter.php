@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Cache\Adapter;
+namespace App\Shared\Http\Cache\Adapter;
 
 final class NoHttpCacheAdapter implements HttpCacheAdapter
 {

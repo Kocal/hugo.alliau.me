@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controller;
+namespace App\Home\Infrastructure\Http;
 
-use App\Domain\Routing\ValueObject\RouteName;
-use App\Http\Cache\CacheMethodsTrait;
+use App\Routing\Domain\ValueObject\RouteName;
+use App\Shared\Http\Cache\CacheMethodsTrait;
 use Presta\SitemapBundle\Sitemap\Url\UrlConcrete;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;

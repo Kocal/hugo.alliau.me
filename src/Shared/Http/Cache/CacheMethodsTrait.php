@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Cache;
+namespace App\Shared\Http\Cache;
 
 trait CacheMethodsTrait
 {

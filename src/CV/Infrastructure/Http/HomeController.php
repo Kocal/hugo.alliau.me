@@ -4,8 +4,8 @@ namespace App\CV\Infrastructure\Http;
 
 use App\CV\Domain\Repository\ProfessionalExperienceRepository;
 use App\CV\Domain\Repository\ProjectRepository;
-use App\Domain\Routing\ValueObject\RouteName;
-use App\Http\Cache\CacheMethodsTrait;
+use App\Routing\Domain\ValueObject\RouteName;
+use App\Shared\Http\Cache\CacheMethodsTrait;
 use Presta\SitemapBundle\Sitemap\Url\UrlConcrete;
 use Psr\Clock\ClockInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

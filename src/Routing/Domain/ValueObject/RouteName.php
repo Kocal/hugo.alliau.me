@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\Routing\ValueObject;
+namespace App\Routing\Domain\ValueObject;
 
 class RouteName
 {

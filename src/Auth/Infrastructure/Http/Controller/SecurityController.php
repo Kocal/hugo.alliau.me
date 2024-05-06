@@ -2,7 +2,7 @@
 
 namespace App\Auth\Infrastructure\Http\Controller;
 
-use App\Domain\Routing\ValueObject\RouteName;
+use App\Routing\Domain\ValueObject\RouteName;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;

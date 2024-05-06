@@ -3,8 +3,8 @@
 namespace App\Blog\Infrastructure\Http\Tag;
 
 use App\Blog\Domain\Repository\PostRepository;
-use App\Domain\Routing\ValueObject\RouteName;
-use App\Http\Cache\CacheMethodsTrait;
+use App\Routing\Domain\ValueObject\RouteName;
+use App\Shared\Http\Cache\CacheMethodsTrait;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

@@ -9,8 +9,8 @@
         {% for post in posts %}
             <item>
                 <title><![CDATA[{{ post.title }}]]></title>
-                <link>{{ url(constant('App\\Domain\\Routing\\ValueObject\\RouteName::BLOG_POST_VIEW'), {slug: post.slug}) }}</link>
-                <guid>{{ url(constant('App\\Domain\\Routing\\ValueObject\\RouteName::BLOG_POST_VIEW'), {slug: post.slug}) }}</guid>
+                <link>{{ url(constant('App\\Routing\\Domain\\ValueObject\\RouteName::BLOG_POST_VIEW'), {slug: post.slug}) }}</link>
+                <guid>{{ url(constant('App\\Routing\\Domain\\ValueObject\\RouteName::BLOG_POST_VIEW'), {slug: post.slug}) }}</guid>
                 <pubDate>{{ post.publishedAt|date(constant('DATE_ATOM')) }}</pubDate>
                 <description><![CDATA[{{ post.description }}]]></description>
             </item>
