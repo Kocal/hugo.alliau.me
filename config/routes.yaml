@@ -18,8 +18,8 @@ controllers_blog:
 
 controllers_cv:
     resource:
-        path: ../src/Cv/Infrastructure/Http/Controller/
-        namespace: App\Cv\Infrastructure\Http\Controller
+        path: ../src/CV/Infrastructure/Http/Controller/
+        namespace: App\CV\Infrastructure\Http\Controller
     type: attribute
 
 controllers_home:
