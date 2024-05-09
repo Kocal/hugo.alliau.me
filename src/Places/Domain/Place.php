@@ -19,27 +19,27 @@ class Place
     private ?Address $address = null;
 
     /**
-     * @var array<PlaceTag>
+     * @var array<PlaceType>
      */
     #[ORM\Column(type: Types::JSON, options: [
         'jsonb' => true,
     ])]
-    private array $tags = [];
+    private array $types = [];
 
     #[ORM\Column]
-    private ?bool $toTry = null;
+    private bool $toTry = false;
 
     #[ORM\Column]
     private string|null $googleMapsUrl = null;
+
+    #[ORM\Column]
+    private string|null $iconMaskUri = null;
 
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
 
     #[ORM\Column]
     private ?\DateTimeImmutable $updatedAt = null;
-
-    #[ORM\Column()]
-    private PlaceOrigin $origin = PlaceOrigin::USER;
 
     public function __construct()
     {
@@ -64,19 +64,19 @@ class Place
     }
 
     /**
-     * @return array<PlaceTag>
+     * @return array<PlaceType>
      */
-    public function getTags(): array
+    public function getTypes(): array
     {
-        return $this->tags;
+        return array_map(PlaceType::from(...), $this->types);
     }
 
     /**
-     * @param array<PlaceTag> $tags
+     * @param array<PlaceType> $types
      */
-    public function setTags(array $tags): static
+    public function setTypes(array $types): static
     {
-        $this->tags = $tags;
+        $this->types = $types;
 
         return $this;
     }
@@ -93,18 +93,6 @@ class Place
         return $this;
     }
 
-    public function getOrigin(): PlaceOrigin
-    {
-        return $this->origin;
-    }
-
-    public function setOrigin(PlaceOrigin $origin): static
-    {
-        $this->origin = $origin;
-
-        return $this;
-    }
-
     public function getGoogleMapsUrl(): ?string
     {
         return $this->googleMapsUrl;
@@ -116,6 +104,18 @@ class Place
 
         return $this;
     }
+
+    public function getIconMaskUri(): ?string
+    {
+        return $this->iconMaskUri;
+    }
+
+    public function setIconMaskUri(?string $iconMaskUri): Place
+    {
+        $this->iconMaskUri = $iconMaskUri;
+        return $this;
+    }
+
 
     public function getCreatedAt(): ?\DateTimeImmutable
     {

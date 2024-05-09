@@ -24,7 +24,7 @@ class Address
     #[ORM\Column(length: 40)]
     private ?string $country = null;
 
-    #[ORM\Column(length: 15)]
+    #[ORM\Column(length: 15, nullable: true)]
     private ?string $zipcode = null;
 
     /**
@@ -51,7 +51,7 @@ class Address
         return $this->city;
     }
 
-    public function setCity(string $city): static
+    public function setCity(?string $city): static
     {
         $this->city = $city;
 
@@ -63,7 +63,7 @@ class Address
         return $this->county;
     }
 
-    public function setCounty(string $county): static
+    public function setCounty(?string $county): static
     {
         $this->county = $county;
 
@@ -75,7 +75,7 @@ class Address
         return $this->administrative;
     }
 
-    public function setAdministrative(string $administrative): static
+    public function setAdministrative(?string $administrative): static
     {
         $this->administrative = $administrative;
 
@@ -87,7 +87,7 @@ class Address
         return $this->country;
     }
 
-    public function setCountry(string $country): static
+    public function setCountry(?string $country): static
     {
         $this->country = $country;
 
@@ -99,7 +99,7 @@ class Address
         return $this->zipcode;
     }
 
-    public function setZipcode(string $zipcode): static
+    public function setZipcode(?string $zipcode): static
     {
         $this->zipcode = $zipcode;
 
