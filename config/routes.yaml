@@ -22,6 +22,12 @@ controllers_cv:
         namespace: App\CV\Infrastructure\Http\Controller
     type: attribute
 
+controllers_addresses:
+    resource:
+        path: ../src/Addresses/Infrastructure/Http/Controller/
+        namespace: App\Addresses\Infrastructure\Http\Controller
+    type: attribute
+
 controllers_home:
     resource:
         path: ../src/Home/Infrastructure/Http/Controller/

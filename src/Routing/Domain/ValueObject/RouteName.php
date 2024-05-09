@@ -21,4 +21,6 @@ class RouteName
     public const BLOG_TAG_VIEW = 'blog_tag_view';
 
     public const CV_HOME = 'cv_home';
+
+    public const ADDRESSES_HOME = 'addresses_home';
 }
