@@ -8,7 +8,7 @@ security:
         # used to reload user from session & other features (e.g. switch_user)
         app_user_provider:
             entity:
-                class: App\Domain\Auth\User
+                class: App\Auth\Domain\User
                 property: username
 
     firewalls:
