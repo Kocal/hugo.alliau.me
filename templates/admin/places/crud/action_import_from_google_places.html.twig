@@ -1,0 +1,7 @@
+<form method="POST" action="{{ action.linkUrl }}" class="form-inline d-inline-flex gap-1">
+    <input type="hidden" name="token" value="{{ ea_csrf_token('ea-import-from-google-places') }}" />
+    <div class="form-widget">
+        <input name="text_query" class="form-control" placeholder="E.g.: N Seoul Tower, Seoul">
+    </div>
+    {{ include('@EasyAdmin/crud/action.html.twig', { action: action }, with_context = false) }}
+</form>
