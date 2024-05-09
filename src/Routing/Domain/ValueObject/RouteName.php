@@ -22,5 +22,5 @@ class RouteName
 
     public const CV_HOME = 'cv_home';
 
-    public const ADDRESSES_HOME = 'addresses_home';
+    public const PLACES_HOME = 'places_home';
 }

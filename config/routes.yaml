@@ -24,8 +24,8 @@ controllers_cv:
 
 controllers_addresses:
     resource:
-        path: ../src/Addresses/Infrastructure/Http/Controller/
-        namespace: App\Addresses\Infrastructure\Http\Controller
+        path: ../src/Places/Infrastructure/Http/Controller/
+        namespace: App\Places\Infrastructure\Http\Controller
     type: attribute
 
 controllers_home:
