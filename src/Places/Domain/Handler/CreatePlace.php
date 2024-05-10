@@ -16,14 +16,11 @@ final class CreatePlace
 
     public function fromAutocomplete(array $autocomplete): Place
     {
-        dump($autocomplete);
         $address = (new Address())
             ->setName($autocomplete['name'])
+            ->setFormattedAddress($autocomplete['formatted_address'] ?? null)
             ->setCountry(($this->getAddressComponent)($autocomplete['address_components'], 'country')['long_name'] ?? null)
-            ->setAdministrative(($this->getAddressComponent)($autocomplete['address_components'], 'administrative_area_level_1')['long_name'] ?? null)
-            ->setCounty(($this->getAddressComponent)($autocomplete['address_components'], 'administrative_area_level_2')['long_name'] ?? null)
             ->setCity(($this->getAddressComponent)($autocomplete['address_components'], 'locality')['long_name'] ?? null)
-            ->setZipcode(($this->getAddressComponent)($autocomplete['address_components'], 'postal_code')['long_name'] ?? null)
             ->setCoordinates([
                 $autocomplete['geometry']['location']['lat'],
                 $autocomplete['geometry']['location']['lng'],
@@ -31,10 +28,6 @@ final class CreatePlace
 
         if (null === $address->getCity()) {
             $address->setCity(($this->getAddressComponent)($autocomplete['address_components'], 'administrative_area_level_1')['long_name'] ?? null);
-        }
-
-        if (null === $address->getCounty()) {
-            $address->setCounty(($this->getAddressComponent)($autocomplete['address_components'], 'sublocality_level_1')['long_name'] ?? null);
         }
 
         $place = (new Place())
