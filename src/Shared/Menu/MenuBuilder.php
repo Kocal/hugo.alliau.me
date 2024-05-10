@@ -46,6 +46,10 @@ final class MenuBuilder
             'route' => RouteName::CV_HOME,
         ]);
 
+        $menu->addChild('Places', [
+            'route' => RouteName::PLACES_HOME,
+        ]);
+
         return $menu;
     }
 }
