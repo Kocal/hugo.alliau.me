@@ -57,7 +57,7 @@ export default class extends Controller
     </p>
 </div>
 `,
-                ariaLabel: address.name,
+                ariaLabel: place.address.name,
             });
 
             marker.addListener("click", () => {
