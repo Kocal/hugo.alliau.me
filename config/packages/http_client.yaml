@@ -4,3 +4,8 @@ framework:
             cloudflare.client:
                 base_uri: 'https://api.cloudflare.com/client/v4/'
                 auth_bearer: '%env(CLOUDFLARE_API_TOKEN)%'
+
+            google.places.client:
+                base_uri: 'https://places.googleapis.com/'
+                headers:
+                    X-Goog-Api-Key: '%env(GOOGLE_PLACES_PRIVATE_API_KEY)%'

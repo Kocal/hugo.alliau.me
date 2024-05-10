@@ -1,0 +1,8 @@
+<form method="POST" action="{{ action.linkUrl }}" class="form-inline d-inline-flex">
+    <input type="hidden" name="token"  value="{{ ea_csrf_token('ea-import-from-google-places') }}" />
+    <input type="hidden" name="place_autocomplete" value="" />
+    <div class="input-group">
+        <input name="address_autocomplete" style="width: 360px;" class="form-control" placeholder="E.g.: N Seoul Tower, Seoul">
+        {{ include('@EasyAdmin/crud/action.html.twig', {action: action}, with_context = false) }}
+    </div>
+</form>

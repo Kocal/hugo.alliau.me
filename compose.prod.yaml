@@ -28,3 +28,14 @@ services:
     volumes:
       - ./docker/db/data:/var/lib/postgresql/data:rw
 ###< doctrine/doctrine-bundle ###
+
+  redis:
+    image: 'redis:alpine'
+    ports:
+      - 6379:6379
+    volumes:
+      - ./docker/redis/data:/data:rw
+#  valkey:
+#    image: valkey/valkey:7.2-alpine
+#    volumes:
+#      - ./docker/valkey/data:/data:rw

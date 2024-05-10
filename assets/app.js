@@ -1,5 +1,4 @@
-// We don't have any Stimulus controllers in this project yet, so we don't need to import the Stimulus library.
-//import './bootstrap.js';
+import './bootstrap.js';
 
 /*
  * Welcome to your app's main JavaScript file!
