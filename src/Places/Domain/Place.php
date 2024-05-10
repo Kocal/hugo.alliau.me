@@ -27,9 +27,6 @@ class Place
     private array $types = [];
 
     #[ORM\Column]
-    private bool $toTry = false;
-
-    #[ORM\Column]
     private string|null $googleMapsUrl = null;
 
     #[ORM\Column]
@@ -77,18 +74,6 @@ class Place
     public function setTypes(array $types): static
     {
         $this->types = $types;
-
-        return $this;
-    }
-
-    public function isToTry(): ?bool
-    {
-        return $this->toTry;
-    }
-
-    public function setToTry(bool $toTry): static
-    {
-        $this->toTry = $toTry;
 
         return $this;
     }

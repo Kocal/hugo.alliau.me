@@ -58,14 +58,12 @@ class PlaceCrudController extends AbstractCrudController
             ->allowMultipleChoices()
             ->autocomplete()
         ;
-        yield BooleanField::new('toTry');
 
         yield FormField::addColumn('col-xxl-4');
         yield FormField::addFieldset('Address');
         yield TextField::new('address.name');
+        yield TextField::new('address.formattedAddress');
         yield TextField::new('address.country');
-        yield TextField::new('address.administrative');
-        yield TextField::new('address.county');
         yield TextField::new('address.city');
         yield ArrayField::new('address.coordinates')->onlyOnForms();
     }
