@@ -4,6 +4,7 @@ namespace App\Admin\Infrastructure\Http\Controller\Places;
 
 use App\Places\Domain\Handler\CreatePlace;
 use App\Places\Domain\Place;
+use App\Places\Domain\PlaceType;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
@@ -55,6 +56,9 @@ class PlaceCrudController extends AbstractCrudController
         yield ChoiceField::new('types')
             ->allowMultipleChoices()
             ->autocomplete()
+            ->renderAsBadges()
+            ->setChoices(fn () => PlaceType::cases())
+            ->setFormTypeOption('class', PlaceType::class)
         ;
 
         yield FormField::addColumn('col-xxl-4');
