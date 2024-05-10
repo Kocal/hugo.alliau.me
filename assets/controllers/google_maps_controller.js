@@ -8,9 +8,6 @@ export default class extends Controller
     }
 
     connect() {
-        console.log(this.element);
-        console.log(this.placesValue);
-
         this.#initMap();
     }
 
@@ -60,7 +57,7 @@ export default class extends Controller
     </p>
 </div>
 `,
-                ariaLabel: "Uluru",
+                ariaLabel: address.name,
             });
 
             marker.addListener("click", () => {
