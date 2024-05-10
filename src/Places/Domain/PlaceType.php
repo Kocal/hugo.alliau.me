@@ -7,8 +7,53 @@ namespace App\Places\Domain;
  */
 enum PlaceType: string
 {
-    case POINT_OF_INTEREST = 'point_of_interest';
+    // https://developers.google.com/maps/documentation/places/web-service/supported_types?hl=fr
+    case ADMINISTRATIVE_AREA_LEVEL_1 = 'administrative_area_level_1';
+    case ADMINISTRATIVE_AREA_LEVEL_2 = 'administrative_area_level_2';
+    case ADMINISTRATIVE_AREA_LEVEL_3 = 'administrative_area_level_3';
+    case ADMINISTRATIVE_AREA_LEVEL_4 = 'administrative_area_level_4';
+    case ADMINISTRATIVE_AREA_LEVEL_5 = 'administrative_area_level_5';
+    case ADMINISTRATIVE_AREA_LEVEL_6 = 'administrative_area_level_6';
+    case ADMINISTRATIVE_AREA_LEVEL_7 = 'administrative_area_level_7';
+    case ARCHIPELAGO = 'archipelago';
+    case COLLOQUIAL_AREA = 'colloquial_area';
+    case CONTINENT = 'continent';
+    case COUNTRY = 'country';
     case ESTABLISHMENT = 'establishment';
+    case FINANCE = 'finance';
+    case FLOOR = 'floor';
+    case FOOD = 'food';
+    case GENERAL_CONTRACTOR = 'general_contractor';
+    case GEOCODE = 'geocode';
+    case HEALTH = 'health';
+    case INTERSECTION = 'intersection';
+    case LANDMARK = 'landmark';
+    case LOCALITY = 'locality';
+    case NATURAL_FEATURE = 'natural_feature';
+    case NEIGHBORHOOD = 'neighborhood';
+    case PLACE_OF_WORSHIP = 'place_of_worship';
+    case PLUS_CODE = 'plus_code';
+    case POINT_OF_INTEREST = 'point_of_interest';
+    case POLITICAL = 'political';
+    case POST_BOX = 'post_box';
+    case POSTAL_CODE = 'postal_code';
+    case POSTAL_CODE_PREFIX = 'postal_code_prefix';
+    case POSTAL_CODE_SUFFIX = 'postal_code_suffix';
+    case POSTAL_TOWN = 'postal_town';
+    case PREMISE = 'premise';
+    case ROOM = 'room';
+    case ROUTE = 'route';
+    case STREET_ADDRESS = 'street_address';
+    case STREET_NUMBER = 'street_number';
+    case SUBLOCALITY = 'sublocality';
+    case SUBLOCALITY_LEVEL_1 = 'sublocality_level_1';
+    case SUBLOCALITY_LEVEL_2 = 'sublocality_level_2';
+    case SUBLOCALITY_LEVEL_3 = 'sublocality_level_3';
+    case SUBLOCALITY_LEVEL_4 = 'sublocality_level_4';
+    case SUBLOCALITY_LEVEL_5 = 'sublocality_level_5';
+    case SUBPREMISE = 'subpremise';
+    case TOWN_SQUARE = 'town_square';
+
 
     // Culture
     case ART_GALLERY = 'art_gallery';

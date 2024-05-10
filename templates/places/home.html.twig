@@ -2,13 +2,22 @@
 
 {% block title %}Hugo Alliaume's Places{% endblock %}
 
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        (g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
+            key: "{{ GOOGLE_PLACES_PRIVATE_API_KEY }}",
+            v: "weekly",
+        });
+    </script>
+{% endblock %}
 
 {% block main %}
-<main class="container mx-auto p-2 max-w-screen-lg">
-
-    <twig:Card class="p-2 sm:p-4">
-        <div data-controller="leaflet" style="height: 400px"></div>
-    </twig:Card>
-
+<main class="flex-1 relative">
+    <div
+        data-controller="google-maps"
+        data-google-maps-places-value="{{ places|serialize }}"
+        class="absolute top-0 bottom-0 right-0 left-0"
+    ></div>
 </main>
 {% endblock %}
