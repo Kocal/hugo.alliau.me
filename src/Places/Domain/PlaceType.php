@@ -149,6 +149,12 @@ enum PlaceType: string
     case RESORT_HOTEL = 'resort_hotel';
     case RV_PARK = 'rv_park';
 
+    // Places of Worship
+    case CHURCH = 'church';
+    case HINDU_TEMPLE = 'hindu_temple';
+    case MOSQUE = 'mosque';
+    case SYNAGOGUE = 'synagogue';
+
     // Shopping
     case AUTO_PARTS_STORE = 'auto_parts_store';
     case BICYCLE_STORE = 'bicycle_store';
