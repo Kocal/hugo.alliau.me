@@ -24,9 +24,11 @@ class Address
     /**
      * @var array{0: float, 1: float }
      */
-    #[ORM\Column(type: Types::JSON, options: ['jsonb' => true])]
+    #[ORM\Column(type: Types::JSON, options: [
+        'jsonb' => true,
+    ])]
     #[Assert\Count(exactly: 2)]
-    private array $coordinates = [];
+    private array $coordinates = [0, 0];
 
     public function getFormattedAddress(): ?string
     {
@@ -76,12 +78,17 @@ class Address
         return $this;
     }
 
-
+    /**
+     * @return array{0: float, 1: float}
+     */
     public function getCoordinates(): array
     {
         return $this->coordinates;
     }
 
+    /**
+     * @param array{0: float, 1: float} $coordinates
+     */
     public function setCoordinates(array $coordinates): static
     {
         $this->coordinates = $coordinates;

@@ -11,7 +11,6 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Option\EA;
 use EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
@@ -26,8 +25,7 @@ class PlaceCrudController extends AbstractCrudController
     public function __construct(
         #[Autowire(param: 'kernel.debug')]
         private bool $kernelDebug,
-    )
-    {
+    ) {
     }
 
     public static function getEntityFqcn(): string
@@ -73,7 +71,9 @@ class PlaceCrudController extends AbstractCrudController
         $goToStripe = Action::new('importFromGooglePlaces', 'Import')
             ->displayAsButton()
             ->addCssClass('h-auto')
-            ->setHtmlAttributes(['type' => 'submit'])
+            ->setHtmlAttributes([
+                'type' => 'submit',
+            ])
             ->setTemplatePath('admin/places/crud/action_import_from_google_places.html.twig')
             ->linkToCrudAction('importFromGooglePlaces')
             ->createAsGlobalAction();
@@ -84,13 +84,12 @@ class PlaceCrudController extends AbstractCrudController
     }
 
     public function importFromGooglePlaces(
-        AdminContext    $context,
-        Request         $request,
-        CreatePlace     $createPlace,
+        AdminContext $context,
+        Request $request,
+        CreatePlace $createPlace,
         LoggerInterface $logger,
-    ): Response
-    {
-        if (!$this->isCsrfTokenValid('ea-import-from-google-places', $request->request->get('token'))) {
+    ): Response {
+        if (! $this->isCsrfTokenValid('ea-import-from-google-places', $request->request->getString('token'))) {
             $this->addFlash('danger', 'Invalid CSRF token.');
 
             goto redirect_to_index;
@@ -103,14 +102,16 @@ class PlaceCrudController extends AbstractCrudController
         }
 
         try {
-            $place = $createPlace->fromAutocomplete(json_decode($placeAutocomplete, true, flags: JSON_THROW_ON_ERROR));
+            $place = $createPlace->fromAutocomplete((array) json_decode($placeAutocomplete, true, flags: JSON_THROW_ON_ERROR));
             $this->persistEntity($this->container->get('doctrine')->getManagerForClass($context->getEntity()->getFqcn()), $place);
         } catch (\Throwable $e) {
             if ($this->kernelDebug) {
                 throw $e;
             }
 
-            $logger->error('An error occurred while importing places.', ['exception' => $e]);
+            $logger->error('An error occurred while importing places.', [
+                'exception' => $e,
+            ]);
             $this->addFlash('danger', 'An error occurred while importing places.');
 
             goto redirect_to_index;

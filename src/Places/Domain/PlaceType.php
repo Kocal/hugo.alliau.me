@@ -54,7 +54,6 @@ enum PlaceType: string
     case SUBPREMISE = 'subpremise';
     case TOWN_SQUARE = 'town_square';
 
-
     // Culture
     case ART_GALLERY = 'art_gallery';
     case MUSEUM = 'museum';

@@ -14,6 +14,9 @@ final class CreatePlace
     ) {
     }
 
+    /**
+     * @param array<string, mixed> $autocomplete
+     */
     public function fromAutocomplete(array $autocomplete): Place
     {
         $address = (new Address())
@@ -32,7 +35,7 @@ final class CreatePlace
 
         $place = (new Place())
             ->setGoogleMapsUrl($autocomplete['url'])
-            ->setIconMaskUri($autocomplete['icon_mask_base_uri'].'.svg')
+            ->setIconMaskUri($autocomplete['icon_mask_base_uri'] . '.svg')
             ->setTypes(array_map(PlaceType::from(...), $autocomplete['types']))
             ->setAddress($address)
         ;
