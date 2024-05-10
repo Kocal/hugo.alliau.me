@@ -2,11 +2,11 @@
 
 namespace App\Shared\Google\Places;
 
-final class GetAddressComponentFromPlaceResult
+final class GetAddressComponent
 {
-    public function __invoke(array $placeResult, string $addressComponentType): array|null
+    public function __invoke(array $addressComponents, string $addressComponentType): array|null
     {
-        foreach ($placeResult['addressComponents'] as $addressComponent) {
+        foreach ($addressComponents as $addressComponent) {
             if (in_array($addressComponentType, $addressComponent['types'], true)) {
                 return $addressComponent;
             }

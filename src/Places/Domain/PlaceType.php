@@ -7,6 +7,9 @@ namespace App\Places\Domain;
  */
 enum PlaceType: string
 {
+    case POINT_OF_INTEREST = 'point_of_interest';
+    case ESTABLISHMENT = 'establishment';
+
     // Culture
     case ART_GALLERY = 'art_gallery';
     case MUSEUM = 'museum';

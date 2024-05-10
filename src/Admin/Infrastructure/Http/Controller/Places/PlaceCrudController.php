@@ -2,9 +2,8 @@
 
 namespace App\Admin\Infrastructure\Http\Controller\Places;
 
-use App\Places\Domain\Handler\CreatePlaceFromTextQuery;
+use App\Places\Domain\Handler\CreatePlace;
 use App\Places\Domain\Place;
-use App\Places\Domain\PlaceType;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
@@ -42,7 +41,11 @@ class PlaceCrudController extends AbstractCrudController
             ->setDefaultSort([
                 'updatedAt' => 'DESC',
             ])
-            ->showEntityActionsInlined();
+            ->showEntityActionsInlined()
+            ->overrideTemplates([
+                'crud/index' => 'admin/places/crud/index.html.twig',
+            ])
+        ;
     }
 
     public function configureFields(string $pageName): iterable
@@ -69,8 +72,9 @@ class PlaceCrudController extends AbstractCrudController
 
     public function configureActions(Actions $actions): Actions
     {
-        $goToStripe = Action::new('importFromGooglePlaces')
+        $goToStripe = Action::new('importFromGooglePlaces', 'Import')
             ->displayAsButton()
+            ->addCssClass('h-auto')
             ->setHtmlAttributes(['type' => 'submit'])
             ->setTemplatePath('admin/places/crud/action_import_from_google_places.html.twig')
             ->linkToCrudAction('importFromGooglePlaces')
@@ -82,10 +86,10 @@ class PlaceCrudController extends AbstractCrudController
     }
 
     public function importFromGooglePlaces(
-        AdminContext             $context,
-        Request                  $request,
-        CreatePlaceFromTextQuery $createPlaceFromTextQuery,
-        LoggerInterface          $logger,
+        AdminContext    $context,
+        Request         $request,
+        CreatePlace     $createPlace,
+        LoggerInterface $logger,
     ): Response
     {
         if (!$this->isCsrfTokenValid('ea-import-from-google-places', $request->request->get('token'))) {
@@ -94,14 +98,14 @@ class PlaceCrudController extends AbstractCrudController
             goto redirect_to_index;
         }
 
-        if ('' === $textQuery = $request->request->getString('text_query')) {
-            $this->addFlash('danger', 'Please enter a text query.');
+        if ('' === $placeAutocomplete = $request->request->getString('place_autocomplete')) {
+            $this->addFlash('danger', 'Please enter a location.');
 
             goto redirect_to_index;
         }
 
         try {
-            $place = $createPlaceFromTextQuery($textQuery);
+            $place = $createPlace->fromAutocomplete(json_decode($placeAutocomplete, true, flags: JSON_THROW_ON_ERROR));
             $this->persistEntity($this->container->get('doctrine')->getManagerForClass($context->getEntity()->getFqcn()), $place);
         } catch (\Throwable $e) {
             if ($this->kernelDebug) {
