@@ -1,13 +1,17 @@
 includes:
-    - tools/phpstan/vendor/phpstan/phpstan-symfony/extension.neon
-    - tools/phpstan/vendor/phpstan/phpstan-doctrine/extension.neon
+    - vendor/phpstan/phpstan-symfony/extension.neon
+    - vendor/phpstan/phpstan-doctrine/extension.neon
     - tools/phpstan/symfony-configuration.php
     - phpstan-baseline.neon
 
 parameters:
     level: max
     paths:
-        - src
+        - bin/
+        - config/
+        - public/
+        - src/
+        #- tests/
 
     symfony:
         console_application_loader: tools/phpstan/console-application.php

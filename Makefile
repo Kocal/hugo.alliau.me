@@ -40,8 +40,6 @@ delete:
 app.install:
 	@$(call action, Installing PHP dependencies...)
 	$(COMPOSER) install --prefer-dist
-	$(COMPOSER) install --working-dir=tools/easy-coding-standard
-	$(COMPOSER) install --working-dir=tools/phpstan
 
 	@$(call action, Running DB migrations...)
 	$(SF_CONSOLE) doctrine:migrations:migrate --no-interaction --all-or-nothing
@@ -67,13 +65,13 @@ cs.fix: cs.back.fix
 
 ## Coding style - Check backend coding style
 cs.back:
-	$(PHP) tools/easy-coding-standard/vendor/bin/ecs check
-	$(PHP) tools/twig-cs-fixer/vendor/bin/twig-cs-fixer
+	$(PHP) vendor/bin/ecs check
+	$(PHP) vendor/bin/twig-cs-fixer
 
 ## Coding style - Check backend coding style and fix issues
 cs.back.fix:
-	$(PHP) tools/easy-coding-standard/vendor/bin/ecs check --fix
-	$(PHP) tools/twig-cs-fixer/vendor/bin/twig-cs-fixer --fix
+	$(PHP) vendor/bin/ecs check --fix
+	$(PHP) vendor/bin/twig-cs-fixer --fix
 
 ##########
 # Linter #
@@ -96,10 +94,10 @@ lint.back:
 
 ## PHPStan - Run PHPStan
 phpstan:
-	$(PHP) tools/phpstan/vendor/bin/phpstan analyse
+	$(PHP) vendor/bin/phpstan analyse
 
 ## PHPStan - Run PHPStan and update the baseline
 phpstan.generate-baseline:
-	$(PHP) tools/phpstan/vendor/bin/phpstan analyse --generate-baseline
+	$(PHP) vendor/bin/phpstan analyse --generate-baseline
 
 -include $(ROOT_DIR)/Makefile.local

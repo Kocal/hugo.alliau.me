@@ -14,6 +14,6 @@
     },
 }) %}
 
-<{{ href ? 'a' : 'span' }} class="{{ style_badge.apply({ color, size, hoverable: not href }, attributes.render('class') ?? '') }}" {{ attributes.defaults({ href }) }}>
+<{{ href ? 'a' : 'span' }} class="{{ style_badge.apply({color, size, hoverable: not href}, attributes.render('class') ?? '') }}" {{ attributes.defaults({href}) }}>
     {{- block('content') -}}
 </{{ href ? 'a' : 'span' }}>

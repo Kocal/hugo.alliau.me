@@ -6,7 +6,6 @@ final class GetAddressComponent
 {
     /**
      * @param array<string, mixed> $addressComponents
-     * @param string $addressComponentType
      * @return array<string, mixed>|null
      */
     public function __invoke(array $addressComponents, string $addressComponentType): array|null
