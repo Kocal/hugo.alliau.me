@@ -28,7 +28,7 @@ jobs:
           tools: symfony
 
       - name: Install project
-        run: make app.install
+        run: make install
 
       - name: QA
         run: make qa
