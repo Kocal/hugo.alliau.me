@@ -30,8 +30,11 @@ jobs:
           extensions: ctype, iconv, mbstring
           tools: symfony
 
+      - name: Start Docker containers
+        run: docker compose up -d --wait
+
       - name: Install project
-        run: make install
+        run: make app.install
 
       - name: QA
         run: make qa
