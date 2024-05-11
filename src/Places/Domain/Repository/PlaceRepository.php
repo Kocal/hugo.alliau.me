@@ -15,4 +15,13 @@ class PlaceRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Place::class);
     }
+
+    public function getOneLatestUpdated(): Place
+    {
+        return $this->createQueryBuilder('p')
+            ->orderBy('p.updatedAt', 'DESC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getSingleResult();
+    }
 }

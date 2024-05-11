@@ -3,12 +3,15 @@
 namespace App\Places\Domain;
 
 use App\Places\Domain\Repository\PlaceRepository;
+use App\Routing\Domain\ValueObject\RouteName;
+use App\Shared\Http\Cache\CacheableEntity;
+use App\Shared\Http\Cache\ValueObject\CacheItem;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: PlaceRepository::class)]
 #[ORM\HasLifecycleCallbacks]
-class Place
+class Place implements CacheableEntity
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -122,5 +125,19 @@ class Place
     public function preUpdate(): void
     {
         $this->updatedAt = new \DateTimeImmutable();
+    }
+
+    #[\Override]
+    public function getEtag(): string
+    {
+        return 'places:place:' . $this->id . ':' . ($this->updatedAt?->format('U') ?? '0');
+    }
+
+    #[\Override]
+    public function getCacheItems(): array
+    {
+        return [
+            CacheItem::fromRoute(RouteName::PLACES_HOME),
+        ];
     }
 }
