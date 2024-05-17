@@ -101,12 +101,8 @@
             "importmap:install": "symfony-cmd",
             "tailwind:build --minify": "symfony-cmd"
         },
-        "post-install-cmd": [
-            "@auto-scripts"
-        ],
-        "post-update-cmd": [
-            "@auto-scripts"
-        ]
+        "post-install-cmd": ["@auto-scripts"],
+        "post-update-cmd": ["@auto-scripts"]
     },
     "conflict": {
         "symfony/symfony": "*"

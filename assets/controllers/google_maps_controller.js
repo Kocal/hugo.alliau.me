@@ -1,35 +1,38 @@
-import {Controller} from "@hotwired/stimulus";
+import { Controller } from "@hotwired/stimulus";
 
 /* stimulusFetch: "lazy" */
-export default class extends Controller
-{
+export default class extends Controller {
     static values = {
         places: Array,
-    }
+    };
 
     connect() {
         this.#initMap();
     }
 
     async #initMap() {
-        const {Map} = await google.maps.importLibrary("maps")
-        const {AdvancedMarkerElement, PinElement} = await google.maps.importLibrary("marker")
+        const { Map } = await google.maps.importLibrary("maps");
+        const { AdvancedMarkerElement, PinElement } =
+            await google.maps.importLibrary("marker");
 
         const map = new Map(this.element, {
             center: new google.maps.LatLng(0, 0),
             zoom: 2,
-            mapId: '2b2d73ba4b8c7b41',
+            mapId: "2b2d73ba4b8c7b41",
         });
 
         const infoWindows = [];
 
-        const markers = this.placesValue.map(place => {
-            const position = new google.maps.LatLng(place.address.coordinates[0], place.address.coordinates[1]);
+        const markers = this.placesValue.map((place) => {
+            const position = new google.maps.LatLng(
+                place.address.coordinates[0],
+                place.address.coordinates[1],
+            );
 
             const pinElement = new PinElement({
                 // background: place.iconBackgroundColor,
                 glyph: new URL(String(place.iconMaskUri)),
-                glyphColor: 'white',
+                glyphColor: "white",
             });
 
             const marker = new AdvancedMarkerElement({
@@ -45,7 +48,12 @@ export default class extends Controller
     <p class="font-bold text-xl">${place.address.name}</p>
     <p class="text-base font-normal">${place.address.formattedAddress}</p>
     <ul class="flex flex-wrap gap-1 mt-1">
-        ${place.types.map(type => `<li class="text-primary-50 bg-primary-700 uppercase text-xs font-bold p-0.5 rounded">${type}</li>`).join('')}
+        ${place.types
+            .map(
+                (type) =>
+                    `<li class="text-primary-50 bg-primary-700 uppercase text-xs font-bold p-0.5 rounded">${type}</li>`,
+            )
+            .join("")}
     </ul>
     <p class="text-base mt-2">
         <a href="${place.googleMapsUrl}" rel="noreferrer noopener" target="_blank" class="underline font-normal text-primary-600">
@@ -61,7 +69,7 @@ export default class extends Controller
             });
 
             marker.addListener("click", () => {
-                infoWindows.forEach(infoWindow => infoWindow.close());
+                infoWindows.forEach((infoWindow) => infoWindow.close());
                 infoWindow.open({
                     anchor: marker,
                     map,
@@ -74,7 +82,7 @@ export default class extends Controller
         });
 
         const bounds = new google.maps.LatLngBounds();
-        markers.forEach(marker => bounds.extend(marker.position));
+        markers.forEach((marker) => bounds.extend(marker.position));
         map.fitBounds(bounds);
     }
 }
