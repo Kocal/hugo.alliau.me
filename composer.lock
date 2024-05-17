@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1baa41aae2c89c91218aa6b75167dc2b",
+    "content-hash": "21fe8c0b53b1164698b71208e318c00c",
     "packages": [
         {
             "name": "composer/semver",
@@ -1613,6 +1613,61 @@
                 "source": "https://github.com/KnpLabs/KnpMenuBundle/tree/v3.3.0"
             },
             "time": "2023-11-01T09:25:40+00:00"
+        },
+        {
+            "name": "kocal/biome-js-bundle",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Kocal/BiomeJsBundle.git",
+                "reference": "48d1e0a6dab39288a65b58f7bb96130d7b69c87d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Kocal/BiomeJsBundle/zipball/48d1e0a6dab39288a65b58f7bb96130d7b69c87d",
+                "reference": "48d1e0a6dab39288a65b58f7bb96130d7b69c87d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1",
+                "symfony/console": "^6.4|^7.0",
+                "symfony/http-client": "^6.4|^7.0",
+                "symfony/process": "^6.4|^7.0"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^1.11",
+                "phpunit/phpunit": "^10.5 || ^11.1",
+                "symfony/framework-bundle": "^6.4|^7.0",
+                "symplify/easy-coding-standard": "^12.1.2"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "Kocal\\BiomeJsBundle\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Hugo Alliaume",
+                    "email": "hugo@alliau.me"
+                }
+            ],
+            "description": "Use Biome.js with Symfony",
+            "keywords": [
+                "biome",
+                "biome.js",
+                "bundle",
+                "symfony"
+            ],
+            "support": {
+                "issues": "https://github.com/Kocal/BiomeJsBundle/issues",
+                "source": "https://github.com/Kocal/BiomeJsBundle/tree/v1.0.0"
+            },
+            "time": "2024-05-17T18:04:04+00:00"
         },
         {
             "name": "league/commonmark",

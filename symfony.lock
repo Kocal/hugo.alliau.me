@@ -38,6 +38,9 @@
     "knplabs/knp-menu-bundle": {
         "version": "v3.3.0"
     },
+    "kocal/biome-js-bundle": {
+        "version": "v1.0.0"
+    },
     "league/flysystem-bundle": {
         "version": "3.3",
         "recipe": {
