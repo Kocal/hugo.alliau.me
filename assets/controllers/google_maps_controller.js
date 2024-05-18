@@ -11,11 +11,11 @@ export default class extends Controller {
     }
 
     async #initMap() {
-        const { Map } = await google.maps.importLibrary("maps");
+        const { Map: GoogleMap } = await google.maps.importLibrary("maps");
         const { AdvancedMarkerElement, PinElement } =
             await google.maps.importLibrary("marker");
 
-        const map = new Map(this.element, {
+        const map = new GoogleMap(this.element, {
             center: new google.maps.LatLng(0, 0),
             zoom: 2,
             mapId: "2b2d73ba4b8c7b41",
@@ -69,7 +69,10 @@ export default class extends Controller {
             });
 
             marker.addListener("click", () => {
-                infoWindows.forEach((infoWindow) => infoWindow.close());
+                for (const infoWindow of infoWindows) {
+                    infoWindow.close()
+                }
+
                 infoWindow.open({
                     anchor: marker,
                     map,
@@ -82,7 +85,9 @@ export default class extends Controller {
         });
 
         const bounds = new google.maps.LatLngBounds();
-        markers.forEach((marker) => bounds.extend(marker.position));
+        for (const marker of markers) {
+            bounds.extend(marker.position);
+        }
         map.fitBounds(bounds);
     }
 }
