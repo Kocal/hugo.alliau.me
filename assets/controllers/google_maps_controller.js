@@ -70,7 +70,7 @@ export default class extends Controller {
 
             marker.addListener("click", () => {
                 for (const infoWindow of infoWindows) {
-                    infoWindow.close()
+                    infoWindow.close();
                 }
 
                 infoWindow.open({

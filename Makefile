@@ -59,9 +59,10 @@ qa: cs lint phpstan
 ################
 
 ## Coding style - Run all coding style checks
-cs: cs.back
+cs: cs.back cs.front
 
-cs.fix: cs.back.fix
+## Coding style - Run all coding style checks and fix issues
+cs.fix: cs.back.fix cs.front.fix
 
 ## Coding style - Check backend coding style
 cs.back:
@@ -73,12 +74,27 @@ cs.back.fix:
 	$(PHP) vendor/bin/ecs check --fix
 	$(PHP) vendor/bin/twig-cs-fixer --fix
 
+## Coding style - Check frontend coding style
+cs.front:
+ifdef CI
+	$(SF_CONSOLE) biomejs:ci . --linter-enabled=false
+else
+	$(SF_CONSOLE) biomejs:check . --linter-enabled=false
+endif
+
+## Coding style - Check frontend coding style and fix issues
+cs.front.fix:
+	$(SF_CONSOLE) biomejs:check . --linter-enabled=false --apply-unsafe
+
 ##########
 # Linter #
 ##########
 
 ## Linter - Run all linters
-lint: lint.back
+lint: lint.back lint.front
+
+## Linter - Run all linters and fix issues
+lint.fix: lint.back lint.front.fix
 
 ## Linter - Run linters for backend
 lint.back:
@@ -87,6 +103,18 @@ lint.back:
 	$(SF_CONSOLE) lint:yaml --parse-tags config
 	$(SF_CONSOLE) lint:twig templates
 	#$(SF_CONSOLE) doctrine:schema:validate
+
+## Coding style - Check frontend coding style
+lint.front:
+ifdef CI
+	$(SF_CONSOLE) biomejs:ci . --formatter-enabled=false
+else
+	$(SF_CONSOLE) biomejs:check . --formatter-enabled=false
+endif
+
+## Coding style - Check frontend coding style and fix issues
+lint.front.fix:
+	$(SF_CONSOLE) biomejs:check . --formatter-enabled=false --apply-unsafe
 
 ###########
 # PHPStan #

@@ -39,7 +39,6 @@ jobs:
       - name: QA
         run: make qa
 
-
   docker_build:
     if: ${{ ! github.event.pull_request.draft }}
     timeout-minutes: 10
