@@ -1,6 +1,11 @@
 {
     "files": {
-        "ignore": ["vendor/*", "assets/vendor/*", "public/bundles/*"]
+        "ignore": [
+            "composer.json",
+            "vendor/*",
+            "assets/vendor/*",
+            "public/bundles/*"
+        ]
     },
     "formatter": {
         "indentStyle": "space",
