@@ -116,6 +116,11 @@ parameters:
 			path: src/Places/Domain/Place.php
 
 		-
+			message: "#^Method App\\\\Places\\\\Domain\\\\Repository\\\\PlaceRepository\\:\\:getOneLatestUpdated\\(\\) should return App\\\\Places\\\\Domain\\\\Place but returns mixed\\.$#"
+			count: 1
+			path: src/Places/Domain/Repository/PlaceRepository.php
+
+		-
 			message: "#^Cannot access offset 'types' on mixed\\.$#"
 			count: 1
 			path: src/Shared/Google/Places/GetAddressComponent.php
