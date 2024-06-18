@@ -3,6 +3,10 @@ module.exports = {
     content: ["./assets/**/*.js", "./templates/**/*.html.twig"],
     theme: {
         extend: {
+            screens: {
+                print: {raw: 'print'},
+                screen: {raw: 'screen'},
+            },
             colors: {
                 primary: {
                     50: "#eff8ff",

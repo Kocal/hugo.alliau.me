@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block main %}
-    <main class="container mx-auto p-2 max-w-screen-xl grid grid-cols-1 sm:grid-cols-[256px_1fr] gap-2 sm:gap-4">
+    <main class="container mx-auto p-2 max-w-screen-xl grid grid-cols-1 sm:grid-cols-[256px_1fr] print:grid-cols-[200px_1fr] gap-2 sm:gap-4">
         <div class="flex flex-col gap-2 sm:gap-4">
             <twig:Card class="p-2 sm:p-4 flex">
                 <div class="flex-1 flex flex-col justify-between gap-2">
@@ -18,10 +18,10 @@
                         decoding="async"
                         loading="lazy"
                         alt="Hugo Alliaume"
-                        class="rounded-full mx-auto shadow-lg"
+                        class="rounded-full mx-auto shadow-lg print:size-20"
                     />
 
-                    <h1 class="text-2xl sm:text-3xl font-extrabold">Hugo Alliaume</h1>
+                    <h1 class="text-2xl sm:text-3xl print:text-xl font-extrabold">Hugo Alliaume</h1>
 
                     <div>
                         <p>Développeur web full-stack passionné, et contributeur open-source.</p>
@@ -48,9 +48,9 @@
 
             <twig:Card class="p-2 sm:p-4">
 
-                <h2 class="text-2xl sm:text-3xl font-bold mb-4">Skills</h2>
+                <h2 class="text-2xl sm:text-3xl print:text-xl font-bold mb-4 print:mb-2">Skills</h2>
 
-                <ul class="flex flex-wrap gap-2">
+                <ul class="flex flex-wrap gap-2 print:gap-1">
                     {% for skill in [
                         'PHP', 'Symfony',
                         'JavaScript', 'TypeScript', 'Vue',
@@ -61,7 +61,7 @@
                         'Technique', 'Leadership'
                     ] %}
                         <li>
-                            <twig:Badge class="block" size="sm" color="gray">
+                            <twig:Badge class="block" size="sm" color="gray" class="print:text-sm">
                                 {{ skill }}
                             </twig:Badge>
                         </li>
@@ -72,15 +72,15 @@
 
         <div class="flex flex-col gap-2 sm:gap-4">
             <twig:Card class="p-2 sm:p-4">
-                <h2 class="text-2xl sm:text-3xl font-bold mb-4">
+                <h2 class="text-2xl sm:text-3xl print:text-xl font-bold mb-4 print:mb-2">
                     Expériences professionnelles
                 </h2>
 
-                <div class="flex flex-col gap-4 sm:gap-5">
+                <div class="flex flex-col gap-4 sm:gap-5 print:gap-2">
                     {% for professional_experience in professional_experiences %}
                         <section>
                             <header>
-                                <span class="block text-xl sm:text-2xl font-bold">
+                                <span class="block text-xl sm:text-2xl print:text-lg font-bold">
                                     {{ professional_experience.jobName }}
                                     <small>
                                         &bullet;
@@ -101,15 +101,15 @@
                                 </span>
                             </header>
 
-                            <div class="my-2">
+                            <div class="my-2 print:text-sm">
                                 {{ professional_experience.description|nl2br }}
                             </div>
 
                             <footer>
-                                <ul class="flex flex-wrap gap-2">
+                                <ul class="flex flex-wrap gap-2 print:gap-1">
                                     {% for badge in professional_experience.badges %}
                                         <li>
-                                            <twig:Badge class="block" size="sm" color="gray">
+                                            <twig:Badge class="block" size="sm" color="gray" class="print:text-sm">
                                                 {{ badge }}
                                             </twig:Badge>
                                         </li>
@@ -119,13 +119,13 @@
                         </section>
 
                         {% if not loop.last %}
-                            <twig:ListItemSeparator />
+                            <twig:ListItemSeparator class="print:hidden" />
                         {% endif %}
                     {% endfor %}
                 </div>
             </twig:Card>
 
-            <twig:Card class="p-2 sm:p-4">
+            <twig:Card class="p-2 sm:p-4 print:hidden">
 
                 <h2 class="text-2xl sm:text-3xl font-bold mb-4">Projets</h2>
 
