@@ -35,7 +35,7 @@ class ProjectCrudController extends AbstractCrudController
         yield TextField::new('name');
         yield UrlField::new('url');
         yield TextareaField::new('description')->onlyOnForms();
-        yield DateField::new('date');
+        yield DateField::new('date')->setRequired(true);
         yield ArrayField::new('techStack');
     }
 }
