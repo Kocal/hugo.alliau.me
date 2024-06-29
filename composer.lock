@@ -8877,16 +8877,16 @@
     "packages-dev": [
         {
             "name": "kocal/biome-js-bundle",
-            "version": "v1.0.2",
+            "version": "v1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Kocal/BiomeJsBundle.git",
-                "reference": "1a26bb5cf9f4defc7cf9d37abb4c73b43d6602dc"
+                "reference": "1d0a4167d5dffd062127eda7e966feddfee8f36e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Kocal/BiomeJsBundle/zipball/1a26bb5cf9f4defc7cf9d37abb4c73b43d6602dc",
-                "reference": "1a26bb5cf9f4defc7cf9d37abb4c73b43d6602dc",
+                "url": "https://api.github.com/repos/Kocal/BiomeJsBundle/zipball/1d0a4167d5dffd062127eda7e966feddfee8f36e",
+                "reference": "1d0a4167d5dffd062127eda7e966feddfee8f36e",
                 "shasum": ""
             },
             "require": {
@@ -8926,9 +8926,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Kocal/BiomeJsBundle/issues",
-                "source": "https://github.com/Kocal/BiomeJsBundle/tree/v1.0.2"
+                "source": "https://github.com/Kocal/BiomeJsBundle/tree/v1.0.3"
             },
-            "time": "2024-05-26T08:06:31+00:00"
+            "time": "2024-06-29T08:43:16+00:00"
         },
         {
             "name": "nikic/php-parser",
