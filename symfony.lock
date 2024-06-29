@@ -1,4 +1,7 @@
 {
+    "cuyz/valinor-bundle": {
+        "version": "0.3.0"
+    },
     "doctrine/doctrine-bundle": {
         "version": "2.12",
         "recipe": {

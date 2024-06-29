@@ -8,6 +8,8 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "ext-mbstring": "*",
+        "cuyz/valinor": "^1.12",
+        "cuyz/valinor-bundle": "^0.3.0",
         "doctrine/dbal": "^3",
         "doctrine/doctrine-bundle": "^2.12",
         "doctrine/doctrine-migrations-bundle": "^3.3",

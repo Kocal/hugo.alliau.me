@@ -24,8 +24,8 @@ controllers_cv:
 
 controllers_addresses:
     resource:
-        path: ../src/Places/Infrastructure/Http/Controller/
-        namespace: App\Places\Infrastructure\Http\Controller
+        path: ../src/Places/Infrastructure/Symfony/Controller/
+        namespace: App\Places\Infrastructure\Symfony\Controller
     type: attribute
 
 controllers_home:

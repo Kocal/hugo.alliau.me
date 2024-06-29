@@ -20,4 +20,5 @@ return [
     EasyCorp\Bundle\EasyAdminBundle\EasyAdminBundle::class => ['all' => true],
     League\FlysystemBundle\FlysystemBundle::class => ['all' => true],
     Kocal\BiomeJsBundle\KocalBiomeJsBundle::class => ['dev' => true],
+    CuyZ\ValinorBundle\ValinorBundle::class => ['all' => true],
 ];

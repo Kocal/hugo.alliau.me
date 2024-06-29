@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Shared\Infrastructure\Symfony\Messenger;
@@ -16,7 +17,7 @@ final class MessengerCommandBus implements CommandBus
     use HandleTrait;
 
     public function __construct(
-        #[Autowire('messenger.bus.command')]
+        #[Autowire(service: 'messenger.bus.command')]
         private MessageBusInterface $messageBus,
     ) {
     }
