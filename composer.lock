@@ -9066,16 +9066,16 @@
     "packages-dev": [
         {
             "name": "kocal/biome-js-bundle",
-            "version": "v1.0.3",
+            "version": "v1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Kocal/BiomeJsBundle.git",
-                "reference": "1d0a4167d5dffd062127eda7e966feddfee8f36e"
+                "reference": "e515ff77312f92fd110020b768f3157f02ffc31b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Kocal/BiomeJsBundle/zipball/1d0a4167d5dffd062127eda7e966feddfee8f36e",
-                "reference": "1d0a4167d5dffd062127eda7e966feddfee8f36e",
+                "url": "https://api.github.com/repos/Kocal/BiomeJsBundle/zipball/e515ff77312f92fd110020b768f3157f02ffc31b",
+                "reference": "e515ff77312f92fd110020b768f3157f02ffc31b",
                 "shasum": ""
             },
             "require": {
@@ -9115,9 +9115,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Kocal/BiomeJsBundle/issues",
-                "source": "https://github.com/Kocal/BiomeJsBundle/tree/v1.0.3"
+                "source": "https://github.com/Kocal/BiomeJsBundle/tree/v1.0.4"
             },
-            "time": "2024-06-29T08:43:16+00:00"
+            "time": "2024-06-30T18:59:44+00:00"
         },
         {
             "name": "masterminds/html5",

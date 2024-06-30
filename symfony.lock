@@ -42,7 +42,17 @@
         "version": "v3.3.0"
     },
     "kocal/biome-js-bundle": {
-        "version": "v1.0.0"
+        "version": "1.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "1.0",
+            "ref": "474903cc35adbb0d611e0645bc3b1412cecda5a2"
+        },
+        "files": [
+            "biome.json",
+            "config/packages/kocal_biome_js.yaml"
+        ]
     },
     "league/flysystem-bundle": {
         "version": "3.3",
