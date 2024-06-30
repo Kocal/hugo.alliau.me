@@ -6,5 +6,5 @@ namespace App\Places\Domain;
 
 enum Route: string
 {
-    case ViewList = 'app.places.view_list';
+    case INDEX = 'app.places.view_list';
 }

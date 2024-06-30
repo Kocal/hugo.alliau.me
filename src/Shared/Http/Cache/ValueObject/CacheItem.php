@@ -9,8 +9,12 @@ final readonly class CacheItem
     /**
      * @param array<string,mixed> $parameters
      */
-    public static function fromRoute(string $route, array $parameters = []): self
+    public static function fromRoute(string|\BackedEnum $route, array $parameters = []): self
     {
+        if ($route instanceof \BackedEnum) {
+            $route = (string) $route->value;
+        }
+
         return new self(route: $route, parameters: $parameters);
     }
 

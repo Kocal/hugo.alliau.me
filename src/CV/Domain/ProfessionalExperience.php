@@ -2,15 +2,13 @@
 
 namespace App\CV\Domain;
 
-use App\CV\Domain\Repository\ProfessionalExperienceRepository;
-use App\Routing\Domain\ValueObject\RouteName;
 use App\Shared\Http\Cache\CacheableEntity;
 use App\Shared\Http\Cache\ValueObject\CacheItem;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
-#[ORM\Entity(repositoryClass: ProfessionalExperienceRepository::class)]
+#[ORM\Entity()]
 #[ORM\Table(name: 'cv_professional_experience')]
 #[ORM\HasLifecycleCallbacks]
 class ProfessionalExperience implements CacheableEntity
@@ -187,7 +185,7 @@ class ProfessionalExperience implements CacheableEntity
     public function getCacheItems(): array
     {
         return [
-            CacheItem::fromRoute(RouteName::CV_HOME),
+            CacheItem::fromRoute(Route::INDEX),
         ];
     }
 }

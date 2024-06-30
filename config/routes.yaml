@@ -18,11 +18,11 @@ controllers_blog:
 
 controllers_cv:
     resource:
-        path: ../src/CV/Infrastructure/Http/Controller/
-        namespace: App\CV\Infrastructure\Http\Controller
+        path: ../src/CV/Infrastructure/Symfony/Controller/
+        namespace: App\CV\Infrastructure\Symfony\Controller
     type: attribute
 
-controllers_addresses:
+controllers_places:
     resource:
         path: ../src/Places/Infrastructure/Symfony/Controller/
         namespace: App\Places\Infrastructure\Symfony\Controller

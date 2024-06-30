@@ -2,14 +2,12 @@
 
 namespace App\CV\Domain;
 
-use App\CV\Domain\Repository\ProjectRepository;
-use App\Routing\Domain\ValueObject\RouteName;
 use App\Shared\Http\Cache\CacheableEntity;
 use App\Shared\Http\Cache\ValueObject\CacheItem;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: ProjectRepository::class)]
+#[ORM\Entity()]
 #[ORM\Table(name: 'cv_project')]
 #[ORM\HasLifecycleCallbacks]
 class Project implements CacheableEntity
@@ -149,7 +147,7 @@ class Project implements CacheableEntity
     public function getCacheItems(): array
     {
         return [
-            CacheItem::fromRoute(RouteName::CV_HOME),
+            CacheItem::fromRoute(Route::INDEX),
         ];
     }
 }

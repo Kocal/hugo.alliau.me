@@ -1,35 +1,19 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\CV\Domain\Repository;
 
 use App\CV\Domain\Project;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\Persistence\ManagerRegistry;
 
-/**
- * @extends ServiceEntityRepository<Project>
- */
-class ProjectRepository extends ServiceEntityRepository
+interface ProjectRepository
 {
-    public function __construct(ManagerRegistry $registry)
-    {
-        parent::__construct($registry, Project::class);
-    }
+    public function save(Project $project): void;
 
-    public function findAll(): array
-    {
-        $qb = $this->createQueryBuilder('project')
-            ->orderBy('project.date', 'DESC');
+    /**
+     * @return array<Project>
+     */
+    public function findAll(): array;
 
-        return $qb->getQuery()->getResult();
-    }
-
-    public function findOneLatest(): Project|null
-    {
-        $qb = $this->createQueryBuilder('project')
-            ->orderBy('project.date', 'DESC')
-            ->setMaxResults(1);
-
-        return $qb->getQuery()->getOneOrNullResult();
-    }
+    public function findOneLatest(): Project|null;
 }
