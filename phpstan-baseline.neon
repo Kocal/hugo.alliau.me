@@ -36,11 +36,6 @@ parameters:
 			path: src/CV/Domain/Repository/ProjectRepository.php
 
 		-
-			message: "#^Parameter \\#1 \\$address of method App\\\\Places\\\\Domain\\\\Place\\:\\:setAddress\\(\\) expects App\\\\Places\\\\Domain\\\\Address\\|null, mixed given\\.$#"
-			count: 1
-			path: src/Places/Domain/Command/CreatePlaceHandler.php
-
-		-
 			message: "#^Parameter \\#1 \\$callback of function array_map expects \\(callable\\(App\\\\Places\\\\Domain\\\\PlaceType\\)\\: mixed\\)\\|null, Closure\\(int\\|string\\)\\: App\\\\Places\\\\Domain\\\\PlaceType given\\.$#"
 			count: 1
 			path: src/Places/Domain/Place.php
@@ -52,11 +47,6 @@ parameters:
 
 		-
 			message: "#^Cannot call method getControllerFqcn\\(\\) on EasyCorp\\\\Bundle\\\\EasyAdminBundle\\\\Dto\\\\CrudDto\\|null\\.$#"
-			count: 1
-			path: src/Places/Infrastructure/EasyAdmin/Controller/PlaceCrudController.php
-
-		-
-			message: "#^Parameter \\#1 \\$autocomplete of static method App\\\\Places\\\\Domain\\\\Command\\\\CreatePlace\\:\\:fromGoogleAutocomplete\\(\\) expects App\\\\Places\\\\Domain\\\\Google\\\\Place\\\\Autocomplete, mixed given\\.$#"
 			count: 1
 			path: src/Places/Infrastructure/EasyAdmin/Controller/PlaceCrudController.php
 

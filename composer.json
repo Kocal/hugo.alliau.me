@@ -84,6 +84,7 @@
     },
     "autoload-dev": {
         "psr-4": {
+            "App\\PHPStan\\": "tools/phpstan/src/",
             "App\\Tests\\": "tests/"
         }
     },

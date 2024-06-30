@@ -18,3 +18,9 @@ parameters:
 
     doctrine:
         objectManagerLoader: tools/phpstan/object-manager.php
+
+services:
+	-
+		class: App\PHPStan\Type\CommandBusDispatchDynamicMethodReturnTypeExtension
+		tags:
+			- phpstan.broker.dynamicMethodReturnTypeExtension

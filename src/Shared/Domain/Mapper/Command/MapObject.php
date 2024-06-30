@@ -12,8 +12,9 @@ use App\Shared\Domain\Mapper\Format;
 final readonly class MapObject
 {
     /**
-     * @param class-string<Class> $className
-     * @return self<Class>
+     * @template T of object
+     * @param class-string<T> $className
+     * @return self<T>
      */
     public static function fromJson(string $className, string $source): self
     {
