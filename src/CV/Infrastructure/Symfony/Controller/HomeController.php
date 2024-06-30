@@ -1,10 +1,10 @@
 <?php
 
-namespace App\CV\Infrastructure\Http\Controller;
+namespace App\CV\Infrastructure\Symfony\Controller;
 
 use App\CV\Domain\Repository\ProfessionalExperienceRepository;
 use App\CV\Domain\Repository\ProjectRepository;
-use App\Routing\Domain\ValueObject\RouteName;
+use App\CV\Domain\Route as RouteCv;
 use App\Shared\Http\Cache\CacheMethodsTrait;
 use Presta\SitemapBundle\Sitemap\Url\UrlConcrete;
 use Psr\Clock\ClockInterface;
@@ -17,7 +17,7 @@ final class HomeController extends AbstractController
 {
     use CacheMethodsTrait;
 
-    #[Route("/cv", name: RouteName::CV_HOME, options: [
+    #[Route("/cv", name: RouteCv::INDEX->value, options: [
         'sitemap' => [
             'priority' => 0.7,
             'changefreq' => UrlConcrete::CHANGEFREQ_MONTHLY,

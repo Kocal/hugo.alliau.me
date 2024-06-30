@@ -26,14 +26,14 @@ parameters:
 			path: src/Blog/Infrastructure/Http/Controller/Post/ViewController.php
 
 		-
-			message: "#^Method App\\\\CV\\\\Domain\\\\Repository\\\\ProfessionalExperienceRepository\\:\\:findOneLatest\\(\\) should return App\\\\CV\\\\Domain\\\\ProfessionalExperience\\|null but returns mixed\\.$#"
+			message: "#^Method App\\\\CV\\\\Infrastructure\\\\Doctrine\\\\Repository\\\\ProfessionalExperienceORMRepository\\:\\:findOneLatest\\(\\) should return App\\\\CV\\\\Domain\\\\ProfessionalExperience\\|null but returns mixed\\.$#"
 			count: 1
-			path: src/CV/Domain/Repository/ProfessionalExperienceRepository.php
+			path: src/CV/Infrastructure/Doctrine/Repository/ProfessionalExperienceORMRepository.php
 
 		-
-			message: "#^Method App\\\\CV\\\\Domain\\\\Repository\\\\ProjectRepository\\:\\:findOneLatest\\(\\) should return App\\\\CV\\\\Domain\\\\Project\\|null but returns mixed\\.$#"
+			message: "#^Method App\\\\CV\\\\Infrastructure\\\\Doctrine\\\\Repository\\\\ProjectORMRepository\\:\\:findOneLatest\\(\\) should return App\\\\CV\\\\Domain\\\\Project\\|null but returns mixed\\.$#"
 			count: 1
-			path: src/CV/Domain/Repository/ProjectRepository.php
+			path: src/CV/Infrastructure/Doctrine/Repository/ProjectORMRepository.php
 
 		-
 			message: "#^Method App\\\\Places\\\\Infrastructure\\\\Doctrine\\\\Repository\\\\PlaceORMRepository\\:\\:getOneLatestUpdated\\(\\) should return App\\\\Places\\\\Domain\\\\Place but returns mixed\\.$#"

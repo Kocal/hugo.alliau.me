@@ -1,29 +1,30 @@
 <?php
 
-namespace App\Admin\Infrastructure\Http\Controller\CV;
+namespace App\CV\Infrastructure\EasyAdmin\Controller;
 
-use App\CV\Domain\Project;
+use App\CV\Domain\ProfessionalExperience;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\UrlField;
 
-class ProjectCrudController extends AbstractCrudController
+class ProfessionalExperienceCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return Project::class;
+        return ProfessionalExperience::class;
     }
 
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
             ->setDefaultSort([
-                'date' => 'DESC',
+                'startDate' => 'DESC',
             ])
             ->showEntityActionsInlined()
         ;
@@ -32,10 +33,18 @@ class ProjectCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         yield IdField::new('id')->hideOnForm();
-        yield TextField::new('name');
-        yield UrlField::new('url');
+
+        yield FormField::addColumn('col-xxl-8');
+        yield FormField::addFieldset('Job Information');
+        yield TextField::new('jobName');
         yield TextareaField::new('description')->onlyOnForms();
-        yield DateField::new('date')->setRequired(true);
-        yield ArrayField::new('techStack');
+        yield DateField::new('startDate')->setColumns(6);
+        yield DateField::new('endDate')->setColumns(6);
+        yield ArrayField::new('badges');
+
+        yield FormField::addColumn('col-xxl-4');
+        yield FormField::addFieldset('Company Information');
+        yield TextField::new('company');
+        yield UrlField::new('url');
     }
 }

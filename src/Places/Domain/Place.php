@@ -135,7 +135,7 @@ class Place implements CacheableEntity
     public function getCacheItems(): array
     {
         return [
-            CacheItem::fromRoute(Route::ViewList->value),
+            CacheItem::fromRoute(Route::INDEX),
         ];
     }
 }

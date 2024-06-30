@@ -2,7 +2,8 @@
 
 namespace App\Shared\Menu;
 
-use App\Places\Domain\Route as PlaceRoute;
+use App\CV\Domain\Route as RouteCv;
+use App\Places\Domain\Route as RoutePlaces;
 use App\Routing\Domain\ValueObject\RouteName;
 use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;
@@ -44,11 +45,11 @@ final class MenuBuilder
         ]);
 
         $menu->addChild('CV', [
-            'route' => RouteName::CV_HOME,
+            'route' => RouteCv::INDEX->value,
         ]);
 
         $menu->addChild('Places', [
-            'route' => PlaceRoute::ViewList->value,
+            'route' => RoutePlaces::INDEX->value,
         ]);
 
         return $menu;
