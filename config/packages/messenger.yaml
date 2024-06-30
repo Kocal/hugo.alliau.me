@@ -10,6 +10,7 @@ framework:
         routing:
             'App\Places\Domain\Command\CreatePlace': sync
             'App\Places\Domain\Command\CreateAddress': sync
+            'App\Shared\Domain\Mapper\Command\MapObject': sync
 
         buses:
             messenger.bus.default: ~

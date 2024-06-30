@@ -66,7 +66,7 @@ class Place implements CacheableEntity
      */
     public function getTypes(): array
     {
-        return array_map(PlaceType::from(...), $this->types);
+        return $this->types;
     }
 
     /**

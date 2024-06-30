@@ -52,7 +52,10 @@ app.update: app.install
 ######
 
 ## QA - Run all QA checks
-qa: cs lint phpstan
+qa: cs lint phpstan test
+
+## QA - Run all QA checks and fix issues
+qa.fix: cs.fix lint.fix phpstan test
 
 ################
 # Coding style #
@@ -104,7 +107,7 @@ lint.back:
 	$(SF_CONSOLE) lint:twig templates
 	#$(SF_CONSOLE) doctrine:schema:validate
 
-## Coding style - Check frontend coding style
+## Linter - Lint front files
 lint.front:
 ifdef CI
 	$(SF_CONSOLE) biomejs:ci . --formatter-enabled=false
@@ -112,7 +115,7 @@ else
 	$(SF_CONSOLE) biomejs:check . --formatter-enabled=false
 endif
 
-## Coding style - Check frontend coding style and fix issues
+## Linter - Lint front files and fix issues
 lint.front.fix:
 	$(SF_CONSOLE) biomejs:check . --formatter-enabled=false --apply-unsafe
 
@@ -127,5 +130,16 @@ phpstan:
 ## PHPStan - Run PHPStan and update the baseline
 phpstan.generate-baseline:
 	$(PHP) vendor/bin/phpstan analyse --generate-baseline
+
+#########
+# Tests #
+#########
+
+## Tests - Run all tests
+test: test.back 
+
+## Tests - Run backend tests
+test.back: 
+	$(PHP) vendor/bin/phpunit
 
 -include $(ROOT_DIR)/Makefile.local
