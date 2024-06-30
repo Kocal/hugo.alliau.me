@@ -1,10 +1,13 @@
 <?php
 
-namespace App\Admin\Infrastructure\Http\Controller\Places;
+namespace App\Places\Infrastructure\EasyAdmin\Controller;
 
-use App\Places\Domain\Handler\CreatePlace;
+use App\Places\Domain\Command\CreatePlace;
+use App\Places\Domain\Google\Place\Autocomplete;
 use App\Places\Domain\Place;
 use App\Places\Domain\PlaceType;
+use App\Shared\Domain\Command\CommandBus;
+use App\Shared\Domain\Mapper\Command\MapObject;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
@@ -20,6 +23,7 @@ use Psr\Log\LoggerInterface;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Serializer\SerializerInterface;
 
 class PlaceCrudController extends AbstractCrudController
 {
@@ -90,8 +94,9 @@ class PlaceCrudController extends AbstractCrudController
     public function importFromGooglePlaces(
         AdminContext $context,
         Request $request,
-        CreatePlace $createPlace,
         LoggerInterface $logger,
+        CommandBus $commandBus,
+        SerializerInterface $serializer,
     ): Response {
         if (! $this->isCsrfTokenValid('ea-import-from-google-places', $request->request->getString('token'))) {
             $this->addFlash('danger', 'Invalid CSRF token.');
@@ -99,15 +104,15 @@ class PlaceCrudController extends AbstractCrudController
             goto redirect_to_index;
         }
 
-        if ('' === $placeAutocomplete = $request->request->getString('place_autocomplete')) {
+        if ('' === $placeAutocompleteJson = $request->request->getString('place_autocomplete')) {
             $this->addFlash('danger', 'Please enter a location.');
 
             goto redirect_to_index;
         }
 
         try {
-            $place = $createPlace->fromAutocomplete((array) json_decode($placeAutocomplete, true, flags: JSON_THROW_ON_ERROR));
-            $this->persistEntity($this->container->get('doctrine')->getManagerForClass($context->getEntity()->getFqcn()), $place);
+            $googleAutocomplete = $commandBus->dispatch(MapObject::fromJson(Autocomplete::class, $placeAutocompleteJson));
+            $commandBus->dispatch(CreatePlace::fromGoogleAutocomplete($googleAutocomplete));
         } catch (\Throwable $e) {
             if ($this->kernelDebug) {
                 throw $e;

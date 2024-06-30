@@ -2,6 +2,7 @@
 
 namespace App\Shared\Menu;
 
+use App\Places\Domain\Route as PlaceRoute;
 use App\Routing\Domain\ValueObject\RouteName;
 use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;
@@ -47,7 +48,7 @@ final class MenuBuilder
         ]);
 
         $menu->addChild('Places', [
-            'route' => RouteName::PLACES_HOME,
+            'route' => PlaceRoute::ViewList->value,
         ]);
 
         return $menu;

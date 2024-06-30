@@ -7,7 +7,6 @@ namespace App\Places\Domain;
  */
 enum PlaceType: string
 {
-    // https://developers.google.com/maps/documentation/places/web-service/supported_types?hl=fr
     case ADMINISTRATIVE_AREA_LEVEL_1 = 'administrative_area_level_1';
     case ADMINISTRATIVE_AREA_LEVEL_2 = 'administrative_area_level_2';
     case ADMINISTRATIVE_AREA_LEVEL_3 = 'administrative_area_level_3';

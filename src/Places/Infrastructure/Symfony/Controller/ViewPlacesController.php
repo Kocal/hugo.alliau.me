@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Places\Infrastructure\Http\Controller;
+namespace App\Places\Infrastructure\Symfony\Controller;
 
 use App\Places\Domain\Repository\PlaceRepository;
-use App\Routing\Domain\ValueObject\RouteName;
 use App\Shared\Http\Cache\CacheMethodsTrait;
 use Presta\SitemapBundle\Sitemap\Url\UrlConcrete;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -11,11 +10,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-final class HomeController extends AbstractController
+final class ViewPlacesController extends AbstractController
 {
     use CacheMethodsTrait;
 
-    #[Route("/places", name: RouteName::PLACES_HOME, options: [
+    #[Route("/places", name: \App\Places\Domain\Route::ViewList->value, options: [
         'sitemap' => [
             'priority' => 0.7,
             'changefreq' => UrlConcrete::CHANGEFREQ_WEEKLY,

@@ -1,27 +1,19 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Places\Domain\Repository;
 
 use App\Places\Domain\Place;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\Persistence\ManagerRegistry;
 
-/**
- * @extends ServiceEntityRepository<Place>
- */
-class PlaceRepository extends ServiceEntityRepository
+interface PlaceRepository
 {
-    public function __construct(ManagerRegistry $registry)
-    {
-        parent::__construct($registry, Place::class);
-    }
+    public function add(Place $place): void;
 
-    public function getOneLatestUpdated(): Place
-    {
-        return $this->createQueryBuilder('p')
-            ->orderBy('p.updatedAt', 'DESC')
-            ->setMaxResults(1)
-            ->getQuery()
-            ->getSingleResult();
-    }
+    public function getOneLatestUpdated(): Place;
+
+    /**
+     * @return list<Place>
+     */
+    public function findAll(): array;
 }

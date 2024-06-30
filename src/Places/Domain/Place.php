@@ -2,14 +2,12 @@
 
 namespace App\Places\Domain;
 
-use App\Places\Domain\Repository\PlaceRepository;
-use App\Routing\Domain\ValueObject\RouteName;
 use App\Shared\Http\Cache\CacheableEntity;
 use App\Shared\Http\Cache\ValueObject\CacheItem;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: PlaceRepository::class)]
+#[ORM\Entity()]
 #[ORM\HasLifecycleCallbacks]
 class Place implements CacheableEntity
 {
@@ -68,7 +66,7 @@ class Place implements CacheableEntity
      */
     public function getTypes(): array
     {
-        return array_map(PlaceType::from(...), $this->types);
+        return $this->types;
     }
 
     /**
@@ -137,7 +135,7 @@ class Place implements CacheableEntity
     public function getCacheItems(): array
     {
         return [
-            CacheItem::fromRoute(RouteName::PLACES_HOME),
+            CacheItem::fromRoute(Route::ViewList->value),
         ];
     }
 }
