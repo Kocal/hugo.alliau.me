@@ -10,6 +10,7 @@ return ECSConfig::configure()
         __DIR__ . '/config',
         __DIR__ . '/public',
         __DIR__ . '/src',
+        __DIR__ . '/tests',
         __DIR__ . '/tools',
     ])
     ->withSkip([

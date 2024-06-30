@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Tests\Forum\Domain\Command;
@@ -7,7 +8,7 @@ use App\Places\Domain\Command\CreateAddress;
 use App\Places\Domain\Command\CreateAddressHandler;
 use PHPUnit\Framework\TestCase;
 
-final  class CreateAddressHandlerTest extends TestCase
+final class CreateAddressHandlerTest extends TestCase
 {
     public function testCreateAddress(): void
     {

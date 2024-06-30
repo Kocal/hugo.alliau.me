@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Tests\Forum\Domain\Command;
@@ -12,7 +13,7 @@ use App\Shared\Domain\Command\CommandBus;
 use App\Tests\Forum\Infrastructure\Double\Repository\FakePlaceRepository;
 use PHPUnit\Framework\TestCase;
 
-final  class CreatePlaceHandlerTest extends TestCase
+final class CreatePlaceHandlerTest extends TestCase
 {
     public function testCreatePlace(): void
     {
@@ -28,16 +29,16 @@ final  class CreatePlaceHandlerTest extends TestCase
             iconMaskUri: 'iconMaskUri',
             types: [PlaceType::AIRPORT],
         );
-        
+
         $placeRepository = new FakePlaceRepository();
-        
-        $commandBus = new class implements CommandBus {
+
+        $commandBus = new class() implements CommandBus {
             public function dispatch(object $command): mixed
             {
-                if (!($command instanceof CreateAddress)) {
+                if (! ($command instanceof CreateAddress)) {
                     throw new \InvalidArgumentException(sprintf('Unexpected command "%s".', get_debug_type($command)));
                 }
-                
+
                 return (new CreateAddressHandler())($command);
             }
         };
