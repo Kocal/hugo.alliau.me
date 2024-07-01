@@ -4,7 +4,7 @@ namespace App\Blog\Infrastructure\Http\Controller;
 
 use App\Blog\Domain\Repository\PostRepository;
 use App\Routing\Domain\ValueObject\RouteName;
-use App\Shared\Http\Cache\CacheMethodsTrait;
+use App\Shared\Domain\HttpCache\CacheMethodsTrait;
 use Presta\SitemapBundle\Sitemap\Url\UrlConcrete;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;

@@ -4,7 +4,7 @@ namespace App\Places\Infrastructure\Symfony\Controller;
 
 use App\Places\Domain\Repository\PlaceRepository;
 use App\Places\Domain\Route as RoutePlaces;
-use App\Shared\Http\Cache\CacheMethodsTrait;
+use App\Shared\Domain\HttpCache\CacheMethodsTrait;
 use Presta\SitemapBundle\Sitemap\Url\UrlConcrete;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;

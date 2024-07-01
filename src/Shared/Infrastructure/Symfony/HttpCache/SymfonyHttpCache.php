@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Shared\Http\Cache;
+namespace App\Shared\Infrastructure\Symfony\HttpCache;
 
-use App\Shared\Http\Cache\Adapter\HttpCacheAdapter;
-use App\Shared\Http\Cache\ValueObject\CacheItem;
+use App\Shared\Domain\HttpCache\CacheItem;
+use App\Shared\Domain\HttpCache\HttpCache;
+use App\Shared\Domain\HttpCache\HttpCacheAdapter;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
-final class HttpCache
+final class SymfonyHttpCache implements HttpCache
 {
     public function __construct(
         private HttpCacheAdapter $httpCacheAdapter,

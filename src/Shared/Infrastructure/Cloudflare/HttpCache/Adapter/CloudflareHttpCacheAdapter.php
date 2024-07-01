@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Shared\Http\Cache\Adapter;
+namespace App\Shared\Infrastructure\Cloudflare\HttpCache\Adapter;
 
+use App\Shared\Domain\HttpCache\HttpCacheAdapter;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\DependencyInjection\Attribute\Target;

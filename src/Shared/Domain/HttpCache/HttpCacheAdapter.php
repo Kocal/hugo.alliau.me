@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Shared\Http\Cache\Adapter;
+namespace App\Shared\Domain\HttpCache;
 
 interface HttpCacheAdapter
 {

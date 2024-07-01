@@ -2,8 +2,8 @@
 
 namespace App\Places\Domain;
 
-use App\Shared\Http\Cache\CacheableEntity;
-use App\Shared\Http\Cache\ValueObject\CacheItem;
+use App\Shared\Domain\HttpCache\CacheableEntity;
+use App\Shared\Domain\HttpCache\CacheItem;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 

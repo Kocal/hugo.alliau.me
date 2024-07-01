@@ -46,11 +46,6 @@ parameters:
 			path: src/Places/Infrastructure/EasyAdmin/Controller/PlaceCrudController.php
 
 		-
-			message: "#^Method App\\\\Shared\\\\Http\\\\Cache\\\\HttpCacheAdapterFactory\\:\\:__invoke\\(\\) should return App\\\\Shared\\\\Http\\\\Cache\\\\Adapter\\\\HttpCacheAdapter but returns mixed\\.$#"
-			count: 1
-			path: src/Shared/Http/Cache/HttpCacheAdapterFactory.php
-
-		-
 			message: "#^Cannot cast mixed to string\\.$#"
 			count: 1
 			path: src/Shared/Infrastructure/Cuyz/Valinor/Mapper/ValinorObjectMapper.php

@@ -1,8 +1,6 @@
 <?php
 
-namespace App\Shared\Http\Cache;
-
-use App\Shared\Http\Cache\ValueObject\CacheItem;
+namespace App\Shared\Domain\HttpCache;
 
 interface CacheableEntity
 {
