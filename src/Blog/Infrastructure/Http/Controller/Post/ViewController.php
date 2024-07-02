@@ -5,7 +5,7 @@ namespace App\Blog\Infrastructure\Http\Controller\Post;
 use App\Blog\Domain\Post;
 use App\Blog\Domain\PostStatus;
 use App\Routing\Domain\ValueObject\RouteName;
-use App\Shared\Http\Cache\CacheMethodsTrait;
+use App\Shared\Domain\HttpCache\CacheMethodsTrait;
 use App\Shared\Markdown\MarkdownConverter;
 use Psr\Link\EvolvableLinkInterface;
 use Symfony\Bridge\Doctrine\Attribute\MapEntity;

@@ -4,8 +4,8 @@ namespace App\Blog\Domain;
 
 use App\Blog\Domain\Repository\PostRepository;
 use App\Routing\Domain\ValueObject\RouteName;
-use App\Shared\Http\Cache\CacheableEntity;
-use App\Shared\Http\Cache\ValueObject\CacheItem;
+use App\Shared\Domain\HttpCache\CacheableEntity;
+use App\Shared\Domain\HttpCache\CacheItem;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;

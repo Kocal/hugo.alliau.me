@@ -4,7 +4,7 @@ namespace App\Blog\Infrastructure\Http\Controller\Tag;
 
 use App\Blog\Domain\Repository\PostRepository;
 use App\Routing\Domain\ValueObject\RouteName;
-use App\Shared\Http\Cache\CacheMethodsTrait;
+use App\Shared\Domain\HttpCache\CacheMethodsTrait;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

@@ -7,6 +7,9 @@ parameters:
     # https://symfony.com/doc/current/performance.html#dump-the-service-container-into-a-single-file
     .container.dumper.inline_factories: true
 
+imports:
+    - { resource: 'services/*.php' }
+
 services:
     # default configuration for services in *this* file
     _defaults:
@@ -23,8 +26,3 @@ services:
             - '../src/*/ValueObject/*.php'
             - '../src/Kernel.php'
             - '../src/Shared/Markdown/Extension/GitHubEmojis/data/*.php'
-            - '../src/Http/Cache/{CacheableEntity,CacheMethodsTrait}.php'
-
-    App\Shared\Http\Cache\Adapter\HttpCacheAdapter:
-        factory: '@App\Shared\Http\Cache\HttpCacheAdapterFactory'
-        arguments: ['%env(HTTP_CACHE_ADAPTER)%']

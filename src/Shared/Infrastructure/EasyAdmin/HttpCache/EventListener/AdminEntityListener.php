@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Blog\Infrastructure\EventListener;
+namespace App\Shared\Infrastructure\EasyAdmin\HttpCache\EventListener;
 
-use App\Shared\Http\Cache\CacheableEntity;
-use App\Shared\Http\Cache\HttpCache;
-use App\Shared\Http\Cache\ValueObject\CacheItem;
+use App\Shared\Domain\HttpCache\CacheableEntity;
+use App\Shared\Domain\HttpCache\CacheItem;
+use App\Shared\Domain\HttpCache\HttpCache;
 use EasyCorp\Bundle\EasyAdminBundle\Event\AfterEntityDeletedEvent;
 use EasyCorp\Bundle\EasyAdminBundle\Event\AfterEntityPersistedEvent;
 use EasyCorp\Bundle\EasyAdminBundle\Event\AfterEntityUpdatedEvent;

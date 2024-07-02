@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Admin\Infrastructure\Http\Controller;
+namespace App\Shared\Infrastructure\EasyAdmin\HttpCache\Controller;
 
-use App\Shared\Http\Cache\HttpCache;
+use App\Admin\Infrastructure\Http\Controller\DashboardController;
+use App\Shared\Domain\HttpCache\HttpCache;
 use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
