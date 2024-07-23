@@ -28,10 +28,12 @@ class Post implements CacheableEntity
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank]
+    #[Assert\Length(min: 10, max: 255)]
     private ?string $slug = null;
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank]
+    #[Assert\Length(min: 10, max: 255)]
     private ?string $description = null;
 
     #[ORM\Column(type: Types::TEXT)]
