@@ -16,18 +16,10 @@ return [
         'path' => './assets/app.js',
         'entrypoint' => true,
     ],
-    'app-post' => [
-        'path' => './assets/app-post.js',
-        'entrypoint' => true,
-    ],
     '@hotwired/stimulus' => [
         'version' => '3.2.2',
     ],
     '@symfony/stimulus-bundle' => [
         'path' => './vendor/symfony/stimulus-bundle/assets/dist/loader.js',
-    ],
-    'code-highlight/github-light-default.css' => [
-        'path' => './vendor/tempest/highlight/src/Themes/Css/github-light-default.css',
-        'type' => 'css',
     ],
 ];

@@ -1,9 +1,25 @@
 /* TODO: find why I can't use Tailwind `theme()` in this file */
 
 @layer components {
+    :root {
+        --code-wrapper-border-color: #eaeaea;
+        --code-wrapper-bg-color: #f8f8f8;
+        --code-lang-color: #333;
+        --code-line-numbers-color: #333
+    }
+    
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --code-wrapper-border-color: #444;
+            --code-wrapper-bg-color: #333;
+            --code-lang-color: #f8f8f8;
+            --code-line-numbers-color: #f8f8f8
+        }
+    }
+    
     pre {
         overflow: auto;
-        border: 1px solid #eaeaea !important;
+        border: 1px solid var(--code-wrapper-border-color) !important;
         border-radius: 6px;
         max-height: 100dvh
     }
@@ -13,7 +29,8 @@
 
         &:before {
             content: attr(data-lang);
-            background-color: #eaeaea;
+            background-color: var(--code-wrapper-bg-color);
+            color: var(--code-lang-color);
             font-weight: bolder;
             position: absolute;
             right: 2ch;
@@ -36,8 +53,9 @@
     .hl-gutter {
         user-select: none;
         font-size: initial !important; /* Should not be important, but necessary due to "@layer components" */
-        border-right: 1px solid #eaeaea !important; /* Should not be important, but necessary due to "@layer components" */
+        border-right: 1px solid var(--code-wrapper-border-color) !important; /* Should not be important, but necessary due to "@layer components" */
         margin-right: 1ch;
-        background-color: #f8f8f8;
+        background-color: var(--code-wrapper-bg-color);
+        color: var(--code-line-numbers-color) !important;
     }
 }
