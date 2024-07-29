@@ -5,7 +5,6 @@ namespace App\Blog\Infrastructure\Http\Controller;
 use App\Blog\Domain\Repository\PostRepository;
 use App\Routing\Domain\ValueObject\RouteName;
 use App\Shared\Domain\HttpCache\CacheMethodsTrait;
-use Presta\SitemapBundle\Sitemap\Url\UrlConcrete;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,10 +15,7 @@ final class HomeController extends AbstractController
     use CacheMethodsTrait;
 
     #[Route("/blog", name: RouteName::BLOG_HOME, options: [
-        'sitemap' => [
-            'priority' => 0.7,
-            'changefreq' => UrlConcrete::CHANGEFREQ_WEEKLY,
-        ],
+        'sitemap' => true,
     ], methods: ['GET'], format: 'html')]
     #[Route("/blog/rss.xml", name: RouteName::BLOG_RSS, methods: ['GET'], format: 'xml')]
     public function __invoke(

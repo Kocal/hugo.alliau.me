@@ -5,7 +5,6 @@ namespace App\Places\Infrastructure\Symfony\Controller;
 use App\Places\Domain\Repository\PlaceRepository;
 use App\Places\Domain\Route as RoutePlaces;
 use App\Shared\Domain\HttpCache\CacheMethodsTrait;
-use Presta\SitemapBundle\Sitemap\Url\UrlConcrete;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,10 +15,7 @@ final class ViewPlacesController extends AbstractController
     use CacheMethodsTrait;
 
     #[Route("/places", name: RoutePlaces::INDEX->value, options: [
-        'sitemap' => [
-            'priority' => 0.7,
-            'changefreq' => UrlConcrete::CHANGEFREQ_WEEKLY,
-        ],
+        'sitemap' => true,
     ], methods: ['GET'])]
     public function __invoke(
         Request $request,

@@ -29,8 +29,6 @@ final readonly class SitemapListener
                         'slug' => $post->getSlug(),
                     ], UrlGeneratorInterface::ABSOLUTE_URL),
                     $post->getPublishedAt(),
-                    UrlConcrete::CHANGEFREQ_MONTHLY,
-                    0.8,
                 ),
                 'blog',
             );
@@ -43,8 +41,6 @@ final readonly class SitemapListener
                         'tag' => $tag,
                     ], UrlGeneratorInterface::ABSOLUTE_URL),
                     null,
-                    UrlConcrete::CHANGEFREQ_WEEKLY,
-                    0.5,
                 ),
                 'blog',
             );

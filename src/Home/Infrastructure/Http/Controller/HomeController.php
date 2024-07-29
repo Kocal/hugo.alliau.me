@@ -4,7 +4,6 @@ namespace App\Home\Infrastructure\Http\Controller;
 
 use App\Routing\Domain\ValueObject\RouteName;
 use App\Shared\Domain\HttpCache\CacheMethodsTrait;
-use Presta\SitemapBundle\Sitemap\Url\UrlConcrete;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,10 +14,7 @@ final class HomeController extends AbstractController
     use CacheMethodsTrait;
 
     #[Route("/", name: RouteName::HOME, options: [
-        'sitemap' => [
-            'priority' => 0.5,
-            'changefreq' => UrlConcrete::CHANGEFREQ_YEARLY,
-        ],
+        'sitemap' => true,
     ], methods: ['GET'])]
     public function __invoke(
         Request $request,
