@@ -48,6 +48,11 @@ module.exports = {
                         "--tw-prose-invert-code-bg": theme("colors.gray.700"),
                         "--tw-prose-bullets": theme("colors.gray[500]"),
                         "--tw-prose-links": theme("colors.primary[700]"),
+
+                        ".CustomContainer": {
+                            marginTop: theme("spacing.2"),
+                            marginBottom: theme("spacing.2"),
+                        },
                     },
                 },
                 invert: {
@@ -62,14 +67,9 @@ module.exports = {
     plugins: [require("@tailwindcss/typography")],
     safelist: [
         "not-prose",
-        "custom-container",
-        "custom-container__title",
-        "custom-container--info",
-        "custom-container--tip",
-        "custom-container--warning",
-        "custom-container--danger",
         "table-of-contents",
         "heading-permalink",
         { pattern: /^Terminal/ },
+        { pattern: /^CustomContainer/ },
     ],
 };

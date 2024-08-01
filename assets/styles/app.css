@@ -9,40 +9,42 @@
     }
 }
 
-/**
- * Custom container
- */
 @layer components {
-    .custom-container {
-        padding: 1rem;
-        border-radius: 0.5rem;
+    .CustomContainer {
+        --custom-container-color: theme('colors.gray.900');
+        --custom-container-bg-color: theme('colors.gray.100');
+
+        padding: theme('spacing.3');
+        border-radius: theme('borderRadius.md');
+        color: var(--custom-container-color);
+        background-color: var(--custom-container-bg-color);
     }
 
-    .custom-container__title {
+    .CustomContainer__Title {
         margin: theme('spacing.0') theme('spacing.0') theme('spacing.2') theme('spacing.0');
         text-transform: uppercase;
         font-weight: theme('fontWeight.bold');
         font-size: theme('fontSize.sm');
     }
 
-    .custom-container--info {
-        color: theme('colors.gray.900');
-        background-color: theme('colors.gray.100');
+    .CustomContainer--info {
+        --custom-container-color: theme('colors.blue.900');
+        --custom-container-bg-color: theme('colors.blue.50');
     }
 
-    .custom-container--tip {
-        color: theme('colors.sky.900');
-        background-color: theme('colors.sky.100');
+    .CustomContainer--tip {
+        --custom-container-color: theme('colors.green.900');
+        --custom-container-bg-color: theme('colors.green.50');
     }
 
-    .custom-container--warning {
-        color: theme('colors.yellow.900');
-        background-color: theme('colors.yellow.50');
+    .CustomContainer--warning {
+        --custom-container-color: theme('colors.yellow.900');
+        --custom-container-bg-color: theme('colors.yellow.50');
     }
 
-    .custom-container--danger {
-        color: theme('colors.red.900');
-        background-color: theme('colors.red.100');
+    .CustomContainer--danger {
+        --custom-container-color: theme('colors.red.900');
+        --custom-container-bg-color: theme('colors.red.50');
     }
 }
 
@@ -98,16 +100,16 @@
         --terminal-bg-color: theme('colors.gray.50');
         --terminal-header-bg-color: theme('colors.gray.100');
         --terminal-border-radius: theme('borderRadius.lg');
-        
+
         background-color: var(--terminal-bg-color);
-        
+
         @media (prefers-color-scheme: dark) {
             --terminal-bg-color: theme('colors.gray.900');
             --terminal-header-bg-color: theme('colors.gray.950');
         }
         border-radius: var(--terminal-border-radius);
     }
-    
+
     .Terminal__Header {
         background-color: var(--terminal-header-bg-color);
         border-radius: var(--terminal-border-radius) var(--terminal-border-radius) 0 0;
@@ -116,10 +118,10 @@
         font-weight: bold;
         padding: theme('spacing.1') theme('spacing.2');
     }
-    
+
     .Terminal__Body {
         padding: theme('spacing.2') 0;
-        
+
         > pre {
             background-color: transparent;
         }
