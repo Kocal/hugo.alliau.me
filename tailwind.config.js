@@ -30,8 +30,15 @@ module.exports = {
                         pre: null,
                         "pre code": null,
                         code: {
-                            fontWeight: "500",
+                            fontWeight: 600,
+                            backgroundColor: theme("colors.gray.100"),
+                            color: theme("colors.gray.800"),
+                            padding: `${theme('spacing.1')} ${theme('spacing.2')}`,
+                            fontSize: '85%',
+                            borderRadius: theme('borderRadius.md')
                         },
+                        'code::before': null,
+                        'code::after': null,
                         "--tw-prose-bullets": theme("colors.gray[500]"),
                         "--tw-prose-links": theme("colors.primary[700]"),
                     },
