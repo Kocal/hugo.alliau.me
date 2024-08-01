@@ -31,8 +31,7 @@ module.exports = {
                         "pre code": null,
                         code: {
                             fontWeight: 600,
-                            backgroundColor: theme("colors.gray.100"),
-                            color: theme("colors.gray.800"),
+                            backgroundColor: "var(--tw-prose-code-bg)",
                             padding: `${theme("spacing.1")} ${theme("spacing.2")}`,
                             fontSize: "85%",
                             borderRadius: theme("borderRadius.md"),
@@ -43,8 +42,18 @@ module.exports = {
                             marginLeft: "auto",
                             marginRight: "auto",
                         },
+                        "--tw-prose-code": theme("colors.gray.800"),
+                        "--tw-prose-code-bg": theme("colors.gray.100"),
+                        "--tw-prose-invert-code": theme("colors.gray.100"),
+                        "--tw-prose-invert-code-bg": theme("colors.gray.700"),
                         "--tw-prose-bullets": theme("colors.gray[500]"),
                         "--tw-prose-links": theme("colors.primary[700]"),
+                    },
+                },
+                invert: {
+                    css: {
+                        "--tw-prose-code": "var(--tw-prose-invert-code)",
+                        "--tw-prose-code-bg": "var(--tw-prose-invert-code-bg)",
                     },
                 },
             }),
@@ -61,5 +70,6 @@ module.exports = {
         "custom-container--danger",
         "table-of-contents",
         "heading-permalink",
+        { pattern: /^Terminal/ },
     ],
 };

@@ -4,7 +4,7 @@ namespace App\Shared\Markdown;
 
 use App\Shared\Markdown\Extension\CustomContainer\CustomContainerExtension;
 use App\Shared\Markdown\Extension\GitHubEmojis\GitHubEmojisExtension;
-use App\Shared\Markdown\Extension\TempestHighlight\Renderer\CodeBlockRendererDecorator;
+use App\Shared\Markdown\Extension\TempestHighlight\Renderer\CodeBlockRenderer;
 use League\CommonMark\Environment\Environment;
 use League\CommonMark\Extension\Attributes\AttributesExtension;
 use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
@@ -23,7 +23,6 @@ use League\CommonMark\Renderer\HtmlRenderer;
 use Psr\Link\EvolvableLinkInterface;
 use Psr\Link\LinkInterface;
 use Symfony\Component\WebLink\Link;
-use Tempest\Highlight\CommonMark\CodeBlockRenderer;
 use Tempest\Highlight\CommonMark\InlineCodeBlockRenderer;
 use Tempest\Highlight\Highlighter;
 
@@ -49,11 +48,8 @@ class MarkdownConverter
         $this->environment->addExtension(new CustomContainerExtension());
         $this->environment->addExtension(new GitHubEmojisExtension());
         $this->environment->addExtension(new AttributesExtension());
-        $this->environment->addRenderer(FencedCode::class, new CodeBlockRendererDecorator(
-            static fn () => new CodeBlockRenderer(
-                (new Highlighter())
-                    ->withGutter()
-            ),
+        $this->environment->addRenderer(FencedCode::class, new CodeBlockRenderer(
+            static fn () => (new Highlighter())->withGutter(),
         ));
         $this->environment->addRenderer(Code::class, new InlineCodeBlockRenderer());
 
