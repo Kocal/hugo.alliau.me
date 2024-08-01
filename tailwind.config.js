@@ -39,6 +39,10 @@ module.exports = {
                         },
                         'code::before': null,
                         'code::after': null,
+                        img: {
+                            marginLeft: 'auto',
+                            marginRight: 'auto',
+                        },
                         "--tw-prose-bullets": theme("colors.gray[500]"),
                         "--tw-prose-links": theme("colors.primary[700]"),
                     },
