@@ -46,6 +46,5 @@
         user-select: none;
         font-size: initial !important; /* Should not be important, but necessary due to "@layer components" */
         border-right: 1px solid var(--code-wrapper-border-color) !important; /* Should not be important, but necessary due to "@layer components" */
-        margin-right: 1ch;
     }
 }
