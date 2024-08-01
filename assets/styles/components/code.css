@@ -46,5 +46,13 @@
         user-select: none;
         font-size: initial !important; /* Should not be important, but necessary due to "@layer components" */
         border-right: 1px solid var(--code-wrapper-border-color) !important; /* Should not be important, but necessary due to "@layer components" */
+        
+        &:not(.hl-gutter-addition, .hl-gutter-deletion) {
+            margin-right: 1ch;
+        }
+    }
+    
+    .hl-addition, .hl-deletion {
+        padding-left: 1ch;
     }
 }
