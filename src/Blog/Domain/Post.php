@@ -3,7 +3,7 @@
 namespace App\Blog\Domain;
 
 use App\Blog\Domain\Repository\PostRepository;
-use App\Routing\Domain\ValueObject\RouteName;
+use App\Blog\Domain\Route as RouteBlog;
 use App\Shared\Domain\HttpCache\CacheableEntity;
 use App\Shared\Domain\HttpCache\CacheItem;
 use Doctrine\DBAL\Types\Types;
@@ -211,15 +211,19 @@ class Post implements CacheableEntity
     public function getCacheItems(): array
     {
         return [
-            CacheItem::fromRoute(RouteName::BLOG_HOME),
-            CacheItem::fromRoute(RouteName::BLOG_POST_VIEW, [
+            CacheItem::fromRoute(RouteBlog::HOME),
+            CacheItem::fromRoute(RouteBlog::POST_VIEW, [
                 'slug' => $this->slug,
             ]),
-            CacheItem::fromRoute(RouteName::BLOG_TAG_LIST),
-            ...array_map(static fn (string $tag) => CacheItem::fromRoute(RouteName::BLOG_TAG_VIEW, [
-                'tag' => $tag,
-            ]), $this->tags),
-            CacheItem::fromRoute(RouteName::BLOG_RSS),
+            CacheItem::fromRoute(RouteBlog::TAG_LIST),
+            ...array_map(
+                static fn (string $tag) =>
+                CacheItem::fromRoute(RouteBlog::TAG_VIEW, [
+                    'tag' => $tag,
+                ]),
+                $this->tags
+            ),
+            CacheItem::fromRoute(RouteBlog::RSS),
         ];
     }
 }

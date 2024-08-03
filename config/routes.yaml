@@ -1,19 +1,19 @@
-controllers_admin:
+controllers_shared:
     resource:
-        path: ../src/Admin/Infrastructure/Http/Controller/
-        namespace: App\Admin\Infrastructure\Http\Controller
+        path: ../src/Shared/Infrastructure/
+        namespace: App\Shared\Infrastructure
     type: attribute
-
-controllers_auth:
+    
+controllers_user:
     resource:
-        path: ../src/Auth/Infrastructure/Http/Controller/
-        namespace: App\Auth\Infrastructure\Http\Controller
+        path: ../src/User/Infrastructure/Symfony/Controller/
+        namespace: App\User\Infrastructure\Symfony\Controller
     type: attribute
 
 controllers_blog:
     resource:
-        path: ../src/Blog/Infrastructure/Http/Controller/
-        namespace: App\Blog\Infrastructure\Http\Controller
+        path: ../src/Blog/Infrastructure/Symfony/Controller/
+        namespace: App\Blog\Infrastructure\Symfony\Controller
     type: attribute
 
 controllers_cv:
@@ -28,8 +28,3 @@ controllers_places:
         namespace: App\Places\Infrastructure\Symfony\Controller
     type: attribute
 
-controllers_home:
-    resource:
-        path: ../src/Home/Infrastructure/Http/Controller/
-        namespace: App\Home\Infrastructure\Http\Controller
-    type: attribute

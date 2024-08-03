@@ -23,6 +23,5 @@ services:
         exclude:
             - '../src/DependencyInjection/'
             - '../src/*/*.php'
-            - '../src/*/ValueObject/*.php'
             - '../src/Kernel.php'
             - '../src/Shared/Markdown/Extension/GitHubEmojis/data/*.php'

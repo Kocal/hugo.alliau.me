@@ -6,7 +6,7 @@
         '@context': "https://schema.org",
         '@type': "Blog",
         name: "Hugo Alliaume's Blog",
-        url: url(constant('App\\Routing\\Domain\\ValueObject\\RouteName::BLOG_HOME')),
+        url: url(constant('App\\Blog\\Domain\\Route::HOME').value),
     }) }}
 {% endblock %}
 

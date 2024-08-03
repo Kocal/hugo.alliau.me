@@ -21,7 +21,7 @@
         <link rel="canonical" href="{{ absolute_url(app.request.pathInfo) }}">
 
         <link rel="sitemap" type="application/xml" href="/sitemap.xml">
-        <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ path(constant('App\\Routing\\Domain\\ValueObject\\RouteName::BLOG_RSS')) }}">
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ path(constant('App\\Blog\\Domain\\Route::RSS').value) }}">
 
         {% block seo %}{% endblock %}
 
@@ -30,7 +30,7 @@
                 '@context': "https://schema.org",
                 '@type': "WebSite",
                 name: "Hugo Alliaume's Website",
-                url: url(constant('App\\Routing\\Domain\\ValueObject\\RouteName::HOME')),
+                url: url(constant('App\\Blog\\Domain\\Route::HOME').value),
                 publisher: {
                     '@id': absolute_url('/#me'),
                 }
@@ -50,7 +50,7 @@
                     'https://www.linkedin.com/in/%F0%9F%9A%B4-hugo-alliaume-34b475166/',
                 ],
                 publishingPrinciples: [
-                    url(constant('App\\Routing\\Domain\\ValueObject\\RouteName::BLOG_HOME')),
+                    url(constant('App\\Blog\\Domain\\Route::HOME').value),
                 ]
             }) }}
         {% endblock %}
@@ -59,7 +59,7 @@
         {% block body %}
             <header class="z-10 sticky top-0 bg-white dark:bg-slate-900 shadow-md print:hidden">
                 <div class="container max-w-screen-lg mx-auto px-2 flex items-center gap-x-2 sm:gap-x-5">
-                    <a href="{{ path(constant('App\\Routing\\Domain\\ValueObject\\RouteName::HOME')) }}" class="text-lg sm:text-2xl font-bold my-3">
+                    <a href="{{ path(constant('App\\Shared\\Domain\\Route::HOME').value) }}" class="text-lg sm:text-2xl font-bold my-3">
                         Hugo Alliaume
                     </a>
 

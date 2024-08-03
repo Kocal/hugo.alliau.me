@@ -33,7 +33,7 @@ final class CodeBlockRenderer implements NodeRendererInterface
         if (! $node instanceof FencedCode) {
             throw new InvalidArgumentException('Block must be instance of ' . FencedCode::class);
         }
-        
+
         $infoWords = $node->getInfoWords();
         preg_match('/^(?<language>[\w]+)/', $infoWords[0] ?? 'txt', $matches);
         $language = $matches['language'] ?? 'txt';

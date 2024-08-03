@@ -2,9 +2,9 @@
 
 namespace App\Shared\Menu;
 
+use App\Blog\Domain\Route as RouteBlog;
 use App\CV\Domain\Route as RouteCv;
 use App\Places\Domain\Route as RoutePlaces;
-use App\Routing\Domain\ValueObject\RouteName;
 use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;
 use Symfony\Component\DependencyInjection\Attribute\AutoconfigureTag;
@@ -28,17 +28,17 @@ final class MenuBuilder
         $menu = $this->factory->createItem('root');
 
         $menu->addChild('Blog', [
-            'route' => RouteName::BLOG_HOME,
+            'route' => RouteBlog::HOME->value,
             'extras' => [
                 'routes' => [
                     [
-                        'route' => RouteName::BLOG_POST_VIEW,
+                        'route' => RouteBlog::POST_VIEW->value,
                     ],
                     [
-                        'route' => RouteName::BLOG_TAG_LIST,
+                        'route' => RouteBlog::TAG_LIST->value,
                     ],
                     [
-                        'route' => RouteName::BLOG_TAG_VIEW,
+                        'route' => RouteBlog::TAG_VIEW->value,
                     ],
                 ],
             ],
