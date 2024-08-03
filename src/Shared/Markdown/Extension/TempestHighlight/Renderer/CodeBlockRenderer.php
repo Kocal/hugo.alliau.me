@@ -33,16 +33,13 @@ final class CodeBlockRenderer implements NodeRendererInterface
         if (! $node instanceof FencedCode) {
             throw new InvalidArgumentException('Block must be instance of ' . FencedCode::class);
         }
-
+        
         $infoWords = $node->getInfoWords();
-        preg_match('/^(?<language>[\w]+)(\{(?<startAt>[\d]+)\})?/', $infoWords[0] ?? 'txt', $matches);
+        preg_match('/^(?<language>[\w]+)/', $infoWords[0] ?? 'txt', $matches);
         $language = $matches['language'] ?? 'txt';
-        $filename = null !== ($infoWords[1] ?? null) ? trim($infoWords[1], '[]') : null;
+        $filename = trim($infoWords[1] ?? '', '[]') ?: null;
 
         $highlighter = ($this->getHighlighter)();
-        if ($startAt = ($matches['startAt']) ?? null) {
-            $highlighter = $highlighter->withGutter((int) $startAt);
-        }
 
         $theme = $highlighter->getTheme();
         $parsed = $highlighter->parse($node->getLiteral(), $language);
