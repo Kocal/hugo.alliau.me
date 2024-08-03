@@ -2,7 +2,6 @@
 
 namespace App\Blog\Domain;
 
-use App\Blog\Domain\Repository\PostRepository;
 use App\Blog\Domain\Route as RouteBlog;
 use App\Shared\Domain\HttpCache\CacheableEntity;
 use App\Shared\Domain\HttpCache\CacheItem;
@@ -10,7 +9,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
-#[ORM\Entity(repositoryClass: PostRepository::class)]
+#[ORM\Entity()]
 #[ORM\Table(name: 'blog_post')]
 #[ORM\Index(columns: ['status', 'published_at'])]
 #[ORM\HasLifecycleCallbacks]

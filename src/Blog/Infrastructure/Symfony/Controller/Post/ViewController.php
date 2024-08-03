@@ -6,7 +6,7 @@ use App\Blog\Domain\Post;
 use App\Blog\Domain\PostStatus;
 use App\Blog\Domain\Route as RouteBlog;
 use App\Shared\Domain\HttpCache\CacheMethodsTrait;
-use App\Shared\Markdown\MarkdownConverter;
+use App\Shared\Domain\Markdown\MarkdownConverter;
 use Psr\Link\EvolvableLinkInterface;
 use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -47,13 +47,9 @@ final class ViewController extends AbstractController
             return $response;
         }
 
-        [
-            'rendered_content' => $renderedContent,
-            'rendered_toc' => $renderedToc,
-            'web_links' => $webLinks,
-        ] = ($markdownConverter)($post->getContent());
+        $markdownDocument = ($markdownConverter)($post->getContent());
 
-        foreach ($webLinks as $webLink) {
+        foreach ($markdownDocument->webLinks as $webLink) {
             if ($webLink instanceof EvolvableLinkInterface) {
                 $webLink = $webLink->withRel('preload');
             }
@@ -63,8 +59,8 @@ final class ViewController extends AbstractController
 
         return $this->render("blog/posts/view/index.html.twig", [
             'post' => $post,
-            'rendered_content' => $renderedContent,
-            'rendered_toc' => $renderedToc,
+            'rendered_content' => $markdownDocument->renderedContent,
+            'rendered_toc' => $markdownDocument->renderedToc,
         ], $response);
     }
 }

@@ -1,0 +1,50 @@
+deptrac:
+    cache_file: .cache/deptrac_domains.cache
+    
+    paths:
+        - ./src
+
+    layers:
+        - name: Blog
+          collectors:
+              - { type: classLike, value: ^App\\Blog\\ }
+     
+        - name: CV
+          collectors:
+              - { type: classLike, value: ^App\\CV\\ }
+    
+        - name: Places
+          collectors:
+              - { type: classLike, value: ^App\\Places\\ }
+ 
+        - name: User
+          collectors:
+              - { type: classLike, value: ^App\\User\\ }
+
+        - name: Shared
+          collectors:
+              - { type: classLike, value: ^App\\Shared\\ }
+              
+        - name: Vendor
+          collectors:
+              - { type: classLike, value: ^(?!App\\) }
+
+    ruleset:
+        Blog: [Shared, Vendor]
+        CV: [Shared, Vendor]
+        Places: [Shared, Vendor]
+        User: [Shared, Vendor]
+        Shared: [Vendor]
+
+    skip_violations:
+        # Module routes are in the domain layer, but the MenuBuilder, a common thing, is in the shared layer, what's the best way to handle this?
+        App\Shared\Menu\MenuBuilder: 
+           - App\Blog\Domain\Route
+           - App\CV\Domain\Route
+           - App\Places\Domain\Route
+
+        App\Shared\Infrastructure\EasyAdmin\Controller\DashboardController:
+            - App\Blog\Domain\Post
+            - App\CV\Domain\ProfessionalExperience
+            - App\CV\Domain\Project
+            - App\Places\Domain\Place

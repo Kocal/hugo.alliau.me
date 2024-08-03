@@ -1,22 +1,22 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Method App\\\\Blog\\\\Domain\\\\Repository\\\\PostRepository\\:\\:findTags\\(\\) should return array\\<string\\> but returns array\\.$#"
+			message: "#^Method App\\\\Blog\\\\Infrastructure\\\\Doctrine\\\\Repository\\\\PostORMRepository\\:\\:findTags\\(\\) should return array\\<string\\> but returns array\\.$#"
 			count: 1
-			path: src/Blog/Domain/Repository/PostRepository.php
+			path: src/Blog/Infrastructure/Doctrine/Repository/PostORMRepository.php
 
 		-
-			message: "#^Method App\\\\Blog\\\\Domain\\\\Repository\\\\PostRepository\\:\\:findTagsAndOccurrences\\(\\) should return array\\<int, array\\{tag\\: string, occurrences\\: int\\}\\> but returns mixed\\.$#"
+			message: "#^Method App\\\\Blog\\\\Infrastructure\\\\Doctrine\\\\Repository\\\\PostORMRepository\\:\\:findTagsAndOccurrences\\(\\) should return array\\<int, array\\{tag\\: string, occurrences\\: int\\}\\> but returns mixed\\.$#"
 			count: 1
-			path: src/Blog/Domain/Repository/PostRepository.php
+			path: src/Blog/Infrastructure/Doctrine/Repository/PostORMRepository.php
 
 		-
-			message: "#^Method App\\\\Blog\\\\Domain\\\\Repository\\\\PostRepository\\:\\:getOneLatestPublished\\(\\) should return App\\\\Blog\\\\Domain\\\\Post but returns mixed\\.$#"
+			message: "#^Method App\\\\Blog\\\\Infrastructure\\\\Doctrine\\\\Repository\\\\PostORMRepository\\:\\:getOneLatestPublished\\(\\) should return App\\\\Blog\\\\Domain\\\\Post but returns mixed\\.$#"
 			count: 1
-			path: src/Blog/Domain/Repository/PostRepository.php
+			path: src/Blog/Infrastructure/Doctrine/Repository/PostORMRepository.php
 
 		-
-			message: "#^Parameter \\#1 \\$input of callable App\\\\Shared\\\\Markdown\\\\MarkdownConverter expects string, string\\|null given\\.$#"
+			message: "#^Parameter \\#1 \\$input of callable App\\\\Shared\\\\Domain\\\\Markdown\\\\MarkdownConverter expects string, string\\|null given\\.$#"
 			count: 1
 			path: src/Blog/Infrastructure/Symfony/Controller/Post/ViewController.php
 
@@ -51,26 +51,26 @@ parameters:
 			path: src/Shared/Infrastructure/Cuyz/Valinor/Mapper/ValinorObjectMapper.php
 
 		-
+			message: "#^Parameter \\#3 \\$contents of class League\\\\CommonMark\\\\Util\\\\HtmlElement constructor expects array\\<Stringable\\>\\|string\\|Stringable\\|null, array\\<int, string\\> given\\.$#"
+			count: 1
+			path: src/Shared/Infrastructure/League/CommonMark/Markdown/Extension/FencedCode/Renderer/FencedCodeRenderer.php
+
+		-
 			message: "#^Property App\\\\Shared\\\\Infrastructure\\\\Symfony\\\\Messenger\\\\MessengerCommandBus\\:\\:\\$messageBus is never read, only written\\.$#"
 			count: 1
 			path: src/Shared/Infrastructure/Symfony/Messenger/MessengerCommandBus.php
 
 		-
-			message: "#^Parameter \\#3 \\$contents of class League\\\\CommonMark\\\\Util\\\\HtmlElement constructor expects array\\<Stringable\\>\\|string\\|Stringable\\|null, array\\<int, string\\> given\\.$#"
-			count: 1
-			path: src/Shared/Markdown/Extension/FencedCode/Renderer/FencedCodeRenderer.php
-
-		-
-			message: "#^Parameter \\#3 \\$contents of class League\\\\CommonMark\\\\Util\\\\HtmlElement constructor expects array\\<Stringable\\>\\|string\\|Stringable\\|null, int\\<1, max\\> given\\.$#"
-			count: 1
-			path: src/Shared/Markdown/Extension/FencedCode/Renderer/FencedCodeRenderer.php
-
-		-
-			message: "#^Call to an undefined method League\\\\CommonMark\\\\Node\\\\Node\\:\\:getUrl\\(\\)\\.$#"
-			count: 1
-			path: src/Shared/Markdown/MarkdownConverter.php
-
-		-
 			message: "#^Cannot cast mixed to string\\.$#"
 			count: 2
 			path: src/User/Infrastructure/Symfony/Command/AdminCreate.php
+
+		-
+			message: "#^Call to an undefined method PHPStan\\\\Type\\\\Type\\:\\:getClassName\\(\\)\\.$#"
+			count: 1
+			path: tools/phpstan/src/Type/CommandBusDispatchDynamicMethodReturnTypeExtension.php
+
+		-
+			message: "#^Parameter \\#2 \\$args of static method PHPStan\\\\Reflection\\\\ParametersAcceptorSelector\\:\\:selectFromArgs\\(\\) expects array\\<PhpParser\\\\Node\\\\Arg\\>, array\\<PhpParser\\\\Node\\\\Arg\\|PhpParser\\\\Node\\\\VariadicPlaceholder\\> given\\.$#"
+			count: 1
+			path: tools/phpstan/src/Type/CommandBusDispatchDynamicMethodReturnTypeExtension.php

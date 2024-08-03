@@ -31,7 +31,7 @@ final readonly class CommandBusDispatchDynamicMethodReturnTypeExtension implemen
 
     public function getTypeFromMethodCall(MethodReflection $methodReflection, MethodCall $methodCall, Scope $scope): ?\PHPStan\Type\Type
     {
-        $command = $methodCall->args[0]->value;
+        $command = $methodCall->getArgs()[0]->value;
         $commandType = $scope->getType($command);
 
         if (! $commandType->isObject()->yes()) {

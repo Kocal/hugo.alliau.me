@@ -52,10 +52,22 @@ app.update: app.install
 ######
 
 ## QA - Run all QA checks
-qa: cs lint phpstan test
+qa: archi cs lint phpstan test
 
 ## QA - Run all QA checks and fix issues
-qa.fix: cs.fix lint.fix phpstan test
+qa.fix: archi cs.fix lint.fix phpstan test
+
+#########
+# Archi #
+#########
+
+## Architecture - Run architecture checks
+archi: archi.back
+
+## Architecture - Run architecture checks for backend
+archi.back:
+	$(PHP) vendor/bin/deptrac --config-file=deptrac_layers.yaml --report-uncovered --fail-on-uncovered
+	$(PHP) vendor/bin/deptrac --config-file=deptrac_domains.yaml --report-uncovered --fail-on-uncovered
 
 ################
 # Coding style #
