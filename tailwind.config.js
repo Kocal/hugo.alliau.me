@@ -49,7 +49,7 @@ module.exports = {
                         "--tw-prose-bullets": theme("colors.gray[500]"),
                         "--tw-prose-links": theme("colors.primary[700]"),
 
-                        ".CustomContainer": {
+                        ".CustomContainer, .Terminal": {
                             marginTop: theme("spacing.2"),
                             marginBottom: theme("spacing.2"),
                         },
