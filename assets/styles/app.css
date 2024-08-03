@@ -19,6 +19,10 @@
         color: var(--custom-container-color);
         background-color: var(--custom-container-bg-color);
     }
+    
+    .CustomContainer * {
+        color: inherit;
+    }
 
     .CustomContainer__Title {
         margin: theme('spacing.0') theme('spacing.0') theme('spacing.2') theme('spacing.0');
@@ -29,22 +33,42 @@
 
     .CustomContainer--info {
         --custom-container-color: theme('colors.blue.900');
-        --custom-container-bg-color: theme('colors.blue.50');
+        --custom-container-bg-color: theme('colors.blue.100');
+        
+        @media (prefers-color-scheme: dark) {
+            --custom-container-color: theme('colors.blue.100');
+            --custom-container-bg-color: theme('colors.blue.900');
+        }
     }
 
     .CustomContainer--tip {
         --custom-container-color: theme('colors.green.900');
-        --custom-container-bg-color: theme('colors.green.50');
+        --custom-container-bg-color: theme('colors.green.100');
+        
+        @media (prefers-color-scheme: dark) {
+            --custom-container-color: theme('colors.green.100');
+            --custom-container-bg-color: theme('colors.green.900');
+        }
     }
 
     .CustomContainer--warning {
         --custom-container-color: theme('colors.yellow.900');
-        --custom-container-bg-color: theme('colors.yellow.50');
+        --custom-container-bg-color: theme('colors.yellow.100');
+        
+        @media (prefers-color-scheme: dark) {
+            --custom-container-color: theme('colors.yellow.100');
+            --custom-container-bg-color: theme('colors.yellow.900');
+        }
     }
 
     .CustomContainer--danger {
         --custom-container-color: theme('colors.red.900');
-        --custom-container-bg-color: theme('colors.red.50');
+        --custom-container-bg-color: theme('colors.red.100');
+        
+        @media (prefers-color-scheme: dark) {
+            --custom-container-color: theme('colors.red.100');
+            --custom-container-bg-color: theme('colors.red.900');
+        }
     }
 }
 
@@ -102,12 +126,12 @@
         --terminal-border-radius: theme('borderRadius.lg');
 
         background-color: var(--terminal-bg-color);
+        border-radius: var(--terminal-border-radius);
 
         @media (prefers-color-scheme: dark) {
             --terminal-bg-color: theme('colors.gray.900');
             --terminal-header-bg-color: theme('colors.gray.950');
         }
-        border-radius: var(--terminal-border-radius);
     }
 
     .Terminal__Header {
