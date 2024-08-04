@@ -295,6 +295,9 @@
             "assets/icons/symfony.svg"
         ]
     },
+    "symfony/ux-turbo": {
+        "version": "v2.18.0"
+    },
     "symfony/ux-twig-component": {
         "version": "2.16",
         "recipe": {

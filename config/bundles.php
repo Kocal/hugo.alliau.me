@@ -21,4 +21,5 @@ return [
     League\FlysystemBundle\FlysystemBundle::class => ['all' => true],
     Kocal\BiomeJsBundle\KocalBiomeJsBundle::class => ['dev' => true],
     CuyZ\ValinorBundle\ValinorBundle::class => ['all' => true],
+    Symfony\UX\Turbo\TurboBundle::class => ['all' => true],
 ];
