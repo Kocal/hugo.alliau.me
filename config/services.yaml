@@ -24,4 +24,4 @@ services:
             - '../src/DependencyInjection/'
             - '../src/*/*.php'
             - '../src/Kernel.php'
-            - '../src/Shared/Markdown/Extension/GitHubEmojis/data/*.php'
+            - '../src/Shared/Infrastructure/League/CommonMark/Markdown/Extension/GitHubEmojis/data/*.php'

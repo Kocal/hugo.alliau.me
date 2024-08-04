@@ -12,8 +12,8 @@ use App\Shared\Infrastructure\Cloudflare\HttpCache\Adapter\CloudflareHttpCacheAd
 use App\Shared\Infrastructure\Symfony\HttpCache\SymfonyHttpCache;
 use App\Shared\Infrastructure\Symfony\HttpCache\SymfonyHttpCacheAdapterFactory;
 
-return function (ContainerConfigurator $container): void {
-    $services = $container->services();
+return static function (ContainerConfigurator $containerConfigurator): void {
+    $services = $containerConfigurator->services();
 
     $services->defaults()
         ->autowire()
@@ -22,7 +22,7 @@ return function (ContainerConfigurator $container): void {
     $services->load('App\\Shared\\', '../../src/Shared')
         ->exclude([
             '../../src/Shared/Domain/HttpCache/{CacheableEntity,CacheItem}.php',
-            '../../src/Shared/Markdown/Extension/GitHubEmojis/data/*.php',
+            '../../src/Shared/Infrastructure/League/CommonMark/Markdown/Extension/GitHubEmojis/data/*.php',
         ]);
 
     $services->set(HttpCache::class)
