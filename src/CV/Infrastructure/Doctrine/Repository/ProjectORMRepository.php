@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\CV\Infrastructure\Doctrine\Repository;
 
 use App\CV\Domain\Project;

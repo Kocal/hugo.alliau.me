@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Shared\Infrastructure\League\CommonMark\Markdown\Extension\GitHubEmojis\Parser;
 
 use League\CommonMark\Node\Inline\Text;

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Blog\Infrastructure\Symfony\Controller\Tag;
 
 use App\Blog\Domain\Repository\PostRepository;
@@ -14,7 +16,7 @@ final class ViewController extends AbstractController
 {
     use CacheMethodsTrait;
 
-    #[Route("/blog/tags/{tag}", name: RouteBlog::TAG_VIEW->value, methods: ['GET'])]
+    #[Route('/blog/tags/{tag}', name: RouteBlog::TAG_VIEW->value, methods: ['GET'])]
     public function __invoke(
         Request $request,
         string $tag,
@@ -38,7 +40,7 @@ final class ViewController extends AbstractController
             return $response;
         }
 
-        return $this->render("blog/tags/view/index.html.twig", [
+        return $this->render('blog/tags/view/index.html.twig', [
             'tag' => $tag,
             'tags' => $postRepository->findTagsAndOccurrences(),
             'posts' => $posts,

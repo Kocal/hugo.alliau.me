@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\User\Infrastructure\Symfony\Controller;
 
 use App\User\Domain\Route as RouteUser;

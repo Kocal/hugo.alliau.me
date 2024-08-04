@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Places\Infrastructure\Symfony\Controller;
 
 use App\Places\Domain\Repository\PlaceRepository;
@@ -14,7 +16,7 @@ final class ViewPlacesController extends AbstractController
 {
     use CacheMethodsTrait;
 
-    #[Route("/places", name: RoutePlaces::INDEX->value, options: [
+    #[Route('/places', name: RoutePlaces::INDEX->value, options: [
         'sitemap' => true,
     ], methods: ['GET'])]
     public function __invoke(
@@ -33,7 +35,7 @@ final class ViewPlacesController extends AbstractController
             return $response;
         }
 
-        return $this->render("places/home.html.twig", [
+        return $this->render('places/home.html.twig', [
             'places' => $placeRepository->findAll(),
         ], $response);
     }

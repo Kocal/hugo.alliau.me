@@ -1,26 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Shared\Domain\HttpCache;
 
 final readonly class CacheItem
 {
-    /**
-     * @param array<string,mixed> $parameters
-     */
-    public static function fromRoute(string|\BackedEnum $route, array $parameters = []): self
-    {
-        if ($route instanceof \BackedEnum) {
-            $route = (string) $route->value;
-        }
-
-        return new self(route: $route, parameters: $parameters);
-    }
-
-    public static function fromEntity(CacheableEntity $entity): self
-    {
-        return new self(entity: $entity);
-    }
-
     private function __construct(
         /**
          * @internal
@@ -36,5 +21,22 @@ final readonly class CacheItem
          */
         public CacheableEntity|null $entity = null,
     ) {
+    }
+
+    /**
+     * @param array<string,mixed> $parameters
+     */
+    public static function fromRoute(string|\BackedEnum $route, array $parameters = []): self
+    {
+        if ($route instanceof \BackedEnum) {
+            $route = (string) $route->value;
+        }
+
+        return new self(route: $route, parameters: $parameters);
+    }
+
+    public static function fromEntity(CacheableEntity $entity): self
+    {
+        return new self(entity: $entity);
     }
 }

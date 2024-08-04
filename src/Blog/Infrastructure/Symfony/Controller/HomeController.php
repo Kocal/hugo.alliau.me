@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Blog\Infrastructure\Symfony\Controller;
 
 use App\Blog\Domain\Repository\PostRepository;
@@ -14,10 +16,10 @@ final class HomeController extends AbstractController
 {
     use CacheMethodsTrait;
 
-    #[Route("/blog", name: RouteBlog::HOME->value, options: [
+    #[Route('/blog', name: RouteBlog::HOME->value, options: [
         'sitemap' => true,
     ], methods: ['GET'], format: 'html')]
-    #[Route("/blog/rss.xml", name: RouteBlog::RSS->value, methods: ['GET'], format: 'xml')]
+    #[Route('/blog/rss.xml', name: RouteBlog::RSS->value, methods: ['GET'], format: 'xml')]
     public function __invoke(
         string $_format,
         Request $request,

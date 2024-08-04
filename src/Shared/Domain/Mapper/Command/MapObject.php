@@ -12,16 +12,6 @@ use App\Shared\Domain\Mapper\Format;
 final readonly class MapObject
 {
     /**
-     * @template T of object
-     * @param class-string<T> $className
-     * @return self<T>
-     */
-    public static function fromJson(string $className, string $source): self
-    {
-        return new self($className, $source, Format::JSON);
-    }
-
-    /**
      * @param class-string<Class> $className
      */
     public function __construct(
@@ -29,5 +19,15 @@ final readonly class MapObject
         public mixed $source,
         public Format $format,
     ) {
+    }
+
+    /**
+     * @template T of object
+     * @param class-string<T> $className
+     * @return self<T>
+     */
+    public static function fromJson(string $className, string $source): self
+    {
+        return new self($className, $source, Format::JSON);
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\CV\Infrastructure\EasyAdmin\Controller;
 
 use App\CV\Domain\ProfessionalExperience;

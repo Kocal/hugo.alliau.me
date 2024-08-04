@@ -9,16 +9,6 @@ use App\Places\Domain\PlaceType;
 
 final readonly class CreatePlace
 {
-    public static function fromGoogleAutocomplete(Autocomplete $autocomplete): self
-    {
-        return new self(
-            CreateAddress::fromGoogleAutocomplete($autocomplete),
-            googleMapsUrl: $autocomplete->url,
-            iconMaskUri: $autocomplete->iconMaskBaseUri . '.svg',
-            types: $autocomplete->types,
-        );
-    }
-
     /**
      * @param array<PlaceType> $types
      */
@@ -28,5 +18,15 @@ final readonly class CreatePlace
         public string|null $iconMaskUri,
         public array $types,
     ) {
+    }
+
+    public static function fromGoogleAutocomplete(Autocomplete $autocomplete): self
+    {
+        return new self(
+            CreateAddress::fromGoogleAutocomplete($autocomplete),
+            googleMapsUrl: $autocomplete->url,
+            iconMaskUri: $autocomplete->iconMaskBaseUri . '.svg',
+            types: $autocomplete->types,
+        );
     }
 }

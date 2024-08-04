@@ -20,10 +20,7 @@ return ECSConfig::configure()
     ])
     ->withPreparedSets(
         psr12: true,
-        arrays: true,
-        namespaces: true,
-        spaces: true,
-        docblocks: true,
-        comments: true,
+        common: true,
+        strict: true,
         cleanCode: true,
     );

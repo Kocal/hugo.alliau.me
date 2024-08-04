@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\CV\Infrastructure\Symfony\Controller;
 
 use App\CV\Domain\Repository\ProfessionalExperienceRepository;
@@ -16,7 +18,7 @@ final class HomeController extends AbstractController
 {
     use CacheMethodsTrait;
 
-    #[Route("/cv", name: RouteCv::INDEX->value, options: [
+    #[Route('/cv', name: RouteCv::INDEX->value, options: [
         'sitemap' => true,
     ], methods: ['GET'])]
     public function __invoke(
@@ -45,7 +47,7 @@ final class HomeController extends AbstractController
         $professionalExperiences = $professionalExperienceRepository->findAll();
         $projects = $projectRepository->findAll();
 
-        return $this->render("cv/home.html.twig", [
+        return $this->render('cv/home.html.twig', [
             'professional_experiences' => $professionalExperiences,
             'projects' => $projects,
         ], $response);

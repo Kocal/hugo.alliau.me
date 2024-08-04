@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Shared\Infrastructure\EasyAdmin\HttpCache\Controller;
 
 use App\Shared\Domain\HttpCache\HttpCache;

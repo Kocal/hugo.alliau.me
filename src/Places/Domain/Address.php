@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Places\Domain;
 
 use Doctrine\DBAL\Types\Types;
@@ -35,7 +37,7 @@ class Address
         return $this->formattedAddress;
     }
 
-    public function setFormattedAddress(?string $formattedAddress): Address
+    public function setFormattedAddress(?string $formattedAddress): self
     {
         $this->formattedAddress = $formattedAddress;
 

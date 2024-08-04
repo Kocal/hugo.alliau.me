@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Places\Domain;
 
 use App\Shared\Domain\HttpCache\CacheableEntity;
@@ -54,7 +56,7 @@ class Place implements CacheableEntity
         return $this->address;
     }
 
-    public function setAddress(?Address $address): Place
+    public function setAddress(?Address $address): self
     {
         $this->address = $address;
 
@@ -84,7 +86,7 @@ class Place implements CacheableEntity
         return $this->googleMapsUrl;
     }
 
-    public function setGoogleMapsUrl(?string $googleMapsUrl): Place
+    public function setGoogleMapsUrl(?string $googleMapsUrl): self
     {
         $this->googleMapsUrl = $googleMapsUrl;
 
@@ -96,7 +98,7 @@ class Place implements CacheableEntity
         return $this->iconMaskUri;
     }
 
-    public function setIconMaskUri(?string $iconMaskUri): Place
+    public function setIconMaskUri(?string $iconMaskUri): self
     {
         $this->iconMaskUri = $iconMaskUri;
         return $this;

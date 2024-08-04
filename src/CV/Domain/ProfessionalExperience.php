@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\CV\Domain;
 
 use App\Shared\Domain\HttpCache\CacheableEntity;

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Shared\Infrastructure\League\CommonMark\Markdown\Extension\CustomContainer\Parser;
 
 use App\Shared\Infrastructure\League\CommonMark\Markdown\Extension\CustomContainer\Node\CustomContainer;
@@ -18,6 +20,13 @@ final class CustomContainerBlockParser extends AbstractBlockContinueParser
     private CustomContainer $customContainer;
 
     private bool $finished = false;
+
+    public function __construct(
+        string $type,
+        string|null $title
+    ) {
+        $this->customContainer = new CustomContainer($type, $title);
+    }
 
     public static function createBlockStartParser(): BlockStartParserInterface
     {
@@ -41,13 +50,6 @@ final class CustomContainerBlockParser extends AbstractBlockContinueParser
                     ->at($cursor);
             }
         };
-    }
-
-    public function __construct(
-        string $type,
-        string|null $title
-    ) {
-        $this->customContainer = new CustomContainer($type, $title);
     }
 
     public function getBlock(): AbstractBlock
@@ -75,7 +77,7 @@ final class CustomContainerBlockParser extends AbstractBlockContinueParser
             return BlockContinue::at($cursor);
         }
 
-        if (null !== $cursor->match('/^:::$/')) {
+        if ($cursor->match('/^:::$/') !== null) {
             $this->finished = true;
         }
 

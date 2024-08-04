@@ -8,6 +8,18 @@ use App\Places\Domain\Google\Place\Autocomplete;
 
 final readonly class CreateAddress
 {
+    /**
+     * @param array{float, float} $coordinates
+     */
+    public function __construct(
+        public string $name,
+        public array $coordinates,
+        public string|null $formattedAddress,
+        public string|null $country,
+        public string|null $city,
+    ) {
+    }
+
     public static function fromGoogleAutocomplete(Autocomplete $autocomplete): self
     {
         $country = null;
@@ -25,7 +37,7 @@ final readonly class CreateAddress
                 break;
             }
         }
-        if (null === $city) {
+        if ($city === null) {
             foreach ($autocomplete->addressComponents as $addressComponent) {
                 if (in_array('administrative_area_level_1', $addressComponent->types, true)) {
                     $city = $addressComponent->longName;
@@ -44,17 +56,5 @@ final readonly class CreateAddress
             country: $country,
             city: $city,
         );
-    }
-
-    /**
-     * @param array{float, float} $coordinates
-     */
-    public function __construct(
-        public string $name,
-        public array $coordinates,
-        public string|null $formattedAddress,
-        public string|null $country,
-        public string|null $city,
-    ) {
     }
 }

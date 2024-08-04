@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Places\Infrastructure\Doctrine\Repository;
 
 use App\Places\Domain\Place;

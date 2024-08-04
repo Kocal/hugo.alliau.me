@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Shared\Infrastructure\League\CommonMark\Markdown\Extension\CustomContainer\Renderer;
 
 use App\Shared\Infrastructure\League\CommonMark\Markdown\Extension\CustomContainer\Node\CustomContainer;
@@ -19,8 +21,8 @@ final class CustomContainerRenderer implements NodeRendererInterface
         $title = $node->getTitle();
 
         return <<<HTML
-            <div class="CustomContainer CustomContainer--$type">
-                <p class="CustomContainer__Title">$title</p>
+            <div class="CustomContainer CustomContainer--{$type}">
+                <p class="CustomContainer__Title">{$title}</p>
                 <div class="prose max-w-none">{$childRenderer->renderNodes($node->children())}</div>
             </div>
 HTML;

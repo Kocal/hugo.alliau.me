@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Shared\Infrastructure\Symfony\Controller;
 
 use App\Shared\Domain\HttpCache\CacheMethodsTrait;
@@ -13,7 +15,7 @@ final class HomeController extends AbstractController
 {
     use CacheMethodsTrait;
 
-    #[Route("/", name: RouteShared::HOME->value, options: [
+    #[Route('/', name: RouteShared::HOME->value, options: [
         'sitemap' => true,
     ], methods: ['GET'])]
     public function __invoke(
@@ -28,6 +30,6 @@ final class HomeController extends AbstractController
             return $response;
         }
 
-        return $this->render("home.html.twig", [], $response);
+        return $this->render('home.html.twig', [], $response);
     }
 }

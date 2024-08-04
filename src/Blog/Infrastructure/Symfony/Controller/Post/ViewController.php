@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Blog\Infrastructure\Symfony\Controller\Post;
 
 use App\Blog\Domain\Post;
@@ -18,7 +20,7 @@ final class ViewController extends AbstractController
 {
     use CacheMethodsTrait;
 
-    #[Route("/blog/posts/{slug}", name: RouteBlog::POST_VIEW->value, methods: ['GET'])]
+    #[Route('/blog/posts/{slug}', name: RouteBlog::POST_VIEW->value, methods: ['GET'])]
     public function __invoke(
         #[MapEntity(mapping: [
             'slug' => 'slug',
@@ -57,7 +59,7 @@ final class ViewController extends AbstractController
             $this->addLink($request, $webLink);
         }
 
-        return $this->render("blog/posts/view/index.html.twig", [
+        return $this->render('blog/posts/view/index.html.twig', [
             'post' => $post,
             'rendered_content' => $markdownDocument->renderedContent,
             'rendered_toc' => $markdownDocument->renderedToc,
