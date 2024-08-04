@@ -11,8 +11,10 @@ use App\Places\Domain\Command\CreatePlaceHandler;
 use App\Places\Domain\PlaceType;
 use App\Shared\Domain\Command\CommandBus;
 use App\Tests\Forum\Infrastructure\Double\Repository\FakePlaceRepository;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
+#[CoversClass(CreatePlaceHandler::class)]
 final class CreatePlaceHandlerTest extends TestCase
 {
     public function testCreatePlace(): void

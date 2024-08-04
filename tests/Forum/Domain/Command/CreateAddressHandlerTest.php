@@ -6,8 +6,10 @@ namespace App\Tests\Forum\Domain\Command;
 
 use App\Places\Domain\Command\CreateAddress;
 use App\Places\Domain\Command\CreateAddressHandler;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
+#[CoversClass(CreateAddressHandler::class)]
 final class CreateAddressHandlerTest extends TestCase
 {
     public function testCreateAddress(): void
