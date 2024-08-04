@@ -5,6 +5,8 @@ declare(strict_types=1);
 use Symplify\EasyCodingStandard\Config\ECSConfig;
 
 return ECSConfig::configure()
+    ->withParallel()
+    ->withCache(__DIR__ . '/.cache/ecs')
     ->withPaths([
         __DIR__ . '/assets',
         __DIR__ . '/config',

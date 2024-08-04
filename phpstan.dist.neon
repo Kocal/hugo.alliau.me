@@ -13,7 +13,9 @@ parameters:
         - src/
         - tools/
         #- tests/
-
+        
+    tmpDir: .cache/phpstan
+    
     symfony:
         console_application_loader: tools/phpstan/console-application.php
 

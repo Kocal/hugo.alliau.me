@@ -1,7 +1,6 @@
 .cache
 /public/sitemap.*
 /Makefile.local
-.twig-cs-fixer.cache
 
 ###> symfony/framework-bundle ###
 /.env.local
