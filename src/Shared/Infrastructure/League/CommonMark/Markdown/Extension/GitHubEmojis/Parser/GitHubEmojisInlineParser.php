@@ -8,13 +8,11 @@ use League\CommonMark\Node\Inline\Text;
 use League\CommonMark\Parser\Inline\InlineParserInterface;
 use League\CommonMark\Parser\Inline\InlineParserMatch;
 use League\CommonMark\Parser\InlineParserContext;
+use Symfony\Component\Emoji\EmojiTransliterator;
 
 final class GitHubEmojisInlineParser implements InlineParserInterface
 {
-    /**
-     * @var array<string, string>
-     */
-    private static array $emojis = [];
+    private EmojiTransliterator $emojiTransliterator;
 
     #[\Override]
     public function getMatchDefinition(): InlineParserMatch
@@ -30,23 +28,14 @@ final class GitHubEmojisInlineParser implements InlineParserInterface
         $match = $inlineContext->getFullMatch();
 
         $inlineContext->getContainer()->appendChild(
-            new Text(
-                $this->getEmojis()[str_replace(':', '', $match)] ?? $match,
-            )
+            new Text($this->getTransliterator()->transliterate($match) ?: $match)
         );
 
         return true;
     }
 
-    /**
-     * @return array<string, string>
-     */
-    private function getEmojis(): array
+    private function getTransliterator(): EmojiTransliterator
     {
-        if (self::$emojis === []) {
-            self::$emojis = require __DIR__ . '/../data/emojis.php';
-        }
-
-        return self::$emojis;
+        return $this->emojiTransliterator ??= EmojiTransliterator::create('text-emoji');
     }
 }

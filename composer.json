@@ -30,6 +30,7 @@
         "symfony/clock": "7.1.*",
         "symfony/console": "7.1.*",
         "symfony/dotenv": "7.1.*",
+        "symfony/emoji": "7.1.*",
         "symfony/flex": "^2",
         "symfony/framework-bundle": "7.1.*",
         "symfony/http-client": "7.1.*",
