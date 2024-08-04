@@ -22,6 +22,7 @@ final class MessengerCommandBus implements CommandBus
     ) {
     }
 
+    #[\Override]
     public function dispatch(object $command): mixed
     {
         return $this->handle($command);

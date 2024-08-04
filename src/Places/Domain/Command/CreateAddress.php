@@ -37,6 +37,7 @@ final readonly class CreateAddress
                 break;
             }
         }
+
         if ($city === null) {
             foreach ($autocomplete->addressComponents as $addressComponent) {
                 if (in_array('administrative_area_level_1', $addressComponent->types, true)) {

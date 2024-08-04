@@ -14,8 +14,8 @@ use Symfony\Component\Routing\Attribute\Route;
 final class ClearHttpCacheController extends AbstractController
 {
     public function __construct(
-        private HttpCache $httpCache,
-        private AdminUrlGenerator $adminUrlGenerator,
+        private readonly HttpCache $httpCache,
+        private readonly AdminUrlGenerator $adminUrlGenerator,
     ) {
     }
 

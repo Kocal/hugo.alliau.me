@@ -31,15 +31,17 @@ class PlaceCrudController extends AbstractCrudController
 {
     public function __construct(
         #[Autowire(param: 'kernel.debug')]
-        private bool $kernelDebug,
+        private readonly bool $kernelDebug,
     ) {
     }
 
+    #[\Override]
     public static function getEntityFqcn(): string
     {
         return Place::class;
     }
 
+    #[\Override]
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
@@ -53,6 +55,7 @@ class PlaceCrudController extends AbstractCrudController
         ;
     }
 
+    #[\Override]
     public function configureFields(string $pageName): iterable
     {
         yield IdField::new('id')->hideOnForm();
@@ -63,7 +66,7 @@ class PlaceCrudController extends AbstractCrudController
             ->allowMultipleChoices()
             ->autocomplete()
             ->renderAsBadges()
-            ->setChoices(fn () => PlaceType::cases())
+            ->setChoices(fn (): array => PlaceType::cases())
             ->setFormTypeOption('class', PlaceType::class)
         ;
 
@@ -76,6 +79,7 @@ class PlaceCrudController extends AbstractCrudController
         yield ArrayField::new('address.coordinates')->onlyOnForms();
     }
 
+    #[\Override]
     public function configureActions(Actions $actions): Actions
     {
         $goToStripe = Action::new('importFromGooglePlaces', 'Import')
@@ -115,13 +119,13 @@ class PlaceCrudController extends AbstractCrudController
         try {
             $googleAutocomplete = $commandBus->dispatch(MapObject::fromJson(Autocomplete::class, $placeAutocompleteJson));
             $commandBus->dispatch(CreatePlace::fromGoogleAutocomplete($googleAutocomplete));
-        } catch (\Throwable $e) {
+        } catch (\Throwable $throwable) {
             if ($this->kernelDebug) {
-                throw $e;
+                throw $throwable;
             }
 
             $logger->error('An error occurred while importing places.', [
-                'exception' => $e,
+                'exception' => $throwable,
             ]);
             $this->addFlash('danger', 'An error occurred while importing places.');
 

@@ -28,7 +28,7 @@ final class CloudOfTags
         $optionsResolver
             ->setIgnoreUndefined()
             ->setRequired(['tags'])
-            ->setDefault('tags', function (OptionsResolver $resolver) {
+            ->setDefault('tags', function (OptionsResolver $resolver): void {
                 $resolver
                     ->setPrototype(true)
                     ->setRequired('tag')

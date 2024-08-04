@@ -8,6 +8,7 @@ use Twig\Extension\AbstractExtension;
 
 final class JsonLdExtension extends AbstractExtension
 {
+    #[\Override]
     public function getFunctions(): iterable
     {
         yield new \Twig\TwigFunction('json_ld', $this->jsonLd(...), [

@@ -10,7 +10,7 @@ use App\Shared\Domain\HttpCache\HttpCacheAdapter;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
-final class SymfonyHttpCache implements HttpCache
+final readonly class SymfonyHttpCache implements HttpCache
 {
     public function __construct(
         private HttpCacheAdapter $httpCacheAdapter,
@@ -19,6 +19,7 @@ final class SymfonyHttpCache implements HttpCache
     ) {
     }
 
+    #[\Override]
     public function clearAll(): void
     {
         $this->logger->info('Clearing all HTTP cache.', [
@@ -28,6 +29,7 @@ final class SymfonyHttpCache implements HttpCache
         $this->httpCacheAdapter->clearAll();
     }
 
+    #[\Override]
     public function clearFor(CacheItem ...$cacheItems): void
     {
         $normalized = $this->normalize(...$cacheItems);
@@ -52,7 +54,7 @@ final class SymfonyHttpCache implements HttpCache
         foreach ($cacheItem as $item) {
             if ($item->route !== null) {
                 $normalized['urls'][] = $this->urlGenerator->generate($item->route, $item->parameters, UrlGeneratorInterface::ABSOLUTE_URL);
-            } elseif ($item->entity !== null) {
+            } elseif ($item->entity instanceof \App\Shared\Domain\HttpCache\CacheableEntity) {
                 $normalized = array_merge_recursive($normalized, $this->normalize(...$item->entity->getCacheItems()));
             }
         }

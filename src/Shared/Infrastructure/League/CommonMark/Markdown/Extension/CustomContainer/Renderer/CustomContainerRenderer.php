@@ -11,10 +11,11 @@ use League\CommonMark\Renderer\NodeRendererInterface;
 
 final class CustomContainerRenderer implements NodeRendererInterface
 {
+    #[\Override]
     public function render(Node $node, ChildNodeRendererInterface $childRenderer)
     {
         if (! ($node instanceof CustomContainer)) {
-            throw new \InvalidArgumentException('Incompatible node type: ' . \get_class($node));
+            throw new \InvalidArgumentException('Incompatible node type: ' . $node::class);
         }
 
         $type = $node->getType();

@@ -19,11 +19,13 @@ class PlaceORMRepository extends ServiceEntityRepository implements PlaceReposit
         parent::__construct($registry, Place::class);
     }
 
+    #[\Override]
     public function add(Place $place): void
     {
         $this->getEntityManager()->persist($place);
     }
 
+    #[\Override]
     public function getOneLatestUpdated(): Place
     {
         return $this->createQueryBuilder('p')

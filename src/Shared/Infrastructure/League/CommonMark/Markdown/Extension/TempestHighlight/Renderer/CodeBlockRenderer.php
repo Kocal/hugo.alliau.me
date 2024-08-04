@@ -13,7 +13,7 @@ use Tempest\Highlight\Highlighter;
 use Tempest\Highlight\WebTheme;
 use function Symfony\Component\String\s;
 
-final class CodeBlockRenderer implements NodeRendererInterface
+final readonly class CodeBlockRenderer implements NodeRendererInterface
 {
     /**
      * https://regex101.com/r/5nJBlZ/1
@@ -28,6 +28,7 @@ final class CodeBlockRenderer implements NodeRendererInterface
     ) {
     }
 
+    #[\Override]
     public function render(Node $node, ChildNodeRendererInterface $childRenderer)
     {
         if (! $node instanceof FencedCode) {
@@ -37,7 +38,7 @@ final class CodeBlockRenderer implements NodeRendererInterface
         $infoWords = $node->getInfoWords();
         preg_match('/^(?<language>[\w]+)/', $infoWords[0] ?? 'txt', $matches);
         $language = $matches['language'] ?? 'txt';
-        $filename = trim($infoWords[1] ?? '', '[]') ?: null;
+        $filename = trim($infoWords[1] ?? '', '[]') !== '' && trim($infoWords[1] ?? '', '[]') !== '0' ? trim($infoWords[1] ?? '', '[]') : null;
 
         $highlighter = ($this->getHighlighter)();
 
@@ -49,12 +50,12 @@ final class CodeBlockRenderer implements NodeRendererInterface
 
         $output = s($output);
         // Replace the gutter's end space with nothing, as we don't want it to be selectable
-        $output = $output->replaceMatches(self::RE_REMOVE_GUTTER_END_SPACE, static fn (array $matches) => s($matches[0])->trim()->toString());
+        $output = $output->replaceMatches(self::RE_REMOVE_GUTTER_END_SPACE, static fn (array $matches): string => s($matches[0])->trim()->toString());
         // Add a tabindex to the pre tag to make it focusable
         $output = $output->replace('<pre', '<pre tabindex="0"');
 
         return '<div class="Terminal">'
-            . ($filename ? '<div class="Terminal__Header"><span>' . $filename . '</span></div>' : '')
+            . ($filename !== null && $filename !== '' && $filename !== '0' ? '<div class="Terminal__Header"><span>' . $filename . '</span></div>' : '')
             . '<div class="Terminal__Body">'
             . $output
             . '</div></div>';

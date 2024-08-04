@@ -9,8 +9,8 @@ use League\CommonMark\Node\Block\AbstractBlock;
 final class CustomContainer extends AbstractBlock
 {
     public function __construct(
-        private string $type,
-        private string|null $title,
+        private readonly string $type,
+        private readonly string|null $title,
     ) {
         parent::__construct();
     }

@@ -48,13 +48,13 @@ final class CreatePlaceHandlerTest extends TestCase
         $handler = new CreatePlaceHandler($placeRepository, $commandBus);
         $place = $handler($command);
 
-        self::assertSame('name', $place->getAddress()->getName());
-        self::assertSame([41, 3], $place->getAddress()->getCoordinates());
-        self::assertSame('formattedAddress', $place->getAddress()->getFormattedAddress());
-        self::assertSame('country', $place->getAddress()->getCountry());
-        self::assertSame('city', $place->getAddress()->getCity());
-        self::assertSame('googleMapsUrl', $place->getGoogleMapsUrl());
-        self::assertSame('iconMaskUri', $place->getIconMaskUri());
-        self::assertSame([PlaceType::AIRPORT], $place->getTypes());
+        $this->assertSame('name', $place->getAddress()->getName());
+        $this->assertSame([41, 3], $place->getAddress()->getCoordinates());
+        $this->assertSame('formattedAddress', $place->getAddress()->getFormattedAddress());
+        $this->assertSame('country', $place->getAddress()->getCountry());
+        $this->assertSame('city', $place->getAddress()->getCity());
+        $this->assertSame('googleMapsUrl', $place->getGoogleMapsUrl());
+        $this->assertSame('iconMaskUri', $place->getIconMaskUri());
+        $this->assertSame([PlaceType::AIRPORT], $place->getTypes());
     }
 }

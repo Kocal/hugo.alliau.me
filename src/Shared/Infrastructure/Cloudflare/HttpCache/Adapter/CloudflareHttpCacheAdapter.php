@@ -10,7 +10,7 @@ use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\DependencyInjection\Attribute\Target;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
-final class CloudflareHttpCacheAdapter implements HttpCacheAdapter
+final readonly class CloudflareHttpCacheAdapter implements HttpCacheAdapter
 {
     public function __construct(
         #[Target('cloudflare.client')]

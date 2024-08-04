@@ -16,11 +16,13 @@ final class GitHubEmojisInlineParser implements InlineParserInterface
      */
     private static array $emojis = [];
 
+    #[\Override]
     public function getMatchDefinition(): InlineParserMatch
     {
         return InlineParserMatch::regex(':[a-z0-9\+\-_]+:');
     }
 
+    #[\Override]
     public function parse(InlineParserContext $inlineContext): bool
     {
         $inlineContext->getCursor()->advanceBy($inlineContext->getFullMatchLength());
@@ -29,7 +31,7 @@ final class GitHubEmojisInlineParser implements InlineParserInterface
 
         $inlineContext->getContainer()->appendChild(
             new Text(
-                self::getEmojis()[str_replace(':', '', $match)] ?? $match,
+                $this->getEmojis()[str_replace(':', '', $match)] ?? $match,
             )
         );
 
@@ -39,7 +41,7 @@ final class GitHubEmojisInlineParser implements InlineParserInterface
     /**
      * @return array<string, string>
      */
-    private static function getEmojis(): array
+    private function getEmojis(): array
     {
         if (self::$emojis === []) {
             self::$emojis = require __DIR__ . '/../data/emojis.php';

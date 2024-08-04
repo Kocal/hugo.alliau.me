@@ -14,6 +14,7 @@ class Kernel extends BaseKernel
 {
     use MicroKernelTrait;
 
+    #[\Override]
     protected function build(ContainerBuilder $container): void
     {
         $container->registerAttributeForAutoconfiguration(AsCommandHandler::class, static function (ChildDefinition $definition): void {

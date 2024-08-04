@@ -31,6 +31,7 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
     ) {
     }
 
+    #[\Override]
     public function authenticate(Request $request): Passport
     {
         $username = $request->request->getString('_username', '');
@@ -47,15 +48,17 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
         );
     }
 
+    #[\Override]
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
-        if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
+        if (($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) !== null && ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) !== '' && ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) !== '0') {
             return new RedirectResponse($targetPath);
         }
 
         return new RedirectResponse($this->urlGenerator->generate(RouteShared::HOME->value));
     }
 
+    #[\Override]
     protected function getLoginUrl(Request $request): string
     {
         return $this->urlGenerator->generate(self::LOGIN_ROUTE);

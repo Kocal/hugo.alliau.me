@@ -25,6 +25,7 @@ final class UserORMRepository extends ServiceEntityRepository implements UserRep
     /**
      * Used to upgrade (rehash) the user's password automatically over time.
      */
+    #[\Override]
     public function upgradePassword(PasswordAuthenticatedUserInterface $user, string $newHashedPassword): void
     {
         if (! $user instanceof User) {

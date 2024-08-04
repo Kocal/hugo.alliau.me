@@ -15,6 +15,7 @@ use League\CommonMark\Extension\ExtensionInterface;
  */
 final class CustomContainerExtension implements ExtensionInterface
 {
+    #[\Override]
     public function register(EnvironmentBuilderInterface $environment): void
     {
         $environment

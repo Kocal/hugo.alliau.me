@@ -52,13 +52,14 @@ final readonly class LeagueCommonMarkMarkdownConverter implements MarkdownConver
         $this->environment->addExtension(new GitHubEmojisExtension());
         $this->environment->addExtension(new AttributesExtension());
         $this->environment->addRenderer(FencedCode::class, new CodeBlockRenderer(
-            static fn () => (new Highlighter())->withGutter(),
+            static fn (): \Tempest\Highlight\Highlighter => (new Highlighter())->withGutter(),
         ));
         $this->environment->addRenderer(Code::class, new InlineCodeBlockRenderer());
 
         $this->parser = new MarkdownParser($this->environment);
     }
 
+    #[\Override]
     public function __invoke(string $input): MarkdownDocument
     {
         $document = $this->parser->parse($input);
@@ -68,7 +69,7 @@ final readonly class LeagueCommonMarkMarkdownConverter implements MarkdownConver
 
         return new MarkdownDocument(
             renderedContent: $htmlRenderer->renderNodes([$document]),
-            renderedToc: $toc ? $htmlRenderer->renderNodes([$toc]) : null,
+            renderedToc: $toc instanceof \League\CommonMark\Node\Node ? $htmlRenderer->renderNodes([$toc]) : null,
             webLinks: $this->getWebLinks($document),
         );
     }
@@ -79,7 +80,7 @@ final readonly class LeagueCommonMarkMarkdownConverter implements MarkdownConver
             ->where(Query::type(TableOfContents::class))
             ->findOne($document);
 
-        if ($toc) {
+        if ($toc instanceof \League\CommonMark\Node\Node) {
             $toc->detach();
             return $toc;
         }
@@ -95,9 +96,7 @@ final readonly class LeagueCommonMarkMarkdownConverter implements MarkdownConver
         $webLinks = [];
 
         $imagesWithHighPriority = (new Query())
-            ->where(function (Node $node) {
-                return $node instanceof Image && $node->data->get('attributes.fetchpriority', '') === 'high';
-            })
+            ->where(fn (Node $node): bool => $node instanceof Image && $node->data->get('attributes.fetchpriority', '') === 'high')
             ->findAll($document);
 
         foreach ($imagesWithHighPriority as $image) {

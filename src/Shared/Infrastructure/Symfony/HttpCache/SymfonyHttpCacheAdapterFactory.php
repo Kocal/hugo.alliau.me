@@ -11,7 +11,7 @@ use App\Shared\Infrastructure\Cloudflare\HttpCache\Adapter\CloudflareHttpCacheAd
 use Psr\Container\ContainerInterface;
 use Symfony\Component\DependencyInjection\Attribute\AutowireLocator;
 
-final class SymfonyHttpCacheAdapterFactory implements HttpCacheAdapterFactory
+final readonly class SymfonyHttpCacheAdapterFactory implements HttpCacheAdapterFactory
 {
     public function __construct(
         #[AutowireLocator([
@@ -22,6 +22,7 @@ final class SymfonyHttpCacheAdapterFactory implements HttpCacheAdapterFactory
     ) {
     }
 
+    #[\Override]
     public function __invoke(string $name): HttpCacheAdapter
     {
         if (! $this->adapters->has($name)) {

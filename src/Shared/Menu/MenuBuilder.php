@@ -15,20 +15,16 @@ use Symfony\Component\DependencyInjection\Attribute\AutoconfigureTag;
     'method' => 'createMainMenu',
     'alias' => 'main',
 ])]
-final class MenuBuilder
+final readonly class MenuBuilder
 {
     public function __construct(
         private FactoryInterface $factory
     ) {
     }
 
-    /**
-     * @param array<string, mixed> $options
-     */
-    public function createMainMenu(array $options): ItemInterface
+    public function createMainMenu(): ItemInterface
     {
         $menu = $this->factory->createItem('root');
-
         $menu->addChild('Blog', [
             'route' => RouteBlog::HOME->value,
             'extras' => [
@@ -45,15 +41,12 @@ final class MenuBuilder
                 ],
             ],
         ]);
-
         $menu->addChild('CV', [
             'route' => RouteCv::INDEX->value,
         ]);
-
         $menu->addChild('Places', [
             'route' => RoutePlaces::INDEX->value,
         ]);
-
         return $menu;
     }
 }

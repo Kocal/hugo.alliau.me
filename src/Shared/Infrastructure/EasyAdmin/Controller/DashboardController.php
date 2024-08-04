@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Shared\Infrastructure\EasyAdmin\Controller;
 
-use App\Blog as Blog;
-use App\CV as CV;
-use App\Places as Places;
+use App\Blog;
+use App\CV;
+use App\Places;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -16,11 +16,13 @@ use Symfony\Component\Routing\Attribute\Route;
 class DashboardController extends AbstractDashboardController
 {
     #[Route('/admin', name: 'admin')]
+    #[\Override]
     public function index(): Response
     {
         return $this->render('admin/home.html.twig');
     }
 
+    #[\Override]
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
@@ -30,6 +32,7 @@ class DashboardController extends AbstractDashboardController
         ;
     }
 
+    #[\Override]
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');

@@ -12,7 +12,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Event\AfterEntityPersistedEvent;
 use EasyCorp\Bundle\EasyAdminBundle\Event\AfterEntityUpdatedEvent;
 use Symfony\Component\EventDispatcher\Attribute\AsEventListener;
 
-final class AdminEntityListener
+final readonly class AdminEntityListener
 {
     public function __construct(
         private HttpCache $httpCache,

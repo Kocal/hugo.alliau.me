@@ -10,6 +10,7 @@ use League\CommonMark\Extension\ExtensionInterface;
 
 final class GitHubEmojisExtension implements ExtensionInterface
 {
+    #[\Override]
     public function register(EnvironmentBuilderInterface $environment): void
     {
         $environment->addInlineParser(new GitHubEmojisInlineParser());

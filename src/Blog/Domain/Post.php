@@ -218,7 +218,7 @@ class Post implements CacheableEntity
             ]),
             CacheItem::fromRoute(RouteBlog::TAG_LIST),
             ...array_map(
-                static fn (string $tag) =>
+                static fn (string $tag): \App\Shared\Domain\HttpCache\CacheItem =>
                 CacheItem::fromRoute(RouteBlog::TAG_VIEW, [
                     'tag' => $tag,
                 ]),

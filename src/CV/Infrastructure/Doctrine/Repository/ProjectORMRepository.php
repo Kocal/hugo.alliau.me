@@ -19,11 +19,13 @@ class ProjectORMRepository extends ServiceEntityRepository implements ProjectRep
         parent::__construct($registry, Project::class);
     }
 
+    #[\Override]
     public function save(Project $project): void
     {
         $this->getEntityManager()->persist($project);
     }
 
+    #[\Override]
     public function findAll(): array
     {
         $qb = $this->createQueryBuilder('project')
@@ -32,6 +34,7 @@ class ProjectORMRepository extends ServiceEntityRepository implements ProjectRep
         return $qb->getQuery()->getResult();
     }
 
+    #[\Override]
     public function findOneLatest(): Project|null
     {
         $qb = $this->createQueryBuilder('project')

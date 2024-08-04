@@ -46,11 +46,6 @@ parameters:
 			path: src/Shared/Infrastructure/Cuyz/Valinor/Mapper/ValinorObjectMapper.php
 
 		-
-			message: "#^Unreachable statement \\- code above always terminates\\.$#"
-			count: 1
-			path: src/Shared/Infrastructure/Cuyz/Valinor/Mapper/ValinorObjectMapper.php
-
-		-
 			message: "#^Parameter \\#3 \\$contents of class League\\\\CommonMark\\\\Util\\\\HtmlElement constructor expects array\\<Stringable\\>\\|string\\|Stringable\\|null, array\\<int, string\\> given\\.$#"
 			count: 1
 			path: src/Shared/Infrastructure/League/CommonMark/Markdown/Extension/FencedCode/Renderer/FencedCodeRenderer.php

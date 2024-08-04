@@ -6,7 +6,6 @@ namespace App\Shared\Infrastructure\Cuyz\Valinor\Mapper;
 
 use App\Shared\Domain\Mapper\Format;
 use App\Shared\Domain\Mapper\ObjectMapper;
-use App\Shared\Domain\Mapper\UnsupportedFormatException;
 use CuyZ\Valinor\Mapper\Source\Source;
 use CuyZ\Valinor\Mapper\TreeMapper;
 use CuyZ\Valinor\MapperBuilder;
@@ -18,10 +17,11 @@ final readonly class ValinorObjectMapper implements ObjectMapper
     ) {
     }
 
+    #[\Override]
     public function map(string $className, mixed $source, Format $format): mixed
     {
         $mapper = $this->getMapper();
-        $source = $this->createSource($source, $format)->camelCaseKeys();
+        $source = $this->createSource($source)->camelCaseKeys();
 
         return $mapper->map($className, $source);
     }
@@ -31,12 +31,8 @@ final readonly class ValinorObjectMapper implements ObjectMapper
         return $this->mapperBuilder->allowSuperfluousKeys()->mapper();
     }
 
-    private function createSource(mixed $source, Format $format): Source
+    private function createSource(mixed $source): Source
     {
-        if ($format === Format::JSON) {
-            return Source::json((string) $source);
-        }
-
-        throw new UnsupportedFormatException($format->name);
+        return Source::json((string) $source);
     }
 }

@@ -16,11 +16,13 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\UrlField;
 
 class ProjectCrudController extends AbstractCrudController
 {
+    #[\Override]
     public static function getEntityFqcn(): string
     {
         return Project::class;
     }
 
+    #[\Override]
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
@@ -31,6 +33,7 @@ class ProjectCrudController extends AbstractCrudController
         ;
     }
 
+    #[\Override]
     public function configureFields(string $pageName): iterable
     {
         yield IdField::new('id')->hideOnForm();

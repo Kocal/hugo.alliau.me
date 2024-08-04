@@ -19,16 +19,19 @@ final readonly class CommandBusDispatchDynamicMethodReturnTypeExtension implemen
     ) {
     }
 
+    #[\Override]
     public function getClass(): string
     {
         return CommandBus::class;
     }
 
+    #[\Override]
     public function isMethodSupported(MethodReflection $methodReflection): bool
     {
         return $methodReflection->getName() === 'dispatch';
     }
 
+    #[\Override]
     public function getTypeFromMethodCall(MethodReflection $methodReflection, MethodCall $methodCall, Scope $scope): ?\PHPStan\Type\Type
     {
         $command = $methodCall->getArgs()[0]->value;

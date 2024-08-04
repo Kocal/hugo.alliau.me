@@ -20,11 +20,13 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class PostCrudController extends AbstractCrudController
 {
+    #[\Override]
     public static function getEntityFqcn(): string
     {
         return Post::class;
     }
 
+    #[\Override]
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
@@ -35,6 +37,7 @@ class PostCrudController extends AbstractCrudController
         ;
     }
 
+    #[\Override]
     public function configureFields(string $pageName): iterable
     {
         yield IdField::new('id')->hideOnForm();

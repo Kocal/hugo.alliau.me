@@ -19,11 +19,13 @@ class ProfessionalExperienceORMRepository extends ServiceEntityRepository implem
         parent::__construct($registry, ProfessionalExperience::class);
     }
 
+    #[\Override]
     public function save(ProfessionalExperience $professionalExperience): void
     {
         $this->getEntityManager()->persist($professionalExperience);
     }
 
+    #[\Override]
     public function findAll(): array
     {
         $qb = $this->createQueryBuilder('professional_experience')
@@ -32,6 +34,7 @@ class ProfessionalExperienceORMRepository extends ServiceEntityRepository implem
         return $qb->getQuery()->getResult();
     }
 
+    #[\Override]
     public function findOneLatest(): ProfessionalExperience|null
     {
         $qb = $this->createQueryBuilder('professional_experience')

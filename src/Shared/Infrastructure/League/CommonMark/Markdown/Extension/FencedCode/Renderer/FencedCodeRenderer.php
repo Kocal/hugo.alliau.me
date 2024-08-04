@@ -14,6 +14,7 @@ use function Symfony\Component\String\s;
 
 final class FencedCodeRenderer implements NodeRendererInterface
 {
+    #[\Override]
     public function render(Node $node, ChildNodeRendererInterface $childRenderer): HtmlElement
     {
         FencedCode::assertInstanceOf($node);
@@ -44,7 +45,7 @@ final class FencedCodeRenderer implements NodeRendererInterface
                         'class' => 'lines-number-wrapper',
                     ],
                     array_map(
-                        fn (int $line) => new HtmlElement('span', [], (string) $line) . '<br>',
+                        fn (int $line): string => new HtmlElement('span', [], (string) $line) . '<br>',
                         $lines
                     )
                 ),

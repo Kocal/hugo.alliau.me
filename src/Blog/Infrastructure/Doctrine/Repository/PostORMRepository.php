@@ -24,6 +24,7 @@ final class PostORMRepository extends ServiceEntityRepository implements PostRep
         parent::__construct($registry, Post::class);
     }
 
+    #[\Override]
     public function getOneLatestPublished(): Post
     {
         return $this->getLatestPublishedQueryBuilder()
@@ -36,6 +37,7 @@ final class PostORMRepository extends ServiceEntityRepository implements PostRep
      * @param list<string> $tags
      * @return list<Post>
      */
+    #[\Override]
     public function findLatestPublished(array $tags = []): array
     {
         $qb = $this->getLatestPublishedQueryBuilder();
@@ -53,6 +55,7 @@ final class PostORMRepository extends ServiceEntityRepository implements PostRep
     /**
      * @return array<string>
      */
+    #[\Override]
     public function findTags(): array
     {
         $rsm = new ResultSetMapping();
@@ -69,6 +72,7 @@ SQL, $rsm);
     /**
      * @return list<array{ tag: string, occurrences: int }>
      */
+    #[\Override]
     public function findTagsAndOccurrences(): array
     {
         $rsm = new ResultSetMapping();

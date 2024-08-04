@@ -14,18 +14,21 @@ final class FakePlaceRepository implements PlaceRepository
      */
     private array $places = [];
 
+    #[\Override]
     public function add(Place $place): void
     {
         $this->places[] = $place;
     }
 
+    #[\Override]
     public function getOneLatestUpdated(): Place
     {
-        $max = max(array_map(fn (Place $place) => $place->getUpdatedAt(), $this->places));
+        $max = max(array_map(fn (Place $place): ?\DateTimeImmutable => $place->getUpdatedAt(), $this->places));
 
-        return array_filter($this->places, fn (Place $place) => $place->getUpdatedAt() === $max)[0];
+        return array_filter($this->places, fn (Place $place): bool => $place->getUpdatedAt() === $max)[0];
     }
 
+    #[\Override]
     public function findAll(): array
     {
         return $this->places;

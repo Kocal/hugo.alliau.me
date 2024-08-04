@@ -17,7 +17,7 @@ use function Symfony\Component\String\s;
 
 final class CustomContainerBlockParser extends AbstractBlockContinueParser
 {
-    private CustomContainer $customContainer;
+    private readonly CustomContainer $customContainer;
 
     private bool $finished = false;
 
@@ -52,21 +52,25 @@ final class CustomContainerBlockParser extends AbstractBlockContinueParser
         };
     }
 
+    #[\Override]
     public function getBlock(): AbstractBlock
     {
         return $this->customContainer;
     }
 
+    #[\Override]
     public function isContainer(): bool
     {
         return true;
     }
 
+    #[\Override]
     public function canContain(AbstractBlock $childBlock): bool
     {
         return true;
     }
 
+    #[\Override]
     public function tryContinue(Cursor $cursor, BlockContinueParserInterface $activeBlockParser): ?BlockContinue
     {
         if ($this->finished) {

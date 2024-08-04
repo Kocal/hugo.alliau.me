@@ -37,7 +37,7 @@ final class HomeController extends AbstractController
             return $response;
         }
 
-        return $this->render("blog/home.{$_format}.twig", [
+        return $this->render(sprintf('blog/home.%s.twig', $_format), [
             'posts' => $postRepository->findLatestPublished(),
         ], $response);
     }

@@ -25,10 +25,10 @@ final class CreateAddressHandlerTest extends TestCase
         $handler = new CreateAddressHandler();
         $address = $handler($command);
 
-        self::assertSame('name', $address->getName());
-        self::assertSame([41, 3], $address->getCoordinates());
-        self::assertSame('formattedAddress', $address->getFormattedAddress());
-        self::assertSame('country', $address->getCountry());
-        self::assertSame('city', $address->getCity());
+        $this->assertSame('name', $address->getName());
+        $this->assertSame([41, 3], $address->getCoordinates());
+        $this->assertSame('formattedAddress', $address->getFormattedAddress());
+        $this->assertSame('country', $address->getCountry());
+        $this->assertSame('city', $address->getCity());
     }
 }

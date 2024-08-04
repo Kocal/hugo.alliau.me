@@ -52,10 +52,10 @@ app.update: app.install
 ######
 
 ## QA - Run all QA checks
-qa: archi cs lint phpstan test
+qa: archi refactor cs lint phpstan test
 
 ## QA - Run all QA checks and fix issues
-qa.fix: archi cs.fix lint.fix phpstan test
+qa.fix: archi refactor.fix cs.fix lint.fix phpstan test
 
 #########
 # Archi #
@@ -68,6 +68,24 @@ archi: archi.back
 archi.back:
 	$(PHP) vendor/bin/deptrac --config-file=deptrac_layers.yaml --report-uncovered --fail-on-uncovered
 	$(PHP) vendor/bin/deptrac --config-file=deptrac_domains.yaml --report-uncovered --fail-on-uncovered
+
+############
+# Refactor #
+############
+
+## Refactor - Run all refactor checks
+refactor: refactor.back
+
+## Refactor - Run all refactor checks and fix issues
+refactor.fix: refactor.back.fix
+
+## Refactor - Run refactor checks for backend
+refactor.back:
+	$(PHP) vendor/bin/rector process --dry-run
+
+## Refactor - Run refactor checks for backend and fix issues
+refactor.back.fix:
+	$(PHP) vendor/bin/rector process
 
 ################
 # Coding style #
