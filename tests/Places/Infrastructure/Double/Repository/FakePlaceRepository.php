@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Forum\Infrastructure\Double\Repository;
+namespace App\Tests\Places\Infrastructure\Double\Repository;
 
 use App\Places\Domain\Place;
 use App\Places\Domain\Repository\PlaceRepository;

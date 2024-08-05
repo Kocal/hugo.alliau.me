@@ -2,19 +2,27 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Forum\Domain\Command;
+namespace App\Tests\Places\Domain\Command;
 
+use App\Places\Domain\Address;
 use App\Places\Domain\Command\CreateAddress;
 use App\Places\Domain\Command\CreateAddressHandler;
 use App\Places\Domain\Command\CreatePlace;
 use App\Places\Domain\Command\CreatePlaceHandler;
+use App\Places\Domain\Place;
 use App\Places\Domain\PlaceType;
 use App\Shared\Domain\Command\CommandBus;
-use App\Tests\Forum\Infrastructure\Double\Repository\FakePlaceRepository;
+use App\Tests\Places\Infrastructure\Double\Repository\FakePlaceRepository;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(CreatePlaceHandler::class)]
+#[UsesClass(CreatePlace::class)]
+#[UsesClass(CreateAddress::class)]
+#[UsesClass(CreateAddressHandler::class)]
+#[UsesClass(Address::class)]
+#[UsesClass(Place::class)]
 final class CreatePlaceHandlerTest extends TestCase
 {
     public function testCreatePlace(): void
@@ -56,5 +64,7 @@ final class CreatePlaceHandlerTest extends TestCase
         $this->assertSame('googleMapsUrl', $place->getGoogleMapsUrl());
         $this->assertSame('iconMaskUri', $place->getIconMaskUri());
         $this->assertSame([PlaceType::AIRPORT], $place->getTypes());
+
+        $this->assertSame([$place], $placeRepository->findAll());
     }
 }

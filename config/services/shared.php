@@ -36,7 +36,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
 
     $services->set(SymfonyHttpCacheAdapterFactory::class)
         ->args([
-            'adapters' => service_locator([
+            '$adapters' => service_locator([
                 'cloudflare' => service(CloudflareHttpCacheAdapter::class),
                 'no' => service(NoHttpCacheAdapter::class),
             ]),

@@ -2,14 +2,18 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Forum\Domain\Command;
+namespace App\Tests\Places\Domain\Command;
 
+use App\Places\Domain\Address;
 use App\Places\Domain\Command\CreateAddress;
 use App\Places\Domain\Command\CreateAddressHandler;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(CreateAddressHandler::class)]
+#[UsesClass(CreateAddress::class)]
+#[UsesClass(Address::class)]
 final class CreateAddressHandlerTest extends TestCase
 {
     public function testCreateAddress(): void

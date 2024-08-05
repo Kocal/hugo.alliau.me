@@ -23,4 +23,5 @@ return ECSConfig::configure()
         common: true,
         strict: true,
         cleanCode: true,
-    );
+    )
+;
