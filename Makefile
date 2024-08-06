@@ -117,7 +117,7 @@ endif
 
 ## Coding style - Check frontend coding style and fix issues
 cs.front.fix:
-	$(SF_CONSOLE) biomejs:check . --linter-enabled=false --apply-unsafe
+	$(SF_CONSOLE) biomejs:check . --linter-enabled=false --write --unsafe
 
 ##########
 # Linter #
@@ -147,7 +147,7 @@ endif
 
 ## Linter - Lint front files and fix issues
 lint.front.fix:
-	$(SF_CONSOLE) biomejs:check . --formatter-enabled=false --apply-unsafe
+	$(SF_CONSOLE) biomejs:check . --formatter-enabled=false --write --unsafe
 
 ###########
 # PHPStan #

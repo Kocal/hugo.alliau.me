@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "53adbf68f9466f0aca493c7dee767e50",
+    "content-hash": "b092b0e58a2bdd93a8432d0c1e5b94db",
     "packages": [
         {
             "name": "composer/semver",
@@ -9237,16 +9237,16 @@
     "packages-dev": [
         {
             "name": "kocal/biome-js-bundle",
-            "version": "v1.0.4",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Kocal/BiomeJsBundle.git",
-                "reference": "e515ff77312f92fd110020b768f3157f02ffc31b"
+                "reference": "2d3fa3dce4c601823935788889b82e572ae84629"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Kocal/BiomeJsBundle/zipball/e515ff77312f92fd110020b768f3157f02ffc31b",
-                "reference": "e515ff77312f92fd110020b768f3157f02ffc31b",
+                "url": "https://api.github.com/repos/Kocal/BiomeJsBundle/zipball/2d3fa3dce4c601823935788889b82e572ae84629",
+                "reference": "2d3fa3dce4c601823935788889b82e572ae84629",
                 "shasum": ""
             },
             "require": {
@@ -9286,9 +9286,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Kocal/BiomeJsBundle/issues",
-                "source": "https://github.com/Kocal/BiomeJsBundle/tree/v1.0.4"
+                "source": "https://github.com/Kocal/BiomeJsBundle/tree/v1.1.0"
             },
-            "time": "2024-06-30T18:59:44+00:00"
+            "time": "2024-08-06T06:42:02+00:00"
         },
         {
             "name": "masterminds/html5",
