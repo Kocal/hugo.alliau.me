@@ -14,7 +14,6 @@ services:
       TRUSTED_PROXIES: ${TRUSTED_PROXIES}
       REDIS_URL: ${REDIS_URL}
       GOOGLE_PLACES_PRIVATE_API_KEY: ${GOOGLE_PLACES_PRIVATE_API_KEY}
-      GOOGLE_MAPS_PUBLIC_API_KEY: ${GOOGLE_MAPS_PUBLIC_API_KEY}
 
     volumes:
       - ./var/storage:/app/var/storage:rw
