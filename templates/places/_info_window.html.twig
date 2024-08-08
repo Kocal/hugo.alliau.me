@@ -2,7 +2,7 @@
 <p class="text-base font-normal ">{{ place.address.formattedAddress }}</p>
 <ul class="flex flex-wrap gap-1">
     {% for type in place.types %}
-        <li class="text-primary-50 bg-primary-700 uppercase text-xs font-bold px-1 py-0.5 rounded">{{ type }}</li>
+        <li class="text-primary-50 bg-primary-700 uppercase text-xs font-bold px-1 py-0.5 rounded">{{ type.value }}</li>
     {% endfor %}
 </ul>
 <p class="text-base mt-2">

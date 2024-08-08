@@ -8266,12 +8266,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/ux-leaflet-map.git",
-                "reference": "f22b1392ffc1f5252951d7d069566755d76ab7fb"
+                "reference": "0643283f1527b4ba226b3b49d70fab68b5e3dbde"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/ux-leaflet-map/zipball/f22b1392ffc1f5252951d7d069566755d76ab7fb",
-                "reference": "f22b1392ffc1f5252951d7d069566755d76ab7fb",
+                "url": "https://api.github.com/repos/symfony/ux-leaflet-map/zipball/0643283f1527b4ba226b3b49d70fab68b5e3dbde",
+                "reference": "0643283f1527b4ba226b3b49d70fab68b5e3dbde",
                 "shasum": ""
             },
             "require": {
@@ -8328,7 +8328,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-08-08T07:41:43+00:00"
+            "time": "2024-08-08T13:25:46+00:00"
         },
         {
             "name": "symfony/ux-map",
