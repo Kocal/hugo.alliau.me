@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace App\Places\Domain;
 
+use Symfony\Component\Translation\TranslatableMessage;
+use function Symfony\Component\Translation\t;
+
 /**
  * https://developers.google.com/maps/documentation/places/web-service/place-types?hl=fr
  */
@@ -209,4 +212,9 @@ enum PlaceType: string
     case TRANSIT_DEPOT = 'transit_depot';
     case TRANSIT_STATION = 'transit_station';
     case TRUCK_STOP = 'truck_stop';
+    
+    public function toTranslatable(): TranslatableMessage
+    {
+        return t('place_type.' . $this->value);
+    }
 }

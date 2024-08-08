@@ -1,0 +1,183 @@
+place_type:
+    administrative_area_level_1: Région administrative de niveau 1
+    administrative_area_level_2: Région administrative de niveau 2
+    administrative_area_level_3: Région administrative de niveau 3
+    administrative_area_level_4: Région administrative de niveau 4
+    administrative_area_level_5: Région administrative de niveau 5
+    administrative_area_level_6: Région administrative de niveau 6
+    administrative_area_level_7: Région administrative de niveau 7
+    archipelago: Archipel
+    colloquial_area: Zone familière
+    continent: Continent
+    country: Pays
+    establishment: Établissement
+    finance: Finance
+    floor: Étage
+    food: Alimentation
+    general_contractor: Entrepreneur général
+    geocode: Géocode
+    health: Santé
+    intersection: Intersection
+    landmark: Repère
+    locality: Localité
+    natural_feature: Caractéristique naturelle
+    neighborhood: Quartier
+    place_of_worship: Lieu de culte
+    plus_code: Code plus
+    point_of_interest: Point d'intérêt
+    political: Politique
+    post_box: Boîte postale
+    postal_code: Code postal
+    postal_code_prefix: Préfixe du code postal
+    postal_code_suffix: Suffixe du code postal
+    postal_town: Ville postale
+    premise: Lieu
+    room: Pièce
+    route: Route
+    street_address: Adresse
+    street_number: Numéro de rue
+    sublocality: Sous-localité
+    sublocality_level_1: Sous-localité de niveau 1
+    sublocality_level_2: Sous-localité de niveau 2
+    sublocality_level_3: Sous-localité de niveau 3
+    sublocality_level_4: Sous-localité de niveau 4
+    sublocality_level_5: Sous-localité de niveau 5
+    subpremise: Sous-lieu
+    town_square: Place de ville
+    art_gallery: Galerie d'art
+    museum: Musée
+    performing_arts_theater: Théâtre des arts du spectacle
+    library: Bibliothèque
+    preschool: École maternelle
+    primary_school: École primaire
+    school: École
+    secondary_school: Collège/lycée
+    university: Université
+    amusement_center: Centre de divertissement
+    amusement_park: Parc d'attractions
+    aquarium: Aquarium
+    banquet_hall: Salle de banquet
+    bowling_alley: Salle de bowling
+    casino: Casino
+    community_center: Centre communautaire
+    convention_center: Centre de conventions
+    cultural_center: Centre culturel
+    dog_park: Parc pour chiens
+    event_venue: Lieu de l'événement
+    hiking_area: Zone de randonnée
+    historical_landmark: Monument historique
+    marina: Marina
+    movie_rental: Location de films
+    movie_theater: Cinéma
+    national_park: Parc national
+    night_club: Boîte de nuit
+    park: Parc
+    tourist_attraction: Attraction touristique
+    visitor_center: Centre d'accueil
+    wedding_venue: Lieu de mariage
+    zoo: Zoo
+    american_restaurant: Restaurant américain
+    bakery: Boulangerie
+    bar: Bar
+    barbecue_restaurant: Restaurant barbecue
+    brazilian_restaurant: Restaurant brésilien
+    breakfast_restaurant: Restaurant de petit déjeuner
+    brunch_restaurant: Restaurant de brunch
+    cafe: Café
+    chinese_restaurant: Restaurant chinois
+    coffee_shop: Café
+    fast_food_restaurant: Restauration rapide
+    french_restaurant: Restaurant français
+    greek_restaurant: Restaurant grec
+    hamburger_restaurant: Restaurant de hamburgers
+    ice_cream_shop: Glacier
+    indian_restaurant: Restaurant indien
+    indonesian_restaurant: Restaurant indonésien
+    italian_restaurant: Restaurant italien
+    japanese_restaurant: Restaurant japonais
+    korean_restaurant: Restaurant coréen
+    lebanese_restaurant: Restaurant libanais
+    meal_delivery: Livraison de repas
+    meal_takeaway: Plats à emporter
+    mediterranean_restaurant: Restaurant méditerranéen
+    mexican_restaurant: Restaurant mexicain
+    middle_eastern_restaurant: Restaurant du Moyen-Orient
+    pizza_restaurant: Pizzeria
+    ramen_restaurant: Restaurant de ramen
+    restaurant: Restaurant
+    sandwich_shop: Sandwicherie
+    seafood_restaurant: Restaurant de fruits de mer
+    spanish_restaurant: Restaurant espagnol
+    steak_house: Steakhouse
+    sushi_restaurant: Restaurant de sushi
+    thai_restaurant: Restaurant thaïlandais
+    turkish_restaurant: Restaurant turc
+    vegan_restaurant: Restaurant végétalien
+    vegetarian_restaurant: Restaurant végétarien
+    vietnamese_restaurant: Restaurant vietnamien
+    bed_and_breakfast: Chambre d'hôtes
+    campground: Terrain de camping
+    camping_cabin: Cabine de camping
+    cottage: Gîte
+    extended_stay_hotel: Hôtel de long séjour
+    farmstay: Séjour à la ferme
+    guest_house: Maison d'hôtes
+    hostel: Auberge
+    hotel: Hôtel
+    lodging: Hébergement
+    motel: Motel
+    private_guest_room: Chambre d'hôte privée
+    resort_hotel: Hôtel de villégiature
+    rv_park: Parc pour camping-cars
+    church: Église
+    hindu_temple: Temple hindou
+    mosque: Mosquée
+    synagogue: Synagogue
+    auto_parts_store: Magasin de pièces automobiles
+    bicycle_store: Magasin de vélos
+    book_store: Librairie
+    cell_phone_store: Magasin de téléphones portables
+    clothing_store: Magasin de vêtements
+    convenience_store: Dépanneur
+    department_store: Grand magasin
+    discount_store: Magasin de rabais
+    electronics_store: Magasin d'électronique
+    furniture_store: Magasin de meubles
+    gift_shop: Magasin de cadeaux
+    grocery_store: Épicerie
+    hardware_store: Quincaillerie
+    home_goods_store: Magasin d'articles ménagers
+    home_improvement_store: Magasin de rénovation
+    jewelry_store: Bijouterie
+    liquor_store: Magasin d'alcools
+    market: Marché
+    pet_store: Animalerie
+    shoe_store: Magasin de chaussures
+    shopping_mall: Centre commercial
+    sporting_goods_store: Magasin d'articles de sport
+    store: Magasin
+    supermarket: Supermarché
+    wholesaler: Grossiste
+    athletic_field: Terrain de sport
+    fitness_center: Centre de fitness
+    golf_course: Terrain de golf
+    gym: Salle de gym
+    playground: Terrain de jeu
+    ski_resort: Station de ski
+    sports_club: Club de sport
+    sports_complex: Complexe sportif
+    stadium: Stade
+    swimming_pool: Piscine
+    airport: Aéroport
+    bus_station: Gare routière
+    bus_stop: Arrêt de bus
+    ferry_terminal: Terminal de ferry
+    heliport: Héliport
+    light_rail_station: Station de tramway
+    park_and_ride: Parc relais
+    subway_station: Station de métro
+    taxi_stand: Station de taxis
+    train_station: Gare
+    transit_depot: Dépôt de transit
+    transit_station: Station de transit
+    truck_stop: Aire de repos pour camions

@@ -1,0 +1,183 @@
+place_type:
+    administrative_area_level_1: Administrative Area Level 1
+    administrative_area_level_2: Administrative Area Level 2
+    administrative_area_level_3: Administrative Area Level 3
+    administrative_area_level_4: Administrative Area Level 4
+    administrative_area_level_5: Administrative Area Level 5
+    administrative_area_level_6: Administrative Area Level 6
+    administrative_area_level_7: Administrative Area Level 7
+    archipelago: Archipelago
+    colloquial_area: Colloquial Area
+    continent: Continent
+    country: Country
+    establishment: Establishment
+    finance: Finance
+    floor: Floor
+    food: Food
+    general_contractor: General Contractor
+    geocode: Geocode
+    health: Health
+    intersection: Intersection
+    landmark: Landmark
+    locality: Locality
+    natural_feature: Natural Feature
+    neighborhood: Neighborhood
+    place_of_worship: Place of Worship
+    plus_code: Plus Code
+    point_of_interest: Point of Interest
+    political: Political
+    post_box: Post Box
+    postal_code: Postal Code
+    postal_code_prefix: Postal Code Prefix
+    postal_code_suffix: Postal Code Suffix
+    postal_town: Postal Town
+    premise: Premise
+    room: Room
+    route: Route
+    street_address: Street Address
+    street_number: Street Number
+    sublocality: Sublocality
+    sublocality_level_1: Sublocality Level 1
+    sublocality_level_2: Sublocality Level 2
+    sublocality_level_3: Sublocality Level 3
+    sublocality_level_4: Sublocality Level 4
+    sublocality_level_5: Sublocality Level 5
+    subpremise: Subpremise
+    town_square: Town Square
+    art_gallery: Art Gallery
+    museum: Museum
+    performing_arts_theater: Performing Arts Theater
+    library: Library
+    preschool: Preschool
+    primary_school: Primary School
+    school: School
+    secondary_school: Secondary School
+    university: University
+    amusement_center: Amusement Center
+    amusement_park: Amusement Park
+    aquarium: Aquarium
+    banquet_hall: Banquet Hall
+    bowling_alley: Bowling Alley
+    casino: Casino
+    community_center: Community Center
+    convention_center: Convention Center
+    cultural_center: Cultural Center
+    dog_park: Dog Park
+    event_venue: Event Venue
+    hiking_area: Hiking Area
+    historical_landmark: Historical Landmark
+    marina: Marina
+    movie_rental: Movie Rental
+    movie_theater: Movie Theater
+    national_park: National Park
+    night_club: Night Club
+    park: Park
+    tourist_attraction: Tourist Attraction
+    visitor_center: Visitor Center
+    wedding_venue: Wedding Venue
+    zoo: Zoo
+    american_restaurant: American Restaurant
+    bakery: Bakery
+    bar: Bar
+    barbecue_restaurant: Barbecue Restaurant
+    brazilian_restaurant: Brazilian Restaurant
+    breakfast_restaurant: Breakfast Restaurant
+    brunch_restaurant: Brunch Restaurant
+    cafe: Cafe
+    chinese_restaurant: Chinese Restaurant
+    coffee_shop: Coffee Shop
+    fast_food_restaurant: Fast Food Restaurant
+    french_restaurant: French Restaurant
+    greek_restaurant: Greek Restaurant
+    hamburger_restaurant: Hamburger Restaurant
+    ice_cream_shop: Ice Cream Shop
+    indian_restaurant: Indian Restaurant
+    indonesian_restaurant: Indonesian Restaurant
+    italian_restaurant: Italian Restaurant
+    japanese_restaurant: Japanese Restaurant
+    korean_restaurant: Korean Restaurant
+    lebanese_restaurant: Lebanese Restaurant
+    meal_delivery: Meal Delivery
+    meal_takeaway: Meal Takeaway
+    mediterranean_restaurant: Mediterranean Restaurant
+    mexican_restaurant: Mexican Restaurant
+    middle_eastern_restaurant: Middle Eastern Restaurant
+    pizza_restaurant: Pizza Restaurant
+    ramen_restaurant: Ramen Restaurant
+    restaurant: Restaurant
+    sandwich_shop: Sandwich Shop
+    seafood_restaurant: Seafood Restaurant
+    spanish_restaurant: Spanish Restaurant
+    steak_house: Steak House
+    sushi_restaurant: Sushi Restaurant
+    thai_restaurant: Thai Restaurant
+    turkish_restaurant: Turkish Restaurant
+    vegan_restaurant: Vegan Restaurant
+    vegetarian_restaurant: Vegetarian Restaurant
+    vietnamese_restaurant: Vietnamese Restaurant
+    bed_and_breakfast: Bed and Breakfast
+    campground: Campground
+    camping_cabin: Camping Cabin
+    cottage: Cottage
+    extended_stay_hotel: Extended Stay Hotel
+    farmstay: Farmstay
+    guest_house: Guest House
+    hostel: Hostel
+    hotel: Hotel
+    lodging: Lodging
+    motel: Motel
+    private_guest_room: Private Guest Room
+    resort_hotel: Resort Hotel
+    rv_park: RV Park
+    church: Church
+    hindu_temple: Hindu Temple
+    mosque: Mosque
+    synagogue: Synagogue
+    auto_parts_store: Auto Parts Store
+    bicycle_store: Bicycle Store
+    book_store: Book Store
+    cell_phone_store: Cell Phone Store
+    clothing_store: Clothing Store
+    convenience_store: Convenience Store
+    department_store: Department Store
+    discount_store: Discount Store
+    electronics_store: Electronics Store
+    furniture_store: Furniture Store
+    gift_shop: Gift Shop
+    grocery_store: Grocery Store
+    hardware_store: Hardware Store
+    home_goods_store: Home Goods Store
+    home_improvement_store: Home Improvement Store
+    jewelry_store: Jewelry Store
+    liquor_store: Liquor Store
+    market: Market
+    pet_store: Pet Store
+    shoe_store: Shoe Store
+    shopping_mall: Shopping Mall
+    sporting_goods_store: Sporting Goods Store
+    store: Store
+    supermarket: Supermarket
+    wholesaler: Wholesaler
+    athletic_field: Athletic Field
+    fitness_center: Fitness Center
+    golf_course: Golf Course
+    gym: Gym
+    playground: Playground
+    ski_resort: Ski Resort
+    sports_club: Sports Club
+    sports_complex: Sports Complex
+    stadium: Stadium
+    swimming_pool: Swimming Pool
+    airport: Airport
+    bus_station: Bus Station
+    bus_stop: Bus Stop
+    ferry_terminal: Ferry Terminal
+    heliport: Heliport
+    light_rail_station: Light Rail Station
+    park_and_ride: Park and Ride
+    subway_station: Subway Station
+    taxi_stand: Taxi Stand
+    train_station: Train Station
+    transit_depot: Transit Depot
+    transit_station: Transit Station
+    truck_stop: Truck Stop
