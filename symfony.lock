@@ -295,6 +295,9 @@
             "assets/icons/symfony.svg"
         ]
     },
+    "symfony/ux-map": {
+        "version": "2.x-dev"
+    },
     "symfony/ux-turbo": {
         "version": "v2.18.0"
     },
