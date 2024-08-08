@@ -11,6 +11,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\UX\Map\InfoWindow;
+use Symfony\UX\Map\Map;
+use Symfony\UX\Map\Marker;
+use Symfony\UX\Map\Point;
 
 final class ViewPlacesController extends AbstractController
 {
@@ -35,8 +39,30 @@ final class ViewPlacesController extends AbstractController
             return $response;
         }
 
+        $map = (new Map())
+            ->center(new Point(0, 0))
+            ->zoom(2)
+            ->fitBoundsToMarkers()
+        ;
+
+        foreach ($placeRepository->findAll() as $place) {
+            if ($place->getAddress() === null) {
+                continue;
+            }
+
+            $map->addMarker(new Marker(
+                position: new Point(...$place->getAddress()->getCoordinates()),
+                title: $place->getAddress()->getName(),
+                infoWindow: new InfoWindow(
+                    content: $this->renderView('places/_info_window.html.twig', [
+                        'place' => $place,
+                    ]),
+                )
+            ));
+        }
+
         return $this->render('places/home.html.twig', [
-            'places' => $placeRepository->findAll(),
+            'map' => $map,
         ], $response);
     }
 }

@@ -2,7 +2,6 @@ twig:
     file_name_pattern: '*.twig'
     globals:
         GOOGLE_PLACES_PRIVATE_API_KEY: '%env(GOOGLE_PLACES_PRIVATE_API_KEY)%'
-        GOOGLE_MAPS_PUBLIC_API_KEY: '%env(GOOGLE_MAPS_PUBLIC_API_KEY)%'
 
 when@test:
     twig:

@@ -22,4 +22,5 @@ return [
     Kocal\BiomeJsBundle\KocalBiomeJsBundle::class => ['dev' => true],
     CuyZ\ValinorBundle\ValinorBundle::class => ['all' => true],
     Symfony\UX\Turbo\TurboBundle::class => ['all' => true],
+    Symfony\UX\Map\UXMapBundle::class => ['all' => true],
 ];
