@@ -2,6 +2,10 @@
 
 {% block title %}Hugo Alliaume's Places{% endblock %}
 
+{% block stylesheets %}
+    <meta name="turbo-cache-control" content="no-cache">
+{% endblock %}
+
 {% block main %}
 <main class="flex-1 relative">
     {{ render_map(map, {class: 'absolute top-0 bottom-0 right-0 left-0'}) }}
