@@ -35,6 +35,7 @@ module.exports = {
                             padding: `${theme("spacing.1")} ${theme("spacing.2")}`,
                             fontSize: "85%",
                             borderRadius: theme("borderRadius.md"),
+                            overflowWrap: 'break-word',
                         },
                         "code::before": null,
                         "code::after": null,
