@@ -141,6 +141,8 @@
         font-size: theme('fontSize.sm');
         font-weight: bold;
         padding: theme('spacing.1') theme('spacing.2');
+        text-overflow: ellipsis;
+        overflow: hidden;
     }
 
     .Terminal__Body {
