@@ -15,7 +15,7 @@ use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(CreateAddress::class)]
-#[UsesClass(Autocomplete::class)]
+#[CoversClass(Autocomplete::class)]
 #[UsesClass(AddressComponent::class)]
 #[UsesClass(Geometry::class)]
 #[UsesClass(Location::class)]

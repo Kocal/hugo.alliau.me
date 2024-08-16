@@ -14,15 +14,14 @@ use App\Places\Domain\PlaceType;
 use App\Shared\Domain\Command\CommandBus;
 use App\Tests\Places\Infrastructure\Double\Repository\FakePlaceRepository;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(CreatePlaceHandler::class)]
-#[UsesClass(CreatePlace::class)]
-#[UsesClass(CreateAddress::class)]
-#[UsesClass(CreateAddressHandler::class)]
-#[UsesClass(Address::class)]
-#[UsesClass(Place::class)]
+#[CoversClass(CreateAddressHandler::class)]
+#[CoversClass(CreatePlace::class)]
+#[CoversClass(CreateAddress::class)]
+#[CoversClass(Address::class)]
+#[CoversClass(Place::class)]
 final class CreatePlaceHandlerTest extends TestCase
 {
     public function testCreatePlace(): void

@@ -26,6 +26,10 @@ deptrac:
           collectors:
             - { type: classLike, value: ^Symfony\\Component\\Validator\\Constraints }
 
+        - name: Vendor_Symfony_TranslatableMessage
+          collectors:
+            - { type: classLike, value: ^Symfony\\Component\\Translation\\TranslatableMessage }
+
         - name: Vendor
           collectors:
               - type: bool
@@ -35,10 +39,21 @@ deptrac:
                     - { type: layer, value: Native }
                     - { type: layer, value: Vendor_Doctrine_Mapping }
                     - { type: layer, value: Vendor_Symfony_Assert }
+                    - { type: layer, value: Vendor_Symfony_TranslatableMessage }
 
     ruleset:
-        Domain: [Native, Vendor_Doctrine_Mapping, Vendor_Symfony_Assert]
-        Infrastructure: [Domain, Native, Vendor, Vendor_Doctrine_Mapping, Vendor_Symfony_Assert]
+        Domain:
+            - Native
+            - Vendor_Doctrine_Mapping
+            - Vendor_Symfony_Assert
+            - Vendor_Symfony_TranslatableMessage
+        Infrastructure:
+            - Domain
+            - Native
+            - Vendor
+            - Vendor_Doctrine_Mapping
+            - Vendor_Symfony_Assert
+            - Vendor_Symfony_TranslatableMessage
 
     skip_violations:
         # My User entity is bound to Symfony Security, what's the best way to not violate this?

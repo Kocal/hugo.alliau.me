@@ -1,6 +1,7 @@
 {
     "files": {
         "ignore": [
+            ".cache/*",
             "assets/vendor/*",
             "assets/controllers.json",
             "composer.json",

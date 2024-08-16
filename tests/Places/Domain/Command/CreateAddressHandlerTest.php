@@ -12,7 +12,7 @@ use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(CreateAddressHandler::class)]
-#[UsesClass(CreateAddress::class)]
+#[CoversClass(CreateAddress::class)]
 #[UsesClass(Address::class)]
 final class CreateAddressHandlerTest extends TestCase
 {

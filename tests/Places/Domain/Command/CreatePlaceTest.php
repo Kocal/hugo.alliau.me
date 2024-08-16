@@ -17,11 +17,11 @@ use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(CreatePlace::class)]
-#[UsesClass(CreateAddress::class)]
+#[CoversClass(CreateAddress::class)]
 #[UsesClass(AddressComponent::class)]
 #[UsesClass(Geometry::class)]
 #[UsesClass(Location::class)]
-#[UsesClass(Autocomplete::class)]
+#[CoversClass(Autocomplete::class)]
 class CreatePlaceTest extends TestCase
 {
     public function testConstruct(): void

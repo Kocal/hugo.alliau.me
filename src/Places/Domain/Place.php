@@ -24,7 +24,9 @@ class Place implements CacheableEntity
     /**
      * @var array<PlaceType>
      */
-    #[ORM\Column(type: Types::JSON, options: ['jsonb' => true], enumType: PlaceType::class)]
+    #[ORM\Column(type: Types::JSON, options: [
+        'jsonb' => true,
+    ], enumType: PlaceType::class)]
     private array $types = [];
 
     #[ORM\Column]

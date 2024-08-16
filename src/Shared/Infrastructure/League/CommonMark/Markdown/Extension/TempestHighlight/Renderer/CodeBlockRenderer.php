@@ -55,7 +55,7 @@ final readonly class CodeBlockRenderer implements NodeRendererInterface
         $output = $output->replace('<pre', '<pre tabindex="0"');
 
         return '<div class="Terminal">'
-            . ($filename !== null && $filename !== '' && $filename !== '0' ? '<div class="Terminal__Header"><span title="'.$filename.'">' . $filename . '</span></div>' : '')
+            . ($filename !== null && $filename !== '' && $filename !== '0' ? '<div class="Terminal__Header"><span title="' . $filename . '">' . $filename . '</span></div>' : '')
             . '<div class="Terminal__Body">'
             . $output
             . '</div></div>';
