@@ -305,7 +305,16 @@
         }
     },
     "symfony/ux-map": {
-        "version": "2.x-dev"
+        "version": "2.19",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "2.19",
+            "ref": "04de870967555f00bd82f542e9e2d29683c3d39e"
+        },
+        "files": [
+            "config/packages/ux_map.yaml"
+        ]
     },
     "symfony/ux-turbo": {
         "version": "v2.18.0"
