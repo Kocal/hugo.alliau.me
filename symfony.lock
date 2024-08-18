@@ -42,12 +42,12 @@
         "version": "v3.3.0"
     },
     "kocal/biome-js-bundle": {
-        "version": "1.0",
+        "version": "1.1",
         "recipe": {
             "repo": "github.com/symfony/recipes-contrib",
             "branch": "main",
-            "version": "1.0",
-            "ref": "474903cc35adbb0d611e0645bc3b1412cecda5a2"
+            "version": "1.1",
+            "ref": "478e2325fefb9f1acf56c8408b8ec58e2cb3abe5"
         },
         "files": [
             "biome.json",
