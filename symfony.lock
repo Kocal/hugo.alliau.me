@@ -295,6 +295,15 @@
             "assets/icons/symfony.svg"
         ]
     },
+    "symfony/ux-leaflet-map": {
+        "version": "2.19",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "2.19",
+            "ref": "e696e4124071004125072f3b582a2b7e43ad58c1"
+        }
+    },
     "symfony/ux-map": {
         "version": "2.x-dev"
     },

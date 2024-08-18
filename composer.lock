@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d6a000f059b38ffdb3f01f60d460d7e8",
+    "content-hash": "4c6a02c615e97a0eba78da8ea25d1eb1",
     "packages": [
         {
             "name": "composer/semver",
@@ -8262,16 +8262,16 @@
         },
         {
             "name": "symfony/ux-leaflet-map",
-            "version": "2.x-dev",
+            "version": "v2.19.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/ux-leaflet-map.git",
-                "reference": "0643283f1527b4ba226b3b49d70fab68b5e3dbde"
+                "reference": "b5f6a7d053646c0d7272cde50822e1d1240139f0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/ux-leaflet-map/zipball/0643283f1527b4ba226b3b49d70fab68b5e3dbde",
-                "reference": "0643283f1527b4ba226b3b49d70fab68b5e3dbde",
+                "url": "https://api.github.com/repos/symfony/ux-leaflet-map/zipball/b5f6a7d053646c0d7272cde50822e1d1240139f0",
+                "reference": "b5f6a7d053646c0d7272cde50822e1d1240139f0",
                 "shasum": ""
             },
             "require": {
@@ -8281,7 +8281,6 @@
             "require-dev": {
                 "symfony/phpunit-bridge": "^6.4|^7.0"
             },
-            "default-branch": true,
             "type": "symfony-ux-map-bridge",
             "autoload": {
                 "psr-4": {
@@ -8308,11 +8307,10 @@
             "keywords": [
                 "leaflet",
                 "map",
-                "symfony",
-                "ux"
+                "symfony-ux"
             ],
             "support": {
-                "source": "https://github.com/symfony/ux-leaflet-map/tree/2.x"
+                "source": "https://github.com/symfony/ux-leaflet-map/tree/v2.19.2"
             },
             "funding": [
                 {
@@ -8328,20 +8326,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-08-08T13:25:46+00:00"
+            "time": "2024-08-13T14:54:07+00:00"
         },
         {
             "name": "symfony/ux-map",
-            "version": "2.x-dev",
+            "version": "v2.19.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/ux-map.git",
-                "reference": "e5d4e8487e679ffa66489eed3bd786440c84cc91"
+                "reference": "216594c4bed747b9a580d5f92cdd331152d94c00"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/ux-map/zipball/e5d4e8487e679ffa66489eed3bd786440c84cc91",
-                "reference": "e5d4e8487e679ffa66489eed3bd786440c84cc91",
+                "url": "https://api.github.com/repos/symfony/ux-map/zipball/216594c4bed747b9a580d5f92cdd331152d94c00",
+                "reference": "216594c4bed747b9a580d5f92cdd331152d94c00",
                 "shasum": ""
             },
             "require": {
@@ -8354,7 +8352,6 @@
                 "symfony/phpunit-bridge": "^6.4|^7.0",
                 "symfony/twig-bundle": "^6.4|^7.0"
             },
-            "default-branch": true,
             "type": "symfony-bundle",
             "extra": {
                 "thanks": {
@@ -8391,7 +8388,7 @@
                 "symfony-ux"
             ],
             "support": {
-                "source": "https://github.com/symfony/ux-map/tree/2.x"
+                "source": "https://github.com/symfony/ux-map/tree/v2.19.3"
             },
             "funding": [
                 {
@@ -8407,7 +8404,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-08-08T07:41:43+00:00"
+            "time": "2024-08-14T11:50:02+00:00"
         },
         {
             "name": "symfony/ux-turbo",
@@ -12036,9 +12033,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "symfony/ux-icons": 20,
-        "symfony/ux-leaflet-map": 20,
-        "symfony/ux-map": 20
+        "symfony/ux-icons": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
