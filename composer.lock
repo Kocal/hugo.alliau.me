@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4c6a02c615e97a0eba78da8ea25d1eb1",
+    "content-hash": "81d2f75156ef389d8be93644ccce035a",
     "packages": [
         {
             "name": "composer/semver",
@@ -8174,16 +8174,16 @@
         },
         {
             "name": "symfony/ux-icons",
-            "version": "2.x-dev",
+            "version": "v2.19.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/ux-icons.git",
-                "reference": "a00140b15feb16a0d991ee04e115f2a15b0d9941"
+                "reference": "c4826439f464c23cc0c2e2a997252100d6049daa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/ux-icons/zipball/a00140b15feb16a0d991ee04e115f2a15b0d9941",
-                "reference": "a00140b15feb16a0d991ee04e115f2a15b0d9941",
+                "url": "https://api.github.com/repos/symfony/ux-icons/zipball/c4826439f464c23cc0c2e2a997252100d6049daa",
+                "reference": "c4826439f464c23cc0c2e2a997252100d6049daa",
                 "shasum": ""
             },
             "require": {
@@ -8195,6 +8195,7 @@
                 "symfony/flex": "<1.13"
             },
             "require-dev": {
+                "psr/log": "^2|^3",
                 "symfony/asset-mapper": "^6.4|^7.0",
                 "symfony/console": "^6.4|^7.0",
                 "symfony/http-client": "6.4|^7.0",
@@ -8202,7 +8203,6 @@
                 "symfony/ux-twig-component": "^2.14",
                 "zenstruck/console-test": "^1.5"
             },
-            "default-branch": true,
             "type": "symfony-bundle",
             "extra": {
                 "thanks": {
@@ -8242,7 +8242,7 @@
                 "twig"
             ],
             "support": {
-                "source": "https://github.com/symfony/ux-icons/tree/2.x"
+                "source": "https://github.com/symfony/ux-icons/tree/v2.19.0"
             },
             "funding": [
                 {
@@ -8258,7 +8258,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-06-07T23:22:02+00:00"
+            "time": "2024-08-07T13:07:19+00:00"
         },
         {
             "name": "symfony/ux-leaflet-map",
@@ -12032,9 +12032,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "symfony/ux-icons": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
