@@ -9,6 +9,7 @@ use App\Shared\Domain\Markdown\MarkdownDocument;
 use App\Shared\Infrastructure\League\CommonMark\Markdown\Extension\CustomContainer\CustomContainerExtension;
 use App\Shared\Infrastructure\League\CommonMark\Markdown\Extension\GitHubEmojis\GitHubEmojisExtension;
 use App\Shared\Infrastructure\League\CommonMark\Markdown\Extension\TempestHighlight\Renderer\CodeBlockRenderer;
+use App\Shared\Infrastructure\League\CommonMark\Normalizer\SymfonySluggerNormalizer;
 use League\CommonMark\Environment\Environment;
 use League\CommonMark\Extension\Attributes\AttributesExtension;
 use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
@@ -22,6 +23,7 @@ use League\CommonMark\Extension\TableOfContents\TableOfContentsExtension;
 use League\CommonMark\Node\Block\Document;
 use League\CommonMark\Node\Node;
 use League\CommonMark\Node\Query;
+use League\CommonMark\Normalizer\TextNormalizerInterface;
 use League\CommonMark\Parser\MarkdownParser;
 use League\CommonMark\Renderer\HtmlRenderer;
 use Psr\Link\LinkInterface;
@@ -42,6 +44,9 @@ final readonly class LeagueCommonMarkMarkdownConverter implements MarkdownConver
                 'apply_id_to_heading' => true,
                 'symbol' => '​',
                 'aria_hidden' => false,
+            ],
+            'slug_normalizer' => [
+                'instance' => new SymfonySluggerNormalizer(),
             ],
         ]);
         $this->environment->addExtension(new CommonMarkCoreExtension());
