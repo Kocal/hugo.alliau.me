@@ -5,6 +5,7 @@
 @layer base {
     html {
         scroll-padding-top: 64px;
+        scrollbar-gutter: stable;
     }
     body {
         background-color: #d6edff;
