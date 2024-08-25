@@ -23,7 +23,6 @@ use League\CommonMark\Extension\TableOfContents\TableOfContentsExtension;
 use League\CommonMark\Node\Block\Document;
 use League\CommonMark\Node\Node;
 use League\CommonMark\Node\Query;
-use League\CommonMark\Normalizer\TextNormalizerInterface;
 use League\CommonMark\Parser\MarkdownParser;
 use League\CommonMark\Renderer\HtmlRenderer;
 use Psr\Link\LinkInterface;

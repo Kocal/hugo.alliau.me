@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Shared\Infrastructure\League\CommonMark\Normalizer;
@@ -20,6 +21,7 @@ final readonly class SymfonySluggerNormalizer implements TextNormalizerInterface
         $this->slugger = new AsciiSlugger();
     }
 
+    #[\Override]
     public function normalize(string $text, array $context = []): string
     {
         return $this->slugger->slug($text)->toString();
