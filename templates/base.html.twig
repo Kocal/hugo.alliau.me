@@ -84,8 +84,15 @@
                 </div>
             </header>
 
-            {% block main %}{% endblock %}
+            <div class="flex-1">
+                {% block main %}{% endblock %}
+            </div>
 
+            <footer role="contentinfo" class="bg-primary-100">
+                <div class="max-w-screen-lg container mx-auto p-3 text-center">
+                    Hugo Alliaume ❤️ {{ 'now'|date('Y') }}
+                </div>
+            </footer>
         {% endblock %}
     </body>
 </html>
