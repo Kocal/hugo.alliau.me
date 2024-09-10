@@ -4,4 +4,4 @@ when@dev:
         # - "latest_stable": use the latest stable version
         # - "latest_nightly": use the latest nightly version
         # - or a specific version, e.g. "v1.8.3", find available tags at https://github.com/biomejs/biome/tags
-        binary_version: 'latest_stable'
+        binary_version: 'v1.8.3'
