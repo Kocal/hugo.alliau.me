@@ -9,7 +9,7 @@
 {% block main %}
     <main class="container mx-auto p-2 max-w-screen-xl grid grid-cols-1 sm:grid-cols-[256px_1fr] print:grid-cols-[200px_1fr] gap-2 sm:gap-4">
         <div class="flex flex-col gap-2 sm:gap-4">
-            <twig:Card class="p-2 sm:p-4 flex">
+            <twig:Card class="p-2 sm:p-4 flex print:shadow-none print:border">
                 <div class="flex-1 flex flex-col justify-between gap-2">
                     <img
                         src="{{ asset('images/hugo-alliaume.jpeg') }}"
@@ -46,7 +46,7 @@
                 </div>
             </twig:Card>
 
-            <twig:Card class="p-2 sm:p-4">
+            <twig:Card class="p-2 sm:p-4 print:shadow-none print:border">
 
                 <h2 class="text-2xl sm:text-3xl print:text-xl font-bold mb-4 print:mb-2">Skills</h2>
 
@@ -71,7 +71,7 @@
         </div>
 
         <div class="flex flex-col gap-2 sm:gap-4">
-            <twig:Card class="p-2 sm:p-4">
+            <twig:Card class="p-2 sm:p-4 print:shadow-none print:border">
                 <h2 class="text-2xl sm:text-3xl print:text-xl font-bold mb-4 print:mb-2">
                     Expériences professionnelles
                 </h2>
