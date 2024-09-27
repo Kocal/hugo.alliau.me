@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "81d2f75156ef389d8be93644ccce035a",
+    "content-hash": "6e20ea7409716301719642269d908aa3",
     "packages": [
         {
             "name": "composer/semver",
@@ -8252,16 +8252,16 @@
         },
         {
             "name": "symfony/ux-leaflet-map",
-            "version": "v2.19.2",
+            "version": "v2.20.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/ux-leaflet-map.git",
-                "reference": "b5f6a7d053646c0d7272cde50822e1d1240139f0"
+                "reference": "437779e3aebd07cc84911ab1c28ab484ab53bd4c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/ux-leaflet-map/zipball/b5f6a7d053646c0d7272cde50822e1d1240139f0",
-                "reference": "b5f6a7d053646c0d7272cde50822e1d1240139f0",
+                "url": "https://api.github.com/repos/symfony/ux-leaflet-map/zipball/437779e3aebd07cc84911ab1c28ab484ab53bd4c",
+                "reference": "437779e3aebd07cc84911ab1c28ab484ab53bd4c",
                 "shasum": ""
             },
             "require": {
@@ -8300,7 +8300,7 @@
                 "symfony-ux"
             ],
             "support": {
-                "source": "https://github.com/symfony/ux-leaflet-map/tree/v2.19.2"
+                "source": "https://github.com/symfony/ux-leaflet-map/tree/v2.20.0"
             },
             "funding": [
                 {
@@ -8316,20 +8316,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-08-13T14:54:07+00:00"
+            "time": "2024-09-24T06:08:11+00:00"
         },
         {
             "name": "symfony/ux-map",
-            "version": "v2.19.3",
+            "version": "v2.20.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/ux-map.git",
-                "reference": "216594c4bed747b9a580d5f92cdd331152d94c00"
+                "reference": "db1fc9c98a21a5701f9d4b9426d2ce4d64b3b275"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/ux-map/zipball/216594c4bed747b9a580d5f92cdd331152d94c00",
-                "reference": "216594c4bed747b9a580d5f92cdd331152d94c00",
+                "url": "https://api.github.com/repos/symfony/ux-map/zipball/db1fc9c98a21a5701f9d4b9426d2ce4d64b3b275",
+                "reference": "db1fc9c98a21a5701f9d4b9426d2ce4d64b3b275",
                 "shasum": ""
             },
             "require": {
@@ -8340,7 +8340,8 @@
                 "symfony/asset-mapper": "^6.4|^7.0",
                 "symfony/framework-bundle": "^6.4|^7.0",
                 "symfony/phpunit-bridge": "^6.4|^7.0",
-                "symfony/twig-bundle": "^6.4|^7.0"
+                "symfony/twig-bundle": "^6.4|^7.0",
+                "symfony/ux-twig-component": "^2.18"
             },
             "type": "symfony-bundle",
             "extra": {
@@ -8378,7 +8379,7 @@
                 "symfony-ux"
             ],
             "support": {
-                "source": "https://github.com/symfony/ux-map/tree/v2.19.3"
+                "source": "https://github.com/symfony/ux-map/tree/v2.20.0"
             },
             "funding": [
                 {
@@ -8394,7 +8395,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-08-14T11:50:02+00:00"
+            "time": "2024-09-24T06:08:11+00:00"
         },
         {
             "name": "symfony/ux-turbo",

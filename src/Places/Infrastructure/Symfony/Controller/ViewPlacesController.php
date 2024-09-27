@@ -57,7 +57,10 @@ final class ViewPlacesController extends AbstractController
                     content: $this->renderView('places/_info_window.html.twig', [
                         'place' => $place,
                     ]),
-                )
+                ),
+                extra: [
+                    'icon_mask_uri' => $place->getIconMaskUri(),
+                ]
             ));
         }
 
