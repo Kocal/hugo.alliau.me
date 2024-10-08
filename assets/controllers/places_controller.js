@@ -1,18 +1,23 @@
-import {Controller} from "@hotwired/stimulus";
+import { Controller } from "@hotwired/stimulus";
 
-export default class extends Controller
-{
+export default class extends Controller {
     connect() {
-        this.element.addEventListener('ux:map:marker:before-create', this._onMarkerBeforeCreate);
+        this.element.addEventListener(
+            "ux:map:marker:before-create",
+            this._onMarkerBeforeCreate,
+        );
     }
-    
+
     disconnect() {
-        this.element.removeEventListener('ux:map:marker:before-create', this._onMarkerBeforeCreate);
+        this.element.removeEventListener(
+            "ux:map:marker:before-create",
+            this._onMarkerBeforeCreate,
+        );
     }
-    
+
     _onMarkerBeforeCreate(event) {
         const { L, definition } = event.detail;
-        
+
         definition.rawOptions = {
             icon: L.divIcon({
                 html: `
@@ -31,14 +36,14 @@ export default class extends Controller
         <path fill="url(#__sf_ux_map_gradient_marker_fill)" stroke="url(#__sf_ux_map_gradient_marker_border)" stroke-width="1.1" d="M416.54 503.61c-6.57 0-12.04 5.7-12.04 11.87 0 2.78 1.56 6.3 2.7 8.74l9.3 17.88 9.26-17.88c1.13-2.43 2.74-5.79 2.74-8.74 0-6.18-5.38-11.87-11.96-11.87Zm0" transform="translate(-7889.1 -9807.44) scale(19.54)" />
     </svg>
     
-    <img src="${definition.extra['icon_mask_uri']}" alt="" class="absolute" style="width: 12px; top: 8px; transform: translate3d(50%, 0, 0); filter: invert(1)" />
+    <img src="${definition.extra.icon_mask_uri}" alt="" class="absolute" style="width: 12px; top: 8px; transform: translate3d(50%, 0, 0); filter: invert(1)" />
 </div>
 `,
                 iconSize: [25, 41],
                 iconAnchor: [12.5, 41],
                 popupAnchor: [0, -41],
-                className: '',
-            })
-        }
+                className: "",
+            }),
+        };
     }
 }
