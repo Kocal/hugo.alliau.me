@@ -2,16 +2,17 @@
 
 declare(strict_types=1);
 
-namespace App\Shared\Twig\Extension;
+namespace App\Shared\Infrastructure\Twig\Twig\Extension;
 
 use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
 
 final class JsonLdExtension extends AbstractExtension
 {
     #[\Override]
     public function getFunctions(): iterable
     {
-        yield new \Twig\TwigFunction('json_ld', $this->jsonLd(...), [
+        yield new TwigFunction('json_ld', $this->jsonLd(...), [
             'is_safe' => ['html'],
         ]);
     }
@@ -21,6 +22,6 @@ final class JsonLdExtension extends AbstractExtension
      */
     public function jsonLd(array $data): string
     {
-        return sprintf('<script type="application/ld+json">%s</script>', json_encode($data, JSON_THROW_ON_ERROR | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
+        return sprintf('<script type="application/ld+json">%s</script>', json_encode($data, flags: JSON_THROW_ON_ERROR | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
     }
 }
