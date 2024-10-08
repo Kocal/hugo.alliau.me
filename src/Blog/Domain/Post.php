@@ -18,7 +18,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Post implements CacheableEntity
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue]
+    #[ORM\GeneratedValue(strategy: 'IDENTITY')]
     #[ORM\Column]
     private ?int $id = null;
 

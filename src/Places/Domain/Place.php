@@ -14,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Place implements CacheableEntity
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue]
+    #[ORM\GeneratedValue(strategy: 'IDENTITY')]
     #[ORM\Column]
     private ?int $id = null;
 
