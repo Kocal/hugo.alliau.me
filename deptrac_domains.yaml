@@ -37,12 +37,6 @@ deptrac:
         Shared: [Vendor]
 
     skip_violations:
-        # Module routes are in the domain layer, but the MenuBuilder, a common thing, is in the shared layer, what's the best way to handle this?
-        App\Shared\Menu\MenuBuilder: 
-           - App\Blog\Domain\Route
-           - App\CV\Domain\Route
-           - App\Places\Domain\Route
-
         App\Shared\Infrastructure\EasyAdmin\Controller\DashboardController:
             - App\Blog\Domain\Post
             - App\CV\Domain\ProfessionalExperience
