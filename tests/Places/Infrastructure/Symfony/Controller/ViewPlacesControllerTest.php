@@ -12,7 +12,6 @@ use App\Shared\Domain\HttpCache\CacheItem;
 use App\Shared\Infrastructure\Twig\Twig\Extension\JsonLdExtension;
 use App\Tests\Places\Infrastructure\Double\Repository\FakePlaceRepository;
 use App\User\Infrastructure\Symfony\Security\Authenticator\LoginFormAuthenticator;
-use MenuBuilder;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\UsesClass;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
@@ -22,7 +21,6 @@ use Symfony\Component\HttpFoundation\Request;
 #[UsesClass(Address::class)]
 #[UsesClass(Place::class)]
 #[UsesClass(CacheItem::class)]
-#[UsesClass(MenuBuilder::class)]
 #[UsesClass(JsonLdExtension::class)]
 #[UsesClass(LoginFormAuthenticator::class)]
 class ViewPlacesControllerTest extends WebTestCase
