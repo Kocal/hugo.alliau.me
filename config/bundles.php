@@ -23,4 +23,5 @@ return [
     CuyZ\ValinorBundle\ValinorBundle::class => ['all' => true],
     Symfony\UX\Turbo\TurboBundle::class => ['all' => true],
     Symfony\UX\Map\UXMapBundle::class => ['all' => true],
+    Zenstruck\Foundry\ZenstruckFoundryBundle::class => ['dev' => true, 'test' => true],
 ];

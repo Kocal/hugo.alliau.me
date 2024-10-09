@@ -73,7 +73,8 @@
         "symfony/stopwatch": "7.1.*",
         "symfony/web-profiler-bundle": "7.1.*",
         "symplify/easy-coding-standard": "^12.3",
-        "vincentlanglet/twig-cs-fixer": "^3.0"
+        "vincentlanglet/twig-cs-fixer": "^3.0",
+        "zenstruck/foundry": "^2.1"
     },
     "config": {
         "platform": {
