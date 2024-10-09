@@ -31,7 +31,9 @@ class Kernel extends BaseKernel
             {
                 $container->getDefinition('doctrine.orm.default_configuration')
                     ->addMethodCall('setIdentityGenerationPreferences', [
-                        [PostgreSQLPlatform::class => ClassMetadata::GENERATOR_TYPE_SEQUENCE]
+                        [
+                            PostgreSQLPlatform::class => ClassMetadata::GENERATOR_TYPE_SEQUENCE,
+                        ],
                     ]);
             }
         });
