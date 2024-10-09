@@ -9,7 +9,7 @@
 {% block main %}
     <main class="container mx-auto p-2 max-w-screen-xl grid grid-cols-1 sm:grid-cols-[256px_1fr] print:grid-cols-[200px_1fr] gap-2 sm:gap-4">
         <div class="flex flex-col gap-2 sm:gap-4">
-            <twig:Card class="p-2 sm:p-4 flex print:shadow-none print:border">
+            <twig:Card class="p-2 sm:p-3 flex print:shadow-none print:border">
                 <div class="flex-1 flex flex-col justify-between gap-2">
                     <img
                         src="{{ asset('images/hugo-alliaume.jpeg') }}"
@@ -46,33 +46,33 @@
                 </div>
             </twig:Card>
 
-            <twig:Card class="p-2 sm:p-4 print:shadow-none print:border">
+            <twig:Card class="p-2 sm:p-3 print:shadow-none print:border">
 
                 <h2 class="text-2xl sm:text-3xl print:text-xl font-bold mb-4 print:mb-2">Skills</h2>
 
-                <ul class="flex flex-wrap gap-2 print:gap-1">
-                    {% for skill in [
-                        'PHP', 'Symfony',
-                        'JavaScript', 'TypeScript', 'Vue', 'Symfony UX', 'Stimulus', 'Webpack Encore',
-                        'Tests automatisés', 'Cypress', 'PHPUnit', 'PHPStan', 'Playwright',
-                        'CI & CD', 'DevOps',
-                        'SOLID', 'Bonnes pratiques',
-                        'Webperfs back & front', 'Blackfire', 'WebPageTest',
-                        'Core Web Vitals',
-                        'Technique', 'Leadership'
-                    ] %}
-                        <li>
-                            <twig:Badge class="block" size="sm" color="gray" class="print:text-sm">
-                                {{ skill }}
-                            </twig:Badge>
-                        </li>
+                <div class="flex flex-col gap-3 print:gap-1">
+                    {% for skill_group_name, skills_by_group in skills %}
+                        <div>
+                            <h3 class="font-bold uppercase text-sm mb-1">
+                                {{ skill_group_name }}
+                            </h3>
+                            <ul class="flex flex-wrap gap-2 print:gap-1">
+                                {% for skill in skills_by_group %}
+                                    <li>
+                                        <twig:Badge class="block" size="sm" color="gray" class="print:text-xs">
+                                            {{ skill }}
+                                        </twig:Badge>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
                     {% endfor %}
-                </ul>
+                </div>
             </twig:Card>
         </div>
 
         <div class="flex flex-col gap-2 sm:gap-4">
-            <twig:Card class="p-2 sm:p-4 print:shadow-none print:border">
+            <twig:Card class="p-2 sm:p-3 print:shadow-none print:border">
                 <h2 class="text-2xl sm:text-3xl print:text-xl font-bold mb-4 print:mb-2">
                     Expériences professionnelles
                 </h2>
@@ -110,7 +110,7 @@
                                 <ul class="flex flex-wrap gap-2 print:gap-1">
                                     {% for badge in professional_experience.badges %}
                                         <li>
-                                            <twig:Badge class="block" size="sm" color="gray" class="print:text-sm">
+                                            <twig:Badge class="block" size="sm" color="gray" class="print:text-xs">
                                                 {{ badge }}
                                             </twig:Badge>
                                         </li>
@@ -126,7 +126,7 @@
                 </div>
             </twig:Card>
 
-            <twig:Card class="p-2 sm:p-4 print:hidden">
+            <twig:Card class="p-2 sm:p-3 print:hidden">
 
                 <h2 class="text-2xl sm:text-3xl font-bold mb-4">Projets</h2>
 
