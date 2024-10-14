@@ -39,4 +39,106 @@ return [
     '@symfony/ux-leaflet-map' => [
         'path' => './vendor/symfony/ux-leaflet-map/assets/dist/map_controller.js',
     ],
+    'codemirror' => [
+        'version' => '6.0.1',
+    ],
+    '@codemirror/lang-markdown' => [
+        'version' => '6.3.0',
+    ],
+    '@codemirror/lang-sql' => [
+        'version' => '6.8.0',
+    ],
+    '@codemirror/lang-css' => [
+        'version' => '6.3.0',
+    ],
+    '@codemirror/lang-html' => [
+        'version' => '6.4.9',
+    ],
+    '@codemirror/lang-yaml' => [
+        'version' => '6.1.1',
+    ],
+    '@codemirror/lang-javascript' => [
+        'version' => '6.2.2',
+    ],
+    '@codemirror/lang-vue' => [
+        'version' => '0.1.3',
+    ],
+    '@codemirror/lang-sass' => [
+        'version' => '6.0.2',
+    ],
+    '@codemirror/lang-php' => [
+        'version' => '6.0.1',
+    ],
+    '@codemirror/lang-json' => [
+        'version' => '6.0.1',
+    ],
+    '@codemirror/view' => [
+        'version' => '6.26.0',
+    ],
+    '@codemirror/state' => [
+        'version' => '6.4.1',
+    ],
+    '@codemirror/language' => [
+        'version' => '6.10.1',
+    ],
+    '@codemirror/commands' => [
+        'version' => '6.3.3',
+    ],
+    '@codemirror/search' => [
+        'version' => '6.5.5',
+    ],
+    '@codemirror/autocomplete' => [
+        'version' => '6.12.0',
+    ],
+    '@codemirror/lint' => [
+        'version' => '6.4.2',
+    ],
+    '@lezer/markdown' => [
+        'version' => '1.3.1',
+    ],
+    '@lezer/common' => [
+        'version' => '1.2.1',
+    ],
+    '@lezer/highlight' => [
+        'version' => '1.2.0',
+    ],
+    '@lezer/lr' => [
+        'version' => '1.4.0',
+    ],
+    '@lezer/css' => [
+        'version' => '1.1.8',
+    ],
+    '@lezer/html' => [
+        'version' => '1.3.9',
+    ],
+    '@lezer/yaml' => [
+        'version' => '1.0.2',
+    ],
+    '@lezer/javascript' => [
+        'version' => '1.4.13',
+    ],
+    '@lezer/sass' => [
+        'version' => '1.0.7',
+    ],
+    '@lezer/php' => [
+        'version' => '1.0.2',
+    ],
+    '@lezer/json' => [
+        'version' => '1.0.2',
+    ],
+    'style-mod' => [
+        'version' => '4.1.0',
+    ],
+    'w3c-keyname' => [
+        'version' => '2.2.8',
+    ],
+    'crelt' => [
+        'version' => '1.0.6',
+    ],
+    'thememirror' => [
+        'version' => '2.0.1',
+    ],
+    '@codemirror/legacy-modes/mode/shell' => [
+        'version' => '6.4.1',
+    ],
 ];

@@ -1,0 +1,14 @@
+{% extends '@!EasyAdmin/crud/form_theme.html.twig' %}
+
+{% block ea_code_editor_widget %}
+    <div data-controller="markdown-editor">
+        <div data-markdown-editor-target="toolbar">
+            <button type="button" class="btn" data-markdown-editor-target="btn-bold">B</button>
+            <button type="button" class="btn" data-markdown-editor-target="btn-italic">I</button>
+            <button type="button" class="btn" data-markdown-editor-target="btn-strikethrough">S</button>
+        </div>
+        {{ form_widget(form, { attr: attr|merge({
+            'data-markdown-editor-target': 'textarea',
+        }) }) }}
+    </div>
+{% endblock %}

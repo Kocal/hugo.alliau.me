@@ -51,6 +51,7 @@ class PostCrudController extends AbstractCrudController
         yield CodeEditorField::new('content')
             ->onlyOnForms()
             ->setLanguage('markdown')
+            ->hideLineNumbers()
         ;
 
         yield FormField::addColumn('col-xxl-4');
