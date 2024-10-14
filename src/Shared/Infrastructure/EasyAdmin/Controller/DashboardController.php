@@ -7,6 +7,7 @@ namespace App\Shared\Infrastructure\EasyAdmin\Controller;
 use App\Blog;
 use App\CV;
 use App\Places;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -30,6 +31,12 @@ class DashboardController extends AbstractDashboardController
             ->setFaviconPath('images/icons/favicon.svg')
             ->generateRelativeUrls()
         ;
+    }
+    
+    public function configureAssets(): Assets
+    {
+        return parent::configureAssets()
+            ->addAssetMapperEntry('admin');
     }
 
     #[\Override]
