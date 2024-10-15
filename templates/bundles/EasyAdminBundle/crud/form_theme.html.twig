@@ -1,12 +1,67 @@
 {% extends '@!EasyAdmin/crud/form_theme.html.twig' %}
 
+{% macro code_editor_toolbar_btn(title, icon_name, stimulus_target) %}
+    <button 
+        type="button" 
+        title="{{ title }}" 
+        class="btn"
+        data-markdown-editor-target="{{ stimulus_target }}"
+        style="
+            border: 1px solid var(--bs-gray-500); 
+            --bs-btn-padding-x: var(--bs-btn-padding-y); 
+            --bs-btn-line-height: 0;
+            --bs-btn-font-size: 1.4rem;
+            --bs-btn-hover-bg: var(--bs-gray-200);
+            --button-shadow: none; 
+            --button-hover-shadow: none; 
+        "
+    >
+        <twig:UX:Icon :name="icon_name" />
+    </button>
+{% endmacro %}
+
 {% block ea_code_editor_widget %}
-    <div data-controller="markdown-editor">
+    <div data-controller="markdown-editor" class="d-flex flex-column gap-1">
         <div data-markdown-editor-target="toolbar">
-            <button type="button" class="btn" data-markdown-editor-target="btn-bold">B</button>
-            <button type="button" class="btn" data-markdown-editor-target="btn-italic">I</button>
-            <button type="button" class="btn" data-markdown-editor-target="btn-strikethrough">S</button>
+            <div class="btn-group" role="group">
+                {{ _self.code_editor_toolbar_btn('Undo', 'tabler:arrow-back-up', 'btn-undo') }}
+                {{ _self.code_editor_toolbar_btn('Redo', 'tabler:arrow-forward-up', 'btn-redo') }}
+            </div>
+
+            <div class="btn-group" role="group">
+                {{ _self.code_editor_toolbar_btn('Bold', 'tabler:bold', 'btn-bold') }}
+                {{ _self.code_editor_toolbar_btn('Italic', 'tabler:italic', 'btn-italic') }}
+                {{ _self.code_editor_toolbar_btn('Strikethrough', 'tabler:strikethrough', 'btn-strikethrough') }}
+                {{ _self.code_editor_toolbar_btn('Clear formatting', 'tabler:clear-formatting', 'btn-clear-formatting') }}
+            </div>
+
+            <div class="btn-group" role="group">
+                {{ _self.code_editor_toolbar_btn('Insert header 1', 'tabler:h-1', 'btn-header-1') }}
+                {{ _self.code_editor_toolbar_btn('Insert header 2', 'tabler:h-2', 'btn-header-2') }}
+                {{ _self.code_editor_toolbar_btn('Insert header 3', 'tabler:h-3', 'btn-header-3') }}
+                {{ _self.code_editor_toolbar_btn('Insert header 4', 'tabler:h-4', 'btn-header-4') }}
+                {{ _self.code_editor_toolbar_btn('Insert header 5', 'tabler:h-5', 'btn-header-5') }}
+                {{ _self.code_editor_toolbar_btn('Insert header 6', 'tabler:h-6', 'btn-header-6') }}
+            </div>
+            
+            <div class="btn-group" role="group">
+                {{ _self.code_editor_toolbar_btn('Insert link', 'tabler:link-plus', 'btn-link') }}
+                {{ _self.code_editor_toolbar_btn('Insert image', 'tabler:photo-plus', 'btn-image') }}
+                {{ _self.code_editor_toolbar_btn('Insert code block', 'tabler:code', 'btn-code-block') }}
+                {{ _self.code_editor_toolbar_btn('Insert quote', 'tabler:blockquote', 'btn-quote') }}
+                {{ _self.code_editor_toolbar_btn('Insert unordered list', 'tabler:list', 'btn-unordered-list') }}
+                {{ _self.code_editor_toolbar_btn('Insert ordered list', 'tabler:list-numbers', 'btn-ordered-list') }}
+            </div>
+
+            <div class="btn-group" role="group">
+                {{ _self.code_editor_toolbar_btn('Insert "info" alert', 'tabler:alert-circle', 'btn-alert-info') }}
+                {{ _self.code_editor_toolbar_btn('Insert "tip" alert', 'tabler:bulb', 'btn-alert-tip') }}
+                {{ _self.code_editor_toolbar_btn('Insert "warning" alert', 'tabler:alert-triangle', 'btn-alert-warning') }}
+                {{ _self.code_editor_toolbar_btn('Insert "important" alert', 'tabler:alert-square', 'btn-alert-important') }}
+                {{ _self.code_editor_toolbar_btn('Insert "caution" alert', 'tabler:alert-hexagon', 'btn-alert-caution') }}
+            </div>
         </div>
+        
         {{ form_widget(form, { attr: attr|merge({
             'data-markdown-editor-target': 'textarea',
         }) }) }}
