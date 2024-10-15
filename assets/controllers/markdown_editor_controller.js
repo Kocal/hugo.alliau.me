@@ -2,7 +2,7 @@ import {Controller} from "@hotwired/stimulus";
 import {basicSetup, EditorView} from "codemirror"
 import {markdown} from "@codemirror/lang-markdown"
 import {dracula, tomorrow} from "thememirror";
-import {Compartment} from "@codemirror/state";
+import {Compartment, EditorSelection} from "@codemirror/state";
 import {undo as commandUndo, redo as commandRedo} from '@codemirror/commands';
 import {codeLanguages} from "../codemirror/code_languages.js";
 import {lightDarkThemeSwitcher} from "../codemirror/light_dark_theme_switcher.js";
@@ -12,9 +12,6 @@ import {lightDarkThemeSwitcher} from "../codemirror/light_dark_theme_switcher.js
 export default class extends Controller {
     static targets = [
         'textarea',
-        'btn-bold',
-        'btn-italic',
-        'btn-strikethrough',
     ]
 
     connect() {
@@ -37,12 +34,55 @@ export default class extends Controller {
         this.textareaTarget.style.display = "none";
     }
     
-    undo(event) {
+    undo() {
         commandUndo(this.view)
+        this.view.focus();
     }
     
-    redo(event) {
+    redo() {
         commandRedo(this.view)
+        this.view.focus();
+    }
+
+    bold() {
+        this.view.dispatch(this.view.state.changeByRange(range => ({
+            changes: [{from: range.from, insert: "**"}, {from: range.to, insert: "**"}],
+            range: EditorSelection.range(range.from, range.to + 4)
+        })));
+        this.view.dispatch({
+            selection: {
+                anchor: this.view.state.selection.ranges[0].from + 2,
+                head: this.view.state.selection.ranges[0].from + 2,
+            }
+        })
+        this.view.focus();
+    }
+    italic() {
+        this.view.dispatch(this.view.state.changeByRange(range => ({
+            changes: [{from: range.from, insert: "_"}, {from: range.to, insert: "_"}],
+            range: EditorSelection.range(range.from, range.to + 2)
+        })));
+        this.view.dispatch({ 
+            selection: {
+                anchor: this.view.state.selection.ranges[0].from + 1,
+                head: this.view.state.selection.ranges[0].from + 1,
+            }
+        })
+        this.view.focus();
+    }
+    strikethrough() {
+        this.view.dispatch(this.view.state.changeByRange(range => ({
+            changes: [{from: range.from, insert: "~"}, {from: range.to, insert: "~"}],
+            range: EditorSelection.range(range.from, range.to + 2)
+        })));
+
+        this.view.dispatch({
+            selection: {
+                anchor: this.view.state.selection.ranges[0].from + 1,
+                head: this.view.state.selection.ranges[0].from + 1,
+            }
+        })
+        this.view.focus();
     }
 
     disconnect() {
