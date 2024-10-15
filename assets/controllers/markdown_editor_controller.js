@@ -3,6 +3,7 @@ import {basicSetup, EditorView} from "codemirror"
 import {markdown} from "@codemirror/lang-markdown"
 import {dracula, tomorrow} from "thememirror";
 import {Compartment} from "@codemirror/state";
+import {undo as commandUndo, redo as commandRedo} from '@codemirror/commands';
 import {codeLanguages} from "../codemirror/code_languages.js";
 import {lightDarkThemeSwitcher} from "../codemirror/light_dark_theme_switcher.js";
 
@@ -34,6 +35,14 @@ export default class extends Controller {
         this.view.dom.style.maxHeight = '85dvh'; // hard-coded, can be improved later
         this.textareaTarget.parentNode.insertBefore(this.view.dom, this.textareaTarget)
         this.textareaTarget.style.display = "none";
+    }
+    
+    undo(event) {
+        commandUndo(this.view)
+    }
+    
+    redo(event) {
+        commandRedo(this.view)
     }
 
     disconnect() {
