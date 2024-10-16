@@ -1,11 +1,14 @@
 {% extends '@!EasyAdmin/crud/form_theme.html.twig' %}
 
-{% macro code_editor_toolbar_btn(title, icon_name, stimulus_action) %}
+{% macro code_editor_toolbar_btn(args) %}
     <button 
         type="button" 
-        title="{{ title }}" 
+        title="{{ args.title }}" 
         class="btn"
-        data-action="{{ stimulus_action }}"
+        data-action="{{ args.action }}"
+        {% for action_arg, action_arg_value in args.action_args|default({}) %}
+            data-{{ action_arg }}-param="{{ action_arg_value }}"
+        {% endfor %}
         style="
             border: 1px solid var(--bs-gray-500); 
             --bs-btn-padding-x: var(--bs-btn-padding-y); 
@@ -16,7 +19,7 @@
             --button-hover-shadow: none; 
         "
     >
-        <twig:UX:Icon :name="icon_name" />
+        <twig:UX:Icon :name="args.icon" />
     </button>
 {% endmacro %}
 
@@ -24,46 +27,45 @@
     <div data-controller="markdown-editor" class="d-flex flex-column gap-1">
         <div data-markdown-editor-target="toolbar">
             <div class="btn-group" role="group">
-                {{ _self.code_editor_toolbar_btn('Undo', 'tabler:arrow-back-up', 'click->markdown-editor#undo') }}
-                {{ _self.code_editor_toolbar_btn('Redo', 'tabler:arrow-forward-up', 'click->markdown-editor#redo') }}
+                {{ _self.code_editor_toolbar_btn({title: 'Undo', icon: 'tabler:arrow-back-up', action: 'click->markdown-editor#undo'}) }}
+                {{ _self.code_editor_toolbar_btn({title: 'Redo', icon: 'tabler:arrow-forward-up', action: 'click->markdown-editor#redo'}) }}
             </div>
 
             <div class="btn-group" role="group">
-                {{ _self.code_editor_toolbar_btn('Bold', 'tabler:bold', 'click->markdown-editor#bold') }}
-                {{ _self.code_editor_toolbar_btn('Italic', 'tabler:italic', 'click->markdown-editor#italic') }}
-                {{ _self.code_editor_toolbar_btn('Strikethrough', 'tabler:strikethrough', 'click->markdown-editor#strikethrough') }}
-{#                {{ _self.code_editor_toolbar_btn('Clear formatting', 'tabler:clear-formatting', 'btn-clear-formatting') }}#}
+                {{ _self.code_editor_toolbar_btn({title: 'Bold', icon: 'tabler:bold', action: 'click->markdown-editor#bold'}) }}
+                {{ _self.code_editor_toolbar_btn({title: 'Italic', icon: 'tabler:italic', action: 'click->markdown-editor#italic'}) }}
+                {{ _self.code_editor_toolbar_btn({title: 'Strikethrough', icon: 'tabler:strikethrough', action: 'click->markdown-editor#strikethrough'}) }}
             </div>
 
             <div class="btn-group" role="group">
-                {{ _self.code_editor_toolbar_btn('Insert header 1', 'tabler:h-1', 'btn-header-1') }}
-                {{ _self.code_editor_toolbar_btn('Insert header 2', 'tabler:h-2', 'btn-header-2') }}
-                {{ _self.code_editor_toolbar_btn('Insert header 3', 'tabler:h-3', 'btn-header-3') }}
-                {{ _self.code_editor_toolbar_btn('Insert header 4', 'tabler:h-4', 'btn-header-4') }}
-                {{ _self.code_editor_toolbar_btn('Insert header 5', 'tabler:h-5', 'btn-header-5') }}
-                {{ _self.code_editor_toolbar_btn('Insert header 6', 'tabler:h-6', 'btn-header-6') }}
+                {{ _self.code_editor_toolbar_btn({title: 'Insert header 1', icon: 'tabler:h-1', action: 'click->markdown-editor#header', action_args: {'markdown-editor-level': '1'}}) }}
+                {{ _self.code_editor_toolbar_btn({title: 'Insert header 2', icon: 'tabler:h-2', action: 'click->markdown-editor#header', action_args: {'markdown-editor-level': '2'}}) }}
+                {{ _self.code_editor_toolbar_btn({title: 'Insert header 3', icon: 'tabler:h-3', action: 'click->markdown-editor#header', action_args: {'markdown-editor-level': '3'}}) }}
+                {{ _self.code_editor_toolbar_btn({title: 'Insert header 4', icon: 'tabler:h-4', action: 'click->markdown-editor#header', action_args: {'markdown-editor-level': '4'}}) }}
+                {{ _self.code_editor_toolbar_btn({title: 'Insert header 5', icon: 'tabler:h-5', action: 'click->markdown-editor#header', action_args: {'markdown-editor-level': '5'}}) }}
+                {{ _self.code_editor_toolbar_btn({title: 'Insert header 6', icon: 'tabler:h-6', action: 'click->markdown-editor#header', action_args: {'markdown-editor-level': '6'}}) }}
             </div>
             
             <div class="btn-group" role="group">
-                {{ _self.code_editor_toolbar_btn('Insert link', 'tabler:link-plus', 'btn-link') }}
-                {{ _self.code_editor_toolbar_btn('Insert image', 'tabler:photo-plus', 'btn-image') }}
-                {{ _self.code_editor_toolbar_btn('Insert code block', 'tabler:code', 'btn-code-block') }}
-                {{ _self.code_editor_toolbar_btn('Insert quote', 'tabler:blockquote', 'btn-quote') }}
-                {{ _self.code_editor_toolbar_btn('Insert unordered list', 'tabler:list', 'btn-unordered-list') }}
-                {{ _self.code_editor_toolbar_btn('Insert ordered list', 'tabler:list-numbers', 'btn-ordered-list') }}
+                {{ _self.code_editor_toolbar_btn({title: 'Insert link', icon: 'tabler:link-plus', action: 'click->markdown-editor#link'}) }}
+                {{ _self.code_editor_toolbar_btn({title: 'Insert image', icon: 'tabler:photo-plus', action: 'click->markdown-editor#image'}) }}
+                {{ _self.code_editor_toolbar_btn({title: 'Insert code block', icon: 'tabler:code', action: 'click->markdown-editor#codeBlock'}) }}
+                {{ _self.code_editor_toolbar_btn({title: 'Insert quote', icon: 'tabler:blockquote', action: 'click->markdown-editor#quote'}) }}
+                {{ _self.code_editor_toolbar_btn({title: 'Insert unordered list', icon: 'tabler:list', action: 'click->markdown-editor#list', action_args: {'markdown-editor-type': 'unordered'}}) }}
+                {{ _self.code_editor_toolbar_btn({title: 'Insert ordered list', icon: 'tabler:list-numbers', action: 'click->markdown-editor#list', action_args: {'markdown-editor-type': 'ordered'}}) }}
             </div>
 
             <div class="btn-group" role="group">
-                {{ _self.code_editor_toolbar_btn('Insert "info" alert', 'tabler:alert-circle', 'btn-alert-info') }}
-                {{ _self.code_editor_toolbar_btn('Insert "tip" alert', 'tabler:bulb', 'btn-alert-tip') }}
-                {{ _self.code_editor_toolbar_btn('Insert "warning" alert', 'tabler:alert-triangle', 'btn-alert-warning') }}
-                {{ _self.code_editor_toolbar_btn('Insert "important" alert', 'tabler:alert-square', 'btn-alert-important') }}
-                {{ _self.code_editor_toolbar_btn('Insert "caution" alert', 'tabler:alert-hexagon', 'btn-alert-caution') }}
+                {{ _self.code_editor_toolbar_btn({title: 'Insert "info" alert', icon: 'tabler:alert-circle', action: 'click->markdown-editor#alert', action_args: {'markdown-editor-type': 'info'}}) }}
+                {{ _self.code_editor_toolbar_btn({title: 'Insert "tip" alert', icon: 'tabler:bulb', action: 'click->markdown-editor#alert', action_args: {'markdown-editor-type': 'tip'}}) }}
+                {{ _self.code_editor_toolbar_btn({title: 'Insert "warning" alert', icon: 'tabler:alert-triangle', action: 'click->markdown-editor#alert', action_args: {'markdown-editor-type': 'warning'}}) }}
+                {{ _self.code_editor_toolbar_btn({title: 'Insert "important" alert', icon: 'tabler:alert-square', action: 'click->markdown-editor#alert', action_args: {'markdown-editor-type': 'important'}}) }}
+                {{ _self.code_editor_toolbar_btn({title: 'Insert "caution" alert', icon: 'tabler:alert-hexagon', action: 'click->markdown-editor#alert', action_args: {'markdown-editor-type': 'caution'}}) }}
             </div>
         </div>
         
-        {{ form_widget(form, { attr: attr|merge({
+        {{ form_widget(form, {attr: attr|merge({
             'data-markdown-editor-target': 'textarea',
-        }) }) }}
+        })}) }}
     </div>
 {% endblock %}

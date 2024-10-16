@@ -4,6 +4,7 @@
             ".cache/*",
             "assets/vendor/*",
             "assets/controllers.json",
+            "assets/codemirror/twig/*",
             "composer.json",
             "public/assets/*",
             "public/bundles/*",
