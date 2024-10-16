@@ -32,7 +32,8 @@ class DashboardController extends AbstractDashboardController
             ->generateRelativeUrls()
         ;
     }
-    
+
+    #[\Override]
     public function configureAssets(): Assets
     {
         return parent::configureAssets()

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Places\Infrastructure\Foundry\Factory;
 
 use App\Places\Domain\Address;
@@ -19,6 +21,7 @@ final class AddressFactory extends ObjectFactory
     {
     }
 
+    #[\Override]
     public static function class(): string
     {
         return Address::class;
@@ -29,6 +32,7 @@ final class AddressFactory extends ObjectFactory
      *
      * @todo add your default values here
      */
+    #[\Override]
     protected function defaults(): array|callable
     {
         return [
@@ -38,6 +42,7 @@ final class AddressFactory extends ObjectFactory
     /**
      * @see https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#initialization
      */
+    #[\Override]
     protected function initialize(): static
     {
         return $this

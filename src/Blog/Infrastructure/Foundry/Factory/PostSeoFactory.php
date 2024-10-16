@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Blog\Infrastructure\Foundry\Factory;
 
 use App\Blog\Domain\PostSeo;
@@ -19,6 +21,7 @@ final class PostSeoFactory extends ObjectFactory
     {
     }
 
+    #[\Override]
     public static function class(): string
     {
         return PostSeo::class;
@@ -29,6 +32,7 @@ final class PostSeoFactory extends ObjectFactory
      *
      * @todo add your default values here
      */
+    #[\Override]
     protected function defaults(): array|callable
     {
         return [
@@ -38,6 +42,7 @@ final class PostSeoFactory extends ObjectFactory
     /**
      * @see https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#initialization
      */
+    #[\Override]
     protected function initialize(): static
     {
         return $this

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\CV\Infrastructure\Foundry\Factory;
 
 use App\CV\Domain\ProfessionalExperience;
@@ -19,6 +21,7 @@ final class ProfessionalExperienceFactory extends PersistentProxyObjectFactory
     {
     }
 
+    #[\Override]
     public static function class(): string
     {
         return ProfessionalExperience::class;
@@ -29,6 +32,7 @@ final class ProfessionalExperienceFactory extends PersistentProxyObjectFactory
      *
      * @todo add your default values here
      */
+    #[\Override]
     protected function defaults(): array|callable
     {
         return [
@@ -46,6 +50,7 @@ final class ProfessionalExperienceFactory extends PersistentProxyObjectFactory
     /**
      * @see https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#initialization
      */
+    #[\Override]
     protected function initialize(): static
     {
         return $this

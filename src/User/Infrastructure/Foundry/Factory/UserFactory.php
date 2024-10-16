@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\User\Infrastructure\Foundry\Factory;
 
 use App\User\Domain\User;
@@ -19,6 +21,7 @@ final class UserFactory extends PersistentProxyObjectFactory
     {
     }
 
+    #[\Override]
     public static function class(): string
     {
         return User::class;
@@ -29,6 +32,7 @@ final class UserFactory extends PersistentProxyObjectFactory
      *
      * @todo add your default values here
      */
+    #[\Override]
     protected function defaults(): array|callable
     {
         return [
@@ -41,6 +45,7 @@ final class UserFactory extends PersistentProxyObjectFactory
     /**
      * @see https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#initialization
      */
+    #[\Override]
     protected function initialize(): static
     {
         return $this
