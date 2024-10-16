@@ -10,6 +10,7 @@ import { lightDarkThemeSwitcher } from "../codemirror/light_dark_theme_switcher.
 /* stimulusFetch: 'lazy' */
 export default class extends Controller {
     static targets = ["textarea"];
+    static classes = ["editor"];
 
     connect() {
         const editorTheme = new Compartment();
@@ -19,23 +20,39 @@ export default class extends Controller {
             extensions: [
                 basicSetup,
                 markdown({ codeLanguages }),
+                EditorView.theme({
+                    "&.cm-focused": {
+                        outline: "none",
+                    },
+                }),
                 lightDarkThemeSwitcher({
                     darkTheme: dracula,
                     lightTheme: tomorrow,
                 }),
                 EditorView.updateListener.of((viewUpdate) => {
-                    this.textareaTarget.value =
-                        viewUpdate.view.state.doc.toString();
+                    this.textareaTarget.value = viewUpdate.view.state.doc.toString();
+                }),
+                EditorView.lineWrapping,
+                EditorView.editorAttributes.of({
+                    class: [...this.editorClasses].join(" "),
                 }),
             ],
         });
-        // this.view.dom.style.width = this.textareaTarget.clientWidth + 'px';
-        this.view.dom.style.maxHeight = "85dvh"; // hard-coded, can be improved later
-        this.textareaTarget.parentNode.insertBefore(
-            this.view.dom,
-            this.textareaTarget,
-        );
+
+        this.view.dom.style.maxHeight = "80dvh"; // hard-coded, can be improved later
+        this.textareaTarget.parentNode.insertBefore(this.view.dom, this.textareaTarget);
         this.textareaTarget.style.display = "none";
+
+        window.addEventListener("resize", this.onWindowResize.bind(this));
+    }
+
+    disconnect() {
+        window.removeEventListener("resize", this.onWindowResize.bind(this));
+        this.view.destroy();
+    }
+
+    onWindowResize() {
+        this.view.requestMeasure();
     }
 
     undo() {
@@ -66,9 +83,7 @@ export default class extends Controller {
     header(event) {
         const { level } = event.params;
         if (typeof level !== "number") {
-            throw new Error(
-                'Argument "level" is required and must be a number.',
-            );
+            throw new Error('Argument "level" is required and must be a number.');
         }
 
         this.#insertSyntax(`${"#".repeat(level)} \${cursor}`);
@@ -94,61 +109,46 @@ export default class extends Controller {
     }
 
     list(event) {
-        const type =
-            typeof event.params.type === "string"
-                ? event.params.type
-                : "unordered";
+        const type = typeof event.params.type === "string" ? event.params.type : "unordered";
         if (type !== "unordered" && type !== "ordered") {
-            throw new Error(
-                'Argument "type" must be either "ordered" or "unordered".',
-            );
+            throw new Error('Argument "type" must be either "ordered" or "unordered".');
         }
         this.#insertSyntax(`${type === "unordered" ? "-" : "1."} \${cursor}`);
     }
 
     alert(event) {
-        const type =
-            typeof event.params.type === "string" ? event.params.type : "info";
+        const type = typeof event.params.type === "string" ? event.params.type : "info";
         const validTypes = ["info", "tip", "warning", "important", "caution"];
         if (!validTypes.includes(type)) {
-            throw new Error(
-                `Argument "type" must be one of ${validTypes.join(", ")}.`,
-            );
+            throw new Error(`Argument "type" must be one of ${validTypes.join(", ")}.`);
         }
 
         this.#insertSyntax(`> [!${type.toUpperCase()}]\n> \${cursor}`);
     }
-    
+
     #insertSyntax(text) {
         const cursorId = "${cursor}";
         const cursorIndex = text.indexOf(cursorId);
         if (cursorIndex === -1) {
             throw new Error(`Text must include the cursor placeholder: ${cursorId}`);
         }
-    
+
         text = text.replace(cursorId, "");
-        
+
         this.view.dispatch(
             this.view.state.changeByRange((range) => ({
                 changes: [{ from: range.from, insert: text }],
-                range: EditorSelection.range(
-                    range.from,
-                    range.to + text.length,
-                ),
+                range: EditorSelection.range(range.from, range.to + text.length),
             })),
         );
-        
+
         this.view.dispatch({
             selection: {
                 anchor: this.view.state.selection.ranges[0].from + cursorIndex,
                 head: this.view.state.selection.ranges[0].from + cursorIndex,
             },
         });
-        
-        this.view.focus();
-    }
 
-    disconnect() {
-        this.view.destroy();
+        this.view.focus();
     }
 }

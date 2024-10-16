@@ -2,11 +2,7 @@
  * @see https://github.com/codemirror/language-data/blob/main/src/language-data.ts
  */
 
-import {
-    LanguageDescription,
-    LanguageSupport,
-    StreamLanguage,
-} from "@codemirror/language";
+import { LanguageDescription, LanguageSupport, StreamLanguage } from "@codemirror/language";
 
 function legacy(parser) {
     return new LanguageSupport(StreamLanguage.define(parser));
@@ -18,9 +14,7 @@ export const codeLanguages = [
         alias: ["ecmascript", "js", "node"],
         extensions: ["js", "mjs", "cjs"],
         load() {
-            return import("@codemirror/lang-javascript").then((m) =>
-                m.javascript(),
-            );
+            return import("@codemirror/lang-javascript").then((m) => m.javascript());
         },
     }),
     LanguageDescription.of({
@@ -35,9 +29,7 @@ export const codeLanguages = [
         name: "Markdown",
         extensions: ["md", "markdown", "mkd"],
         load() {
-            return import("@codemirror/lang-markdown").then((m) =>
-                m.markdown(),
-            );
+            return import("@codemirror/lang-markdown").then((m) => m.markdown());
         },
     }),
     LanguageDescription.of({
@@ -65,9 +57,7 @@ export const codeLanguages = [
         name: "Sass",
         extensions: ["sass"],
         load() {
-            return import("@codemirror/lang-sass").then((m) =>
-                m.sass({ indented: true }),
-            );
+            return import("@codemirror/lang-sass").then((m) => m.sass({ indented: true }));
         },
     }),
     LanguageDescription.of({
@@ -81,9 +71,7 @@ export const codeLanguages = [
         name: "TSX",
         extensions: ["tsx"],
         load() {
-            return import("@codemirror/lang-javascript").then((m) =>
-                m.javascript({ jsx: true, typescript: true }),
-            );
+            return import("@codemirror/lang-javascript").then((m) => m.javascript({ jsx: true, typescript: true }));
         },
     }),
     LanguageDescription.of({
@@ -91,9 +79,7 @@ export const codeLanguages = [
         alias: ["ts"],
         extensions: ["ts", "mts", "cts"],
         load() {
-            return import("@codemirror/lang-javascript").then((m) =>
-                m.javascript({ typescript: true }),
-            );
+            return import("@codemirror/lang-javascript").then((m) => m.javascript({ typescript: true }));
         },
     }),
     LanguageDescription.of({
@@ -117,9 +103,7 @@ export const codeLanguages = [
         extensions: ["sh", "ksh", "bash"],
         filename: /^PKGBUILD$/,
         load() {
-            return import("@codemirror/legacy-modes/mode/shell").then((m) =>
-                legacy(m.shell),
-            );
+            return import("@codemirror/legacy-modes/mode/shell").then((m) => legacy(m.shell));
         },
     }),
     LanguageDescription.of({

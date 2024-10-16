@@ -4,13 +4,12 @@
     <button 
         type="button" 
         title="{{ args.title }}" 
-        class="btn"
+        class="btn border border-dark-subtle"
         data-action="{{ args.action }}"
         {% for action_arg, action_arg_value in args.action_args|default({}) %}
             data-{{ action_arg }}-param="{{ action_arg_value }}"
         {% endfor %}
         style="
-            border: 1px solid var(--bs-gray-500); 
             --bs-btn-padding-x: var(--bs-btn-padding-y); 
             --bs-btn-line-height: 0;
             --bs-btn-font-size: 1.4rem;
@@ -24,7 +23,11 @@
 {% endmacro %}
 
 {% block ea_code_editor_widget %}
-    <div data-controller="markdown-editor" class="d-flex flex-column gap-1">
+    <div 
+        data-controller="markdown-editor" 
+        data-markdown-editor-editor-class="border border-dark-subtle rounded-2"
+        class="d-flex flex-column gap-1"
+    >
         <div data-markdown-editor-target="toolbar">
             <div class="btn-group" role="group">
                 {{ _self.code_editor_toolbar_btn({title: 'Undo', icon: 'tabler:arrow-back-up', action: 'click->markdown-editor#undo'}) }}

@@ -13,20 +13,14 @@ export function lightDarkThemeSwitcher({ lightTheme, darkTheme }) {
     const themeCompartment = new Compartment();
 
     return [
-        themeCompartment.of(
-            window.matchMedia("(prefers-color-scheme: dark)").matches
-                ? darkTheme
-                : lightTheme,
-        ),
+        themeCompartment.of(window.matchMedia("(prefers-color-scheme: dark)").matches ? darkTheme : lightTheme),
 
         EditorView.domEventHandlers({
             window: {
                 matchMedia: (event) => {
                     if (event.media === "(prefers-color-scheme: dark)") {
                         event.target.dispatch({
-                            effects: themeCompartment.reconfigure(
-                                event.matches ? darkTheme : lightTheme,
-                            ),
+                            effects: themeCompartment.reconfigure(event.matches ? darkTheme : lightTheme),
                         });
                     }
                 },
