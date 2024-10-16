@@ -20,6 +20,10 @@ export default class extends Controller {
             extensions: [
                 basicSetup,
                 markdown({ codeLanguages }),
+                EditorView.lineWrapping,
+                EditorView.editorAttributes.of({
+                    class: [...this.editorClasses].join(" "),
+                }),
                 EditorView.theme({
                     "&.cm-focused": {
                         outline: "none",
@@ -31,10 +35,6 @@ export default class extends Controller {
                 }),
                 EditorView.updateListener.of((viewUpdate) => {
                     this.textareaTarget.value = viewUpdate.view.state.doc.toString();
-                }),
-                EditorView.lineWrapping,
-                EditorView.editorAttributes.of({
-                    class: [...this.editorClasses].join(" "),
                 }),
             ],
         });
@@ -118,12 +118,12 @@ export default class extends Controller {
 
     alert(event) {
         const type = typeof event.params.type === "string" ? event.params.type : "info";
-        const validTypes = ["info", "tip", "warning", "important", "caution"];
+        const validTypes = ["info", "tip", "warning", "danger"];
         if (!validTypes.includes(type)) {
             throw new Error(`Argument "type" must be one of ${validTypes.join(", ")}.`);
         }
 
-        this.#insertSyntax(`> [!${type.toUpperCase()}]\n> \${cursor}`);
+        this.#insertSyntax(`::: ${type}\n\${cursor}\n:::\n`);
     }
 
     #insertSyntax(text) {
@@ -133,12 +133,12 @@ export default class extends Controller {
             throw new Error(`Text must include the cursor placeholder: ${cursorId}`);
         }
 
-        text = text.replace(cursorId, "");
+        const textSanitized = text.replace(cursorId, "");
 
         this.view.dispatch(
             this.view.state.changeByRange((range) => ({
-                changes: [{ from: range.from, insert: text }],
-                range: EditorSelection.range(range.from, range.to + text.length),
+                changes: [{ from: range.from, insert: textSanitized }],
+                range: EditorSelection.range(range.from, range.to + textSanitized.length),
             })),
         );
 
