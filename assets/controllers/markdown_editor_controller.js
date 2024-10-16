@@ -1,9 +1,10 @@
 import { redo as commandRedo, undo as commandUndo } from "@codemirror/commands";
 import { markdown } from "@codemirror/lang-markdown";
 import { Compartment, EditorSelection } from "@codemirror/state";
+import { githubDark } from "@fsegurai/codemirror-theme-github-dark";
+import { githubLight } from "@fsegurai/codemirror-theme-github-light";
 import { Controller } from "@hotwired/stimulus";
 import { EditorView, basicSetup } from "codemirror";
-import { dracula, tomorrow } from "thememirror";
 import { codeLanguages } from "../codemirror/code_languages.js";
 import { lightDarkThemeSwitcher } from "../codemirror/light_dark_theme_switcher.js";
 
@@ -30,8 +31,8 @@ export default class extends Controller {
                     },
                 }),
                 lightDarkThemeSwitcher({
-                    darkTheme: dracula,
-                    lightTheme: tomorrow,
+                    darkTheme: githubDark,
+                    lightTheme: githubLight,
                 }),
                 EditorView.updateListener.of((viewUpdate) => {
                     this.textareaTarget.value = viewUpdate.view.state.doc.toString();

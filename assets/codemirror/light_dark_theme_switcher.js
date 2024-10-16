@@ -10,21 +10,26 @@ export function lightDarkThemeSwitcher({ lightTheme, darkTheme }) {
         throw new Error(`Parameter 'darkTheme' is required.`);
     }
 
+    let initialized = false;
     const themeCompartment = new Compartment();
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
     return [
-        themeCompartment.of(window.matchMedia("(prefers-color-scheme: dark)").matches ? darkTheme : lightTheme),
+        themeCompartment.of(mediaQuery.matches ? darkTheme : lightTheme),
+        EditorView.updateListener.of((update) => {
+            if (!initialized) {
+                initialized = true;
+                const mediaQueryChangeHandler = (event) => {
+                    update.view.dispatch({
+                        effects: themeCompartment.reconfigure(event.matches ? darkTheme : lightTheme),
+                    });
+                };
 
-        EditorView.domEventHandlers({
-            window: {
-                matchMedia: (event) => {
-                    if (event.media === "(prefers-color-scheme: dark)") {
-                        event.target.dispatch({
-                            effects: themeCompartment.reconfigure(event.matches ? darkTheme : lightTheme),
-                        });
-                    }
-                },
-            },
+                mediaQuery.addEventListener("change", mediaQueryChangeHandler);
+                update.view.dom.addEventListener("unload", () => {
+                    mediaQuery.removeEventListener("change", mediaQueryChangeHandler);
+                });
+            }
         }),
     ];
 }

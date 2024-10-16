@@ -73,13 +73,13 @@ return [
         'version' => '6.0.1',
     ],
     '@codemirror/view' => [
-        'version' => '6.26.0',
+        'version' => '6.32.0',
     ],
     '@codemirror/state' => [
         'version' => '6.4.1',
     ],
     '@codemirror/language' => [
-        'version' => '6.10.1',
+        'version' => '6.10.2',
     ],
     '@codemirror/commands' => [
         'version' => '6.3.3',
@@ -100,7 +100,7 @@ return [
         'version' => '1.2.1',
     ],
     '@lezer/highlight' => [
-        'version' => '1.2.0',
+        'version' => '1.2.1',
     ],
     '@lezer/lr' => [
         'version' => '1.4.0',
@@ -127,7 +127,7 @@ return [
         'version' => '1.0.2',
     ],
     'style-mod' => [
-        'version' => '4.1.0',
+        'version' => '4.1.2',
     ],
     'w3c-keyname' => [
         'version' => '2.2.8',
@@ -135,10 +135,13 @@ return [
     'crelt' => [
         'version' => '1.0.6',
     ],
-    'thememirror' => [
-        'version' => '2.0.1',
-    ],
     '@codemirror/legacy-modes/mode/shell' => [
         'version' => '6.4.1',
+    ],
+    '@fsegurai/codemirror-theme-github-light' => [
+        'version' => '6.0.2',
+    ],
+    '@fsegurai/codemirror-theme-github-dark' => [
+        'version' => '6.0.2',
     ],
 ];
