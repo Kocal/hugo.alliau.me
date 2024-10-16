@@ -4,6 +4,7 @@
             ".cache/*",
             "assets/vendor/*",
             "assets/controllers.json",
+            "assets/codemirror/twig/*",
             "composer.json",
             "public/assets/*",
             "public/bundles/*",
@@ -12,6 +13,7 @@
     },
     "formatter": {
         "indentStyle": "space",
-        "indentWidth": 4
+        "indentWidth": 4,
+        "lineWidth": 120
     }
 }

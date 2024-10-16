@@ -1,18 +1,13 @@
 import { Controller } from "@hotwired/stimulus";
 
+/* stimulusFetch: 'lazy' */
 export default class extends Controller {
     connect() {
-        this.element.addEventListener(
-            "ux:map:marker:before-create",
-            this._onMarkerBeforeCreate,
-        );
+        this.element.addEventListener("ux:map:marker:before-create", this._onMarkerBeforeCreate);
     }
 
     disconnect() {
-        this.element.removeEventListener(
-            "ux:map:marker:before-create",
-            this._onMarkerBeforeCreate,
-        );
+        this.element.removeEventListener("ux:map:marker:before-create", this._onMarkerBeforeCreate);
     }
 
     _onMarkerBeforeCreate(event) {

@@ -5,3 +5,9 @@ framework:
         paths:
             - assets
             - vendor/tempest/highlight/src/Themes/Css
+        missing_import_mode: strict
+
+when@prod:
+    framework:
+        asset_mapper:
+            missing_import_mode: warn
