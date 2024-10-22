@@ -16,11 +16,6 @@ use function Symfony\Component\String\s;
 final readonly class CodeBlockRenderer implements NodeRendererInterface
 {
     /**
-     * https://regex101.com/r/5nJBlZ/1
-     */
-    private const string RE_REMOVE_GUTTER_END_SPACE = '/<span class="hl-gutter[^"]*">[^<]+<\/span>\s{1}/';
-
-    /**
      * @param (\Closure(): Highlighter) $getHighlighter
      */
     public function __construct(
@@ -49,8 +44,6 @@ final readonly class CodeBlockRenderer implements NodeRendererInterface
             : '<pre data-lang="' . $language . '">' . $parsed . '</pre>';
 
         $output = s($output);
-        // Replace the gutter's end space with nothing, as we don't want it to be selectable
-        $output = $output->replaceMatches(self::RE_REMOVE_GUTTER_END_SPACE, static fn (array $matches): string => s($matches[0])->trim()->toString());
         // Add a tabindex to the pre tag to make it focusable
         $output = $output->replace('<pre', '<pre tabindex="0"');
 

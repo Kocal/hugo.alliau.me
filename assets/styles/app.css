@@ -101,8 +101,8 @@
             user-select: none;
             font-size: initial !important;
 
-            &:not(.hl-gutter-addition, .hl-gutter-deletion) {
-                margin-right: 1ch;
+            &:is(.hl-gutter-addition, .hl-gutter-deletion) {
+                margin-right: 0;
             }
         }
 
