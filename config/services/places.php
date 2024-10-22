@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
+use App\Places\Domain\Google\Place\Autocomplete;
 use App\Places\Domain\Repository\PlaceRepository;
 use App\Places\Infrastructure\Doctrine\Repository\PlaceORMRepository;
 
@@ -23,4 +24,8 @@ return static function (ContainerConfigurator $containerConfigurator): void {
 
     $services->set(PlaceRepository::class)
         ->class(PlaceORMRepository::class);
+
+    $services->set(Autocomplete::class)
+        ->autowire(false)
+        ->tag('valinor.warmup');
 };

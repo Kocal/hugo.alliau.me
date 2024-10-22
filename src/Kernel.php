@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App;
 
-use App\Shared\Domain\Command\AsCommandHandler;
+use App\Shared\Domain\CQRS\AsCommandHandler;
 use Doctrine\DBAL\Platforms\PostgreSQLPlatform;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;

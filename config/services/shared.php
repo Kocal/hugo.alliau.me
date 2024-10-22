@@ -8,7 +8,7 @@ use App\Shared\Domain\HttpCache\HttpCache;
 use App\Shared\Domain\HttpCache\HttpCacheAdapter;
 use App\Shared\Domain\HttpCache\HttpCacheAdapterFactory;
 use App\Shared\Domain\HttpCache\NoHttpCacheAdapter;
-use App\Shared\Infrastructure\Cloudflare\HttpCache\Adapter\CloudflareHttpCacheAdapter;
+use App\Shared\Infrastructure\HttpCache\Adapter\CloudflareHttpCacheAdapter;
 use App\Shared\Infrastructure\Symfony\HttpCache\SymfonyHttpCache;
 use App\Shared\Infrastructure\Symfony\HttpCache\SymfonyHttpCacheAdapterFactory;
 
