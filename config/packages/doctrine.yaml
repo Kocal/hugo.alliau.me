@@ -21,18 +21,26 @@ doctrine:
 
         auto_mapping: true
         mappings:
-            #App:
-            #    type: attribute
-            #    is_bundle: false
-            #    dir: '%kernel.project_dir%/src/Entity'
-            #    prefix: 'App\Entity'
-            #    alias: App
-            App:
+            Blog:
                 is_bundle: false
                 type: attribute
-                dir: '%kernel.project_dir%/src'
-                prefix: 'App\'
-                alias: App
+                dir: '%kernel.project_dir%/src/Blog/Domain'
+                prefix: 'App\Blog\Domain'
+            CV:
+                is_bundle: false
+                type: attribute
+                dir: '%kernel.project_dir%/src/CV/Domain'
+                prefix: 'App\CV\Domain'
+            Places:
+                is_bundle: false
+                type: attribute
+                dir: '%kernel.project_dir%/src/Places/Domain'
+                prefix: 'App\Places\Domain'
+            User:
+                is_bundle: false
+                type: attribute
+                dir: '%kernel.project_dir%/src/User/Domain'
+                prefix: 'App\User\Domain'
         controller_resolver:
             auto_mapping: false
 
