@@ -16,7 +16,12 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         ->autowire()
         ->autoconfigure();
 
-    $services->load('App\\CV\\', '../../src/CV');
+    $services->load('App\\CV\\', '../../src/CV')
+        ->exclude('../../src/CV/Infrastructure/Foundry/Factory/**');
+
+    if ($containerConfigurator->env() === 'dev' || $containerConfigurator->env() === 'test') {
+        $services->load('App\\CV\\Infrastructure\\Foundry\\Factory\\', '../../src/CV/Infrastructure/Foundry/Factory');
+    }
 
     $services->set(ProjectRepository::class)
         ->class(ProjectORMRepository::class);

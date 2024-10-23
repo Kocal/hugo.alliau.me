@@ -14,8 +14,13 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         ->autowire()
         ->autoconfigure();
 
-    $services->load('App\\Blog\\', '../../src/Blog');
+    $services->load('App\\Blog\\', '../../src/Blog')
+        ->exclude('../../src/Blog/Infrastructure/Foundry/Factory/**');
 
+    if ($containerConfigurator->env() === 'dev' || $containerConfigurator->env() === 'test') {
+        $services->load('App\\Blog\\Infrastructure\\Foundry\\Factory\\', '../../src/Blog/Infrastructure/Foundry/Factory');
+    }
+    
     $services->set(PostRepository::class)
         ->class(PostORMRepository::class);
 };

@@ -14,7 +14,12 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         ->autowire()
         ->autoconfigure();
 
-    $services->load('App\\Places\\', '../../src/Places');
+    $services->load('App\\Places\\', '../../src/Places')
+        ->exclude('../../src/Places/Infrastructure/Foundry/Factory/**');
+
+    if ($containerConfigurator->env() === 'dev' || $containerConfigurator->env() === 'test') {
+        $services->load('App\\Places\\Infrastructure\\Foundry\\Factory\\', '../../src/Places/Infrastructure/Foundry/Factory');
+    }
 
     $services->set(PlaceRepository::class)
         ->class(PlaceORMRepository::class);
