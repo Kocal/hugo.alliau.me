@@ -24,5 +24,5 @@ return [
     Symfony\UX\Turbo\TurboBundle::class => ['all' => true],
     Symfony\UX\Map\UXMapBundle::class => ['all' => true],
     Zenstruck\Foundry\ZenstruckFoundryBundle::class => ['dev' => true, 'test' => true],
-    Sensiolabs\MinifyBundle\SensiolabsMinifyBundle::class => ['all' => true],
+    Sensiolabs\MinifyBundle\SensiolabsMinifyBundle::class => ['prod' => true],
 ];
