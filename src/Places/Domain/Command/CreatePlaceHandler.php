@@ -6,8 +6,8 @@ namespace App\Places\Domain\Command;
 
 use App\Places\Domain\Place;
 use App\Places\Domain\Repository\PlaceRepository;
-use App\Shared\Domain\Command\AsCommandHandler;
-use App\Shared\Domain\Command\CommandBus;
+use App\Shared\Domain\CQRS\AsCommandHandler;
+use App\Shared\Domain\CQRS\CommandBus;
 
 #[AsCommandHandler]
 final readonly class CreatePlaceHandler

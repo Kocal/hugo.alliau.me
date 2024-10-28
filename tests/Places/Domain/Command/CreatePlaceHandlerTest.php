@@ -11,7 +11,7 @@ use App\Places\Domain\Command\CreatePlace;
 use App\Places\Domain\Command\CreatePlaceHandler;
 use App\Places\Domain\Place;
 use App\Places\Domain\PlaceType;
-use App\Shared\Domain\Command\CommandBus;
+use App\Shared\Domain\CQRS\CommandBus;
 use App\Tests\Places\Infrastructure\Double\Repository\FakePlaceRepository;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;

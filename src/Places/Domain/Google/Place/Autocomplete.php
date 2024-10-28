@@ -6,7 +6,6 @@ namespace App\Places\Domain\Google\Place;
 
 use App\Places\Domain\PlaceType;
 
-#[\CuyZ\ValinorBundle\Cache\WarmupForMapper]
 final class Autocomplete
 {
     /**

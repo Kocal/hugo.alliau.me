@@ -41,19 +41,19 @@ parameters:
 			path: src/Places/Infrastructure/EasyAdmin/Controller/PlaceCrudController.php
 
 		-
-			message: "#^Cannot cast mixed to string\\.$#"
+			message: "#^Property App\\\\Shared\\\\Infrastructure\\\\Bus\\\\SymfonyMessengerCommandBus\\:\\:\\$messageBus is never read, only written\\.$#"
 			count: 1
-			path: src/Shared/Infrastructure/Cuyz/Valinor/Mapper/ValinorObjectMapper.php
+			path: src/Shared/Infrastructure/Bus/SymfonyMessengerCommandBus.php
 
 		-
 			message: "#^Parameter \\#3 \\$contents of class League\\\\CommonMark\\\\Util\\\\HtmlElement constructor expects array\\<Stringable\\>\\|string\\|Stringable\\|null, array\\<int, string\\> given\\.$#"
 			count: 1
-			path: src/Shared/Infrastructure/League/CommonMark/Markdown/Extension/FencedCode/Renderer/FencedCodeRenderer.php
+			path: src/Shared/Infrastructure/Markdown/Extension/FencedCode/Renderer/FencedCodeRenderer.php
 
 		-
-			message: "#^Property App\\\\Shared\\\\Infrastructure\\\\Symfony\\\\Messenger\\\\MessengerCommandBus\\:\\:\\$messageBus is never read, only written\\.$#"
+			message: "#^Cannot cast mixed to string\\.$#"
 			count: 1
-			path: src/Shared/Infrastructure/Symfony/Messenger/MessengerCommandBus.php
+			path: src/Shared/Infrastructure/ObjectMapper/ValinorObjectMapper.php
 
 		-
 			message: "#^Cannot cast mixed to string\\.$#"

@@ -7,38 +7,28 @@ deptrac:
     layers:
         - name: Blog
           collectors:
-              - { type: classLike, value: ^App\\Blog\\ }
+              - { type: classLike, value: ^App\\(?:Domain|Application|Infrastructure)\\Blog\\ }
      
         - name: CV
           collectors:
-              - { type: classLike, value: ^App\\CV\\ }
+              - { type: classLike, value: ^App\\(?:Domain|Application|Infrastructure)\\CV\\ }
     
         - name: Places
           collectors:
-              - { type: classLike, value: ^App\\Places\\ }
+              - { type: classLike, value: ^App\\(?:Domain|Application|Infrastructure)\\Places\\ }
  
         - name: User
           collectors:
-              - { type: classLike, value: ^App\\User\\ }
+              - { type: classLike, value: ^App\\(?:Domain|Application|Infrastructure)\\User\\ }
 
         - name: Shared
           collectors:
-              - { type: classLike, value: ^App\\Shared\\ }
+              - { type: classLike, value: ^App\\(?:Domain|Application|Infrastructure)\\Shared\\ }
               
-        - name: Vendor
-          collectors:
-              - { type: classLike, value: ^(?!App\\) }
 
     ruleset:
-        Blog: [Shared, Vendor]
-        CV: [Shared, Vendor]
-        Places: [Shared, Vendor]
-        User: [Shared, Vendor]
-        Shared: [Vendor]
-
-    skip_violations:
-        App\Shared\Infrastructure\EasyAdmin\Controller\DashboardController:
-            - App\Blog\Domain\Post
-            - App\CV\Domain\ProfessionalExperience
-            - App\CV\Domain\Project
-            - App\Places\Domain\Place
+        Blog: [Shared]
+        CV: [Shared]
+        Places: [Shared]
+        User: [Shared]
+        Shared: ~
