@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Places\Domain;
 
+use App\Shared\Domain\Data\ValueObject\PlaceId;
 use App\Shared\Domain\HttpCache\CacheableEntity;
 use App\Shared\Domain\HttpCache\CacheItem;
 use Doctrine\DBAL\Types\Types;
@@ -14,9 +15,9 @@ use Doctrine\ORM\Mapping as ORM;
 class Place implements CacheableEntity
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue(strategy: 'IDENTITY')]
-    #[ORM\Column]
-    private ?int $id = null;
+    #[ORM\GeneratedValue(strategy: 'NONE')]
+    #[ORM\Column(type: 'place_id')]
+    private PlaceId $id;
 
     #[ORM\Embedded]
     private ?Address $address = null;
@@ -43,10 +44,11 @@ class Place implements CacheableEntity
 
     public function __construct()
     {
+        $this->id = PlaceId::generate();
         $this->address = new Address();
     }
 
-    public function getId(): ?int
+    public function getId(): PlaceId
     {
         return $this->id;
     }

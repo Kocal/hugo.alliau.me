@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\CV\Domain;
 
+use App\Shared\Domain\Data\ValueObject\ProjectId;
 use App\Shared\Domain\HttpCache\CacheableEntity;
 use App\Shared\Domain\HttpCache\CacheItem;
 use Doctrine\DBAL\Types\Types;
@@ -15,9 +16,9 @@ use Doctrine\ORM\Mapping as ORM;
 class Project implements CacheableEntity
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue(strategy: 'IDENTITY')]
-    #[ORM\Column]
-    private ?int $id = null;
+    #[ORM\GeneratedValue(strategy: 'NONE')]
+    #[ORM\Column(type: 'project_id')]
+    private ProjectId $id;
 
     #[ORM\Column(length: 255)]
     private ?string $name = null;
@@ -45,7 +46,12 @@ class Project implements CacheableEntity
     #[ORM\Column]
     private ?\DateTimeImmutable $updatedAt = null;
 
-    public function getId(): ?int
+    public function __construct()
+    {
+        $this->id = ProjectId::generate();
+    }
+
+    public function getId(): ProjectId
     {
         return $this->id;
     }

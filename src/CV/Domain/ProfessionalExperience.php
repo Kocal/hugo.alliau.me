@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\CV\Domain;
 
+use App\Shared\Domain\Data\ValueObject\ProfessionalExperienceId;
 use App\Shared\Domain\HttpCache\CacheableEntity;
 use App\Shared\Domain\HttpCache\CacheItem;
 use Doctrine\DBAL\Types\Types;
@@ -16,9 +17,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 class ProfessionalExperience implements CacheableEntity
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue(strategy: 'IDENTITY')]
-    #[ORM\Column]
-    private ?int $id = null;
+    #[ORM\GeneratedValue(strategy: 'NONE')]
+    #[ORM\Column(type: 'professional_experience_id')]
+    private ProfessionalExperienceId $id;
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank()]
@@ -59,7 +60,12 @@ class ProfessionalExperience implements CacheableEntity
     ])]
     private array $badges = [];
 
-    public function getId(): ?int
+    public function __construct()
+    {
+        $this->id = ProfessionalExperienceId::generate();
+    }
+
+    public function getId(): ProfessionalExperienceId
     {
         return $this->id;
     }

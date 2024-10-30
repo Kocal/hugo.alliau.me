@@ -30,6 +30,10 @@ deptrac:
           collectors:
             - { type: classLike, value: ^Symfony\\Component\\Translation\\TranslatableMessage }
 
+        - name: Vendor_Symfony_Uid_Uuid
+          collectors:
+            - { type: classLike, value: ^Symfony\\Component\\Uid\\Uuid }
+
         - name: Vendor
           collectors:
               - type: bool
@@ -40,12 +44,14 @@ deptrac:
                     - { type: layer, value: Vendor_Doctrine_Mapping }
                     - { type: layer, value: Vendor_Symfony_Assert }
                     - { type: layer, value: Vendor_Symfony_TranslatableMessage }
+                    - { type: layer, value: Vendor_Symfony_Uid_Uuid }
 
     ruleset:
         Domain:
             - Vendor_Doctrine_Mapping
             - Vendor_Symfony_Assert
             - Vendor_Symfony_TranslatableMessage
+            - Vendor_Symfony_Uid_Uuid
         Application:
             - Domain
         Infrastructure:
@@ -59,3 +65,4 @@ deptrac:
         App\User\Domain\User:
             - Symfony\Component\Security\Core\User\UserInterface
             - Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface
+    
