@@ -7,7 +7,7 @@ namespace App\Shared\Infrastructure\Database\Doctrine\DBAL\Types;
 use App\Shared\Domain\Data\ValueObject\ProjectId;
 use Symfony\Bridge\Doctrine\Types\AbstractUidType;
 
-final class ProjectIdType extends AbstractUidType
+final class ProjectIdType extends AbstractIdType
 {
     public const string NAME = 'project_id';
 
@@ -17,7 +17,7 @@ final class ProjectIdType extends AbstractUidType
     }
 
     #[\Override]
-    protected function getUidClass(): string
+    protected function getIdClass(): string
     {
         return ProjectId::class;
     }

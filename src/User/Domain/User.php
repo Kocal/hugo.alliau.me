@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\User\Domain;
 
+use App\Shared\Domain\Data\ValueObject\UserId;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -15,9 +16,9 @@ use Symfony\Component\Security\Core\User\UserInterface;
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue(strategy: 'IDENTITY')]
-    #[ORM\Column]
-    private ?int $id = null;
+    #[ORM\GeneratedValue(strategy: 'NONE')]
+    #[ORM\Column(type: 'user_id')]
+    private UserId $id;
 
     #[ORM\Column(length: 30)]
     private ?string $username = null;
@@ -36,7 +37,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
-    public function getId(): ?int
+    public function __construct()
+    {
+        $this->id = UserId::generate();
+    }
+
+    public function getId(): UserId
     {
         return $this->id;
     }

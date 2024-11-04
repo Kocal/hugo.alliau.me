@@ -11,6 +11,7 @@ use App\Shared\Domain\HttpCache\NoHttpCacheAdapter;
 use App\Shared\Infrastructure\HttpCache\Adapter\CloudflareHttpCacheAdapter;
 use App\Shared\Infrastructure\Symfony\HttpCache\SymfonyHttpCache;
 use App\Shared\Infrastructure\Symfony\HttpCache\SymfonyHttpCacheAdapterFactory;
+use Symfony\Component\Uid\Command\GenerateUuidCommand;
 
 return static function (ContainerConfigurator $containerConfigurator): void {
     $services = $containerConfigurator->services();
@@ -41,4 +42,8 @@ return static function (ContainerConfigurator $containerConfigurator): void {
                 'no' => service(NoHttpCacheAdapter::class),
             ]),
         ]);
+    
+    if ($containerConfigurator->env() === 'dev') {
+        $services->set(GenerateUuidCommand::class);
+    }
 };

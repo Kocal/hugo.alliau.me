@@ -53,6 +53,16 @@ trait UuidTrait
         return $this->uuid->toString();
     }
 
+    public function toRfc4122(): string
+    {
+        return $this->uuid->toRfc4122();
+    }
+    
+    public function toBinary(): string
+    {
+        return $this->uuid->toBinary();
+    }
+
     public function equals(self $to): bool
     {
         return $this->uuid->equals($to->uuid());

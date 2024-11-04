@@ -5,9 +5,8 @@ declare(strict_types=1);
 namespace App\Shared\Infrastructure\Database\Doctrine\DBAL\Types;
 
 use App\Shared\Domain\Data\ValueObject\PlaceId;
-use Symfony\Bridge\Doctrine\Types\AbstractUidType;
 
-final class PlaceIdType extends AbstractUidType
+final class PlaceIdType extends AbstractIdType
 {
     public const string NAME = 'place_id';
 
@@ -17,7 +16,7 @@ final class PlaceIdType extends AbstractUidType
     }
 
     #[\Override]
-    protected function getUidClass(): string
+    protected function getIdClass(): string
     {
         return PlaceId::class;
     }

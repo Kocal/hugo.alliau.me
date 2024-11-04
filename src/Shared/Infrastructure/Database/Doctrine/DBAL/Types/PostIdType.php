@@ -5,9 +5,8 @@ declare(strict_types=1);
 namespace App\Shared\Infrastructure\Database\Doctrine\DBAL\Types;
 
 use App\Shared\Domain\Data\ValueObject\PostId;
-use Symfony\Bridge\Doctrine\Types\AbstractUidType;
 
-final class PostIdType extends AbstractUidType
+final class PostIdType extends AbstractIdType
 {
     public const string NAME = 'post_id';
 
@@ -17,7 +16,7 @@ final class PostIdType extends AbstractUidType
     }
 
     #[\Override]
-    protected function getUidClass(): string
+    protected function getIdClass(): string
     {
         return PostId::class;
     }
