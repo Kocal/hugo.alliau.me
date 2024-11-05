@@ -8,6 +8,13 @@ doctrine:
 
         profiling_collect_backtrace: '%kernel.debug%'
         use_savepoints: true
+        types:
+            place_id: App\Shared\Infrastructure\Database\Doctrine\DBAL\Types\PlaceIdType
+            post_id: App\Shared\Infrastructure\Database\Doctrine\DBAL\Types\PostIdType
+            professional_experience_id: App\Shared\Infrastructure\Database\Doctrine\DBAL\Types\ProfessionalExperienceIdType
+            project_id: App\Shared\Infrastructure\Database\Doctrine\DBAL\Types\ProjectIdType
+            user_id: App\Shared\Infrastructure\Database\Doctrine\DBAL\Types\UserIdType
+            
     orm:
         auto_generate_proxy_classes: true
         enable_lazy_ghost_objects: true

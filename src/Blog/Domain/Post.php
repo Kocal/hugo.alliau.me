@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Blog\Domain;
 
 use App\Blog\Domain\Route as RouteBlog;
+use App\Shared\Domain\Data\ValueObject\PostId;
 use App\Shared\Domain\HttpCache\CacheableEntity;
 use App\Shared\Domain\HttpCache\CacheItem;
 use Doctrine\DBAL\Types\Types;
@@ -18,9 +19,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Post implements CacheableEntity
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue(strategy: 'IDENTITY')]
-    #[ORM\Column]
-    private ?int $id = null;
+    #[ORM\GeneratedValue(strategy: 'NONE')]
+    #[ORM\Column(type: 'post_id')]
+    private PostId $id;
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank]
@@ -69,10 +70,11 @@ class Post implements CacheableEntity
 
     public function __construct()
     {
+        $this->id = PostId::generate();
         $this->seo = new PostSeo();
     }
 
-    public function getId(): ?int
+    public function getId(): PostId
     {
         return $this->id;
     }
