@@ -10,6 +10,7 @@ final class PlaceIdType extends AbstractIdType
 {
     public const string NAME = 'place_id';
 
+    #[\Override]
     public function getName(): string
     {
         return self::NAME;

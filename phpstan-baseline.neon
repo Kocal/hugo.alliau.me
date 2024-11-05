@@ -46,31 +46,6 @@ parameters:
 			path: src/Shared/Infrastructure/Bus/SymfonyMessengerCommandBus.php
 
 		-
-			message: "#^Method App\\\\Shared\\\\Infrastructure\\\\Database\\\\Doctrine\\\\DBAL\\\\Types\\\\PlaceIdType\\:\\:getUidClass\\(\\) should return class\\-string\\<Symfony\\\\Component\\\\Uid\\\\AbstractUid\\> but returns string\\.$#"
-			count: 1
-			path: src/Shared/Infrastructure/Database/Doctrine/DBAL/Types/PlaceIdType.php
-
-		-
-			message: "#^Method App\\\\Shared\\\\Infrastructure\\\\Database\\\\Doctrine\\\\DBAL\\\\Types\\\\PostIdType\\:\\:getUidClass\\(\\) should return class\\-string\\<Symfony\\\\Component\\\\Uid\\\\AbstractUid\\> but returns string\\.$#"
-			count: 1
-			path: src/Shared/Infrastructure/Database/Doctrine/DBAL/Types/PostIdType.php
-
-		-
-			message: "#^Method App\\\\Shared\\\\Infrastructure\\\\Database\\\\Doctrine\\\\DBAL\\\\Types\\\\ProfessionalExperienceIdType\\:\\:getUidClass\\(\\) should return class\\-string\\<Symfony\\\\Component\\\\Uid\\\\AbstractUid\\> but returns string\\.$#"
-			count: 1
-			path: src/Shared/Infrastructure/Database/Doctrine/DBAL/Types/ProfessionalExperienceIdType.php
-
-		-
-			message: "#^Method App\\\\Shared\\\\Infrastructure\\\\Database\\\\Doctrine\\\\DBAL\\\\Types\\\\ProjectIdType\\:\\:getUidClass\\(\\) should return class\\-string\\<Symfony\\\\Component\\\\Uid\\\\AbstractUid\\> but returns string\\.$#"
-			count: 1
-			path: src/Shared/Infrastructure/Database/Doctrine/DBAL/Types/ProjectIdType.php
-
-		-
-			message: "#^Method App\\\\Shared\\\\Infrastructure\\\\Database\\\\Doctrine\\\\DBAL\\\\Types\\\\UserIdType\\:\\:getUidClass\\(\\) should return class\\-string\\<Symfony\\\\Component\\\\Uid\\\\AbstractUid\\> but returns string\\.$#"
-			count: 1
-			path: src/Shared/Infrastructure/Database/Doctrine/DBAL/Types/UserIdType.php
-
-		-
 			message: "#^Parameter \\#3 \\$contents of class League\\\\CommonMark\\\\Util\\\\HtmlElement constructor expects array\\<Stringable\\>\\|string\\|Stringable\\|null, array\\<int, string\\> given\\.$#"
 			count: 1
 			path: src/Shared/Infrastructure/Markdown/Extension/FencedCode/Renderer/FencedCodeRenderer.php

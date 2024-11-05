@@ -10,6 +10,7 @@ final class PostIdType extends AbstractIdType
 {
     public const string NAME = 'post_id';
 
+    #[\Override]
     public function getName(): string
     {
         return self::NAME;

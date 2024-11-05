@@ -42,7 +42,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
                 'no' => service(NoHttpCacheAdapter::class),
             ]),
         ]);
-    
+
     if ($containerConfigurator->env() === 'dev') {
         $services->set(GenerateUuidCommand::class);
     }

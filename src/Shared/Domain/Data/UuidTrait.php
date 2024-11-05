@@ -57,7 +57,7 @@ trait UuidTrait
     {
         return $this->uuid->toRfc4122();
     }
-    
+
     public function toBinary(): string
     {
         return $this->uuid->toBinary();
