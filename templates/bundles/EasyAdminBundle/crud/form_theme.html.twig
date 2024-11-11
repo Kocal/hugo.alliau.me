@@ -64,6 +64,11 @@
                 {{ _self.code_editor_toolbar_btn({title: 'Insert "warning" alert', icon: 'tabler:alert-triangle', action: 'click->markdown-editor#alert', action_args: {'markdown-editor-type': 'warning'}}) }}
                 {{ _self.code_editor_toolbar_btn({title: 'Insert "danger" alert', icon: 'tabler:alert-hexagon', action: 'click->markdown-editor#alert', action_args: {'markdown-editor-type': 'danger'}}) }}
             </div>
+            
+            <div class="btn-group" role="group">
+                {{ _self.code_editor_toolbar_btn({title: 'Translate (ChatGPT)', icon: 'tabler:language', action: 'click->markdown-editor#chatGptTranslate'}) }}
+                {{ _self.code_editor_toolbar_btn({title: 'Spellcheck (ChatGPT)', icon: 'tabler:text-spellcheck', action: 'click->markdown-editor#chatGptSpellcheck'}) }}
+            </div>
         </div>
         
         {{ form_widget(form, {attr: attr|merge({

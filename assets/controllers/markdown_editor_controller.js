@@ -127,6 +127,38 @@ export default class extends Controller {
         this.#insertSyntax(`::: ${type}\n\${cursor}\n:::\n`);
     }
 
+    async chatGptTranslate() {
+        await navigator.clipboard.writeText(`I want you to act as a translator, spelling corrector and improver. 
+Your role is to translate the text from English to French or from French to English, and correct and improve the text.
+If you didn't translated the text, then you failed the task. You MUST translate the text.
+Sometimes two languages can be found in the text, if you detect that, you should ignore the less dominant language and translate the rest of the text in the other language.
+You must replace my simplified A0-level words and sentences with more beautiful and elegant, upper level words and sentences. 
+You must keep the meaning same, but make them more literary. 
+I want you to only reply the correction, the improvements and nothing else, do not write explanations.
+The source text is in Markdown format, you should only correct the text and ignore the code blocks (inside single backticks or triple backticks), but you can translate comments inside code blocks.
+The source text can be found after "@@@source@@@" and before "@@@end@@@".
+
+@@@source@@@
+${this.view.state.doc.toString()}
+@@@end@@@`);
+        window.open("https://chat.openai.com/", "_blank");
+    }
+
+    async chatGptSpellcheck() {
+        await navigator.clipboard.writeText(`I want you to act as a spelling corrector and improver. 
+Your role is to correct and improve the text.
+I want you to replace my simplified A0-level words and sentences with more beautiful and elegant, upper level words and sentences. 
+Keep the meaning same, but make them more literary. 
+I want you to only reply the correction, the improvements and nothing else, do not write explanations.
+The source text is in Markdown format, you should only correct the text and ignore the code blocks (inside single backticks or triple backticks), but you can translate comments inside code blocks.
+The source text can be found after "@@@source@@@" and before "@@@end@@@".
+
+@@@source@@@
+${this.view.state.doc.toString()}
+@@@end@@@`);
+        window.open("https://chat.openai.com/", "_blank");
+    }
+
     #insertSyntax(text) {
         const cursorId = "${cursor}";
         const cursorIndex = text.indexOf(cursorId);
