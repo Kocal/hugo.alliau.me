@@ -26,6 +26,10 @@ deptrac:
           collectors:
             - { type: classLike, value: ^Symfony\\Component\\Validator\\Constraints }
 
+        - name: Vendor_Symfony_Clock_Clock
+          collectors:
+            - { type: classLike, value: ^Symfony\\Component\\Clock\\Clock }
+
         - name: Vendor_Symfony_TranslatableMessage
           collectors:
             - { type: classLike, value: ^Symfony\\Component\\Translation\\TranslatableMessage }
@@ -43,6 +47,7 @@ deptrac:
                     - { type: classLike, value: '^[a-zA-Z]+$' } # native PHP classes
                     - { type: layer, value: Vendor_Doctrine_Mapping }
                     - { type: layer, value: Vendor_Symfony_Assert }
+                    - { type: layer, value: Vendor_Symfony_Clock_Clock }
                     - { type: layer, value: Vendor_Symfony_TranslatableMessage }
                     - { type: layer, value: Vendor_Symfony_Uid_Uuid }
 
@@ -50,6 +55,7 @@ deptrac:
         Domain:
             - Vendor_Doctrine_Mapping
             - Vendor_Symfony_Assert
+            - Vendor_Symfony_Clock_Clock
             - Vendor_Symfony_TranslatableMessage
             - Vendor_Symfony_Uid_Uuid
         Application:

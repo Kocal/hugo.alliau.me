@@ -9,6 +9,7 @@ use App\Shared\Domain\HttpCache\CacheableEntity;
 use App\Shared\Domain\HttpCache\CacheItem;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Clock\Clock;
 
 #[ORM\Entity()]
 #[ORM\HasLifecycleCallbacks]
@@ -25,9 +26,9 @@ class Place implements CacheableEntity
     /**
      * @var array<PlaceType>
      */
-    #[ORM\Column(type: Types::JSON, options: [
+    #[ORM\Column(type: Types::JSON, enumType: PlaceType::class, options: [
         'jsonb' => true,
-    ], enumType: PlaceType::class)]
+    ])]
     private array $types = [];
 
     #[ORM\Column]
@@ -37,15 +38,17 @@ class Place implements CacheableEntity
     private string|null $iconMaskUri = null;
 
     #[ORM\Column]
-    private ?\DateTimeImmutable $createdAt = null;
+    private \DateTimeImmutable $createdAt;
 
     #[ORM\Column]
-    private ?\DateTimeImmutable $updatedAt = null;
+    private \DateTimeImmutable $updatedAt;
 
     public function __construct()
     {
         $this->id = PlaceId::generate();
         $this->address = new Address();
+        $this->createdAt = Clock::get()->now();
+        $this->updatedAt = $this->createdAt;
     }
 
     public function getId(): PlaceId
@@ -116,13 +119,6 @@ class Place implements CacheableEntity
         return $this->updatedAt;
     }
 
-    #[ORM\PrePersist]
-    public function prePersist(): void
-    {
-        $this->createdAt = new \DateTimeImmutable();
-        $this->updatedAt = new \DateTimeImmutable();
-    }
-
     #[ORM\PreUpdate]
     public function preUpdate(): void
     {
@@ -132,7 +128,7 @@ class Place implements CacheableEntity
     #[\Override]
     public function getEtag(): string
     {
-        return 'places:place:' . $this->id . ':' . ($this->updatedAt?->format('U') ?? '0');
+        return 'places:place:' . $this->id . ':' . $this->updatedAt->format('U');
     }
 
     #[\Override]

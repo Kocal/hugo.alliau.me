@@ -9,6 +9,7 @@ use App\Shared\Domain\HttpCache\CacheableEntity;
 use App\Shared\Domain\HttpCache\CacheItem;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Clock\Clock;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity()]
@@ -47,10 +48,10 @@ class ProfessionalExperience implements CacheableEntity
     private ?\DateTimeImmutable $endDate = null;
 
     #[ORM\Column]
-    private ?\DateTimeImmutable $createdAt = null;
+    private \DateTimeImmutable $createdAt;
 
     #[ORM\Column]
-    private ?\DateTimeImmutable $updatedAt = null;
+    private \DateTimeImmutable $updatedAt;
 
     /**
      * @var list<string>
@@ -63,6 +64,8 @@ class ProfessionalExperience implements CacheableEntity
     public function __construct()
     {
         $this->id = ProfessionalExperienceId::generate();
+        $this->createdAt = Clock::get()->now();
+        $this->updatedAt = $this->createdAt;
     }
 
     public function getId(): ProfessionalExperienceId
@@ -170,13 +173,6 @@ class ProfessionalExperience implements CacheableEntity
         return $this->updatedAt;
     }
 
-    #[ORM\PrePersist]
-    public function prePersist(): void
-    {
-        $this->createdAt = new \DateTimeImmutable();
-        $this->updatedAt = new \DateTimeImmutable();
-    }
-
     #[ORM\PreUpdate]
     public function preUpdate(): void
     {
@@ -186,7 +182,7 @@ class ProfessionalExperience implements CacheableEntity
     #[\Override]
     public function getEtag(): string
     {
-        return 'cv:professional_experience:' . $this->id . ':' . ($this->updatedAt?->format('U') ?? '0');
+        return 'cv:professional_experience:' . $this->id . ':' . $this->updatedAt->format('U');
     }
 
     #[\Override]

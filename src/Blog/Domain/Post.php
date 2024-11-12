@@ -10,6 +10,7 @@ use App\Shared\Domain\HttpCache\CacheableEntity;
 use App\Shared\Domain\HttpCache\CacheItem;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Clock\Clock;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity()]
@@ -43,10 +44,10 @@ class Post implements CacheableEntity
     private ?string $content = null;
 
     #[ORM\Column]
-    private ?\DateTimeImmutable $createdAt = null;
+    private \DateTimeImmutable $createdAt;
 
     #[ORM\Column]
-    private ?\DateTimeImmutable $updatedAt = null;
+    private \DateTimeImmutable $updatedAt;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $publishedAt = null;
@@ -72,6 +73,8 @@ class Post implements CacheableEntity
     {
         $this->id = PostId::generate();
         $this->seo = new PostSeo();
+        $this->createdAt = Clock::get()->now();
+        $this->updatedAt = $this->createdAt;
     }
 
     public function getId(): PostId
@@ -191,13 +194,6 @@ class Post implements CacheableEntity
         return $this->status;
     }
 
-    #[ORM\PrePersist]
-    public function prePersist(): void
-    {
-        $this->createdAt = new \DateTimeImmutable();
-        $this->updatedAt = new \DateTimeImmutable();
-    }
-
     #[ORM\PreUpdate]
     public function preUpdate(): void
     {
@@ -207,7 +203,7 @@ class Post implements CacheableEntity
     #[\Override]
     public function getEtag(): string
     {
-        return 'blog:post:' . $this->id . ':' . ($this->updatedAt?->format('U') ?? '0');
+        return 'blog:post:' . $this->id . ':' . $this->updatedAt->format('U');
     }
 
     #[\Override]

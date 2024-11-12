@@ -9,6 +9,7 @@ use App\Shared\Domain\HttpCache\CacheableEntity;
 use App\Shared\Domain\HttpCache\CacheItem;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Clock\Clock;
 
 #[ORM\Entity()]
 #[ORM\Table(name: 'cv_project')]
@@ -41,14 +42,16 @@ class Project implements CacheableEntity
     private array $techStack = [];
 
     #[ORM\Column]
-    private ?\DateTimeImmutable $createdAt = null;
+    private \DateTimeImmutable $createdAt;
 
     #[ORM\Column]
-    private ?\DateTimeImmutable $updatedAt = null;
+    private \DateTimeImmutable $updatedAt;
 
     public function __construct()
     {
         $this->id = ProjectId::generate();
+        $this->createdAt = Clock::get()->now();
+        $this->updatedAt = $this->createdAt;
     }
 
     public function getId(): ProjectId
@@ -132,13 +135,6 @@ class Project implements CacheableEntity
         return $this->updatedAt;
     }
 
-    #[ORM\PrePersist]
-    public function prePersist(): void
-    {
-        $this->createdAt = new \DateTimeImmutable();
-        $this->updatedAt = new \DateTimeImmutable();
-    }
-
     #[ORM\PreUpdate]
     public function preUpdate(): void
     {
@@ -148,7 +144,7 @@ class Project implements CacheableEntity
     #[\Override]
     public function getEtag(): string
     {
-        return 'cv:professional_experience:' . $this->id . ':' . ($this->updatedAt?->format('U') ?? '0');
+        return 'cv:professional_experience:' . $this->id . ':' . $this->updatedAt->format('U');
     }
 
     #[\Override]
