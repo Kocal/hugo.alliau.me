@@ -4,13 +4,18 @@
          xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
          bootstrap="tests/bootstrap.php"
          cacheDirectory=".cache/phpunit"
-         executionOrder="depends,defects"
+         executionOrder="random"
          shortenArraysForExportThreshold="10"
          requireCoverageMetadata="true"
          beStrictAboutCoverageMetadata="true"
          beStrictAboutOutputDuringTests="true"
+         failOnSkipped="true"
          failOnRisky="true"
-         failOnWarning="true">
+         failOnWarning="true"
+         displayDetailsOnSkippedTests="true"
+         displayDetailsOnTestsThatTriggerWarnings="true"
+         displayDetailsOnIncompleteTests="true"
+>
     <php>
         <ini name="display_errors" value="1"/>
         <ini name="error_reporting" value="-1"/>
