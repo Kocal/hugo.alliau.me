@@ -144,4 +144,12 @@ return [
     '@fsegurai/codemirror-theme-github-dark' => [
         'version' => '6.0.2',
     ],
+    'inter-ui/inter.css' => [
+        'version' => '4.1.0',
+        'type' => 'css',
+    ],
+    'inter-ui/inter-variable.css' => [
+        'version' => '4.1.0',
+        'type' => 'css',
+    ],
 ];

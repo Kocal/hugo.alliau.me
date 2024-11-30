@@ -2,6 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+    @font-face {
+        font-family: Inter var;
+        font-weight: 100 900;
+        font-display: block;
+        font-style: normal;
+        font-named-instance: "Regular";
+        src: url('../vendor/inter-ui/variable/InterVariable.woff2') format("woff2")
+    }
+    @font-face {
+        font-family: Inter var;
+        font-weight: 100 900;
+        font-display: block;
+        font-style: italic;
+        font-named-instance: "Regular";
+        src: url('../vendor/inter-ui/variable/InterVariable-Italic.woff2') format("woff2")
+    }
+}
+
 @layer components {
     .CustomContainer {
         --custom-container-color: theme('colors.gray.900');
@@ -12,7 +31,7 @@
         color: var(--custom-container-color);
         background-color: var(--custom-container-bg-color);
     }
-    
+
     .CustomContainer * {
         color: inherit;
     }
@@ -27,7 +46,7 @@
     .CustomContainer--info {
         --custom-container-color: theme('colors.blue.900');
         --custom-container-bg-color: theme('colors.blue.100');
-        
+
         @media (prefers-color-scheme: dark) {
             --custom-container-color: theme('colors.blue.100');
             --custom-container-bg-color: theme('colors.blue.900');
@@ -37,7 +56,7 @@
     .CustomContainer--tip {
         --custom-container-color: theme('colors.green.900');
         --custom-container-bg-color: theme('colors.green.100');
-        
+
         @media (prefers-color-scheme: dark) {
             --custom-container-color: theme('colors.green.100');
             --custom-container-bg-color: theme('colors.green.900');
@@ -47,7 +66,7 @@
     .CustomContainer--warning {
         --custom-container-color: theme('colors.yellow.900');
         --custom-container-bg-color: theme('colors.yellow.100');
-        
+
         @media (prefers-color-scheme: dark) {
             --custom-container-color: theme('colors.yellow.100');
             --custom-container-bg-color: theme('colors.yellow.900');
@@ -57,7 +76,7 @@
     .CustomContainer--danger {
         --custom-container-color: theme('colors.red.900');
         --custom-container-bg-color: theme('colors.red.100');
-        
+
         @media (prefers-color-scheme: dark) {
             --custom-container-color: theme('colors.red.100');
             --custom-container-bg-color: theme('colors.red.900');

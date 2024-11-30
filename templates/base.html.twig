@@ -4,10 +4,9 @@
         <meta charset="UTF-8">
         <title>{{ block('title') }} </title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="color-scheme" content="dark light">
-        <meta name="view-transition" content="same-origin" />
 
         {% block stylesheets %}
+            <link rel="preload" href="{{ preload(asset('vendor/inter-ui/variable/InterVariable.woff2'), { as: 'font', type: 'font/woff2', crossorigin: true }) }}" as="font" type="font/woff2" crossorigin>
         {% endblock %}
 
         {% block javascripts %}
@@ -16,6 +15,9 @@
             <script async src="{{ dns_prefetch('https://www.googletagmanager.com') }}/gtag/js?id=G-Z8KN175TJZ"></script>
             <script>window.dataLayer=window.dataLayer||[],window.gtag=function(){dataLayer.push(arguments)},gtag("js",new Date),gtag("config","G-Z8KN175TJZ");</script>
         {% endblock %}
+
+        <meta name="color-scheme" content="dark light">
+        <meta name="view-transition" content="same-origin" />
 
         <link rel="icon" type="image/svg+xml" href="{{ asset('images/icons/favicon.svg') }}">
         <link rel="icon" type="image/png" href="{{ asset('images/icons/favicon-32x32.png') }}">
@@ -57,7 +59,7 @@
             }) }}
         {% endblock %}
     </head>
-    <body 
+    <body
         class="antialiased text-slate-600 dark:text-slate-200 bg-primary-50 dark:bg-slate-900 min-h-dvh flex flex-col"
         style="background-image: url('data:image/svg+xml,%3Csvg width=\'12\' height=\'16\' viewBox=\'0 0 12 16\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M4 .99C4 .445 4.444 0 5 0c.552 0 1 .45 1 .99v4.02C6 5.555 5.556 6 5 6c-.552 0-1-.45-1-.99V.99zm6 8c0-.546.444-.99 1-.99.552 0 1 .45 1 .99v4.02c0 .546-.444.99-1 .99-.552 0-1-.45-1-.99V8.99z\' fill=\'%233d96f4\' fill-opacity=\'0.10\' fill-rule=\'evenodd\'/%3E%3C/svg%3E');"
     >
