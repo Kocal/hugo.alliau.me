@@ -8346,16 +8346,16 @@
         },
         {
             "name": "symfony/ux-icons",
-            "version": "v2.21.0",
+            "version": "v2.22.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/ux-icons.git",
-                "reference": "c3b3fd29b3f90e977b267251ef15ea06f3cec553"
+                "reference": "c7e02c2d6b4484dd63386d026eb1953bcaf79047"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/ux-icons/zipball/c3b3fd29b3f90e977b267251ef15ea06f3cec553",
-                "reference": "c3b3fd29b3f90e977b267251ef15ea06f3cec553",
+                "url": "https://api.github.com/repos/symfony/ux-icons/zipball/c7e02c2d6b4484dd63386d026eb1953bcaf79047",
+                "reference": "c7e02c2d6b4484dd63386d026eb1953bcaf79047",
                 "shasum": ""
             },
             "require": {
@@ -8415,7 +8415,7 @@
                 "twig"
             ],
             "support": {
-                "source": "https://github.com/symfony/ux-icons/tree/v2.21.0"
+                "source": "https://github.com/symfony/ux-icons/tree/v2.22.0"
             },
             "funding": [
                 {
@@ -8431,20 +8431,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-10-21T19:01:22+00:00"
+            "time": "2024-11-29T15:09:19+00:00"
         },
         {
             "name": "symfony/ux-leaflet-map",
-            "version": "v2.21.0",
+            "version": "v2.22.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/ux-leaflet-map.git",
-                "reference": "7f2b9a96d8fe7435c462608dabedeab6deb66725"
+                "reference": "064bf89c211374b98fc7f751430a3efdc117b54d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/ux-leaflet-map/zipball/7f2b9a96d8fe7435c462608dabedeab6deb66725",
-                "reference": "7f2b9a96d8fe7435c462608dabedeab6deb66725",
+                "url": "https://api.github.com/repos/symfony/ux-leaflet-map/zipball/064bf89c211374b98fc7f751430a3efdc117b54d",
+                "reference": "064bf89c211374b98fc7f751430a3efdc117b54d",
                 "shasum": ""
             },
             "require": {
@@ -8484,7 +8484,7 @@
                 "symfony-ux"
             ],
             "support": {
-                "source": "https://github.com/symfony/ux-leaflet-map/tree/v2.21.0"
+                "source": "https://github.com/symfony/ux-leaflet-map/tree/v2.22.0"
             },
             "funding": [
                 {
@@ -8500,20 +8500,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-09-25T14:22:09+00:00"
+            "time": "2024-11-26T08:01:52+00:00"
         },
         {
             "name": "symfony/ux-map",
-            "version": "v2.21.0",
+            "version": "v2.22.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/ux-map.git",
-                "reference": "ecbf1b35928040033841cab059b40a88643f8743"
+                "reference": "dab7b0791c6ae42b1fe8be45975de23a6644197e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/ux-map/zipball/ecbf1b35928040033841cab059b40a88643f8743",
-                "reference": "ecbf1b35928040033841cab059b40a88643f8743",
+                "url": "https://api.github.com/repos/symfony/ux-map/zipball/dab7b0791c6ae42b1fe8be45975de23a6644197e",
+                "reference": "dab7b0791c6ae42b1fe8be45975de23a6644197e",
                 "shasum": ""
             },
             "require": {
@@ -8566,7 +8566,7 @@
                 "symfony-ux"
             ],
             "support": {
-                "source": "https://github.com/symfony/ux-map/tree/v2.21.0"
+                "source": "https://github.com/symfony/ux-map/tree/v2.22.0"
             },
             "funding": [
                 {
@@ -8582,20 +8582,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-10-15T10:36:49+00:00"
+            "time": "2024-11-26T08:01:52+00:00"
         },
         {
             "name": "symfony/ux-turbo",
-            "version": "v2.21.0",
+            "version": "v2.22.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/ux-turbo.git",
-                "reference": "075c609e54fc421c6b1c1974e46e9a8b2d44277c"
+                "reference": "f7af0aa09190354dd4630ea330d8a3fc3e8ef278"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/ux-turbo/zipball/075c609e54fc421c6b1c1974e46e9a8b2d44277c",
-                "reference": "075c609e54fc421c6b1c1974e46e9a8b2d44277c",
+                "url": "https://api.github.com/repos/symfony/ux-turbo/zipball/f7af0aa09190354dd4630ea330d8a3fc3e8ef278",
+                "reference": "f7af0aa09190354dd4630ea330d8a3fc3e8ef278",
                 "shasum": ""
             },
             "require": {
@@ -8664,7 +8664,7 @@
                 "turbo-stream"
             ],
             "support": {
-                "source": "https://github.com/symfony/ux-turbo/tree/v2.21.0"
+                "source": "https://github.com/symfony/ux-turbo/tree/v2.22.0"
             },
             "funding": [
                 {
@@ -8680,20 +8680,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-10-21T19:07:02+00:00"
+            "time": "2024-11-29T15:25:16+00:00"
         },
         {
             "name": "symfony/ux-twig-component",
-            "version": "v2.21.0",
+            "version": "v2.22.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/ux-twig-component.git",
-                "reference": "5b60b239fffcb04fc8bdb2a5a4001d19442d575d"
+                "reference": "03177a494399fbdcbb1f5f2aee017ccf8df581d9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/ux-twig-component/zipball/5b60b239fffcb04fc8bdb2a5a4001d19442d575d",
-                "reference": "5b60b239fffcb04fc8bdb2a5a4001d19442d575d",
+                "url": "https://api.github.com/repos/symfony/ux-twig-component/zipball/03177a494399fbdcbb1f5f2aee017ccf8df581d9",
+                "reference": "03177a494399fbdcbb1f5f2aee017ccf8df581d9",
                 "shasum": ""
             },
             "require": {
@@ -8720,8 +8720,8 @@
             "type": "symfony-bundle",
             "extra": {
                 "thanks": {
-                    "name": "symfony/ux",
-                    "url": "https://github.com/symfony/ux"
+                    "url": "https://github.com/symfony/ux",
+                    "name": "symfony/ux"
                 }
             },
             "autoload": {
@@ -8747,7 +8747,7 @@
                 "twig"
             ],
             "support": {
-                "source": "https://github.com/symfony/ux-twig-component/tree/v2.21.0"
+                "source": "https://github.com/symfony/ux-twig-component/tree/v2.22.0"
             },
             "funding": [
                 {
@@ -8763,7 +8763,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-10-05T22:11:16+00:00"
+            "time": "2024-11-23T06:59:34+00:00"
         },
         {
             "name": "symfony/validator",
