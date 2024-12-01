@@ -29,3 +29,7 @@ phpstan.neon
 ###> qossmic/deptrac ###
 /.deptrac.cache
 ###< qossmic/deptrac ###
+
+###> sensiolabs/minify-bundle ###
+/var/minify/
+###< sensiolabs/minify-bundle ###
