@@ -1,8 +1,7 @@
 twig_component:
     anonymous_template_directory: 'components/'
     defaults:
-        # Namespace & directory for components
+        App\Shared\Application\Twig\Components\: 'components/'
         App\Blog\Infrastructure\Twig\Components\:
             template_directory: 'components/Blog/'
             name_prefix: Blog
-        App\Shared\Twig\Components\: 'components/'
