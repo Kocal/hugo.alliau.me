@@ -3,10 +3,14 @@
         {% for child in item.children %}
             {% set is_current = matcher.isCurrent(child) or matcher.isAncestor(child) %}
             <twig:Navbar:NavItem
-                :class="'block text-md sm:text-lg px-2 py-1 hover:bg-primary-700 hover:text-primary-50 transition-colors duration-200'
+                :class="'block text-md sm:text-lg hover:bg-primary-700 hover:text-primary-50 transition-colors duration-200'
                 ~ (is_current ? ' bg-primary-700 text-primary-50')"
             >
-                <a href="{{ child.uri }}" {% if is_current %}aria-current="page"{% endif %} class="">
+                <a
+                    href="{{ child.uri }}"
+                    class="block px-2 py-1"
+                    {% if is_current %}aria-current="page"{% endif %}
+                >
                     {{ child.label ?? child.name }}
                 </a>
             </twig:Navbar:NavItem>
