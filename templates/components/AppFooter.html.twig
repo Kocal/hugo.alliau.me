@@ -1,0 +1,10 @@
+<footer {{ attributes.defaults({
+    role: 'contentinfo',
+    class: 'bg-primary-100 dark:bg-primary-950 print:hidden'
+}) }}>
+    <div class="max-w-screen-lg container mx-auto p-3 text-center">
+        Hugo Alliaume ❤️ {{ 'now'|date('Y') }}
+        &bullet;
+        <span class="text-opacity-75">Revision ID: <a href="https://github.com/Kocal/hugo.alliau.me/commit/{{ SOURCE_COMMIT }}">{{ SOURCE_COMMIT|slice(0, 8) }}</a></span>
+    </div>
+</footer>
