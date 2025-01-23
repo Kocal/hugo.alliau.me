@@ -15,7 +15,8 @@ My website, built with:
 
 - [Symfony CLI](https://symfony.com/download)
 - Docker and Docker Compose
-- PHP 8.3
+- PHP 8.4
+- Node.js 22
 
 ## Installation
 
