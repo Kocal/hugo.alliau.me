@@ -3,8 +3,8 @@ proxy:
     - hugo.alliau.me
 
 workers:
-  tailwind_watch:
-    cmd: ['symfony', 'console', 'tailwind:build', '--watch']
+  #tailwind_watch:
+  #  cmd: ['symfony', 'console', 'tailwind:build', '--watch']
 
   # auto start Docker compose when starting server
   docker_compose: ~

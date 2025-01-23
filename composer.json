@@ -53,7 +53,6 @@
         "symfony/validator": "7.2.*",
         "symfony/web-link": "7.2.*",
         "symfony/yaml": "7.2.*",
-        "symfonycasts/tailwind-bundle": "^0.5.1",
         "tempest/highlight": "^2.0",
         "twig/extra-bundle": "^3.8",
         "twig/html-extra": "^3.13",
@@ -115,8 +114,7 @@
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd",
-            "importmap:install": "symfony-cmd",
-            "tailwind:build --minify": "symfony-cmd"
+            "importmap:install": "symfony-cmd"
         },
         "post-install-cmd": ["@auto-scripts"],
         "post-update-cmd": ["@auto-scripts"]
