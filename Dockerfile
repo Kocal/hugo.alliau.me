@@ -32,7 +32,8 @@ RUN set -eux; \
 
 RUN set -eux; \
     curl -fsSL https://deb.nodesource.com/setup_22.x | bash - \
-    && apt-get install -y nodejs
+    && apt-get install -y nodejs \
+    && npm i -g corepack
 
 # https://getcomposer.org/doc/03-cli.md#composer-allow-superuser
 ENV COMPOSER_ALLOW_SUPERUSER=1
@@ -92,12 +93,14 @@ COPY --link . ./
 RUN rm -Rf frankenphp/
 RUN corepack enable
 
+RUN pnpm install --frozen-lockfile \
+    && pnpm run build
+
 RUN set -eux; \
     mkdir -p var/cache var/log; \
     composer dump-autoload --classmap-authoritative --no-dev; \
     composer dump-env prod; \
     composer run-script --no-dev post-install-cmd; \
-    pnpm run build; \
     chmod +x bin/console; \
     ./bin/console ux:icons:warm-cache; \
     ./bin/console asset-map:compile; \
