@@ -25,7 +25,6 @@
         "predis/predis": "^2.2",
         "presta/sitemap-bundle": "^4.1",
         "runtime/frankenphp-symfony": "^0.2.0",
-        "sensiolabs/minify-bundle": "^0.9.4",
         "symfony/asset": "7.2.*",
         "symfony/asset-mapper": "7.2.*",
         "symfony/clock": "7.2.*",

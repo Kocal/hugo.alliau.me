@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bfee5244fbd813b6e8173f7e81e03897",
+    "content-hash": "09945a53220ffd8e2a590338d1f92916",
     "packages": [
         {
             "name": "composer/semver",
@@ -3567,81 +3567,6 @@
             "time": "2023-12-12T12:06:11+00:00"
         },
         {
-            "name": "sensiolabs/minify-bundle",
-            "version": "v0.9.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/sensiolabs/minify-bundle.git",
-                "reference": "12373167ab4bf6715bd70b6a669540a67d8ac14c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/minify-bundle/zipball/12373167ab4bf6715bd70b6a669540a67d8ac14c",
-                "reference": "12373167ab4bf6715bd70b6a669540a67d8ac14c",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=8.2",
-                "psr/log": "^2|^3",
-                "symfony/filesystem": "^6.4|^7.0",
-                "symfony/http-client-contracts": "^3.5",
-                "symfony/process": "^6.4|^7.0"
-            },
-            "require-dev": {
-                "phpstan/phpstan": "^1.12",
-                "phpunit/phpunit": "^10.5",
-                "symfony/asset-mapper": "^6.4|^7.0",
-                "symfony/console": "^6.4|^7.0",
-                "symfony/framework-bundle": "^6.4|^7.0",
-                "symfony/http-client": "^6.4|^7.0",
-                "symfony/http-kernel": "^6.4|^7.0"
-            },
-            "type": "symfony-bundle",
-            "extra": {
-                "thanks": {
-                    "name": "tdewolff/minify",
-                    "url": "https://github.com/tdewolff/minify"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Sensiolabs\\MinifyBundle\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Simon André",
-                    "email": "smn.andre@gmail.com"
-                },
-                {
-                    "name": "SensioLabs",
-                    "homepage": "https://sensiolabs.com"
-                }
-            ],
-            "description": "Assets Minifier (CSS, JS) for Symfony & Minify integration in Asset Mapper",
-            "homepage": "https://github.com/sensiolabs/minify-bundle",
-            "keywords": [
-                "JS",
-                "asset-mapper",
-                "assets",
-                "compress",
-                "css",
-                "minifier",
-                "minify",
-                "symfony",
-                "uglify"
-            ],
-            "support": {
-                "issues": "https://github.com/sensiolabs/minify-bundle/issues",
-                "source": "https://github.com/sensiolabs/minify-bundle/tree/v0.9.4"
-            },
-            "time": "2024-11-24T10:08:29+00:00"
-        },
-        {
             "name": "symfony/asset",
             "version": "v7.2.0",
             "source": {
@@ -6767,67 +6692,6 @@
                 }
             ],
             "time": "2024-09-09T11:45:10+00:00"
-        },
-        {
-            "name": "symfony/process",
-            "version": "v7.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/process.git",
-                "reference": "d34b22ba9390ec19d2dd966c40aa9e8462f27a7e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/d34b22ba9390ec19d2dd966c40aa9e8462f27a7e",
-                "reference": "d34b22ba9390ec19d2dd966c40aa9e8462f27a7e",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=8.2"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Component\\Process\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Executes commands in sub-processes",
-            "homepage": "https://symfony.com",
-            "support": {
-                "source": "https://github.com/symfony/process/tree/v7.2.0"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2024-11-06T14:24:19+00:00"
         },
         {
             "name": "symfony/property-access",
@@ -12096,6 +11960,67 @@
                 }
             ],
             "time": "2024-08-29T22:50:23+00:00"
+        },
+        {
+            "name": "symfony/process",
+            "version": "v7.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/process.git",
+                "reference": "d34b22ba9390ec19d2dd966c40aa9e8462f27a7e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/process/zipball/d34b22ba9390ec19d2dd966c40aa9e8462f27a7e",
+                "reference": "d34b22ba9390ec19d2dd966c40aa9e8462f27a7e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Process\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Executes commands in sub-processes",
+            "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/process/tree/v7.2.0"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2024-11-06T14:24:19+00:00"
         },
         {
             "name": "symfony/web-profiler-bundle",
