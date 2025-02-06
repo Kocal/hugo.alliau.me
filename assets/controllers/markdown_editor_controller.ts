@@ -1,21 +1,25 @@
 import { redo as commandRedo, undo as commandUndo } from "@codemirror/commands";
 import { markdown } from "@codemirror/lang-markdown";
-import { Compartment, EditorSelection } from "@codemirror/state";
+import {  EditorSelection } from "@codemirror/state";
 import { githubDark } from "@fsegurai/codemirror-theme-github-dark";
 import { githubLight } from "@fsegurai/codemirror-theme-github-light";
 import { Controller } from "@hotwired/stimulus";
 import { EditorView, basicSetup } from "codemirror";
-import { codeLanguages } from "../codemirror/code_languages.js";
-import { lightDarkThemeSwitcher } from "../codemirror/light_dark_theme_switcher.js";
+import { codeLanguages } from "../codemirror/code_languages.ts";
+import { lightDarkThemeSwitcher } from "../codemirror/light_dark_theme_switcher.ts";
 
-/* stimulusFetch: 'lazy' */
+import.meta.stimulusFetch = "lazy";
+import.meta.stimulusIdentifier = "markdown-editor";
+
 export default class extends Controller {
     static targets = ["textarea"];
     static classes = ["editor"];
 
-    connect() {
-        const editorTheme = new Compartment();
+    view!: EditorView;
+    textareaTarget!: HTMLTextAreaElement;
+    editorClasses!: Array<string>;
 
+    connect() {
         this.view = new EditorView({
             doc: this.textareaTarget.value,
             extensions: [
@@ -41,7 +45,7 @@ export default class extends Controller {
         });
 
         this.view.dom.style.maxHeight = "80dvh"; // hard-coded, can be improved later
-        this.textareaTarget.parentNode.insertBefore(this.view.dom, this.textareaTarget);
+        this.textareaTarget.parentNode?.insertBefore(this.view.dom, this.textareaTarget);
         this.textareaTarget.style.display = "none";
 
         window.addEventListener("resize", this.onWindowResize.bind(this));
@@ -81,7 +85,7 @@ export default class extends Controller {
     /**
      * TODO: can be improved to ensure the header is added at the start of the line
      */
-    header(event) {
+    header(event: any) {
         const { level } = event.params;
         if (typeof level !== "number") {
             throw new Error('Argument "level" is required and must be a number.');
@@ -109,7 +113,7 @@ export default class extends Controller {
         this.#insertSyntax("> ${cursor}");
     }
 
-    list(event) {
+    list(event: any) {
         const type = typeof event.params.type === "string" ? event.params.type : "unordered";
         if (type !== "unordered" && type !== "ordered") {
             throw new Error('Argument "type" must be either "ordered" or "unordered".');
@@ -117,7 +121,7 @@ export default class extends Controller {
         this.#insertSyntax(`${type === "unordered" ? "-" : "1."} \${cursor}`);
     }
 
-    alert(event) {
+    alert(event: any) {
         const type = typeof event.params.type === "string" ? event.params.type : "info";
         const validTypes = ["info", "tip", "warning", "danger"];
         if (!validTypes.includes(type)) {
@@ -159,7 +163,7 @@ ${this.view.state.doc.toString()}
         window.open("https://chat.openai.com/", "_blank");
     }
 
-    #insertSyntax(text) {
+    #insertSyntax(text: string) {
         const cursorId = "${cursor}";
         const cursorIndex = text.indexOf(cursorId);
         if (cursorIndex === -1) {

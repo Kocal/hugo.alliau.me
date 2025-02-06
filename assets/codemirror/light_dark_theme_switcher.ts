@@ -1,7 +1,7 @@
-import { Compartment } from "@codemirror/state";
+import { Compartment, Extension,  } from "@codemirror/state";
 import { EditorView } from "@codemirror/view";
 
-export function lightDarkThemeSwitcher({ lightTheme, darkTheme }) {
+export function lightDarkThemeSwitcher({ lightTheme, darkTheme }: { lightTheme:Extension; darkTheme:Extension }) {
     if (!lightTheme) {
         throw new Error(`Parameter 'lightTheme' is required.`);
     }
@@ -19,7 +19,7 @@ export function lightDarkThemeSwitcher({ lightTheme, darkTheme }) {
         EditorView.updateListener.of((update) => {
             if (!initialized) {
                 initialized = true;
-                const mediaQueryChangeHandler = (event) => {
+                const mediaQueryChangeHandler = (event: MediaQueryListEvent) => {
                     update.view.dispatch({
                         effects: themeCompartment.reconfigure(event.matches ? darkTheme : lightTheme),
                     });

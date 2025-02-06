@@ -1,16 +1,19 @@
 import { Controller } from "@hotwired/stimulus";
+import.meta.stimulusFetch = "lazy";
+import.meta.stimulusIdentifier = "places";
 
-/* stimulusFetch: 'lazy' */
 export default class extends Controller {
     connect() {
+        // @ts-expect-error To fix later
         this.element.addEventListener("ux:map:marker:before-create", this._onMarkerBeforeCreate);
     }
 
     disconnect() {
+        // @ts-expect-error To fix later
         this.element.removeEventListener("ux:map:marker:before-create", this._onMarkerBeforeCreate);
     }
 
-    _onMarkerBeforeCreate(event) {
+    _onMarkerBeforeCreate(event: CustomEvent<{L: any, definition: any}>) {
         const { L, definition } = event.detail;
 
         definition.rawOptions = {

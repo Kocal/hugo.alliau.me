@@ -60,6 +60,7 @@ const mixedTwigParser = parser.configure({
             overlay: node => node.type.name === "Text" || node.type.name === "PlainText"
         } : null
     }),
+    // @ts-expect-error Why?
     languageData: {
         commentTokens: {block: {open: "{#", close: "#}"}}
     },

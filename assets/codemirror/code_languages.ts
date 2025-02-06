@@ -2,9 +2,9 @@
  * @see https://github.com/codemirror/language-data/blob/main/src/language-data.ts
  */
 
-import { LanguageDescription, LanguageSupport, StreamLanguage } from "@codemirror/language";
+import { LanguageDescription, LanguageSupport, StreamLanguage, StreamParser } from "@codemirror/language";
 
-function legacy(parser) {
+function legacy(parser: StreamParser<unknown>) {
     return new LanguageSupport(StreamLanguage.define(parser));
 }
 
@@ -110,7 +110,7 @@ export const codeLanguages = [
         name: "Twig",
         extensions: ["twig"],
         load() {
-            return import("./twig/index.js").then((m) => m.twig());
+            return import("./twig/index.ts").then((m) => m.twig());
         },
     }),
 ];
