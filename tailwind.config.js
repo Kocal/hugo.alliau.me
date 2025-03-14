@@ -33,7 +33,7 @@ module.exports = {
             keyframes: {
                 heartbeat: {
                     '0%, 100%': { transform: 'scale(1)'},
-                    '50%': { transform: 'scale(1.13)', opacity: .5},
+                    '50%': { transform: 'scale(1.30)', opacity: .15},
                 }
             },
             animation: {

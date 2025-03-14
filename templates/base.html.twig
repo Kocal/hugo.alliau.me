@@ -60,7 +60,7 @@
         {% endblock %}
     </head>
     <body class="antialiased text-slate-700 dark:text-slate-200 dark:bg-slate-900 min-h-dvh flex flex-col">
-        <img src="{{ asset('images/bg.svg') }}" class="print:hidden fixed -z-10 w-full min-h-full m-10 object-cover blur-2xl opacity-30 animate-heartbeat" />
+        <img src="{{ asset('images/bg.svg') }}" class="print:hidden fixed -z-10 w-full max-h-50 m-10 object-contain blur-2xl opacity-5 animate-heartbeat" />
         {% block body %}
             <twig:AppHeader/>
 
