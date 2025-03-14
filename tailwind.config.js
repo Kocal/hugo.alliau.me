@@ -30,6 +30,15 @@ module.exports = {
                     950: "#182b53",
                 },
             },
+            keyframes: {
+                heartbeat: {
+                    '0%, 100%': { transform: 'scale(1)'},
+                    '50%': { transform: 'scale(1.13)', opacity: .5},
+                }
+            },
+            animation: {
+                heartbeat: 'heartbeat 10s ease-in-out infinite',
+            },
             typography: ({ theme }) => ({
                 DEFAULT: {
                     css: {
