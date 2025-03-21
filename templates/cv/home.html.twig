@@ -21,24 +21,25 @@
                         class="rounded-full mx-auto shadow-lg print:size-20"
                     />
 
-                    <h1 class="text-2xl sm:text-3xl print:text-xl font-extrabold">Hugo Alliaume</h1>
+                    <h1 class="text-2xl sm:text-3xl print:text-xl font-extrabold tracking-tight">Hugo Alliaume</h1>
 
-                    <div>
-                        <p>Développeur web full-stack passionné, et contributeur open-source.</p>
+                    <div class="text-sm">
+                        <p>Développeur web full-stack passionné, contributeur open-source, et Symfony UX Core Team</p>
                     </div>
 
-                    <ul class="flex flex-col gap-x-2 gap-y-0.5">
+                    <ul class="flex print:flex-col gap-y-0.5 justify-around">
                         {% for network in [
-                            {name: 'Contact', href: 'mailto:hugo@alliau.me', icon: 'bi:envelope', label: 'hugo[at]alliau.me'},
-                            {name: 'GitHub', href: 'https://github.com/Kocal', icon: 'bi:github', label: '@Kocal'},
-                            {name: 'LinkedIn', href: 'https://www.linkedin.com/in/%F0%9F%9A%B4-hugo-alliaume-34b475166/', icon: 'bi:linkedin', label: 'Hugo Alliaume'},
-                            {name: 'X (Twitter)', href: 'https://twitter.com/HugoAlliaume', icon: 'bi:twitter-x', label: '@HugoAlliaume'},
-                            {name: 'Mastodon', href: 'https://mastodon.social/@Kocal', icon: 'bi:mastodon', label: '@Kocal'},
+                            { title: 'Email', href: 'mailto:hugo@alliau.me', icon: 'bi:envelope', text: 'hugo[at]alliau.me', class: 'hover:text-primary-700 dark:hover:text-slate-400'},
+                            { title: 'LinkedIn', href: 'https://www.linkedin.com/in/%F0%9F%9A%B4-hugo-alliaume-34b475166/', icon: 'bi:linkedin', text: 'Hugo Alliaume', class: 'hover:text-linkedin'},
+                            { title: 'GitHub', href: 'https://github.com/Kocal', icon: 'bi:github', text: '@Kocal', class: 'hover:text-github'},
+                            { title: 'X (Twitter)', href: 'https://twitter.com/HugoAlliaume', icon: 'bi:twitter', text: '@HugoAlliaume', class: 'hover:text-twitter'},
+                            { title: 'Bluesky', href: 'https://bluesky.dev/hugo.alliau.me', icon: 'simple-icons:bluesky', text: 'hugo.alliau.me', class: 'hover:text-bsky'},
+                            { title: 'Mastodon', href: 'https://mastodon.social/@Kocal', icon: 'bi:mastodon', text: '@Kocal', class: 'hover:text-mastodon'},
                         ] %}
                             <li>
-                                <a href="{{ network.href }}" title="{{ network.name }}" class="hover:text-primary-700 dark:hover:text-slate-400">
-                                    <twig:UX:Icon :name="network.icon" class="inline mr-1" width="1.2em" height="1.2em" />
-                                    <span>{{ network.label }}</span>
+                                <a href="{{ network.href }}" title="{{ network.title }}" class="print:flex items-center gap-1 {{ network.class }} transition-colors">
+                                    <twig:UX:Icon :name="network.icon" width="1.2em" height="1.2em" />
+                                    <span class="screen:hidden">{{ network.text }}</span>
                                 </a>
                             </li>
                         {% endfor %}
@@ -48,7 +49,7 @@
 
             <twig:Card class="p-2 sm:p-3 print:shadow-none print:border">
 
-                <h2 class="text-2xl sm:text-3xl print:text-xl font-bold mb-4 print:mb-2">Skills</h2>
+                <h2 class="text-2xl sm:text-3xl print:text-xl font-bold mb-4 print:mb-2 tracking-tight">Skills</h2>
 
                 <div class="flex flex-col gap-3 print:gap-1">
                     {% for skill_group_name, skills_by_group in skills %}
@@ -56,15 +57,11 @@
                             <h3 class="font-bold uppercase text-sm mb-1">
                                 {{ skill_group_name }}
                             </h3>
-                            <ul class="flex flex-wrap gap-2 print:gap-1">
+                            <p class="text-sm">
                                 {% for skill in skills_by_group %}
-                                    <li>
-                                        <twig:Badge class="block" size="sm" color="gray" class="print:text-xs">
-                                            {{ skill }}
-                                        </twig:Badge>
-                                    </li>
+                                    {{ skill }}{{ not loop.last ? ', ' : '.' }}
                                 {% endfor %}
-                            </ul>
+                            </p>
                         </div>
                     {% endfor %}
                 </div>
@@ -73,7 +70,7 @@
 
         <div class="flex flex-col gap-2 sm:gap-4">
             <twig:Card class="p-2 sm:p-3 print:shadow-none print:border">
-                <h2 class="text-2xl sm:text-3xl print:text-xl font-bold mb-4 print:mb-2">
+                <h2 class="text-2xl sm:text-3xl print:text-xl font-bold mb-4 print:mb-2 tracking-tight">
                     Expériences professionnelles
                 </h2>
 
@@ -81,16 +78,14 @@
                     {% for professional_experience in professional_experiences %}
                         <section>
                             <header>
-                                <span class="block text-xl sm:text-2xl print:text-lg font-bold">
+                                <span class="block text-xl sm:text-2xl print:text-lg font-bold tracking-tight">
                                     {{ professional_experience.jobName }}
-                                    <small>
-                                        &bullet;
-                                        <a href="{{ professional_experience.url }}" rel="noreferrer noopener">
-                                            {{ professional_experience.company }}
-                                        </a>
-                                    </small>
                                 </span>
 
+                                <a href="{{ professional_experience.url }}" rel="noreferrer noopener" class=" hover:text-primary-700 dark:hover:text-slate-400 transition-colors font-bold">
+                                    {{ professional_experience.company }}
+                                </a>
+                                &bullet;
                                 <span class="uppercase text-sm font-bold">
                                     <time datetime="{{ professional_experience.startDate|date }}">{{ professional_experience.startDate|format_datetime(pattern='MMM yyyy', locale='fr') }}</time>
                                     &rightarrow;
@@ -102,17 +97,15 @@
                                 </span>
                             </header>
 
-                            <div class="my-2 print:text-sm">
+                            <div class="my-1 print:text-sm">
                                 {{ professional_experience.description|nl2br }}
                             </div>
 
                             <footer>
-                                <ul class="flex flex-wrap gap-2 print:gap-1">
+                                <ul class="flex flex-wrap gap-1">
                                     {% for badge in professional_experience.badges %}
                                         <li>
-                                            <twig:Badge class="block" size="sm" color="gray" class="print:text-xs">
-                                                {{ badge }}
-                                            </twig:Badge>
+                                            <twig:Badge class="block" class="print:hidden-sm">{{ badge }}</twig:Badge>
                                         </li>
                                     {% endfor %}
                                 </ul>
@@ -125,41 +118,39 @@
                     {% endfor %}
                 </div>
             </twig:Card>
-
-            <twig:Card class="p-2 sm:p-3 print:hidden">
-
-                <h2 class="text-2xl sm:text-3xl font-bold mb-4">Projets</h2>
-
-                <div class="grid sm:grid-cols-2 gap-4">
-                    {% for project in projects %}
-                        <div class="flex flex-col gap-2">
-                            <header>
-                                <h3 class="text-xl sm:text-2xl font-bold">
-                                    <a href="{{ project.url }}">{{ project.name }}</a>
-                                </h3>
-                                <span class="uppercase text-sm font-bold">{{ project.date|date('Y') }}</span>
-                            </header>
-
-                            <div>
-                                {{ project.description }}
-                            </div>
-
-                            <footer>
-                                <ul class="flex flex-wrap gap-2">
-                                    {% for tech in project.techStack %}
-                                        <li>
-                                            <twig:Badge class="block" size="sm" color="gray">
-                                                {{ tech }}
-                                            </twig:Badge>
-                                        </li>
-                                    {% endfor %}
-                                </ul>
-                            </footer>
-                        </div>
-                    {% endfor %}
-                </div>
-            </twig:Card>
         </div>
 
+        <twig:Card class="col-span-full p-2 sm:p-3 print:hidden">
+            <h2 class="text-2xl sm:text-3xl font-bold mb-4 tracking-tight">Projets</h2>
+
+            <div class="grid sm:grid-cols-2 gap-[1px] bg-slate-200">
+                {% for project in projects %}
+                    <div class="flex flex-col gap-2 bg-white py-3 {{ loop.index is even ? 'pl-3' : 'pr-3' }}">
+                        <header>
+                            <h3 class="text-xl sm:text-2xl font-bold tracking-tight">
+                                <a href="{{ project.url }}">{{ project.name }}</a>
+                            </h3>
+                            <span class="uppercase text-sm font-bold">{{ project.date|date('Y') }}</span>
+                        </header>
+
+                        <p>
+                            {{ project.description }}
+                        </p>
+
+                        <footer>
+                            <ul class="flex flex-wrap gap-1">
+                                {% for tech in project.techStack %}
+                                    <li>
+                                        <twig:Badge class="block" size="sm" color="gray">
+                                            {{ tech }}
+                                        </twig:Badge>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </footer>
+                    </div>
+                {% endfor %}
+            </div>
+        </twig:Card>
     </main>
 {% endblock %}

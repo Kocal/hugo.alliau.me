@@ -51,10 +51,9 @@ final class HomeController extends AbstractController
             'professional_experiences' => $professionalExperiences,
             'projects' => $projects,
             'skills' => [
-                'Langages principaux' => ['PHP', 'JavaScript', 'TypeScript', 'HTML/CSS'],
-                'Backend' => ['Symfony', 'PHPUnit', 'PHPStan', 'Symfony CLI', 'Docker', 'Docker Compose', 'CI & CD', 'DevOps'],
-                'Frontend' => ['Symfony UX', 'Vue', 'Stimulus', 'Webpack Encore', 'Cypress', 'Playwright', 'Tailwind CSS'],
-                'Performances web' => ['Blackfire', 'WebPageTest', 'Core Web Vitals'],
+                'Backend' => ['PHP', 'Symfony', 'PHPUnit', 'PHPStan', 'Symfony CLI', 'Docker Compose', 'CI & CD', 'DevOps'],
+                'Frontend' => ['JavaScript', 'TypeScript', 'Symfony UX', 'Vue', 'Stimulus', 'Webpack Encore', 'Cypress', 'Playwright', 'Tailwind CSS'],
+                'Performances web' => ['Core Web Vitals', 'Blackfire', 'WebPageTest'],
             ],
         ], $response);
     }
