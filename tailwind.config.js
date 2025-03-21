@@ -29,6 +29,11 @@ module.exports = {
                     900: "#1f4689",
                     950: "#182b53",
                 },
+                bsky: '#0a7aff',
+                github: '#181717',
+                twitter: '#00acee',
+                linkedin: '#0077b5',
+                mastodon: '#5c4adf',
             },
             keyframes: {
                 heartbeat: {
