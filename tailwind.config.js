@@ -5,7 +5,7 @@ module.exports = {
         extend: {
             fontFamily: {
                 sans: [
-                    '"Inter var", "ui-sans-serif", "system-ui", "sans-serif", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI", "Symbol", "Noto Color Emoji"',
+                    '"Inter var", "Inter Variable Fallback", "ui-sans-serif", "system-ui", "sans-serif", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI", "Symbol", "Noto Color Emoji"',
                     {
                         fontFeatureSettings: '"cv02","cv03","cv04","cv11"',
                     },
