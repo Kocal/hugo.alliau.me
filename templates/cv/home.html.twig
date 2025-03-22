@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block main %}
-    <main class="container mx-auto p-2 max-w-screen-xl grid grid-cols-1 sm:grid-cols-[256px_1fr] print:grid-cols-[200px_1fr] gap-2 sm:gap-4">
+    <main class="container mx-auto p-2 sm:py-4 max-w-screen-xl grid grid-cols-1 sm:grid-cols-[256px_1fr] print:grid-cols-[200px_1fr] gap-2 sm:gap-4">
         <div class="flex flex-col gap-2 sm:gap-4">
             <twig:Card class="p-2 sm:p-3 flex print:shadow-none print:border">
                 <div class="flex-1 flex flex-col justify-between gap-2">
@@ -29,12 +29,12 @@
 
                     <ul class="flex print:flex-col gap-y-0.5 justify-around">
                         {% for network in [
-                            { title: 'Email', href: 'mailto:hugo@alliau.me', icon: 'bi:envelope', text: 'hugo[at]alliau.me', class: 'hover:text-primary-700 dark:hover:text-slate-400'},
-                            { title: 'LinkedIn', href: 'https://www.linkedin.com/in/%F0%9F%9A%B4-hugo-alliaume-34b475166/', icon: 'bi:linkedin', text: 'Hugo Alliaume', class: 'hover:text-linkedin'},
-                            { title: 'GitHub', href: 'https://github.com/Kocal', icon: 'bi:github', text: '@Kocal', class: 'hover:text-github'},
-                            { title: 'X (Twitter)', href: 'https://twitter.com/HugoAlliaume', icon: 'bi:twitter', text: '@HugoAlliaume', class: 'hover:text-twitter'},
-                            { title: 'Bluesky', href: 'https://bluesky.dev/hugo.alliau.me', icon: 'simple-icons:bluesky', text: 'hugo.alliau.me', class: 'hover:text-bsky'},
-                            { title: 'Mastodon', href: 'https://mastodon.social/@Kocal', icon: 'bi:mastodon', text: '@Kocal', class: 'hover:text-mastodon'},
+                            {title: 'Email', href: 'mailto:hugo@alliau.me', icon: 'bi:envelope', text: 'hugo[at]alliau.me', class: 'hover:text-primary-700 dark:hover:text-slate-400'},
+                            {title: 'LinkedIn', href: 'https://www.linkedin.com/in/%F0%9F%9A%B4-hugo-alliaume-34b475166/', icon: 'bi:linkedin', text: 'Hugo Alliaume', class: 'hover:text-linkedin'},
+                            {title: 'GitHub', href: 'https://github.com/Kocal', icon: 'bi:github', text: '@Kocal', class: 'hover:text-github'},
+                            {title: 'X (Twitter)', href: 'https://twitter.com/HugoAlliaume', icon: 'bi:twitter', text: '@HugoAlliaume', class: 'hover:text-twitter'},
+                            {title: 'Bluesky', href: 'https://bluesky.dev/hugo.alliau.me', icon: 'simple-icons:bluesky', text: 'hugo.alliau.me', class: 'hover:text-bsky'},
+                            {title: 'Mastodon', href: 'https://mastodon.social/@Kocal', icon: 'bi:mastodon', text: '@Kocal', class: 'hover:text-mastodon'},
                         ] %}
                             <li>
                                 <a href="{{ network.href }}" title="{{ network.title }}" class="print:flex items-center gap-1 {{ network.class }} transition-colors">
