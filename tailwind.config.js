@@ -29,20 +29,11 @@ module.exports = {
                     900: "#1f4689",
                     950: "#182b53",
                 },
-                bsky: '#0a7aff',
-                github: '#181717',
-                twitter: '#00acee',
-                linkedin: '#0077b5',
-                mastodon: '#5c4adf',
-            },
-            keyframes: {
-                heartbeat: {
-                    '0%, 100%': { transform: 'scale(1)'},
-                    '50%': { transform: 'scale(1.30)', opacity: .15},
-                }
-            },
-            animation: {
-                heartbeat: 'heartbeat 10s ease-in-out infinite',
+                bsky: "#0a7aff",
+                github: "#181717",
+                twitter: "#00acee",
+                linkedin: "#0077b5",
+                mastodon: "#5c4adf",
             },
             typography: ({ theme }) => ({
                 DEFAULT: {
