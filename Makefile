@@ -25,6 +25,7 @@ install:
 
 ## Start the environment
 start:
+	$(DC) up -d
 	$(SF) proxy:start
 	$(SF) serve
 

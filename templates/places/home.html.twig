@@ -1,8 +1,10 @@
 {% extends 'base.html.twig' %}
+{% set footer_float = true %}
 
 {% block title %}Hugo Alliaume's Places{% endblock %}
 
 {% block stylesheets %}
+    {{ parent() }}
     <meta name="turbo-cache-control" content="no-cache">
 {% endblock %}
 

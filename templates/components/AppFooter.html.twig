@@ -1,10 +1,11 @@
+{% props float = false %}
 <footer {{ attributes.defaults({
     role: 'contentinfo',
-    class: 'bg-primary-100 dark:bg-primary-950 print:hidden'
+    class: 'print:hidden ' ~ (float ? 'fixed bottom-0 left-[50%] -translate-x-1/2 z-[500]' : '')
 }) }}>
-    <div class="max-w-screen-lg container mx-auto p-3 text-center">
+    <div class="max-w-min text-nowrap mx-auto mb-2 text-center bg-white dark:bg-slate-900 rounded-full text-sm sm:text-base py-1 px-2 sm:px-3 shadow ">
         Hugo Alliaume ❤️ {{ 'now'|date('Y') }}
         &bullet;
-        <span class="text-opacity-75">Revision ID: <a href="https://github.com/Kocal/hugo.alliau.me/commit/{{ SOURCE_COMMIT }}">{{ SOURCE_COMMIT|slice(0, 8) }}</a></span>
+        <code><a href="https://github.com/Kocal/hugo.alliau.me/commit/{{ SOURCE_COMMIT }}">{{ SOURCE_COMMIT|slice(0, 8) }}</a></code>
     </div>
 </footer>

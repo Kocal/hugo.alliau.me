@@ -1,19 +1,9 @@
-{% props color = 'primary', size = 'regular', href = false %}
+{% props href = false %}
 
 {% set style_badge = html_cva(
-    base='font-medium',
-    variants={
-        color: {
-            primary: 'text-primary-50 bg-primary-700',
-            gray: 'text-gray-900 bg-gray-100 dark:text-gray-50 dark:bg-gray-700',
-        },
-        size: {
-            sm: 'px-1 py-0.5 rounded-md',
-            regular: 'px-2 py-1 rounded-lg',
-        },
-    },
+    base='uppercase py-0.5 px-1 rounded font-bold text-xs text-primary-50 bg-primary-600',
 ) %}
 
-<{{ href ? 'a' : 'span' }} class="{{ style_badge.apply({color, size, hoverable: not href}, attributes.render('class') ?? '') }}" {{ attributes.defaults({href}) }}>
+<{{ href ? 'a' : 'span' }} class="{{ style_badge.apply({hoverable: not href}, attributes.render('class') ?? '') }}" {{ attributes.defaults({href}) }}>
     {{- block('content') -}}
 </{{ href ? 'a' : 'span' }}>

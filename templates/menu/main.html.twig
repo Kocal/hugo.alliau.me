@@ -1,14 +1,14 @@
 <twig:Navbar:Nav label="Main" class="flex-1">
-    <ul class="flex gap-x-1 sm:gap-x-2">
+    <ul class="flex gap-x-2 sm:gap-x-4">
         {% for child in item.children %}
             {% set is_current = matcher.isCurrent(child) or matcher.isAncestor(child) %}
             <twig:Navbar:NavItem
-                :class="'block text-md sm:text-lg hover:bg-primary-700 hover:text-primary-50 transition-colors duration-200'
-                ~ (is_current ? ' bg-primary-700 text-primary-50')"
+                :class="'block relative after:absolute after:bg-primary-500 after:w-0 after:h-1 after:bottom-0'
+                ~ (is_current ? ' after:w-full')"
             >
                 <a
                     href="{{ child.uri }}"
-                    class="block px-2 py-1"
+                    class="block py-1 sm:px-1"
                     {% if is_current %}aria-current="page"{% endif %}
                 >
                     {{ child.label ?? child.name }}

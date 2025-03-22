@@ -1,6 +1,7 @@
 {% extends 'blog/base.html.twig' %}
 
 {% block stylesheets %}
+    {{ parent() }}
     <link rel="stylesheet" href="{{ asset('github-light.css') }}" media="(prefers-color-scheme: light)">
     <link rel="stylesheet" href="{{ asset('github-dark-dimmed.css') }}" media="(prefers-color-scheme: dark)">
 {% endblock %}
@@ -60,7 +61,7 @@
         <article>
             <twig:Card class="p-2 sm:p-4">
                 <header>
-                    <h1 class="text-3xl sm:text-4xl font-extrabold mb-5">
+                    <h1 class="text-3xl sm:text-4xl font-extrabold mb-5 tracking-tight">
                         {{ post.title }}
                     </h1>
 
