@@ -3,55 +3,40 @@
 {% block title %}Hugo Alliaume{% endblock %}
 
 {% block seo %}
-    <meta name="description" content="Site personnel de Hugo Alliaume, développeur web full-stack.">
+<meta name="description" content="Site personnel de Hugo Alliaume, développeur web full-stack.">
 {% endblock %}
 
 {% block main %}
-    <main class="container mx-auto p-2 sm:py-4 max-w-screen-lg">
-        <twig:Card class="p-2 sm:p-4">
-            <h1 class="text-3xl sm:text-4xl font-extrabold mb-5">
-                À propos
-            </h1>
+<main class="container mx-auto p-2 sm:py-4 max-w-screen-lg">
+    <twig:Card class="p-2 sm:p-4">
+        <h1 class="text-3xl sm:text-4xl font-extrabold mb-5">
+            À propos
+        </h1>
 
-            <div class="prose dark:prose-invert max-w-none">
-                <p>
-                    Hugo Alliaume,
-                    <span itemprop="disambiguatingDescription">bientôt 30 ans, développeur web full-stack depuis une quinzaine d'années.</span>
-                </p>
-                <p itemprop="disambiguatingDescription">
-                    Je me suis spécialisé dans le développement d'applications web, principalement avec les technologies
-                    PHP/Symfony et JavaScript,
-                    et également dans l'optimisation des performances web (<a
-                            href="https://www.blackfire.io/">Blackfire</a>,
-                    <a href="https://www.webpagetest.org/">WebPageTest</a>,
-                    <a href="https://developer.chrome.com/docs/crux">CrUX</a>, ...).
-                </p>
-            </div>
+        <div class="prose dark:prose-invert max-w-none" itemprop="disambiguatingDescription">
+            <p>Hugo Alliaume, lyonnais de cœur et développeur full-stack depuis 2009, j'aime apprendre de nombreuses et
+                nouvelles choses, et ainsi être au maximum polyvalent. Depuis, je me suis spécialisé dans le
+                développement web, principalement avec PHP et JavaScript, ainsi que dans l'optimisation des
+                performances côté serveur et navigateur.</p>
+            <p>J'ai rejoint en Août 2024 la <a href="https://ux.symfony.com/">Symfony UX</a> Core Team.
+                Fan de l'open-source depuis le début, j'y contribue soit avec mes propres projets, soit en travaillant
+                sur Symfony, plus particulièrement sur Webpack Encore et Symfony UX.</p>
+            <p>J'essaye au maximum de trainer aux conférences et meetups PHP et Symfony, comme le SymfonyLive ou
+                ForumPHP, ou encore les meetups AFUP Lyon. Si vous souhaitez papoter un peu, vous pouvez sans doute me
+                trouver au buffet ! 🥪</p>
+        </div>
 
-            <h2 class="text-2xl sm:text-3xl font-bold my-4">Curriculum vitæ</h2>
-            <div class="prose dark:prose-invert max-w-none">
-                <p>
-                    Vous pouvez consulter mon <a href="{{ prefetch('/cv') }}">CV</a> pour en savoir plus sur mon
-                    parcours professionnel et mes compétences.
-                </p>
-            </div>
+        <twig:Divider class="my-4" />
 
-            <h2 class="text-2xl sm:text-3xl font-bold my-4">Blog</h2>
-            <div class="prose dark:prose-invert max-w-none">
-                <p>
-                    Je tiens un <a href="{{ prefetch('/blog') }}">blog technique</a>, où je partage mes découvertes
-                    et mes expériences en développement web.
-                </p>
-            </div>
+        <div class="prose dark:prose-invert max-w-none">
+            <p>Sur ce site, vous trouverez mes réseaux sociaux, mon <a href="{{ prefetch('/cv') }}">CV</a> et mon <a
+                    href="{{ prefetch('/blog') }}">blog</a>.</p>
 
-            <h2 class="text-2xl sm:text-3xl font-bold my-4">Réseaux sociaux</h2>
-            <div class="prose dark:prose-invert max-w-none">
-                <p>
-                    Vous pouvez me suivre sur <a href="https://twitter.com/hugoalliaume">X (anciennement Twitter)</a>,
-                    <a href="https://mastodon.social/@Kocal">Mastodon</a>,
-                    et <a href="https://github.com/Kocal">GitHub</a>.
-                </p>
-            </div>
-        </twig:Card>
-    </main>
+            <p>Vous pouvez me retrouver sur <a href="https://github.com/hugoalliaume">GitHub</a>,
+                <a href="https://x.com/hugoalliaume">Twitter</a> et <a
+                    href="https://bsky.app/profile/hugo.alliau.me">Bluesky</a>.
+            </p>
+        </div>
+    </twig:Card>
+</main>
 {% endblock %}
