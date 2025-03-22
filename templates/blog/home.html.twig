@@ -16,9 +16,9 @@
 
         <div class="flex flex-col gap-2">
             {% for post in posts %}
-                <article class="py-4 sm:py-6 first:pt-0 first:sm:pt-0 last:pb-0 last:pb-0">
+                <article class="py-2 first:pt-0 last:pb-0">
                     <header>
-                        <h2 class="text-2xl sm:text-3xl font-bold mb-4">
+                        <h2 class="text-2xl sm:text-3xl font-bold mb-4 tracking-tight hover:text-primary-700 dark:hover:text-slate-400 transition-colors">
                             <a href="{{ path(constant('App\\Blog\\Domain\\Route::POST_VIEW').value, {slug: post.slug}) }}">
                                 {{ post.title }}
                             </a>
