@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Shared\Infrastructure\HttpCache\Adapter;
 
+use App\Shared\Domain\HttpCache\Exception\UnableToClearHttpCacheException;
 use App\Shared\Domain\HttpCache\HttpCacheAdapter;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
@@ -37,10 +38,20 @@ final readonly class CloudflareHttpCacheAdapter implements HttpCacheAdapter
             ],
         ]);
 
+        if ($response->getStatusCode() !== 200) {
+            $this->logger->error('Failed to purge all HTTP cache.', [
+                'adapter' => self::class,
+                'status' => $response->getStatusCode(),
+                'response' => $response->toArray(false),
+            ]);
+
+            throw new UnableToClearHttpCacheException(sprintf('Cloudflare returned status code %d', $response->getStatusCode()));
+        }
+
         $this->logger->info('Purged all HTTP cache.', [
             'adapter' => self::class,
             'status' => $response->getStatusCode(),
-            'response' => $response->toArray(false),
+            'response' => $response->toArray(),
         ]);
     }
 
@@ -62,11 +73,22 @@ final readonly class CloudflareHttpCacheAdapter implements HttpCacheAdapter
                 ],
             ]);
 
+            if ($response->getStatusCode() !== 200) {
+                $this->logger->error('Failed to purge HTTP cache.', [
+                    'adapter' => self::class,
+                    'urls' => $chunk,
+                    'status' => $response->getStatusCode(),
+                    'response' => $response->toArray(false),
+                ]);
+
+                throw new UnableToClearHttpCacheException(sprintf('Cloudflare returned status code %d', $response->getStatusCode()));
+            }
+
             $this->logger->info('Purged HTTP cache.', [
                 'adapter' => self::class,
                 'urls' => $chunk,
                 'status' => $response->getStatusCode(),
-                'response' => $response->toArray(false),
+                'response' => $response->toArray(),
             ]);
         }
     }
