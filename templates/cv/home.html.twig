@@ -87,12 +87,12 @@
                                 </a>
                                 &bullet;
                                 <span class="uppercase text-sm font-bold">
-                                    <time datetime="{{ professional_experience.startDate|date }}">{{ professional_experience.startDate|format_datetime(pattern='MMM yyyy', locale='fr') }}</time>
+                                    <time datetime="{{ professional_experience.startDate|date }}">{{ professional_experience.startDate|format_datetime(pattern: 'MMM yyyy', locale: 'fr') }}</time>
                                     &rightarrow;
                                     {% if professional_experience.endDate is null %}
                                         <span>Présent</span>
                                     {% else %}
-                                        <time datetime="{{ professional_experience.endDate|date }}">{{ professional_experience.endDate|format_datetime(pattern='MMM yyyy', locale='fr') }}</time>
+                                        <time datetime="{{ professional_experience.endDate|date }}">{{ professional_experience.endDate|format_datetime(pattern: 'MMM yyyy', locale: 'fr') }}</time>
                                     {% endif %}
                                 </span>
                             </header>

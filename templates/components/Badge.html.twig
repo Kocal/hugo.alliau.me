@@ -1,9 +1,10 @@
 {% props href = false %}
 
 {% set style_badge = html_cva(
-    base='uppercase py-0.5 px-1 rounded font-bold text-xs text-primary-50 bg-primary-600',
+    base: 'uppercase py-0.5 px-1 rounded font-bold text-xs text-primary-50 bg-primary-600',
 ) %}
 
-<{{ href ? 'a' : 'span' }} class="{{ style_badge.apply({hoverable: not href}, attributes.render('class') ?? '') }}" {{ attributes.defaults({href}) }}>
+<{{ href ? 'a' : 'span' }} class="{{ style_badge.apply({hoverable: not href}, attributes.render('class') ?? '') }}" {{
+    attributes.defaults({href}) }}>
     {{- block('content') -}}
 </{{ href ? 'a' : 'span' }}>
