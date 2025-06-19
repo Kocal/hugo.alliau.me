@@ -110,15 +110,17 @@ cs.back.fix:
 
 ## Coding style - Check frontend coding style
 cs.front:
+	$(SF_CONSOLE) biomejs:download
 ifdef CI
-	$(SF_CONSOLE) biomejs:ci . --linter-enabled=false
+	bin/biome ci . --linter-enabled=false
 else
-	$(SF_CONSOLE) biomejs:check . --linter-enabled=false
+	bin/biome check . --linter-enabled=false
 endif
 
 ## Coding style - Check frontend coding style and fix issues
 cs.front.fix:
-	$(SF_CONSOLE) biomejs:check . --linter-enabled=false --write --unsafe
+	$(SF_CONSOLE) biomejs:download
+	bin/biome check . --linter-enabled=false --write --unsafe
 
 ##########
 # Linter #
@@ -140,15 +142,17 @@ lint.back:
 
 ## Linter - Lint front files
 lint.front:
+	$(SF_CONSOLE) biomejs:download
 ifdef CI
-	$(SF_CONSOLE) biomejs:ci . --formatter-enabled=false
+	bin/biome ci . --formatter-enabled=false
 else
-	$(SF_CONSOLE) biomejs:check . --formatter-enabled=false
+	bin/biome check . --formatter-enabled=false
 endif
 
 ## Linter - Lint front files and fix issues
 lint.front.fix:
-	$(SF_CONSOLE) biomejs:check . --formatter-enabled=false --write --unsafe
+	$(SF_CONSOLE) biomejs:download
+	bin/biome check . --formatter-enabled=false --write
 
 ###########
 # PHPStan #

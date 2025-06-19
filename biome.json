@@ -1,16 +1,17 @@
 {
     "files": {
-        "ignore": [
-            ".cache/*",
-            "assets/vendor/*",
-            "assets/controllers.json",
-            "assets/codemirror/twig/*",
-            "composer.json",
-            "public/assets/*",
-            "public/bundles/*",
-            "var/cache/*",
-            "var/tailwind/*",
-            "vendor/*"
+        "includes": [
+            "**",
+            "!.cache/*",
+            "!assets/codemirror/twig/*",
+            "!assets/vendor/*",
+            "!assets/controllers.json",
+            "!public/assets/*",
+            "!public/bundles/*",
+            "!var/*",
+            "!vendor/*",
+            "!composer.json",
+            "!package.json"
         ]
     },
     "formatter": {

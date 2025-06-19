@@ -4,7 +4,7 @@ import { Compartment, EditorSelection } from "@codemirror/state";
 import { githubDark } from "@fsegurai/codemirror-theme-github-dark";
 import { githubLight } from "@fsegurai/codemirror-theme-github-light";
 import { Controller } from "@hotwired/stimulus";
-import { EditorView, basicSetup } from "codemirror";
+import { basicSetup, EditorView } from "codemirror";
 import { codeLanguages } from "../codemirror/code_languages.js";
 import { lightDarkThemeSwitcher } from "../codemirror/light_dark_theme_switcher.js";
 

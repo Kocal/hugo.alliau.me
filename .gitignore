@@ -33,3 +33,7 @@ phpstan.neon
 ###> sensiolabs/minify-bundle ###
 /var/minify/
 ###< sensiolabs/minify-bundle ###
+
+###> kocal/biome-js-bundle ###
+/bin/biome
+###< kocal/biome-js-bundle ###

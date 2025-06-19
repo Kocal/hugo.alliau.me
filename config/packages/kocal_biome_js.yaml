@@ -1,7 +1,6 @@
 when@dev:
     kocal_biome_js:
-        # Biome.js CLI version to use:
-        # - "latest_stable": use the latest stable version
-        # - "latest_nightly": use the latest nightly version
-        # - or a specific version, e.g. "v1.8.3", find available tags at https://github.com/biomejs/biome/tags
-        binary_version: 'v1.9.4'
+        # The Biome.js CLI version to use, that you can find at https://github.com/biomejs/biome/tags:
+        # - for >=2.0.0 versions, the git tag follows the pattern "@biomejs/biome@<binary_version>"
+        # - for <2.0.0 versions, the git tag follows the pattern "cli/v<binary_version>"
+        binary_version: '2.0.0'

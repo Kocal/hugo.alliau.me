@@ -61,7 +61,7 @@
         "twig/twig": "^2.12|^3.0"
     },
     "require-dev": {
-        "kocal/biome-js-bundle": "^1.1",
+        "kocal/biome-js-bundle": "^2.0",
         "phpstan/phpstan": "^1.11",
         "phpstan/phpstan-doctrine": "^1.4",
         "phpstan/phpstan-symfony": "^1.4",
@@ -126,7 +126,7 @@
     },
     "extra": {
         "symfony": {
-            "allow-contrib": false,
+            "allow-contrib": true,
             "require": "7.2.*"
         }
     }
