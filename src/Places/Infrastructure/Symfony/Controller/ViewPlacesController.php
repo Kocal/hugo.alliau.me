@@ -7,9 +7,11 @@ namespace App\Places\Infrastructure\Symfony\Controller;
 use App\Places\Domain\Repository\PlaceRepository;
 use App\Places\Domain\Route as RoutePlaces;
 use App\Shared\Domain\HttpCache\CacheMethodsTrait;
+use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Attribute\MapQueryParameter;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\UX\Map\InfoWindow;
 use Symfony\UX\Map\Map;
@@ -24,8 +26,13 @@ final class ViewPlacesController extends AbstractController
         'sitemap' => true,
     ], methods: ['GET'])]
     public function __invoke(
+        #[MapQueryParameter(name: 'z')]
+        ?int $zoom,
+        #[MapQueryParameter(name: 'center')]
+        ?string $center,
         Request $request,
-        PlaceRepository $placeRepository
+        PlaceRepository $placeRepository,
+        LoggerInterface $logger
     ): Response {
         $latestPlace = $placeRepository->getOneLatestUpdated();
 
@@ -39,11 +46,23 @@ final class ViewPlacesController extends AbstractController
             return $response;
         }
 
-        $map = (new Map())
-            ->center(new Point(0, 0))
-            ->zoom(2)
-            ->fitBoundsToMarkers()
-        ;
+        $map = new Map(
+            zoom: $zoom,
+            fitBoundsToMarkers: true
+        );
+
+        if ($center !== null && \count($center = explode(',', $center)) === 2) {
+            try {
+                $map->center(new Point((float) $center[0], (float) $center[1]));
+                $map->fitBoundsToMarkers(false);
+            } catch (\Throwable $e) {
+                // no-op
+                $logger->error('Invalid center coordinates provided for the map.', [
+                    'center' => $center,
+                    'exception' => $e,
+                ]);
+            }
+        }
 
         foreach ($placeRepository->findAll() as $place) {
             if ($place->getAddress() === null) {

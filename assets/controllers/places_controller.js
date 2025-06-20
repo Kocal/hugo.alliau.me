@@ -3,12 +3,29 @@ import { Controller } from "@hotwired/stimulus";
 /* stimulusFetch: 'lazy' */
 export default class extends Controller {
     connect() {
+        this.element.addEventListener("ux:map:connect", this._onMapConnect);
         this.element.addEventListener("ux:map:marker:before-create", this._onMarkerBeforeCreate);
     }
 
     disconnect() {
+        this.element.removeEventListener("ux:map:connect", this._onMapConnect);
         this.element.removeEventListener("ux:map:marker:before-create", this._onMarkerBeforeCreate);
     }
+
+    _onMapConnect = (event) => {
+        const { map } = event.detail;
+
+        const updateState = () => {
+            const search = new URLSearchParams(window.location.search);
+            search.set("z", map.getZoom());
+            search.set("center", `${map.getCenter().lat.toFixed(5)},${map.getCenter().lng.toFixed(5)}`);
+
+            history.replaceState({}, null, `?${search.toString()}`);
+        };
+
+        map.addEventListener("zoom", () => updateState());
+        map.addEventListener("move", () => updateState());
+    };
 
     _onMarkerBeforeCreate(event) {
         const { L, definition } = event.detail;
