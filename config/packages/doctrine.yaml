@@ -14,13 +14,15 @@ doctrine:
             professional_experience_id: App\Shared\Infrastructure\Database\Doctrine\DBAL\Types\ProfessionalExperienceIdType
             project_id: App\Shared\Infrastructure\Database\Doctrine\DBAL\Types\ProjectIdType
             user_id: App\Shared\Infrastructure\Database\Doctrine\DBAL\Types\UserIdType
-            
+
     orm:
         auto_generate_proxy_classes: true
         enable_lazy_ghost_objects: true
         report_fields_where_declared: true
         validate_xml_mapping: true
         naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
+        identity_generation_preferences:
+            Doctrine\DBAL\Platforms\PostgreSQLPlatform: identity
         dql:
             string_functions:
                 CONTAINS: MartinGeorgiev\Doctrine\ORM\Query\AST\Functions\Contains # @>
