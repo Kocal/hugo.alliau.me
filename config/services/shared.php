@@ -23,6 +23,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     $services->load('App\\Shared\\', '../../src/Shared')
         ->exclude([
             '../../src/Shared/Domain/HttpCache/{CacheableEntity,CacheItem}.php',
+            '../../src/Shared/Domain/Data/*',
         ]);
 
     $services->set(HttpCache::class)
