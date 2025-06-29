@@ -3,24 +3,53 @@ import { Controller } from "@hotwired/stimulus";
 /* stimulusFetch: 'lazy' */
 export default class extends Controller {
     connect() {
+        this.element.addEventListener("ux:map:pre-connect", this._onMapPreConnect);
         this.element.addEventListener("ux:map:connect", this._onMapConnect);
         this.element.addEventListener("ux:map:marker:before-create", this._onMarkerBeforeCreate);
     }
 
     disconnect() {
+        this.element.removeEventListener("ux:map:pre-connect", this._onMapPreConnect);
         this.element.removeEventListener("ux:map:connect", this._onMapConnect);
         this.element.removeEventListener("ux:map:marker:before-create", this._onMarkerBeforeCreate);
+    }
+
+    _onMapPreConnect = (event) => {
+        const { L } = event.detail;
+
+        console.log(event.detail.extra);
+
+        if (window.location.hash) {
+            try {
+                const state = Object.fromEntries(new URLSearchParams(window.location.hash.slice(1)));
+                const zoom = Number(state.z);
+                const center = state.center.split(",").map(Number);
+
+                event.detail.zoom = zoom;
+                event.detail.center = L.latLng(center[0], center[1]);
+            } catch (e) {
+                console.error("Invalid state in URL hash:", e);
+            }
+        }
+
+        event.detail.bridgeOptions = {
+
+        }
     }
 
     _onMapConnect = (event) => {
         const { map } = event.detail;
 
         const updateState = () => {
-            const search = new URLSearchParams(window.location.search);
-            search.set("z", map.getZoom());
-            search.set("center", `${map.getCenter().lat.toFixed(5)},${map.getCenter().lng.toFixed(5)}`);
+            const center = map.getCenter();
+            const zoom = map.getZoom();
 
-            history.replaceState({}, null, `?${search.toString()}`);
+            const state = {
+                z: zoom,
+                center: [center.lat.toFixed(5), center.lng.toFixed(5)],
+            };
+
+            window.history.replaceState(state, "", `#${new URLSearchParams(state).toString()}`);
         };
 
         map.addEventListener("zoom", () => updateState());
@@ -30,7 +59,7 @@ export default class extends Controller {
     _onMarkerBeforeCreate(event) {
         const { L, definition } = event.detail;
 
-        definition.rawOptions = {
+        definition.bridgeOptions = {
             icon: L.divIcon({
                 html: `
 <div class="relative">

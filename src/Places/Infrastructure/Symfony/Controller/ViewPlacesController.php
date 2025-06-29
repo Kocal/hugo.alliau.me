@@ -26,10 +26,6 @@ final class ViewPlacesController extends AbstractController
         'sitemap' => true,
     ], methods: ['GET'])]
     public function __invoke(
-        #[MapQueryParameter(name: 'z')]
-        ?int $zoom,
-        #[MapQueryParameter(name: 'center')]
-        ?string $center,
         Request $request,
         PlaceRepository $placeRepository,
         LoggerInterface $logger
@@ -47,22 +43,9 @@ final class ViewPlacesController extends AbstractController
         }
 
         $map = new Map(
-            zoom: $zoom,
-            fitBoundsToMarkers: true
+            center: new Point(0, 0),
+            zoom: 2,
         );
-
-        if ($center !== null && \count($center = explode(',', $center)) === 2) {
-            try {
-                $map->center(new Point((float) $center[0], (float) $center[1]));
-                $map->fitBoundsToMarkers(false);
-            } catch (\Throwable $e) {
-                // no-op
-                $logger->error('Invalid center coordinates provided for the map.', [
-                    'center' => $center,
-                    'exception' => $e,
-                ]);
-            }
-        }
 
         foreach ($placeRepository->findAll() as $place) {
             if ($place->getAddress() === null) {
