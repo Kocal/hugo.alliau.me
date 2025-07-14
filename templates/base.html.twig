@@ -2,7 +2,7 @@
 <html lang="{{ app.request.locale }}" dir="ltr" style="scroll-padding-top: 64px; scrollbar-gutter: stable">
     <head>
         <meta charset="UTF-8">
-        <title>{{ block('title') }} </title>
+        <title>{{ block('title') }}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         {% block stylesheets %}
@@ -64,7 +64,7 @@
         {% endblock %}
     </head>
     <body class="antialiased text-slate-700 dark:text-slate-200 dark:bg-slate-900 min-h-dvh flex flex-col">
-        <img src="{{ asset('images/bg.svg') }}" class="print:hidden fixed -z-10 h-[50%] sm:h-auto w-full object-cover" fetchpriority="low" />
+        <img src="{{ asset('images/bg.svg') }}" class="print:hidden fixed -z-10 h-[50%] sm:h-auto w-full object-cover opacity-10 blur-sm " fetchpriority="low" alt="" role="presentation" />
         {% block body %}
             <twig:AppHeader/>
 
