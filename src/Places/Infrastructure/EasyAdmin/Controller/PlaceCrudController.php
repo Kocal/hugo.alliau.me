@@ -102,7 +102,6 @@ class PlaceCrudController extends AbstractCrudController
         Request $request,
         LoggerInterface $logger,
         CommandBus $commandBus,
-        SerializerInterface $serializer,
     ): Response {
         if (! $this->isCsrfTokenValid('ea-import-from-google-places', $request->request->getString('token'))) {
             $this->addFlash('danger', 'Invalid CSRF token.');
@@ -135,9 +134,6 @@ class PlaceCrudController extends AbstractCrudController
         $this->addFlash('success', 'Places imported successfully.');
 
         redirect_to_index:
-        return $this->redirectToRoute($context->getDashboardRouteName(), [
-            EA::CRUD_ACTION => Crud::PAGE_INDEX,
-            EA::CRUD_CONTROLLER_FQCN => $context->getCrud()->getControllerFqcn(),
-        ]);
+        return $this->redirectToRoute('admin_place_index');
     }
 }
