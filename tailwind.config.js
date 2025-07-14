@@ -44,7 +44,7 @@ module.exports = {
                         "pre code": null,
                         code: {
                             fontWeight: 600,
-                            backgroundColor: "var(--tw-prose-code-bg)",
+                            backgroundColor: "rgba(0, 0, 0, 0.15)",
                             padding: `${theme("spacing.1")} ${theme("spacing.2")}`,
                             fontSize: "85%",
                             borderRadius: theme("borderRadius.md"),
