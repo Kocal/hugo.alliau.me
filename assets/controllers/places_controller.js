@@ -32,10 +32,8 @@ export default class extends Controller {
             }
         }
 
-        event.detail.bridgeOptions = {
-
-        }
-    }
+        event.detail.bridgeOptions = {};
+    };
 
     _onMapConnect = (event) => {
         const { map } = event.detail;
