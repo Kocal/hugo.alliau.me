@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Shared\Infrastructure\HttpCache\Adapter;
 
+use App\Shared\Domain\HttpCache\Adapter\HttpCacheAdapter;
 use App\Shared\Domain\HttpCache\Exception\UnableToClearHttpCacheException;
-use App\Shared\Domain\HttpCache\HttpCacheAdapter;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\DependencyInjection\Attribute\Target;

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Shared\Infrastructure\Symfony\HttpCache;
 
-use App\Shared\Domain\HttpCache\HttpCacheAdapter;
-use App\Shared\Domain\HttpCache\HttpCacheAdapterFactory;
+use App\Shared\Domain\HttpCache\Adapter\HttpCacheAdapter;
+use App\Shared\Domain\HttpCache\Adapter\HttpCacheAdapterFactory;
 use Psr\Container\ContainerInterface;
 
 final readonly class SymfonyHttpCacheAdapterFactory implements HttpCacheAdapterFactory

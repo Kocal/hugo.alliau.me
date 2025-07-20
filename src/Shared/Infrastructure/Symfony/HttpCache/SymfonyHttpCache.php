@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Shared\Infrastructure\Symfony\HttpCache;
 
+use App\Shared\Domain\HttpCache\Adapter\HttpCacheAdapter;
 use App\Shared\Domain\HttpCache\CacheItem;
 use App\Shared\Domain\HttpCache\HttpCache;
-use App\Shared\Domain\HttpCache\HttpCacheAdapter;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 

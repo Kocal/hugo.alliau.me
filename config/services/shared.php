@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
+use App\Shared\Domain\HttpCache\Adapter\HttpCacheAdapter;
+use App\Shared\Domain\HttpCache\Adapter\HttpCacheAdapterFactory;
+use App\Shared\Domain\HttpCache\Adapter\NoHttpCacheAdapter;
 use App\Shared\Domain\HttpCache\HttpCache;
-use App\Shared\Domain\HttpCache\HttpCacheAdapter;
-use App\Shared\Domain\HttpCache\HttpCacheAdapterFactory;
-use App\Shared\Domain\HttpCache\NoHttpCacheAdapter;
 use App\Shared\Infrastructure\HttpCache\Adapter\CloudflareHttpCacheAdapter;
 use App\Shared\Infrastructure\Symfony\HttpCache\SymfonyHttpCache;
 use App\Shared\Infrastructure\Symfony\HttpCache\SymfonyHttpCacheAdapterFactory;
