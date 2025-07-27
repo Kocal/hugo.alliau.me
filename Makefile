@@ -110,17 +110,11 @@ cs.back.fix:
 
 ## Coding style - Check frontend coding style
 cs.front:
-	$(SF_CONSOLE) biomejs:download
-ifdef CI
-	bin/biome ci . --linter-enabled=false
-else
-	bin/biome check . --linter-enabled=false
-endif
+	$(call message_warning, No frontend coding style checks implemented yet, may add Prettier with OXC plugin.)
 
 ## Coding style - Check frontend coding style and fix issues
 cs.front.fix:
-	$(SF_CONSOLE) biomejs:download
-	bin/biome check . --linter-enabled=false --write --unsafe
+	$(call message_warning, No frontend coding style checks implemented yet, may add Prettier with OXC plugin.)
 
 ##########
 # Linter #
@@ -142,17 +136,13 @@ lint.back:
 
 ## Linter - Lint front files
 lint.front:
-	$(SF_CONSOLE) biomejs:download
-ifdef CI
-	bin/biome ci . --formatter-enabled=false
-else
-	bin/biome check . --formatter-enabled=false
-endif
+	$(SF_CONSOLE) oxlint:download
+	bin/oxlint
 
 ## Linter - Lint front files and fix issues
 lint.front.fix:
-	$(SF_CONSOLE) biomejs:download
-	bin/biome check . --formatter-enabled=false --write
+	$(SF_CONSOLE) oxlint:download
+	bin/oxlint --fix
 
 ###########
 # PHPStan #

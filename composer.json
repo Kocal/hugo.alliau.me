@@ -16,6 +16,7 @@
         "doctrine/orm": "^3.2",
         "easycorp/easyadmin-bundle": "^4.9",
         "knplabs/knp-menu-bundle": "^3.3",
+        "kocal/oxlint-bundle": "^1.0",
         "league/commonmark": "^2.4",
         "league/flysystem-bundle": "^3.3",
         "league/uri": "*",
@@ -61,7 +62,6 @@
         "twig/twig": "^2.12|^3.0"
     },
     "require-dev": {
-        "kocal/biome-js-bundle": "^2.0",
         "phpstan/phpstan": "^1.11",
         "phpstan/phpstan-doctrine": "^1.4",
         "phpstan/phpstan-symfony": "^1.4",

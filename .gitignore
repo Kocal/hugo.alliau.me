@@ -34,6 +34,6 @@ phpstan.neon
 /var/minify/
 ###< sensiolabs/minify-bundle ###
 
-###> kocal/biome-js-bundle ###
-/bin/biome
-###< kocal/biome-js-bundle ###
+###> kocal/oxlint-bundle ###
+/bin/oxlint
+###< kocal/oxlint-bundle ###

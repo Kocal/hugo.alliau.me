@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "50c9660f2b60c16ca3dd01ea39f501ac",
+    "content-hash": "8118e9503f11ebe2f5c792cd30242731",
     "packages": [
         {
             "name": "composer/semver",
@@ -1666,6 +1666,61 @@
                 "source": "https://github.com/KnpLabs/KnpMenuBundle/tree/v3.6.0"
             },
             "time": "2025-06-14T11:37:33+00:00"
+        },
+        {
+            "name": "kocal/oxlint-bundle",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Kocal/OxlintBundle.git",
+                "reference": "38cbeadec68c56bbc2c4488e1bb79adbe87392e7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Kocal/OxlintBundle/zipball/38cbeadec68c56bbc2c4488e1bb79adbe87392e7",
+                "reference": "38cbeadec68c56bbc2c4488e1bb79adbe87392e7",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1",
+                "symfony/console": "^6.4|^7.0",
+                "symfony/filesystem": "^6.4|^7.0",
+                "symfony/http-client": "^6.4|^7.0",
+                "symfony/process": "^6.4|^7.0"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^1.11",
+                "symfony/framework-bundle": "^6.4|^7.0",
+                "symplify/easy-coding-standard": "^12.1.2"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "Kocal\\OxlintBundle\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Hugo Alliaume",
+                    "email": "hugo@alliau.me"
+                }
+            ],
+            "description": "A Symfony Bundle to easily download and use Oxlint (from the Oxc project) in your Symfony applications, to lint your front assets without needing Node.js.",
+            "keywords": [
+                "bundle",
+                "oxc",
+                "oxlint",
+                "symfony"
+            ],
+            "support": {
+                "issues": "https://github.com/Kocal/OxlintBundle/issues",
+                "source": "https://github.com/Kocal/OxlintBundle/tree/v1.0.0"
+            },
+            "time": "2025-07-22T22:24:51+00:00"
         },
         {
             "name": "league/commonmark",
@@ -9800,61 +9855,6 @@
                 "source": "https://github.com/FakerPHP/Faker/tree/v1.24.1"
             },
             "time": "2024-11-21T13:46:39+00:00"
-        },
-        {
-            "name": "kocal/biome-js-bundle",
-            "version": "v2.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Kocal/BiomeJsBundle.git",
-                "reference": "a33c1670bd9701f5dcd3a8d8be454f3abaf14530"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Kocal/BiomeJsBundle/zipball/a33c1670bd9701f5dcd3a8d8be454f3abaf14530",
-                "reference": "a33c1670bd9701f5dcd3a8d8be454f3abaf14530",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=8.1",
-                "symfony/console": "^6.4|^7.0",
-                "symfony/filesystem": "^6.4|^7.0",
-                "symfony/http-client": "^6.4|^7.0",
-                "symfony/process": "^6.4|^7.0"
-            },
-            "require-dev": {
-                "phpstan/phpstan": "^1.11",
-                "symfony/framework-bundle": "^6.4|^7.0",
-                "symplify/easy-coding-standard": "^12.1.2"
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-4": {
-                    "Kocal\\BiomeJsBundle\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Hugo Alliaume",
-                    "email": "hugo@alliau.me"
-                }
-            ],
-            "description": "A Symfony Bundle to easily download and use Biome.js in your Symfony applications, to lint your front assets without needing Node.js.",
-            "keywords": [
-                "biome",
-                "biome.js",
-                "bundle",
-                "symfony"
-            ],
-            "support": {
-                "issues": "https://github.com/Kocal/BiomeJsBundle/issues",
-                "source": "https://github.com/Kocal/BiomeJsBundle/tree/v2.0.0"
-            },
-            "time": "2025-06-19T17:32:54+00:00"
         },
         {
             "name": "masterminds/html5",

@@ -53,17 +53,17 @@
     "knplabs/knp-menu-bundle": {
         "version": "v3.3.0"
     },
-    "kocal/biome-js-bundle": {
-        "version": "2.0",
+    "kocal/oxlint-bundle": {
+        "version": "1.0",
         "recipe": {
             "repo": "github.com/symfony/recipes-contrib",
             "branch": "main",
-            "version": "2.0",
-            "ref": "596a64433caa3a674576e5924ba9b607e1e14e81"
+            "version": "1.0",
+            "ref": "b18279c5d08603ee1bb6c4e71fc90720bcf9f6cd"
         },
         "files": [
-            "config/packages/kocal_biome_js.yaml",
-            "biome.json"
+            ".oxlintrc.json",
+            "config/packages/kocal_oxlint.yaml"
         ]
     },
     "league/flysystem-bundle": {
