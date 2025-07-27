@@ -9336,26 +9336,26 @@
         },
         {
             "name": "tempest/highlight",
-            "version": "2.11.4",
+            "version": "2.13.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tempestphp/highlight.git",
-                "reference": "5a239a92ad6bd3e506ca86a0de3e99ac9dbcb0dd"
+                "reference": "b3efa9bedc6a6524a7e9328327cb0ce477b5b9d6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tempestphp/highlight/zipball/5a239a92ad6bd3e506ca86a0de3e99ac9dbcb0dd",
-                "reference": "5a239a92ad6bd3e506ca86a0de3e99ac9dbcb0dd",
+                "url": "https://api.github.com/repos/tempestphp/highlight/zipball/b3efa9bedc6a6524a7e9328327cb0ce477b5b9d6",
+                "reference": "b3efa9bedc6a6524a7e9328327cb0ce477b5b9d6",
                 "shasum": ""
             },
             "require": {
-                "php": "^8.3"
+                "php": "^8.4"
             },
             "require-dev": {
                 "assertchris/ellison": "^1.0.2",
-                "friendsofphp/php-cs-fixer": "^3.21",
+                "friendsofphp/php-cs-fixer": "^3.84",
                 "league/commonmark": "^2.4",
-                "phpstan/phpstan": "^1.10.0",
+                "phpstan/phpstan": "^1.12.0",
                 "phpunit/phpunit": "^10.0",
                 "symfony/var-dumper": "^6.4|^7.0"
             },
@@ -9382,7 +9382,7 @@
             "description": "Fast, extensible, server-side code highlighting",
             "support": {
                 "issues": "https://github.com/tempestphp/highlight/issues",
-                "source": "https://github.com/tempestphp/highlight/tree/2.11.4"
+                "source": "https://github.com/tempestphp/highlight/tree/2.13.1"
             },
             "funding": [
                 {
@@ -9390,7 +9390,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-03-19T05:38:35+00:00"
+            "time": "2025-07-18T12:38:05+00:00"
         },
         {
             "name": "twig/extra-bundle",
