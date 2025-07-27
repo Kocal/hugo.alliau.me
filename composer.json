@@ -53,7 +53,7 @@
         "symfony/validator": "7.3.*",
         "symfony/web-link": "7.3.*",
         "symfony/yaml": "7.3.*",
-        "symfonycasts/tailwind-bundle": "^0.5.1",
+        "symfonycasts/tailwind-bundle": "^0.10.1",
         "tempest/highlight": "^2.0",
         "twig/extra-bundle": "^3.8",
         "twig/html-extra": "^3.13",
