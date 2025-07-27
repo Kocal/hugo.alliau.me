@@ -56,7 +56,7 @@ final readonly class LeagueCommonMarkMarkdownConverter implements MarkdownConver
         $this->environment->addExtension(new GitHubEmojisExtension());
         $this->environment->addExtension(new AttributesExtension());
         $this->environment->addRenderer(FencedCode::class, new CodeBlockRenderer(
-            static fn (): \Tempest\Highlight\Highlighter => (new Highlighter())->withGutter(),
+            static fn (): \Tempest\Highlight\Highlighter => new Highlighter()->withGutter(),
         ));
         $this->environment->addRenderer(Code::class, new InlineCodeBlockRenderer());
 
@@ -80,7 +80,7 @@ final readonly class LeagueCommonMarkMarkdownConverter implements MarkdownConver
 
     private function extractToc(Document $document): Node|null
     {
-        $toc = (new Query())
+        $toc = new Query()
             ->where(Query::type(TableOfContents::class))
             ->findOne($document);
 
@@ -99,7 +99,7 @@ final readonly class LeagueCommonMarkMarkdownConverter implements MarkdownConver
     {
         $webLinks = [];
 
-        $imagesWithHighPriority = (new Query())
+        $imagesWithHighPriority = new Query()
             ->where(fn (Node $node): bool => $node instanceof Image && $node->data->get('attributes.fetchpriority', '') === 'high')
             ->findAll($document);
 
@@ -108,7 +108,7 @@ final readonly class LeagueCommonMarkMarkdownConverter implements MarkdownConver
                 continue;
             }
 
-            $webLinks[] = (new Link())
+            $webLinks[] = new Link()
                 ->withHref($image->getUrl())
                 ->withAttribute('as', 'image')
                 ->withAttribute('fetchpriority', 'high');

@@ -20,7 +20,7 @@ if (! file_exists($xmlContainerFile)) {
 return [
     'parameters' => [
         'symfony' => [
-            'container_xml_path' => $xmlContainerFile,
+            'containerXmlPath' => $xmlContainerFile,
         ],
     ],
 ];

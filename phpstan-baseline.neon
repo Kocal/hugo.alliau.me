@@ -1,71 +1,175 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Method App\\\\Blog\\\\Infrastructure\\\\Doctrine\\\\Repository\\\\PostORMRepository\\:\\:findTags\\(\\) should return array\\<string\\> but returns array\\.$#"
+			message: '#^Method App\\Blog\\Infrastructure\\Doctrine\\Repository\\PostORMRepository\:\:findTags\(\) should return array\<string\> but returns array\<mixed\>\.$#'
+			identifier: return.type
 			count: 1
 			path: src/Blog/Infrastructure/Doctrine/Repository/PostORMRepository.php
 
 		-
-			message: "#^Method App\\\\Blog\\\\Infrastructure\\\\Doctrine\\\\Repository\\\\PostORMRepository\\:\\:findTagsAndOccurrences\\(\\) should return array\\<int, array\\{tag\\: string, occurrences\\: int\\}\\> but returns mixed\\.$#"
+			message: '#^Method App\\Blog\\Infrastructure\\Doctrine\\Repository\\PostORMRepository\:\:findTagsAndOccurrences\(\) should return list\<array\{tag\: string, occurrences\: int\}\> but returns mixed\.$#'
+			identifier: return.type
 			count: 1
 			path: src/Blog/Infrastructure/Doctrine/Repository/PostORMRepository.php
 
 		-
-			message: "#^Method App\\\\Blog\\\\Infrastructure\\\\Doctrine\\\\Repository\\\\PostORMRepository\\:\\:getOneLatestPublished\\(\\) should return App\\\\Blog\\\\Domain\\\\Post but returns mixed\\.$#"
+			message: '#^Method App\\Blog\\Infrastructure\\Doctrine\\Repository\\PostORMRepository\:\:getOneLatestPublished\(\) should return App\\Blog\\Domain\\Post but returns mixed\.$#'
+			identifier: return.type
 			count: 1
 			path: src/Blog/Infrastructure/Doctrine/Repository/PostORMRepository.php
 
 		-
-			message: "#^Parameter \\#1 \\$input of callable App\\\\Shared\\\\Domain\\\\Markdown\\\\MarkdownConverter expects string, string\\|null given\\.$#"
+			message: '#^Method App\\Blog\\Infrastructure\\Foundry\\Factory\\PostFactory\:\:defaults\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Blog/Infrastructure/Foundry/Factory/PostFactory.php
+
+		-
+			message: '#^Method App\\Blog\\Infrastructure\\Foundry\\Factory\\PostSeoFactory\:\:defaults\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Blog/Infrastructure/Foundry/Factory/PostSeoFactory.php
+
+		-
+			message: '#^Parameter \#1 \$input of callable App\\Shared\\Domain\\Markdown\\MarkdownConverter expects string, string\|null given\.$#'
+			identifier: argument.type
 			count: 1
 			path: src/Blog/Infrastructure/Symfony/Controller/Post/ViewController.php
 
 		-
-			message: "#^Method App\\\\CV\\\\Infrastructure\\\\Doctrine\\\\Repository\\\\ProfessionalExperienceORMRepository\\:\\:findOneLatest\\(\\) should return App\\\\CV\\\\Domain\\\\ProfessionalExperience\\|null but returns mixed\\.$#"
+			message: '#^Method App\\CV\\Infrastructure\\Doctrine\\Repository\\ProfessionalExperienceORMRepository\:\:findOneLatest\(\) should return App\\CV\\Domain\\ProfessionalExperience\|null but returns mixed\.$#'
+			identifier: return.type
 			count: 1
 			path: src/CV/Infrastructure/Doctrine/Repository/ProfessionalExperienceORMRepository.php
 
 		-
-			message: "#^Method App\\\\CV\\\\Infrastructure\\\\Doctrine\\\\Repository\\\\ProjectORMRepository\\:\\:findOneLatest\\(\\) should return App\\\\CV\\\\Domain\\\\Project\\|null but returns mixed\\.$#"
+			message: '#^Method App\\CV\\Infrastructure\\Doctrine\\Repository\\ProjectORMRepository\:\:findOneLatest\(\) should return App\\CV\\Domain\\Project\|null but returns mixed\.$#'
+			identifier: return.type
 			count: 1
 			path: src/CV/Infrastructure/Doctrine/Repository/ProjectORMRepository.php
 
 		-
-			message: "#^Method App\\\\Places\\\\Infrastructure\\\\Doctrine\\\\Repository\\\\PlaceORMRepository\\:\\:getOneLatestUpdated\\(\\) should return App\\\\Places\\\\Domain\\\\Place but returns mixed\\.$#"
+			message: '#^Method App\\CV\\Infrastructure\\Foundry\\Factory\\ProfessionalExperienceFactory\:\:defaults\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/CV/Infrastructure/Foundry/Factory/ProfessionalExperienceFactory.php
+
+		-
+			message: '#^Method App\\CV\\Infrastructure\\Foundry\\Factory\\ProjectFactory\:\:defaults\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/CV/Infrastructure/Foundry/Factory/ProjectFactory.php
+
+		-
+			message: '#^Method App\\Places\\Infrastructure\\Doctrine\\Repository\\PlaceORMRepository\:\:getOneLatestUpdated\(\) should return App\\Places\\Domain\\Place but returns mixed\.$#'
+			identifier: return.type
 			count: 1
 			path: src/Places/Infrastructure/Doctrine/Repository/PlaceORMRepository.php
 
 		-
-			message: "#^Cannot call method getControllerFqcn\\(\\) on EasyCorp\\\\Bundle\\\\EasyAdminBundle\\\\Dto\\\\CrudDto\\|null\\.$#"
+			message: '#^Method App\\Places\\Infrastructure\\Foundry\\Factory\\AddressFactory\:\:defaults\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
-			path: src/Places/Infrastructure/EasyAdmin/Controller/PlaceCrudController.php
+			path: src/Places/Infrastructure/Foundry/Factory/AddressFactory.php
 
 		-
-			message: "#^Property App\\\\Shared\\\\Infrastructure\\\\Bus\\\\SymfonyMessengerCommandBus\\:\\:\\$messageBus is never read, only written\\.$#"
+			message: '#^Method App\\Places\\Infrastructure\\Foundry\\Factory\\PlaceFactory\:\:defaults\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Places/Infrastructure/Foundry/Factory/PlaceFactory.php
+
+		-
+			message: '#^Property App\\Shared\\Infrastructure\\Bus\\SymfonyMessengerCommandBus\:\:\$messageBus is never read, only written\.$#'
+			identifier: property.onlyWritten
 			count: 1
 			path: src/Shared/Infrastructure/Bus/SymfonyMessengerCommandBus.php
 
 		-
-			message: "#^Parameter \\#3 \\$contents of class League\\\\CommonMark\\\\Util\\\\HtmlElement constructor expects array\\<Stringable\\>\\|string\\|Stringable\\|null, array\\<int, string\\> given\\.$#"
+			message: '#^Method App\\Shared\\Infrastructure\\Markdown\\Extension\\CustomContainer\\Renderer\\CustomContainerRenderer\:\:render\(\) never returns Stringable so it can be removed from the return type\.$#'
+			identifier: return.unusedType
+			count: 1
+			path: src/Shared/Infrastructure/Markdown/Extension/CustomContainer/Renderer/CustomContainerRenderer.php
+
+		-
+			message: '#^Method App\\Shared\\Infrastructure\\Markdown\\Extension\\CustomContainer\\Renderer\\CustomContainerRenderer\:\:render\(\) never returns null so it can be removed from the return type\.$#'
+			identifier: return.unusedType
+			count: 1
+			path: src/Shared/Infrastructure/Markdown/Extension/CustomContainer/Renderer/CustomContainerRenderer.php
+
+		-
+			message: '#^Parameter \#3 \$contents of class League\\CommonMark\\Util\\HtmlElement constructor expects array\<Stringable\>\|string\|Stringable\|null, list\<string\> given\.$#'
+			identifier: argument.type
 			count: 1
 			path: src/Shared/Infrastructure/Markdown/Extension/FencedCode/Renderer/FencedCodeRenderer.php
 
 		-
-			message: "#^Cannot cast mixed to string\\.$#"
+			message: '#^Method App\\Shared\\Infrastructure\\Markdown\\Extension\\TempestHighlight\\Renderer\\CodeBlockRenderer\:\:render\(\) never returns Stringable so it can be removed from the return type\.$#'
+			identifier: return.unusedType
+			count: 1
+			path: src/Shared/Infrastructure/Markdown/Extension/TempestHighlight/Renderer/CodeBlockRenderer.php
+
+		-
+			message: '#^Method App\\Shared\\Infrastructure\\Markdown\\Extension\\TempestHighlight\\Renderer\\CodeBlockRenderer\:\:render\(\) never returns null so it can be removed from the return type\.$#'
+			identifier: return.unusedType
+			count: 1
+			path: src/Shared/Infrastructure/Markdown/Extension/TempestHighlight/Renderer/CodeBlockRenderer.php
+
+		-
+			message: '#^Strict comparison using \!\=\= between non\-falsy\-string and '''' will always evaluate to true\.$#'
+			identifier: notIdentical.alwaysTrue
+			count: 1
+			path: src/Shared/Infrastructure/Markdown/Extension/TempestHighlight/Renderer/CodeBlockRenderer.php
+
+		-
+			message: '#^Strict comparison using \!\=\= between non\-falsy\-string and ''0'' will always evaluate to true\.$#'
+			identifier: notIdentical.alwaysTrue
+			count: 1
+			path: src/Shared/Infrastructure/Markdown/Extension/TempestHighlight/Renderer/CodeBlockRenderer.php
+
+		-
+			message: '#^Cannot cast mixed to string\.$#'
+			identifier: cast.string
 			count: 1
 			path: src/Shared/Infrastructure/ObjectMapper/ValinorObjectMapper.php
 
 		-
-			message: "#^Cannot cast mixed to string\\.$#"
+			message: '#^Method App\\Shared\\Infrastructure\\Symfony\\HttpCache\\SymfonyHttpCache\:\:normalize\(\) should return array\{urls\: list\<string\>\} but returns non\-empty\-array\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Shared/Infrastructure/Symfony/HttpCache/SymfonyHttpCache.php
+
+		-
+			message: '#^Method App\\User\\Infrastructure\\Foundry\\Factory\\UserFactory\:\:defaults\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/User/Infrastructure/Foundry/Factory/UserFactory.php
+
+		-
+			message: '#^Cannot cast mixed to string\.$#'
+			identifier: cast.string
 			count: 2
 			path: src/User/Infrastructure/Symfony/Command/AdminCreate.php
 
 		-
-			message: "#^Call to an undefined method PHPStan\\\\Type\\\\Type\\:\\:getClassName\\(\\)\\.$#"
+			message: '#^Parameter \#1 \$environment of class App\\Kernel constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tools/phpstan/console-application.php
+
+		-
+			message: '#^Parameter \#1 \$environment of class App\\Kernel constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tools/phpstan/object-manager.php
+
+		-
+			message: '#^Call to an undefined method PHPStan\\Type\\Type\:\:getClassName\(\)\.$#'
+			identifier: method.notFound
 			count: 1
 			path: tools/phpstan/src/Type/CommandBusDispatchDynamicMethodReturnTypeExtension.php
 
 		-
-			message: "#^Parameter \\#2 \\$args of static method PHPStan\\\\Reflection\\\\ParametersAcceptorSelector\\:\\:selectFromArgs\\(\\) expects array\\<PhpParser\\\\Node\\\\Arg\\>, array\\<PhpParser\\\\Node\\\\Arg\\|PhpParser\\\\Node\\\\VariadicPlaceholder\\> given\\.$#"
+			message: '#^Parameter \#2 \$args of static method PHPStan\\Reflection\\ParametersAcceptorSelector\:\:selectFromArgs\(\) expects array\<PhpParser\\Node\\Arg\>, array\<PhpParser\\Node\\Arg\|PhpParser\\Node\\VariadicPlaceholder\> given\.$#'
+			identifier: argument.type
 			count: 1
 			path: tools/phpstan/src/Type/CommandBusDispatchDynamicMethodReturnTypeExtension.php

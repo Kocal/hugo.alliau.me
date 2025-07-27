@@ -25,6 +25,9 @@ use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
+/**
+ * @extends AbstractCrudController<Place>
+ */
 class PlaceCrudController extends AbstractCrudController
 {
     public function __construct(

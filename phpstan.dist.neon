@@ -5,7 +5,7 @@ includes:
     - phpstan-baseline.neon
 
 parameters:
-    level: max
+    level: 9
     paths:
         - bin/
         - config/
@@ -13,11 +13,11 @@ parameters:
         - src/
         - tools/
         #- tests/
-        
+
     tmpDir: .cache/phpstan
-    
+
     symfony:
-        console_application_loader: tools/phpstan/console-application.php
+        consoleApplicationLoader: tools/phpstan/console-application.php
 
     doctrine:
         objectManagerLoader: tools/phpstan/object-manager.php

@@ -12,7 +12,7 @@ final readonly class CreateAddressHandler
 {
     public function __invoke(CreateAddress $command): Address
     {
-        return (new Address())
+        return new Address()
             ->setName($command->name)
             ->setCoordinates($command->coordinates)
             ->setFormattedAddress($command->formattedAddress)

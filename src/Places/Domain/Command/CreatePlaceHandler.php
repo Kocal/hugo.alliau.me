@@ -20,7 +20,7 @@ final readonly class CreatePlaceHandler
 
     public function __invoke(CreatePlace $command): Place
     {
-        $place = (new Place())
+        $place = new Place()
             ->setAddress($this->commandBus->dispatch($command->createAddress))
             ->setGoogleMapsUrl($command->googleMapsUrl)
             ->setIconMaskUri($command->iconMaskUri)

@@ -49,6 +49,9 @@ final readonly class CommandBusDispatchDynamicMethodReturnTypeExtension implemen
         return ParametersAcceptorSelector::selectFromArgs($scope, $methodCall->args, $commandInvoke->getVariants())->getReturnType();
     }
 
+    /**
+     * @param class-string $commandClass
+     */
     private function getCommandHandlerClass(string $commandClass): string
     {
         $commandHandler = $commandClass . 'Handler';
