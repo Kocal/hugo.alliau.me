@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "50c9660f2b60c16ca3dd01ea39f501ac",
+    "content-hash": "500402871ceda8cfcd966998438b6385",
     "packages": [
         {
             "name": "composer/semver",
@@ -9281,16 +9281,16 @@
         },
         {
             "name": "symfonycasts/tailwind-bundle",
-            "version": "v0.5.3",
+            "version": "v0.10.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/SymfonyCasts/tailwind-bundle.git",
-                "reference": "61d6d35c860f61e0d17adbee2f21c0f95ba9172d"
+                "reference": "bd701c309250977ce6163ecb54ee74dd63680790"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SymfonyCasts/tailwind-bundle/zipball/61d6d35c860f61e0d17adbee2f21c0f95ba9172d",
-                "reference": "61d6d35c860f61e0d17adbee2f21c0f95ba9172d",
+                "url": "https://api.github.com/repos/SymfonyCasts/tailwind-bundle/zipball/bd701c309250977ce6163ecb54ee74dd63680790",
+                "reference": "bd701c309250977ce6163ecb54ee74dd63680790",
                 "shasum": ""
             },
             "require": {
@@ -9298,14 +9298,15 @@
                 "symfony/asset-mapper": "^6.3|^7.0",
                 "symfony/cache": "^6.3|^7.0",
                 "symfony/console": "^5.4|^6.3|^7.0",
+                "symfony/deprecation-contracts": "^2.2|^3.0",
                 "symfony/http-client": "^5.4|^6.3|^7.0",
                 "symfony/process": "^5.4|^6.3|^7.0"
             },
             "require-dev": {
-                "phpstan/phpstan": "1.11.x-dev",
+                "phpunit/phpunit": "^9.6",
                 "symfony/filesystem": "^6.3|^7.0",
                 "symfony/framework-bundle": "^6.3|^7.0",
-                "symfony/phpunit-bridge": "^6.3|^7.0"
+                "symfony/phpunit-bridge": "^6.3.9|^7.0"
             },
             "type": "library",
             "autoload": {
@@ -9330,9 +9331,9 @@
             ],
             "support": {
                 "issues": "https://github.com/SymfonyCasts/tailwind-bundle/issues",
-                "source": "https://github.com/SymfonyCasts/tailwind-bundle/tree/v0.5.3"
+                "source": "https://github.com/SymfonyCasts/tailwind-bundle/tree/v0.10.1"
             },
-            "time": "2024-05-24T13:08:53+00:00"
+            "time": "2025-07-14T17:36:36+00:00"
         },
         {
             "name": "tempest/highlight",
