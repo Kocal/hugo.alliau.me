@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "50c9660f2b60c16ca3dd01ea39f501ac",
+    "content-hash": "c2041df891566bad36f230c86d3c977d",
     "packages": [
         {
             "name": "composer/semver",
@@ -3494,20 +3494,20 @@
         },
         {
             "name": "sensiolabs/minify-bundle",
-            "version": "v0.9.5",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/minify-bundle.git",
-                "reference": "74ac9ee091afd1cd7c27fc65392d62196dd2122e"
+                "reference": "d2d7489d13e5a0071c2eeb6e4f8a0ee60ffd6a06"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/minify-bundle/zipball/74ac9ee091afd1cd7c27fc65392d62196dd2122e",
-                "reference": "74ac9ee091afd1cd7c27fc65392d62196dd2122e",
+                "url": "https://api.github.com/repos/sensiolabs/minify-bundle/zipball/d2d7489d13e5a0071c2eeb6e4f8a0ee60ffd6a06",
+                "reference": "d2d7489d13e5a0071c2eeb6e4f8a0ee60ffd6a06",
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.2",
+                "php": ">=8.1",
                 "psr/log": "^2|^3",
                 "symfony/filesystem": "^6.4|^7.0",
                 "symfony/http-client-contracts": "^3.5",
@@ -3563,9 +3563,9 @@
             ],
             "support": {
                 "issues": "https://github.com/sensiolabs/minify-bundle/issues",
-                "source": "https://github.com/sensiolabs/minify-bundle/tree/v0.9.5"
+                "source": "https://github.com/sensiolabs/minify-bundle/tree/v1.1.0"
             },
-            "time": "2024-12-11T01:26:46+00:00"
+            "time": "2025-04-14T23:24:57+00:00"
         },
         {
             "name": "symfony/asset",
