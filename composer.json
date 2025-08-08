@@ -41,6 +41,7 @@
         "symfony/options-resolver": "7.3.*",
         "symfony/property-access": "7.3.*",
         "symfony/property-info": "7.3.*",
+        "symfony/rate-limiter": "7.3.*",
         "symfony/runtime": "7.3.*",
         "symfony/serializer": "7.3.*",
         "symfony/stimulus-bundle": "^2.16",
