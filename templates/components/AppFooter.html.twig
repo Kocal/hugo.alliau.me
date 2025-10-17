@@ -1,11 +1,49 @@
 {% props float = false %}
 <footer {{ attributes.defaults({
     role: 'contentinfo',
-    class: 'print:hidden ' ~ (float ? 'fixed bottom-0 left-[50%] -translate-x-1/2 z-[500]' : '')
+    class: 'print:hidden',
 }) }}>
-    <div class="max-w-min text-nowrap mx-auto mb-2 text-center bg-white dark:bg-slate-900 rounded-full text-sm sm:text-base py-1 px-2 sm:px-3 shadow ">
-        Hugo Alliaume ❤️ {{ 'now'|date('Y') }}
-        &bullet;
-        <code><a href="https://github.com/Kocal/hugo.alliau.me/commit/{{ SOURCE_COMMIT }}">{{ SOURCE_COMMIT|slice(0, 8) }}</a></code>
+    <div class="container mx-auto sm:pt-14 sm:pb-8 max-w-screen-lg flex gap-4">
+        <div class="flex flex-col gap-4">
+            <div class="flex gap-4">
+                <img
+                    src="{{ asset('images/hugo-alliaume.jpeg') }}"
+                    width="64"
+                    height="64"
+                    decoding="async"
+                    loading="lazy"
+                    alt="Hugo Alliaume"
+                    class="rounded-full shadow-lg self-start"
+                />
+
+                <div>
+                    <span class="self-center text-2xl sm:text-3xl print:text-xl font-extrabold tracking-tight">Hugo Alliaume</span>
+                    <p class="text-sm mt-1">Full-stack web developer,<br> open-source contributor,<br> Symfony UX Core Team</p>
+                </div>
+            </div>
+
+            <ul class="flex  gap-2 text-sm">
+                {% for network in [
+                    {title: 'Email', href: 'mailto:hugo@alliau.me', icon: 'bi:envelope', text: 'hugo[at]alliau.me', class: 'hover:text-primary-700 dark:hover:text-slate-400'},
+                    {title: 'LinkedIn', href: 'https://www.linkedin.com/in/%F0%9F%9A%B4-hugo-alliaume-34b475166/', icon: 'bi:linkedin', text: 'Hugo Alliaume', class: 'hover:text-linkedin'},
+                    {title: 'GitHub', href: 'https://github.com/Kocal', icon: 'bi:github', text: '@Kocal', class: 'hover:text-github'},
+                    {title: 'X (Twitter)', href: 'https://twitter.com/HugoAlliaume', icon: 'bi:twitter', text: '@HugoAlliaume', class: 'hover:text-twitter'},
+                    {title: 'Bluesky', href: 'https://bluesky.dev/hugo.alliau.me', icon: 'simple-icons:bluesky', text: 'hugo.alliau.me', class: 'hover:text-bsky'},
+                    {title: 'Mastodon', href: 'https://mastodon.social/@Kocal', icon: 'bi:mastodon', text: '@Kocal', class: 'hover:text-mastodon'},
+                ] %}
+                    <li>
+                        <a href="{{ network.href }}" title="{{ network.title }}" class="print:flex items-center gap-1 {{ network.class }} transition-colors" rel="me" itemprop="sameAs">
+                            <twig:UX:Icon :name="network.icon" width="2em" height="2em" />
+                            <span class="screen:hidden">{{ network.text }}</span>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+
+        <div class="flex-1">
+            <span><code><a href="https://github.com/Kocal/hugo.alliau.me/commit/{{ SOURCE_COMMIT }}">{{ SOURCE_COMMIT|slice(0, 8) }}</a></code></span>
+        </div>
     </div>
 </footer>
