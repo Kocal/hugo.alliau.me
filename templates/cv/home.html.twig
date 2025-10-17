@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}CV de Hugo Alliaume, développeur web full-stack.{% endblock %}
+{% block title %}CV | Hugo Alliaume{% endblock %}
 
 {% block seo %}
-    <meta name="description" content="CV de Hugo Alliaume, développeur web full-stack passionné, et contributeur open-source.">
+    <meta name="description" content="Curriculum vitae (CV) of Hugo Alliaume, full-stack web-developer and open-source contributor.">
 {% endblock %}
 
 {% block main %}
@@ -13,8 +13,8 @@
                 <div class="flex-1 flex flex-col justify-between gap-2">
                     <img
                         src="{{ asset('images/hugo-alliaume.jpeg') }}"
-                        width="130"
-                        height="130"
+                        width="169"
+                        height="169"
                         decoding="async"
                         loading="lazy"
                         alt="Hugo Alliaume"
@@ -24,7 +24,7 @@
                     <h1 class="text-2xl sm:text-3xl print:text-xl font-extrabold tracking-tight">Hugo Alliaume</h1>
 
                     <div class="text-sm">
-                        <p>Développeur web full-stack, contributeur open-source, et Symfony UX Core Team</p>
+                        <p>Full-stack web developer, open-source contributor, and Symfony UX Core Team</p>
                     </div>
 
                     <twig:Divider />
@@ -39,7 +39,7 @@
                             {title: 'Mastodon', href: 'https://mastodon.social/@Kocal', icon: 'bi:mastodon', text: '@Kocal', class: 'hover:text-mastodon'},
                         ] %}
                             <li>
-                                <a href="{{ network.href }}" title="{{ network.title }}" class="print:flex items-center gap-1 {{ network.class }} transition-colors">
+                                <a href="{{ network.href }}" title="{{ network.title }}" class="print:flex items-center gap-1 {{ network.class }} transition-colors" rel="me" itemprop="sameAs">
                                     <twig:UX:Icon :name="network.icon" width="1.2em" height="1.2em" />
                                     <span class="screen:hidden">{{ network.text }}</span>
                                 </a>

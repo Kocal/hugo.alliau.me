@@ -3,38 +3,33 @@
 {% block title %}Hugo Alliaume{% endblock %}
 
 {% block seo %}
-<meta name="description" content="Site personnel de Hugo Alliaume, développeur web full-stack.">
+    <meta name="description" content="Personal website of Hugo Alliaume, full-stack web-developer and open-source contributor.">
 {% endblock %}
 
 {% block main %}
 <main class="container mx-auto p-2 sm:py-4 max-w-screen-lg">
     <twig:Card class="p-2 sm:p-4">
         <h1 class="text-3xl sm:text-4xl font-extrabold mb-5 tracking-tight">
-            À propos
+            About me
         </h1>
 
         <div class="prose dark:prose-invert max-w-none" itemprop="disambiguatingDescription">
-            <p>Hugo Alliaume, lyonnais de cœur et développeur full-stack depuis 2009, j'aime apprendre de nombreuses et
-                nouvelles choses, et ainsi être au maximum polyvalent. Depuis, je me suis spécialisé dans le
-                développement web, principalement avec PHP et JavaScript, ainsi que dans l'optimisation des
-                performances côté serveur et navigateur.</p>
-            <p>J'ai rejoint en Août 2024 la <a href="https://ux.symfony.com/">Symfony UX</a> Core Team.
-                Fan de l'open-source depuis le début, j'y contribue soit avec mes propres projets, soit en travaillant
-                sur Symfony, plus particulièrement sur Webpack Encore et Symfony UX.</p>
-            <p>J'essaye de me rendre à la plupart des conférences et meetups PHP et Symfony, comme le SymfonyLive ou
-                ForumPHP, ou encore les meetups AFUP Lyon. Si vous souhaitez papoter un peu, vous pouvez sans doute me
-                trouver au buffet ! 🥪</p>
+            <p>Hugo Alliaume, a full-stack developer since 2009, French and Lyonnais at heart, I enjoy learning new things and being as versatile as possible. Since then, I have specialized in web development, mainly with PHP and JavaScript, as well as in optimizing performance on both the server and the browser.</p>
+            <p>I joined the <a href="https://ux.symfony.com/">Symfony UX</a> Core Team in August 2024. An open-source enthusiast since the beginning, I contribute either with my own projects or by working on Symfony, particularly on Webpack Encore and Symfony UX.</p>
+            <p>I try to attend most PHP and Symfony conferences and meetups, like SymfonyLive or ForumPHP, and the AFUP Lyon meetups. If you want to chat a bit, you'll probably find me at the buffet! 🥪</p>
         </div>
 
         <twig:Divider class="my-4" />
 
         <div class="prose dark:prose-invert max-w-none">
-            <p>Sur ce site, vous trouverez mes réseaux sociaux, mon <a href="{{ prefetch('/cv') }}">CV</a> et mon <a
-                    href="{{ prefetch('/blog') }}">blog</a>.</p>
+            <p>On this site you'll find my social profiles,
+                my <a href="{{ prefetch('/cv') }}" title="Hugo Alliaume — CV" aria-label="Curriculum Vitae">CV</a>
+                and my <a href="{{ prefetch('/blog') }}" title="Hugo Alliaume — Blog" aria-label="Blog">blog</a>.</p>
 
-            <p>Vous pouvez me retrouver sur <a href="https://github.com/hugoalliaume">GitHub</a>,
-                <a href="https://x.com/hugoalliaume">Twitter</a> et <a
-                    href="https://bsky.app/profile/hugo.alliau.me">Bluesky</a>.
+            <p>You can find me on
+                <a href="https://github.com/hugoalliaume" title="Hugo Alliaume on GitHub" aria-label="Hugo Alliaume on GitHub" rel="me" itemprop="sameAs">GitHub</a>,
+                <a href="https://x.com/hugoalliaume" title="Hugo Alliaume on X" aria-label="Hugo Alliaume on X" rel="me" itemprop="sameAs">X</a>
+                and <a href="https://bsky.app/profile/hugo.alliau.me" title="Hugo Alliaume on Bluesky" aria-label="Hugo Alliaume on Bluesky" rel="me" itemprop="sameAs">Bluesky</a>.
             </p>
         </div>
     </twig:Card>
