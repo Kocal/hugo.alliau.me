@@ -1,11 +1,5 @@
 {% extends 'blog/base.html.twig' %}
 
-{% block stylesheets %}
-    {{ parent() }}
-{#    <link rel="stylesheet" href="{{ asset('github-light.css') }}" media="(prefers-color-scheme: light)">#}
-    <link rel="stylesheet" href="{{ asset('github-dark-dimmed.css') }}">
-{% endblock %}
-
 {% block title %}{{ post.title }}{% endblock %}
 
 {% set post_url = url(app.current_route, app.current_route_parameters) %}
@@ -58,21 +52,19 @@
 {% block main %}
     <main class="container mx-auto p-2 max-w-full sm:max-w-screen-md">
         <article>
-            <twig:Card class="p-2 sm:p-4">
-                <header class="flex flex-col gap-4">
-                    <h1 class="text-2xl sm:text-5xl font-extrabold tracking-tight text-center">
-                        {{ post.title }}
-                    </h1>
+            <header class="flex flex-col gap-4">
+                <h1 class="text-3xl sm:text-5xl p-4 font-extrabold sm:leading-14 text-center">
+                    {{ post.title }}
+                </h1>
 
-                    <twig:Blog:PostMeta :post="post" tag-size="regular"/>
-                </header>
+                <twig:Blog:PostMeta :post="post" tag-size="regular"/>
+            </header>
 
-                <twig:Divider class="my-2 sm:my-3" />
+            <twig:Divider class="my-5" />
 
-                <section class="font-serif prose prose-xl dark:prose-invert prose-headings:relative max-w-none">
-                    {{ rendered_content|raw }}
-                </section>
-            </twig:Card>
+            <section class="font-serif prose prose-xl dark:prose-invert prose-headings:relative max-w-none">
+                {{ rendered_content|raw }}
+            </section>
 
             {# TODO: comments #}
             {# <footer> #}

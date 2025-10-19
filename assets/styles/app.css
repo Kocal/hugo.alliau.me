@@ -17,11 +17,11 @@
     --color-linkedin: #0077b5;
     --color-mastodon: #5c4adf;
 
-    --terminal-text-color: var(--color-gray-50);
-    --terminal-bg-color: var(--color-gray-800);
+    --terminal-text-color: #c2c8d6;
+    --terminal-bg-color: #282c34;
     --terminal-header-bg-color: var(--color-gray-900);
     --terminal-border-radius: var(--radius-lg);
-    --terminal-body-padding: --spacing(3);
+    --terminal-body-padding: --spacing(4);
 }
 
 @layer base {
@@ -46,30 +46,87 @@
 @layer components {
     .prose {
         font-size: var(--text-xl);
-        line-height: --spacing(10);
+        line-height: --spacing(8);
+        text-wrap: pretty;
 
         h2 {
-            font-size: var(--text-4xl);
-            margin: --spacing(10) 0;
+            font-size: var(--text-3xl);
+            margin: --spacing(7) 0;
+            line-height: --spacing(10);
+            color: var(--color-black);
         }
 
         h3 {
-            font-size: var(--text-3xl);
-            margin: --spacing(8) 0;
+            font-size: var(--text-2xl);
+            margin: --spacing(5) 0;
+            line-height: --spacing(8);
+            color: var(--color-black);
         }
 
-        p, .CustomContainer, .Terminal {
+        p, .CustomContainer, .Terminal, blockquote {
             margin-top: --spacing(5);
             margin-bottom: --spacing(5);
         }
 
-        code {
-            color: var(--terminal-text-color) !important;
-            background-color: var(--terminal-bg-color) !important;
+        *:not(pre) > code {
             padding: --spacing(1);
             border-radius: var(--terminal-border-radius);
             overflow-wrap: break-word;
-            font-size: 90%
+            font-size: 85%;
+            background-color: var(--terminal-bg-color);
+            color: var(--terminal-text-color);
+        }
+
+        blockquote {
+            font-style: italic;
+            border-inline-start: 4px solid var(--color-gray-300);
+            padding: --spacing(2) --spacing(4);
+            background-color: var(--color-gray-100);
+            quotes: "“" "”" "‘" "’";
+        }
+
+        ol, ul {
+            margin-top: --spacing(5);
+            margin-bottom: --spacing(5);
+            padding-inline-start: --spacing(6);
+
+            > li {
+                padding-inline-start: --spacing(2);
+            }
+        }
+
+        ul {
+            list-style-type: disc;
+        }
+
+        ol {
+            list-style-type: decimal;
+        }
+
+        li {
+            margin-top: --spacing(2);
+            margin-bottom: --spacing(2);
+        }
+
+        > ul > li p,
+        > ol > li p {
+            margin-top: --spacing(2);
+            margin-bottom: --spacing(2);
+        }
+
+        > ul > li > p:first-child,
+        > ol > li > p:first-child {
+            margin-top: --spacing(2);
+        }
+
+        > ul > li > p:last-child,
+        > ol > li > p:last-child {
+            margin-bottom: --spacing(2);
+        }
+
+        ul ul, ul ol, ol ul, ol ol {
+            margin-top: --spacing(3);
+            margin-bottom: --spacing(3);
         }
 
         h2 + *, h3 + * {
@@ -82,6 +139,24 @@
 
         & > :last-child {
             margin-bottom: 0;
+        }
+
+
+        @media (width >= theme(--breakpoint-sm)) {
+            font-size: var(--text-2xl);
+            line-height: --spacing(10);
+
+            h2 {
+                font-size: var(--text-4xl);
+                margin: --spacing(10) 0;
+                line-height: --spacing(12);
+            }
+
+            h2 {
+                font-size: var(--text-3xl);
+                margin: --spacing(8) 0;
+                line-height: --spacing(10);
+            }
         }
     }
 }
@@ -180,29 +255,7 @@
     pre {
         max-height: 100dvh;
         overflow: auto;
-
-        .hl-addition {
-            --hl-color: var(--color-green-500);
-        }
-
-        .hl-deletion {
-            --hl-color: var(--color-red-500);
-        }
-
-        .hl-addition, .hl-deletion {
-            background-color: color-mix(in oklab, var(--hl-color) 25%, transparent) !important;
-            position: relative;
-
-            &:before {
-                content: ' ';
-                position: absolute;
-                right: 100%;
-                top: 0;
-                bottom: 0;
-                width: var(--terminal-body-padding);
-                background-color: var(--hl-color);
-            }
-        }
+        padding: --spacing(2);
     }
 }
 
@@ -211,27 +264,23 @@
         color: var(--terminal-text-color);
         background-color: var(--terminal-bg-color);
         border-radius: var(--terminal-border-radius);
-        font-size: var(--text-base);
+        font-size: 16px;
         line-height: --spacing(6);
     }
 
     .Terminal__Header {
         background-color: var(--terminal-header-bg-color);
         border-radius: var(--terminal-border-radius) var(--terminal-border-radius) 0 0;
-        font-family: theme('fontFamily.mono');
-        font-size: theme('fontSize.sm');
+        font-family: var(--font-mono);
+        font-size: var(--text-sm);
         font-weight: bold;
-        padding: theme('spacing.1') theme('spacing.2');
+        padding: --spacing(1) --spacing(3);
         text-overflow: ellipsis;
         overflow: hidden;
     }
 
     .Terminal__Body {
         padding: var(--terminal-body-padding);
-
-        > pre {
-            color: var(--terminal-text-color) !important;
-            background-color: transparent !important;
-        }
+        border-radius: var(--terminal-border-radius);
     }
 }

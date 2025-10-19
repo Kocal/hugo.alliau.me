@@ -19,11 +19,9 @@ final class CustomContainerRenderer implements NodeRendererInterface
         }
 
         $type = $node->getType();
-        $title = $node->getTitle();
 
         return <<<HTML
             <div class="CustomContainer CustomContainer--{$type}">
-                <p class="CustomContainer__Title">{$title}</p>
                 <div class="prose max-w-none">{$childRenderer->renderNodes($node->children())}</div>
             </div>
 HTML;
