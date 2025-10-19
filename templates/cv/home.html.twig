@@ -40,8 +40,8 @@
                         ] %}
                             <li>
                                 <a href="{{ network.href }}" title="{{ network.title }}" class="print:flex items-center gap-1 {{ network.class }} transition-colors" rel="me" itemprop="sameAs">
-                                    <twig:UX:Icon :name="network.icon" width="1.2em" height="1.2em" />
-                                    <span class="screen:hidden">{{ network.text }}</span>
+                                    <twig:UX:Icon :name="network.icon" width="1.6em" height="1.6em" />
+                                    <span class="hidden print:block">{{ network.text }}</span>
                                 </a>
                             </li>
                         {% endfor %}

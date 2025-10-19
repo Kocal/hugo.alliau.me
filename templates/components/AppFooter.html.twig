@@ -1,28 +1,27 @@
-{% props float = false %}
 <footer {{ attributes.defaults({
     role: 'contentinfo',
-    class: 'print:hidden',
+    class: 'inset-shadow-sm bg-slate-100 dark:bg-zinc-900 print:hidden',
 }) }}>
-    <div class="container mx-auto sm:pt-14 sm:pb-8 max-w-screen-lg flex gap-4">
-        <div class="flex flex-col gap-4">
-            <div class="flex gap-4">
+    <div class="container mx-auto py-6 sm:py-12 max-w-screen-lg flex gap-4 flex-col sm:flex-row">
+        <div>
+            <div class="flex justify-center gap-x-4 px-2">
                 <img
                     src="{{ asset('images/hugo-alliaume.jpeg') }}"
-                    width="64"
-                    height="64"
+                    width="92"
+                    height="92"
                     decoding="async"
                     loading="lazy"
                     alt="Hugo Alliaume"
-                    class="rounded-full shadow-lg self-start"
+                    class="row-span-2 rounded-full shadow-lg self-start"
                 />
 
                 <div>
                     <span class="self-center text-2xl sm:text-3xl print:text-xl font-extrabold tracking-tight">Hugo Alliaume</span>
-                    <p class="text-sm mt-1">Full-stack web developer,<br> open-source contributor,<br> Symfony UX Core Team</p>
+                    <p class="mt-2 text-sm">Full-stack web developer,<br> open-source contributor,<br> Symfony UX Core Team</p>
                 </div>
             </div>
 
-            <ul class="flex  gap-2 text-sm">
+            <ul class="mt-4 flex justify-center gap-2 text-sm">
                 {% for network in [
                     {title: 'Email', href: 'mailto:hugo@alliau.me', icon: 'bi:envelope', text: 'hugo[at]alliau.me', class: 'hover:text-primary-700 dark:hover:text-slate-400'},
                     {title: 'LinkedIn', href: 'https://www.linkedin.com/in/%F0%9F%9A%B4-hugo-alliaume-34b475166/', icon: 'bi:linkedin', text: 'Hugo Alliaume', class: 'hover:text-linkedin'},
@@ -32,18 +31,41 @@
                     {title: 'Mastodon', href: 'https://mastodon.social/@Kocal', icon: 'bi:mastodon', text: '@Kocal', class: 'hover:text-mastodon'},
                 ] %}
                     <li>
-                        <a href="{{ network.href }}" title="{{ network.title }}" class="print:flex items-center gap-1 {{ network.class }} transition-colors" rel="me" itemprop="sameAs">
-                            <twig:UX:Icon :name="network.icon" width="2em" height="2em" />
-                            <span class="screen:hidden">{{ network.text }}</span>
+                        <a href="{{ network.href }}" title="{{ network.title }}" class="print:flex items-center gap-2 {{ network.class }} transition-colors" rel="me" itemprop="sameAs">
+                            <twig:UX:Icon :name="network.icon" width="1.6em" height="1.6em" />
+                            <span class="hidden print:block">{{ network.text }}</span>
                         </a>
                     </li>
                 {% endfor %}
             </ul>
         </div>
+        <div class="flex-1 flex items-center justify-center px-2">
+            <blockquote class="empty:hidden max-w-sm text-center before:content-['“'] after:content-['”'] italic text-2xl font-serif"></blockquote>
+            <script>
+                const quotes = [
+                    "Don't forget about DX!",
+                    "Eat 5 fruits and vegetables a day.",
+                    "When you read this, I may be enjoying a nice meal.",
+                    "Faites-mieux !",
+                    "Glory to DDD and CQRS!",
+                    "Do not fear contributing to open source, even the smallest contributions count!",
+                    "I'm probably working on Symfony UX right now.",
+                    "Rest in peace, Ryan ❤️",
+                    "Free Palestine! 🇵🇸",
+                    "Free Ukraine! 🇺🇦",
+                    "Not using PHPStan, PHP-CS-Fixer, or Rector? What are you waiting for?",
+                    "Symfony! Symfony! Symfony!",
+                    "Keep your dependencies up to date!",
+                ];
 
-
-        <div class="flex-1">
-            <span><code><a href="https://github.com/Kocal/hugo.alliau.me/commit/{{ SOURCE_COMMIT }}">{{ SOURCE_COMMIT|slice(0, 8) }}</a></code></span>
+                document.currentScript.previousElementSibling.textContent = quotes[Math.floor(Math.random() * quotes.length)];
+            </script>
+        </div>
+    </div>
+    <div class="border-t border-slate-200">
+        <div class="container max-w-screen-lg mx-auto p-2 text-xs">
+            {{ 'now'|date('Y') }}
+            &bullet; Revision <a href="https://github.com/Kocal/hugo.alliau.me/commit/{{ SOURCE_COMMIT }}" class="font-mono">{{ SOURCE_COMMIT|slice(0, 8) }}</a>
         </div>
     </div>
 </footer>

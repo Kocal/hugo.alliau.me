@@ -1,6 +1,23 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@source not "../../public";
+@plugin "@tailwindcss/typography";
+
+@theme {
+    --font-sans: "Inter var", "Inter Variable Fallback", "ui-sans-serif", "system-ui", "sans-serif", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI", "Symbol", "Noto Color Emoji";
+    --font-sans--font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+
+    --color-primary-50: var(--color-pink-50);
+    --color-primary-500: var(--color-pink-500);
+    --color-primary-600: var(--color-pink-600);
+    --color-primary-700: var(--color-pink-700);
+    --color-primary-800: var(--color-pink-800);
+
+    --color-bsky: #0a7aff;
+    --color-github: #181717;
+    --color-twitter: #00acee;
+    --color-linkedin: #0077b5;
+    --color-mastodon: #5c4adf;
+}
 
 @layer base {
     @font-face {
