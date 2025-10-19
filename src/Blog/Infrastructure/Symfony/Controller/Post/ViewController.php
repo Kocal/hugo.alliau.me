@@ -62,7 +62,6 @@ final class ViewController extends AbstractController
         return $this->render('blog/posts/view/index.html.twig', [
             'post' => $post,
             'rendered_content' => $markdownDocument->renderedContent,
-            'rendered_toc' => $markdownDocument->renderedToc,
         ], $response);
     }
 }

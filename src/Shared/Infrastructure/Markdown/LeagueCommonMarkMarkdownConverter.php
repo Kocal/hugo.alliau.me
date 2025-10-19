@@ -51,12 +51,11 @@ final readonly class LeagueCommonMarkMarkdownConverter implements MarkdownConver
         $this->environment->addExtension(new CommonMarkCoreExtension());
         $this->environment->addExtension(new GithubFlavoredMarkdownExtension());
         $this->environment->addExtension(new HeadingPermalinkExtension());
-        $this->environment->addExtension(new TableOfContentsExtension());
         $this->environment->addExtension(new CustomContainerExtension());
         $this->environment->addExtension(new GitHubEmojisExtension());
         $this->environment->addExtension(new AttributesExtension());
         $this->environment->addRenderer(FencedCode::class, new CodeBlockRenderer(
-            static fn (): \Tempest\Highlight\Highlighter => new Highlighter()->withGutter(),
+            static fn (): \Tempest\Highlight\Highlighter => new Highlighter(),
         ));
         $this->environment->addRenderer(Code::class, new InlineCodeBlockRenderer());
 
@@ -67,29 +66,13 @@ final readonly class LeagueCommonMarkMarkdownConverter implements MarkdownConver
     public function __invoke(string $input): MarkdownDocument
     {
         $document = $this->parser->parse($input);
-        $toc = $this->extractToc($document);
 
         $htmlRenderer = new HtmlRenderer($this->environment);
 
         return new MarkdownDocument(
             renderedContent: $htmlRenderer->renderNodes([$document]),
-            renderedToc: $toc instanceof \League\CommonMark\Node\Node ? $htmlRenderer->renderNodes([$toc]) : null,
             webLinks: $this->getWebLinks($document),
         );
-    }
-
-    private function extractToc(Document $document): Node|null
-    {
-        $toc = new Query()
-            ->where(Query::type(TableOfContents::class))
-            ->findOne($document);
-
-        if ($toc instanceof \League\CommonMark\Node\Node) {
-            $toc->detach();
-            return $toc;
-        }
-
-        return null;
     }
 
     /**

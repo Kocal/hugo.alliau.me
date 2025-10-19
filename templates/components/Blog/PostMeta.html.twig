@@ -2,7 +2,7 @@
     <div class="flex items-center gap-x-1">
         <twig:UX:Icon name="flowbite:clock-outline" aria-label="Publication date" class="shrink-0"/>
 
-        <time datetime="{{ post.publishedAt|date('c') }}" class="uppercase text-sm font-bold">
+        <time datetime="{{ post.publishedAt|date('c') }}" class="text-sm font-bold">
             {{ post.publishedAt|format_datetime('long', 'none') }}
         </time>
     </div>
@@ -11,7 +11,8 @@
         <ul class="flex flex-row flex-wrap gap-1">
             {% for tag in post.tags %}
                 <li>
-                    <twig:Badge size="sm" href="{{ path(constant('App\\Blog\\Domain\\Route::TAG_VIEW').value, {tag}) }}">
+                    <twig:Badge href="{{ path(constant('App\\Blog\\Domain\\Route::TAG_VIEW').value, {tag}) }}">
+                        <twig:ux:icon name="tabler:tag-filled" class="size-3 inline mr-1" />
                         {{- tag -}}
                     </twig:Badge>
                 </li>

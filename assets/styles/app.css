@@ -1,6 +1,5 @@
 @import "tailwindcss";
 @source not "../../public";
-@plugin "@tailwindcss/typography";
 
 @theme {
     --font-sans: "Inter var", "Inter Variable Fallback", "ui-sans-serif", "system-ui", "sans-serif", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI", "Symbol", "Noto Color Emoji";
@@ -17,6 +16,12 @@
     --color-twitter: #00acee;
     --color-linkedin: #0077b5;
     --color-mastodon: #5c4adf;
+
+    --terminal-text-color: var(--color-gray-50);
+    --terminal-bg-color: var(--color-gray-800);
+    --terminal-header-bg-color: var(--color-gray-900);
+    --terminal-border-radius: var(--radius-lg);
+    --terminal-body-padding: --spacing(3);
 }
 
 @layer base {
@@ -35,6 +40,49 @@
         font-style: italic;
         font-named-instance: "Regular";
         src: url('../vendor/inter-ui/variable/InterVariable-Italic.woff2') format("woff2")
+    }
+}
+
+@layer components {
+    .prose {
+        font-size: var(--text-xl);
+        line-height: --spacing(10);
+
+        h2 {
+            font-size: var(--text-4xl);
+            margin: --spacing(10) 0;
+        }
+
+        h3 {
+            font-size: var(--text-3xl);
+            margin: --spacing(8) 0;
+        }
+
+        p, .CustomContainer, .Terminal {
+            margin-top: --spacing(5);
+            margin-bottom: --spacing(5);
+        }
+
+        code {
+            color: var(--terminal-text-color) !important;
+            background-color: var(--terminal-bg-color) !important;
+            padding: --spacing(1);
+            border-radius: var(--terminal-border-radius);
+            overflow-wrap: break-word;
+            font-size: 90%
+        }
+
+        h2 + *, h3 + * {
+            margin-top: 0;
+        }
+
+        & > :first-child {
+            margin-top: 0;
+        }
+
+        & > :last-child {
+            margin-bottom: 0;
+        }
     }
 }
 
@@ -113,7 +161,7 @@
         }
     }
 
-    *:hover > .heading-permalink {
+    *:hover > & {
         opacity: 1;
     }
 
@@ -133,34 +181,38 @@
         max-height: 100dvh;
         overflow: auto;
 
-        .hl-gutter {
-            user-select: none;
-            font-size: initial !important;
+        .hl-addition {
+            --hl-color: var(--color-green-500);
+        }
 
-            &:is(.hl-gutter-addition, .hl-gutter-deletion) {
-                margin-right: 0;
-            }
+        .hl-deletion {
+            --hl-color: var(--color-red-500);
         }
 
         .hl-addition, .hl-deletion {
-            padding-left: 1ch;
+            background-color: color-mix(in oklab, var(--hl-color) 25%, transparent) !important;
+            position: relative;
+
+            &:before {
+                content: ' ';
+                position: absolute;
+                right: 100%;
+                top: 0;
+                bottom: 0;
+                width: var(--terminal-body-padding);
+                background-color: var(--hl-color);
+            }
         }
     }
 }
 
 @layer components {
     .Terminal {
-        --terminal-bg-color: theme('colors.gray.50');
-        --terminal-header-bg-color: theme('colors.gray.100');
-        --terminal-border-radius: theme('borderRadius.lg');
-
+        color: var(--terminal-text-color);
         background-color: var(--terminal-bg-color);
         border-radius: var(--terminal-border-radius);
-
-        @media (prefers-color-scheme: dark) {
-            --terminal-bg-color: theme('colors.gray.900');
-            --terminal-header-bg-color: theme('colors.gray.950');
-        }
+        font-size: var(--text-base);
+        line-height: --spacing(6);
     }
 
     .Terminal__Header {
@@ -175,10 +227,11 @@
     }
 
     .Terminal__Body {
-        padding: theme('spacing.2') 0;
+        padding: var(--terminal-body-padding);
 
         > pre {
-            background-color: transparent;
+            color: var(--terminal-text-color) !important;
+            background-color: transparent !important;
         }
     }
 }
