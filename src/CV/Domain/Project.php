@@ -41,7 +41,9 @@ class Project implements CacheableEntity
     ])]
     private array $techStack = [];
 
-    #[ORM\Column(options: ['default' => false])]
+    #[ORM\Column(options: [
+        'default' => false,
+    ])]
     private bool $visible = false;
 
     #[ORM\Column]

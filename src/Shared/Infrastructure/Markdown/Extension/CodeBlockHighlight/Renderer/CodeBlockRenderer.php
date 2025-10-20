@@ -15,7 +15,7 @@ final readonly class CodeBlockRenderer implements NodeRendererInterface
     #[\Override]
     public function render(Node $node, ChildNodeRendererInterface $childRenderer): \Stringable|string|null
     {
-        if (!$node instanceof FencedCode) {
+        if (! $node instanceof FencedCode) {
             throw new InvalidArgumentException('Block must be instance of ' . FencedCode::class);
         }
 
