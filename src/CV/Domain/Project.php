@@ -41,6 +41,11 @@ class Project implements CacheableEntity
     ])]
     private array $techStack = [];
 
+    #[ORM\Column(options: [
+        'default' => false,
+    ])]
+    private bool $visible = false;
+
     #[ORM\Column]
     private \DateTimeImmutable $createdAt;
 
@@ -121,6 +126,18 @@ class Project implements CacheableEntity
     public function setTechStack(array $techStack): static
     {
         $this->techStack = array_values($techStack);
+
+        return $this;
+    }
+
+    public function isVisible(): bool
+    {
+        return $this->visible;
+    }
+
+    public function setVisible(bool $visible): static
+    {
+        $this->visible = $visible;
 
         return $this;
     }

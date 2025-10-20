@@ -6,6 +6,7 @@
 parameters:
     # https://symfony.com/doc/current/performance.html#dump-the-service-container-into-a-single-file
     .container.dumper.inline_factories: true
+
     app.menu_definition:
         - label: 'Blog'
           route: !php/enum App\Blog\Domain\Route::HOME->value
@@ -16,7 +17,7 @@ parameters:
                   - route: !php/enum App\Blog\Domain\Route::TAG_VIEW->value
         - label: 'CV'
           route: !php/enum App\CV\Domain\Route::INDEX->value
-        - label: 'Place'
+        - label: 'Places'
           route: !php/enum App\Places\Domain\Route::INDEX->value
 
 imports:

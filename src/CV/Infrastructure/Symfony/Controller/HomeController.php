@@ -45,7 +45,7 @@ final class HomeController extends AbstractController
         }
 
         $professionalExperiences = $professionalExperienceRepository->findAll();
-        $projects = $projectRepository->findAll();
+        $projects = $projectRepository->findAllVisible();
 
         return $this->render('cv/home.html.twig', [
             'professional_experiences' => $professionalExperiences,
@@ -53,7 +53,7 @@ final class HomeController extends AbstractController
             'skills' => [
                 'Backend' => ['PHP', 'Symfony', 'PHPUnit', 'PHPStan', 'Symfony CLI', 'Docker Compose', 'CI & CD', 'DevOps'],
                 'Frontend' => ['JavaScript', 'TypeScript', 'Symfony UX', 'Vue', 'Stimulus', 'Webpack Encore', 'Cypress', 'Playwright', 'Tailwind CSS'],
-                'Performances web' => ['Core Web Vitals', 'Blackfire', 'WebPageTest'],
+                'Web perfs' => ['Core Web Vitals', 'Blackfire', 'WebPageTest'],
             ],
         ], $response);
     }

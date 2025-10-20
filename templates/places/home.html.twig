@@ -1,7 +1,11 @@
 {% extends 'base.html.twig' %}
-{% set footer_float = true %}
+{% set show_footer = false %}
 
-{% block title %}Hugo Alliaume's Places{% endblock %}
+{% block title %}My favorite places | Hugo Alliaume{% endblock %}
+
+{% block seo %}
+    <meta name="description" content="My favorite places around the world!">
+{% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}

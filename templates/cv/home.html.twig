@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}CV de Hugo Alliaume, développeur web full-stack.{% endblock %}
+{% block title %}CV | Hugo Alliaume{% endblock %}
 
 {% block seo %}
-    <meta name="description" content="CV de Hugo Alliaume, développeur web full-stack passionné, et contributeur open-source.">
+    <meta name="description" content="Curriculum vitae (CV) of Hugo Alliaume, full-stack web-developer and open-source contributor.">
 {% endblock %}
 
 {% block main %}
@@ -13,8 +13,8 @@
                 <div class="flex-1 flex flex-col justify-between gap-2">
                     <img
                         src="{{ asset('images/hugo-alliaume.jpeg') }}"
-                        width="130"
-                        height="130"
+                        width="169"
+                        height="169"
                         decoding="async"
                         loading="lazy"
                         alt="Hugo Alliaume"
@@ -24,7 +24,7 @@
                     <h1 class="text-2xl sm:text-3xl print:text-xl font-extrabold tracking-tight">Hugo Alliaume</h1>
 
                     <div class="text-sm">
-                        <p>Développeur web full-stack, contributeur open-source, et Symfony UX Core Team</p>
+                        <p>Full-stack web developer, open-source contributor, and Symfony UX Core Team</p>
                     </div>
 
                     <twig:Divider />
@@ -39,9 +39,9 @@
                             {title: 'Mastodon', href: 'https://mastodon.social/@Kocal', icon: 'bi:mastodon', text: '@Kocal', class: 'hover:text-mastodon'},
                         ] %}
                             <li>
-                                <a href="{{ network.href }}" title="{{ network.title }}" class="print:flex items-center gap-1 {{ network.class }} transition-colors">
-                                    <twig:UX:Icon :name="network.icon" width="1.2em" height="1.2em" />
-                                    <span class="screen:hidden">{{ network.text }}</span>
+                                <a href="{{ network.href }}" title="{{ network.title }}" class="print:flex items-center gap-1 {{ network.class }} transition-colors" rel="me" itemprop="sameAs">
+                                    <twig:UX:Icon :name="network.icon" width="1.6em" height="1.6em" />
+                                    <span class="hidden print:block">{{ network.text }}</span>
                                 </a>
                             </li>
                         {% endfor %}
@@ -73,7 +73,7 @@
         <div class="flex flex-col gap-2 sm:gap-4">
             <twig:Card class="p-2 sm:p-3 print:shadow-none print:border">
                 <h2 class="text-2xl sm:text-3xl print:text-xl font-bold mb-4 print:mb-2 tracking-tight">
-                    Expériences professionnelles
+                    Professional Experiences
                 </h2>
 
                 <div class="flex flex-col gap-4 sm:gap-5 print:gap-2">
@@ -88,11 +88,11 @@
                                     {{ professional_experience.company }}
                                 </a>
                                 &bullet;
-                                <span class="uppercase text-sm font-bold">
+                                <span class=" text-sm font-bold">
                                     <time datetime="{{ professional_experience.startDate|date }}">{{ professional_experience.startDate|format_datetime(pattern: 'MMM yyyy', locale: 'fr') }}</time>
                                     &rightarrow;
                                     {% if professional_experience.endDate is null %}
-                                        <span>Présent</span>
+                                        <span>Now</span>
                                     {% else %}
                                         <time datetime="{{ professional_experience.endDate|date }}">{{ professional_experience.endDate|format_datetime(pattern: 'MMM yyyy', locale: 'fr') }}</time>
                                     {% endif %}
@@ -122,37 +122,39 @@
             </twig:Card>
         </div>
 
-        <twig:Card class="col-span-full p-2 sm:p-3 print:hidden">
-            <h2 class="text-2xl sm:text-3xl font-bold mb-4 tracking-tight">Projets</h2>
+        {% if projects %}
+            <twig:Card class="col-span-full p-2 sm:p-3 print:hidden">
+                <h2 class="text-2xl sm:text-3xl font-bold mb-4 tracking-tight">Projects</h2>
 
-            <div class="grid sm:grid-cols-2">
-                {% for project in projects %}
-                    <div class="flex flex-col gap-2 py-3 {{ loop.index is even ? 'pl-3' : 'pr-3' }}">
-                        <header>
-                            <h3 class="text-xl sm:text-2xl font-bold tracking-tight">
-                                <a href="{{ project.url }}">{{ project.name }}</a>
-                            </h3>
-                            <span class="uppercase text-sm font-bold">{{ project.date|date('Y') }}</span>
-                        </header>
+                <div class="grid sm:grid-cols-2">
+                    {% for project in projects %}
+                        <div class="flex flex-col gap-2 py-3 {{ loop.index is even ? 'pl-3' : 'pr-3' }}">
+                            <header>
+                                <h3 class="text-xl sm:text-2xl font-bold tracking-tight">
+                                    <a href="{{ project.url }}">{{ project.name }}</a>
+                                </h3>
+                                <span class="uppercase text-sm font-bold">{{ project.date|date('Y') }}</span>
+                            </header>
 
-                        <p>
-                            {{ project.description }}
-                        </p>
+                            <p>
+                                {{ project.description }}
+                            </p>
 
-                        <footer>
-                            <ul class="flex flex-wrap gap-1">
-                                {% for tech in project.techStack %}
-                                    <li>
-                                        <twig:Badge class="block" size="sm" color="gray">
-                                            {{ tech }}
-                                        </twig:Badge>
-                                    </li>
-                                {% endfor %}
-                            </ul>
-                        </footer>
-                    </div>
-                {% endfor %}
-            </div>
-        </twig:Card>
+                            <footer>
+                                <ul class="flex flex-wrap gap-1">
+                                    {% for tech in project.techStack %}
+                                        <li>
+                                            <twig:Badge class="block" size="sm" color="gray">
+                                                {{ tech }}
+                                            </twig:Badge>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </footer>
+                        </div>
+                    {% endfor %}
+                </div>
+            </twig:Card>
+        {% endif %}
     </main>
 {% endblock %}

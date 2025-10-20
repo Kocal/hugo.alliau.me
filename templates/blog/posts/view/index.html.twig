@@ -1,11 +1,5 @@
 {% extends 'blog/base.html.twig' %}
 
-{% block stylesheets %}
-    {{ parent() }}
-    <link rel="stylesheet" href="{{ asset('github-light.css') }}" media="(prefers-color-scheme: light)">
-    <link rel="stylesheet" href="{{ asset('github-dark-dimmed.css') }}" media="(prefers-color-scheme: dark)">
-{% endblock %}
-
 {% block title %}{{ post.title }}{% endblock %}
 
 {% set post_url = url(app.current_route, app.current_route_parameters) %}
@@ -56,24 +50,21 @@
 {% endblock %}
 
 {% block main %}
-<div class="container mx-auto p-2 sm:max-w-screen-xl sm:grid sm:grid-cols-12 gap-2">
-    <main class="max-w-full sm:col-span-9">
+    <main class="container mx-auto p-2 max-w-full sm:max-w-screen-md">
         <article>
-            <twig:Card class="p-2 sm:p-4">
-                <header>
-                    <h1 class="text-3xl sm:text-4xl font-extrabold mb-5 tracking-tight">
-                        {{ post.title }}
-                    </h1>
+            <header class="flex flex-col gap-4">
+                <h1 class="text-3xl sm:text-5xl p-4 font-extrabold sm:leading-14 text-center">
+                    {{ post.title }}
+                </h1>
 
-                    <twig:Blog:PostMeta :post="post" tag-size="regular"/>
-                </header>
+                <twig:Blog:PostMeta :post="post" tag-size="regular"/>
+            </header>
 
-                <twig:Divider class="my-2 sm:my-3" />
+            <twig:Divider class="my-5" />
 
-                <section class="prose dark:prose-invert prose-headings:relative max-w-none">
-                    {{ rendered_content|raw }}
-                </section>
-            </twig:Card>
+            <section class="font-serif prose prose-xl dark:prose-invert prose-headings:relative max-w-none">
+                {{ rendered_content|raw }}
+            </section>
 
             {# TODO: comments #}
             {# <footer> #}
@@ -83,19 +74,4 @@
             {# </footer> #}
         </article>
     </main>
-
-    <aside class="hidden sm:block sm:col-span-3">
-        {% if rendered_toc is not null %}
-            <twig:Card class="p-2 sticky top-16">
-                <h2 class="text-2xl sm:text-3xl font-bold mb-4 tracking-tight">
-                    Table of contents
-                </h2>
-
-                <div class="prose dark:prose-invert prose-sm prose-ul:pl-4 prose-ul:m-0 prose-li:mx-0 prose-li:my-1 prose-li:p-0">
-                    {{ rendered_toc|raw }}
-                </div>
-            </twig:Card>
-        {% endif %}
-    </aside>
-</div>
 {% endblock %}

@@ -14,10 +14,10 @@
         {% endblock %}
 
         {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-
             <script async src="{{ dns_prefetch('https://www.googletagmanager.com') }}/gtag/js?id=G-Z8KN175TJZ"></script>
             <script>window.dataLayer=window.dataLayer||[],window.gtag=function(){dataLayer.push(arguments)},gtag("js",new Date),gtag("config","G-Z8KN175TJZ");</script>
+
+            {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
 
         <meta name="color-scheme" content="dark light">
@@ -63,8 +63,7 @@
             }) }}
         {% endblock %}
     </head>
-    <body class="antialiased text-slate-700 dark:text-slate-200 dark:bg-slate-900 min-h-dvh flex flex-col">
-        <img src="{{ asset('images/bg.svg') }}" class="print:hidden fixed -z-10 h-[50%] sm:h-auto w-full object-cover opacity-10 blur-sm " fetchpriority="low" alt="" role="presentation" />
+    <body class="antialiased text-slate-700 dark:text-slate-200 dark:bg-slate-950 min-h-dvh flex flex-col">
         {% block body %}
             <twig:AppHeader/>
 
@@ -72,7 +71,9 @@
                 {% block main %}{% endblock %}
             </div>
 
-            <twig:AppFooter float="{{ footer_float|default(false) }}"/>
+            {% if show_footer ?? true %}
+                <twig:AppFooter />
+            {% endif %}
         {% endblock %}
     </body>
 </html>

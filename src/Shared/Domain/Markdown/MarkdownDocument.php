@@ -11,7 +11,6 @@ final readonly class MarkdownDocument
 {
     public function __construct(
         public string $renderedContent,
-        public ?string $renderedToc,
         /**
          * @var array<LinkInterface|EvolvableLinkInterface>
          */
