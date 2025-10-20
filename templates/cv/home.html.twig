@@ -73,7 +73,7 @@
         <div class="flex flex-col gap-2 sm:gap-4">
             <twig:Card class="p-2 sm:p-3 print:shadow-none print:border">
                 <h2 class="text-2xl sm:text-3xl print:text-xl font-bold mb-4 print:mb-2 tracking-tight">
-                    Expériences professionnelles
+                    Professional Experiences
                 </h2>
 
                 <div class="flex flex-col gap-4 sm:gap-5 print:gap-2">
@@ -88,11 +88,11 @@
                                     {{ professional_experience.company }}
                                 </a>
                                 &bullet;
-                                <span class="uppercase text-sm font-bold">
+                                <span class=" text-sm font-bold">
                                     <time datetime="{{ professional_experience.startDate|date }}">{{ professional_experience.startDate|format_datetime(pattern: 'MMM yyyy', locale: 'fr') }}</time>
                                     &rightarrow;
                                     {% if professional_experience.endDate is null %}
-                                        <span>Présent</span>
+                                        <span>Now</span>
                                     {% else %}
                                         <time datetime="{{ professional_experience.endDate|date }}">{{ professional_experience.endDate|format_datetime(pattern: 'MMM yyyy', locale: 'fr') }}</time>
                                     {% endif %}
@@ -122,37 +122,39 @@
             </twig:Card>
         </div>
 
-        <twig:Card class="col-span-full p-2 sm:p-3 print:hidden">
-            <h2 class="text-2xl sm:text-3xl font-bold mb-4 tracking-tight">Projets</h2>
+        {% if projects %}
+            <twig:Card class="col-span-full p-2 sm:p-3 print:hidden">
+                <h2 class="text-2xl sm:text-3xl font-bold mb-4 tracking-tight">Projects</h2>
 
-            <div class="grid sm:grid-cols-2">
-                {% for project in projects %}
-                    <div class="flex flex-col gap-2 py-3 {{ loop.index is even ? 'pl-3' : 'pr-3' }}">
-                        <header>
-                            <h3 class="text-xl sm:text-2xl font-bold tracking-tight">
-                                <a href="{{ project.url }}">{{ project.name }}</a>
-                            </h3>
-                            <span class="uppercase text-sm font-bold">{{ project.date|date('Y') }}</span>
-                        </header>
+                <div class="grid sm:grid-cols-2">
+                    {% for project in projects %}
+                        <div class="flex flex-col gap-2 py-3 {{ loop.index is even ? 'pl-3' : 'pr-3' }}">
+                            <header>
+                                <h3 class="text-xl sm:text-2xl font-bold tracking-tight">
+                                    <a href="{{ project.url }}">{{ project.name }}</a>
+                                </h3>
+                                <span class="uppercase text-sm font-bold">{{ project.date|date('Y') }}</span>
+                            </header>
 
-                        <p>
-                            {{ project.description }}
-                        </p>
+                            <p>
+                                {{ project.description }}
+                            </p>
 
-                        <footer>
-                            <ul class="flex flex-wrap gap-1">
-                                {% for tech in project.techStack %}
-                                    <li>
-                                        <twig:Badge class="block" size="sm" color="gray">
-                                            {{ tech }}
-                                        </twig:Badge>
-                                    </li>
-                                {% endfor %}
-                            </ul>
-                        </footer>
-                    </div>
-                {% endfor %}
-            </div>
-        </twig:Card>
+                            <footer>
+                                <ul class="flex flex-wrap gap-1">
+                                    {% for tech in project.techStack %}
+                                        <li>
+                                            <twig:Badge class="block" size="sm" color="gray">
+                                                {{ tech }}
+                                            </twig:Badge>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </footer>
+                        </div>
+                    {% endfor %}
+                </div>
+            </twig:Card>
+        {% endif %}
     </main>
 {% endblock %}

@@ -45,7 +45,7 @@ final class HomeController extends AbstractController
         }
 
         $professionalExperiences = $professionalExperienceRepository->findAll();
-        $projects = $projectRepository->findAll();
+        $projects = $projectRepository->findAllVisible();
 
         return $this->render('cv/home.html.twig', [
             'professional_experiences' => $professionalExperiences,

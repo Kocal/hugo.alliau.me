@@ -13,7 +13,7 @@ interface ProjectRepository
     /**
      * @return array<Project>
      */
-    public function findAll(): array;
+    public function findAllVisible(): array;
 
     public function findOneLatest(): Project|null;
 }
