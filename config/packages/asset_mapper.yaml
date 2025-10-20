@@ -4,7 +4,6 @@ framework:
         # The paths to make available to the asset mapper.
         paths:
             - assets
-            - vendor/tempest/highlight/src/Themes/Css
         missing_import_mode: strict
 
 when@prod:

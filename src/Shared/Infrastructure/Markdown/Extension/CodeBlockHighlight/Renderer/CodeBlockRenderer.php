@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Shared\Infrastructure\Markdown\Extension\TempestHighlight\Renderer;
+namespace App\Shared\Infrastructure\Markdown\Extension\CodeBlockHighlight\Renderer;
 
 use InvalidArgumentException;
 use League\CommonMark\Extension\CommonMark\Node\Block\FencedCode;

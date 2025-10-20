@@ -6,9 +6,9 @@ namespace App\Shared\Infrastructure\Markdown;
 
 use App\Shared\Domain\Markdown\MarkdownConverter;
 use App\Shared\Domain\Markdown\MarkdownDocument;
+use App\Shared\Infrastructure\Markdown\Extension\CodeBlockHighlight\Renderer\CodeBlockRenderer;
 use App\Shared\Infrastructure\Markdown\Extension\CustomContainer\CustomContainerExtension;
 use App\Shared\Infrastructure\Markdown\Extension\GitHubEmojis\GitHubEmojisExtension;
-use App\Shared\Infrastructure\Markdown\Extension\TempestHighlight\Renderer\CodeBlockRenderer;
 use App\Shared\Infrastructure\Markdown\Normalizer\SymfonySluggerNormalizer;
 use League\CommonMark\Environment\Environment;
 use League\CommonMark\Extension\Attributes\AttributesExtension;
@@ -18,8 +18,6 @@ use League\CommonMark\Extension\CommonMark\Node\Inline\Code;
 use League\CommonMark\Extension\CommonMark\Node\Inline\Image;
 use League\CommonMark\Extension\GithubFlavoredMarkdownExtension;
 use League\CommonMark\Extension\HeadingPermalink\HeadingPermalinkExtension;
-use League\CommonMark\Extension\TableOfContents\Node\TableOfContents;
-use League\CommonMark\Extension\TableOfContents\TableOfContentsExtension;
 use League\CommonMark\Node\Block\Document;
 use League\CommonMark\Node\Node;
 use League\CommonMark\Node\Query;
@@ -54,10 +52,7 @@ final readonly class LeagueCommonMarkMarkdownConverter implements MarkdownConver
         $this->environment->addExtension(new CustomContainerExtension());
         $this->environment->addExtension(new GitHubEmojisExtension());
         $this->environment->addExtension(new AttributesExtension());
-        $this->environment->addRenderer(FencedCode::class, new CodeBlockRenderer(
-            static fn (): \Tempest\Highlight\Highlighter => new Highlighter(),
-        ));
-        $this->environment->addRenderer(Code::class, new InlineCodeBlockRenderer());
+        $this->environment->addRenderer(FencedCode::class, new CodeBlockRenderer());
 
         $this->parser = new MarkdownParser($this->environment);
     }
