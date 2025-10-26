@@ -26,6 +26,7 @@ final class GitHubEmojisInlineParser implements InlineParserInterface
         $inlineContext->getCursor()->advanceBy($inlineContext->getFullMatchLength());
 
         $match = $inlineContext->getFullMatch();
+        dump($this->getTransliterator()->transliterate($match));
 
         $inlineContext->getContainer()->appendChild(
             new Text($this->getTransliterator()->transliterate($match) ?: $match)
@@ -36,6 +37,6 @@ final class GitHubEmojisInlineParser implements InlineParserInterface
 
     private function getTransliterator(): EmojiTransliterator
     {
-        return $this->emojiTransliterator ??= EmojiTransliterator::create('text-emoji');
+        return $this->emojiTransliterator ??= EmojiTransliterator::create('github-emoji');
     }
 }

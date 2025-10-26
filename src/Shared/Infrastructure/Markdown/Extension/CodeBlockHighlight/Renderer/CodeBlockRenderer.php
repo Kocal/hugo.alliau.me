@@ -24,11 +24,50 @@ final readonly class CodeBlockRenderer implements NodeRendererInterface
         $language = $matches['language'] ?? 'txt';
         $filename = trim($infoWords[1] ?? '', '[]') !== '' && trim($infoWords[1] ?? '', '[]') !== '0' ? trim($infoWords[1] ?? '', '[]') : null;
 
-        $output = '<pre data-controller="code-highlight" tabindex="0" data-lang="' . $language . '">' . htmlspecialchars(trim($node->getLiteral())) . '</pre>';
+        $codeOriginal = trim($node->getLiteral());
+        ['has_diff' => $hasDiff, 'code' => $codeClean] = $this->cleanCodeFromDiff($codeOriginal);
 
-        return '<div class="Terminal">'
-            . ($filename !== null && $filename !== '' && $filename !== '0' ? '<div class="Terminal__Header"><span title="' . $filename . '">' . $filename . '</span></div>' : '')
-            . '<div class="Terminal__Body">' . $output . '</div>'
-            . '</div>';
+        $output = sprintf(
+            '<pre class="%s" data-controller="code-highlight" data-code-highlight-code-value="%s" data-code-highlight-lang-value="%s"><code>%s</code></pre>',
+            implode(' ', ['shiki', $hasDiff ? 'has-diff' : '']),
+            htmlspecialchars($codeOriginal),
+            $language,
+            htmlspecialchars((string) $codeClean),
+        );
+
+        return sprintf(
+            '<div class="Terminal" tabindex="0">%s<div class="Terminal__Body">%s</div></div>',
+            $filename !== null && $filename !== '' && $filename !== '0'
+                ? sprintf('<div class="Terminal__Header"><span title="%s">%s</span></div>', $filename, $filename)
+                : '',
+            $output
+        );
+    }
+
+    /**
+     * @return array{ has_diff: bool, code: string }
+     */
+    private function cleanCodeFromDiff(string $code): array
+    {
+        $markerAdd = '[!code ++]';
+        $markerRemove = '[!code --]';
+        $comments = ['//', '#'];
+
+        if (! str_contains($code, $markerAdd) && ! str_contains($code, $markerRemove)) {
+            return [
+                'has_diff' => false,
+                'code' => $code,
+            ];
+        }
+
+        foreach ($comments as $comment) {
+            $code = str_replace($comment . ' ' . $markerAdd, '', $code);
+            $code = str_replace($comment . ' ' . $markerRemove, '', $code);
+        }
+
+        return [
+            'has_diff' => true,
+            'code' => $code,
+        ];
     }
 }

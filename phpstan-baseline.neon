@@ -97,12 +97,6 @@ parameters:
 			path: src/Shared/Infrastructure/Markdown/Extension/CustomContainer/Renderer/CustomContainerRenderer.php
 
 		-
-			message: '#^Parameter \#3 \$contents of class League\\CommonMark\\Util\\HtmlElement constructor expects array\<Stringable\>\|string\|Stringable\|null, list\<string\> given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/Shared/Infrastructure/Markdown/Extension/FencedCode/Renderer/FencedCodeRenderer.php
-
-		-
 			message: '#^Method App\\Shared\\Infrastructure\\Markdown\\Extension\\\CodeBlockHighlight\\Renderer\\CodeBlockRenderer\:\:render\(\) never returns Stringable so it can be removed from the return type\.$#'
 			identifier: return.unusedType
 			count: 1
