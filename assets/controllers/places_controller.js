@@ -17,8 +17,6 @@ export default class extends Controller {
     _onMapPreConnect = (event) => {
         const { L } = event.detail;
 
-        console.log(event.detail.extra);
-
         if (window.location.hash) {
             try {
                 const state = Object.fromEntries(new URLSearchParams(window.location.hash.slice(1)));
@@ -30,6 +28,10 @@ export default class extends Controller {
             } catch (e) {
                 console.error("Invalid state in URL hash:", e);
             }
+        } else {
+            // Hacky, but allows to fit bounds to markers on initial load.
+            // JavaScript side, because the page is behind HTTP cache
+            this.element.setAttribute('data-symfony--ux-leaflet-map--map-fit-bounds-to-markers-value', 'true');
         }
 
         event.detail.bridgeOptions = {};
@@ -50,8 +52,11 @@ export default class extends Controller {
             window.history.replaceState(state, "", `#${new URLSearchParams(state).toString()}`);
         };
 
-        map.addEventListener("zoom", () => updateState());
-        map.addEventListener("move", () => updateState());
+        // Event "load" does not work here, so we use a timeout as a workaround
+        setTimeout(() => {
+            map.addEventListener("zoom", () => updateState());
+            map.addEventListener("move", () => updateState());
+        }, 1000);
     };
 
     _onMarkerBeforeCreate(event) {
