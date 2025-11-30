@@ -1,4 +1,5 @@
 includes:
+    - vendor/kocal/phpstan-symfony-ux/extension.neon
     - vendor/phpstan/phpstan-symfony/extension.neon
     - vendor/phpstan/phpstan-doctrine/extension.neon
     - tools/phpstan/symfony-configuration.php
@@ -21,6 +22,9 @@ parameters:
 
     doctrine:
         objectManagerLoader: tools/phpstan/object-manager.php
+
+rules:
+    - Kocal\PHPStanSymfonyUX\Rules\TwigComponent\ClassMustBeFinalRule
 
 services:
 	-
