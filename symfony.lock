@@ -71,7 +71,7 @@
             "repo": "github.com/symfony/recipes-contrib",
             "branch": "main",
             "version": "1.0",
-            "ref": "b18279c5d08603ee1bb6c4e71fc90720bcf9f6cd"
+            "ref": "4bbabde32f7e116ae3910cdb886113ca3c6488cd"
         },
         "files": [
             ".oxlintrc.json",
