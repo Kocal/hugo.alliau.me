@@ -16,7 +16,11 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         ->autoconfigure();
 
     $services->load('App\\Places\\', '../../src/Places')
-        ->exclude('../../src/Places/Infrastructure/Foundry/Factory/**');
+        ->exclude([
+            '../../src/Places/Infrastructure/Foundry/Factory/**',
+            '../../src/Places/Domain/Google/Place/**',
+        ])
+    ;
 
     if ($containerConfigurator->env() === 'dev' || $containerConfigurator->env() === 'test') {
         $services->load('App\\Places\\Infrastructure\\Foundry\\Factory\\', '../../src/Places/Infrastructure/Foundry/Factory');
