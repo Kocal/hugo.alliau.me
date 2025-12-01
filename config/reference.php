@@ -788,7 +788,7 @@ namespace Symfony\Component\DependencyInjection\Loader\Configurator;
  *             user?: scalar|null, // Defaults to "root" at runtime.
  *             password?: scalar|null, // Defaults to null at runtime.
  *             override_url?: bool, // Deprecated: The "doctrine.dbal.override_url" configuration key is deprecated.
- *             dbname_suffix?: scalar|null,
+ *             dbname_suffix?: scalar|null, // Adds the given suffix to the configured database name, this option has no effects for the SQLite platform
  *             application_name?: scalar|null,
  *             charset?: scalar|null,
  *             path?: scalar|null,
@@ -839,7 +839,7 @@ namespace Symfony\Component\DependencyInjection\Loader\Configurator;
  *                 user?: scalar|null, // Defaults to "root" at runtime.
  *                 password?: scalar|null, // Defaults to null at runtime.
  *                 override_url?: bool, // Deprecated: The "doctrine.dbal.override_url" configuration key is deprecated.
- *                 dbname_suffix?: scalar|null,
+ *                 dbname_suffix?: scalar|null, // Adds the given suffix to the configured database name, this option has no effects for the SQLite platform
  *                 application_name?: scalar|null,
  *                 charset?: scalar|null,
  *                 path?: scalar|null,
@@ -871,7 +871,7 @@ namespace Symfony\Component\DependencyInjection\Loader\Configurator;
  *                 user?: scalar|null, // Defaults to "root" at runtime.
  *                 password?: scalar|null, // Defaults to null at runtime.
  *                 override_url?: bool, // Deprecated: The "doctrine.dbal.override_url" configuration key is deprecated.
- *                 dbname_suffix?: scalar|null,
+ *                 dbname_suffix?: scalar|null, // Adds the given suffix to the configured database name, this option has no effects for the SQLite platform
  *                 application_name?: scalar|null,
  *                 charset?: scalar|null,
  *                 path?: scalar|null,
@@ -899,10 +899,11 @@ namespace Symfony\Component\DependencyInjection\Loader\Configurator;
  *     },
  *     orm?: array{
  *         default_entity_manager?: scalar|null,
- *         auto_generate_proxy_classes?: scalar|null, // Auto generate mode possible values are: "NEVER", "ALWAYS", "FILE_NOT_EXISTS", "EVAL", "FILE_NOT_EXISTS_OR_CHANGED" // Default: false
+ *         auto_generate_proxy_classes?: scalar|null, // Auto generate mode possible values are: "NEVER", "ALWAYS", "FILE_NOT_EXISTS", "EVAL", "FILE_NOT_EXISTS_OR_CHANGED", this option is ignored when the "enable_native_lazy_objects" option is true // Default: false
  *         enable_lazy_ghost_objects?: bool, // Enables the new implementation of proxies based on lazy ghosts instead of using the legacy implementation // Default: true
- *         proxy_dir?: scalar|null, // Default: "%kernel.build_dir%/doctrine/orm/Proxies"
- *         proxy_namespace?: scalar|null, // Default: "Proxies"
+ *         enable_native_lazy_objects?: bool, // Enables the new native implementation of PHP lazy objects instead of generated proxies // Default: false
+ *         proxy_dir?: scalar|null, // Configures the path where generated proxy classes are saved when using non-native lazy objects, this option is ignored when the "enable_native_lazy_objects" option is true // Default: "%kernel.build_dir%/doctrine/orm/Proxies"
+ *         proxy_namespace?: scalar|null, // Defines the root namespace for generated proxy classes when using non-native lazy objects, this option is ignored when the "enable_native_lazy_objects" option is true // Default: "Proxies"
  *         controller_resolver?: bool|array{
  *             enabled?: bool, // Default: true
  *             auto_mapping?: bool|null, // Set to false to disable using route placeholders as lookup criteria when the primary key doesn't match the argument name // Default: null
@@ -938,7 +939,6 @@ namespace Symfony\Component\DependencyInjection\Loader\Configurator;
  *             class_metadata_factory_name?: scalar|null, // Default: "Doctrine\\ORM\\Mapping\\ClassMetadataFactory"
  *             default_repository_class?: scalar|null, // Default: "Doctrine\\ORM\\EntityRepository"
  *             auto_mapping?: scalar|null, // Default: false
- *             enable_native_lazy_objects?: bool, // Enables the new native implementation of PHP lazy objects instead of generated proxies // Default: false
  *             naming_strategy?: scalar|null, // Default: "doctrine.orm.naming_strategy.default"
  *             quote_strategy?: scalar|null, // Default: "doctrine.orm.quote_strategy.default"
  *             typed_field_mapper?: scalar|null, // Default: "doctrine.orm.typed_field_mapper.default"
@@ -947,7 +947,7 @@ namespace Symfony\Component\DependencyInjection\Loader\Configurator;
  *             repository_factory?: scalar|null, // Default: "doctrine.orm.container_repository_factory"
  *             schema_ignore_classes?: list<scalar|null>,
  *             report_fields_where_declared?: bool, // Set to "true" to opt-in to the new mapping driver mode that was added in Doctrine ORM 2.16 and will be mandatory in ORM 3.0. See https://github.com/doctrine/orm/pull/10455. // Default: true
- *             validate_xml_mapping?: bool, // Set to "true" to opt-in to the new mapping driver mode that was added in Doctrine ORM 2.14 and will be mandatory in ORM 3.0. See https://github.com/doctrine/orm/pull/6728. // Default: false
+ *             validate_xml_mapping?: bool, // Set to "true" to opt-in to the new mapping driver mode that was added in Doctrine ORM 2.14. See https://github.com/doctrine/orm/pull/6728. // Default: false
  *             second_level_cache?: array{
  *                 region_cache_driver?: string|array{
  *                     type?: scalar|null, // Default: null
@@ -1002,6 +1002,7 @@ namespace Symfony\Component\DependencyInjection\Loader\Configurator;
  *     },
  * }
  * @psalm-type DoctrineMigrationsConfig = array{
+ *     enable_service_migrations?: bool, // Whether to enable fetching migrations from the service container. // Default: false
  *     migrations_paths?: array<string, scalar|null>,
  *     services?: array<string, scalar|null>,
  *     factories?: array<string, scalar|null>,
