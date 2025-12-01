@@ -22,7 +22,7 @@ use PHPUnit\Framework\TestCase;
 #[UsesClass(Geometry::class)]
 #[UsesClass(Location::class)]
 #[CoversClass(Autocomplete::class)]
-class CreatePlaceTest extends TestCase
+final class CreatePlaceTest extends TestCase
 {
     public function testConstruct(): void
     {

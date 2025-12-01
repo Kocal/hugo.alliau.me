@@ -19,7 +19,7 @@ use PHPUnit\Framework\TestCase;
 #[UsesClass(AddressComponent::class)]
 #[UsesClass(Geometry::class)]
 #[UsesClass(Location::class)]
-class CreateAddressTest extends TestCase
+final class CreateAddressTest extends TestCase
 {
     public function testConstruct(): void
     {

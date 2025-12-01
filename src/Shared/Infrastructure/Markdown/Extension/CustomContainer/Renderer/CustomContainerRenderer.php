@@ -12,7 +12,7 @@ use League\CommonMark\Renderer\NodeRendererInterface;
 final class CustomContainerRenderer implements NodeRendererInterface
 {
     #[\Override]
-    public function render(Node $node, ChildNodeRendererInterface $childRenderer): \Stringable|string|null
+    public function render(Node $node, ChildNodeRendererInterface $childRenderer): string
     {
         if (! ($node instanceof CustomContainer)) {
             throw new \InvalidArgumentException('Incompatible node type: ' . $node::class);

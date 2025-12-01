@@ -23,12 +23,12 @@ use Symfony\Component\HttpFoundation\Request;
 #[UsesClass(CacheItem::class)]
 #[UsesClass(JsonLdExtension::class)]
 #[UsesClass(LoginFormAuthenticator::class)]
-class ViewPlacesControllerTest extends WebTestCase
+final class ViewPlacesControllerTest extends WebTestCase
 {
     #[\Override]
     protected function tearDown(): void
     {
-        static::ensureKernelShutdown();
+        self::ensureKernelShutdown();
     }
 
     public function testItShowsPlaces(): void
@@ -36,7 +36,7 @@ class ViewPlacesControllerTest extends WebTestCase
         $placeRepository = new FakePlaceRepository();
         $placeRepository->add(new Place());
 
-        $client = static::createClient();
+        $client = self::createClient();
         $client->getContainer()->set(PlaceRepository::class, $placeRepository);
 
         $client->request(Request::METHOD_GET, '/places');

@@ -53,7 +53,7 @@ final class CustomContainerBlockParser extends AbstractBlockContinueParser
     }
 
     #[\Override]
-    public function getBlock(): AbstractBlock
+    public function getBlock(): \App\Shared\Infrastructure\Markdown\Extension\CustomContainer\Node\CustomContainer
     {
         return $this->customContainer;
     }

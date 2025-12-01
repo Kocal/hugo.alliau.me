@@ -16,7 +16,7 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(AddressComponent::class)]
 #[CoversClass(Geometry::class)]
 #[CoversClass(Location::class)]
-class AutocompleteTest extends TestCase
+final class AutocompleteTest extends TestCase
 {
     public function testConstruct(): void
     {

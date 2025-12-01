@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 use function Symfony\Component\Translation\t;
 
 #[CoversClass(PlaceType::class)]
-class PlaceTypeTest extends TestCase
+final class PlaceTypeTest extends TestCase
 {
     public function testToTranslatable(): void
     {

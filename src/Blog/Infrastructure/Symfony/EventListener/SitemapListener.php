@@ -42,7 +42,6 @@ final readonly class SitemapListener
                     $urlGenerator->generate(RouteBlog::TAG_VIEW->value, [
                         'tag' => $tag,
                     ], UrlGeneratorInterface::ABSOLUTE_URL),
-                    null,
                 ),
                 'blog',
             );
