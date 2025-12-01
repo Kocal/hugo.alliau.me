@@ -13,7 +13,7 @@
         "doctrine/dbal": "^4.4",
         "doctrine/doctrine-bundle": "^3.1.0",
         "doctrine/doctrine-migrations-bundle": "^3.7",
-        "doctrine/orm": "^3.5.8",
+        "doctrine/orm": "^3.5",
         "easycorp/easyadmin-bundle": "^4.27.4",
         "knplabs/knp-menu-bundle": "^3.7",
         "kocal/oxlint-bundle": "^1.1.1",
