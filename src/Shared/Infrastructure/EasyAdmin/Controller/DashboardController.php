@@ -46,14 +46,14 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
 
         yield MenuItem::section('Blog');
-        yield MenuItem::linkToCrud('Posts', 'fas fa-newspaper', Blog\Domain\Post::class);
+        yield MenuItem::linkToCrud('Posts', 'fas fa-newspaper', Blog\Domain\Data\Post::class);
 
         yield MenuItem::section('CV');
-        yield MenuItem::linkToCrud('Professional experiences', 'fas fa-briefcase', CV\Domain\ProfessionalExperience::class);
-        yield MenuItem::linkToCrud('Projects', 'fas fa-gears', CV\Domain\Project::class);
+        yield MenuItem::linkToCrud('Professional experiences', 'fas fa-briefcase', CV\Domain\Data\ProfessionalExperience::class);
+        yield MenuItem::linkToCrud('Projects', 'fas fa-gears', CV\Domain\Data\Project::class);
 
         yield MenuItem::section('Places');
-        yield MenuItem::linkToCrud('Places', 'fas fa-map-marker-alt', Places\Domain\Place::class);
+        yield MenuItem::linkToCrud('Places', 'fas fa-map-marker-alt', Places\Domain\Data\Place::class);
 
         yield MenuItem::section('Tools');
         yield MenuItem::linkToUrl('Clear HTTP Cache', 'fas fa-server', '/admin/http-cache-clear');

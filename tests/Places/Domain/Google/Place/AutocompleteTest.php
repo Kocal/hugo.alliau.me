@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Tests\Places\Domain\Google\Place;
 
-use App\Places\Domain\Google\Place\AddressComponent;
-use App\Places\Domain\Google\Place\Autocomplete;
-use App\Places\Domain\Google\Place\Geometry;
-use App\Places\Domain\Google\Place\Location;
-use App\Places\Domain\PlaceType;
+use App\Places\Domain\Data\Google\Place\AddressComponent;
+use App\Places\Domain\Data\Google\Place\Autocomplete;
+use App\Places\Domain\Data\Google\Place\Geometry;
+use App\Places\Domain\Data\Google\Place\Location;
+use App\Places\Domain\Data\PlaceType;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
@@ -16,7 +16,7 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(AddressComponent::class)]
 #[CoversClass(Geometry::class)]
 #[CoversClass(Location::class)]
-class AutocompleteTest extends TestCase
+final class AutocompleteTest extends TestCase
 {
     public function testConstruct(): void
     {

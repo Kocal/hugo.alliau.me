@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Tests\Places\Domain\Command;
 
-use App\Places\Domain\Address;
 use App\Places\Domain\Command\CreateAddress;
 use App\Places\Domain\Command\CreateAddressHandler;
 use App\Places\Domain\Command\CreatePlace;
 use App\Places\Domain\Command\CreatePlaceHandler;
-use App\Places\Domain\Place;
-use App\Places\Domain\PlaceType;
+use App\Places\Domain\Data\Address;
+use App\Places\Domain\Data\Place;
+use App\Places\Domain\Data\PlaceType;
 use App\Shared\Domain\CQRS\CommandBus;
 use App\Tests\Places\Infrastructure\Double\Repository\FakePlaceRepository;
 use PHPUnit\Framework\Attributes\CoversClass;

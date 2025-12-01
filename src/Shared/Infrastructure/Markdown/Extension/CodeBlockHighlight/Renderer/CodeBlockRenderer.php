@@ -13,7 +13,7 @@ use League\CommonMark\Renderer\NodeRendererInterface;
 final readonly class CodeBlockRenderer implements NodeRendererInterface
 {
     #[\Override]
-    public function render(Node $node, ChildNodeRendererInterface $childRenderer): \Stringable|string|null
+    public function render(Node $node, ChildNodeRendererInterface $childRenderer): string
     {
         if (! $node instanceof FencedCode) {
             throw new InvalidArgumentException('Block must be instance of ' . FencedCode::class);
@@ -37,9 +37,9 @@ final readonly class CodeBlockRenderer implements NodeRendererInterface
 
         return sprintf(
             '<div class="Terminal" tabindex="0">%s<div class="Terminal__Body">%s</div></div>',
-            $filename !== null && $filename !== '' && $filename !== '0'
-                ? sprintf('<div class="Terminal__Header"><span title="%s">%s</span></div>', $filename, $filename)
-                : '',
+            in_array($filename, [null, '', '0'], true)
+                ? ''
+                : sprintf('<div class="Terminal__Header"><span title="%s">%s</span></div>', $filename, $filename),
             $output
         );
     }

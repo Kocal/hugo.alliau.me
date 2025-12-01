@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\CV\Infrastructure\Foundry\Factory;
 
-use App\CV\Domain\Project;
+use App\CV\Domain\Data\Project;
 use Zenstruck\Foundry\Persistence\PersistentProxyObjectFactory;
 
 /**

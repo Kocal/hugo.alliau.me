@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Blog\Domain\Repository;
 
-use App\Blog\Domain\Post;
+use App\Blog\Domain\Data\Post;
 
 interface PostRepository
 {

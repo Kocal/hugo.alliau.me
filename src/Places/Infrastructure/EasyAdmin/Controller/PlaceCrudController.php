@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace App\Places\Infrastructure\EasyAdmin\Controller;
 
 use App\Places\Domain\Command\CreatePlace;
-use App\Places\Domain\Google\Place\Autocomplete;
-use App\Places\Domain\Place;
-use App\Places\Domain\PlaceType;
+use App\Places\Domain\Data\Google\Place\Autocomplete;
+use App\Places\Domain\Data\Place;
+use App\Places\Domain\Data\PlaceType;
 use App\Shared\Domain\CQRS\CommandBus;
 use App\Shared\Domain\ObjectMapper\Command\MapObject;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;

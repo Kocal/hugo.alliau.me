@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\User\Infrastructure\Symfony\Security\Authenticator;
 
-use App\Shared\Domain\Route as RouteShared;
-use App\User\Domain\Route as RouteUser;
+use App\Shared\Domain\Data\Route as RouteShared;
+use App\User\Domain\Data\Route as RouteUser;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -51,7 +51,7 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
     #[\Override]
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
-        if (($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) !== null && ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) !== '' && ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) !== '0') {
+        if (! in_array($targetPath = $this->getTargetPath($request->getSession(), $firewallName), [null, '', '0'], true)) {
             return new RedirectResponse($targetPath);
         }
 

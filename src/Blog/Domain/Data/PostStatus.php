@@ -2,10 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Blog\Domain;
+namespace App\Blog\Domain\Data;
 
 enum PostStatus: string
 {
     case DRAFT = 'draft';
+
     case PUBLISHED = 'published';
 }

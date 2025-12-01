@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use App\Places\Domain\Google\Place\Autocomplete;
+use App\Places\Domain\Data\Google\Place\Autocomplete;
 use App\Places\Domain\Repository\PlaceRepository;
 use App\Places\Infrastructure\Doctrine\Repository\PlaceORMRepository;
 
@@ -16,7 +16,11 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         ->autoconfigure();
 
     $services->load('App\\Places\\', '../../src/Places')
-        ->exclude('../../src/Places/Infrastructure/Foundry/Factory/**');
+        ->exclude([
+            '../../src/Places/Domain/Data/**',
+            '../../src/Places/Infrastructure/Foundry/Factory/**',
+        ])
+    ;
 
     if ($containerConfigurator->env() === 'dev' || $containerConfigurator->env() === 'test') {
         $services->load('App\\Places\\Infrastructure\\Foundry\\Factory\\', '../../src/Places/Infrastructure/Foundry/Factory');
@@ -27,5 +31,6 @@ return static function (ContainerConfigurator $containerConfigurator): void {
 
     $services->set(Autocomplete::class)
         ->autowire(false)
+        ->tag('container.excluded')
         ->tag('valinor.warmup');
 };

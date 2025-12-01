@@ -3,11 +3,14 @@ framework:
         # Uncomment this (and the failed transport below) to send failed messages to this transport for later handling.
         # failure_transport: failed
 
-        # https://symfony.com/doc/current/messenger.html#transport-configuration
         transports:
+            # https://symfony.com/doc/current/messenger.html#transport-configuration
+            # async: '%env(MESSENGER_TRANSPORT_DSN)%'
+            # failed: 'doctrine://default?queue_name=failed'
             sync: 'sync://'
 
         routing:
+            # Route your messages to the transports
             'App\Shared\Domain\ObjectMapper\Command\MapObject': sync
             'App\Places\Domain\Command\CreatePlace': sync
             'App\Places\Domain\Command\CreateAddress': sync
@@ -26,7 +29,7 @@ framework:
                     - doctrine_transaction
 
         default_bus: messenger.bus.default
-        
+
 # when@test:
 #    framework:
 #        messenger:

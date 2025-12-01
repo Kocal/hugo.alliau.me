@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\User\Domain;
+namespace App\User\Domain\Data;
 
 use App\Shared\Domain\Data\ValueObject\UserId;
 use Doctrine\DBAL\Types\Types;

@@ -17,7 +17,10 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         ->autoconfigure();
 
     $services->load('App\\CV\\', '../../src/CV')
-        ->exclude('../../src/CV/Infrastructure/Foundry/Factory/**');
+        ->exclude([
+            '../../src/CV/Domain/Data/**',
+            '../../src/CV/Infrastructure/Foundry/Factory/**',
+        ]);
 
     if ($containerConfigurator->env() === 'dev' || $containerConfigurator->env() === 'test') {
         $services->load('App\\CV\\Infrastructure\\Foundry\\Factory\\', '../../src/CV/Infrastructure/Foundry/Factory');

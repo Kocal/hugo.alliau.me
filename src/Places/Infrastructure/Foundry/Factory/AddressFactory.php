@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Places\Infrastructure\Foundry\Factory;
 
-use App\Places\Domain\Address;
+use App\Places\Domain\Data\Address;
 use Zenstruck\Foundry\ObjectFactory;
 
 /**

@@ -29,7 +29,7 @@
         <link rel="canonical" href="{{ absolute_url(app.request.pathInfo) }}">
 
         <link rel="sitemap" type="application/xml" href="/sitemap.xml">
-        <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ path(constant('App\\Blog\\Domain\\Route::RSS').value) }}">
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ path(constant('App\\Blog\\Domain\\Data\\Route::RSS').value) }}">
 
         {% block seo %}{% endblock %}
 
@@ -38,7 +38,7 @@
                 '@context': "https://schema.org",
                 '@type': "WebSite",
                 name: "Hugo Alliaume's Website",
-                url: url(constant('App\\Blog\\Domain\\Route::HOME').value),
+                url: url(constant('App\\Blog\\Domain\\Data\\Route::HOME').value),
                 publisher: {
                     '@id': absolute_url('/#me'),
                 }
@@ -58,7 +58,7 @@
                     'https://www.linkedin.com/in/%F0%9F%9A%B4-hugo-alliaume-34b475166/',
                 ],
                 publishingPrinciples: [
-                    url(constant('App\\Blog\\Domain\\Route::HOME').value),
+                    url(constant('App\\Blog\\Domain\\Data\\Route::HOME').value),
                 ]
             }) }}
         {% endblock %}

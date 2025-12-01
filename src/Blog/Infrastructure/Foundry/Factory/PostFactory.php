@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Blog\Infrastructure\Foundry\Factory;
 
-use App\Blog\Domain\Post;
-use App\Blog\Domain\PostStatus;
+use App\Blog\Domain\Data\Post;
+use App\Blog\Domain\Data\PostStatus;
 use Zenstruck\Foundry\Persistence\PersistentProxyObjectFactory;
 
 /**

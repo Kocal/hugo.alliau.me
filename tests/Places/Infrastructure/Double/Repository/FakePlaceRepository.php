@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Places\Infrastructure\Double\Repository;
 
-use App\Places\Domain\Place;
+use App\Places\Domain\Data\Place;
 use App\Places\Domain\Repository\PlaceRepository;
 
 final class FakePlaceRepository implements PlaceRepository

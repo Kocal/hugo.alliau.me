@@ -15,7 +15,7 @@
                     <article class="py-2 first:pt-0 last:pb-0">
                         <header>
                             <h2 class="text-2xl sm:text-3xl font-bold tracking-tight mb-4">
-                                <a href="{{ prefetch(path(constant('App\\Blog\\Domain\\Route::POST_VIEW').value, {slug: post.slug})) }}">
+                                <a href="{{ prefetch(path(constant('App\\Blog\\Domain\\Data\\Route::POST_VIEW').value, {slug: post.slug})) }}">
                                     {{ post.title }}
                                 </a>
                             </h2>

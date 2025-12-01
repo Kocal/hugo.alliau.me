@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Tests\Places\Domain\Command;
 
-use App\Places\Domain\Address;
 use App\Places\Domain\Command\CreateAddress;
 use App\Places\Domain\Command\CreateAddressHandler;
+use App\Places\Domain\Data\Address;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;

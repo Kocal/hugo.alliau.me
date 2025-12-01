@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\CV\Domain\Repository;
 
-use App\CV\Domain\ProfessionalExperience;
+use App\CV\Domain\Data\ProfessionalExperience;
 
 interface ProfessionalExperienceRepository
 {

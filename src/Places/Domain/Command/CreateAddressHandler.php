@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Places\Domain\Command;
 
-use App\Places\Domain\Address;
+use App\Places\Domain\Data\Address;
 use App\Shared\Domain\CQRS\AsCommandHandler;
 
 #[AsCommandHandler]

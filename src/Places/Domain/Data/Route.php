@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Places\Domain;
+namespace App\Places\Domain\Data;
 
 enum Route: string
 {

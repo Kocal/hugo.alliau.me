@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Tests\Places\Domain\Factory;
 
-use App\Places\Domain\Google\Place\AddressComponent;
-use App\Places\Domain\Google\Place\Autocomplete;
-use App\Places\Domain\Google\Place\Geometry;
-use App\Places\Domain\Google\Place\Location;
-use App\Places\Domain\PlaceType;
+use App\Places\Domain\Data\Google\Place\AddressComponent;
+use App\Places\Domain\Data\Google\Place\Autocomplete;
+use App\Places\Domain\Data\Google\Place\Geometry;
+use App\Places\Domain\Data\Google\Place\Location;
+use App\Places\Domain\Data\PlaceType;
 
 final readonly class AutocompleteFactory
 {

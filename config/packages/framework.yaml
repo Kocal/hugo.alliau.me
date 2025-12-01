@@ -9,9 +9,6 @@ framework:
     #esi: true
     #fragments: true
 
-    router:
-        default_uri: '%env(APP_DEFAULT_URI)%'
-
 when@test:
     framework:
         test: true

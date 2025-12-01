@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Blog\Domain;
+namespace App\Blog\Domain\Data;
 
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;

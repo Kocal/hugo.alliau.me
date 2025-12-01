@@ -1,5 +1,8 @@
+# yaml-language-server: $schema=../vendor/symfony/dependency-injection/Loader/schema/services.schema.json
+
 # This file is the entry point to configure your own services.
 # Files in the packages/ subdirectory configure your dependencies.
+# See also https://symfony.com/doc/current/service_container/import.html
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
@@ -9,16 +12,16 @@ parameters:
 
     app.menu_definition:
         - label: 'Blog'
-          route: !php/enum App\Blog\Domain\Route::HOME->value
+          route: !php/enum App\Blog\Domain\Data\Route::HOME->value
           extras:
               routes:
-                  - route: !php/enum App\Blog\Domain\Route::POST_VIEW->value
-                  - route: !php/enum App\Blog\Domain\Route::TAG_LIST->value
-                  - route: !php/enum App\Blog\Domain\Route::TAG_VIEW->value
+                  - route: !php/enum App\Blog\Domain\Data\Route::POST_VIEW->value
+                  - route: !php/enum App\Blog\Domain\Data\Route::TAG_LIST->value
+                  - route: !php/enum App\Blog\Domain\Data\Route::TAG_VIEW->value
         - label: 'CV'
-          route: !php/enum App\CV\Domain\Route::INDEX->value
+          route: !php/enum App\CV\Domain\Data\Route::INDEX->value
         - label: 'Places'
-          route: !php/enum App\Places\Domain\Route::INDEX->value
+          route: !php/enum App\Places\Domain\Data\Route::INDEX->value
 
 imports:
     - { resource: 'services/*.php' }

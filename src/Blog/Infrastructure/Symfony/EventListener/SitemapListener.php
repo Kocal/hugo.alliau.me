@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Blog\Infrastructure\Symfony\EventListener;
 
+use App\Blog\Domain\Data\Route as RouteBlog;
 use App\Blog\Domain\Repository\PostRepository;
-use App\Blog\Domain\Route as RouteBlog;
 use Presta\SitemapBundle\Event\SitemapPopulateEvent;
 use Presta\SitemapBundle\Sitemap\Url\UrlConcrete;
 use Symfony\Component\EventDispatcher\Attribute\AsEventListener;
@@ -42,7 +42,6 @@ final readonly class SitemapListener
                     $urlGenerator->generate(RouteBlog::TAG_VIEW->value, [
                         'tag' => $tag,
                     ], UrlGeneratorInterface::ABSOLUTE_URL),
-                    null,
                 ),
                 'blog',
             );

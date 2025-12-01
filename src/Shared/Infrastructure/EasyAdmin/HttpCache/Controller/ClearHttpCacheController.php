@@ -10,7 +10,7 @@ use App\Shared\Infrastructure\EasyAdmin\Controller\DashboardController;
 use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Attribute\Route;
 
 final class ClearHttpCacheController extends AbstractController
@@ -23,7 +23,7 @@ final class ClearHttpCacheController extends AbstractController
     }
 
     #[Route('/admin/http-cache-clear', name: 'admin_http_cache_clear')]
-    public function __invoke(): Response
+    public function __invoke(Request $request): \Symfony\Component\HttpFoundation\RedirectResponse
     {
         try {
             $this->httpCache->clearAll();
@@ -35,6 +35,10 @@ final class ClearHttpCacheController extends AbstractController
             ]);
         }
 
-        return $this->redirect($this->adminUrlGenerator->setController(DashboardController::class)->generateUrl());
+        $previousUrl = $request->headers->has('referer') && ! str_contains((string) $request->headers->get('referer'), '/admin/http-cache-clear')
+            ? $request->headers->get('referer')
+            : $this->adminUrlGenerator->setController(DashboardController::class)->generateUrl();
+
+        return $this->redirect($previousUrl);
     }
 }

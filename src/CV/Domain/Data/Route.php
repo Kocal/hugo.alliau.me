@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\CV\Domain;
+namespace App\CV\Domain\Data;
 
 enum Route: string
 {

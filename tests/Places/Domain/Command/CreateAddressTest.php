@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace App\Tests\Places\Domain\Command;
 
 use App\Places\Domain\Command\CreateAddress;
-use App\Places\Domain\Google\Place\AddressComponent;
-use App\Places\Domain\Google\Place\Autocomplete;
-use App\Places\Domain\Google\Place\Geometry;
-use App\Places\Domain\Google\Place\Location;
+use App\Places\Domain\Data\Google\Place\AddressComponent;
+use App\Places\Domain\Data\Google\Place\Autocomplete;
+use App\Places\Domain\Data\Google\Place\Geometry;
+use App\Places\Domain\Data\Google\Place\Location;
 use App\Tests\Places\Domain\Factory\AutocompleteFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\UsesClass;
@@ -19,7 +19,7 @@ use PHPUnit\Framework\TestCase;
 #[UsesClass(AddressComponent::class)]
 #[UsesClass(Geometry::class)]
 #[UsesClass(Location::class)]
-class CreateAddressTest extends TestCase
+final class CreateAddressTest extends TestCase
 {
     public function testConstruct(): void
     {
