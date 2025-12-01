@@ -31,5 +31,6 @@ return static function (ContainerConfigurator $containerConfigurator): void {
 
     $services->set(Autocomplete::class)
         ->autowire(false)
+        ->tag('container.excluded')
         ->tag('valinor.warmup');
 };
