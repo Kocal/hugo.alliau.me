@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Tests\Places\Infrastructure\Symfony\Controller;
 
-use App\Places\Domain\Address;
-use App\Places\Domain\Place;
+use App\Places\Domain\Data\Address;
+use App\Places\Domain\Data\Place;
 use App\Places\Domain\Repository\PlaceRepository;
 use App\Places\Infrastructure\Symfony\Controller\ViewPlacesController;
 use App\Shared\Application\Twig\Extension\JsonLdExtension;

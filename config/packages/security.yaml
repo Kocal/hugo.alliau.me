@@ -8,7 +8,7 @@ security:
         # used to reload user from session & other features (e.g. switch_user)
         app_user_provider:
             entity:
-                class: App\User\Domain\User
+                class: App\User\Domain\Data\User
                 property: username
     firewalls:
         dev:
@@ -20,7 +20,7 @@ security:
             provider: app_user_provider
             custom_authenticator: App\User\Infrastructure\Symfony\Security\Authenticator\LoginFormAuthenticator
             logout:
-                path: !php/enum App\User\Domain\Route::LOGOUT->value
+                path: !php/enum App\User\Domain\Data\Route::LOGOUT->value
                 # where to redirect after logout
                 # target: app_any_route
 

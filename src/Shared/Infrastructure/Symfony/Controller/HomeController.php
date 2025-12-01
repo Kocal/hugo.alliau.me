@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Shared\Infrastructure\Symfony\Controller;
 
+use App\Shared\Domain\Data\Route as RouteShared;
 use App\Shared\Domain\HttpCache\CacheMethodsTrait;
-use App\Shared\Domain\Route as RouteShared;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

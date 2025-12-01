@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Places\Infrastructure\Foundry\Factory;
 
-use App\Places\Domain\Place;
-use App\Places\Domain\PlaceType;
+use App\Places\Domain\Data\Place;
+use App\Places\Domain\Data\PlaceType;
 use Zenstruck\Foundry\Persistence\PersistentProxyObjectFactory;
 
 /**

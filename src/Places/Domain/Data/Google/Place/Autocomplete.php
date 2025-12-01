@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Places\Domain\Google\Place;
+namespace App\Places\Domain\Data\Google\Place;
 
-use App\Places\Domain\PlaceType;
+use App\Places\Domain\Data\PlaceType;
 
 final class Autocomplete
 {

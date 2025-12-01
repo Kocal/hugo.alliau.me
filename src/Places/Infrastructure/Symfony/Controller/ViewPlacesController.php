@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Places\Infrastructure\Symfony\Controller;
 
+use App\Places\Domain\Data\Route as RoutePlaces;
 use App\Places\Domain\Repository\PlaceRepository;
-use App\Places\Domain\Route as RoutePlaces;
 use App\Shared\Domain\HttpCache\CacheMethodsTrait;
 use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

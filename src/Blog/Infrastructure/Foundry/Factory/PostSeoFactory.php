@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Blog\Infrastructure\Foundry\Factory;
 
-use App\Blog\Domain\PostSeo;
+use App\Blog\Domain\Data\PostSeo;
 use Zenstruck\Foundry\ObjectFactory;
 
 /**

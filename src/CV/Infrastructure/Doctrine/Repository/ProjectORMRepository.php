@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\CV\Infrastructure\Doctrine\Repository;
 
-use App\CV\Domain\Project;
+use App\CV\Domain\Data\Project;
 use App\CV\Domain\Repository\ProjectRepository;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;

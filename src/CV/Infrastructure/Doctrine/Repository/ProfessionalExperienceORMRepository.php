@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\CV\Infrastructure\Doctrine\Repository;
 
-use App\CV\Domain\ProfessionalExperience;
+use App\CV\Domain\Data\ProfessionalExperience;
 use App\CV\Domain\Repository\ProfessionalExperienceRepository;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;

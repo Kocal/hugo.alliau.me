@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\User\Infrastructure\Foundry\Factory;
 
-use App\User\Domain\User;
+use App\User\Domain\Data\User;
 use Zenstruck\Foundry\Persistence\PersistentProxyObjectFactory;
 
 /**

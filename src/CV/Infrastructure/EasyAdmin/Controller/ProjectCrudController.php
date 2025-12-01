@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\CV\Infrastructure\EasyAdmin\Controller;
 
-use App\CV\Domain\Project;
+use App\CV\Domain\Data\Project;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;

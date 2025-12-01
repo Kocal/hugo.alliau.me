@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\CV\Infrastructure\Symfony\Controller;
 
+use App\CV\Domain\Data\Route as RouteCv;
 use App\CV\Domain\Repository\ProfessionalExperienceRepository;
 use App\CV\Domain\Repository\ProjectRepository;
-use App\CV\Domain\Route as RouteCv;
 use App\Shared\Domain\HttpCache\CacheMethodsTrait;
 use Psr\Clock\ClockInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

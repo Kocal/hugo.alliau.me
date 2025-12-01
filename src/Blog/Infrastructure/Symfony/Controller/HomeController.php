@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Blog\Infrastructure\Symfony\Controller;
 
+use App\Blog\Domain\Data\Route as RouteBlog;
 use App\Blog\Domain\Repository\PostRepository;
-use App\Blog\Domain\Route as RouteBlog;
 use App\Shared\Domain\HttpCache\CacheMethodsTrait;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;

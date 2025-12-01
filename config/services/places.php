@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use App\Places\Domain\Google\Place\Autocomplete;
+use App\Places\Domain\Data\Google\Place\Autocomplete;
 use App\Places\Domain\Repository\PlaceRepository;
 use App\Places\Infrastructure\Doctrine\Repository\PlaceORMRepository;
 
@@ -17,8 +17,8 @@ return static function (ContainerConfigurator $containerConfigurator): void {
 
     $services->load('App\\Places\\', '../../src/Places')
         ->exclude([
+            '../../src/Places/Domain/Data/**',
             '../../src/Places/Infrastructure/Foundry/Factory/**',
-            '../../src/Places/Domain/Google/Place/**',
         ])
     ;
 

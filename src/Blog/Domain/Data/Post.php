@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Blog\Domain;
+namespace App\Blog\Domain\Data;
 
-use App\Blog\Domain\Route as RouteBlog;
+use App\Blog\Domain\Data\Route as RouteBlog;
 use App\Shared\Domain\Data\ValueObject\PostId;
 use App\Shared\Domain\HttpCache\CacheableEntity;
 use App\Shared\Domain\HttpCache\CacheItem;

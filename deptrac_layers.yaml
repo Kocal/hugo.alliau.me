@@ -69,6 +69,6 @@ deptrac:
 
     skip_violations:
         # My User entity is bound to Symfony Security, what's the best way to not violate this?
-        App\User\Domain\User:
+        App\User\Domain\Data\User:
             - Symfony\Component\Security\Core\User\UserInterface
             - Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface

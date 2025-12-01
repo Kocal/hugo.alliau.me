@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Blog\Infrastructure\Symfony\Controller\Post;
 
-use App\Blog\Domain\Post;
-use App\Blog\Domain\PostStatus;
-use App\Blog\Domain\Route as RouteBlog;
+use App\Blog\Domain\Data\Post;
+use App\Blog\Domain\Data\PostStatus;
+use App\Blog\Domain\Data\Route as RouteBlog;
 use App\Shared\Domain\HttpCache\CacheMethodsTrait;
 use App\Shared\Domain\Markdown\MarkdownConverter;
 use Psr\Link\EvolvableLinkInterface;

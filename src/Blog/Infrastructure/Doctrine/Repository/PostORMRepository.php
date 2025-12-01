@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Blog\Infrastructure\Doctrine\Repository;
 
-use App\Blog\Domain\Post;
-use App\Blog\Domain\PostStatus;
+use App\Blog\Domain\Data\Post;
+use App\Blog\Domain\Data\PostStatus;
 use App\Blog\Domain\Repository\PostRepository;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\DBAL\Types\Types;
@@ -84,7 +84,7 @@ SQL, $rsm);
             FROM (
                 SELECT JSONB_ARRAY_ELEMENTS_TEXT(tags) AS tag
                 FROM {$this->getEntityManager()->getClassMetadata(Post::class)->getTableName()}
-            ) 
+            )
             GROUP BY tag
             ORDER BY occurrences DESC
 SQL, $rsm);

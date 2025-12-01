@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Places\Domain;
+namespace App\Places\Domain\Data;
 
 use Symfony\Component\Translation\TranslatableMessage;
 use function Symfony\Component\Translation\t;

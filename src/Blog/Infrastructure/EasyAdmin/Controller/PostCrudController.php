@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Blog\Infrastructure\EasyAdmin\Controller;
 
-use App\Blog\Domain\Post;
-use App\Blog\Domain\PostSeo;
+use App\Blog\Domain\Data\Post;
+use App\Blog\Domain\Data\PostSeo;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;

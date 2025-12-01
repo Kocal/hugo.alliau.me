@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Places\Domain\Command;
 
-use App\Places\Domain\Google\Place\Autocomplete;
-use App\Places\Domain\PlaceType;
+use App\Places\Domain\Data\Google\Place\Autocomplete;
+use App\Places\Domain\Data\PlaceType;
 
 final readonly class CreatePlace
 {
