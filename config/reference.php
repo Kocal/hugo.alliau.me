@@ -752,6 +752,7 @@ namespace Symfony\Component\DependencyInjection\Loader\Configurator;
  *         html_input?: "strip"|"allow"|"escape", // How to handle HTML input.
  *         allow_unsafe_links?: bool, // Remove risky link and image URLs by setting this to false. // Default: true
  *         max_nesting_level?: int, // The maximum nesting level for blocks. // Default: 9223372036854775807
+ *         max_delimiters_per_line?: int, // The maximum number of strong/emphasis delimiters per line. // Default: 9223372036854775807
  *         slug_normalizer?: array{ // Array of options for configuring how URL-safe slugs are created.
  *             instance?: mixed,
  *             max_length?: int, // Default: 255
@@ -1631,6 +1632,7 @@ namespace Symfony\Component\DependencyInjection\Loader\Configurator;
  * }
  * @psalm-type ZenstruckFoundryConfig = array{
  *     auto_refresh_proxies?: bool|null, // Deprecated: Since 2.0 auto_refresh_proxies defaults to true and this configuration has no effect. // Whether to auto-refresh proxies by default (https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#auto-refresh) // Default: null
+ *     enable_auto_refresh_with_lazy_objects?: bool|null, // Enable auto-refresh using PHP 8.4 lazy objects (cannot be enabled if PHP < 8.4). // Default: null
  *     faker?: array{ // Configure the faker used by your factories.
  *         locale?: scalar|null, // The default locale to use for faker. // Default: null
  *         seed?: scalar|null, // Deprecated: The "faker.seed" configuration is deprecated and will be removed in 3.0. Use environment variable "FOUNDRY_FAKER_SEED" instead. // Random number generator seed to produce the same fake values every run. // Default: null
