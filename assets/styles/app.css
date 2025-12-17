@@ -54,22 +54,14 @@
             font-size: var(--text-3xl);
             margin: --spacing(7) 0;
             line-height: --spacing(10);
-            color: var(--color-black);
-
-            @media (prefers-color-scheme: dark) {
-                color: var(--color-white);
-            }
+            color: light-dark(var(--color-black), var(--color-white));
         }
 
         h3 {
             font-size: var(--text-2xl);
             margin: --spacing(5) 0;
             line-height: --spacing(8);
-            color: var(--color-black);
-
-            @media (prefers-color-scheme: dark) {
-                color: var(--color-white);
-            }
+            color: light-dark(var(--color-black), var(--color-white));
         }
 
         p, .CustomContainer, .Terminal, blockquote {
@@ -97,42 +89,28 @@
 
         blockquote {
             font-style: italic;
-            border-inline-start: 4px solid var(--color-gray-300);
+            border-inline-start: 4px solid light-dark(var(--color-gray-300), var(--color-gray-600));
+            background-color: light-dark(var(--color-gray-100), var(--color-gray-800));
             padding: --spacing(2) --spacing(4);
-            background-color: var(--color-gray-100);
             quotes: "“" "”" "‘" "’";
-
-            @media (prefers-color-scheme: dark) {
-                background-color: var(--color-gray-800);
-                border-inline-start-color: var(--color-gray-600);
-            }
         }
 
         table {
-            --table-border-color: var(--color-gray-300);
+            --table-border-color: light-dark(var(--color-gray-300), var(--color-gray-600));
             width: 100%;
             margin-block: --spacing(4);
             border-collapse: collapse;
             border-radius: var(--radius-md);
             outline: 1px solid var(--table-border-color);
 
-            @media (prefers-color-scheme: dark) {
-                --table-border-color: var(--color-gray-600);
-            }
-
             th {
-                background-color: var(--color-gray-100);
+                background-color: light-dark(var(--color-gray-100), var(--color-gray-700));
                 font-weight: var(--font-weight-semibold);
-
-                @media (prefers-color-scheme: dark) {
-                    background-color: var(--color-gray-700);
-                }
             }
 
             th, td {
                 padding: --spacing(1) --spacing(2);
                 border-bottom: 1px solid var(--table-border-color);
-
             }
         }
 
@@ -227,50 +205,31 @@
     }
 
     .CustomContainer__Title {
-        margin: theme('spacing.0') theme('spacing.0') theme('spacing.2') theme('spacing.0');
+        margin: 0 0 --spacing(2) 0;
         text-transform: uppercase;
-        font-weight: theme('fontWeight.bold');
-        font-size: theme('fontSize.sm');
+        font-weight: var(--font-weight-bold);
+        font-size: var(--text-sm);
     }
 
     .CustomContainer--info {
-        --custom-container-color: theme('colors.blue.900');
-        --custom-container-bg-color: theme('colors.blue.100');
-
-        @media (prefers-color-scheme: dark) {
-            --custom-container-color: theme('colors.blue.100');
-            --custom-container-bg-color: theme('colors.blue.900');
-        }
+        --custom-container-color: light-dark(theme('colors.blue.900'), theme('colors.blue.100'));
+        --custom-container-bg-color: light-dark(theme('colors.blue.100'), theme('colors.blue.900'));
     }
 
     .CustomContainer--tip {
-        --custom-container-color: theme('colors.green.900');
-        --custom-container-bg-color: theme('colors.green.100');
-
-        @media (prefers-color-scheme: dark) {
-            --custom-container-color: theme('colors.green.100');
-            --custom-container-bg-color: theme('colors.green.900');
-        }
+        --custom-container-color: light-dark(theme('colors.green.900'), theme('colors.green.100'));
+        --custom-container-bg-color: light-dark(theme('colors.green.100'), theme('colors.green.900'));
     }
 
     .CustomContainer--warning {
-        --custom-container-color: theme('colors.yellow.900');
-        --custom-container-bg-color: theme('colors.yellow.100');
-
-        @media (prefers-color-scheme: dark) {
-            --custom-container-color: theme('colors.yellow.100');
-            --custom-container-bg-color: theme('colors.yellow.900');
+        --custom-container-color: light-dark(theme('colors.yellow.900'), theme('colors.yellow.100'));
+        --custom-container-bg-color: light-dark(theme('colors.yellow.100'), theme('colors.yellow.900'));
         }
     }
 
     .CustomContainer--danger {
-        --custom-container-color: theme('colors.red.900');
-        --custom-container-bg-color: theme('colors.red.100');
-
-        @media (prefers-color-scheme: dark) {
-            --custom-container-color: theme('colors.red.100');
-            --custom-container-bg-color: theme('colors.red.900');
-        }
+        --custom-container-color: light-dark(theme('colors.red.900'), theme('colors.red.100'));
+        --custom-container-bg-color: light-dark(theme('colors.red.100'), theme('colors.red.900'));
     }
 }
 
