@@ -224,7 +224,6 @@
     .CustomContainer--warning {
         --custom-container-color: light-dark(theme('colors.yellow.900'), theme('colors.yellow.100'));
         --custom-container-bg-color: light-dark(theme('colors.yellow.100'), theme('colors.yellow.900'));
-        }
     }
 
     .CustomContainer--danger {
