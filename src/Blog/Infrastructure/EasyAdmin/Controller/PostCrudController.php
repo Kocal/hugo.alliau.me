@@ -6,6 +6,9 @@ namespace App\Blog\Infrastructure\EasyAdmin\Controller;
 
 use App\Blog\Domain\Data\Post;
 use App\Blog\Domain\Data\PostSeo;
+use App\Blog\Domain\Data\Route;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
@@ -41,6 +44,31 @@ class PostCrudController extends AbstractCrudController
     }
 
     #[\Override]
+    public function configureActions(Actions $actions): Actions
+    {
+        $actionView = Action::new('View', icon: 'fas fa-eye')
+            ->linkToUrl(fn (Post $post): string => $this->generateUrl(Route::POST_VIEW->value, [
+                'slug' => $post->getSlug(),
+            ]))
+            ->displayIf(static fn (Post $post): bool => $post->isPublished())
+        ;
+
+        $actionPreview = Action::new('Preview', icon: 'fas fa-eye-slash')
+            ->linkToUrl(fn (Post $post): string => $this->generateUrl(Route::POST_VIEW->value, [
+                'slug' => $post->getSlug(),
+                'preview' => 'true',
+            ]))
+            ->displayIf(static fn (Post $post): bool => $post->isDraft());
+
+        $actions
+            ->add(Crud::PAGE_INDEX, $actionView)
+            ->add(Crud::PAGE_INDEX, $actionPreview)
+        ;
+
+        return $actions;
+    }
+
+    #[\Override]
     public function configureFields(string $pageName): iterable
     {
         yield IdField::new('id')->hideOnForm();
@@ -59,14 +87,19 @@ class PostCrudController extends AbstractCrudController
 
         yield FormField::addColumn('col-xxl-4');
         yield FormField::addFieldset('Publishing');
-        yield ChoiceField::new('status');
+        yield ChoiceField::new('status')
+            ->setTemplatePath('admin/fields/post_status.html.twig');
         yield DateTimeField::new('publishedAt');
 
         yield FormField::addFieldset('SEO');
         yield ArrayField::new('seo.dependencies')
-            ->setLabel('Dependencies');
+            ->setLabel('Dependencies')
+            ->onlyOnForms()
+        ;
         yield ChoiceField::new('seo.proficiencyLevel')
             ->setLabel('Proficiency Level')
-            ->setChoices(array_combine(PostSeo::PROFICIENCY_LEVEL, PostSeo::PROFICIENCY_LEVEL));
+            ->setChoices(array_combine(PostSeo::PROFICIENCY_LEVEL, PostSeo::PROFICIENCY_LEVEL))
+            ->onlyOnForms()
+        ;
     }
 }

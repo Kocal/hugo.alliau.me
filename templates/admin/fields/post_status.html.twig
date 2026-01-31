@@ -1,0 +1,12 @@
+{%- set style = html_cva(
+    base: 'badge',
+    variants: {
+        value: {
+            (enum('App\\Blog\\Domain\\Data\\PostStatus').DRAFT.value): 'text-bg-secondary',
+            (enum('App\\Blog\\Domain\\Data\\PostStatus').PUBLISHED.value): 'text-bg-success',
+        },
+    },
+) -%}
+<span class="{{ style.apply({value: field.value.value}) }}">
+    {{- field.value.name -}}
+</span>

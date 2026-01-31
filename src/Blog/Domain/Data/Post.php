@@ -194,6 +194,16 @@ class Post implements CacheableEntity
         return $this->status;
     }
 
+    public function isPublished(): bool
+    {
+        return $this->status === PostStatus::PUBLISHED;
+    }
+
+    public function isDraft(): bool
+    {
+        return $this->status === PostStatus::DRAFT;
+    }
+
     #[ORM\PreUpdate]
     public function preUpdate(): void
     {
