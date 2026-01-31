@@ -13,7 +13,6 @@ use App\Shared\Domain\ObjectMapper\Command\MapObject;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
-use EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
@@ -99,7 +98,6 @@ class PlaceCrudController extends AbstractCrudController
     }
 
     public function importFromGooglePlaces(
-        AdminContext $context,
         Request $request,
         LoggerInterface $logger,
         CommandBus $commandBus,
