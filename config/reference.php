@@ -1617,8 +1617,8 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         download_directory?: scalar|Param|null, // Directory to store the downloaded binary // Default: "%kernel.project_dir%/var/minify"
  *     },
  * }
- * @psalm-type KocalOxlintConfig = array{
- *     binary_version: scalar|Param|null, // Oxlint binary version to download.
+ * @psalm-type KocalOxcConfig = array{
+ *     apps_version: scalar|Param|null, // The version of git tag "apps_v*" to download. For example, git tag "apps_v1.43.0" corresponds to version "1.43.0".
  * }
  * @psalm-type ConfigType = array{
  *     imports?: ImportsConfig,
@@ -1642,6 +1642,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     turbo?: TurboConfig,
  *     ux_map?: UxMapConfig,
  *     sensiolabs_minify?: SensiolabsMinifyConfig,
+ *     kocal_oxc?: KocalOxcConfig,
  *     "when@dev"?: array{
  *         imports?: ImportsConfig,
  *         parameters?: ParametersConfig,
@@ -1668,7 +1669,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         ux_map?: UxMapConfig,
  *         zenstruck_foundry?: ZenstruckFoundryConfig,
  *         sensiolabs_minify?: SensiolabsMinifyConfig,
- *         kocal_oxlint?: KocalOxlintConfig,
+ *         kocal_oxc?: KocalOxcConfig,
  *     },
  *     "when@prod"?: array{
  *         imports?: ImportsConfig,
@@ -1692,6 +1693,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         turbo?: TurboConfig,
  *         ux_map?: UxMapConfig,
  *         sensiolabs_minify?: SensiolabsMinifyConfig,
+ *         kocal_oxc?: KocalOxcConfig,
  *     },
  *     "when@test"?: array{
  *         imports?: ImportsConfig,
@@ -1717,6 +1719,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         ux_map?: UxMapConfig,
  *         zenstruck_foundry?: ZenstruckFoundryConfig,
  *         sensiolabs_minify?: SensiolabsMinifyConfig,
+ *         kocal_oxc?: KocalOxcConfig,
  *     },
  *     ...<string, ExtensionType|array{ // extra keys must follow the when@%env% pattern or match an extension alias
  *         imports?: ImportsConfig,

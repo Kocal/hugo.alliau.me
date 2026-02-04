@@ -65,18 +65,8 @@
     "knplabs/knp-menu-bundle": {
         "version": "v3.3.0"
     },
-    "kocal/oxlint-bundle": {
-        "version": "1.0",
-        "recipe": {
-            "repo": "github.com/symfony/recipes-contrib",
-            "branch": "main",
-            "version": "1.0",
-            "ref": "4bbabde32f7e116ae3910cdb886113ca3c6488cd"
-        },
-        "files": [
-            ".oxlintrc.json",
-            "config/packages/kocal_oxlint.yaml"
-        ]
+    "kocal/oxc-bundle": {
+        "version": "dev-main"
     },
     "league/flysystem-bundle": {
         "version": "3.3",

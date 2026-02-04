@@ -110,11 +110,13 @@ cs.back.fix:
 
 ## Coding style - Check frontend coding style
 cs.front:
-	$(call message_warning, No frontend coding style checks implemented yet, may add Prettier with OXC plugin.)
+	$(SF_CONSOLE) oxc:download:oxfmt
+	bin/oxfmt --check
 
 ## Coding style - Check frontend coding style and fix issues
 cs.front.fix:
-	$(call message_warning, No frontend coding style checks implemented yet, may add Prettier with OXC plugin.)
+	$(SF_CONSOLE) oxc:download:oxfmt
+	bin/oxfmt
 
 ##########
 # Linter #
@@ -136,12 +138,12 @@ lint.back:
 
 ## Linter - Lint front files
 lint.front:
-	$(SF_CONSOLE) oxlint:download
+	$(SF_CONSOLE) oxc:download:oxlint
 	bin/oxlint
 
 ## Linter - Lint front files and fix issues
 lint.front.fix:
-	$(SF_CONSOLE) oxlint:download
+	$(SF_CONSOLE) oxc:download:oxlint
 	bin/oxlint --fix
 
 ###########
