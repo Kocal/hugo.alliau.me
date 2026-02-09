@@ -1564,6 +1564,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     faker?: array{ // Configure the faker used by your factories.
  *         locale?: scalar|Param|null, // The default locale to use for faker. // Default: null
  *         seed?: scalar|Param|null, // Deprecated: The "faker.seed" configuration is deprecated and will be removed in 3.0. Use environment variable "FOUNDRY_FAKER_SEED" instead. // Random number generator seed to produce the same fake values every run. // Default: null
+ *         manage_seed?: bool|Param, // Automatically manage faker seed to ensure consistent data between test runs. // Default: true
  *         service?: scalar|Param|null, // Service id for custom faker instance. // Default: null
  *     },
  *     instantiator?: array{ // Configure the default instantiator used by your object factories.
@@ -1642,7 +1643,6 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     turbo?: TurboConfig,
  *     ux_map?: UxMapConfig,
  *     sensiolabs_minify?: SensiolabsMinifyConfig,
- *     kocal_oxc?: KocalOxcConfig,
  *     "when@dev"?: array{
  *         imports?: ImportsConfig,
  *         parameters?: ParametersConfig,
@@ -1693,7 +1693,6 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         turbo?: TurboConfig,
  *         ux_map?: UxMapConfig,
  *         sensiolabs_minify?: SensiolabsMinifyConfig,
- *         kocal_oxc?: KocalOxcConfig,
  *     },
  *     "when@test"?: array{
  *         imports?: ImportsConfig,
@@ -1719,7 +1718,6 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         ux_map?: UxMapConfig,
  *         zenstruck_foundry?: ZenstruckFoundryConfig,
  *         sensiolabs_minify?: SensiolabsMinifyConfig,
- *         kocal_oxc?: KocalOxcConfig,
  *     },
  *     ...<string, ExtensionType|array{ // extra keys must follow the when@%env% pattern or match an extension alias
  *         imports?: ImportsConfig,

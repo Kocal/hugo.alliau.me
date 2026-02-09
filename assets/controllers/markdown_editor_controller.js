@@ -128,7 +128,8 @@ export default class extends Controller {
     }
 
     async chatGptTranslate() {
-        await navigator.clipboard.writeText(`I want you to act as a translator, spelling corrector and improver. 
+        await navigator.clipboard
+            .writeText(`I want you to act as a translator, spelling corrector and improver. 
 Your role is to translate the text from English to French or from French to English, and correct and improve the text.
 If you didn't translated the text, then you failed the task. You MUST translate the text.
 Sometimes two languages can be found in the text, if you detect that, you should ignore the less dominant language and translate the rest of the text in the other language.
@@ -145,7 +146,8 @@ ${this.view.state.doc.toString()}
     }
 
     async chatGptSpellcheck() {
-        await navigator.clipboard.writeText(`I want you to act as a spelling corrector and improver. 
+        await navigator.clipboard
+            .writeText(`I want you to act as a spelling corrector and improver. 
 Your role is to correct and improve the text.
 I want you to replace my simplified A0-level words and sentences with more beautiful and elegant, upper level words and sentences. 
 Keep the meaning same, but make them more literary. 

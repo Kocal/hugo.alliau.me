@@ -71,7 +71,9 @@ export const codeLanguages = [
         name: "TSX",
         extensions: ["tsx"],
         load() {
-            return import("@codemirror/lang-javascript").then((m) => m.javascript({ jsx: true, typescript: true }));
+            return import("@codemirror/lang-javascript").then((m) =>
+                m.javascript({ jsx: true, typescript: true }),
+            );
         },
     }),
     LanguageDescription.of({
@@ -79,7 +81,9 @@ export const codeLanguages = [
         alias: ["ts"],
         extensions: ["ts", "mts", "cts"],
         load() {
-            return import("@codemirror/lang-javascript").then((m) => m.javascript({ typescript: true }));
+            return import("@codemirror/lang-javascript").then((m) =>
+                m.javascript({ typescript: true }),
+            );
         },
     }),
     LanguageDescription.of({

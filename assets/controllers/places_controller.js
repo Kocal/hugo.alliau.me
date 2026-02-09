@@ -19,7 +19,9 @@ export default class extends Controller {
 
         if (window.location.hash) {
             try {
-                const state = Object.fromEntries(new URLSearchParams(window.location.hash.slice(1)));
+                const state = Object.fromEntries(
+                    new URLSearchParams(window.location.hash.slice(1)),
+                );
                 const zoom = Number(state.z);
                 const center = state.center.split(",").map(Number);
 
@@ -31,7 +33,10 @@ export default class extends Controller {
         } else {
             // Hacky, but allows to fit bounds to markers on initial load.
             // JavaScript side, because the page is behind HTTP cache
-            this.element.setAttribute('data-symfony--ux-leaflet-map--map-fit-bounds-to-markers-value', 'true');
+            this.element.setAttribute(
+                "data-symfony--ux-leaflet-map--map-fit-bounds-to-markers-value",
+                "true",
+            );
         }
 
         event.detail.bridgeOptions = {};

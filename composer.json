@@ -4,7 +4,7 @@
     "minimum-stability": "stable",
     "prefer-stable": true,
     "require": {
-        "php": "~8.4.0",
+        "php": "~8.5.0",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "ext-mbstring": "*",
@@ -14,10 +14,10 @@
         "doctrine/doctrine-bundle": "^3.2.2",
         "doctrine/doctrine-migrations-bundle": "^3.7",
         "doctrine/orm": "^3.6.2",
-        "easycorp/easyadmin-bundle": "^4.28.0",
+        "easycorp/easyadmin-bundle": "^4.28.1",
         "knplabs/knp-menu-bundle": "^3.7",
         "league/commonmark": "^2.8",
-        "league/flysystem-bundle": "^3.6.1",
+        "league/flysystem-bundle": "^3.6.2",
         "league/uri": ">=7.8",
         "martin-georgiev/postgresql-for-doctrine": "^2.10.3",
         "phpdocumentor/reflection-docblock": "^5.6.6",
@@ -62,25 +62,25 @@
     "require-dev": {
         "deptrac/deptrac": "^3.0",
         "kocal/oxc-bundle": "^1.0",
-        "kocal/phpstan-symfony-ux": "^1.1",
+        "kocal/phpstan-symfony-ux": "^1.1.1",
         "phpstan/phpstan": "^2.1.38",
         "phpstan/phpstan-doctrine": "^2.0.14",
         "phpstan/phpstan-symfony": "^2.0.12",
-        "phpunit/phpunit": "^11.5.50",
-        "rector/rector": "^2.3.5",
+        "phpunit/phpunit": "^11.5.52",
+        "rector/rector": "^2.3.6",
         "symfony/browser-kit": "8.0.*",
         "symfony/css-selector": "8.0.*",
         "symfony/debug-bundle": "8.0.*",
-        "symfony/maker-bundle": "^1.65.1",
+        "symfony/maker-bundle": "^1.66.0",
         "symfony/stopwatch": "8.0.*",
         "symfony/web-profiler-bundle": "8.0.*",
         "symplify/easy-coding-standard": "^12.6.2",
         "vincentlanglet/twig-cs-fixer": "^3.13",
-        "zenstruck/foundry": "^2.8.6"
+        "zenstruck/foundry": "^2.9.1"
     },
     "config": {
         "platform": {
-            "php": "8.4"
+            "php": "8.5"
         },
         "allow-plugins": {
             "php-http/discovery": true,

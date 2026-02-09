@@ -21,7 +21,9 @@ export function lightDarkThemeSwitcher({ lightTheme, darkTheme }) {
                 initialized = true;
                 const mediaQueryChangeHandler = (event) => {
                     update.view.dispatch({
-                        effects: themeCompartment.reconfigure(event.matches ? darkTheme : lightTheme),
+                        effects: themeCompartment.reconfigure(
+                            event.matches ? darkTheme : lightTheme,
+                        ),
                     });
                 };
 
