@@ -1,0 +1,26 @@
+{% set style = html_cva(
+    'mb-4 py-3 px-4 rounded border-l-5',
+    {
+        type: {
+            info: 'border-blue-600 [&_[data-header]]:text-blue-600',
+            tip: 'border-green-600 [&_[data-header]]:text-green-600',
+            warning: 'border-yellow-600 [&_[data-header]]:text-yellow-600',
+            danger: 'border-red-600 [&_[data-header]]:text-red-600',
+        },
+    }
+) %}
+<div class="{{ style.apply({type}) }}">
+    <div class="flex gap-2 items-center mb-2" data-header>
+        {% if type === 'info' %}
+            <twig:ux:icon name="lucide:info" />
+        {% elseif type === 'tip' %}
+            <twig:ux:icon name="lucide:lightbulb" />
+        {% elseif type === 'warning' %}
+            <twig:ux:icon name="lucide:triangle-alert" />
+        {% elseif type === 'danger' %}
+            <twig:ux:icon name="lucide:octagon-alert" />
+        {% endif %}
+        <span class="font-sans text-sm font-bold select-none">{{ type|capitalize }}</span>
+    </div>
+    <div class="prose [&>p:not(:first-child)]:mt-0 [&>p:not(:last-child)]:mb-2">{{ content|raw }}</div>
+</div>

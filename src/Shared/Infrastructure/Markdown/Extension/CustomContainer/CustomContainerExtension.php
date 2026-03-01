@@ -13,14 +13,19 @@ use League\CommonMark\Extension\ExtensionInterface;
 /**
  * @see https://vitepress.dev/guide/markdown#custom-containers
  */
-final class CustomContainerExtension implements ExtensionInterface
+final readonly class CustomContainerExtension implements ExtensionInterface
 {
+    public function __construct(
+        private \Twig\Environment $twig,
+    ) {
+    }
+
     #[\Override]
     public function register(EnvironmentBuilderInterface $environment): void
     {
         $environment
             ->addBlockStartParser(CustomContainerBlockParser::createBlockStartParser())
-            ->addRenderer(CustomContainer::class, new CustomContainerRenderer())
+            ->addRenderer(CustomContainer::class, new CustomContainerRenderer($this->twig))
         ;
     }
 }

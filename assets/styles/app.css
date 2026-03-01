@@ -185,49 +185,6 @@
 }
 
 @layer components {
-    .CustomContainer {
-        --custom-container-color: theme('colors.gray.900');
-        --custom-container-bg-color: theme('colors.gray.100');
-
-        padding: theme('spacing.3');
-        border-radius: theme('borderRadius.md');
-        color: var(--custom-container-color);
-        background-color: var(--custom-container-bg-color);
-    }
-
-    .CustomContainer * {
-        color: inherit;
-    }
-
-    .CustomContainer__Title {
-        margin: 0 0 --spacing(2) 0;
-        text-transform: uppercase;
-        font-weight: var(--font-weight-bold);
-        font-size: var(--text-sm);
-    }
-
-    .CustomContainer--info {
-        --custom-container-color: light-dark(theme('colors.blue.900'), theme('colors.blue.100'));
-        --custom-container-bg-color: light-dark(theme('colors.blue.100'), theme('colors.blue.900'));
-    }
-
-    .CustomContainer--tip {
-        --custom-container-color: light-dark(theme('colors.green.900'), theme('colors.green.100'));
-        --custom-container-bg-color: light-dark(theme('colors.green.100'), theme('colors.green.900'));
-    }
-
-    .CustomContainer--warning {
-        --custom-container-color: light-dark(theme('colors.yellow.900'), theme('colors.yellow.100'));
-        --custom-container-bg-color: light-dark(theme('colors.yellow.100'), theme('colors.yellow.900'));
-    }
-
-    .CustomContainer--danger {
-        --custom-container-color: light-dark(theme('colors.red.900'), theme('colors.red.100'));
-        --custom-container-bg-color: light-dark(theme('colors.red.100'), theme('colors.red.900'));
-    }
-}
-
-@layer components {
     .heading-permalink {
         color: theme('colors.gray.500');
         text-decoration: none !important;

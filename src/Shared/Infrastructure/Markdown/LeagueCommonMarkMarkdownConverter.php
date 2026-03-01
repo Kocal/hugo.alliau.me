@@ -31,8 +31,9 @@ final readonly class LeagueCommonMarkMarkdownConverter implements MarkdownConver
 
     private MarkdownParser $parser;
 
-    public function __construct()
-    {
+    public function __construct(
+        private \Twig\Environment $twig,
+    ) {
         $this->environment = new Environment([
             'heading_permalink' => [
                 'apply_id_to_heading' => true,
@@ -46,7 +47,7 @@ final readonly class LeagueCommonMarkMarkdownConverter implements MarkdownConver
         $this->environment->addExtension(new CommonMarkCoreExtension());
         $this->environment->addExtension(new GithubFlavoredMarkdownExtension());
         $this->environment->addExtension(new HeadingPermalinkExtension());
-        $this->environment->addExtension(new CustomContainerExtension());
+        $this->environment->addExtension(new CustomContainerExtension($this->twig));
         $this->environment->addExtension(new GitHubEmojisExtension());
         $this->environment->addExtension(new AttributesExtension());
         $this->environment->addRenderer(FencedCode::class, new CodeBlockRenderer());

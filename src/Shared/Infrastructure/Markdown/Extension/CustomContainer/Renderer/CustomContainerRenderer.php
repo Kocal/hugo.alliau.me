@@ -9,8 +9,13 @@ use League\CommonMark\Node\Node;
 use League\CommonMark\Renderer\ChildNodeRendererInterface;
 use League\CommonMark\Renderer\NodeRendererInterface;
 
-final class CustomContainerRenderer implements NodeRendererInterface
+final readonly class CustomContainerRenderer implements NodeRendererInterface
 {
+    public function __construct(
+        private \Twig\Environment $twig,
+    ) {
+    }
+
     #[\Override]
     public function render(Node $node, ChildNodeRendererInterface $childRenderer): string
     {
@@ -20,10 +25,9 @@ final class CustomContainerRenderer implements NodeRendererInterface
 
         $type = $node->getType();
 
-        return <<<HTML
-            <div class="CustomContainer CustomContainer--{$type}">
-                <div class="prose max-w-none">{$childRenderer->renderNodes($node->children())}</div>
-            </div>
-HTML;
+        return $this->twig->render('markdown/_custom_container.html.twig', [
+            'type' => $type,
+            'content' => $childRenderer->renderNodes($node->children()),
+        ]);
     }
 }

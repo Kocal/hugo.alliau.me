@@ -27,10 +27,10 @@ export default class extends Controller {
         this.element.outerHTML = await codeToHtml(this.codeValue, {
             lang: this.langValue || "plaintext",
             themes: {
-                light: 'light-plus',
-                dark: 'dark-plus',
+                light: "light-plus",
+                dark: "dark-plus",
             },
-            defaultColor: 'light-dark()',
+            defaultColor: "light-dark()",
             transformers: [transformerNotationDiff(), transformerNotationHighlight()],
         });
     }
