@@ -26,7 +26,11 @@ export default class extends Controller {
 
         this.element.outerHTML = await codeToHtml(this.codeValue, {
             lang: this.langValue || "plaintext",
-            theme: "one-dark-pro",
+            themes: {
+                light: 'light-plus',
+                dark: 'dark-plus',
+            },
+            defaultColor: 'light-dark()',
             transformers: [transformerNotationDiff(), transformerNotationHighlight()],
         });
     }
