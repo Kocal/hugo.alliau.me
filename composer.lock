@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "887bee1f0a49d68264da6cf6fb29d679",
+    "content-hash": "d8b136113fb624ae86c7dc5a47a15ab3",
     "packages": [
         {
             "name": "composer/semver",
@@ -388,16 +388,16 @@
         },
         {
             "name": "doctrine/dbal",
-            "version": "4.4.1",
+            "version": "4.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "3d544473fb93f5c25b483ea4f4ce99f8c4d9d44c"
+                "reference": "61e730f1658814821a85f2402c945f3883407dec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/3d544473fb93f5c25b483ea4f4ce99f8c4d9d44c",
-                "reference": "3d544473fb93f5c25b483ea4f4ce99f8c4d9d44c",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/61e730f1658814821a85f2402c945f3883407dec",
+                "reference": "61e730f1658814821a85f2402c945f3883407dec",
                 "shasum": ""
             },
             "require": {
@@ -413,9 +413,9 @@
                 "phpstan/phpstan": "2.1.30",
                 "phpstan/phpstan-phpunit": "2.0.7",
                 "phpstan/phpstan-strict-rules": "^2",
-                "phpunit/phpunit": "11.5.23",
-                "slevomat/coding-standard": "8.24.0",
-                "squizlabs/php_codesniffer": "4.0.0",
+                "phpunit/phpunit": "11.5.50",
+                "slevomat/coding-standard": "8.27.1",
+                "squizlabs/php_codesniffer": "4.0.1",
                 "symfony/cache": "^6.3.8|^7.0|^8.0",
                 "symfony/console": "^5.4|^6.3|^7.0|^8.0"
             },
@@ -474,7 +474,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/dbal/issues",
-                "source": "https://github.com/doctrine/dbal/tree/4.4.1"
+                "source": "https://github.com/doctrine/dbal/tree/4.4.3"
             },
             "funding": [
                 {
@@ -490,7 +490,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-12-04T10:11:03+00:00"
+            "time": "2026-03-20T08:52:12+00:00"
         },
         {
             "name": "doctrine/deprecations",
@@ -2283,16 +2283,16 @@
         },
         {
             "name": "martin-georgiev/postgresql-for-doctrine",
-            "version": "v2.10.3",
+            "version": "v4.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/martin-georgiev/postgresql-for-doctrine.git",
-                "reference": "6332bc6372ce64d10e139af9e20b92c67a57fa33"
+                "reference": "14a20471d55a6184d79335401feb9af92239d752"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/martin-georgiev/postgresql-for-doctrine/zipball/6332bc6372ce64d10e139af9e20b92c67a57fa33",
-                "reference": "6332bc6372ce64d10e139af9e20b92c67a57fa33",
+                "url": "https://api.github.com/repos/martin-georgiev/postgresql-for-doctrine/zipball/14a20471d55a6184d79335401feb9af92239d752",
+                "reference": "14a20471d55a6184d79335401feb9af92239d752",
                 "shasum": ""
             },
             "require": {
@@ -2300,24 +2300,26 @@
                 "ext-ctype": "*",
                 "ext-json": "*",
                 "ext-mbstring": "*",
-                "php": "^8.1"
+                "php": "^8.2 <8.6"
             },
             "require-dev": {
-                "deptrac/deptrac": "^3.0",
+                "brianium/paratest": "^7.0",
+                "deptrac/deptrac": "^4.0",
                 "doctrine/orm": "~2.14||~3.0",
-                "ekino/phpstan-banned-code": "^3.0",
-                "friendsofphp/php-cs-fixer": "^3.73.1",
-                "phpstan/phpstan": "^2.1.8",
-                "phpstan/phpstan-deprecation-rules": "^2.0.1",
-                "phpstan/phpstan-doctrine": "^2.0.2",
-                "phpstan/phpstan-phpunit": "^2.0.4",
-                "phpunit/phpunit": "^10.5.45",
-                "rector/rector": "^2.0.10",
-                "symfony/cache": "^6.4||^7.0"
+                "ekino/phpstan-banned-code": "^3.2.0",
+                "friendsofphp/php-cs-fixer": "^3.94.2",
+                "phpstan/phpstan": "^2.1.44",
+                "phpstan/phpstan-deprecation-rules": "^2.0.4",
+                "phpstan/phpstan-doctrine": "^2.0.20",
+                "phpstan/phpstan-phpunit": "^2.0.16",
+                "phpunit/phpunit": "^10.5.63||^11.5",
+                "rector/rector": "^2.3.9",
+                "symfony/cache": "^6.4||^7.0",
+                "symfony/var-exporter": "^6.4||^7.0"
             },
             "suggest": {
                 "doctrine/orm": "~2.14||~3.0",
-                "php": "^8.3"
+                "php": "^8.4"
             },
             "type": "library",
             "autoload": {
@@ -2336,22 +2338,62 @@
                     "role": "author"
                 }
             ],
-            "description": "Adds PostgreSQL enhancements to Doctrine. Provides support for JSON, JSONB and some array data types. Provides functions, operators and common expressions used when working with JSON data, arrays and features related to text search.",
+            "description": "Extends Doctrine with native PostgreSQL support for arrays, JSONB, ranges, PostGIS geometries, text search, ltree, uuid, and 100+ PostgreSQL-specific functions.",
             "keywords": [
-                "array data types",
+                "array-data-types",
+                "arrays",
+                "cidr",
+                "date-interval",
                 "dbal",
                 "doctrine",
+                "doctrine-dbal",
+                "doctrine-dql",
+                "doctrine-orm",
+                "doctrine-types",
+                "dql",
+                "embeddings",
+                "full-text-search",
+                "fuzzystrmatch",
+                "geo",
+                "geography",
+                "geometry",
+                "geospatial",
+                "gis",
+                "inet",
                 "json",
+                "json-data",
                 "jsonb",
-                "martin georgiev",
+                "jsonpath",
+                "levenshtein",
+                "ltree",
+                "macaddr",
+                "martin-georgiev",
+                "math-functions",
+                "money",
+                "multirange",
+                "network-types",
+                "pgsql",
+                "pgvector",
+                "postgis",
+                "postgis-geometry",
                 "postgres",
+                "postgres-extension",
                 "postgresql",
-                "text search",
-                "tsvector"
+                "range",
+                "soundex",
+                "spatial",
+                "text-search",
+                "trigonometry",
+                "tsquery",
+                "tsvector",
+                "uuid",
+                "vector",
+                "vector-search",
+                "xml"
             ],
             "support": {
                 "issues": "https://github.com/martin-georgiev/postgresql-for-doctrine/issues",
-                "source": "https://github.com/martin-georgiev/postgresql-for-doctrine/tree/v2.10.3"
+                "source": "https://github.com/martin-georgiev/postgresql-for-doctrine/tree/v4.5.0"
             },
             "funding": [
                 {
@@ -2363,7 +2405,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-03-24T22:44:34+00:00"
+            "time": "2026-04-05T22:39:14+00:00"
         },
         {
             "name": "monolog/monolog",
