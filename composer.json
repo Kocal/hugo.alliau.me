@@ -22,7 +22,7 @@
         "martin-georgiev/postgresql-for-doctrine": "^2.10.3",
         "phpdocumentor/reflection-docblock": "^5.6.6",
         "phpstan/phpdoc-parser": "^2.3.2",
-        "predis/predis": "^2.4.1",
+        "predis/predis": "^3.4.2",
         "presta/sitemap-bundle": "4.x-dev#2fc8845e5cc0dfa2911615eb3aec1d4a1bd95eff",
         "sensiolabs/minify-bundle": "^1.2",
         "symfony/asset": "8.0.*",
