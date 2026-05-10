@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e407381af9a47cad0d4a6338d263a032",
+    "content-hash": "54ec34b9464f440b5bbba84b1e2b82f0",
     "packages": [
         {
             "name": "composer/semver",
@@ -162,16 +162,16 @@
         },
         {
             "name": "cuyz/valinor-bundle",
-            "version": "dev-master",
+            "version": "2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CuyZ/Valinor-Bundle.git",
-                "reference": "9eb00276051e2f97df86ab5f0f9dcebc3c09f4a3"
+                "reference": "7f5fee01e5983d59dbb6d8c20ebde36a14443d9a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CuyZ/Valinor-Bundle/zipball/9eb00276051e2f97df86ab5f0f9dcebc3c09f4a3",
-                "reference": "9eb00276051e2f97df86ab5f0f9dcebc3c09f4a3",
+                "url": "https://api.github.com/repos/CuyZ/Valinor-Bundle/zipball/7f5fee01e5983d59dbb6d8c20ebde36a14443d9a",
+                "reference": "7f5fee01e5983d59dbb6d8c20ebde36a14443d9a",
                 "shasum": ""
             },
             "require": {
@@ -200,7 +200,6 @@
                 "symfony/psr-http-message-bridge": "^7.3",
                 "symfony/runtime": "^6.4 || ^7.0 || ^8.0"
             },
-            "default-branch": true,
             "type": "symfony-bundle",
             "autoload": {
                 "files": [
@@ -225,7 +224,7 @@
             "homepage": "https://github.com/CuyZ/Valinor-Bundle",
             "support": {
                 "issues": "https://github.com/CuyZ/Valinor-Bundle/issues",
-                "source": "https://github.com/CuyZ/Valinor-Bundle/tree/master"
+                "source": "https://github.com/CuyZ/Valinor-Bundle/tree/2.3.0"
             },
             "funding": [
                 {
@@ -233,7 +232,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-04-04T08:06:23+00:00"
+            "time": "2026-03-23T18:02:35+00:00"
         },
         {
             "name": "dflydev/dot-access-data",
@@ -12688,7 +12687,6 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "cuyz/valinor-bundle": 20,
         "presta/sitemap-bundle": 20
     },
     "prefer-stable": true,

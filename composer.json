@@ -9,7 +9,7 @@
         "ext-iconv": "*",
         "ext-mbstring": "*",
         "cuyz/valinor": "^2.4.0",
-        "cuyz/valinor-bundle": "dev-master#9eb00276051e2f97df86ab5f0f9dcebc3c09f4a3",
+        "cuyz/valinor-bundle": "^2.3.0",
         "doctrine/dbal": "^4.4.3",
         "doctrine/doctrine-bundle": "^3.2.2",
         "doctrine/doctrine-migrations-bundle": "^3.7",

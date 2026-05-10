@@ -1652,6 +1652,9 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         date_formats_supported?: list<scalar|Param|null>,
  *         allowed_exceptions?: list<scalar|Param|null>,
  *     },
+ *     http?: array{
+ *         convert_request_to_psr?: bool|Param, // Convert HTTP request object to PSR-7 request before mapping, allowing an instance of this request to be used in the controller. // Default: false
+ *     },
  *     cache?: array{
  *         service?: scalar|Param|null, // Id of the Symfony cache service used to improve the mapper performance. // Default: "valinor.cache.filesystem"
  *         env_where_files_are_watched?: list<scalar|Param|null>,
