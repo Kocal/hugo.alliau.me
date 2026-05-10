@@ -10,6 +10,7 @@ use App\Places\Domain\Data\Place;
 use App\Places\Domain\Data\PlaceType;
 use App\Shared\Domain\CQRS\CommandBus;
 use App\Shared\Domain\ObjectMapper\Command\MapObject;
+use EasyCorp\Bundle\EasyAdminBundle\Attribute\AdminRoute;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
@@ -83,7 +84,7 @@ class PlaceCrudController extends AbstractCrudController
     public function configureActions(Actions $actions): Actions
     {
         $goToStripe = Action::new('importFromGooglePlaces', 'Import')
-            ->displayAsButton()
+            ->renderAsButton()
             ->addCssClass('h-auto')
             ->setHtmlAttributes([
                 'type' => 'submit',
@@ -97,6 +98,7 @@ class PlaceCrudController extends AbstractCrudController
         return $actions;
     }
 
+    #[AdminRoute('/import-from-google-places')]
     public function importFromGooglePlaces(
         Request $request,
         LoggerInterface $logger,
