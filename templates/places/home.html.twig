@@ -13,7 +13,24 @@
 {% endblock %}
 
 {% block main %}
-<main class="flex-1 relative">
-    {{ ux_map(map, {'data-controller': 'places', class: 'absolute top-0 bottom-0 right-0 left-0'}) }}
+<main class="flex-1 relative"
+      data-controller="places"
+      data-places-countries-value="{{ countries|json_encode|e('html_attr') }}">
+    <div class="absolute top-4 left-4 z-[1000] bg-white dark:bg-zinc-900 rounded shadow-md p-2">
+        <label for="places-country" class="sr-only">Pays</label>
+        <select id="places-country"
+                data-places-target="country"
+                data-action="change->places#onCountryChange"
+                class="bg-transparent text-zinc-700 dark:text-zinc-300 text-sm focus:outline-none cursor-pointer">
+            <option value="">Tous les pays</option>
+            {% for name, data in countries %}
+                <option value="{{ name }}">{{ name }} ({{ data.placesCount }})</option>
+            {% endfor %}
+        </select>
+    </div>
+    {{ ux_map(map, {
+        'data-places-target': 'map',
+        class: 'absolute top-0 bottom-0 right-0 left-0'
+    }) }}
 </main>
 {% endblock %}
