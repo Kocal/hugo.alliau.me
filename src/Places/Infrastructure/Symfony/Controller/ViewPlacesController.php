@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Places\Infrastructure\Symfony\Controller;
 
+use App\Places\Application\CountryFactory;
 use App\Places\Domain\Data\Route as RoutePlaces;
 use App\Places\Domain\Repository\PlaceRepository;
 use App\Shared\Domain\HttpCache\CacheMethodsTrait;
@@ -12,6 +13,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\UX\Map\Bridge\Leaflet\LeafletOptions;
+use Symfony\UX\Map\Bridge\Leaflet\Option\ControlPosition;
+use Symfony\UX\Map\Bridge\Leaflet\Option\ZoomControlOptions;
 use Symfony\UX\Map\InfoWindow;
 use Symfony\UX\Map\Map;
 use Symfony\UX\Map\Marker;
@@ -27,6 +31,7 @@ final class ViewPlacesController extends AbstractController
     public function __invoke(
         Request $request,
         PlaceRepository $placeRepository,
+        CountryFactory $countryFactory,
         LoggerInterface $logger
     ): Response {
         $latestPlace = $placeRepository->getOneLatestUpdated();
@@ -42,11 +47,15 @@ final class ViewPlacesController extends AbstractController
         }
 
         $map = new Map(
+            options: new LeafletOptions()
+                ->zoomControlOptions(new ZoomControlOptions(position: ControlPosition::TOP_RIGHT)),
             center: new Point(0, 0),
             zoom: 2,
         );
 
-        foreach ($placeRepository->findAll() as $place) {
+        $places = $placeRepository->findAll();
+
+        foreach ($places as $place) {
             if ($place->getAddress() === null) {
                 continue;
             }
@@ -61,12 +70,14 @@ final class ViewPlacesController extends AbstractController
                 ),
                 extra: [
                     'icon_mask_uri' => $place->getIconMaskUri(),
+                    'country' => $place->getAddress()->getCountry(),
                 ]
             ));
         }
 
         return $this->render('places/home.html.twig', [
             'map' => $map,
+            'countries' => $countryFactory->fromPlaces($places),
         ], $response);
     }
 }

@@ -2,16 +2,22 @@ import { Controller } from "@hotwired/stimulus";
 
 /* stimulusFetch: 'lazy' */
 export default class extends Controller {
+    static targets = ["map", "country"];
+    static values = { countries: Object };
+
     connect() {
-        this.element.addEventListener("ux:map:pre-connect", this._onMapPreConnect);
-        this.element.addEventListener("ux:map:connect", this._onMapConnect);
-        this.element.addEventListener("ux:map:marker:before-create", this._onMarkerBeforeCreate);
+        this.mapTarget.addEventListener("ux:map:pre-connect", this._onMapPreConnect);
+        this.mapTarget.addEventListener("ux:map:connect", this._onMapConnect);
+        this.mapTarget.addEventListener("ux:map:marker:before-create", this._onMarkerBeforeCreate);
     }
 
     disconnect() {
-        this.element.removeEventListener("ux:map:pre-connect", this._onMapPreConnect);
-        this.element.removeEventListener("ux:map:connect", this._onMapConnect);
-        this.element.removeEventListener("ux:map:marker:before-create", this._onMarkerBeforeCreate);
+        this.mapTarget.removeEventListener("ux:map:pre-connect", this._onMapPreConnect);
+        this.mapTarget.removeEventListener("ux:map:connect", this._onMapConnect);
+        this.mapTarget.removeEventListener(
+            "ux:map:marker:before-create",
+            this._onMarkerBeforeCreate,
+        );
     }
 
     _onMapPreConnect = (event) => {
@@ -33,7 +39,7 @@ export default class extends Controller {
         } else {
             // Hacky, but allows to fit bounds to markers on initial load.
             // JavaScript side, because the page is behind HTTP cache
-            this.element.setAttribute(
+            this.mapTarget.setAttribute(
                 "data-symfony--ux-leaflet-map--map-fit-bounds-to-markers-value",
                 "true",
             );
@@ -43,7 +49,9 @@ export default class extends Controller {
     };
 
     _onMapConnect = (event) => {
-        const { map } = event.detail;
+        const { map, L } = event.detail;
+        this.map = map;
+        this.L = L;
 
         const updateState = () => {
             const center = map.getCenter();
@@ -94,5 +102,21 @@ export default class extends Controller {
                 className: "",
             }),
         };
+    }
+
+    onCountryChange(event) {
+        if (!this.map || !this.L) return;
+
+        const country = event.target.value;
+        const coordinates = country
+            ? (this.countriesValue[country]?.coordinates ?? [])
+            : Object.values(this.countriesValue).flatMap((c) => c.coordinates);
+
+        if (coordinates.length === 0) return;
+
+        const bounds = this.L.latLngBounds(
+            coordinates.map(([lat, lng]) => this.L.latLng(lat, lng)),
+        );
+        this.map.fitBounds(bounds, { padding: [40, 40] });
     }
 }
