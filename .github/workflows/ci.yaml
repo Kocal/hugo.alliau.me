@@ -10,6 +10,10 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch: ~
+
+permissions:
+    contents: read
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
@@ -22,7 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -45,16 +49,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@v4
 
       - name: Build Docker images
-        uses: docker/bake-action@v5
+        uses: docker/bake-action@v7
         with:
           pull: true
           load: true
+          source: .
           files: |
             compose.yaml
             compose.override.yaml
@@ -68,14 +73,20 @@ jobs:
         run: docker compose up --wait --no-build
 
       - name: Check HTTP reachability
-        run: curl -v --fail-with-body http://localhost
+        run: curl -v --insecure --fail-with-body https://localhost
 
   docker_lint:
     name: Docker Lint
     runs-on: ubuntu-latest
+    permissions:
+        contents: read
+        packages: read
+        statuses: write
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Lint Dockerfile
-        uses: hadolint/hadolint-action@v3.1.0
+        - name: Checkout
+          uses: actions/checkout@v6
+          with:
+              fetch-depth: 0
+              persist-credentials: false
+        - name: Lint Dockerfile
+          uses: hadolint/hadolint-action@v3.3.0
