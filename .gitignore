@@ -1,6 +1,7 @@
 .cache
 /public/sitemap.*
 /Makefile.local
+/node_modules/
 
 ###> symfony/framework-bundle ###
 /.env.local

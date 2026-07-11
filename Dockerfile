@@ -31,6 +31,19 @@ RUN <<-EOF
 	rm -rf /var/lib/apt/lists/*
 EOF
 
+# Node.js 26 + pnpm via Corepack (build-time asset tooling; only lives in build stages, not copied into the final prod image)
+# pnpm version is pinned through the "packageManager" field in package.json
+# hadolint ignore=DL3008
+RUN <<-EOF
+	apt-get update
+	apt-get install -y --no-install-recommends ca-certificates curl gnupg
+	curl -fsSL https://deb.nodesource.com/setup_26.x | bash -
+	apt-get install -y --no-install-recommends nodejs
+	npm install -g corepack@0.35.0
+	corepack enable
+	rm -rf /var/lib/apt/lists/*
+EOF
+
 # https://getcomposer.org/doc/03-cli.md#composer-allow-superuser
 ENV COMPOSER_ALLOW_SUPERUSER=1
 
