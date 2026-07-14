@@ -1,5 +1,5 @@
 services:
-###> doctrine/doctrine-bundle ###
+  ###> doctrine/doctrine-bundle ###
   database:
     image: postgres:${POSTGRES_VERSION:-16}-alpine
     environment:
@@ -16,10 +16,10 @@ services:
       - database_data:/var/lib/postgresql/data:rw
       # You may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
       # - ./docker/db/data:/var/lib/postgresql/data:rw
-###< doctrine/doctrine-bundle ###
+  ###< doctrine/doctrine-bundle ###
 
   redis:
-    image: 'redis:alpine'
+    image: "redis:alpine"
     ports: [6379]
     volumes:
       - redis_data:/data:rw
@@ -29,7 +29,7 @@ services:
   #    - valkey_data:/data:rw
 
 volumes:
-###> doctrine/doctrine-bundle ###
+  ###> doctrine/doctrine-bundle ###
   database_data:
   redis_data:
   valkey_data:

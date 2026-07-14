@@ -1,6 +1,7 @@
 # hugo.alliau.me
 
 My website, built with:
+
 - [Symfony 7](https://symfony.com/7)
 - [Asset Mapper](https://symfony.com/doc/current/frontend/asset_mapper.html)
 - [Tailwind CSS](https://tailwindcss.com/)
@@ -21,10 +22,13 @@ My website, built with:
 
 1. Clone the repository
 2. Create a `.env.local` file and configure the environment (if needed):
+
 ```shell
 cp .env .env.local
 ```
+
 3. Install the environment and project
+
 ```shell
 make install
 ```

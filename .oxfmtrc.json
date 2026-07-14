@@ -1,0 +1,15 @@
+{
+    "$schema": "./node_modules/oxfmt/configuration_schema.json",
+    "ignorePatterns": [
+        "assets/vendor/**",
+        "assets/controllers.json",
+        "config/**/*.yaml",
+        "public/assets/**",
+        "public/bundles/**",
+        "tests/**",
+        "var/**",
+        "vendor/**",
+        "composer.json",
+        "package.json"
+    ]
+}

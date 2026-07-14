@@ -4,85 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c3de122d6683bafc184185ae2d372865",
+    "content-hash": "3a3e6a1784840335dd9ed7a68399398e",
     "packages": [
-        {
-            "name": "composer/semver",
-            "version": "3.4.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/composer/semver.git",
-                "reference": "198166618906cb2de69b95d7d47e5fa8aa1b2b95"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/composer/semver/zipball/198166618906cb2de69b95d7d47e5fa8aa1b2b95",
-                "reference": "198166618906cb2de69b95d7d47e5fa8aa1b2b95",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^5.3.2 || ^7.0 || ^8.0"
-            },
-            "require-dev": {
-                "phpstan/phpstan": "^1.11",
-                "symfony/phpunit-bridge": "^3 || ^7"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-main": "3.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Composer\\Semver\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Nils Adermann",
-                    "email": "naderman@naderman.de",
-                    "homepage": "http://www.naderman.de"
-                },
-                {
-                    "name": "Jordi Boggiano",
-                    "email": "j.boggiano@seld.be",
-                    "homepage": "http://seld.be"
-                },
-                {
-                    "name": "Rob Bast",
-                    "email": "rob.bast@gmail.com",
-                    "homepage": "http://robbast.nl"
-                }
-            ],
-            "description": "Semver library that offers utilities, version constraint parsing and validation.",
-            "keywords": [
-                "semantic",
-                "semver",
-                "validation",
-                "versioning"
-            ],
-            "support": {
-                "irc": "ircs://irc.libera.chat:6697/composer",
-                "issues": "https://github.com/composer/semver/issues",
-                "source": "https://github.com/composer/semver/tree/3.4.4"
-            },
-            "funding": [
-                {
-                    "url": "https://packagist.com",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/composer",
-                    "type": "github"
-                }
-            ],
-            "time": "2025-08-20T19:15:30+00:00"
-        },
         {
             "name": "cuyz/valinor",
             "version": "2.4.0",
@@ -1425,16 +1348,16 @@
         },
         {
             "name": "easycorp/easyadmin-bundle",
-            "version": "v5.0.11",
+            "version": "dev-reprise-support",
             "source": {
                 "type": "git",
-                "url": "https://github.com/EasyCorp/EasyAdminBundle.git",
-                "reference": "e22ef0fddc532ab7847c887de428fbd7f6f118d5"
+                "url": "https://github.com/Kocal/EasyAdminBundle.git",
+                "reference": "21cb1257d68cd475bab801f0a171d7ce5112be22"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/EasyCorp/EasyAdminBundle/zipball/e22ef0fddc532ab7847c887de428fbd7f6f118d5",
-                "reference": "e22ef0fddc532ab7847c887de428fbd7f6f118d5",
+                "url": "https://api.github.com/repos/Kocal/EasyAdminBundle/zipball/21cb1257d68cd475bab801f0a171d7ce5112be22",
+                "reference": "21cb1257d68cd475bab801f0a171d7ce5112be22",
                 "shasum": ""
             },
             "require": {
@@ -1499,9 +1422,23 @@
             "autoload": {
                 "psr-4": {
                     "EasyCorp\\Bundle\\EasyAdminBundle\\": "src/"
+                },
+                "exclude-from-classmap": [
+                    "/tests/Functional/Apps/*/config/reference.php"
+                ]
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "EasyCorp\\Bundle\\EasyAdminBundle\\Tests\\Unit\\": "tests/Unit/",
+                    "EasyCorp\\Bundle\\EasyAdminBundle\\Tests\\Functional\\": "tests/Functional/",
+                    "EasyCorp\\Bundle\\EasyAdminBundle\\Tests\\Functional\\Apps\\DefaultApp\\": "tests/Functional/Apps/DefaultApp/src/",
+                    "EasyCorp\\Bundle\\EasyAdminBundle\\Tests\\Functional\\Apps\\SecuredApp\\": "tests/Functional/Apps/SecuredApp/src/",
+                    "EasyCorp\\Bundle\\EasyAdminBundle\\Tests\\Functional\\Apps\\AdminRouteApp\\": "tests/Functional/Apps/AdminRouteApp/src/",
+                    "EasyCorp\\Bundle\\EasyAdminBundle\\Tests\\Functional\\Apps\\CustomizationApp\\": "tests/Functional/Apps/CustomizationApp/src/",
+                    "EasyCorp\\Bundle\\EasyAdminBundle\\Tests\\TestUtils\\": "tests/TestUtils/",
+                    "EasyCorp\\Bundle\\EasyAdminBundle\\Tests\\": "tests/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1519,16 +1456,15 @@
                 "generator"
             ],
             "support": {
-                "issues": "https://github.com/EasyCorp/EasyAdminBundle/issues",
-                "source": "https://github.com/EasyCorp/EasyAdminBundle/tree/v5.0.11"
+                "source": "https://github.com/Kocal/EasyAdminBundle/tree/reprise-support"
             },
             "funding": [
                 {
-                    "url": "https://github.com/javiereguiluz",
-                    "type": "github"
+                    "type": "github",
+                    "url": "https://github.com/javiereguiluz"
                 }
             ],
-            "time": "2026-05-28T19:03:47+00:00"
+            "time": "2026-07-14T07:48:02+00:00"
         },
         {
             "name": "knplabs/knp-menu",
@@ -3458,81 +3394,6 @@
             "time": "2024-09-11T13:17:53+00:00"
         },
         {
-            "name": "sensiolabs/minify-bundle",
-            "version": "v1.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/sensiolabs/minify-bundle.git",
-                "reference": "cf6462fbbd7883367c6ee1f02424e93a3df79384"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/minify-bundle/zipball/cf6462fbbd7883367c6ee1f02424e93a3df79384",
-                "reference": "cf6462fbbd7883367c6ee1f02424e93a3df79384",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=8.1",
-                "psr/log": "^2|^3",
-                "symfony/filesystem": "^6.4|^7.0|^8.0",
-                "symfony/http-client-contracts": "^3.5",
-                "symfony/process": "^6.4|^7.0|^8.0"
-            },
-            "require-dev": {
-                "phpstan/phpstan": "^1.12",
-                "phpunit/phpunit": "^10.5",
-                "symfony/asset-mapper": "^6.4|^7.0|^8.0",
-                "symfony/console": "^6.4|^7.0|^8.0",
-                "symfony/framework-bundle": "^6.4|^7.0|^8.0",
-                "symfony/http-client": "^6.4|^7.0|^8.0",
-                "symfony/http-kernel": "^6.4|^7.0|^8.0"
-            },
-            "type": "symfony-bundle",
-            "extra": {
-                "thanks": {
-                    "url": "https://github.com/tdewolff/minify",
-                    "name": "tdewolff/minify"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Sensiolabs\\MinifyBundle\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Simon André",
-                    "email": "smn.andre@gmail.com"
-                },
-                {
-                    "name": "SensioLabs",
-                    "homepage": "https://sensiolabs.com"
-                }
-            ],
-            "description": "Assets Minifier (CSS, JS) for Symfony & Minify integration in Asset Mapper",
-            "homepage": "https://github.com/sensiolabs/minify-bundle",
-            "keywords": [
-                "JS",
-                "asset-mapper",
-                "assets",
-                "compress",
-                "css",
-                "minifier",
-                "minify",
-                "symfony",
-                "uglify"
-            ],
-            "support": {
-                "issues": "https://github.com/sensiolabs/minify-bundle/issues",
-                "source": "https://github.com/sensiolabs/minify-bundle/tree/v1.2.0"
-            },
-            "time": "2025-08-19T18:45:10+00:00"
-        },
-        {
             "name": "symfony/asset",
             "version": "v8.1.0",
             "source": {
@@ -3581,87 +3442,6 @@
             "homepage": "https://symfony.com",
             "support": {
                 "source": "https://github.com/symfony/asset/tree/v8.1.0"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://github.com/nicolas-grekas",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2026-05-29T05:06:50+00:00"
-        },
-        {
-            "name": "symfony/asset-mapper",
-            "version": "v8.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/asset-mapper.git",
-                "reference": "74b1b7b7019c728cb1f8672b502260e683b6374e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/asset-mapper/zipball/74b1b7b7019c728cb1f8672b502260e683b6374e",
-                "reference": "74b1b7b7019c728cb1f8672b502260e683b6374e",
-                "shasum": ""
-            },
-            "require": {
-                "composer/semver": "^3.0",
-                "php": ">=8.4.1",
-                "symfony/filesystem": "^7.4|^8.0",
-                "symfony/http-client": "^7.4|^8.0"
-            },
-            "require-dev": {
-                "symfony/asset": "^7.4|^8.0",
-                "symfony/browser-kit": "^7.4|^8.0",
-                "symfony/console": "^7.4|^8.0",
-                "symfony/event-dispatcher-contracts": "^3.0",
-                "symfony/finder": "^7.4|^8.0",
-                "symfony/framework-bundle": "^7.4|^8.0",
-                "symfony/http-foundation": "^7.4|^8.0",
-                "symfony/http-kernel": "^7.4|^8.0",
-                "symfony/process": "^7.4|^8.0",
-                "symfony/runtime": "^7.4|^8.0",
-                "symfony/web-link": "^7.4|^8.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Component\\AssetMapper\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Maps directories of assets & makes them available in a public directory with versioned filenames.",
-            "homepage": "https://symfony.com",
-            "support": {
-                "source": "https://github.com/symfony/asset-mapper/tree/v8.1.0"
             },
             "funding": [
                 {
@@ -4200,16 +3980,16 @@
         },
         {
             "name": "symfony/deprecation-contracts",
-            "version": "v3.7.0",
+            "version": "v3.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/deprecation-contracts.git",
-                "reference": "50f59d1f3ca46d41ac911f97a78626b6756af35b"
+                "reference": "f3202fa1b5097b0af062dc978b32ecf63404e31d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/50f59d1f3ca46d41ac911f97a78626b6756af35b",
-                "reference": "50f59d1f3ca46d41ac911f97a78626b6756af35b",
+                "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/f3202fa1b5097b0af062dc978b32ecf63404e31d",
+                "reference": "f3202fa1b5097b0af062dc978b32ecf63404e31d",
                 "shasum": ""
             },
             "require": {
@@ -4247,7 +4027,7 @@
             "description": "A generic function and convention to trigger deprecation notices",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/deprecation-contracts/tree/v3.7.0"
+                "source": "https://github.com/symfony/deprecation-contracts/tree/v3.7.1"
             },
             "funding": [
                 {
@@ -4267,7 +4047,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-04-13T15:52:40+00:00"
+            "time": "2026-06-05T06:23:12+00:00"
         },
         {
             "name": "symfony/doctrine-bridge",
@@ -6593,16 +6373,16 @@
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.38.1",
+            "version": "v1.38.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "14c5439eec4ccff081ac14eca2dc57feb2a66d92"
+                "reference": "d3d318bad5e7a1bfbd026009c8bfb8d8f99ae6b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/14c5439eec4ccff081ac14eca2dc57feb2a66d92",
-                "reference": "14c5439eec4ccff081ac14eca2dc57feb2a66d92",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/d3d318bad5e7a1bfbd026009c8bfb8d8f99ae6b6",
+                "reference": "d3d318bad5e7a1bfbd026009c8bfb8d8f99ae6b6",
                 "shasum": ""
             },
             "require": {
@@ -6654,7 +6434,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-mbstring/tree/v1.38.1"
+                "source": "https://github.com/symfony/polyfill-mbstring/tree/v1.38.2"
             },
             "funding": [
                 {
@@ -6674,7 +6454,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-05-26T12:51:13+00:00"
+            "time": "2026-05-27T06:59:30+00:00"
         },
         {
             "name": "symfony/polyfill-uuid",
@@ -6758,71 +6538,6 @@
                 }
             ],
             "time": "2026-04-10T16:19:22+00:00"
-        },
-        {
-            "name": "symfony/process",
-            "version": "v8.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/process.git",
-                "reference": "c4a9e58f235a6bf7f97ffbfedae2687353ac79e5"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/c4a9e58f235a6bf7f97ffbfedae2687353ac79e5",
-                "reference": "c4a9e58f235a6bf7f97ffbfedae2687353ac79e5",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=8.4.1"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Component\\Process\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Executes commands in sub-processes",
-            "homepage": "https://symfony.com",
-            "support": {
-                "source": "https://github.com/symfony/process/tree/v8.1.0"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://github.com/nicolas-grekas",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2026-05-29T05:06:50+00:00"
         },
         {
             "name": "symfony/property-access",
@@ -7064,6 +6779,86 @@
                 }
             ],
             "time": "2026-05-29T05:06:50+00:00"
+        },
+        {
+            "name": "symfony/reprise",
+            "version": "v0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/reprise.git",
+                "reference": "27809b7590242ff76aeb49c160ea47360e162459"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/reprise/zipball/27809b7590242ff76aeb49c160ea47360e162459",
+                "reference": "27809b7590242ff76aeb49c160ea47360e162459",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.4",
+                "symfony/asset": "^7.4|^8.0",
+                "twig/twig": "^3.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.95",
+                "phpstan/phpstan": "^2.2",
+                "phpunit/phpunit": "^13.2",
+                "symfony/cache": "^7.4|^8.0",
+                "symfony/framework-bundle": "^7.4|^8.0",
+                "symfony/var-exporter": "^7.4|^8.0",
+                "symfony/web-link": "^7.4|^8.0"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Reprise\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Hugo Alliaume",
+                    "email": "hugo@alliau.me"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Integrate Vite and Rsbuild with Symfony, a reprise of Webpack Encore Bundle.",
+            "keywords": [
+                "assets",
+                "encore",
+                "rsbuild",
+                "symfony",
+                "vite"
+            ],
+            "support": {
+                "issues": "https://github.com/symfony/reprise/issues",
+                "source": "https://github.com/symfony/reprise/tree/v0.1.0"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/nicolas-grekas",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2026-07-13T07:11:46+00:00"
         },
         {
             "name": "symfony/routing",
@@ -9392,62 +9187,6 @@
             "time": "2026-05-29T05:06:50+00:00"
         },
         {
-            "name": "symfonycasts/tailwind-bundle",
-            "version": "v0.13.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/SymfonyCasts/tailwind-bundle.git",
-                "reference": "0cedad5861c365d61bb9fdd52124b4bdf57c477c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/SymfonyCasts/tailwind-bundle/zipball/0cedad5861c365d61bb9fdd52124b4bdf57c477c",
-                "reference": "0cedad5861c365d61bb9fdd52124b4bdf57c477c",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=8.1",
-                "symfony/asset-mapper": "^6.3|^7.0|^8.0",
-                "symfony/cache": "^6.3|^7.0|^8.0",
-                "symfony/console": "^5.4|^6.3|^7.0|^8.0",
-                "symfony/deprecation-contracts": "^2.2|^3.0",
-                "symfony/http-client": "^5.4|^6.3|^7.0|^8.0",
-                "symfony/process": "^5.4|^6.3|^7.0|^8.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^9.6",
-                "symfony/filesystem": "^6.3|^7.0|^8.0",
-                "symfony/framework-bundle": "^6.3|^7.0|^8.0",
-                "symfony/phpunit-bridge": "^6.3.9|^7.0|^8.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Symfonycasts\\TailwindBundle\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ryan Weaver",
-                    "homepage": "https://symfonycasts.com"
-                }
-            ],
-            "description": "Delightful Tailwind Support for Symfony + AssetMapper",
-            "keywords": [
-                "asset-mapper",
-                "tailwind"
-            ],
-            "support": {
-                "issues": "https://github.com/SymfonyCasts/tailwind-bundle/issues",
-                "source": "https://github.com/SymfonyCasts/tailwind-bundle/tree/v0.13.0"
-            },
-            "time": "2026-05-29T11:22:13+00:00"
-        },
-        {
             "name": "twig/extra-bundle",
             "version": "v3.24.0",
             "source": {
@@ -10137,64 +9876,6 @@
                 "type"
             ],
             "time": "2026-02-19T20:12:01+00:00"
-        },
-        {
-            "name": "kocal/oxc-bundle",
-            "version": "v1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Kocal/OxcBundle.git",
-                "reference": "be63345142d73a5ff5dbf1e88abbeae350d92715"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Kocal/OxcBundle/zipball/be63345142d73a5ff5dbf1e88abbeae350d92715",
-                "reference": "be63345142d73a5ff5dbf1e88abbeae350d92715",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=8.1",
-                "symfony/console": "^6.4|^7.0|^8.0",
-                "symfony/filesystem": "^6.4|^7.0|^8.0",
-                "symfony/http-client": "^6.4|^7.0|^8.0",
-                "symfony/process": "^6.4|^7.0|^8.0"
-            },
-            "require-dev": {
-                "phpstan/phpstan": "^2.1.21",
-                "symfony/framework-bundle": "^6.4|^7.0|^8.0",
-                "symplify/easy-coding-standard": "12.5.22"
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-4": {
-                    "Kocal\\OxcBundle\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Hugo Alliaume",
-                    "email": "hugo@alliau.me"
-                }
-            ],
-            "description": "A Symfony Bundle to easily download tools from the JavaScript Oxidation Compiler (Oxc).",
-            "keywords": [
-                "bundle",
-                "format",
-                "lint",
-                "oxc",
-                "oxfmt",
-                "oxlint",
-                "symfony"
-            ],
-            "support": {
-                "issues": "https://github.com/Kocal/OxcBundle/issues",
-                "source": "https://github.com/Kocal/OxcBundle/tree/v1.0.0"
-            },
-            "time": "2026-02-04T20:25:59+00:00"
         },
         {
             "name": "kocal/phpstan-symfony-ux",
@@ -12764,6 +12445,71 @@
             "time": "2026-03-18T13:39:06+00:00"
         },
         {
+            "name": "symfony/process",
+            "version": "v8.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/process.git",
+                "reference": "c4a9e58f235a6bf7f97ffbfedae2687353ac79e5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/process/zipball/c4a9e58f235a6bf7f97ffbfedae2687353ac79e5",
+                "reference": "c4a9e58f235a6bf7f97ffbfedae2687353ac79e5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.4.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Process\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Executes commands in sub-processes",
+            "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/process/tree/v8.1.0"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/nicolas-grekas",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2026-05-29T05:06:50+00:00"
+        },
+        {
             "name": "symfony/web-profiler-bundle",
             "version": "v8.1.0",
             "source": {
@@ -13215,7 +12961,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {},
+    "stability-flags": {
+        "easycorp/easyadmin-bundle": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

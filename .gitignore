@@ -12,11 +12,6 @@
 /vendor/
 ###< symfony/framework-bundle ###
 
-###> symfony/asset-mapper ###
-/public/assets/
-/assets/vendor/
-###< symfony/asset-mapper ###
-
 ###> phpstan/phpstan ###
 phpstan.neon
 ###< phpstan/phpstan ###
@@ -26,15 +21,11 @@ phpstan.neon
 /.phpunit.cache/
 ###< phpunit/phpunit ###
 
-###> sensiolabs/minify-bundle ###
-/var/minify/
-###< sensiolabs/minify-bundle ###
-
-###> kocal/oxc-bundle ###
-/bin/oxfmt
-/bin/oxlint
-###< kocal/oxc-bundle ###
-
 ###> deptrac/deptrac ###
 /.deptrac.cache
 ###< deptrac/deptrac ###
+
+###> symfony/reprise ###
+/node_modules/
+/public/build/
+###< symfony/reprise ###

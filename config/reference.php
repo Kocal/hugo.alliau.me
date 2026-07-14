@@ -286,7 +286,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         }>,
  *     },
  *     asset_mapper?: bool|array{ // Asset Mapper configuration
- *         enabled?: bool|Param, // Default: true
+ *         enabled?: bool|Param, // Default: false
  *         paths?: string|array<string, scalar|Param|null>,
  *         excluded_patterns?: list<scalar|Param|null>,
  *         exclude_dotfiles?: bool|Param, // If true, any files starting with "." will be excluded from the asset mapper. // Default: true
@@ -1183,16 +1183,6 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         i18n?: "symfony"|"jms"|Param, // Strategy used to create your i18n routes. // Default: "symfony"
  *     },
  * }
- * @psalm-type SymfonycastsTailwindConfig = array{
- *     input_css?: list<scalar|Param|null>,
- *     config_file?: scalar|Param|null, // Path to the tailwind.config.js file // Default: "%kernel.project_dir%/tailwind.config.js"
- *     binary?: scalar|Param|null, // The tailwind binary to use instead of downloading a new one // Default: null
- *     binary_version?: scalar|Param|null, // Tailwind CLI version to download - null means the latest version // Default: null
- *     binary_platform?: "auto"|"linux-arm64"|"linux-arm64-musl"|"linux-x64"|"linux-x64-musl"|"macos-arm64"|"macos-x64"|"windows-x64"|Param, // Tailwind CLI platform to download - "auto" will try to detect the platform automatically // Default: "auto"
- *     postcss_config_file?: scalar|Param|null, // Path to PostCSS config file which is passed to the Tailwind CLI // Default: null
- *     strict_mode?: bool|Param|null, // When enabled, an exception will be thrown if there are no built assets (default: false in `test` env, true otherwise) // Default: null
- *     process_timeout?: int|Param, // Timeout in seconds for the Tailwind build process - use "0" to disable // Default: 60
- * }
  * @psalm-type KnpMenuConfig = array{
  *     providers?: array{
  *         builder_alias?: bool|Param, // Default: true
@@ -1743,24 +1733,15 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         default_namespace?: scalar|Param|null, // Default namespace where stories will be created by maker. // Default: "Story"
  *     },
  * }
- * @psalm-type SensiolabsMinifyConfig = array{
- *     asset_mapper?: bool|array{ // AssetMapper compiler settings
- *         enabled?: bool|Param, // Default: true
- *         types?: array{ // Asset types to minify
- *             css?: bool|Param, // Default: true
- *             js?: bool|Param, // Default: true
- *         },
- *         ignore_paths?: list<scalar|Param|null>,
- *         ignore_vendor?: bool|Param, // Exclude vendor assets from minification // Default: true
- *     },
- *     minify?: array{ // Minify settings
- *         local_binary?: scalar|Param|null, // Path to the local binary (use "auto" for automatic detection) // Default: false
- *         download_binary?: bool|Param, // Download the binary from GitHub (defaults to "true" in debug mode) // Default: "%kernel.debug%"
- *         download_directory?: scalar|Param|null, // Directory to store the downloaded binary // Default: "%kernel.project_dir%/var/minify"
- *     },
- * }
- * @psalm-type KocalOxcConfig = array{
- *     apps_version?: scalar|Param|null, // The version of git tag "apps_v*" to download. For example, git tag "apps_v1.43.0" corresponds to version "1.43.0".
+ * @psalm-type RepriseConfig = array{
+ *     output_path?: scalar|Param|null, // Directory where the @symfony/reprise plugin writes entrypoints.json and manifest.json. // Default: "%kernel.project_dir%/public/build"
+ *     strict_mode?: bool|Param, // Throw when the entrypoints.json file or a requested entry is missing. // Default: true
+ *     cache?: bool|Param, // Cache the parsed entrypoints.json in a compiled PHP file (warmed at cache:warmup). Enable in production; requires symfony/cache. // Default: false
+ *     preload?: bool|Param, // Register rendered assets as WebLink Link: headers (HTTP/2 preload). No-op when symfony/web-link is absent. // Default: true
+ *     asset_package?: scalar|Param|null, // Name of a framework.assets package used to resolve entry URLs (must have no version strategy). Null uses the default package. // Default: null
+ *     crossorigin?: false|"anonymous"|"use-credentials"|Param, // crossorigin attribute added alongside SRI integrity: false, "anonymous", or "use-credentials". // Default: false
+ *     script_attributes?: list<mixed>,
+ *     link_attributes?: list<mixed>,
  * }
  * @psalm-type ConfigType = array{
  *     imports?: ImportsConfig,
@@ -1774,7 +1755,6 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     monolog?: MonologConfig,
  *     twig_component?: TwigComponentConfig,
  *     presta_sitemap?: PrestaSitemapConfig,
- *     symfonycasts_tailwind?: SymfonycastsTailwindConfig,
  *     knp_menu?: KnpMenuConfig,
  *     ux_icons?: UxIconsConfig,
  *     stimulus?: StimulusConfig,
@@ -1783,7 +1763,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     valinor?: ValinorConfig,
  *     turbo?: TurboConfig,
  *     ux_map?: UxMapConfig,
- *     sensiolabs_minify?: SensiolabsMinifyConfig,
+ *     reprise?: RepriseConfig,
  *     "when@dev"?: array{
  *         imports?: ImportsConfig,
  *         parameters?: ParametersConfig,
@@ -1799,7 +1779,6 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         debug?: DebugConfig,
  *         twig_component?: TwigComponentConfig,
  *         presta_sitemap?: PrestaSitemapConfig,
- *         symfonycasts_tailwind?: SymfonycastsTailwindConfig,
  *         knp_menu?: KnpMenuConfig,
  *         ux_icons?: UxIconsConfig,
  *         stimulus?: StimulusConfig,
@@ -1809,8 +1788,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         turbo?: TurboConfig,
  *         ux_map?: UxMapConfig,
  *         zenstruck_foundry?: ZenstruckFoundryConfig,
- *         sensiolabs_minify?: SensiolabsMinifyConfig,
- *         kocal_oxc?: KocalOxcConfig,
+ *         reprise?: RepriseConfig,
  *     },
  *     "when@prod"?: array{
  *         imports?: ImportsConfig,
@@ -1824,7 +1802,6 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         monolog?: MonologConfig,
  *         twig_component?: TwigComponentConfig,
  *         presta_sitemap?: PrestaSitemapConfig,
- *         symfonycasts_tailwind?: SymfonycastsTailwindConfig,
  *         knp_menu?: KnpMenuConfig,
  *         ux_icons?: UxIconsConfig,
  *         stimulus?: StimulusConfig,
@@ -1833,7 +1810,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         valinor?: ValinorConfig,
  *         turbo?: TurboConfig,
  *         ux_map?: UxMapConfig,
- *         sensiolabs_minify?: SensiolabsMinifyConfig,
+ *         reprise?: RepriseConfig,
  *     },
  *     "when@test"?: array{
  *         imports?: ImportsConfig,
@@ -1848,7 +1825,6 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         monolog?: MonologConfig,
  *         twig_component?: TwigComponentConfig,
  *         presta_sitemap?: PrestaSitemapConfig,
- *         symfonycasts_tailwind?: SymfonycastsTailwindConfig,
  *         knp_menu?: KnpMenuConfig,
  *         ux_icons?: UxIconsConfig,
  *         stimulus?: StimulusConfig,
@@ -1858,7 +1834,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         turbo?: TurboConfig,
  *         ux_map?: UxMapConfig,
  *         zenstruck_foundry?: ZenstruckFoundryConfig,
- *         sensiolabs_minify?: SensiolabsMinifyConfig,
+ *         reprise?: RepriseConfig,
  *     },
  *     ...<string, ExtensionType|array{ // extra keys must follow the when@%env% pattern or match an extension alias
  *         imports?: ImportsConfig,

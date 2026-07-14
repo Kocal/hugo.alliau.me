@@ -1,92 +1,108 @@
 name: CI
 
 defaults:
-  run:
-    shell: bash
+    run:
+        shell: bash
 
 on:
-  pull_request:
-    types: [ opened, synchronize, reopened, ready_for_review ]
-  push:
-    branches:
-      - main
-  workflow_dispatch: ~
+    pull_request:
+        types: [opened, synchronize, reopened, ready_for_review]
+    push:
+        branches:
+            - main
+    workflow_dispatch: ~
 
 permissions:
     contents: read
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
-  cancel-in-progress: true
+    group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+    cancel-in-progress: true
 
 jobs:
-  qa:
-    if: ${{ ! github.event.pull_request.draft }}
-    timeout-minutes: 10
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v6
+    qa:
+        if: ${{ ! github.event.pull_request.draft }}
+        timeout-minutes: 10
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
 
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          extensions: ctype, iconv, mbstring
-          tools: symfony
+            - name: Setup PHP
+              uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # 2.37.2
+              with:
+                  extensions: ctype, iconv, mbstring
+                  tools: symfony
 
-      - name: Start Docker containers
-        run: docker compose up -d --wait
+            - name: Setup pnpm
+              uses: pnpm/action-setup@0ebf47130e4866e96fce0953f49152a61190b271 # v6.0.9
 
-      - name: Install project
-        run: make app.install
+            - name: Setup Node.js
+              uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
+              with:
+                  node-version-file: .nvmrc
+                  cache: pnpm
+                  cache-dependency-path: pnpm-lock.yaml
 
-      - name: QA
-        run: make qa
+            - name: Start Docker containers
+              run: docker compose up -d --wait
 
-  docker_build:
-    if: ${{ ! github.event.pull_request.draft }}
-    timeout-minutes: 10
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v6
+            - name: Install project
+              run: make app.install
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v4
+            - name: Install pnpm dependencies
+              run: pnpm install --frozen-lockfile
 
-      - name: Build Docker images
-        uses: docker/bake-action@v7
-        with:
-          pull: true
-          load: true
-          source: .
-          files: |
-            compose.yaml
-            compose.override.yaml
-            compose.prod.yaml
-          set: |
-            *.cache-from=type=gha,scope=${{github.ref}}
-            *.cache-from=type=gha,scope=refs/heads/main
-            *.cache-to=type=gha,scope=${{github.ref}},mode=max
+            - name: Build assets
+              run: pnpm run build
 
-      - name: Start services
-        run: docker compose up --wait --no-build
+            - name: QA
+              run: make qa
 
-      - name: Check HTTP reachability
-        run: curl -v --insecure --fail-with-body https://localhost
+    docker_build:
+        if: ${{ ! github.event.pull_request.draft }}
+        timeout-minutes: 10
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
 
-  docker_lint:
-    name: Docker Lint
-    runs-on: ubuntu-latest
-    permissions:
-        contents: read
-        packages: read
-        statuses: write
-    steps:
-        - name: Checkout
-          uses: actions/checkout@v6
-          with:
-              fetch-depth: 0
-              persist-credentials: false
-        - name: Lint Dockerfile
-          uses: hadolint/hadolint-action@v3.3.0
+            - name: Set up Docker Buildx
+              uses: docker/setup-buildx-action@v4
+
+            - name: Build Docker images
+              uses: docker/bake-action@v7
+              with:
+                  pull: true
+                  load: true
+                  source: .
+                  files: |
+                      compose.yaml
+                      compose.override.yaml
+                      compose.prod.yaml
+                  set: |
+                      *.cache-from=type=gha,scope=${{github.ref}}
+                      *.cache-from=type=gha,scope=refs/heads/main
+                      *.cache-to=type=gha,scope=${{github.ref}},mode=max
+
+            - name: Start services
+              run: docker compose up --wait --no-build
+
+            - name: Check HTTP reachability
+              run: curl -v --insecure --fail-with-body https://localhost
+
+    docker_lint:
+        name: Docker Lint
+        runs-on: ubuntu-latest
+        permissions:
+            contents: read
+            packages: read
+            statuses: write
+        steps:
+            - name: Checkout
+              uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+              with:
+                  fetch-depth: 0
+                  persist-credentials: false
+            - name: Lint Dockerfile
+              uses: hadolint/hadolint-action@v3.3.0
