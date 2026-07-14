@@ -25,6 +25,7 @@
 **/.pnpm-store/
 .github/
 docs/
+public/build/
 public/bundles/
 tests/
 var/

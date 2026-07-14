@@ -44,6 +44,9 @@ RUN <<-EOF
 	rm -rf /var/lib/apt/lists/*
 EOF
 
+# Let Corepack provision the pnpm version pinned in package.json without prompting during builds
+ENV COREPACK_ENABLE_DOWNLOAD_PROMPT=0
+
 # https://getcomposer.org/doc/03-cli.md#composer-allow-superuser
 ENV COMPOSER_ALLOW_SUPERUSER=1
 
@@ -111,18 +114,22 @@ COPY --link frankenphp/conf.d/20-app.prod.ini $PHP_INI_DIR/app.conf.d/
 COPY --link composer.* symfony.* ./
 RUN composer install --no-cache --prefer-dist --no-dev --no-autoloader --no-scripts --no-progress
 
+# install JS dependencies (the file: UX packages resolve into vendor/, so this must run after composer install)
+COPY --link package.json pnpm-lock.yaml ./
+RUN pnpm install --frozen-lockfile
+
 # copy sources
 COPY --link --exclude=frankenphp/ . ./
+
+# build the front-end assets into public/build (Vite via @symfony/reprise)
+RUN pnpm run build
 
 RUN <<-EOF
 	mkdir -p var/cache var/log var/share
 	composer dump-autoload --classmap-authoritative --no-dev
 	composer dump-env prod
 	composer run-script --no-dev post-install-cmd
-    php bin/console ux:icons:warm-cache
-	if [ -f importmap.php ]; then
-		php bin/console asset-map:compile
-	fi
+	php bin/console ux:icons:warm-cache
 	chmod +x bin/console
 	chmod -R g=u var
 	sync
@@ -179,7 +186,7 @@ RUN <<-EOF
 	find / -perm /6000 -type f -exec chmod a-s {} + 2>/dev/null || true
 EOF
 
-COPY --link --exclude=var --from=frankenphp_prod_builder /app /app
+COPY --link --exclude=var --exclude=node_modules --from=frankenphp_prod_builder /app /app
 # Group 0 + g=u for arbitrary-UID runtimes (e.g. OpenShift).
 COPY --chown=www-data:0 --from=frankenphp_prod_builder /app/var /app/var
 RUN <<-EOF
