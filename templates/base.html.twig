@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         {% block stylesheets %}
+            {{ reprise_entry_link_tags('app') }}
             <style>
                 /* Generated through fontpie, e.g.: "pnpx fontpie assets/vendor/inter-ui/variable/InterVariable.woff2" */
                 @font-face { font-family: 'Inter Variable Fallback'; font-style: normal; font-weight: 400; src: local('Arial'); ascent-override: 89.79%; descent-override: 22.36%; line-gap-override: 0.00%; size-adjust: 107.89%; }
@@ -14,10 +15,10 @@
         {% endblock %}
 
         {% block javascripts %}
+            {{ reprise_entry_script_tags('app') }}
             <script async src="{{ dns_prefetch('https://www.googletagmanager.com') }}/gtag/js?id=G-Z8KN175TJZ"></script>
             <script>window.dataLayer=window.dataLayer||[],window.gtag=function(){dataLayer.push(arguments)},gtag("js",new Date),gtag("config","G-Z8KN175TJZ");</script>
 
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
 
         <meta name="color-scheme" content="dark light">
