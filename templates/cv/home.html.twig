@@ -107,7 +107,7 @@
                                 <ul class="flex flex-wrap gap-1">
                                     {% for badge in professional_experience.badges %}
                                         <li>
-                                            <twig:Badge class="block" class="print:hidden-sm">{{ badge }}</twig:Badge>
+                                            <twig:Badge>{{ badge }}</twig:Badge>
                                         </li>
                                     {% endfor %}
                                 </ul>
@@ -144,7 +144,7 @@
                                 <ul class="flex flex-wrap gap-1">
                                     {% for tech in project.techStack %}
                                         <li>
-                                            <twig:Badge class="block" size="sm" color="gray">
+                                            <twig:Badge size="sm" color="gray">
                                                 {{ tech }}
                                             </twig:Badge>
                                         </li>
