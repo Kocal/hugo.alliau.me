@@ -1733,9 +1733,6 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         default_namespace?: scalar|Param|null, // Default namespace where stories will be created by maker. // Default: "Story"
  *     },
  * }
- * @psalm-type KocalOxcConfig = array{
- *     apps_version?: scalar|Param|null, // The version of git tag "apps_v*" to download. For example, git tag "apps_v1.43.0" corresponds to version "1.43.0".
- * }
  * @psalm-type RepriseConfig = array{
  *     output_path?: scalar|Param|null, // Directory where the @symfony/reprise plugin writes entrypoints.json and manifest.json. // Default: "%kernel.project_dir%/public/build"
  *     strict_mode?: bool|Param, // Throw when the entrypoints.json file or a requested entry is missing. // Default: true
@@ -1791,7 +1788,6 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         turbo?: TurboConfig,
  *         ux_map?: UxMapConfig,
  *         zenstruck_foundry?: ZenstruckFoundryConfig,
- *         kocal_oxc?: KocalOxcConfig,
  *         reprise?: RepriseConfig,
  *     },
  *     "when@prod"?: array{

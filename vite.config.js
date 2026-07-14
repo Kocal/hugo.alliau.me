@@ -15,7 +15,7 @@ export default defineConfig({
         tailwindcss(),
         Symfony({
             stimulus: "./assets/controllers.json",
-            copy: [{ from: "./assets/images/", to: "images/", regex: "hugo-alliaume\.jpeg" }],
+            copy: [{ from: "./assets/images/", to: "images/", regex: "hugo-alliaume.jpeg" }],
         }),
     ],
     resolve: {

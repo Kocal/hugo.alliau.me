@@ -37,7 +37,7 @@ class DashboardController extends AbstractDashboardController
     public function configureAssets(): Assets
     {
         return parent::configureAssets()
-            ->addAssetMapperEntry('admin');
+            ->addRepriseEntry('admin');
     }
 
     #[\Override]

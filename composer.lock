@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "093b09ed5b7f1c82aacfe9dc3f819c4e",
+    "content-hash": "3a3e6a1784840335dd9ed7a68399398e",
     "packages": [
         {
             "name": "cuyz/valinor",
@@ -1348,16 +1348,16 @@
         },
         {
             "name": "easycorp/easyadmin-bundle",
-            "version": "v5.0.11",
+            "version": "dev-reprise-support",
             "source": {
                 "type": "git",
-                "url": "https://github.com/EasyCorp/EasyAdminBundle.git",
-                "reference": "e22ef0fddc532ab7847c887de428fbd7f6f118d5"
+                "url": "https://github.com/Kocal/EasyAdminBundle.git",
+                "reference": "21cb1257d68cd475bab801f0a171d7ce5112be22"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/EasyCorp/EasyAdminBundle/zipball/e22ef0fddc532ab7847c887de428fbd7f6f118d5",
-                "reference": "e22ef0fddc532ab7847c887de428fbd7f6f118d5",
+                "url": "https://api.github.com/repos/Kocal/EasyAdminBundle/zipball/21cb1257d68cd475bab801f0a171d7ce5112be22",
+                "reference": "21cb1257d68cd475bab801f0a171d7ce5112be22",
                 "shasum": ""
             },
             "require": {
@@ -1422,9 +1422,23 @@
             "autoload": {
                 "psr-4": {
                     "EasyCorp\\Bundle\\EasyAdminBundle\\": "src/"
+                },
+                "exclude-from-classmap": [
+                    "/tests/Functional/Apps/*/config/reference.php"
+                ]
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "EasyCorp\\Bundle\\EasyAdminBundle\\Tests\\Unit\\": "tests/Unit/",
+                    "EasyCorp\\Bundle\\EasyAdminBundle\\Tests\\Functional\\": "tests/Functional/",
+                    "EasyCorp\\Bundle\\EasyAdminBundle\\Tests\\Functional\\Apps\\DefaultApp\\": "tests/Functional/Apps/DefaultApp/src/",
+                    "EasyCorp\\Bundle\\EasyAdminBundle\\Tests\\Functional\\Apps\\SecuredApp\\": "tests/Functional/Apps/SecuredApp/src/",
+                    "EasyCorp\\Bundle\\EasyAdminBundle\\Tests\\Functional\\Apps\\AdminRouteApp\\": "tests/Functional/Apps/AdminRouteApp/src/",
+                    "EasyCorp\\Bundle\\EasyAdminBundle\\Tests\\Functional\\Apps\\CustomizationApp\\": "tests/Functional/Apps/CustomizationApp/src/",
+                    "EasyCorp\\Bundle\\EasyAdminBundle\\Tests\\TestUtils\\": "tests/TestUtils/",
+                    "EasyCorp\\Bundle\\EasyAdminBundle\\Tests\\": "tests/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1442,16 +1456,15 @@
                 "generator"
             ],
             "support": {
-                "issues": "https://github.com/EasyCorp/EasyAdminBundle/issues",
-                "source": "https://github.com/EasyCorp/EasyAdminBundle/tree/v5.0.11"
+                "source": "https://github.com/Kocal/EasyAdminBundle/tree/reprise-support"
             },
             "funding": [
                 {
-                    "url": "https://github.com/javiereguiluz",
-                    "type": "github"
+                    "type": "github",
+                    "url": "https://github.com/javiereguiluz"
                 }
             ],
-            "time": "2026-05-28T19:03:47+00:00"
+            "time": "2026-07-14T07:48:02+00:00"
         },
         {
             "name": "knplabs/knp-menu",
@@ -12948,7 +12961,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {},
+    "stability-flags": {
+        "easycorp/easyadmin-bundle": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
