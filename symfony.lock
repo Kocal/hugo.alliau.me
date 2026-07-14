@@ -65,9 +65,6 @@
     "knplabs/knp-menu-bundle": {
         "version": "v3.3.0"
     },
-    "kocal/oxc-bundle": {
-        "version": "dev-main"
-    },
     "league/flysystem-bundle": {
         "version": "3.3",
         "recipe": {

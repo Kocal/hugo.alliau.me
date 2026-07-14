@@ -21,11 +21,6 @@ phpstan.neon
 /.phpunit.cache/
 ###< phpunit/phpunit ###
 
-###> kocal/oxc-bundle ###
-/bin/oxfmt
-/bin/oxlint
-###< kocal/oxc-bundle ###
-
 ###> deptrac/deptrac ###
 /.deptrac.cache
 ###< deptrac/deptrac ###

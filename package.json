@@ -3,7 +3,11 @@
   "packageManager": "pnpm@11.12.0",
   "scripts": {
     "dev": "vite",
-    "build": "vite build"
+    "build": "vite build",
+    "fmt": "oxfmt",
+    "fmt:check": "oxfmt --check",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix"
   },
   "dependencies": {
     "@codemirror/commands": "^6.10.4",
@@ -36,8 +40,9 @@
   },
   "devDependencies": {
     "@symfony/reprise": "^0.1.0",
-    "@symfony/stimulus-bridge": "^3.2.0 || ^4.0.0",
     "@tailwindcss/vite": "^4.3.2",
+    "oxfmt": "^0.58.0",
+    "oxlint": "^1.73.0",
     "tailwindcss": "^4.3.2",
     "vite": "^8.1.4"
   }

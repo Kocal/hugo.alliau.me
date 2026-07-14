@@ -12,6 +12,7 @@ SF_PROXY = $(shell $(SF) local:proxy:url)
 SF_CONSOLE := $(SF) console
 PHP := $(SF) php
 COMPOSER := $(SF) composer
+PNPM := pnpm
 
 USER := $(shell id -u)
 GROUP := $(shell id -g)
@@ -110,13 +111,11 @@ cs.back.fix:
 
 ## Coding style - Check frontend coding style
 cs.front:
-	$(SF_CONSOLE) oxc:download:oxfmt
-	bin/oxfmt --check
+	pnpm fmt:check
 
 ## Coding style - Check frontend coding style and fix issues
 cs.front.fix:
-	$(SF_CONSOLE) oxc:download:oxfmt
-	bin/oxfmt
+	pnpm fmt
 
 ##########
 # Linter #
@@ -138,13 +137,11 @@ lint.back:
 
 ## Linter - Lint front files
 lint.front:
-	$(SF_CONSOLE) oxc:download:oxlint
-	bin/oxlint
+	pnpm lint
 
 ## Linter - Lint front files and fix issues
 lint.front.fix:
-	$(SF_CONSOLE) oxc:download:oxlint
-	bin/oxlint --fix
+	pnpm lint:fix
 
 ###########
 # PHPStan #

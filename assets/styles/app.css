@@ -2,7 +2,9 @@
 @source not "../../public";
 
 @theme {
-    --font-sans: "Inter var", "Inter Variable Fallback", "ui-sans-serif", "system-ui", "sans-serif", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI", "Symbol", "Noto Color Emoji";
+    --font-sans:
+        "Inter var", "Inter Variable Fallback", "ui-sans-serif", "system-ui", "sans-serif",
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI", "Symbol", "Noto Color Emoji";
     --font-sans--font-feature-settings: "cv02", "cv03", "cv04", "cv11";
 
     --color-primary-50: var(--color-pink-50);
@@ -27,7 +29,7 @@
         font-display: swap;
         font-style: normal;
         font-named-instance: "Regular";
-        src: url('inter-ui/variable/InterVariable.woff2') format("woff2")
+        src: url("inter-ui/variable/InterVariable.woff2") format("woff2");
     }
     @font-face {
         font-family: Inter var;
@@ -35,7 +37,7 @@
         font-display: swap;
         font-style: italic;
         font-named-instance: "Regular";
-        src: url('inter-ui/variable/InterVariable-Italic.woff2') format("woff2")
+        src: url("inter-ui/variable/InterVariable-Italic.woff2") format("woff2");
     }
 }
 
@@ -59,7 +61,10 @@
             color: light-dark(var(--color-black), var(--color-white));
         }
 
-        p, .CustomContainer, .Terminal, blockquote {
+        p,
+        .CustomContainer,
+        .Terminal,
+        blockquote {
             margin-top: --spacing(5);
             margin-bottom: --spacing(5);
         }
@@ -103,13 +108,15 @@
                 font-weight: var(--font-weight-semibold);
             }
 
-            th, td {
+            th,
+            td {
                 padding: --spacing(1) --spacing(2);
                 border-bottom: 1px solid var(--table-border-color);
             }
         }
 
-        ol, ul {
+        ol,
+        ul {
             margin-top: --spacing(5);
             margin-bottom: --spacing(5);
             padding-inline-start: --spacing(6);
@@ -148,12 +155,16 @@
             margin-bottom: --spacing(2);
         }
 
-        ul ul, ul ol, ol ul, ol ol {
+        ul ul,
+        ul ol,
+        ol ul,
+        ol ol {
             margin-top: --spacing(3);
             margin-bottom: --spacing(3);
         }
 
-        h2 + *, h3 + * {
+        h2 + *,
+        h3 + * {
             margin-top: 0;
         }
 
@@ -186,12 +197,12 @@
 
 @layer components {
     .heading-permalink {
-        color: theme('colors.gray.500');
+        color: theme("colors.gray.500");
         text-decoration: none !important;
-        margin-right: theme('spacing.1');
+        margin-right: theme("spacing.1");
 
         &:before {
-            content: '#';
+            content: "#";
         }
     }
 }
@@ -205,8 +216,8 @@
 
 @layer components {
     .Terminal {
-        color: light-dark(#000000, #D4D4D4);
-        background-color: light-dark(#fff, #1E1E1E);
+        color: light-dark(#000000, #d4d4d4);
+        background-color: light-dark(#fff, #1e1e1e);
         border-radius: var(--terminal-border-radius);
         font-size: 16px;
         line-height: --spacing(6);
@@ -273,7 +284,7 @@
                 background-color: color-mix(in srgb, var(--color-green-500) 20%, transparent);
 
                 &::before {
-                    content: '+ ';
+                    content: "+ ";
                     color: var(--color-green-500);
                 }
             }
@@ -282,7 +293,7 @@
                 background-color: color-mix(in srgb, var(--color-red-500) 20%, transparent);
 
                 &::before {
-                    content: '- ';
+                    content: "- ";
                     color: var(--color-red-500);
                 }
             }

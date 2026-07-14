@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e977db77bf61abc304a93d9a702700cf",
+    "content-hash": "093b09ed5b7f1c82aacfe9dc3f819c4e",
     "packages": [
         {
             "name": "cuyz/valinor",
@@ -9863,64 +9863,6 @@
                 "type"
             ],
             "time": "2026-02-19T20:12:01+00:00"
-        },
-        {
-            "name": "kocal/oxc-bundle",
-            "version": "v1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Kocal/OxcBundle.git",
-                "reference": "be63345142d73a5ff5dbf1e88abbeae350d92715"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Kocal/OxcBundle/zipball/be63345142d73a5ff5dbf1e88abbeae350d92715",
-                "reference": "be63345142d73a5ff5dbf1e88abbeae350d92715",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=8.1",
-                "symfony/console": "^6.4|^7.0|^8.0",
-                "symfony/filesystem": "^6.4|^7.0|^8.0",
-                "symfony/http-client": "^6.4|^7.0|^8.0",
-                "symfony/process": "^6.4|^7.0|^8.0"
-            },
-            "require-dev": {
-                "phpstan/phpstan": "^2.1.21",
-                "symfony/framework-bundle": "^6.4|^7.0|^8.0",
-                "symplify/easy-coding-standard": "12.5.22"
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-4": {
-                    "Kocal\\OxcBundle\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Hugo Alliaume",
-                    "email": "hugo@alliau.me"
-                }
-            ],
-            "description": "A Symfony Bundle to easily download tools from the JavaScript Oxidation Compiler (Oxc).",
-            "keywords": [
-                "bundle",
-                "format",
-                "lint",
-                "oxc",
-                "oxfmt",
-                "oxlint",
-                "symfony"
-            ],
-            "support": {
-                "issues": "https://github.com/Kocal/OxcBundle/issues",
-                "source": "https://github.com/Kocal/OxcBundle/tree/v1.0.0"
-            },
-            "time": "2026-02-04T20:25:59+00:00"
         },
         {
             "name": "kocal/phpstan-symfony-ux",
