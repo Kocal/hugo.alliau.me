@@ -1,6 +1,6 @@
 deptrac:
     cache_file: .cache/deptrac_domains.cache
-    
+
     paths:
         - ./src
 
@@ -8,15 +8,15 @@ deptrac:
         - name: Blog
           collectors:
               - { type: classLike, value: ^App\\(?:Domain|Application|Infrastructure)\\Blog\\ }
-     
+
         - name: CV
           collectors:
               - { type: classLike, value: ^App\\(?:Domain|Application|Infrastructure)\\CV\\ }
-    
+
         - name: Places
           collectors:
               - { type: classLike, value: ^App\\(?:Domain|Application|Infrastructure)\\Places\\ }
- 
+
         - name: User
           collectors:
               - { type: classLike, value: ^App\\(?:Domain|Application|Infrastructure)\\User\\ }
@@ -24,7 +24,6 @@ deptrac:
         - name: Shared
           collectors:
               - { type: classLike, value: ^App\\(?:Domain|Application|Infrastructure)\\Shared\\ }
-              
 
     ruleset:
         Blog: [Shared]

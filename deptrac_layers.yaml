@@ -19,24 +19,24 @@ deptrac:
 
         - name: Vendor_Doctrine_Mapping
           collectors:
-            - { type: classLike, value: ^Doctrine\\Orm\\Mapping }
-            - { type: classLike, value: ^Doctrine\\DBAL\\Types }
+              - { type: classLike, value: ^Doctrine\\Orm\\Mapping }
+              - { type: classLike, value: ^Doctrine\\DBAL\\Types }
 
         - name: Vendor_Symfony_Assert
           collectors:
-            - { type: classLike, value: ^Symfony\\Component\\Validator\\Constraints }
+              - { type: classLike, value: ^Symfony\\Component\\Validator\\Constraints }
 
         - name: Vendor_Symfony_Clock_Clock
           collectors:
-            - { type: classLike, value: ^Symfony\\Component\\Clock\\Clock }
+              - { type: classLike, value: ^Symfony\\Component\\Clock\\Clock }
 
         - name: Vendor_Symfony_TranslatableMessage
           collectors:
-            - { type: classLike, value: ^Symfony\\Component\\Translation\\TranslatableMessage }
+              - { type: classLike, value: ^Symfony\\Component\\Translation\\TranslatableMessage }
 
         - name: Vendor_Symfony_Uid_Uuid
           collectors:
-            - { type: classLike, value: ^Symfony\\Component\\Uid\\Uuid }
+              - { type: classLike, value: ^Symfony\\Component\\Uid\\Uuid }
 
         - name: Vendor
           collectors:
@@ -44,7 +44,7 @@ deptrac:
                 must:
                     - { type: classLike, value: ^(?!App\\) }
                 must_not:
-                    - { type: classLike, value: '^[a-zA-Z]+$' } # native PHP classes
+                    - { type: classLike, value: "^[a-zA-Z]+$" } # native PHP classes
                     - { type: layer, value: Vendor_Doctrine_Mapping }
                     - { type: layer, value: Vendor_Symfony_Assert }
                     - { type: layer, value: Vendor_Symfony_Clock_Clock }

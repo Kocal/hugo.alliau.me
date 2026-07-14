@@ -28,10 +28,10 @@ services:
       POSTGRES_USER: ${POSTGRES_USER}
     volumes:
       - ./docker/db/data:/var/lib/postgresql/data:rw
-###< doctrine/doctrine-bundle ###
+  ###< doctrine/doctrine-bundle ###
 
   redis:
-    image: 'redis:alpine'
+    image: "redis:alpine"
     ports:
       - 6379:6379
     volumes:
