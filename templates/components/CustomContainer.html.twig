@@ -1,11 +1,11 @@
 {% set style = html_cva(
-    'mb-4 py-3 px-4 rounded border-l-5',
+    'mb-4 py-3 px-4 rounded border border-l-5 border-[light-dark(var(--color-gray-300),transparent)] bg-white dark:bg-zinc-900',
     {
         type: {
-            info: 'border-blue-600 [&_[data-header]]:text-blue-600',
-            tip: 'border-green-600 [&_[data-header]]:text-green-600',
-            warning: 'border-yellow-600 [&_[data-header]]:text-yellow-600',
-            danger: 'border-red-600 [&_[data-header]]:text-red-600',
+            info: 'border-l-blue-600 [&_[data-header]]:text-blue-600 dark:[&_[data-header]]:text-blue-300',
+            tip: 'border-l-green-600 [&_[data-header]]:text-green-600 dark:[&_[data-header]]:text-green-300',
+            warning: 'border-l-yellow-600 [&_[data-header]]:text-yellow-600 dark:[&_[data-header]]:text-yellow-300',
+            danger: 'border-l-red-600 [&_[data-header]]:text-red-600 dark:[&_[data-header]]:text-red-300',
         },
     }
 ) %}
