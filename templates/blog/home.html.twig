@@ -8,37 +8,28 @@
 
 {% block main %}
 <main class="container mx-auto p-2 sm:py-4 max-w-screen-lg">
+    <h1 class="text-3xl sm:text-5xl font-extrabold mb-6 sm:mb-8 tracking-tight text-center">
+        Blog
+    </h1>
 
-    <twig:Card class="p-2 sm:p-4">
-        <h1 class="text-3xl sm:text-4xl font-extrabold mb-5 tracking-tight">
-            Blog
-        </h1>
+    <div class="flex flex-col gap-4">
+        {% for post in posts %}
+            <twig:Card as="article" class="p-4 sm:p-6">
+                <header>
+                    <h2 class="text-2xl sm:text-3xl font-bold mb-3 tracking-tight hover:text-primary-700 dark:hover:text-slate-400 transition-colors">
+                        <a href="{{ path(constant('App\\Blog\\Domain\\Data\\Route::POST_VIEW').value, {slug: post.slug}) }}">
+                            {{ post.title }}
+                        </a>
+                    </h2>
+                </header>
 
-        <div class="flex flex-col gap-2">
-            {% for post in posts %}
-                <article class="py-2 first:pt-0 last:pb-0">
-                    <header>
-                        <h2 class="text-2xl sm:text-3xl font-bold mb-4 tracking-tight hover:text-primary-700 dark:hover:text-slate-400 transition-colors">
-                            <a href="{{ path(constant('App\\Blog\\Domain\\Data\\Route::POST_VIEW').value, {slug: post.slug}) }}">
-                                {{ post.title }}
-                            </a>
-                        </h2>
-                    </header>
+                <p>{{ post.description }}</p>
 
-                    <p>{{ post.description }}</p>
-
-                    <footer class="mt-4">
-                        <twig:Blog:PostMeta :post="post" />
-                    </footer>
-                </article>
-
-                {% if not loop.last %}
-                    <twig:Divider />
-                {% endif %}
-            {% endfor %}
-        </div>
-
-    </twig:Card>
-
+                <footer class="mt-4">
+                    <twig:Blog:PostMeta :post="post" />
+                </footer>
+            </twig:Card>
+        {% endfor %}
+    </div>
 </main>
 {% endblock %}
