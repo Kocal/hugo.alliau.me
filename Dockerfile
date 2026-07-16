@@ -115,7 +115,7 @@ COPY --link composer.* symfony.* ./
 RUN composer install --no-cache --prefer-dist --no-dev --no-autoloader --no-scripts --no-progress
 
 # install JS dependencies (the file: UX packages resolve into vendor/, so this must run after composer install)
-COPY --link package.json pnpm-lock.yaml ./
+COPY --link package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 RUN pnpm install --frozen-lockfile
 
 # copy sources
