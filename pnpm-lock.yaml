@@ -103,8 +103,8 @@ importers:
         version: 0.53.0(@hotwired/stimulus@3.2.2)(hotkeys-js@4.0.4)
     devDependencies:
       '@symfony/reprise':
-        specifier: ^0.2.0
-        version: 0.2.0(@hotwired/stimulus@3.2.2)(rolldown@1.1.5)(vite@8.1.4(jiti@2.7.0))
+        specifier: ^0.3.0
+        version: 0.3.0(@hotwired/stimulus@3.2.2)(rolldown@1.1.5)(vite@8.1.4(jiti@2.7.0))
       '@tailwindcss/vite':
         specifier: ^4.3.2
         version: 4.3.2(vite@8.1.4(jiti@2.7.0))
@@ -644,8 +644,8 @@ packages:
   '@shikijs/vscode-textmate@10.0.2':
     resolution: {integrity: sha512-83yeghZ2xxin3Nj8z1NMd/NCuca+gsYXswywDy5bHvwlWL8tpTQmzGeUuHd9FC3E/SBEMvzJRwWEOz5gGes9Qg==}
 
-  '@symfony/reprise@0.2.0':
-    resolution: {integrity: sha512-j2c+2AZXaaJxPQTaUL3XKez315mm/Z9qO5QJDQ5rl3QbvNVDSHG04eTSbZ0mQ5iSTNuIgwxLCyYiA2reYe0dfw==}
+  '@symfony/reprise@0.3.0':
+    resolution: {integrity: sha512-1MCtGZ1yA41/Ic2ME+GN3nf+4dOFxQmHRx9lZSeisvpn9e4RURwo0xD4Msj2aqDu64xi88F17sdoCvFnFM1hZg==}
     engines: {node: ^22.18.0 || ^24.11.0 || >=26.0}
     peerDependencies:
       '@hotwired/stimulus': '>=3'
@@ -1626,7 +1626,7 @@ snapshots:
 
   '@shikijs/vscode-textmate@10.0.2': {}
 
-  '@symfony/reprise@0.2.0(@hotwired/stimulus@3.2.2)(rolldown@1.1.5)(vite@8.1.4(jiti@2.7.0))':
+  '@symfony/reprise@0.3.0(@hotwired/stimulus@3.2.2)(rolldown@1.1.5)(vite@8.1.4(jiti@2.7.0))':
     dependencies:
       unplugin: 3.3.0(rolldown@1.1.5)(vite@8.1.4(jiti@2.7.0))
     optionalDependencies:

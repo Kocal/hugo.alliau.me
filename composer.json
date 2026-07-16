@@ -38,7 +38,7 @@
         "symfony/property-access": "8.1.*",
         "symfony/property-info": "8.1.*",
         "symfony/rate-limiter": "8.1.*",
-        "symfony/reprise": "^0.2.0",
+        "symfony/reprise": "^0.3.0",
         "symfony/runtime": "8.1.*",
         "symfony/serializer": "8.1.*",
         "symfony/stimulus-bundle": "^3.2",
