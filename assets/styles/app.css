@@ -32,6 +32,13 @@
 }
 
 @layer base {
+    /* Opt into both schemes so native light-dark() resolves against the user's
+       preference — and so LightningCSS emits the --lightningcss-light/-dark
+       helpers its light-dark() fallback relies on (undefined otherwise). */
+    :root {
+        color-scheme: light dark;
+    }
+
     /* Subtle dotted texture behind the page content. A radial mask keeps it
        invisible in the center (behind the content) and fades it in toward the
        edges. Fixed layer sits above the body background but below content. */
@@ -44,8 +51,8 @@
         color: light-dark(oklch(0 0 0 / 0.1), oklch(1 0 0 / 0.085));
         background-image: radial-gradient(currentColor 1.1px, transparent 1.6px);
         background-size: 20px 20px;
-        -webkit-mask-image: radial-gradient(ellipse at 50% 50%, transparent 15%, #000 70%);
-        mask-image: radial-gradient(ellipse at 50% 50%, transparent 15%, #000 70%);
+        -webkit-mask-image: radial-gradient(ellipse 100% 120% at 50% 50%, transparent 36%, #000 82%);
+        mask-image: radial-gradient(ellipse 100% 120% at 50% 50%, transparent 36%, #000 82%);
     }
 
     @font-face {
