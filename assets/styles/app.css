@@ -32,8 +32,9 @@
 }
 
 @layer base {
-    /* Subtle dotted texture behind the page content, faded via a radial mask.
-       Fixed layer sits above the body background but below content and cards. */
+    /* Subtle dotted texture behind the page content. A radial mask keeps it
+       invisible in the center (behind the content) and fades it in toward the
+       edges. Fixed layer sits above the body background but below content. */
     body::before {
         content: "";
         position: fixed;
@@ -43,8 +44,8 @@
         color: light-dark(oklch(0 0 0 / 0.1), oklch(1 0 0 / 0.085));
         background-image: radial-gradient(currentColor 1.1px, transparent 1.6px);
         background-size: 20px 20px;
-        -webkit-mask-image: radial-gradient(125% 120% at 50% 12%, #000 45%, transparent 92%);
-        mask-image: radial-gradient(125% 120% at 50% 12%, #000 45%, transparent 92%);
+        -webkit-mask-image: radial-gradient(ellipse at 50% 50%, transparent 15%, #000 70%);
+        mask-image: radial-gradient(ellipse at 50% 50%, transparent 15%, #000 70%);
     }
 
     @font-face {
