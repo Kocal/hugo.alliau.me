@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "afda566069093d4b45f7b6b40bb16b80",
+    "content-hash": "4a8c76b78f231e5315b47d758f723dfb",
     "packages": [
         {
             "name": "cuyz/valinor",
@@ -6782,16 +6782,16 @@
         },
         {
             "name": "symfony/reprise",
-            "version": "v0.3.0",
+            "version": "v0.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/reprise.git",
-                "reference": "d988b09cdac7f8f278ad88dd6069f985125d79a1"
+                "reference": "e44824ec1583b870fdf9a2ccc8195f17333caa57"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/reprise/zipball/d988b09cdac7f8f278ad88dd6069f985125d79a1",
-                "reference": "d988b09cdac7f8f278ad88dd6069f985125d79a1",
+                "url": "https://api.github.com/repos/symfony/reprise/zipball/e44824ec1583b870fdf9a2ccc8195f17333caa57",
+                "reference": "e44824ec1583b870fdf9a2ccc8195f17333caa57",
                 "shasum": ""
             },
             "require": {
@@ -6838,7 +6838,7 @@
             ],
             "support": {
                 "issues": "https://github.com/symfony/reprise/issues",
-                "source": "https://github.com/symfony/reprise/tree/v0.3.0"
+                "source": "https://github.com/symfony/reprise/tree/v0.6.0"
             },
             "funding": [
                 {
@@ -6858,7 +6858,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-07-16T10:22:14+00:00"
+            "time": "2026-07-26T13:31:53+00:00"
         },
         {
             "name": "symfony/routing",
