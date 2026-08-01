@@ -21,7 +21,7 @@ class Place implements CacheableEntity
     private PlaceId $id;
 
     #[ORM\Embedded]
-    private ?Address $address = null;
+    private ?Address $address;
 
     /**
      * @var array<PlaceType>

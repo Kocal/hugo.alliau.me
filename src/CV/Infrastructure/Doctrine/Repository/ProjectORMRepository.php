@@ -22,7 +22,8 @@ class ProjectORMRepository extends ServiceEntityRepository implements ProjectRep
     #[\Override]
     public function save(Project $project): void
     {
-        $this->getEntityManager()->persist($project);
+        $this->getEntityManager()
+            ->persist($project);
     }
 
     #[\Override]
@@ -33,7 +34,8 @@ class ProjectORMRepository extends ServiceEntityRepository implements ProjectRep
             ->setParameter('isVisible', true)
             ->orderBy('project.date', 'DESC');
 
-        return $qb->getQuery()->getResult();
+        return $qb->getQuery()
+            ->getResult();
     }
 
     #[\Override]
@@ -43,6 +45,7 @@ class ProjectORMRepository extends ServiceEntityRepository implements ProjectRep
             ->orderBy('project.date', 'DESC')
             ->setMaxResults(1);
 
-        return $qb->getQuery()->getOneOrNullResult();
+        return $qb->getQuery()
+            ->getOneOrNullResult();
     }
 }

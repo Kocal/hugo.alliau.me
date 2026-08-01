@@ -23,13 +23,15 @@ final class GitHubEmojisInlineParser implements InlineParserInterface
     #[\Override]
     public function parse(InlineParserContext $inlineContext): bool
     {
-        $inlineContext->getCursor()->advanceBy($inlineContext->getFullMatchLength());
+        $inlineContext->getCursor()
+            ->advanceBy($inlineContext->getFullMatchLength());
 
         $match = $inlineContext->getFullMatch();
 
-        $inlineContext->getContainer()->appendChild(
-            new Text($this->getTransliterator()->transliterate($match) ?: $match)
-        );
+        $inlineContext->getContainer()
+            ->appendChild(
+                new Text($this->getTransliterator()->transliterate($match) ?: $match)
+            );
 
         return true;
     }

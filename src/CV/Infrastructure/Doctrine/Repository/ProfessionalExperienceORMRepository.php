@@ -22,7 +22,8 @@ class ProfessionalExperienceORMRepository extends ServiceEntityRepository implem
     #[\Override]
     public function save(ProfessionalExperience $professionalExperience): void
     {
-        $this->getEntityManager()->persist($professionalExperience);
+        $this->getEntityManager()
+            ->persist($professionalExperience);
     }
 
     #[\Override]
@@ -31,7 +32,8 @@ class ProfessionalExperienceORMRepository extends ServiceEntityRepository implem
         $qb = $this->createQueryBuilder('professional_experience')
             ->orderBy('professional_experience.startDate', 'DESC');
 
-        return $qb->getQuery()->getResult();
+        return $qb->getQuery()
+            ->getResult();
     }
 
     #[\Override]
@@ -41,6 +43,7 @@ class ProfessionalExperienceORMRepository extends ServiceEntityRepository implem
             ->orderBy('professional_experience.startDate', 'DESC')
             ->setMaxResults(1);
 
-        return $qb->getQuery()->getOneOrNullResult();
+        return $qb->getQuery()
+            ->getOneOrNullResult();
     }
 }

@@ -21,14 +21,16 @@ final readonly class ValinorObjectMapper implements ObjectMapper
     public function map(string $className, mixed $source, Format $format): mixed
     {
         $mapper = $this->getMapper();
-        $source = $this->createSource($source)->camelCaseKeys();
+        $source = $this->createSource($source)
+            ->camelCaseKeys();
 
         return $mapper->map($className, $source);
     }
 
     private function getMapper(): TreeMapper
     {
-        return $this->mapperBuilder->allowSuperfluousKeys()->mapper();
+        return $this->mapperBuilder->allowSuperfluousKeys()
+            ->mapper();
     }
 
     private function createSource(mixed $source): Source

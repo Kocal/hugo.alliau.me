@@ -33,7 +33,9 @@ final class UserORMRepository extends ServiceEntityRepository implements UserRep
         }
 
         $user->setPassword($newHashedPassword);
-        $this->getEntityManager()->persist($user);
-        $this->getEntityManager()->flush();
+        $this->getEntityManager()
+            ->persist($user);
+        $this->getEntityManager()
+            ->flush();
     }
 }

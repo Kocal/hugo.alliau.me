@@ -62,7 +62,8 @@ final class ViewPlacesController extends AbstractController
 
             $map->addMarker(new Marker(
                 position: new Point(...$place->getAddress()->getCoordinates()),
-                title: $place->getAddress()->getName(),
+                title: $place->getAddress()
+                    ->getName(),
                 infoWindow: new InfoWindow(
                     content: $this->renderView('places/_info_window.html.twig', [
                         'place' => $place,
@@ -70,7 +71,8 @@ final class ViewPlacesController extends AbstractController
                 ),
                 extra: [
                     'icon_mask_uri' => $place->getIconMaskUri(),
-                    'country' => $place->getAddress()->getCountry(),
+                    'country' => $place->getAddress()
+                        ->getCountry(),
                 ]
             ));
         }

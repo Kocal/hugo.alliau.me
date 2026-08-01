@@ -32,7 +32,7 @@ final readonly class CodeBlockRenderer implements NodeRendererInterface
             implode(' ', ['shiki', $hasDiff ? 'has-diff' : '']),
             htmlspecialchars($codeOriginal),
             $language,
-            htmlspecialchars((string) $codeClean),
+            htmlspecialchars($codeClean),
         );
 
         return sprintf(

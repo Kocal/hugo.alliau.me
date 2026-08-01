@@ -61,10 +61,12 @@ final class PostORMRepository extends ServiceEntityRepository implements PostRep
         $rsm = new ResultSetMapping();
         $rsm->addScalarResult('tag', 'tag');
 
-        $nativeQuery = $this->getEntityManager()->createNativeQuery(<<<SQL
+        $nativeQuery = $this->getEntityManager()
+            ->createNativeQuery(<<<SQL
             SELECT DISTINCT JSONB_ARRAY_ELEMENTS_TEXT(tags) AS tag
             FROM {$this->getEntityManager()->getClassMetadata(Post::class)->getTableName()}
-SQL, $rsm);
+SQL
+                , $rsm);
 
         return $nativeQuery->getSingleColumnResult();
     }
@@ -79,7 +81,8 @@ SQL, $rsm);
         $rsm->addScalarResult('tag', 'tag');
         $rsm->addScalarResult('occurrences', 'occurrences');
 
-        $nativeQuery = $this->getEntityManager()->createNativeQuery(<<<SQL
+        $nativeQuery = $this->getEntityManager()
+            ->createNativeQuery(<<<SQL
             SELECT tag, COUNT(tag) AS occurrences
             FROM (
                 SELECT JSONB_ARRAY_ELEMENTS_TEXT(tags) AS tag
@@ -87,7 +90,8 @@ SQL, $rsm);
             )
             GROUP BY tag
             ORDER BY occurrences DESC
-SQL, $rsm);
+SQL
+                , $rsm);
 
         return $nativeQuery->execute();
     }

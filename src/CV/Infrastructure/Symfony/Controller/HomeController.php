@@ -35,7 +35,8 @@ final class HomeController extends AbstractController
         $response->setLastModified(max([
             $latestProfessionalExperience?->getUpdatedAt(),
             $latestProject?->getUpdatedAt(),
-            $clock->now()->modify('first day of this month'),
+            $clock->now()
+                ->modify('first day of this month'),
         ]));
         $response->setMaxAge(60 * 60 * 24 * 30);
         $response->setPublic();

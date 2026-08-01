@@ -24,6 +24,7 @@ final readonly class SymfonySluggerNormalizer implements TextNormalizerInterface
     #[\Override]
     public function normalize(string $text, array $context = []): string
     {
-        return $this->slugger->slug($text)->toString();
+        return $this->slugger->slug($text)
+            ->toString();
     }
 }

@@ -37,7 +37,8 @@ final class ViewPlacesControllerTest extends WebTestCase
         $placeRepository->add(new Place());
 
         $client = self::createClient();
-        $client->getContainer()->set(PlaceRepository::class, $placeRepository);
+        $client->getContainer()
+            ->set(PlaceRepository::class, $placeRepository);
 
         $client->request(Request::METHOD_GET, '/places');
 

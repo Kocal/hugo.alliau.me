@@ -51,7 +51,11 @@
         color: light-dark(oklch(0 0 0 / 0.5), oklch(1 0 0 / 0.3));
         background-image: radial-gradient(currentColor 1.1px, transparent 1.6px);
         background-size: 20px 20px;
-        -webkit-mask-image: radial-gradient(ellipse 100% 120% at 50% 50%, transparent 36%, #000 82%);
+        -webkit-mask-image: radial-gradient(
+            ellipse 100% 120% at 50% 50%,
+            transparent 36%,
+            #000 82%
+        );
         mask-image: radial-gradient(ellipse 100% 120% at 50% 50%, transparent 36%, #000 82%);
     }
 

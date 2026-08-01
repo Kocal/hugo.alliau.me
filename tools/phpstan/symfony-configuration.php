@@ -14,7 +14,8 @@ if (! file_exists($xmlContainerFile)) {
             The meta xml file could not be found: %s.
 
             To compile the Symfony container do a cache:clear in the current env (%s) with debug: true!
-            ERROR, $xmlContainerFile, $env));
+            ERROR
+        , $xmlContainerFile, $env));
 }
 
 return [

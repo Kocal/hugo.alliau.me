@@ -41,7 +41,8 @@ final class CustomContainerBlockParser extends AbstractBlockContinueParser
                     return BlockStart::none();
                 }
 
-                $matches = s($start)->match('/^::: (?P<type>\w+)(?: (?P<title>.+))?/');
+                $matches = s($start)
+                    ->match('/^::: (?P<type>\w+)(?: (?P<title>.+))?/');
 
                 return BlockStart::of(new CustomContainerBlockParser(
                     $matches['type'],

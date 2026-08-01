@@ -22,7 +22,8 @@ class PlaceORMRepository extends ServiceEntityRepository implements PlaceReposit
     #[\Override]
     public function add(Place $place): void
     {
-        $this->getEntityManager()->persist($place);
+        $this->getEntityManager()
+            ->persist($place);
     }
 
     #[\Override]
