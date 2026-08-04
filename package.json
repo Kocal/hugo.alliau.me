@@ -43,7 +43,7 @@
     "stimulus-use": "^0.53.0"
   },
   "devDependencies": {
-    "@symfony/reprise": "^0.6.0",
+    "@symfony/reprise": "^0.6.1",
     "@tailwindcss/vite": "^4.3.3",
     "oxfmt": "^0.58.0",
     "oxlint": "^1.76.0",
