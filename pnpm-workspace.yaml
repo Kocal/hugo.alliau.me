@@ -1,2 +1,2 @@
 minimumReleaseAgeExclude:
-    - "@symfony/reprise@0.6.1"
+    - "@symfony/reprise@0.6.2"
