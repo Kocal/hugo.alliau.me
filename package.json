@@ -10,12 +10,12 @@
     "lint:fix": "oxlint --fix"
   },
   "dependencies": {
-    "@codemirror/commands": "^6.10.4",
+    "@codemirror/commands": "^6.11.0",
     "@codemirror/lang-css": "^6.3.1",
-    "@codemirror/lang-html": "^6.4.11",
+    "@codemirror/lang-html": "^6.4.12",
     "@codemirror/lang-javascript": "^6.2.5",
     "@codemirror/lang-json": "^6.0.2",
-    "@codemirror/lang-markdown": "^6.5.1",
+    "@codemirror/lang-markdown": "^6.5.2",
     "@codemirror/lang-php": "^6.0.2",
     "@codemirror/lang-sass": "^6.0.2",
     "@codemirror/lang-vue": "^0.1.3",
@@ -23,7 +23,7 @@
     "@codemirror/language": "^6.12.4",
     "@codemirror/legacy-modes": "^6.5.3",
     "@codemirror/state": "^6.7.1",
-    "@codemirror/view": "^6.43.7",
+    "@codemirror/view": "^6.43.9",
     "@fsegurai/codemirror-theme-github-dark": "^6.2.5",
     "@fsegurai/codemirror-theme-github-light": "^6.2.5",
     "@hotwired/stimulus": "^3.2.2",
@@ -31,23 +31,23 @@
     "@lezer/common": "^1.5.2",
     "@lezer/highlight": "^1.2.3",
     "@lezer/lr": "^1.4.10",
-    "@shikijs/langs": "^4.4.1",
-    "@shikijs/themes": "^4.4.1",
-    "@shikijs/transformers": "^4.4.1",
+    "@shikijs/langs": "^4.4.3",
+    "@shikijs/themes": "^4.4.3",
+    "@shikijs/transformers": "^4.4.3",
     "@symfony/ux-leaflet-map": "file:vendor/symfony/ux-leaflet-map/assets",
     "@symfony/ux-turbo": "file:vendor/symfony/ux-turbo/assets",
     "codemirror": "^6.0.2",
     "inter-ui": "^4.1.1",
     "leaflet": "^1.9.4",
-    "shiki": "^4.4.1",
+    "shiki": "^4.4.3",
     "stimulus-use": "^0.53.0"
   },
   "devDependencies": {
-    "@symfony/reprise": "^0.6.2",
+    "@symfony/reprise": "^1.1.0",
     "@tailwindcss/vite": "^4.3.3",
-    "oxfmt": "^0.58.0",
-    "oxlint": "^1.76.0",
+    "oxfmt": "^0.65.0",
+    "oxlint": "^1.80.0",
     "tailwindcss": "^4.3.3",
-    "vite": "^8.2.0"
+    "vite": "^8.2.2"
   }
 }
