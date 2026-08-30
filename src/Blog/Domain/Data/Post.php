@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Blog\Domain\Data;
 
 use App\Blog\Domain\Data\Route as RouteBlog;
+use App\Shared\Domain\Data\Locale;
 use App\Shared\Domain\Data\ValueObject\PostId;
 use App\Shared\Domain\HttpCache\CacheableEntity;
 use App\Shared\Domain\HttpCache\CacheItem;
@@ -29,7 +30,7 @@ class Post implements CacheableEntity
     #[Assert\Length(min: 3, max: 255)]
     private ?string $title = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, unique: true)]
     #[Assert\NotBlank]
     #[Assert\Length(min: 10, max: 255)]
     private ?string $slug = null;
@@ -68,6 +69,11 @@ class Post implements CacheableEntity
         'default' => PostStatus::DRAFT,
     ])]
     private PostStatus $status = PostStatus::DRAFT;
+
+    #[ORM\Column(length: 5, options: [
+        'default' => Locale::EN,
+    ])]
+    private Locale $locale = Locale::EN;
 
     public function __construct()
     {
@@ -192,6 +198,18 @@ class Post implements CacheableEntity
     public function getStatus(): PostStatus
     {
         return $this->status;
+    }
+
+    public function getLocale(): Locale
+    {
+        return $this->locale;
+    }
+
+    public function setLocale(Locale $locale): static
+    {
+        $this->locale = $locale;
+
+        return $this;
     }
 
     public function isPublished(): bool

@@ -4,9 +4,12 @@ declare(strict_types=1);
 
 namespace App\CV\Domain\Data;
 
+use App\Shared\Domain\Data\Locale;
 use App\Shared\Domain\Data\ValueObject\ProfessionalExperienceId;
 use App\Shared\Domain\HttpCache\CacheableEntity;
 use App\Shared\Domain\HttpCache\CacheItem;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Clock\Clock;
@@ -31,14 +34,6 @@ class ProfessionalExperience implements CacheableEntity
     #[Assert\Url()]
     private ?string $url = null;
 
-    #[ORM\Column(length: 255)]
-    #[Assert\NotBlank()]
-    private ?string $jobName = null;
-
-    #[ORM\Column(type: Types::TEXT)]
-    #[Assert\NotBlank()]
-    private ?string $description = null;
-
     #[ORM\Column(type: Types::DATE_IMMUTABLE)]
     #[Assert\NotBlank()]
     private ?\DateTimeImmutable $startDate = null;
@@ -54,18 +49,22 @@ class ProfessionalExperience implements CacheableEntity
     private \DateTimeImmutable $updatedAt;
 
     /**
-     * @var list<string>
+     * @var Collection<string, ProfessionalExperienceTranslation>
      */
-    #[ORM\Column(type: Types::JSON, options: [
-        'jsonb' => true,
-    ])]
-    private array $badges = [];
+    #[ORM\OneToMany(targetEntity: ProfessionalExperienceTranslation::class, mappedBy: 'experience', cascade: [
+        'persist',
+        'remove',
+    ], orphanRemoval: true, indexBy: 'locale')]
+    #[Assert\Valid]
+    #[Assert\Count(min: 1)]
+    private Collection $translations;
 
     public function __construct()
     {
         $this->id = ProfessionalExperienceId::generate();
         $this->createdAt = Clock::get()->now();
         $this->updatedAt = $this->createdAt;
+        $this->translations = new ArrayCollection();
     }
 
     public function getId(): ProfessionalExperienceId
@@ -97,30 +96,6 @@ class ProfessionalExperience implements CacheableEntity
         return $this;
     }
 
-    public function getJobName(): ?string
-    {
-        return $this->jobName;
-    }
-
-    public function setJobName(string $jobName): static
-    {
-        $this->jobName = $jobName;
-
-        return $this;
-    }
-
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
-
-    public function setDescription(string $description): static
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
     public function getStartDate(): ?\DateTimeImmutable
     {
         return $this->startDate;
@@ -145,24 +120,6 @@ class ProfessionalExperience implements CacheableEntity
         return $this;
     }
 
-    /**
-     * @return list<string>
-     */
-    public function getBadges(): array
-    {
-        return $this->badges;
-    }
-
-    /**
-     * @param array<string> $badges
-     */
-    public function setBadges(array $badges): static
-    {
-        $this->badges = array_values($badges);
-
-        return $this;
-    }
-
     public function getCreatedAt(): ?\DateTimeImmutable
     {
         return $this->createdAt;
@@ -171,6 +128,38 @@ class ProfessionalExperience implements CacheableEntity
     public function getUpdatedAt(): ?\DateTimeImmutable
     {
         return $this->updatedAt;
+    }
+
+    /**
+     * @return Collection<string, ProfessionalExperienceTranslation>
+     */
+    public function getTranslations(): Collection
+    {
+        return $this->translations;
+    }
+
+    public function addTranslation(ProfessionalExperienceTranslation $translation): static
+    {
+        if (! $this->translations->contains($translation)) {
+            $this->translations->set($translation->getLocale()->value, $translation);
+            $translation->setExperience($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTranslation(ProfessionalExperienceTranslation $translation): static
+    {
+        $this->translations->removeElement($translation);
+
+        return $this;
+    }
+
+    public function translate(string $locale): ?ProfessionalExperienceTranslation
+    {
+        return $this->translations[$locale]
+            ?? $this->translations[Locale::EN->value]
+            ?? $this->translations[Locale::FR->value];
     }
 
     #[ORM\PreUpdate]

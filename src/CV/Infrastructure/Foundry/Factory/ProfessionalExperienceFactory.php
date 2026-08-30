@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace App\CV\Infrastructure\Foundry\Factory;
 
 use App\CV\Domain\Data\ProfessionalExperience;
-use Zenstruck\Foundry\Persistence\PersistentProxyObjectFactory;
+use Zenstruck\Foundry\Persistence\PersistentObjectFactory;
 
 /**
- * @extends PersistentProxyObjectFactory<ProfessionalExperience>
+ * @extends PersistentObjectFactory<ProfessionalExperience>
  */
-final class ProfessionalExperienceFactory extends PersistentProxyObjectFactory
+final class ProfessionalExperienceFactory extends PersistentObjectFactory
 {
     #[\Override]
     public static function class(): string
@@ -25,14 +25,9 @@ final class ProfessionalExperienceFactory extends PersistentProxyObjectFactory
     protected function defaults(): array
     {
         return [
-            'badges' => [],
             'company' => self::faker()->text(255),
-            'createdAt' => \DateTimeImmutable::createFromMutable(self::faker()->dateTime()),
-            'description' => self::faker()->text(),
-            'jobName' => self::faker()->text(255),
             'startDate' => \DateTimeImmutable::createFromMutable(self::faker()->dateTime()),
-            'updatedAt' => \DateTimeImmutable::createFromMutable(self::faker()->dateTime()),
-            'url' => self::faker()->text(255),
+            'url' => self::faker()->url(),
         ];
     }
 }

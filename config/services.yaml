@@ -11,16 +11,16 @@ parameters:
     .container.dumper.inline_factories: true
 
     app.menu_definition:
-        - label: 'Blog'
+        - label: 'nav.blog'
           route: !php/enum App\Blog\Domain\Data\Route::HOME->value
           extras:
               routes:
                   - route: !php/enum App\Blog\Domain\Data\Route::POST_VIEW->value
                   - route: !php/enum App\Blog\Domain\Data\Route::TAG_LIST->value
                   - route: !php/enum App\Blog\Domain\Data\Route::TAG_VIEW->value
-        - label: 'CV'
+        - label: 'nav.cv'
           route: !php/enum App\CV\Domain\Data\Route::INDEX->value
-        - label: 'Places'
+        - label: 'nav.places'
           route: !php/enum App\Places\Domain\Data\Route::INDEX->value
 
 imports:

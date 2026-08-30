@@ -5,6 +5,8 @@
         <time datetime="{{ post.publishedAt|date('c') }}" class="text-sm font-bold">
             {{ post.publishedAt|format_datetime('long', 'none') }}
         </time>
+
+        <span class="text-lg" title="{{ post.locale.toTranslatable|trans }}" aria-label="{{ post.locale.toTranslatable|trans }}">{{ post.locale.flag }}</span>
     </div>
 
     {% if post.tags is not empty %}

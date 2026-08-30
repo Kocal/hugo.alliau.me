@@ -1,0 +1,20 @@
+{% set is_post_view = app.current_route == constant('App\\Blog\\Domain\\Data\\Route::POST_VIEW').value %}
+{% set target_route = is_post_view ? constant('App\\Blog\\Domain\\Data\\Route::HOME').value : app.current_route %}
+{% set target_parameters = is_post_view ? {} : app.current_route_parameters %}
+
+<ul class="flex items-center gap-1.5 text-2xl" aria-label="{{ 'nav.language'|trans }}">
+    {% for locale in enabled_locales() %}
+        {% set is_current = locale.value == app.request.locale %}
+        <li>
+            <a
+                href="{{ path(target_route, target_parameters|merge({_locale: locale.value})) }}"
+                hreflang="{{ locale.value }}"
+                title="{{ locale.toTranslatable|trans }}"
+                class="block leading-none transition-opacity {{ is_current ? '' : 'opacity-50 hover:opacity-100' }}"
+                {% if is_current %}aria-current="true"{% endif %}
+            >
+                {{ locale.flag }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>

@@ -25,7 +25,10 @@ final class ViewPlacesController extends AbstractController
 {
     use CacheMethodsTrait;
 
-    #[Route('/places', name: RoutePlaces::INDEX->value, options: [
+    #[Route(path: [
+        'en' => '/places',
+        'fr' => '/fr/lieux',
+    ], name: RoutePlaces::INDEX->value, options: [
         'sitemap' => true,
     ], methods: ['GET'])]
     public function __invoke(

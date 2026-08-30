@@ -3,7 +3,7 @@
 {% block title %}CV | Hugo Alliaume{% endblock %}
 
 {% block seo %}
-    <meta name="description" content="Curriculum vitae (CV) of Hugo Alliaume, full-stack web-developer and open-source contributor.">
+    <meta name="description" content="{{ 'cv.meta_description'|trans }}">
 {% endblock %}
 
 {% block main %}
@@ -24,7 +24,7 @@
                     <h1 class="text-2xl sm:text-3xl print:text-xl font-extrabold tracking-tight">Hugo Alliaume</h1>
 
                     <div class="text-sm">
-                        <p>Full-stack web developer, open-source contributor, and Symfony UX Core Team</p>
+                        <p>{{ 'cv.subtitle'|trans }}</p>
                     </div>
 
                     <twig:Divider />
@@ -51,13 +51,13 @@
 
             <twig:Card class="p-2 sm:p-3 print:shadow-none print:border">
 
-                <h2 class="text-2xl sm:text-3xl print:text-xl font-bold mb-4 print:mb-2 tracking-tight">Skills</h2>
+                <h2 class="text-2xl sm:text-3xl print:text-xl font-bold mb-4 print:mb-2 tracking-tight">{{ 'cv.skills_heading'|trans }}</h2>
 
                 <div class="flex flex-col gap-3 print:gap-1">
                     {% for skill_group_name, skills_by_group in skills %}
                         <div>
                             <h3 class="font-bold uppercase text-sm mb-1">
-                                {{ skill_group_name }}
+                                {{ skill_group_name|trans }}
                             </h3>
                             <p class="text-sm">
                                 {% for skill in skills_by_group %}
@@ -73,15 +73,16 @@
         <div class="flex flex-col gap-2 sm:gap-4">
             <twig:Card class="p-2 sm:p-3 print:shadow-none print:border">
                 <h2 class="text-2xl sm:text-3xl print:text-xl font-bold mb-4 print:mb-2 tracking-tight">
-                    Professional Experiences
+                    {{ 'cv.experiences_heading'|trans }}
                 </h2>
 
                 <div class="flex flex-col gap-4 sm:gap-5 print:gap-2">
                     {% for professional_experience in professional_experiences %}
+                        {% set experience_translation = professional_experience.translate(app.request.locale) %}
                         <section>
                             <header>
                                 <span class="block text-xl sm:text-2xl print:text-lg font-bold tracking-tight">
-                                    {{ professional_experience.jobName }}
+                                    {{ experience_translation.jobName }}
                                 </span>
 
                                 <a href="{{ professional_experience.url }}" rel="noreferrer noopener" class=" hover:text-primary-700 dark:hover:text-slate-400 transition-colors font-bold">
@@ -89,23 +90,23 @@
                                 </a>
                                 &bullet;
                                 <span class=" text-sm font-bold">
-                                    <time datetime="{{ professional_experience.startDate|date }}">{{ professional_experience.startDate|format_datetime(pattern: 'MMM yyyy', locale: 'fr') }}</time>
+                                    <time datetime="{{ professional_experience.startDate|date }}">{{ professional_experience.startDate|format_datetime(pattern: 'MMM yyyy') }}</time>
                                     &rightarrow;
                                     {% if professional_experience.endDate is null %}
-                                        <span>Now</span>
+                                        <span>{{ 'cv.now'|trans }}</span>
                                     {% else %}
-                                        <time datetime="{{ professional_experience.endDate|date }}">{{ professional_experience.endDate|format_datetime(pattern: 'MMM yyyy', locale: 'fr') }}</time>
+                                        <time datetime="{{ professional_experience.endDate|date }}">{{ professional_experience.endDate|format_datetime(pattern: 'MMM yyyy') }}</time>
                                     {% endif %}
                                 </span>
                             </header>
 
                             <div class="my-1 print:text-sm">
-                                {{ professional_experience.description|nl2br }}
+                                {{ experience_translation.description|nl2br }}
                             </div>
 
                             <footer class="print:hidden">
                                 <ul class="flex flex-wrap gap-1">
-                                    {% for badge in professional_experience.badges %}
+                                    {% for badge in experience_translation.badges %}
                                         <li>
                                             <twig:Badge>{{ badge }}</twig:Badge>
                                         </li>
@@ -124,10 +125,11 @@
 
         {% if projects %}
             <twig:Card class="col-span-full p-2 sm:p-3 print:hidden">
-                <h2 class="text-2xl sm:text-3xl font-bold mb-4 tracking-tight">Projects</h2>
+                <h2 class="text-2xl sm:text-3xl font-bold mb-4 tracking-tight">{{ 'cv.projects_heading'|trans }}</h2>
 
                 <div class="grid sm:grid-cols-2">
                     {% for project in projects %}
+                        {% set project_translation = project.translate(app.request.locale) %}
                         <div class="flex flex-col gap-2 py-3 {{ loop.index is even ? 'pl-3' : 'pr-3' }}">
                             <header>
                                 <h3 class="text-xl sm:text-2xl font-bold tracking-tight">
@@ -137,7 +139,7 @@
                             </header>
 
                             <p>
-                                {{ project.description }}
+                                {{ project_translation.description }}
                             </p>
 
                             <footer>

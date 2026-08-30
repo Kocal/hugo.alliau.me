@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace App\CV\Infrastructure\Foundry\Factory;
 
 use App\CV\Domain\Data\Project;
-use Zenstruck\Foundry\Persistence\PersistentProxyObjectFactory;
+use Zenstruck\Foundry\Persistence\PersistentObjectFactory;
 
 /**
- * @extends PersistentProxyObjectFactory<Project>
+ * @extends PersistentObjectFactory<Project>
  */
-final class ProjectFactory extends PersistentProxyObjectFactory
+final class ProjectFactory extends PersistentObjectFactory
 {
     #[\Override]
     public static function class(): string
@@ -25,13 +25,10 @@ final class ProjectFactory extends PersistentProxyObjectFactory
     protected function defaults(): array
     {
         return [
-            'createdAt' => \DateTimeImmutable::createFromMutable(self::faker()->dateTime()),
             'date' => \DateTimeImmutable::createFromMutable(self::faker()->dateTime()),
-            'description' => self::faker()->text(),
             'name' => self::faker()->text(255),
             'techStack' => [],
-            'updatedAt' => \DateTimeImmutable::createFromMutable(self::faker()->dateTime()),
-            'url' => self::faker()->text(255),
+            'url' => self::faker()->url(),
         ];
     }
 }

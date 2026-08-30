@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 {% set show_footer = false %}
 
-{% block title %}My favorite places | Hugo Alliaume{% endblock %}
+{% block title %}{{ 'places.title'|trans }} | Hugo Alliaume{% endblock %}
 
 {% block seo %}
-    <meta name="description" content="My favorite places around the world!">
+    <meta name="description" content="{{ 'places.meta_description'|trans }}">
 {% endblock %}
 
 {% block stylesheets %}
@@ -17,12 +17,12 @@
       data-controller="places"
       data-places-countries-value="{{ countries|json_encode|e('html_attr') }}">
     <div class="absolute top-4 left-4 z-[1000] bg-white dark:bg-zinc-900 rounded shadow-md p-2">
-        <label for="places-country" class="sr-only">Pays</label>
+        <label for="places-country" class="sr-only">{{ 'places.filter.country'|trans }}</label>
         <select id="places-country"
                 data-places-target="country"
                 data-action="change->places#onCountryChange"
                 class="bg-transparent text-zinc-700 dark:text-zinc-300 text-sm focus:outline-none cursor-pointer">
-            <option value="">Tous les pays</option>
+            <option value="">{{ 'places.filter.all_countries'|trans }}</option>
             {% for name, data in countries %}
                 <option value="{{ name }}">{{ name }} ({{ data.placesCount }})</option>
             {% endfor %}

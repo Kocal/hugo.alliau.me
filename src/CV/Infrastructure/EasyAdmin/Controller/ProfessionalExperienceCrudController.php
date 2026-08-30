@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace App\CV\Infrastructure\EasyAdmin\Controller;
 
 use App\CV\Domain\Data\ProfessionalExperience;
+use App\CV\Infrastructure\EasyAdmin\Form\ProfessionalExperienceTranslationType;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\UrlField;
 
@@ -43,12 +43,17 @@ class ProfessionalExperienceCrudController extends AbstractCrudController
         yield IdField::new('id')->hideOnForm();
 
         yield FormField::addColumn('col-xxl-8');
-        yield FormField::addFieldset('Job Information');
-        yield TextField::new('jobName');
-        yield TextareaField::new('description')->onlyOnForms();
+        yield FormField::addFieldset('Details');
         yield DateField::new('startDate')->setColumns(6);
         yield DateField::new('endDate')->setColumns(6);
-        yield ArrayField::new('badges');
+        yield CollectionField::new('translations')
+            ->setEntryType(ProfessionalExperienceTranslationType::class)
+            ->setEntryIsComplex()
+            ->allowAdd()
+            ->allowDelete()
+            ->setFormTypeOption('by_reference', false)
+            ->onlyOnForms()
+        ;
 
         yield FormField::addColumn('col-xxl-4');
         yield FormField::addFieldset('Company Information');

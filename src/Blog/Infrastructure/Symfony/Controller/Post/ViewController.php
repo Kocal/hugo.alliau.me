@@ -20,7 +20,10 @@ final class ViewController extends AbstractController
 {
     use CacheMethodsTrait;
 
-    #[Route('/blog/posts/{slug}', name: RouteBlog::POST_VIEW->value, methods: ['GET'])]
+    #[Route(path: [
+        'en' => '/blog/posts/{slug}',
+        'fr' => '/fr/blog/posts/{slug}',
+    ], name: RouteBlog::POST_VIEW->value, methods: ['GET'])]
     public function __invoke(
         #[MapEntity(mapping: [
             'slug' => 'slug',
@@ -29,6 +32,20 @@ final class ViewController extends AbstractController
         Request $request,
         MarkdownConverter $markdownConverter,
     ): Response {
+        $isPreview = $request->query->has('preview');
+
+        if ($post->getStatus() === PostStatus::DRAFT && ! $isPreview) {
+            throw $this->createNotFoundException();
+        }
+
+        if (! $isPreview && $request->getLocale() !== $post->getLocale()->value) {
+            return $this->redirectToRoute(RouteBlog::POST_VIEW->value, [
+                'slug' => $post->getSlug(),
+                '_locale' => $post->getLocale()
+                    ->value,
+            ], Response::HTTP_MOVED_PERMANENTLY);
+        }
+
         $response = new Response();
         $response->setEtag(self::computeEtag($post));
         $response->setLastModified($post->getPublishedAt());
@@ -36,10 +53,6 @@ final class ViewController extends AbstractController
         $response->setPublic();
 
         if ($post->getStatus() === PostStatus::DRAFT) {
-            if (! $request->query->has('preview')) {
-                throw $this->createNotFoundException();
-            }
-
             $response->setPrivate();
             $response->setMaxAge(0);
             $response->headers->set('X-Robots-Tag', 'noindex, nofollow');

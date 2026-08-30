@@ -181,3 +181,44 @@ place_type:
     transit_depot: Dépôt de transit
     transit_station: Station de transit
     truck_stop: Aire de repos pour camions
+home:
+    meta_description: Site personnel de Hugo Alliaume, développeur web full-stack et contributeur open source.
+    about:
+        title: À propos de moi
+        p1: Hugo Alliaume, développeur full-stack depuis 2009, français et lyonnais dans l'âme, j'aime apprendre de nouvelles choses et rester le plus polyvalent possible. Depuis, je me suis spécialisé dans le développement web, principalement avec PHP et JavaScript, ainsi que dans l'optimisation des performances côté serveur et navigateur.
+        p2: J'ai rejoint la Core Team de <0>Symfony UX</0> en août 2024. Passionné d'open source depuis toujours, je contribue soit à mes propres projets, soit à Symfony, notamment sur Webpack Encore et Symfony UX.
+        p3: "J'essaie d'assister à la plupart des conférences et meetups PHP et Symfony, comme SymfonyLive ou ForumPHP, ainsi qu'aux meetups AFUP Lyon. Pour discuter un peu, direction le buffet : c'est probablement là que je serai ! 🥪"
+        discover: Ce site regroupe mes profils sociaux, mon <0>CV</0> et mon <1>blog</1>.
+nav:
+    blog: Blog
+    cv: CV
+    places: Lieux
+    language: Langue
+footer:
+    role:
+        dev: Développeur web full-stack
+        oss: contributeur open source
+        team: Core Team Symfony UX
+    revision: Révision
+blog:
+    meta_description: Blog technique de Hugo Alliaume, développeur web full-stack et contributeur open source.
+locale:
+    en: Anglais
+    fr: Français
+cv:
+    meta_description: Curriculum vitae (CV) de Hugo Alliaume, développeur web full-stack et contributeur open-source.
+    subtitle: Développeur web full-stack, contributeur open-source, et Symfony UX Core Team
+    skills_heading: Compétences
+    experiences_heading: Expériences professionnelles
+    projects_heading: Projets
+    now: Aujourd'hui
+    skills:
+        backend: Backend
+        frontend: Frontend
+        web_perfs: Perfs web
+places:
+    title: Mes lieux favoris
+    meta_description: Mes lieux favoris à travers le monde !
+    filter:
+        country: Pays
+        all_countries: Tous les pays

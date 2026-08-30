@@ -18,7 +18,10 @@ final class HomeController extends AbstractController
 {
     use CacheMethodsTrait;
 
-    #[Route('/cv', name: RouteCv::INDEX->value, options: [
+    #[Route(path: [
+        'en' => '/cv',
+        'fr' => '/fr/cv',
+    ], name: RouteCv::INDEX->value, options: [
         'sitemap' => true,
     ], methods: ['GET'])]
     public function __invoke(
@@ -52,9 +55,9 @@ final class HomeController extends AbstractController
             'professional_experiences' => $professionalExperiences,
             'projects' => $projects,
             'skills' => [
-                'Backend' => ['PHP', 'Symfony', 'PHPUnit', 'PHPStan', 'Symfony CLI', 'Docker Compose', 'CI & CD', 'DevOps'],
-                'Frontend' => ['JavaScript', 'TypeScript', 'Symfony UX', 'Vue', 'Stimulus', 'Symfony Reprise', 'Webpack Encore', 'Cypress', 'Playwright', 'Tailwind CSS'],
-                'Web perfs' => ['Core Web Vitals', 'Blackfire', 'WebPageTest'],
+                'cv.skills.backend' => ['PHP', 'Symfony', 'PHPUnit', 'PHPStan', 'Symfony CLI', 'Docker Compose', 'CI & CD', 'DevOps'],
+                'cv.skills.frontend' => ['JavaScript', 'TypeScript', 'Symfony UX', 'Vue', 'Stimulus', 'Symfony Reprise', 'Webpack Encore', 'Cypress', 'Playwright', 'Tailwind CSS'],
+                'cv.skills.web_perfs' => ['Core Web Vitals', 'Blackfire', 'WebPageTest'],
             ],
         ], $response);
     }

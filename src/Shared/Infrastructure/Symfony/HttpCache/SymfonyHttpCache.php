@@ -8,14 +8,20 @@ use App\Shared\Domain\HttpCache\Adapter\HttpCacheAdapter;
 use App\Shared\Domain\HttpCache\CacheItem;
 use App\Shared\Domain\HttpCache\HttpCache;
 use Psr\Log\LoggerInterface;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 final readonly class SymfonyHttpCache implements HttpCache
 {
+    /**
+     * @param list<string> $enabledLocales
+     */
     public function __construct(
         private HttpCacheAdapter $httpCacheAdapter,
         private UrlGeneratorInterface $urlGenerator,
         private LoggerInterface $logger,
+        #[Autowire(param: 'kernel.enabled_locales')]
+        private array $enabledLocales,
     ) {
     }
 
@@ -53,6 +59,12 @@ final readonly class SymfonyHttpCache implements HttpCache
 
         foreach ($cacheItem as $item) {
             if ($item->route !== null) {
+                foreach ($this->enabledLocales as $locale) {
+                    $normalized['urls'][] = $this->urlGenerator->generate($item->route, [
+                        '_locale' => $locale,
+                    ] + $item->parameters, UrlGeneratorInterface::ABSOLUTE_URL);
+                }
+
                 $normalized['urls'][] = $this->urlGenerator->generate($item->route, $item->parameters, UrlGeneratorInterface::ABSOLUTE_URL);
             } elseif ($item->entity instanceof \App\Shared\Domain\HttpCache\CacheableEntity) {
                 $normalized = array_merge_recursive($normalized, $this->normalize(...$item->entity->getCacheItems()));

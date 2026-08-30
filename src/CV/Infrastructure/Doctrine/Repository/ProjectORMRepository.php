@@ -30,6 +30,8 @@ class ProjectORMRepository extends ServiceEntityRepository implements ProjectRep
     public function findAllVisible(): array
     {
         $qb = $this->createQueryBuilder('project')
+            ->leftJoin('project.translations', 'translation')
+            ->addSelect('translation')
             ->where('project.visible = :isVisible')
             ->setParameter('isVisible', true)
             ->orderBy('project.date', 'DESC');

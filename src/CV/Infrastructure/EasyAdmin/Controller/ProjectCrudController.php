@@ -5,13 +5,14 @@ declare(strict_types=1);
 namespace App\CV\Infrastructure\EasyAdmin\Controller;
 
 use App\CV\Domain\Data\Project;
+use App\CV\Infrastructure\EasyAdmin\Form\ProjectTranslationType;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\UrlField;
 
@@ -44,7 +45,14 @@ class ProjectCrudController extends AbstractCrudController
         yield BooleanField::new('visible');
         yield TextField::new('name');
         yield UrlField::new('url');
-        yield TextareaField::new('description')->onlyOnForms();
+        yield CollectionField::new('translations')
+            ->setEntryType(ProjectTranslationType::class)
+            ->setEntryIsComplex()
+            ->allowAdd()
+            ->allowDelete()
+            ->setFormTypeOption('by_reference', false)
+            ->onlyOnForms()
+        ;
         yield DateField::new('date')->setRequired(true);
         yield ArrayField::new('techStack');
     }
