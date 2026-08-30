@@ -6,12 +6,12 @@ namespace App\Blog\Infrastructure\Foundry\Factory;
 
 use App\Blog\Domain\Data\Post;
 use App\Blog\Domain\Data\PostStatus;
-use Zenstruck\Foundry\Persistence\PersistentProxyObjectFactory;
+use Zenstruck\Foundry\Persistence\PersistentObjectFactory;
 
 /**
- * @extends PersistentProxyObjectFactory<Post>
+ * @extends PersistentObjectFactory<Post>
  */
-final class PostFactory extends PersistentProxyObjectFactory
+final class PostFactory extends PersistentObjectFactory
 {
     #[\Override]
     public static function class(): string
@@ -27,14 +27,12 @@ final class PostFactory extends PersistentProxyObjectFactory
     {
         return [
             'content' => self::faker()->text(),
-            'createdAt' => \DateTimeImmutable::createFromMutable(self::faker()->dateTime()),
             'description' => self::faker()->text(255),
             'seo' => PostSeoFactory::new(),
             'slug' => self::faker()->text(255),
             'status' => self::faker()->randomElement(PostStatus::cases()),
             'tags' => [],
             'title' => self::faker()->text(255),
-            'updatedAt' => \DateTimeImmutable::createFromMutable(self::faker()->dateTime()),
         ];
     }
 }

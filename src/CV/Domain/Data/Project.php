@@ -4,12 +4,16 @@ declare(strict_types=1);
 
 namespace App\CV\Domain\Data;
 
+use App\Shared\Domain\Data\Locale;
 use App\Shared\Domain\Data\ValueObject\ProjectId;
 use App\Shared\Domain\HttpCache\CacheableEntity;
 use App\Shared\Domain\HttpCache\CacheItem;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Clock\Clock;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity()]
 #[ORM\Table(name: 'cv_project')]
@@ -26,9 +30,6 @@ class Project implements CacheableEntity
 
     #[ORM\Column(length: 255)]
     private ?string $url = null;
-
-    #[ORM\Column(type: Types::TEXT)]
-    private ?string $description = null;
 
     #[ORM\Column(type: Types::DATE_IMMUTABLE)]
     private ?\DateTimeImmutable $date = null;
@@ -52,11 +53,23 @@ class Project implements CacheableEntity
     #[ORM\Column]
     private \DateTimeImmutable $updatedAt;
 
+    /**
+     * @var Collection<string, ProjectTranslation>
+     */
+    #[ORM\OneToMany(targetEntity: ProjectTranslation::class, mappedBy: 'project', cascade: [
+        'persist',
+        'remove',
+    ], orphanRemoval: true, indexBy: 'locale')]
+    #[Assert\Valid]
+    #[Assert\Count(min: 1)]
+    private Collection $translations;
+
     public function __construct()
     {
         $this->id = ProjectId::generate();
         $this->createdAt = Clock::get()->now();
         $this->updatedAt = $this->createdAt;
+        $this->translations = new ArrayCollection();
     }
 
     public function getId(): ProjectId
@@ -84,18 +97,6 @@ class Project implements CacheableEntity
     public function setUrl(string $url): static
     {
         $this->url = $url;
-
-        return $this;
-    }
-
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
-
-    public function setDescription(string $description): static
-    {
-        $this->description = $description;
 
         return $this;
     }
@@ -150,6 +151,38 @@ class Project implements CacheableEntity
     public function getUpdatedAt(): ?\DateTimeImmutable
     {
         return $this->updatedAt;
+    }
+
+    /**
+     * @return Collection<string, ProjectTranslation>
+     */
+    public function getTranslations(): Collection
+    {
+        return $this->translations;
+    }
+
+    public function addTranslation(ProjectTranslation $translation): static
+    {
+        if (! $this->translations->contains($translation)) {
+            $this->translations->set($translation->getLocale()->value, $translation);
+            $translation->setProject($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTranslation(ProjectTranslation $translation): static
+    {
+        $this->translations->removeElement($translation);
+
+        return $this;
+    }
+
+    public function translate(string $locale): ?ProjectTranslation
+    {
+        return $this->translations[$locale]
+            ?? $this->translations[Locale::EN->value]
+            ?? $this->translations[Locale::FR->value];
     }
 
     #[ORM\PreUpdate]

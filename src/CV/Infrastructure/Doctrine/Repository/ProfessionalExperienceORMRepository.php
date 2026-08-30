@@ -30,6 +30,8 @@ class ProfessionalExperienceORMRepository extends ServiceEntityRepository implem
     public function findAll(): array
     {
         $qb = $this->createQueryBuilder('professional_experience')
+            ->leftJoin('professional_experience.translations', 'translation')
+            ->addSelect('translation')
             ->orderBy('professional_experience.startDate', 'DESC');
 
         return $qb->getQuery()

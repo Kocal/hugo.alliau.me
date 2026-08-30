@@ -16,7 +16,10 @@ final class ViewController extends AbstractController
 {
     use CacheMethodsTrait;
 
-    #[Route('/blog/tags/{tag}', name: RouteBlog::TAG_VIEW->value, methods: ['GET'])]
+    #[Route(path: [
+        'en' => '/blog/tags/{tag}',
+        'fr' => '/fr/blog/tags/{tag}',
+    ], name: RouteBlog::TAG_VIEW->value, methods: ['GET'])]
     public function __invoke(
         Request $request,
         string $tag,

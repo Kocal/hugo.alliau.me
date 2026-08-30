@@ -16,6 +16,8 @@ parameters:
         #- tests/
     excludePaths:
         - config/reference.php
+    scanFiles:
+        - config/reference.php
 
     tmpDir: .cache/phpstan
 

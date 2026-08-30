@@ -22,6 +22,10 @@ deptrac:
               - { type: classLike, value: ^Doctrine\\Orm\\Mapping }
               - { type: classLike, value: ^Doctrine\\DBAL\\Types }
 
+        - name: Vendor_Doctrine_Collections
+          collectors:
+              - { type: classLike, value: ^Doctrine\\Common\\Collections }
+
         - name: Vendor_Symfony_Assert
           collectors:
               - { type: classLike, value: ^Symfony\\Component\\Validator\\Constraints }
@@ -46,6 +50,7 @@ deptrac:
                 must_not:
                     - { type: classLike, value: "^[a-zA-Z]+$" } # native PHP classes
                     - { type: layer, value: Vendor_Doctrine_Mapping }
+                    - { type: layer, value: Vendor_Doctrine_Collections }
                     - { type: layer, value: Vendor_Symfony_Assert }
                     - { type: layer, value: Vendor_Symfony_Clock_Clock }
                     - { type: layer, value: Vendor_Symfony_TranslatableMessage }
@@ -54,6 +59,7 @@ deptrac:
     ruleset:
         Domain:
             - Vendor_Doctrine_Mapping
+            - Vendor_Doctrine_Collections
             - Vendor_Symfony_Assert
             - Vendor_Symfony_Clock_Clock
             - Vendor_Symfony_TranslatableMessage
@@ -66,6 +72,7 @@ deptrac:
             - Application
             - Vendor
             - Vendor_Doctrine_Mapping
+            - Vendor_Doctrine_Collections
 
     skip_violations:
         # My User entity is bound to Symfony Security, what's the best way to not violate this?

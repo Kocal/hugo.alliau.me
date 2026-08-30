@@ -16,7 +16,12 @@ final class ListController extends AbstractController
 {
     use CacheMethodsTrait;
 
-    #[Route('/blog/tags', name: RouteBlog::TAG_LIST->value, methods: ['GET'])]
+    #[Route(path: [
+        'en' => '/blog/tags',
+        'fr' => '/fr/blog/tags',
+    ], name: RouteBlog::TAG_LIST->value, options: [
+        'sitemap' => true,
+    ], methods: ['GET'])]
     public function __invoke(
         Request $request,
         PostRepository $postRepository

@@ -15,7 +15,10 @@ final class HomeController extends AbstractController
 {
     use CacheMethodsTrait;
 
-    #[Route('/', name: RouteShared::HOME->value, options: [
+    #[Route(path: [
+        'en' => '/',
+        'fr' => '/fr',
+    ], name: RouteShared::HOME->value, options: [
         'sitemap' => true,
     ], methods: ['GET'])]
     public function __invoke(

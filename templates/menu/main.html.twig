@@ -11,7 +11,7 @@
                     class="block py-1 sm:px-1"
                     {% if is_current %}aria-current="page"{% endif %}
                 >
-                    {{ child.label ?? child.name }}
+                    {{ (child.label ?? child.name)|trans }}
                 </a>
             </twig:Navbar:NavItem>
         {% endfor %}

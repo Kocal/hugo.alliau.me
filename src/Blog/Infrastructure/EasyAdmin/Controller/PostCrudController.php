@@ -7,6 +7,7 @@ namespace App\Blog\Infrastructure\EasyAdmin\Controller;
 use App\Blog\Domain\Data\Post;
 use App\Blog\Domain\Data\PostSeo;
 use App\Blog\Domain\Data\Route;
+use App\Shared\Domain\Data\Locale;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
@@ -89,6 +90,11 @@ class PostCrudController extends AbstractCrudController
         yield FormField::addFieldset('Publishing');
         yield ChoiceField::new('status')
             ->setTemplatePath('admin/fields/post_status.html.twig');
+        yield ChoiceField::new('locale')
+            ->setChoices(array_combine(
+                array_map(static fn (Locale $case): string => $case->name, Locale::cases()),
+                Locale::cases(),
+            ));
         yield DateTimeField::new('publishedAt');
 
         yield FormField::addFieldset('SEO');

@@ -29,6 +29,13 @@
         <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('build/images/icons/apple-touch-icon.png') }}">
         <link rel="canonical" href="{{ absolute_url(app.request.pathInfo) }}">
 
+        {% if app.current_route and app.current_route != constant('App\\Blog\\Domain\\Data\\Route::POST_VIEW').value %}
+            {% for locale in enabled_locales() %}
+                <link rel="alternate" hreflang="{{ locale.value }}" href="{{ url(app.current_route, app.current_route_parameters|merge({_locale: locale.value})) }}">
+            {% endfor %}
+            <link rel="alternate" hreflang="x-default" href="{{ url(app.current_route, app.current_route_parameters|merge({_locale: app.request.defaultLocale})) }}">
+        {% endif %}
+
         <link rel="sitemap" type="application/xml" href="/sitemap.xml">
         <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ path(constant('App\\Blog\\Domain\\Data\\Route::RSS').value) }}">
 

@@ -17,7 +17,7 @@
 
                 <div>
                     <span class="self-center text-2xl sm:text-3xl print:text-xl font-extrabold tracking-tight">Hugo Alliaume</span>
-                    <p class="mt-2 text-sm">Full-stack web developer,<br> open-source contributor,<br> Symfony UX Core Team</p>
+                    <p class="mt-2 text-sm">{{ 'footer.role.dev'|trans }},<br>{{ 'footer.role.oss'|trans }},<br>{{ 'footer.role.team'|trans }}</p>
                 </div>
             </div>
 
@@ -65,7 +65,7 @@
     <div class="border-t border-slate-200 dark:border-slate-800">
         <div class="container max-w-screen-lg mx-auto p-2 text-xs text-center">
             {{ 'now'|date('Y') }}
-            &bullet; Revision <a href="https://github.com/Kocal/hugo.alliau.me/commit/{{ SOURCE_COMMIT }}" class="font-mono">{{ SOURCE_COMMIT|slice(0, 8) }}</a>
+            &bullet; {{ 'footer.revision'|trans }} <a href="https://github.com/Kocal/hugo.alliau.me/commit/{{ SOURCE_COMMIT }}" class="font-mono">{{ SOURCE_COMMIT|slice(0, 8) }}</a>
         </div>
     </div>
 </footer>

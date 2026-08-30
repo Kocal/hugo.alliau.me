@@ -181,3 +181,44 @@ place_type:
     transit_depot: Transit Depot
     transit_station: Transit Station
     truck_stop: Truck Stop
+home:
+    meta_description: Personal website of Hugo Alliaume, full-stack web-developer and open-source contributor.
+    about:
+        title: About me
+        p1: Hugo Alliaume, a full-stack developer since 2009, French and Lyonnais at heart, I enjoy learning new things and being as versatile as possible. Since then, I have specialized in web development, mainly with PHP and JavaScript, as well as in optimizing performance on both the server and the browser.
+        p2: I joined the <0>Symfony UX</0> Core Team in August 2024. An open-source enthusiast since the beginning, I contribute either with my own projects or by working on Symfony, particularly on Webpack Encore and Symfony UX.
+        p3: I try to attend most PHP and Symfony conferences and meetups, like SymfonyLive or ForumPHP, and the AFUP Lyon meetups. If you want to chat a bit, you'll probably find me at the buffet! 🥪
+        discover: On this site you'll find my social profiles, my <0>CV</0> and my <1>blog</1>.
+nav:
+    blog: Blog
+    cv: CV
+    places: Places
+    language: Language
+footer:
+    role:
+        dev: Full-stack web developer
+        oss: open-source contributor
+        team: Symfony UX Core Team
+    revision: Revision
+blog:
+    meta_description: Technical blog of Hugo Alliaume, full-stack web-developer and open-source contributor.
+locale:
+    en: English
+    fr: French
+cv:
+    meta_description: Curriculum vitae (CV) of Hugo Alliaume, full-stack web-developer and open-source contributor.
+    subtitle: Full-stack web developer, open-source contributor, and Symfony UX Core Team
+    skills_heading: Skills
+    experiences_heading: Professional Experiences
+    projects_heading: Projects
+    now: Now
+    skills:
+        backend: Backend
+        frontend: Frontend
+        web_perfs: Web perfs
+places:
+    title: My favorite places
+    meta_description: My favorite places around the world!
+    filter:
+        country: Country
+        all_countries: All countries
