@@ -1,5 +1,5 @@
 <twig:Navbar:Nav label="Main" class="flex-1">
-    <ul class="flex gap-x-2 sm:gap-x-4">
+    <ul class="flex gap-x-3 sm:gap-x-4">
         {% for child in item.children %}
             {% set is_current = matcher.isCurrent(child) or matcher.isAncestor(child) %}
             <twig:Navbar:NavItem
