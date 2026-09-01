@@ -5,3 +5,6 @@ twig_component:
         App\Blog\Infrastructure\Twig\Components\:
             template_directory: 'components/Blog/'
             name_prefix: Blog
+        App\Recipes\Infrastructure\Twig\Components\:
+            template_directory: 'components/Recipe/'
+            name_prefix: Recipe

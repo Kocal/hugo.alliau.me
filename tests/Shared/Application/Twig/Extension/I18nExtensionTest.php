@@ -60,4 +60,40 @@ final class I18nExtensionTest extends TestCase
 
         $this->assertSame('Just text', $extension->tHtml('msg'));
     }
+
+    public function testItReturnsTheFallbackRouteForASingleLocaleRoute(): void
+    {
+        $extension = new I18nExtension(new Translator('en'), [
+            [
+                'route' => 'app.blog.posts.view',
+                'fallback_route' => 'app.blog.home',
+            ],
+            [
+                'route' => 'app.recipes.view',
+                'fallback_route' => 'app.recipes.list',
+            ],
+        ]);
+
+        $this->assertSame('app.blog.home', $extension->singleLocaleFallbackRoute('app.blog.posts.view'));
+        $this->assertSame('app.recipes.list', $extension->singleLocaleFallbackRoute('app.recipes.view'));
+    }
+
+    public function testItReturnsNullForARouteThatExistsInEveryLocale(): void
+    {
+        $extension = new I18nExtension(new Translator('en'), [
+            [
+                'route' => 'app.blog.posts.view',
+                'fallback_route' => 'app.blog.home',
+            ],
+        ]);
+
+        $this->assertNull($extension->singleLocaleFallbackRoute('app.blog.home'));
+    }
+
+    public function testItReturnsNullWhenNoSingleLocaleRouteIsConfigured(): void
+    {
+        $extension = $this->extensionWith('Just text');
+
+        $this->assertNull($extension->singleLocaleFallbackRoute('app.blog.home'));
+    }
 }

@@ -341,3 +341,10 @@
         }
     }
 }
+
+@layer components {
+    .is-done {
+        opacity: 0.45;
+        text-decoration: line-through;
+    }
+}

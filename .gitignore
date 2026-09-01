@@ -29,3 +29,6 @@ phpstan.neon
 /node_modules/
 /public/build/
 ###< symfony/reprise ###
+
+# Superpowers SDD workspace (ledger, briefs, review packages)
+/.superpowers/

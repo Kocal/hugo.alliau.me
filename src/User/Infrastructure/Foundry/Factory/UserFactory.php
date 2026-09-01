@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace App\User\Infrastructure\Foundry\Factory;
 
 use App\User\Domain\Data\User;
-use Zenstruck\Foundry\Persistence\PersistentProxyObjectFactory;
+use Zenstruck\Foundry\Persistence\PersistentObjectFactory;
 
 /**
- * @extends PersistentProxyObjectFactory<User>
+ * @extends PersistentObjectFactory<User>
  */
-final class UserFactory extends PersistentProxyObjectFactory
+final class UserFactory extends PersistentObjectFactory
 {
     #[\Override]
     public static function class(): string

@@ -194,6 +194,7 @@ nav:
     cv: CV
     places: Lieux
     language: Langue
+    recipes: Recettes
 footer:
     role:
         dev: Développeur web full-stack
@@ -222,3 +223,40 @@ places:
     filter:
         country: Pays
         all_countries: Tous les pays
+quantity:
+    range: "{min} à {max}"
+recipe_type:
+    starter: Entrée
+    main: Plat
+    dessert: Dessert
+recipes:
+    title: Recettes
+    meta_description: Mes recettes préférées, des entrées aux desserts.
+    meta_description_detail: "{name} : recette de {type} pour {servings, plural, one {# personne} other {# personnes}}."
+    grid_caption: "Ingrédients et étapes pour {name}"
+    ingredients: Ingrédients
+    steps: Étapes
+    step_result: "le résultat de l'étape {number}"
+    source_prefix: Adapté de
+    servings_label: Nombre de personnes
+    decrease: Une personne de moins
+    increase: Une personne de plus
+    reset: Réinitialiser la progression
+    empty: Aucune recette pour le moment.
+unit:
+    g: g
+    kg: kg
+    ml: ml
+    cl: cl
+    l: l
+    tbsp: "{count, plural, one {cuillère à soupe} other {cuillères à soupe}}"
+    tsp: "{count, plural, one {cuillère à café} other {cuillères à café}}"
+    pinch: "{count, plural, one {pincée} other {pincées}}"
+    clove: "{count, plural, one {gousse} other {gousses}}"
+    slice: "{count, plural, one {tranche} other {tranches}}"
+    bunch: "{count, plural, one {bouquet} other {bouquets}}"
+    sprig: "{count, plural, one {brin} other {brins}}"
+    handful: "{count, plural, one {poignée} other {poignées}}"
+    drop: "{count, plural, one {goutte} other {gouttes}}"
+    can: "{count, plural, one {boîte} other {boîtes}}"
+    pack: "{count, plural, one {sachet} other {sachets}}"

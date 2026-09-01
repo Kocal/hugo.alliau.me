@@ -7,6 +7,7 @@ namespace App\Shared\Infrastructure\EasyAdmin\Controller;
 use App\Blog;
 use App\CV;
 use App\Places;
+use App\Recipes;
 use EasyCorp\Bundle\EasyAdminBundle\Attribute\AdminDashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -54,6 +55,9 @@ class DashboardController extends AbstractDashboardController
 
         yield MenuItem::section('Places');
         yield MenuItem::linkTo(Places\Infrastructure\EasyAdmin\Controller\PlaceCrudController::class, 'Places', 'fas fa-map-marker-alt');
+
+        yield MenuItem::section('Recipes');
+        yield MenuItem::linkTo(Recipes\Infrastructure\EasyAdmin\Controller\RecipeCrudController::class, 'Recipes', 'fas fa-utensils');
 
         yield MenuItem::section('Tools');
         yield MenuItem::linkToUrl('Clear HTTP Cache', 'fas fa-server', '/admin/http-cache-clear');
