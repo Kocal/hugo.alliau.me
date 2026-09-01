@@ -22,6 +22,20 @@ parameters:
           route: !php/enum App\CV\Domain\Data\Route::INDEX->value
         - label: 'nav.places'
           route: !php/enum App\Places\Domain\Data\Route::INDEX->value
+        - label: 'nav.recipes'
+          route: !php/enum App\Recipes\Domain\Data\Route::LIST->value
+          extras:
+              routes:
+                  - route: !php/enum App\Recipes\Domain\Data\Route::VIEW->value
+
+    # Routes that only exist under one locale (e.g. a blog post or a recipe only has a French
+    # or an English version). The language switcher and hreflang alternates read this list
+    # instead of hardcoding route names, so a new single-locale route only needs an entry here.
+    app.single_locale_routes:
+        - route: !php/enum App\Blog\Domain\Data\Route::POST_VIEW->value
+          fallback_route: !php/enum App\Blog\Domain\Data\Route::HOME->value
+        - route: !php/enum App\Recipes\Domain\Data\Route::VIEW->value
+          fallback_route: !php/enum App\Recipes\Domain\Data\Route::LIST->value
 
 imports:
     - { resource: 'services/*.php' }

@@ -12,6 +12,8 @@ doctrine:
             post_id: App\Shared\Infrastructure\Database\Doctrine\DBAL\Types\PostIdType
             professional_experience_id: App\Shared\Infrastructure\Database\Doctrine\DBAL\Types\ProfessionalExperienceIdType
             project_id: App\Shared\Infrastructure\Database\Doctrine\DBAL\Types\ProjectIdType
+            recipe_content: App\Recipes\Infrastructure\Doctrine\DBAL\Type\RecipeContentType
+            recipe_id: App\Shared\Infrastructure\Database\Doctrine\DBAL\Types\RecipeIdType
             user_id: App\Shared\Infrastructure\Database\Doctrine\DBAL\Types\UserIdType
 
     orm:
@@ -41,6 +43,11 @@ doctrine:
                 type: attribute
                 dir: '%kernel.project_dir%/src/Places/Domain'
                 prefix: 'App\Places\Domain'
+            Recipes:
+                is_bundle: false
+                type: attribute
+                dir: '%kernel.project_dir%/src/Recipes/Domain'
+                prefix: 'App\Recipes\Domain'
             User:
                 is_bundle: false
                 type: attribute

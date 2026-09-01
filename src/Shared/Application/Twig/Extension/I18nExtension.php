@@ -5,14 +5,20 @@ declare(strict_types=1);
 namespace App\Shared\Application\Twig\Extension;
 
 use App\Shared\Domain\Data\Locale;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
 final class I18nExtension extends AbstractExtension
 {
+    /**
+     * @param list<array{route: string, fallback_route: string}> $singleLocaleRoutes
+     */
     public function __construct(
         private readonly TranslatorInterface $translator,
+        #[Autowire(param: 'app.single_locale_routes')]
+        private readonly array $singleLocaleRoutes = [],
     ) {
     }
 
@@ -24,6 +30,8 @@ final class I18nExtension extends AbstractExtension
         ]);
 
         yield new TwigFunction('enabled_locales', $this->enabledLocales(...));
+
+        yield new TwigFunction('single_locale_fallback_route', $this->singleLocaleFallbackRoute(...));
     }
 
     /**
@@ -32,6 +40,21 @@ final class I18nExtension extends AbstractExtension
     public function enabledLocales(): array
     {
         return Locale::cases();
+    }
+
+    /**
+     * Returns the route a language switcher should target when $route only exists under one
+     * locale, or null when $route exists under every locale.
+     */
+    public function singleLocaleFallbackRoute(string $route): ?string
+    {
+        foreach ($this->singleLocaleRoutes as $entry) {
+            if ($entry['route'] === $route) {
+                return $entry['fallback_route'];
+            }
+        }
+
+        return null;
     }
 
     /**

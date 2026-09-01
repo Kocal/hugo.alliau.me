@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ recipe.name }} | Hugo Alliaume{% endblock %}
+
+{% block seo %}
+    <meta name="description" content="{{ 'recipes.meta_description_detail'|trans({name: recipe.name, type: recipe.type.toTranslatable|trans, servings: recipe.servings}) }}">
+{% endblock %}
+
+{% set link_class = 'text-primary-700 underline underline-offset-2 transition-colors hover:text-primary-800 dark:text-primary-400 dark:hover:text-primary-300' %}
+
+{% block main %}
+<main class="container mx-auto p-2 sm:py-4 max-w-screen-lg">
+    {# Substituting empty min/max leaves only the separator, kept in sync with quantity.range #}
+    <article data-controller="recipe-servings recipe-progress"
+             data-recipe-servings-base-value="{{ recipe.servings }}"
+             data-recipe-servings-range-separator-value="{{ 'quantity.range'|trans({min: '', max: ''}) }}"
+             data-recipe-progress-key-value="{{ recipe.slug }}">
+        <header class="mb-6">
+            <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight">{{ recipe.name }}</h1>
+
+            <div class="mt-3">
+                <twig:Badge>{{ recipe.type.toTranslatable|trans }}</twig:Badge>
+            </div>
+
+            {% if recipe.sourceLabel or recipe.sourceUrl %}
+                <p class="mt-3 text-sm text-zinc-500 dark:text-zinc-400">
+                    {{ 'recipes.source_prefix'|trans }}
+                    {%- if recipe.sourceLabel and recipe.sourceUrl %}
+                        <a href="{{ recipe.sourceUrl }}" rel="noreferrer noopener" class="{{ link_class }}">{{ recipe.sourceLabel }}</a>
+                    {%- elseif recipe.sourceLabel %}
+                        {{ recipe.sourceLabel }}
+                    {%- else %}
+                        <a href="{{ recipe.sourceUrl }}" rel="noreferrer noopener" class="{{ link_class }}">{{ recipe.sourceUrl }}</a>
+                    {%- endif %}
+                </p>
+            {% endif %}
+        </header>
+
+        <twig:Card class="mb-6 flex flex-wrap items-center justify-between gap-x-6 gap-y-3 p-3 sm:p-4">
+            <div class="flex items-center gap-3">
+                <label for="recipe-servings" class="text-sm font-medium">{{ 'recipes.servings_label'|trans }}</label>
+
+                <div class="inline-flex items-stretch overflow-hidden rounded-lg border border-slate-200 dark:border-white/10">
+                    <button type="button"
+                            data-action="recipe-servings#decrease"
+                            aria-label="{{ 'recipes.decrease'|trans }}"
+                            class="px-3 text-lg leading-none text-zinc-600 transition-colors hover:bg-slate-100 dark:text-zinc-300 dark:hover:bg-white/5">&minus;</button>
+                    <input id="recipe-servings" type="number" min="1" step="1"
+                           value="{{ recipe.servings }}"
+                           data-recipe-servings-target="input"
+                           data-action="input->recipe-servings#update"
+                           class="w-12 border-x border-slate-200 bg-transparent py-1.5 text-center font-semibold [appearance:textfield] dark:border-white/10 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none">
+                    <button type="button"
+                            data-action="recipe-servings#increase"
+                            aria-label="{{ 'recipes.increase'|trans }}"
+                            class="px-3 text-lg leading-none text-zinc-600 transition-colors hover:bg-slate-100 dark:text-zinc-300 dark:hover:bg-white/5">+</button>
+                </div>
+            </div>
+
+            <button type="button"
+                    data-action="recipe-progress#reset"
+                    class="rounded-lg border border-slate-200 px-3 py-1.5 text-sm text-zinc-600 transition-colors hover:bg-slate-100 dark:border-white/10 dark:text-zinc-300 dark:hover:bg-white/5">
+                {{ 'recipes.reset'|trans }}
+            </button>
+        </twig:Card>
+
+        <twig:Card class="p-3 sm:p-5">
+            <twig:Recipe:Grid :recipe="recipe" />
+        </twig:Card>
+    </article>
+</main>
+{% endblock %}

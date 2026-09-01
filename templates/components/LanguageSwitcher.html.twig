@@ -1,6 +1,6 @@
-{% set is_post_view = app.current_route == constant('App\\Blog\\Domain\\Data\\Route::POST_VIEW').value %}
-{% set target_route = is_post_view ? constant('App\\Blog\\Domain\\Data\\Route::HOME').value : app.current_route %}
-{% set target_parameters = is_post_view ? {} : app.current_route_parameters %}
+{% set fallback_route = app.current_route ? single_locale_fallback_route(app.current_route) : null %}
+{% set target_route = fallback_route ?? app.current_route %}
+{% set target_parameters = fallback_route ? {} : app.current_route_parameters %}
 
 <ul class="flex items-center gap-1.5 text-2xl" aria-label="{{ 'nav.language'|trans }}">
     {% for locale in enabled_locales() %}

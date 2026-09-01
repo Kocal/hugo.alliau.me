@@ -1,0 +1,8 @@
+{% block recipe_content_widget %}
+    <div data-controller="recipe-editor"
+         data-recipe-editor-content-value="{{ value is empty ? '{"roots":[]}' : value }}"
+         data-recipe-editor-unit-labels-value="{{ unit_labels|default({})|json_encode }}">
+        <input type="hidden" {{ block('widget_attributes') }} value="{{ value }}" data-recipe-editor-target="field">
+        <div data-recipe-editor-target="mount"></div>
+    </div>
+{% endblock %}

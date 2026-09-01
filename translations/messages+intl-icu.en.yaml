@@ -194,6 +194,7 @@ nav:
     cv: CV
     places: Places
     language: Language
+    recipes: Recipes
 footer:
     role:
         dev: Full-stack web developer
@@ -222,3 +223,40 @@ places:
     filter:
         country: Country
         all_countries: All countries
+quantity:
+    range: "{min} to {max}"
+recipe_type:
+    starter: Starter
+    main: Main course
+    dessert: Dessert
+recipes:
+    title: Recipes
+    meta_description: My favorite recipes, from starters to desserts.
+    meta_description_detail: "{name}: a {type} recipe for {servings, plural, one {# person} other {# people}}."
+    grid_caption: "Ingredients and steps for {name}"
+    ingredients: Ingredients
+    steps: Steps
+    step_result: "the result of step {number}"
+    source_prefix: Adapted from
+    servings_label: Number of people
+    decrease: One fewer person
+    increase: One more person
+    reset: Reset progress
+    empty: No recipe yet.
+unit:
+    g: g
+    kg: kg
+    ml: ml
+    cl: cl
+    l: l
+    tbsp: "{count, plural, one {tablespoon} other {tablespoons}}"
+    tsp: "{count, plural, one {teaspoon} other {teaspoons}}"
+    pinch: "{count, plural, one {pinch} other {pinches}}"
+    clove: "{count, plural, one {clove} other {cloves}}"
+    slice: "{count, plural, one {slice} other {slices}}"
+    bunch: "{count, plural, one {bunch} other {bunches}}"
+    sprig: "{count, plural, one {sprig} other {sprigs}}"
+    handful: "{count, plural, one {handful} other {handfuls}}"
+    drop: "{count, plural, one {drop} other {drops}}"
+    can: "{count, plural, one {can} other {cans}}"
+    pack: "{count, plural, one {pack} other {packs}}"

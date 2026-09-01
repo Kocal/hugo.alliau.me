@@ -1,6 +1,7 @@
 import { defineConfig } from "vite";
 import Symfony from "@symfony/reprise/vite";
 import tailwindcss from "@tailwindcss/vite";
+import vue from "@vitejs/plugin-vue";
 
 export default defineConfig({
     input: {
@@ -9,6 +10,7 @@ export default defineConfig({
     },
     plugins: [
         tailwindcss(),
+        vue(),
         Symfony({
             stimulus: "./assets/controllers.json",
             copy: [{ from: "./assets/images/", to: "images/" }],
