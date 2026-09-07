@@ -33,6 +33,10 @@ class Recipe implements CacheableEntity
     #[Assert\Length(min: 3, max: 255)]
     private ?string $slug = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    #[Assert\Length(max: 255)]
+    private ?string $description = null;
+
     #[ORM\Column]
     private RecipeType $type = RecipeType::MAIN;
 
@@ -103,6 +107,18 @@ class Recipe implements CacheableEntity
     public function setSlug(string $slug): static
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): static
+    {
+        $this->description = $description;
 
         return $this;
     }

@@ -58,6 +58,50 @@ final class ViewControllerTest extends WebTestCase
         self::assertResponseHeaderSame('cache-control', 'max-age=2592000, public');
     }
 
+    public function testTheDescriptionIsRenderedAndDrivesTheMetaDescription(): void
+    {
+        $repository = new FakeRecipeRepository();
+        $repository->add($this->visibleRecipe()->setDescription('Des nouilles épaisses, prêtes en vingt minutes.'));
+
+        $client = self::createClient();
+        $client->getContainer()
+            ->set(RecipeRepository::class, $repository);
+
+        $crawler = $client->request(Request::METHOD_GET, '/recipes/udon');
+
+        self::assertResponseIsSuccessful();
+        $this->assertSame(
+            'Des nouilles épaisses, prêtes en vingt minutes.',
+            $crawler->filter('[data-testid="recipe-description"]')
+                ->text(),
+        );
+        $this->assertSame(
+            'Des nouilles épaisses, prêtes en vingt minutes.',
+            $crawler->filter('meta[name="description"]')
+                ->attr('content'),
+        );
+    }
+
+    public function testAnEmptyDescriptionFallsBackToTheGeneratedMetaDescription(): void
+    {
+        $repository = new FakeRecipeRepository();
+        $repository->add($this->visibleRecipe());
+
+        $client = self::createClient();
+        $client->getContainer()
+            ->set(RecipeRepository::class, $repository);
+
+        $crawler = $client->request(Request::METHOD_GET, '/recipes/udon');
+
+        self::assertResponseIsSuccessful();
+        $this->assertCount(0, $crawler->filter('[data-testid="recipe-description"]'));
+        $this->assertStringContainsString(
+            'Udon noodles',
+            (string) $crawler->filter('meta[name="description"]')
+                ->attr('content'),
+        );
+    }
+
     public function testANotModifiedRequestReturnsAnEmpty304(): void
     {
         $repository = new FakeRecipeRepository();

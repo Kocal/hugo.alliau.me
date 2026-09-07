@@ -38,6 +38,7 @@ final class FakeRecipeRepository implements RecipeRepository
             static fn (Recipe $recipe): RecipeSummary => new RecipeSummary(
                 (string) $recipe->getName(),
                 (string) $recipe->getSlug(),
+                $recipe->getDescription(),
                 $recipe->getType(),
                 $recipe->getLocale(),
                 $recipe->getUpdatedAt(),

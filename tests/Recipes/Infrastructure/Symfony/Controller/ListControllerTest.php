@@ -13,6 +13,7 @@ use App\Tests\Recipes\Infrastructure\Double\Repository\FakeRecipeRepository;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\UsesClass;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -64,6 +65,26 @@ final class ListControllerTest extends WebTestCase
             '/fr/recettes/visible-fr',
             $crawler->filter('[data-testid="recipe-link"]')
                 ->attr('href'),
+        );
+    }
+
+    public function testACardShowsTheDescriptionOnlyWhenThereIsOne(): void
+    {
+        $repository = new FakeRecipeRepository();
+        $repository->add(new Recipe()->setName('Décrite')->setSlug('decrite')->setVisible(true)->setLocale(Locale::EN)->setDescription('Prête en vingt minutes.'));
+        $repository->add(new Recipe()->setName('Muette')->setSlug('muette')->setVisible(true)->setLocale(Locale::EN));
+
+        $client = self::createClient();
+        $client->getContainer()
+            ->set(RecipeRepository::class, $repository);
+
+        $crawler = $client->request(Request::METHOD_GET, '/recipes');
+
+        self::assertResponseIsSuccessful();
+        $this->assertSame(
+            ['Prête en vingt minutes.'],
+            $crawler->filter('[data-testid="recipe-description"]')
+                ->each(static fn (Crawler $node): string => $node->text()),
         );
     }
 

@@ -24,6 +24,10 @@
                     </h2>
                 </header>
 
+                {% if recipe.description %}
+                    <p data-testid="recipe-description" class="mb-4">{{ recipe.description }}</p>
+                {% endif %}
+
                 <footer class="flex items-center gap-x-2">
                     <span class="text-lg" title="{{ recipe.locale.toTranslatable|trans }}" aria-label="{{ recipe.locale.toTranslatable|trans }}">{{ recipe.locale.flag }}</span>
                     <twig:Badge>{{ recipe.type.toTranslatable|trans }}</twig:Badge>

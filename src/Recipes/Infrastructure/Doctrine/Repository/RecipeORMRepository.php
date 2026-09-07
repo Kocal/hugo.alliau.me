@@ -31,7 +31,7 @@ class RecipeORMRepository extends ServiceEntityRepository implements RecipeRepos
     public function findAllVisible(): array
     {
         return $this->createQueryBuilder('r')
-            ->select(\sprintf('NEW %s(r.name, r.slug, r.type, r.locale, r.updatedAt)', RecipeSummary::class))
+            ->select(\sprintf('NEW %s(r.name, r.slug, r.description, r.type, r.locale, r.updatedAt)', RecipeSummary::class))
             ->andWhere('r.visible = true')
             ->orderBy('r.type', 'ASC')
             ->addOrderBy('r.name', 'ASC')

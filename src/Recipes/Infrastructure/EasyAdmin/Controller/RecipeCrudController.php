@@ -54,6 +54,10 @@ class RecipeCrudController extends AbstractCrudController
             ->setHelp('Utilisé dans l\'URL de la recette.')
             ->onlyOnForms()
         ;
+        yield TextField::new('description', 'Description')
+            ->setHelp('Résumé affiché sous le titre et repris comme méta-description. Sans lui, la méta-description est déduite du nom, du type et du nombre de personnes.')
+            ->hideOnIndex()
+        ;
 
         yield FormField::addFieldset('Classification');
         yield ChoiceField::new('type', 'Type')
