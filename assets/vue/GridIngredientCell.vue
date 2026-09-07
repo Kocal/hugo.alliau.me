@@ -47,10 +47,10 @@ const max = computed({
 });
 
 const moveUpTitle = computed(() =>
-    props.canMoveUp ? "Monter" : "Impossible : cela changerait le contenu d'une étape",
+    props.canMoveUp ? "Monter" : "Impossible : pas de voisin à ce niveau",
 );
 const moveDownTitle = computed(() =>
-    props.canMoveDown ? "Descendre" : "Impossible : cela changerait le contenu d'une étape",
+    props.canMoveDown ? "Descendre" : "Impossible : pas de voisin à ce niveau",
 );
 const deleteTitle = computed(() =>
     props.canDelete

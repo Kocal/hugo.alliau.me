@@ -8,14 +8,14 @@ import {
     analyzeGrid,
     buildRenderTable,
     canDeleteIngredientRow,
-    canMoveIngredientRow,
+    canMoveCell,
     canRemoveColumn,
     computeDragPreview,
     createStepFromDrag,
     deleteIngredientRow,
     gridToTree,
     maximalBlocks,
-    moveIngredientRow,
+    moveCell,
     removeColumn,
     treeToGrid,
     ungroupStep,
@@ -129,8 +129,12 @@ function deleteRow(index) {
     deleteIngredientRow(grid, index);
 }
 
-function moveRow(index, direction) {
-    moveIngredientRow(grid, index, direction);
+function canMove(cell, direction) {
+    return canMoveCell(grid, cell.node.id, direction, analysis.value);
+}
+
+function move(cell, direction) {
+    moveCell(grid, cell.node.id, direction);
 }
 
 function rowKey(rowIndex) {
@@ -222,11 +226,11 @@ watch(serialized, (value) => emit("change", value), { immediate: true });
                             <td v-if="cell.type === 'ingredient'" class="p-1">
                                 <GridIngredientCell
                                     :node="cell.node"
-                                    :can-move-up="canMoveIngredientRow(grid, rowIndex, -1)"
-                                    :can-move-down="canMoveIngredientRow(grid, rowIndex, 1)"
+                                    :can-move-up="canMove(cell, -1)"
+                                    :can-move-down="canMove(cell, 1)"
                                     :can-delete="canDeleteIngredientRow(grid, rowIndex)"
-                                    @move-up="moveRow(rowIndex, -1)"
-                                    @move-down="moveRow(rowIndex, 1)"
+                                    @move-up="move(cell, -1)"
+                                    @move-down="move(cell, 1)"
                                     @delete="deleteRow(rowIndex)"
                                 />
                             </td>
@@ -236,7 +240,14 @@ watch(serialized, (value) => emit("change", value), { immediate: true });
                                 class="p-1 recipe-editor__step"
                                 @pointerenter="hoverDrag(cell)"
                             >
-                                <GridStepCell :node="cell.node" @ungroup="ungroup(cell.node.id)" />
+                                <GridStepCell
+                                    :node="cell.node"
+                                    :can-move-up="canMove(cell, -1)"
+                                    :can-move-down="canMove(cell, 1)"
+                                    @move-up="move(cell, -1)"
+                                    @move-down="move(cell, 1)"
+                                    @ungroup="ungroup(cell.node.id)"
+                                />
                             </td>
                             <td
                                 v-else

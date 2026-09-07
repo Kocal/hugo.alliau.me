@@ -395,27 +395,65 @@ export function deleteIngredientRow(grid, index) {
     return true;
 }
 
-// Refuser: si une étape contient l'une des deux lignes mais pas l'autre, l'échange changerait
-// ce que cette étape consomme.
-export function canMoveIngredientRow(grid, index, direction) {
-    const target = index + direction;
-    if (target < 0 || target >= grid.ingredients.length) {
-        return false;
+// Une étape est l'union exacte des portées de ses enfants, donc deux frères sont toujours
+// contigus: le voisin dans une direction est simplement le suivant dans la fratrie triée.
+function findSwap(analysis, cellId, direction) {
+    const cell = analysis.allCells.find((candidate) => candidate.id === cellId);
+    if (!cell) {
+        return null;
     }
 
-    const inRange = (step, row) => row >= step.rowStart && row < step.rowStart + step.rowSpan;
+    const parent = analysis.parentOf.get(cellId);
+    const siblings = analysis.allCells
+        .filter((other) => analysis.parentOf.get(other.id) === parent)
+        .sort((a, b) => a.rowStart - b.rowStart);
 
-    return !grid.steps.some((step) => inRange(step, index) !== inRange(step, target));
+    const sibling = siblings[siblings.indexOf(cell) + direction];
+    if (!sibling) {
+        return null;
+    }
+
+    return cell.rowStart < sibling.rowStart ? [cell, sibling] : [sibling, cell];
 }
 
-export function moveIngredientRow(grid, index, direction) {
-    if (!canMoveIngredientRow(grid, index, direction)) {
+export function canMoveCell(grid, cellId, direction, analysis = analyzeGrid(grid)) {
+    return findSwap(analysis, cellId, direction) !== null;
+}
+
+/**
+ * Échange une cellule avec son frère immédiat, en emportant tout ce qu'elle contient. Les deux
+ * portées sont contiguës et ont le même parent: après l'échange, chaque étape consomme
+ * toujours exactement les mêmes cellules, seul l'ordre de lecture change. C'est le seul moyen
+ * de réordonner des lignes que des étapes séparent — les flèches d'un ingrédient ne peuvent
+ * franchir que sa propre fratrie.
+ */
+export function moveCell(grid, cellId, direction) {
+    const swap = findSwap(analyzeGrid(grid), cellId, direction);
+    if (swap === null) {
         return false;
     }
 
-    const target = index + direction;
-    const [row] = grid.ingredients.splice(index, 1);
-    grid.ingredients.splice(target, 0, row);
+    const [first, second] = swap;
+
+    const rows = grid.ingredients.splice(first.rowStart, first.rowSpan + second.rowSpan);
+    grid.ingredients.splice(
+        first.rowStart,
+        0,
+        ...rows.slice(first.rowSpan),
+        ...rows.slice(0, first.rowSpan),
+    );
+
+    // Seules les étapes entièrement contenues dans l'une des deux portées bougent: un ancêtre
+    // couvre les deux, sa portée est donc inchangée.
+    for (const step of grid.steps) {
+        const end = step.rowStart + step.rowSpan;
+
+        if (step.rowStart >= first.rowStart && end <= first.rowStart + first.rowSpan) {
+            step.rowStart += second.rowSpan;
+        } else if (step.rowStart >= second.rowStart && end <= second.rowStart + second.rowSpan) {
+            step.rowStart -= first.rowSpan;
+        }
+    }
 
     return true;
 }
