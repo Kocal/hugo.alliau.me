@@ -33,13 +33,13 @@ final class BlogLocaleTest extends WebTestCase
             'slug' => 'english-flag-post',
             'locale' => Locale::EN,
             'status' => PostStatus::PUBLISHED,
-            'publishedAt' => new \DateTime('2020-01-01'),
+            'publishedAt' => new \DateTimeImmutable('2020-01-01'),
         ]);
         PostFactory::createOne([
             'slug' => 'french-flag-post',
             'locale' => Locale::FR,
             'status' => PostStatus::PUBLISHED,
-            'publishedAt' => new \DateTime('2020-01-02'),
+            'publishedAt' => new \DateTimeImmutable('2020-01-02'),
         ]);
 
         $client->request(Request::METHOD_GET, '/blog');
@@ -57,7 +57,7 @@ final class BlogLocaleTest extends WebTestCase
             'slug' => 'english-served-post',
             'locale' => Locale::EN,
             'status' => PostStatus::PUBLISHED,
-            'publishedAt' => new \DateTime('2020-01-01'),
+            'publishedAt' => new \DateTimeImmutable('2020-01-01'),
         ]);
 
         $client->request(Request::METHOD_GET, '/blog/posts/english-served-post');
@@ -74,7 +74,7 @@ final class BlogLocaleTest extends WebTestCase
             'slug' => 'english-redirect-post',
             'locale' => Locale::EN,
             'status' => PostStatus::PUBLISHED,
-            'publishedAt' => new \DateTime('2020-01-01'),
+            'publishedAt' => new \DateTimeImmutable('2020-01-01'),
         ]);
 
         $client->request(Request::METHOD_GET, '/fr/blog/posts/english-redirect-post');
@@ -90,7 +90,7 @@ final class BlogLocaleTest extends WebTestCase
             'slug' => 'french-redirect-post',
             'locale' => Locale::FR,
             'status' => PostStatus::PUBLISHED,
-            'publishedAt' => new \DateTime('2020-01-01'),
+            'publishedAt' => new \DateTimeImmutable('2020-01-01'),
         ]);
 
         $client->request(Request::METHOD_GET, '/blog/posts/french-redirect-post');

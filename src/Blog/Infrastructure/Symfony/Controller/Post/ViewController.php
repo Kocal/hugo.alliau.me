@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace App\Blog\Infrastructure\Symfony\Controller\Post;
 
 use App\Blog\Domain\Data\Post;
-use App\Blog\Domain\Data\PostStatus;
 use App\Blog\Domain\Data\Route as RouteBlog;
 use App\Shared\Domain\HttpCache\CacheMethodsTrait;
 use App\Shared\Domain\Markdown\MarkdownConverter;
+use Psr\Clock\ClockInterface;
 use Psr\Link\EvolvableLinkInterface;
 use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -31,10 +31,12 @@ final class ViewController extends AbstractController
         Post $post,
         Request $request,
         MarkdownConverter $markdownConverter,
+        ClockInterface $clock,
     ): Response {
-        $isPreview = $request->query->has('preview');
+        $isPreview = $request->query->has('preview') && $this->isGranted('ROLE_ADMIN');
+        $isPubliclyVisible = $post->isPubliclyVisible($clock->now());
 
-        if ($post->getStatus() === PostStatus::DRAFT && ! $isPreview) {
+        if (! $isPubliclyVisible && ! $isPreview) {
             throw $this->createNotFoundException();
         }
 
@@ -52,7 +54,7 @@ final class ViewController extends AbstractController
         $response->setMaxAge(60 * 60 * 24 * 30);
         $response->setPublic();
 
-        if ($post->getStatus() === PostStatus::DRAFT) {
+        if (! $isPubliclyVisible) {
             $response->setPrivate();
             $response->setMaxAge(0);
             $response->headers->set('X-Robots-Tag', 'noindex, nofollow');
