@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App;
 
-use App\Shared\Domain\CQRS\AsCommandHandler;
+use App\Shared\Application\CQRS\AsCommandHandler;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\DependencyInjection\ChildDefinition;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
