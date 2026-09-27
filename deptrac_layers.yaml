@@ -16,6 +16,7 @@ deptrac:
         - name: Infrastructure
           collectors:
               - { type: classLike, value: ^App\\.+\\Infrastructure\\ }
+              - { type: classLike, value: ^App\\Kernel$ }
 
         - name: Vendor_Doctrine_Mapping
           collectors:

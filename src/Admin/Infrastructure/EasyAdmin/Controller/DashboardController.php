@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Shared\Infrastructure\EasyAdmin\Controller;
+namespace App\Admin\Infrastructure\EasyAdmin\Controller;
 
 use App\Blog;
 use App\CV;

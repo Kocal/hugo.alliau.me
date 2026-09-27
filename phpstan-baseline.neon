@@ -52,25 +52,25 @@ parameters:
 			message: '#^Parameter \#1 \$url of method Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController\:\:redirect\(\) expects string, string\|null given\.$#'
 			identifier: argument.type
 			count: 1
-			path: src/Shared/Infrastructure/EasyAdmin/HttpCache/Controller/ClearHttpCacheController.php
+			path: src/Admin/Infrastructure/EasyAdmin/HttpCache/Controller/ClearHttpCacheController.php
 
 		-
-			message: '#^Method App\\Shared\\Infrastructure\\EasyAdmin\\HttpCache\\EventListener\\AdminEntityListener\:\:afterEntityDeleted\(\) has parameter \$event with generic class EasyCorp\\Bundle\\EasyAdminBundle\\Event\\AfterEntityDeletedEvent but does not specify its types\: TEntity$#'
+			message: '#^Method App\\Admin\\Infrastructure\\EasyAdmin\\HttpCache\\EventListener\\AdminEntityListener\:\:afterEntityDeleted\(\) has parameter \$event with generic class EasyCorp\\Bundle\\EasyAdminBundle\\Event\\AfterEntityDeletedEvent but does not specify its types\: TEntity$#'
 			identifier: missingType.generics
 			count: 1
-			path: src/Shared/Infrastructure/EasyAdmin/HttpCache/EventListener/AdminEntityListener.php
+			path: src/Admin/Infrastructure/EasyAdmin/HttpCache/EventListener/AdminEntityListener.php
 
 		-
-			message: '#^Method App\\Shared\\Infrastructure\\EasyAdmin\\HttpCache\\EventListener\\AdminEntityListener\:\:afterEntityPersisted\(\) has parameter \$event with generic class EasyCorp\\Bundle\\EasyAdminBundle\\Event\\AfterEntityPersistedEvent but does not specify its types\: TEntity$#'
+			message: '#^Method App\\Admin\\Infrastructure\\EasyAdmin\\HttpCache\\EventListener\\AdminEntityListener\:\:afterEntityPersisted\(\) has parameter \$event with generic class EasyCorp\\Bundle\\EasyAdminBundle\\Event\\AfterEntityPersistedEvent but does not specify its types\: TEntity$#'
 			identifier: missingType.generics
 			count: 1
-			path: src/Shared/Infrastructure/EasyAdmin/HttpCache/EventListener/AdminEntityListener.php
+			path: src/Admin/Infrastructure/EasyAdmin/HttpCache/EventListener/AdminEntityListener.php
 
 		-
-			message: '#^Method App\\Shared\\Infrastructure\\EasyAdmin\\HttpCache\\EventListener\\AdminEntityListener\:\:afterEntityUpdated\(\) has parameter \$event with generic class EasyCorp\\Bundle\\EasyAdminBundle\\Event\\AfterEntityUpdatedEvent but does not specify its types\: TEntity$#'
+			message: '#^Method App\\Admin\\Infrastructure\\EasyAdmin\\HttpCache\\EventListener\\AdminEntityListener\:\:afterEntityUpdated\(\) has parameter \$event with generic class EasyCorp\\Bundle\\EasyAdminBundle\\Event\\AfterEntityUpdatedEvent but does not specify its types\: TEntity$#'
 			identifier: missingType.generics
 			count: 1
-			path: src/Shared/Infrastructure/EasyAdmin/HttpCache/EventListener/AdminEntityListener.php
+			path: src/Admin/Infrastructure/EasyAdmin/HttpCache/EventListener/AdminEntityListener.php
 
 		-
 			message: '#^Offset 1 on non\-empty\-array\<string\> on left side of \?\? always exists and is not nullable\.$#'

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Shared\Infrastructure\EasyAdmin\HttpCache\Controller;
+namespace App\Admin\Infrastructure\EasyAdmin\HttpCache\Controller;
 
+use App\Admin\Infrastructure\EasyAdmin\Controller\DashboardController;
 use App\Shared\Domain\HttpCache\Exception\UnableToClearHttpCacheException;
 use App\Shared\Domain\HttpCache\HttpCache;
-use App\Shared\Infrastructure\EasyAdmin\Controller\DashboardController;
 use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
