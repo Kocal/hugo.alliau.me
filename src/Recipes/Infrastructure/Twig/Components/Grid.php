@@ -93,37 +93,8 @@ final class Grid
     }
 
     /**
-     * Ordre postfixe: une étape apparaît après celles dont elle consomme la sortie,
-     * ce qui en fait un ordre d'exécution valide.
-     *
-     * @return list<Step>
-     */
-    public function getFlatSteps(): array
-    {
-        $steps = [];
-        foreach ($this->recipe->getContent()->roots as $root) {
-            $this->collectSteps($root, $steps);
-        }
-
-        return $steps;
-    }
-
-    /**
-     * Les ingrédients qui entrent directement dans cette étape.
-     *
-     * @return list<Ingredient>
-     */
-    public function directIngredients(Step $step): array
-    {
-        return array_values(array_filter(
-            $step->children,
-            static fn (Step|Ingredient $child): bool => $child instanceof Ingredient,
-        ));
-    }
-
-    /**
      * Les numéros des étapes dont celle-ci consomme le résultat. L'ordre postfixe de
-     * getFlatSteps() garantit qu'ils sont tous inférieurs au numéro de cette étape.
+     * RecipeContent::stepsInExecutionOrder() garantit qu'ils sont tous inférieurs au numéro de cette étape.
      *
      * @return list<int>
      */
@@ -131,14 +102,10 @@ final class Grid
     {
         $numbering = $this->getNumbering();
 
-        $required = [];
-        foreach ($step->children as $child) {
-            if ($child instanceof Step) {
-                $required[] = $numbering[$child->id];
-            }
-        }
-
-        return $required;
+        return array_map(
+            static fn (Step $requiredStep): int => $numbering[$requiredStep->id],
+            $step->requiredSteps(),
+        );
     }
 
     /**
@@ -148,27 +115,11 @@ final class Grid
     {
         if ($this->numbering === null) {
             $this->numbering = [];
-            foreach ($this->getFlatSteps() as $index => $step) {
+            foreach ($this->recipe->getContent()->stepsInExecutionOrder() as $index => $step) {
                 $this->numbering[$step->id] = $index + 1;
             }
         }
 
         return $this->numbering;
-    }
-
-    /**
-     * @param list<Step> $steps
-     */
-    private function collectSteps(Step|Ingredient $node, array &$steps): void
-    {
-        if (! $node instanceof Step) {
-            return;
-        }
-
-        foreach ($node->children as $child) {
-            $this->collectSteps($child, $steps);
-        }
-
-        $steps[] = $node;
     }
 }

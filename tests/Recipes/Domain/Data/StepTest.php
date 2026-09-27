@@ -31,4 +31,26 @@ final class StepTest extends TestCase
 
         $this->assertSame([$inner, $water], $outer->children);
     }
+
+    public function testItExposesItsDirectIngredientsInOrder(): void
+    {
+        $flour = new Ingredient('i1', 'de farine', 200.0);
+        $water = new Ingredient('i2', "d'eau", 100.0);
+        $salt = new Ingredient('i3', 'de sel');
+        $inner = new Step('s1', 'Tamiser', [$flour]);
+        $outer = new Step('s2', 'Mélanger', [$water, $inner, $salt]);
+
+        $this->assertSame([$water, $salt], $outer->ingredients());
+        $this->assertSame([], new Step('s3', 'Servir', [$inner])->ingredients());
+    }
+
+    public function testItExposesTheStepsItConsumesInOrder(): void
+    {
+        $sift = new Step('s1', 'Tamiser', [new Ingredient('i1', 'de farine')]);
+        $whisk = new Step('s2', 'Fouetter', [new Ingredient('i2', "d'œufs")]);
+        $mix = new Step('s3', 'Mélanger', [$sift, new Ingredient('i3', "d'eau"), $whisk]);
+
+        $this->assertSame([$sift, $whisk], $mix->requiredSteps());
+        $this->assertSame([], $sift->requiredSteps());
+    }
 }

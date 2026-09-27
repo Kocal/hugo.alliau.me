@@ -20,6 +20,38 @@ final readonly class RecipeContent
     }
 
     /**
+     * Ordre postfixe: une étape apparaît après celles dont elle consomme la sortie,
+     * ce qui en fait un ordre d'exécution valide.
+     *
+     * @return list<Step>
+     */
+    public function stepsInExecutionOrder(): array
+    {
+        $steps = [];
+        foreach ($this->roots as $root) {
+            $this->collectSteps($root, $steps);
+        }
+
+        return $steps;
+    }
+
+    /**
+     * @param list<Step> $steps
+     */
+    private function collectSteps(Step|Ingredient $node, array &$steps): void
+    {
+        if (! $node instanceof Step) {
+            return;
+        }
+
+        foreach ($node->children as $child) {
+            $this->collectSteps($child, $steps);
+        }
+
+        $steps[] = $node;
+    }
+
+    /**
      * @param array<string, true> $seenIds
      */
     private function assertNode(Step|Ingredient $node, array &$seenIds): void

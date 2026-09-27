@@ -35,6 +35,24 @@ final class RecipeContentTest extends TestCase
         $this->assertCount(1, $content->roots);
     }
 
+    public function testItListsStepsAfterTheStepsTheyConsume(): void
+    {
+        $sift = new Step('s1', 'Tamiser', [new Ingredient('i1', 'de farine')]);
+        $whisk = new Step('s2', 'Fouetter', [new Ingredient('i2', "d'œufs")]);
+        $mix = new Step('s3', 'Mélanger', [$sift, $whisk]);
+        $sauce = new Step('s4', 'Faire la sauce', [new Ingredient('i3', 'de crème')]);
+
+        $content = new RecipeContent([$mix, new Ingredient('i4', 'de sel'), $sauce]);
+
+        $this->assertSame([$sift, $whisk, $mix, $sauce], $content->stepsInExecutionOrder());
+    }
+
+    public function testAnEmptyTreeHasNoSteps(): void
+    {
+        $this->assertSame([], new RecipeContent()->stepsInExecutionOrder());
+        $this->assertSame([], new RecipeContent([new Ingredient('i1', 'de sel')])->stepsInExecutionOrder());
+    }
+
     public function testItRejectsTwoRootsSharingAnId(): void
     {
         $this->expectException(\InvalidArgumentException::class);
