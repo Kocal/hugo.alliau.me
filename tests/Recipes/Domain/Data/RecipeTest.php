@@ -11,12 +11,31 @@ use App\Shared\Domain\HttpCache\CacheItem;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\Clock\Clock;
+use Symfony\Component\Clock\ClockInterface;
+use Symfony\Component\Clock\MockClock;
 
 #[CoversClass(Recipe::class)]
 #[UsesClass(RecipeContent::class)]
 #[UsesClass(CacheItem::class)]
 final class RecipeTest extends TestCase
 {
+    private ClockInterface $previousClock;
+
+    private MockClock $clock;
+
+    protected function setUp(): void
+    {
+        $this->previousClock = Clock::get();
+        $this->clock = new MockClock('2026-01-01 10:00:00');
+        Clock::set($this->clock);
+    }
+
+    protected function tearDown(): void
+    {
+        Clock::set($this->previousClock);
+    }
+
     public function testItStartsEmptyAndHidden(): void
     {
         $recipe = new Recipe();
@@ -44,5 +63,15 @@ final class RecipeTest extends TestCase
                 'slug' => 'nouilles-udon',
             ]),
         ], $recipe->getCacheItems());
+    }
+
+    public function testPreUpdateStampsUpdatedAtWithTheClock(): void
+    {
+        $recipe = new Recipe();
+        $this->clock->modify('+1 day');
+
+        $recipe->preUpdate();
+
+        $this->assertEquals($this->clock->now(), $recipe->getUpdatedAt());
     }
 }

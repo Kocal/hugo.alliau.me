@@ -121,7 +121,7 @@ class Place implements CacheableEntity
     #[ORM\PreUpdate]
     public function preUpdate(): void
     {
-        $this->updatedAt = new \DateTimeImmutable();
+        $this->updatedAt = Clock::get()->now();
     }
 
     #[\Override]
