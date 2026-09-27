@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Shared\Application\Twig\Extension;
+namespace App\Tests\Shared\Infrastructure\Twig\Extension;
 
-use App\Shared\Application\Twig\Extension\I18nExtension;
+use App\Shared\Infrastructure\Twig\Extension\I18nExtension;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Translation\Loader\ArrayLoader;

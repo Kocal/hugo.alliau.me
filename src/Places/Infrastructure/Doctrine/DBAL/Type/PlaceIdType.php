@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Shared\Infrastructure\Database\Doctrine\DBAL\Types;
+namespace App\Places\Infrastructure\Doctrine\DBAL\Type;
 
-use App\Shared\Domain\Data\ValueObject\PlaceId;
+use App\Places\Domain\Data\PlaceId;
+use App\Shared\Infrastructure\Database\Doctrine\DBAL\Types\AbstractIdType;
 
 final class PlaceIdType extends AbstractIdType
 {

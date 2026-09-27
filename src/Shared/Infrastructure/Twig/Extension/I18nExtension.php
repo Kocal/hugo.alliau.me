@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Shared\Application\Twig\Extension;
+namespace App\Shared\Infrastructure\Twig\Extension;
 
 use App\Shared\Domain\Data\Locale;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;

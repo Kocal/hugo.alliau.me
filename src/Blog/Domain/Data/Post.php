@@ -6,7 +6,6 @@ namespace App\Blog\Domain\Data;
 
 use App\Blog\Domain\Data\Route as RouteBlog;
 use App\Shared\Domain\Data\Locale;
-use App\Shared\Domain\Data\ValueObject\PostId;
 use App\Shared\Domain\HttpCache\CacheableEntity;
 use App\Shared\Domain\HttpCache\CacheItem;
 use Doctrine\DBAL\Types\Types;

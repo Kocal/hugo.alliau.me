@@ -19,6 +19,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     $services->load('App\\CV\\', '../../src/CV')
         ->exclude([
             '../../src/CV/Domain/Data/**',
+            '../../src/CV/Infrastructure/Doctrine/DBAL/Type/**',
             '../../src/CV/Infrastructure/Foundry/Factory/**',
         ]);
 
