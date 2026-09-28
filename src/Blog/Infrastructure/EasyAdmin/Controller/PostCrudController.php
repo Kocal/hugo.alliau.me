@@ -21,6 +21,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use function Symfony\Component\Clock\now;
 
 /**
  * @extends AbstractCrudController<Post>
@@ -51,7 +52,7 @@ class PostCrudController extends AbstractCrudController
             ->linkToUrl(fn (Post $post): string => $this->generateUrl(Route::POST_VIEW->value, [
                 'slug' => $post->getSlug(),
             ]))
-            ->displayIf(static fn (Post $post): bool => $post->isPublished())
+            ->displayIf(static fn (Post $post): bool => $post->isPubliclyVisible(now()))
         ;
 
         $actionPreview = Action::new('Preview', icon: 'fas fa-eye-slash')
@@ -59,7 +60,7 @@ class PostCrudController extends AbstractCrudController
                 'slug' => $post->getSlug(),
                 'preview' => 'true',
             ]))
-            ->displayIf(static fn (Post $post): bool => $post->isDraft());
+            ->displayIf(static fn (Post $post): bool => ! $post->isPubliclyVisible(now()));
 
         $actions
             ->add(Crud::PAGE_INDEX, $actionView)

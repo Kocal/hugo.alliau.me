@@ -49,8 +49,8 @@ class Post implements CacheableEntity
     #[ORM\Column]
     private \DateTimeImmutable $updatedAt;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
-    private ?\DateTimeInterface $publishedAt = null;
+    #[ORM\Column(nullable: true)]
+    private ?\DateTimeImmutable $publishedAt = null;
 
     /**
      * @var list<string>
@@ -145,12 +145,12 @@ class Post implements CacheableEntity
         return $this->updatedAt;
     }
 
-    public function getPublishedAt(): ?\DateTimeInterface
+    public function getPublishedAt(): ?\DateTimeImmutable
     {
         return $this->publishedAt;
     }
 
-    public function setPublishedAt(?\DateTimeInterface $publishedAt): static
+    public function setPublishedAt(?\DateTimeImmutable $publishedAt): static
     {
         $this->publishedAt = $publishedAt;
 
@@ -214,6 +214,13 @@ class Post implements CacheableEntity
     public function isPublished(): bool
     {
         return $this->status === PostStatus::PUBLISHED;
+    }
+
+    public function isPubliclyVisible(\DateTimeImmutable $now): bool
+    {
+        return $this->isPublished()
+            && $this->publishedAt instanceof \DateTimeImmutable
+            && $this->publishedAt <= $now;
     }
 
     public function isDraft(): bool
