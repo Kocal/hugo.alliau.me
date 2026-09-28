@@ -11,11 +11,30 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\Clock\Clock;
+use Symfony\Component\Clock\ClockInterface;
+use Symfony\Component\Clock\MockClock;
 
 #[CoversClass(Post::class)]
 #[UsesClass(PostSeo::class)]
 final class PostTest extends TestCase
 {
+    private ClockInterface $previousClock;
+
+    private MockClock $clock;
+
+    protected function setUp(): void
+    {
+        $this->previousClock = Clock::get();
+        $this->clock = new MockClock('2026-01-01 10:00:00');
+        Clock::set($this->clock);
+    }
+
+    protected function tearDown(): void
+    {
+        Clock::set($this->previousClock);
+    }
+
     /**
      * @return iterable<string, array{PostStatus, ?\DateTimeImmutable, bool}>
      */
@@ -36,5 +55,15 @@ final class PostTest extends TestCase
             ->setPublishedAt($publishedAt);
 
         $this->assertSame($expected, $post->isPubliclyVisible(new \DateTimeImmutable('2026-06-15 12:00:00')));
+    }
+
+    public function testPreUpdateStampsUpdatedAtWithTheClock(): void
+    {
+        $post = new Post();
+        $this->clock->modify('+1 day');
+
+        $post->preUpdate();
+
+        $this->assertEquals($this->clock->now(), $post->getUpdatedAt());
     }
 }

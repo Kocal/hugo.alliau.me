@@ -187,13 +187,13 @@ class Project implements CacheableEntity
     #[ORM\PreUpdate]
     public function preUpdate(): void
     {
-        $this->updatedAt = new \DateTimeImmutable();
+        $this->updatedAt = Clock::get()->now();
     }
 
     #[\Override]
     public function getEtag(): string
     {
-        return 'cv:professional_experience:' . $this->id . ':' . $this->updatedAt->format('U');
+        return 'cv:project:' . $this->id . ':' . $this->updatedAt->format('U');
     }
 
     #[\Override]
