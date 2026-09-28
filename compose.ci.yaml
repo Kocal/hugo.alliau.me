@@ -1,0 +1,19 @@
+services:
+  php:
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      APP_SECRET: ci
+      SERVER_NAME: localhost
+      DATABASE_URL: postgresql://app:ci@database:5432/app?serverVersion=16&charset=utf8
+      APP_DEFAULT_URI: https://localhost
+      HTTP_CACHE_ADAPTER: "no"
+      TRUSTED_PROXIES: 127.0.0.1
+      REDIS_URL: redis://redis:6379
+
+  database:
+    environment:
+      POSTGRES_DB: app
+      POSTGRES_PASSWORD: ci
+      POSTGRES_USER: app
