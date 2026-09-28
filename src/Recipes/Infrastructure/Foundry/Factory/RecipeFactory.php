@@ -34,7 +34,7 @@ final class RecipeFactory extends PersistentObjectFactory
     public function english(): static
     {
         return $this->with([
-            'locale' => Locale::FR,
+            'locale' => Locale::EN,
         ]);
     }
 
