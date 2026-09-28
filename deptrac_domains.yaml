@@ -5,29 +5,48 @@ deptrac:
         - ./src
 
     layers:
+        - name: Admin
+          collectors:
+              - { type: classLike, value: ^App\\Admin\\ }
+
         - name: Blog
           collectors:
-              - { type: classLike, value: ^App\\(?:Domain|Application|Infrastructure)\\Blog\\ }
+              - { type: classLike, value: ^App\\Blog\\ }
 
         - name: CV
           collectors:
-              - { type: classLike, value: ^App\\(?:Domain|Application|Infrastructure)\\CV\\ }
+              - { type: classLike, value: ^App\\CV\\ }
 
         - name: Places
           collectors:
-              - { type: classLike, value: ^App\\(?:Domain|Application|Infrastructure)\\Places\\ }
+              - { type: classLike, value: ^App\\Places\\ }
+
+        - name: Recipes
+          collectors:
+              - { type: classLike, value: ^App\\Recipes\\ }
 
         - name: User
           collectors:
-              - { type: classLike, value: ^App\\(?:Domain|Application|Infrastructure)\\User\\ }
+              - { type: classLike, value: ^App\\User\\ }
 
         - name: Shared
           collectors:
-              - { type: classLike, value: ^App\\(?:Domain|Application|Infrastructure)\\Shared\\ }
+              - { type: classLike, value: ^App\\Shared\\ }
+              - { type: classLike, value: ^App\\Kernel$ }
+
+        - name: Vendor
+          collectors:
+              - type: bool
+                must:
+                    - { type: classLike, value: ^(?!App\\) }
+                must_not:
+                    - { type: classLike, value: "^[a-zA-Z]+$" } # native PHP classes
 
     ruleset:
-        Blog: [Shared]
-        CV: [Shared]
-        Places: [Shared]
-        User: [Shared]
-        Shared: ~
+        Admin: [Blog, CV, Places, Recipes, User, Shared, Vendor]
+        Blog: [Shared, Vendor]
+        CV: [Shared, Vendor]
+        Places: [Shared, Vendor]
+        Recipes: [Shared, Vendor]
+        User: [Shared, Vendor]
+        Shared: [Vendor]

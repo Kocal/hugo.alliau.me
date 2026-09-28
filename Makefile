@@ -68,6 +68,8 @@ archi: archi.back
 
 ## Architecture - Run architecture checks for backend
 archi.back:
+	$(PHP) vendor/bin/deptrac debug:unassigned --config-file=deptrac_layers.yaml
+	$(PHP) vendor/bin/deptrac debug:unassigned --config-file=deptrac_domains.yaml
 	$(PHP) vendor/bin/deptrac --config-file=deptrac_layers.yaml --report-uncovered --fail-on-uncovered
 	$(PHP) vendor/bin/deptrac --config-file=deptrac_domains.yaml --report-uncovered --fail-on-uncovered
 
