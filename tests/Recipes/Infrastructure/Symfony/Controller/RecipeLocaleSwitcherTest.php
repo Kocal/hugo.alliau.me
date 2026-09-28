@@ -57,6 +57,7 @@ final class RecipeLocaleSwitcherTest extends WebTestCase
         $this->assertNotSame('/fr/recettes/udon', $href, 'The switcher must not link to a URL the recipe controller would 301 away from.');
         $this->assertSame('/fr/recettes', $href);
 
+        $client->disableReboot();
         $client->request(Request::METHOD_GET, $href);
         self::assertResponseIsSuccessful();
     }
