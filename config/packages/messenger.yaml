@@ -11,9 +11,7 @@ framework:
 
         routing:
             # Route your messages to the transports
-            'App\Shared\Domain\ObjectMapper\Command\MapObject': sync
-            'App\Places\Domain\Command\CreatePlace': sync
-            'App\Places\Domain\Command\CreateAddress': sync
+            'App\Places\Application\Command\CreatePlace': sync
 
         buses:
             messenger.bus.default: ~

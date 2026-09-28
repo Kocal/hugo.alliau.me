@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use App\Places\Domain\Data\Google\Place\Autocomplete;
 use App\Places\Domain\Repository\PlaceRepository;
 use App\Places\Infrastructure\Doctrine\Repository\PlaceORMRepository;
+use App\Places\Infrastructure\Google\Place\Autocomplete;
 
 return static function (ContainerConfigurator $containerConfigurator): void {
     $services = $containerConfigurator->services();
@@ -20,6 +20,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
             '../../src/Places/Domain/Data/**',
             '../../src/Places/Infrastructure/Doctrine/DBAL/Type/**',
             '../../src/Places/Infrastructure/Foundry/Factory/**',
+            '../../src/Places/Infrastructure/Google/**',
         ])
     ;
 

@@ -1,4 +1,4 @@
-<form method="POST" action="{{ action.linkUrl }}" class="form-inline d-inline-flex">
+<form method="POST" action="{{ action.linkUrl }}" class="form-inline d-inline-flex" data-testid="import-from-google-places">
     <input type="hidden" name="token" value="{{ csrf_token('ea-import-from-google-places') }}" />
     <input type="hidden" name="place_autocomplete" value="" />
     <div class="input-group">

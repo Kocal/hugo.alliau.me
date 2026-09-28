@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\PHPStan\Type;
 
-use App\Shared\Domain\CQRS\CommandBus;
+use App\Shared\Application\CQRS\CommandBus;
 use PhpParser\Node\Expr\MethodCall;
 use PHPStan\Analyser\Scope;
 use PHPStan\Reflection\MethodReflection;

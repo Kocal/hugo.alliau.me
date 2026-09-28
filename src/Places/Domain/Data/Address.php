@@ -32,6 +32,24 @@ class Address
     #[Assert\Count(exactly: 2)]
     private array $coordinates = [0, 0];
 
+    /**
+     * @param array{0: float, 1: float} $coordinates
+     */
+    public static function create(
+        string $name,
+        array $coordinates,
+        ?string $formattedAddress,
+        ?string $country,
+        ?string $city,
+    ): self {
+        return new self()
+            ->setName($name)
+            ->setCoordinates($coordinates)
+            ->setFormattedAddress($formattedAddress)
+            ->setCountry($country)
+            ->setCity($city);
+    }
+
     public function getFormattedAddress(): ?string
     {
         return $this->formattedAddress;

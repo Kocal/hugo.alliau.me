@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Places\Infrastructure\EasyAdmin\Controller;
 
-use App\Places\Domain\Command\CreatePlace;
-use App\Places\Domain\Data\Google\Place\Autocomplete;
 use App\Places\Domain\Data\Place;
 use App\Places\Domain\Data\PlaceType;
-use App\Shared\Domain\CQRS\CommandBus;
-use App\Shared\Domain\ObjectMapper\Command\MapObject;
+use App\Places\Infrastructure\Google\Place\Autocomplete;
+use App\Shared\Application\CQRS\CommandBus;
+use App\Shared\Application\ObjectMapper\Format;
+use App\Shared\Application\ObjectMapper\ObjectMapper;
 use EasyCorp\Bundle\EasyAdminBundle\Attribute\AdminRoute;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
@@ -103,6 +103,7 @@ class PlaceCrudController extends AbstractCrudController
         Request $request,
         LoggerInterface $logger,
         CommandBus $commandBus,
+        ObjectMapper $objectMapper,
     ): Response {
         if (! $this->isCsrfTokenValid('ea-import-from-google-places', $request->request->getString('token'))) {
             $this->addFlash('danger', 'Invalid CSRF token.');
@@ -117,8 +118,8 @@ class PlaceCrudController extends AbstractCrudController
         }
 
         try {
-            $googleAutocomplete = $commandBus->dispatch(MapObject::fromJson(Autocomplete::class, $placeAutocompleteJson));
-            $commandBus->dispatch(CreatePlace::fromGoogleAutocomplete($googleAutocomplete));
+            $googleAutocomplete = $objectMapper->map(Autocomplete::class, $placeAutocompleteJson, Format::JSON);
+            $commandBus->dispatch($googleAutocomplete->toCreatePlace());
         } catch (\Throwable $throwable) {
             if ($this->kernelDebug) {
                 throw $throwable;

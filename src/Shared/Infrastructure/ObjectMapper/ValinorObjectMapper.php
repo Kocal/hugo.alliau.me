@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Shared\Infrastructure\ObjectMapper;
 
-use App\Shared\Domain\ObjectMapper\Format;
-use App\Shared\Domain\ObjectMapper\ObjectMapper;
+use App\Shared\Application\ObjectMapper\Format;
+use App\Shared\Application\ObjectMapper\ObjectMapper;
 use CuyZ\Valinor\Mapper\Source\Source;
 use CuyZ\Valinor\Mapper\TreeMapper;
 use CuyZ\Valinor\MapperBuilder;
