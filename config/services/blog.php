@@ -17,6 +17,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     $services->load('App\\Blog\\', '../../src/Blog')
         ->exclude([
             '../../src/Blog/Domain/Data/**',
+            '../../src/Blog/Infrastructure/Doctrine/DBAL/Type/**',
             '../../src/Blog/Infrastructure/Foundry/Factory/**',
         ]);
 

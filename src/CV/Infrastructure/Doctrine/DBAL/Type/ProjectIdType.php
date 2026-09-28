@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Shared\Infrastructure\Database\Doctrine\DBAL\Types;
+namespace App\CV\Infrastructure\Doctrine\DBAL\Type;
 
-use App\Shared\Domain\Data\ValueObject\ProjectId;
+use App\CV\Domain\Data\ProjectId;
+use App\Shared\Infrastructure\Database\Doctrine\DBAL\Types\AbstractIdType;
 
 final class ProjectIdType extends AbstractIdType
 {

@@ -5,10 +5,9 @@ declare(strict_types=1);
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
 use App\Shared\Domain\HttpCache\Adapter\HttpCacheAdapter;
-use App\Shared\Domain\HttpCache\Adapter\HttpCacheAdapterFactory;
-use App\Shared\Domain\HttpCache\Adapter\NoHttpCacheAdapter;
 use App\Shared\Domain\HttpCache\HttpCache;
 use App\Shared\Infrastructure\HttpCache\Adapter\CloudflareHttpCacheAdapter;
+use App\Shared\Infrastructure\HttpCache\Adapter\NoHttpCacheAdapter;
 use App\Shared\Infrastructure\Symfony\HttpCache\SymfonyHttpCache;
 use App\Shared\Infrastructure\Symfony\HttpCache\SymfonyHttpCacheAdapterFactory;
 use Symfony\Component\Uid\Command\GenerateUuidCommand;
@@ -28,9 +27,6 @@ return static function (ContainerConfigurator $containerConfigurator): void {
 
     $services->set(HttpCache::class)
         ->class(SymfonyHttpCache::class);
-
-    $services->set(HttpCacheAdapterFactory::class)
-        ->class(SymfonyHttpCacheAdapterFactory::class);
 
     $services->set(HttpCacheAdapter::class)
         ->factory(service(SymfonyHttpCacheAdapterFactory::class))

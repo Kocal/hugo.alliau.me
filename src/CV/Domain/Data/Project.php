@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\CV\Domain\Data;
 
 use App\Shared\Domain\Data\Locale;
-use App\Shared\Domain\Data\ValueObject\ProjectId;
 use App\Shared\Domain\HttpCache\CacheableEntity;
 use App\Shared\Domain\HttpCache\CacheItem;
 use Doctrine\Common\Collections\ArrayCollection;

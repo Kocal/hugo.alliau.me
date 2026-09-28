@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Places\Domain\Data;
 
-use App\Shared\Domain\Data\ValueObject\PlaceId;
 use App\Shared\Domain\HttpCache\CacheableEntity;
 use App\Shared\Domain\HttpCache\CacheItem;
 use Doctrine\DBAL\Types\Types;

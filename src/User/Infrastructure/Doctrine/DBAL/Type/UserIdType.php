@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Shared\Infrastructure\Database\Doctrine\DBAL\Types;
+namespace App\User\Infrastructure\Doctrine\DBAL\Type;
 
-use App\Shared\Domain\Data\ValueObject\UserId;
+use App\Shared\Infrastructure\Database\Doctrine\DBAL\Types\AbstractIdType;
+use App\User\Domain\Data\UserId;
 
 final class UserIdType extends AbstractIdType
 {

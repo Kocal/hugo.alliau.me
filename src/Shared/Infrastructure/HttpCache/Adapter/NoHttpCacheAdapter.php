@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Shared\Domain\HttpCache\Adapter;
+namespace App\Shared\Infrastructure\HttpCache\Adapter;
+
+use App\Shared\Domain\HttpCache\Adapter\HttpCacheAdapter;
 
 final class NoHttpCacheAdapter implements HttpCacheAdapter
 {

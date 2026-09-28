@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Shared\Infrastructure\Database\Doctrine\DBAL\Types;
+namespace App\Recipes\Infrastructure\Doctrine\DBAL\Type;
 
-use App\Shared\Domain\Data\ValueObject\RecipeId;
+use App\Recipes\Domain\Data\RecipeId;
+use App\Shared\Infrastructure\Database\Doctrine\DBAL\Types\AbstractIdType;
 
 final class RecipeIdType extends AbstractIdType
 {

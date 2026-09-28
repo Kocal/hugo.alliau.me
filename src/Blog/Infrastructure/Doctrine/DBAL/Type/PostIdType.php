@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Shared\Infrastructure\Database\Doctrine\DBAL\Types;
+namespace App\Blog\Infrastructure\Doctrine\DBAL\Type;
 
-use App\Shared\Domain\Data\ValueObject\PostId;
+use App\Blog\Domain\Data\PostId;
+use App\Shared\Infrastructure\Database\Doctrine\DBAL\Types\AbstractIdType;
 
 final class PostIdType extends AbstractIdType
 {

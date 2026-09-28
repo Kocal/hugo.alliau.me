@@ -5,17 +5,15 @@ declare(strict_types=1);
 namespace App\Shared\Infrastructure\Symfony\HttpCache;
 
 use App\Shared\Domain\HttpCache\Adapter\HttpCacheAdapter;
-use App\Shared\Domain\HttpCache\Adapter\HttpCacheAdapterFactory;
 use Psr\Container\ContainerInterface;
 
-final readonly class SymfonyHttpCacheAdapterFactory implements HttpCacheAdapterFactory
+final readonly class SymfonyHttpCacheAdapterFactory
 {
     public function __construct(
         private ContainerInterface $adapters
     ) {
     }
 
-    #[\Override]
     public function __invoke(string $name): HttpCacheAdapter
     {
         if (! $this->adapters->has($name)) {
