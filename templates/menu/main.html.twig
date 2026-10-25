@@ -1,4 +1,4 @@
-<twig:Navbar:Nav label="Main" class="flex-1">
+<twig:Navbar:Nav label="Main" class="order-last w-full sm:order-none sm:w-auto sm:flex-1">
     <ul class="flex gap-x-3 sm:gap-x-4">
         {% for child in item.children %}
             {% set is_current = matcher.isCurrent(child) or matcher.isAncestor(child) %}
@@ -8,7 +8,7 @@
             >
                 <a
                     href="{{ child.uri }}"
-                    class="block py-1 sm:px-1"
+                    class="block py-2 sm:py-1 sm:px-1"
                     {% if is_current %}aria-current="page"{% endif %}
                 >
                     {{ (child.label ?? child.name)|trans }}

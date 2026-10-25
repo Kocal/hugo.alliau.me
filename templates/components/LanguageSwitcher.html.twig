@@ -2,7 +2,7 @@
 {% set target_route = fallback_route ?? app.current_route %}
 {% set target_parameters = fallback_route ? {} : app.current_route_parameters %}
 
-<ul class="flex items-center gap-1.5 text-2xl" aria-label="{{ 'nav.language'|trans }}">
+<ul class="ms-auto flex items-center gap-1.5 text-2xl" aria-label="{{ 'nav.language'|trans }}">
     {% for locale in enabled_locales() %}
         {% set is_current = locale.value == app.request.locale %}
         <li>
