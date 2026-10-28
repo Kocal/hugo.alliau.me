@@ -1,6 +1,6 @@
 <div{{ attributes }} class="flex flex-col gap-2">
     <div class="flex items-center gap-x-1">
-        <twig:UX:Icon name="flowbite:clock-outline" aria-label="Publication date" class="shrink-0"/>
+        <twig:UX:Icon name="flowbite:clock-outline" aria-label="{{ 'blog.published_at'|trans }}" class="shrink-0"/>
 
         <time datetime="{{ post.publishedAt|date('c') }}" class="text-sm font-bold">
             {{ post.publishedAt|format_datetime('long', 'none') }}

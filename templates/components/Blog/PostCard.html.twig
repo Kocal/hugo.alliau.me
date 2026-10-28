@@ -1,0 +1,16 @@
+{% props post %}
+<twig:Card as="article" class="p-4 sm:p-6">
+    <header>
+        <h2 class="text-2xl sm:text-3xl font-bold mb-3 tracking-tight hover:text-primary-700 dark:hover:text-slate-400 transition-colors">
+            <a href="{{ path(constant('App\\Blog\\Domain\\Data\\Route::POST_VIEW').value, {slug: post.slug}) }}">
+                {{ post.title }}
+            </a>
+        </h2>
+    </header>
+
+    <p>{{ post.description }}</p>
+
+    <footer class="mt-4">
+        <twig:Blog:PostMeta :post="post" />
+    </footer>
+</twig:Card>

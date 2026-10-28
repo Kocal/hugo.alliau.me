@@ -203,6 +203,11 @@ footer:
     revision: Révision
 blog:
     meta_description: Blog technique de Hugo Alliaume, développeur web full-stack et contributeur open source.
+    published_at: Date de publication
+    tags:
+        title: Tags
+        posts_tagged: "Articles avec le tag « {tag} »"
+        view_all: "Voir les articles avec le tag « {tag} »"
 locale:
     en: Anglais
     fr: Français

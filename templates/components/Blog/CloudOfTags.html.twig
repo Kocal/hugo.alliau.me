@@ -6,7 +6,7 @@
             <twig:Badge>
                 <a
                     href="{{ path(constant('App\\Blog\\Domain\\Data\\Route::TAG_VIEW').value, {tag: tag.tag}) }}"
-                    title="{{ ('View all posts tagged with "' ~ tag.tag ~ '"')|e('html_attr') }}"
+                    title="{{ 'blog.tags.view_all'|trans({tag: tag.tag}) }}"
                 >
                     {{- tag.tag ~ ' (' ~ tag.occurrences ~ ')' -}}
                 </a>
