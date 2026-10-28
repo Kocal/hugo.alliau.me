@@ -7,7 +7,7 @@ namespace App\CV\Infrastructure\Symfony\Controller;
 use App\CV\Domain\Data\Route as RouteCv;
 use App\CV\Domain\Repository\ProfessionalExperienceRepository;
 use App\CV\Domain\Repository\ProjectRepository;
-use App\Shared\Domain\HttpCache\CacheMethodsTrait;
+use App\Shared\Infrastructure\Symfony\HttpCache\CacheableResponseTrait;
 use Psr\Clock\ClockInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class HomeController extends AbstractController
 {
-    use CacheMethodsTrait;
+    use CacheableResponseTrait;
 
     #[Route(path: [
         'en' => '/cv',
@@ -33,16 +33,16 @@ final class HomeController extends AbstractController
         $latestProfessionalExperience = $professionalExperienceRepository->findOneLatest();
         $latestProject = $projectRepository->findOneLatest();
 
-        $response = new Response();
-        $response->setEtag(self::computeEtag('cv', $latestProfessionalExperience, $latestProject));
-        $response->setLastModified(max([
-            $latestProfessionalExperience?->getUpdatedAt(),
-            $latestProject?->getUpdatedAt(),
-            $clock->now()
-                ->modify('first day of this month'),
-        ]));
-        $response->setMaxAge(60 * 60 * 24 * 30);
-        $response->setPublic();
+        $response = $this->createCacheableResponse(
+            etag: ['cv', $latestProfessionalExperience, $latestProject],
+            lastModified: max([
+                $latestProfessionalExperience?->getUpdatedAt(),
+                $latestProject?->getUpdatedAt(),
+                $clock->now()
+                    ->modify('first day of this month'),
+            ]),
+            sharedMaxAge: 60 * 60 * 24 * 30,
+        );
 
         if ($response->isNotModified($request)) {
             return $response;

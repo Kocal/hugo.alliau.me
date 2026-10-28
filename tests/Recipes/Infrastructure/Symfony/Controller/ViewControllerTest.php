@@ -55,7 +55,7 @@ final class ViewControllerTest extends WebTestCase
         $client->request(Request::METHOD_GET, '/recipes/udon');
 
         self::assertResponseIsSuccessful();
-        self::assertResponseHeaderSame('cache-control', 'max-age=2592000, public');
+        self::assertResponseHeaderSame('cache-control', 'max-age=0, public, s-maxage=2592000');
     }
 
     public function testTheDescriptionIsRenderedAndDrivesTheMetaDescription(): void

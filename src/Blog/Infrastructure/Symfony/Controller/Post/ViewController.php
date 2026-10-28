@@ -6,8 +6,8 @@ namespace App\Blog\Infrastructure\Symfony\Controller\Post;
 
 use App\Blog\Domain\Data\Post;
 use App\Blog\Domain\Data\Route as RouteBlog;
-use App\Shared\Domain\HttpCache\CacheMethodsTrait;
 use App\Shared\Domain\Markdown\MarkdownConverter;
+use App\Shared\Infrastructure\Symfony\HttpCache\CacheableResponseTrait;
 use Psr\Clock\ClockInterface;
 use Psr\Link\EvolvableLinkInterface;
 use Symfony\Bridge\Doctrine\Attribute\MapEntity;
@@ -18,7 +18,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class ViewController extends AbstractController
 {
-    use CacheMethodsTrait;
+    use CacheableResponseTrait;
 
     #[Route(path: [
         'en' => '/blog/posts/{slug}',
@@ -48,15 +48,15 @@ final class ViewController extends AbstractController
             ], Response::HTTP_MOVED_PERMANENTLY);
         }
 
-        $response = new Response();
-        $response->setEtag(self::computeEtag($post));
-        $response->setLastModified($post->getPublishedAt());
-        $response->setMaxAge(60 * 60 * 24 * 30);
-        $response->setPublic();
+        $response = $this->createCacheableResponse(
+            etag: [$post],
+            lastModified: $post->getPublishedAt(),
+            sharedMaxAge: 60 * 60 * 24 * 30,
+        );
 
         if (! $isPubliclyVisible) {
             $response->setPrivate();
-            $response->setMaxAge(0);
+            $response->headers->removeCacheControlDirective('s-maxage');
             $response->headers->set('X-Robots-Tag', 'noindex, nofollow');
         }
 

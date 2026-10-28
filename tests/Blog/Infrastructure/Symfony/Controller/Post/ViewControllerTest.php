@@ -39,7 +39,7 @@ final class ViewControllerTest extends WebTestCase
         $client->request(Request::METHOD_GET, '/blog/posts/published-post');
 
         $this->assertResponseIsSuccessful();
-        $this->assertResponseHeaderSame('Cache-Control', 'max-age=2592000, public');
+        $this->assertResponseHeaderSame('Cache-Control', 'max-age=0, public, s-maxage=2592000');
     }
 
     public function testScheduledPostIsNotFound(): void
@@ -89,5 +89,6 @@ final class ViewControllerTest extends WebTestCase
         $this->assertResponseIsSuccessful();
         $this->assertResponseHeaderSame('X-Robots-Tag', 'noindex, nofollow');
         $this->assertStringContainsString('private', (string) $client->getResponse()->headers->get('Cache-Control'));
+        $this->assertStringNotContainsString('s-maxage', (string) $client->getResponse()->headers->get('Cache-Control'));
     }
 }

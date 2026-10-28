@@ -7,7 +7,7 @@ namespace App\Places\Infrastructure\Symfony\Controller;
 use App\Places\Application\CountryFactory;
 use App\Places\Domain\Data\Route as RoutePlaces;
 use App\Places\Domain\Repository\PlaceRepository;
-use App\Shared\Domain\HttpCache\CacheMethodsTrait;
+use App\Shared\Infrastructure\Symfony\HttpCache\CacheableResponseTrait;
 use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,7 +23,7 @@ use Symfony\UX\Map\Point;
 
 final class ViewPlacesController extends AbstractController
 {
-    use CacheMethodsTrait;
+    use CacheableResponseTrait;
 
     #[Route(path: [
         'en' => '/places',
@@ -39,11 +39,11 @@ final class ViewPlacesController extends AbstractController
     ): Response {
         $latestPlace = $placeRepository->getOneLatestUpdated();
 
-        $response = new Response();
-        $response->setEtag(self::computeEtag($latestPlace));
-        $response->setLastModified($latestPlace->getUpdatedAt());
-        $response->setMaxAge(60 * 60 * 24 * 14);
-        $response->setPublic();
+        $response = $this->createCacheableResponse(
+            etag: [$latestPlace],
+            lastModified: $latestPlace->getUpdatedAt(),
+            sharedMaxAge: 60 * 60 * 24 * 14,
+        );
 
         if ($response->isNotModified($request)) {
             return $response;

@@ -6,7 +6,7 @@ namespace App\Blog\Infrastructure\Symfony\Controller;
 
 use App\Blog\Domain\Data\Route as RouteBlog;
 use App\Blog\Domain\Repository\PostRepository;
-use App\Shared\Domain\HttpCache\CacheMethodsTrait;
+use App\Shared\Infrastructure\Symfony\HttpCache\CacheableResponseTrait;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class HomeController extends AbstractController
 {
-    use CacheMethodsTrait;
+    use CacheableResponseTrait;
 
     #[Route(path: [
         'en' => '/blog',
@@ -30,11 +30,11 @@ final class HomeController extends AbstractController
     ): Response {
         $latestPost = $postRepository->getOneLatestPublished();
 
-        $response = new Response();
-        $response->setEtag(self::computeEtag($latestPost));
-        $response->setLastModified($latestPost->getPublishedAt());
-        $response->setMaxAge(60 * 60 * 24 * 14);
-        $response->setPublic();
+        $response = $this->createCacheableResponse(
+            etag: [$latestPost],
+            lastModified: $latestPost->getPublishedAt(),
+            sharedMaxAge: 60 * 60 * 24 * 14,
+        );
 
         if ($response->isNotModified($request)) {
             return $response;

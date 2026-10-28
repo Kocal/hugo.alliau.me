@@ -6,7 +6,7 @@ namespace App\Blog\Infrastructure\Symfony\Controller\Tag;
 
 use App\Blog\Domain\Data\Route as RouteBlog;
 use App\Blog\Domain\Repository\PostRepository;
-use App\Shared\Domain\HttpCache\CacheMethodsTrait;
+use App\Shared\Infrastructure\Symfony\HttpCache\CacheableResponseTrait;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class ListController extends AbstractController
 {
-    use CacheMethodsTrait;
+    use CacheableResponseTrait;
 
     #[Route(path: [
         'en' => '/blog/tags',
@@ -26,11 +26,12 @@ final class ListController extends AbstractController
         Request $request,
         PostRepository $postRepository
     ): Response {
-        $response = new Response();
-        $response->setEtag(self::computeEtag('tags:list'));
-        $response->setLastModified($postRepository->getOneLatestPublished()->getPublishedAt());
-        $response->setMaxAge(60 * 60 * 24 * 30);
-        $response->setPublic();
+        $response = $this->createCacheableResponse(
+            etag: ['tags:list'],
+            lastModified: $postRepository->getOneLatestPublished()
+                ->getPublishedAt(),
+            sharedMaxAge: 60 * 60 * 24 * 30,
+        );
 
         if ($response->isNotModified($request)) {
             return $response;

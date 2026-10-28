@@ -41,7 +41,7 @@ final class ListControllerTest extends WebTestCase
         $crawler = $client->request(Request::METHOD_GET, '/recipes');
 
         self::assertResponseIsSuccessful();
-        self::assertResponseHeaderSame('cache-control', 'max-age=2592000, public');
+        self::assertResponseHeaderSame('cache-control', 'max-age=0, public, s-maxage=2592000');
         $this->assertStringContainsString('Visible English', $crawler->text());
         $this->assertStringContainsString('Visible French', $crawler->text());
         $this->assertStringNotContainsString('Hidden English', $crawler->text());

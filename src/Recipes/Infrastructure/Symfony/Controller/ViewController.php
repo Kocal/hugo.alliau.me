@@ -7,7 +7,7 @@ namespace App\Recipes\Infrastructure\Symfony\Controller;
 use App\Recipes\Domain\Data\Recipe;
 use App\Recipes\Domain\Data\Route as RouteRecipes;
 use App\Recipes\Domain\Repository\RecipeRepository;
-use App\Shared\Domain\HttpCache\CacheMethodsTrait;
+use App\Shared\Infrastructure\Symfony\HttpCache\CacheableResponseTrait;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class ViewController extends AbstractController
 {
-    use CacheMethodsTrait;
+    use CacheableResponseTrait;
 
     #[Route(path: [
         'en' => '/recipes/{slug}',
@@ -37,11 +37,11 @@ final class ViewController extends AbstractController
             ], Response::HTTP_MOVED_PERMANENTLY);
         }
 
-        $response = new Response();
-        $response->setEtag(self::computeEtag($recipe));
-        $response->setLastModified($recipe->getUpdatedAt());
-        $response->setMaxAge(60 * 60 * 24 * 30);
-        $response->setPublic();
+        $response = $this->createCacheableResponse(
+            etag: [$recipe],
+            lastModified: $recipe->getUpdatedAt(),
+            sharedMaxAge: 60 * 60 * 24 * 30,
+        );
 
         if ($response->isNotModified($request)) {
             return $response;
