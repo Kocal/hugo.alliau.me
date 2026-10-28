@@ -1,5 +1,5 @@
 {% set fallback_route = app.current_route ? single_locale_fallback_route(app.current_route) : null %}
-{% set target_route = fallback_route ?? app.current_route %}
+{% set target_route = fallback_route ?? app.current_route ?? constant('App\\Shared\\Domain\\Data\\Route::HOME').value %}
 {% set target_parameters = fallback_route ? {} : app.current_route_parameters %}
 
 <ul class="ms-auto flex items-center gap-1.5 text-2xl" aria-label="{{ 'nav.language'|trans }}">

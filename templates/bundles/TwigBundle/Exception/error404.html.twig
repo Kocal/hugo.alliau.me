@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'error.not_found.title'|trans }} | Hugo Alliaume{% endblock %}
+
+{% block seo %}
+    <meta name="robots" content="noindex">
+{% endblock %}
+
+{% block main %}
+<main class="container mx-auto px-2 py-12 sm:py-24 max-w-screen-md flex flex-col items-center gap-4 text-center">
+    <p class="text-7xl sm:text-9xl font-extrabold tracking-tight text-primary-600 dark:text-primary-400">404</p>
+
+    <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight">
+        {{ 'error.not_found.title'|trans }}
+    </h1>
+
+    <p class="text-lg">{{ 'error.not_found.description'|trans }}</p>
+
+    <a href="{{ path(constant('App\\Shared\\Domain\\Data\\Route::HOME').value) }}"
+       class="mt-4 rounded-lg border border-slate-200 px-4 py-2 text-zinc-600 transition-colors hover:bg-slate-100 dark:border-white/10 dark:text-zinc-300 dark:hover:bg-white/5">
+        {{ 'error.not_found.back_home'|trans }}
+    </a>
+</main>
+{% endblock %}

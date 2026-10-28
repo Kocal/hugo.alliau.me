@@ -208,6 +208,11 @@ blog:
         title: Tags
         posts_tagged: "Articles avec le tag « {tag} »"
         view_all: "Voir les articles avec le tag « {tag} »"
+error:
+    not_found:
+        title: Page introuvable
+        description: Cette page n'existe pas ou a été déplacée.
+        back_home: Retour à l'accueil
 locale:
     en: Anglais
     fr: Français

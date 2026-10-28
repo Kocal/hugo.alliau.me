@@ -208,6 +208,11 @@ blog:
         title: Tags
         posts_tagged: 'Posts tagged with "{tag}"'
         view_all: 'View all posts tagged with "{tag}"'
+error:
+    not_found:
+        title: Page not found
+        description: This page does not exist or has been moved.
+        back_home: Back to home
 locale:
     en: English
     fr: French
