@@ -18,26 +18,26 @@
                 <div>
                     <span class="self-center text-2xl sm:text-3xl print:text-xl font-extrabold tracking-tight">Hugo Alliaume</span>
                     <p class="mt-2 text-sm">{{ 'footer.role.dev'|trans }},<br>{{ 'footer.role.oss'|trans }},<br>{{ 'footer.role.team'|trans }}</p>
+
+                    <ul class="mt-3 flex gap-2 text-sm">
+                        {% for network in [
+                            {title: 'Email', href: 'mailto:hugo@alliau.me', icon: 'bi:envelope', text: 'hugo[at]alliau.me', class: 'hover:text-primary-700 dark:hover:text-slate-400'},
+                            {title: 'LinkedIn', href: 'https://www.linkedin.com/in/%F0%9F%9A%B4-hugo-alliaume-34b475166/', icon: 'bi:linkedin', text: 'Hugo Alliaume', class: 'hover:text-linkedin'},
+                            {title: 'GitHub', href: 'https://github.com/Kocal', icon: 'bi:github', text: '@Kocal', class: 'hover:text-github'},
+                            {title: 'X (Twitter)', href: 'https://twitter.com/HugoAlliaume', icon: 'bi:twitter', text: '@HugoAlliaume', class: 'hover:text-twitter'},
+                            {title: 'Bluesky', href: 'https://bluesky.dev/hugo.alliau.me', icon: 'simple-icons:bluesky', text: 'hugo.alliau.me', class: 'hover:text-bsky'},
+                            {title: 'Mastodon', href: 'https://mastodon.social/@Kocal', icon: 'bi:mastodon', text: '@Kocal', class: 'hover:text-mastodon'},
+                        ] %}
+                            <li>
+                                <a href="{{ network.href }}" title="{{ network.title }}" class="print:flex items-center gap-2 {{ network.class }} transition-colors" rel="me" itemprop="sameAs">
+                                    <twig:UX:Icon :name="network.icon" width="1.6em" height="1.6em" />
+                                    <span class="hidden print:block">{{ network.text }}</span>
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
                 </div>
             </div>
-
-            <ul class="mt-4 flex justify-center gap-2 text-sm">
-                {% for network in [
-                    {title: 'Email', href: 'mailto:hugo@alliau.me', icon: 'bi:envelope', text: 'hugo[at]alliau.me', class: 'hover:text-primary-700 dark:hover:text-slate-400'},
-                    {title: 'LinkedIn', href: 'https://www.linkedin.com/in/%F0%9F%9A%B4-hugo-alliaume-34b475166/', icon: 'bi:linkedin', text: 'Hugo Alliaume', class: 'hover:text-linkedin'},
-                    {title: 'GitHub', href: 'https://github.com/Kocal', icon: 'bi:github', text: '@Kocal', class: 'hover:text-github'},
-                    {title: 'X (Twitter)', href: 'https://twitter.com/HugoAlliaume', icon: 'bi:twitter', text: '@HugoAlliaume', class: 'hover:text-twitter'},
-                    {title: 'Bluesky', href: 'https://bluesky.dev/hugo.alliau.me', icon: 'simple-icons:bluesky', text: 'hugo.alliau.me', class: 'hover:text-bsky'},
-                    {title: 'Mastodon', href: 'https://mastodon.social/@Kocal', icon: 'bi:mastodon', text: '@Kocal', class: 'hover:text-mastodon'},
-                ] %}
-                    <li>
-                        <a href="{{ network.href }}" title="{{ network.title }}" class="print:flex items-center gap-2 {{ network.class }} transition-colors" rel="me" itemprop="sameAs">
-                            <twig:UX:Icon :name="network.icon" width="1.6em" height="1.6em" />
-                            <span class="hidden print:block">{{ network.text }}</span>
-                        </a>
-                    </li>
-                {% endfor %}
-            </ul>
         </div>
         <div class="flex-1 flex items-center justify-center px-2">
             <blockquote class="empty:hidden max-w-sm text-center before:content-['“'] after:content-['”'] italic text-2xl font-serif"></blockquote>

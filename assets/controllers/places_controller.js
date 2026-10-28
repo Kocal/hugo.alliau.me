@@ -1,4 +1,7 @@
 import { Controller } from "@hotwired/stimulus";
+import "../leaflet_global.js";
+import { MarkerClusterGroup } from "leaflet.markercluster";
+import "leaflet.markercluster/dist/MarkerCluster.css";
 
 /* stimulusFetch: 'lazy' */
 export default class extends Controller {
@@ -45,13 +48,29 @@ export default class extends Controller {
             );
         }
 
+        event.detail.minZoom = this._minZoomFillingHeight(this.mapTarget.clientHeight);
         event.detail.bridgeOptions = {};
     };
 
     _onMapConnect = (event) => {
-        const { map, L } = event.detail;
+        const { map, L, markers } = event.detail;
         this.map = map;
         this.L = L;
+
+        map.on("resize", () => map.setMinZoom(this._minZoomFillingHeight(map.getSize().y)));
+
+        const clusters = new MarkerClusterGroup({
+            showCoverageOnHover: false,
+            iconCreateFunction: (cluster) =>
+                L.divIcon({
+                    html: `<div class="flex size-full items-center justify-center rounded-full border-2 border-white bg-[#126FC6] text-sm font-semibold text-white shadow-md">${cluster.getChildCount()}</div>`,
+                    iconSize: [36, 36],
+                    className: "",
+                }),
+        });
+        markers.forEach((marker) => marker.remove());
+        clusters.addLayers(markers);
+        map.addLayer(clusters);
 
         const updateState = () => {
             const center = map.getCenter();
@@ -102,6 +121,11 @@ export default class extends Controller {
                 className: "",
             }),
         };
+    }
+
+    // Below this zoom the world is shorter than the map and grey bands show above and below it
+    _minZoomFillingHeight(height) {
+        return Math.max(0, Math.ceil(Math.log2(height / 256)));
     }
 
     onCountryChange(event) {

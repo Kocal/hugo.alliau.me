@@ -15,7 +15,7 @@
             class="{{ class }}"
     >
         {%- if node.min is not null %}
-            <strong data-quantity class="font-mono">
+            <strong data-quantity class="tabular-nums">
                 {%- if node.max is not null -%}
                     {{ 'quantity.range'|trans({min: component.formatQuantity(node.min), max: component.formatQuantity(node.max)}) }}
                 {%- else -%}
@@ -56,7 +56,7 @@
                                 class="h-px border border-slate-200 dark:border-white/10"
                                 {{- m.ingredientData(this, cell.node) }}
                             >
-                                {{ m.ingredientButton(this, cell.node, 'flex h-full w-full cursor-pointer flex-wrap items-center gap-x-1 px-3 py-2 text-left transition-colors hover:bg-slate-100 dark:hover:bg-white/5') }}
+                                {{ m.ingredientButton(this, cell.node, 'flex h-full w-full min-w-40 cursor-pointer flex-wrap items-center gap-x-1 px-3 py-2 text-left transition-colors hover:bg-slate-100 dark:hover:bg-white/5') }}
                             </td>
                         {% else %}
                             {# La barre à gauche pointe le sens de lecture: les ingrédients de la ligne alimentent cette étape. #}

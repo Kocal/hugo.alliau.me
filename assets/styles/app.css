@@ -84,16 +84,16 @@
         text-wrap: pretty;
 
         h2 {
-            font-size: var(--text-3xl);
+            font-size: var(--text-2xl);
             margin: --spacing(7) 0;
-            line-height: --spacing(10);
+            line-height: --spacing(8);
             color: light-dark(var(--color-black), var(--color-white));
         }
 
         h3 {
-            font-size: var(--text-2xl);
+            font-size: var(--text-xl);
             margin: --spacing(5) 0;
-            line-height: --spacing(8);
+            line-height: --spacing(7);
             color: light-dark(var(--color-black), var(--color-white));
         }
 
@@ -222,15 +222,14 @@
             line-height: --spacing(10);
 
             h2 {
-                font-size: var(--text-4xl);
-                margin: --spacing(10) 0;
-                line-height: --spacing(12);
-            }
-
-            h2 {
                 font-size: var(--text-3xl);
                 margin: --spacing(8) 0;
                 line-height: --spacing(10);
+            }
+
+            h3 {
+                font-size: var(--text-2xl);
+                line-height: --spacing(8);
             }
         }
     }
@@ -260,9 +259,14 @@
         color: light-dark(#000000, #d4d4d4);
         background-color: light-dark(#fff, #1e1e1e);
         border-radius: var(--terminal-border-radius);
-        font-size: 16px;
-        line-height: --spacing(6);
+        font-size: var(--text-sm);
+        line-height: --spacing(5);
         border: 1px solid var(--color-prose-border);
+
+        @media (width >= theme(--breakpoint-sm)) {
+            font-size: 16px;
+            line-height: --spacing(6);
+        }
     }
 
     .Terminal__Header {
@@ -290,13 +294,21 @@
             overflow-x: auto;
             text-align: left;
             border-radius: var(--terminal-border-radius);
-            padding: --spacing(4) 0;
+            padding: --spacing(3) 0;
 
             code {
                 display: block;
                 width: fit-content;
                 min-width: 100%;
-                padding: 0 --spacing(4);
+                padding: 0 --spacing(3);
+            }
+
+            @media (width >= theme(--breakpoint-sm)) {
+                padding: --spacing(4) 0;
+
+                code {
+                    padding: 0 --spacing(4);
+                }
             }
         }
     }
