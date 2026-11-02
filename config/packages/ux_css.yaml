@@ -1,4 +1,6 @@
 ux_css:
+    preflight: true
+
     default_tokens: panda
 
     conditions:

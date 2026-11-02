@@ -1762,6 +1762,11 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     breakpoints?: array<string, scalar|Param|null>,
  *     strict_tokens?: bool|Param, // Only accept tokens for properties bound to a token category; raw values must be written between brackets. // Default: true
  *     strict_property_values?: bool|Param, // Only accept the keywords of a property whose grammar is made of keywords. // Default: true
+ *     preflight?: bool|array{ // Write a CSS reset in the "reset" layer. Use "scope" to limit it to a part of the page, and "level" to choose between the parent of the elements ("parent") or the elements themselves ("element").
+ *         enabled?: bool|Param, // Default: false
+ *         scope?: string|Param, // A selector, like ".reset": the reset only applies to what it matches.
+ *         level?: "parent"|"element"|Param, // "parent" writes the reset for the elements inside the scope, "element" for the elements that have it. "parent" when not set.
+ *     },
  *     static_css?: array{ // Values to write in the stylesheet even when no template uses them as is, for css() calls with dynamic values.
  *         css?: list<array{ // Default: []
  *             properties?: array<string, list<scalar|Param|null>>,

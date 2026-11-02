@@ -8328,12 +8328,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/ux-css.git",
-                "reference": "7d1323b6851ec06a773580406d9b94c1d6ef2ac1"
+                "reference": "a7e0aa94f644445fe7954756ef76301ab359b95e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/ux-css/zipball/7d1323b6851ec06a773580406d9b94c1d6ef2ac1",
-                "reference": "7d1323b6851ec06a773580406d9b94c1d6ef2ac1",
+                "url": "https://api.github.com/repos/symfony/ux-css/zipball/a7e0aa94f644445fe7954756ef76301ab359b95e",
+                "reference": "a7e0aa94f644445fe7954756ef76301ab359b95e",
                 "shasum": ""
             },
             "require": {
@@ -8413,7 +8413,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-11-01T07:58:05+00:00"
+            "time": "2026-11-02T11:20:59+00:00"
         },
         {
             "name": "symfony/ux-icons",
