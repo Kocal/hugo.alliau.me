@@ -61,7 +61,7 @@
                     {% for cell in row.cells %}
                         {% if cell.isGap %}
                             <td data-testid="recipe-grid-gap" colspan="{{ cell.colSpan }}" rowspan="{{ cell.rowSpan }}" class="{{ css({
-                                borderWidth: '[1px]',
+                                borderWidth: 1,
                                 borderColor: 'transparent',
                             }) }}"></td>
                         {% elseif cell.isIngredient %}
@@ -70,7 +70,7 @@
                             <td rowspan="{{ cell.rowSpan }}"
                                 class="{{ css({
                                     h: '[1px]',
-                                    borderWidth: '[1px]',
+                                    borderWidth: 1,
                                     borderColor: 'border',
                                 }) }}"
                                 {{- m.ingredientData(this, cell.node) }}
@@ -96,8 +96,8 @@
                             <td rowspan="{{ cell.rowSpan }}"
                                 class="{{ css({
                                     h: '[1px]',
-                                    borderWidth: '[1px]',
-                                    borderLeftWidth: '[4px]',
+                                    borderWidth: 1,
+                                    borderLeftWidth: 4,
                                     borderColor: 'accent/30',
                                     borderLeftColor: 'accent',
                                     bgColor: 'accent/10',
@@ -146,7 +146,7 @@
     }) }}">
         {% for ingredient in this.flatIngredients %}
             <li class="{{ css({
-                    borderBottomWidth: '[1px]',
+                    borderBottomWidth: 1,
                     borderColor: 'border',
                 }) }}"
                 {{- m.ingredientData(this, ingredient) }}
@@ -174,7 +174,7 @@
         {% for step in this.recipe.content.stepsInExecutionOrder() %}
             <li data-testid="recipe-step"
                 class="{{ css({
-                    borderLeftWidth: '[4px]',
+                    borderLeftWidth: 4,
                     borderColor: 'accent',
                     bgColor: 'accent/10',
                     transition: 'colors',
