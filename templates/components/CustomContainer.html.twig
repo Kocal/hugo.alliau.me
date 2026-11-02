@@ -1,16 +1,50 @@
 {% set style = html_cva(
-    'mb-4 py-3 px-4 rounded border border-l-5 border-prose-border bg-prose-container',
+    css({
+        mb: '4',
+        py: '3',
+        px: '4',
+        rounded: 'sm',
+        borderWidth: 1,
+        borderLeftWidth: 5,
+        borderColor: 'border.prose',
+        bgColor: 'bg.surface',
+    }),
     {
         type: {
-            info: 'border-l-blue-600 [&_[data-header]]:text-blue-600 dark:[&_[data-header]]:text-blue-300',
-            tip: 'border-l-green-600 [&_[data-header]]:text-green-600 dark:[&_[data-header]]:text-green-300',
-            warning: 'border-l-yellow-600 [&_[data-header]]:text-yellow-600 dark:[&_[data-header]]:text-yellow-300',
-            danger: 'border-l-red-600 [&_[data-header]]:text-red-600 dark:[&_[data-header]]:text-red-300',
+            info: css({
+                borderLeftColor: 'blue.600',
+                '& [data-header]': {
+                    color: 'callout.info',
+                },
+            }),
+            tip: css({
+                borderLeftColor: 'green.600',
+                '& [data-header]': {
+                    color: 'callout.tip',
+                },
+            }),
+            warning: css({
+                borderLeftColor: 'yellow.600',
+                '& [data-header]': {
+                    color: 'callout.warning',
+                },
+            }),
+            danger: css({
+                borderLeftColor: 'red.600',
+                '& [data-header]': {
+                    color: 'callout.danger',
+                },
+            }),
         },
     }
 ) %}
 <div class="{{ style.apply({type}) }}">
-    <div class="flex gap-2 items-center mb-2" data-header>
+    <div class="{{ css({
+        display: 'flex',
+        gap: '2',
+        alignItems: 'center',
+        mb: '2',
+    }) }}" data-header>
         {% if type === 'info' %}
             <twig:ux:icon name="lucide:info" />
         {% elseif type === 'tip' %}
@@ -20,7 +54,20 @@
         {% elseif type === 'danger' %}
             <twig:ux:icon name="lucide:octagon-alert" />
         {% endif %}
-        <span class="font-sans text-sm font-bold select-none">{{ type|capitalize }}</span>
+        <span class="{{ css({
+            fontFamily: 'sans',
+            fontSize: 'sm',
+            lineHeight: 'sm',
+            fontWeight: 'bold',
+            userSelect: 'none',
+        }) }}">{{ type|capitalize }}</span>
     </div>
-    <div class="prose [&>p:not(:first-child)]:mt-0 [&>p:not(:last-child)]:mb-2">{{ content|raw }}</div>
+    <div class="prose {{ css({
+        '& > p:not(:first-child)': {
+            mt: '0',
+        },
+        '& > p:not(:last-child)': {
+            mb: '2',
+        },
+    }) }}">{{ content|raw }}</div>
 </div>

@@ -13,15 +13,50 @@
 {% endblock %}
 
 {% block main %}
-<main class="flex-1 relative"
+<main class="{{ css({
+    flex: '1',
+    position: 'relative',
+}) }}"
       data-controller="places"
-      data-places-countries-value="{{ countries|json_encode|e('html_attr') }}">
-    <div class="absolute top-4 left-4 z-[1000] bg-white dark:bg-zinc-900 rounded shadow-md p-2">
-        <label for="places-country" class="sr-only">{{ 'places.filter.country'|trans }}</label>
+      data-places-countries-value="{{ countries|json_encode|e('html_attr') }}"
+      data-places-cluster-class="{{ css({
+          display: 'flex',
+          boxSize: 'full',
+          alignItems: 'center',
+          justifyContent: 'center',
+          rounded: 'full',
+          borderWidth: 2,
+          borderColor: 'white',
+          bgColor: '[#126FC6]',
+          fontSize: 'sm',
+          lineHeight: 'sm',
+          fontWeight: 'semibold',
+          color: 'white',
+          shadow: 'md',
+      }) }}">
+    <div class="{{ css({
+        position: 'absolute',
+        top: '4',
+        left: '4',
+        zIndex: 1000,
+        bgColor: 'bg.surface',
+        rounded: 'sm',
+        shadow: 'md',
+        p: '2',
+    }) }}">
+        <label for="places-country" class="{{ css({
+            srOnly: true,
+        }) }}">{{ 'places.filter.country'|trans }}</label>
         <select id="places-country"
                 data-places-target="country"
                 data-action="change->places#onCountryChange"
-                class="bg-transparent text-zinc-700 dark:text-zinc-300 text-sm focus:outline-none cursor-pointer">
+                class="{{ css({
+                    color: 'fg',
+                    fontSize: 'sm',
+                    lineHeight: 'sm',
+                    outlineStyle: {_focus: 'none'},
+                    cursor: 'pointer',
+                }) }}">
             <option value="">{{ 'places.filter.all_countries'|trans }}</option>
             {% for name, data in countries %}
                 <option value="{{ name }}">{{ name }} ({{ data.placesCount }})</option>
@@ -30,7 +65,13 @@
     </div>
     {{ ux_map(map, {
         'data-places-target': 'map',
-        class: 'absolute top-0 bottom-0 right-0 left-0'
+        class: css({
+            position: 'absolute',
+            top: '0',
+            bottom: '0',
+            right: '0',
+            left: '0',
+        }),
     }) }}
 </main>
 {% endblock %}

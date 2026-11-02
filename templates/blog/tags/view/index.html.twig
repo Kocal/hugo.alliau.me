@@ -3,12 +3,29 @@
 {% block title %}{{ 'blog.tags.posts_tagged'|trans({tag}) }} | Hugo Alliaume{% endblock %}
 
 {% block main %}
-    <main class="container mx-auto p-2 sm:py-4 max-w-screen-lg">
-        <h1 class="text-3xl sm:text-5xl font-extrabold mb-6 sm:mb-8 tracking-tight text-center">
+    <main class="{{ css({
+        w: 'full',
+        mx: 'auto',
+        p: '2',
+        py: {sm: '4'},
+        maxW: 'breakpoint-lg',
+    }) }}">
+        <h1 class="{{ css({
+            fontSize: {base: '3xl', sm: '5xl'},
+            lineHeight: {base: '3xl', sm: '5xl'},
+            fontWeight: 'extrabold',
+            mb: {base: '6', sm: '8'},
+            letterSpacing: 'tight',
+            textAlign: 'center',
+        }) }}">
             {{ 'blog.tags.posts_tagged'|trans({tag}) }}
         </h1>
 
-        <div class="flex flex-col gap-4">
+        <div class="{{ css({
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '4',
+        }) }}">
             {% for post in posts %}
                 <twig:Blog:PostCard :post="post" />
             {% endfor %}

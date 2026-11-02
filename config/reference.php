@@ -1754,6 +1754,27 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     script_attributes?: list<mixed>,
  *     link_attributes?: list<mixed>,
  * }
+ * @psalm-type UxCssConfig = array{
+ *     default_tokens?: null|"panda"|Param, // "panda" adds the default tokens of Panda CSS under the tokens of the project. // Default: null
+ *     tokens?: array<string, mixed>,
+ *     semantic_tokens?: array<string, mixed>,
+ *     conditions?: array<string, mixed>,
+ *     breakpoints?: array<string, scalar|Param|null>,
+ *     strict_tokens?: bool|Param, // Only accept tokens for properties bound to a token category; raw values must be written between brackets. // Default: true
+ *     strict_property_values?: bool|Param, // Only accept the keywords of a property whose grammar is made of keywords. // Default: true
+ *     preflight?: bool|array{ // Write a CSS reset in the "reset" layer. Use "scope" to limit it to a part of the page, and "level" to choose between the parent of the elements ("parent") or the elements themselves ("element").
+ *         enabled?: bool|Param, // Default: false
+ *         scope?: string|Param, // A selector, like ".reset": the reset only applies to what it matches.
+ *         level?: "parent"|"element"|Param, // "parent" writes the reset for the elements inside the scope, "element" for the elements that have it. "parent" when not set.
+ *     },
+ *     static_css?: array{ // Values to write in the stylesheet even when no template uses them as is, for css() calls with dynamic values.
+ *         css?: list<array{ // Default: []
+ *             properties?: array<string, list<scalar|Param|null>>,
+ *             conditions?: list<scalar|Param|null>,
+ *             responsive?: bool|Param, // Also write each value for every breakpoint. // Default: false
+ *         }>,
+ *     },
+ * }
  * @psalm-type ConfigType = array{
  *     imports?: ImportsConfig,
  *     parameters?: ParametersConfig,
@@ -1775,6 +1796,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     turbo?: TurboConfig,
  *     ux_map?: UxMapConfig,
  *     reprise?: RepriseConfig,
+ *     ux_css?: UxCssConfig,
  *     "when@dev"?: array{
  *         imports?: ImportsConfig,
  *         parameters?: ParametersConfig,
@@ -1800,6 +1822,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         ux_map?: UxMapConfig,
  *         zenstruck_foundry?: ZenstruckFoundryConfig,
  *         reprise?: RepriseConfig,
+ *         ux_css?: UxCssConfig,
  *     },
  *     "when@prod"?: array{
  *         imports?: ImportsConfig,
@@ -1822,6 +1845,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         turbo?: TurboConfig,
  *         ux_map?: UxMapConfig,
  *         reprise?: RepriseConfig,
+ *         ux_css?: UxCssConfig,
  *     },
  *     "when@test"?: array{
  *         imports?: ImportsConfig,
@@ -1846,6 +1870,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         ux_map?: UxMapConfig,
  *         zenstruck_foundry?: ZenstruckFoundryConfig,
  *         reprise?: RepriseConfig,
+ *         ux_css?: UxCssConfig,
  *     },
  *     ...<string, ExtensionType|array{ // extra keys must follow the when@%env% pattern or match an extension alias
  *         imports?: ImportsConfig,

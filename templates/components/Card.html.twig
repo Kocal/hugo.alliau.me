@@ -1,6 +1,12 @@
 {% props as = 'div' %}
 <{{ as }}{{ attributes.defaults({
-    class: 'rounded-xl border border-slate-200 dark:border-white/[0.06] bg-white dark:bg-zinc-900 shadow-sm dark:shadow-none',
+    class: css({
+        rounded: 'xl',
+        borderWidth: 1,
+        borderColor: 'border.subtle',
+        bgColor: 'bg.surface',
+        shadow: {base: 'sm', _dark: '[none]'},
+    }),
 }) }}>
     {{ block('content') }}
 </{{ as }}>

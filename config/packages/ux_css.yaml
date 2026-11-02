@@ -1,0 +1,179 @@
+ux_css:
+    preflight: true
+
+    default_tokens: panda
+
+    conditions:
+        dark: '@media (prefers-color-scheme: dark)'
+
+    tokens:
+        colors:
+            canvasDark: 'oklch(0.17 0.004 285.8)'
+            primary:
+                50: '{colors.pink.50}'
+                300: '{colors.pink.300}'
+                400: '{colors.pink.400}'
+                500: '{colors.pink.500}'
+                600: '{colors.pink.600}'
+                700: '{colors.pink.700}'
+                800: '{colors.pink.800}'
+            brand:
+                bsky: '#0a7aff'
+                github: '#181717'
+                twitter: '#00acee'
+                linkedin: '#0077b5'
+                mastodon: '#5c4adf'
+            # Tailwind CSS v4 palettes, so the site keeps its colors
+            red:
+                50: 'oklch(97.1% 0.013 17.38)'
+                100: 'oklch(93.6% 0.032 17.717)'
+                200: 'oklch(88.5% 0.062 18.334)'
+                300: 'oklch(80.8% 0.114 19.571)'
+                400: 'oklch(70.4% 0.191 22.216)'
+                500: 'oklch(63.7% 0.237 25.331)'
+                600: 'oklch(57.7% 0.245 27.325)'
+                700: 'oklch(50.5% 0.213 27.518)'
+                800: 'oklch(44.4% 0.177 26.899)'
+                900: 'oklch(39.6% 0.141 25.723)'
+                950: 'oklch(25.8% 0.092 26.042)'
+            yellow:
+                50: 'oklch(98.7% 0.026 102.212)'
+                100: 'oklch(97.3% 0.071 103.193)'
+                200: 'oklch(94.5% 0.129 101.54)'
+                300: 'oklch(90.5% 0.182 98.111)'
+                400: 'oklch(85.2% 0.199 91.936)'
+                500: 'oklch(79.5% 0.184 86.047)'
+                600: 'oklch(68.1% 0.162 75.834)'
+                700: 'oklch(55.4% 0.135 66.442)'
+                800: 'oklch(47.6% 0.114 61.907)'
+                900: 'oklch(42.1% 0.095 57.708)'
+                950: 'oklch(28.6% 0.066 53.813)'
+            green:
+                50: 'oklch(98.2% 0.018 155.826)'
+                100: 'oklch(96.2% 0.044 156.743)'
+                200: 'oklch(92.5% 0.084 155.995)'
+                300: 'oklch(87.1% 0.15 154.449)'
+                400: 'oklch(79.2% 0.209 151.711)'
+                500: 'oklch(72.3% 0.219 149.579)'
+                600: 'oklch(62.7% 0.194 149.214)'
+                700: 'oklch(52.7% 0.154 150.069)'
+                800: 'oklch(44.8% 0.119 151.328)'
+                900: 'oklch(39.3% 0.095 152.535)'
+                950: 'oklch(26.6% 0.065 152.934)'
+            blue:
+                50: 'oklch(97% 0.014 254.604)'
+                100: 'oklch(93.2% 0.032 255.585)'
+                200: 'oklch(88.2% 0.059 254.128)'
+                300: 'oklch(80.9% 0.105 251.813)'
+                400: 'oklch(70.7% 0.165 254.624)'
+                500: 'oklch(62.3% 0.214 259.815)'
+                600: 'oklch(54.6% 0.245 262.881)'
+                700: 'oklch(48.8% 0.243 264.376)'
+                800: 'oklch(42.4% 0.199 265.638)'
+                900: 'oklch(37.9% 0.146 265.522)'
+                950: 'oklch(28.2% 0.091 267.935)'
+            pink:
+                50: 'oklch(97.1% 0.014 343.198)'
+                100: 'oklch(94.8% 0.028 342.258)'
+                200: 'oklch(89.9% 0.061 343.231)'
+                300: 'oklch(82.3% 0.12 346.018)'
+                400: 'oklch(71.8% 0.202 349.761)'
+                500: 'oklch(65.6% 0.241 354.308)'
+                600: 'oklch(59.2% 0.249 0.584)'
+                700: 'oklch(52.5% 0.223 3.958)'
+                800: 'oklch(45.9% 0.187 3.815)'
+                900: 'oklch(40.8% 0.153 2.432)'
+                950: 'oklch(28.4% 0.109 3.907)'
+            slate:
+                50: 'oklch(98.4% 0.003 247.858)'
+                100: 'oklch(96.8% 0.007 247.896)'
+                200: 'oklch(92.9% 0.013 255.508)'
+                300: 'oklch(86.9% 0.022 252.894)'
+                400: 'oklch(70.4% 0.04 256.788)'
+                500: 'oklch(55.4% 0.046 257.417)'
+                600: 'oklch(44.6% 0.043 257.281)'
+                700: 'oklch(37.2% 0.044 257.287)'
+                800: 'oklch(27.9% 0.041 260.031)'
+                900: 'oklch(20.8% 0.042 265.755)'
+                950: 'oklch(12.9% 0.042 264.695)'
+            gray:
+                50: 'oklch(98.5% 0.002 247.839)'
+                100: 'oklch(96.7% 0.003 264.542)'
+                200: 'oklch(92.8% 0.006 264.531)'
+                300: 'oklch(87.2% 0.01 258.338)'
+                400: 'oklch(70.7% 0.022 261.325)'
+                500: 'oklch(55.1% 0.027 264.364)'
+                600: 'oklch(44.6% 0.03 256.802)'
+                700: 'oklch(37.3% 0.034 259.733)'
+                800: 'oklch(27.8% 0.033 256.848)'
+                900: 'oklch(21% 0.034 264.665)'
+                950: 'oklch(13% 0.028 261.692)'
+            zinc:
+                50: 'oklch(98.5% 0 none)'
+                100: 'oklch(96.7% 0.001 286.375)'
+                200: 'oklch(92% 0.004 286.32)'
+                300: 'oklch(87.1% 0.006 286.286)'
+                400: 'oklch(70.5% 0.015 286.067)'
+                500: 'oklch(55.2% 0.016 285.938)'
+                600: 'oklch(44.2% 0.017 285.786)'
+                700: 'oklch(37% 0.013 285.805)'
+                800: 'oklch(27.4% 0.006 286.033)'
+                900: 'oklch(21% 0.006 285.885)'
+                950: 'oklch(14.1% 0.005 285.823)'
+        fonts:
+            sans:
+                - '"Inter var"'
+                - '"Inter Variable Fallback"'
+                - 'ui-sans-serif'
+                - 'system-ui'
+                - 'sans-serif'
+                - '"Apple Color Emoji"'
+                - '"Segoe UI Emoji"'
+                - '"Segoe UI"'
+                - '"Symbol"'
+                - '"Noto Color Emoji"'
+        # Tailwind CSS sets a line height with each font size, Panda CSS does not
+        lineHeights:
+            xs: 'calc(1 / 0.75)'
+            sm: 'calc(1.25 / 0.875)'
+            md: '1.5'
+            lg: 'calc(1.75 / 1.125)'
+            xl: 'calc(1.75 / 1.25)'
+            2xl: 'calc(2 / 1.5)'
+            3xl: 'calc(2.25 / 1.875)'
+            4xl: 'calc(2.5 / 2.25)'
+            5xl: '1'
+            6xl: '1'
+            7xl: '1'
+            8xl: '1'
+            9xl: '1'
+
+    semantic_tokens:
+        colors:
+            fg:
+                DEFAULT: { base: '{colors.zinc.700}', _dark: '{colors.zinc.300}' }
+                secondary: { base: '{colors.zinc.600}', _dark: '{colors.zinc.300}' }
+                muted: { base: '{colors.zinc.500}', _dark: '{colors.zinc.400}' }
+                hover: { base: '{colors.primary.700}', _dark: '{colors.slate.400}' }
+            bg:
+                canvas: { base: '{colors.slate.50}', _dark: '{colors.canvasDark}' }
+                surface: { base: '{colors.white}', _dark: '{colors.zinc.900}' }
+                footer: { base: '{colors.slate.100}', _dark: '{colors.zinc.900}' }
+                hover: { base: '{colors.slate.100}', _dark: '{colors.white/5}' }
+            border:
+                DEFAULT: { base: '{colors.slate.200}', _dark: '{colors.white/10}' }
+                subtle: { base: '{colors.slate.200}', _dark: '{colors.white/6}' }
+                strong: { base: '{colors.slate.300}', _dark: '{colors.white/20}' }
+                prose: { base: '{colors.gray.300}', _dark: '{colors.transparent}' }
+            accent:
+                DEFAULT: { base: '{colors.primary.500}', _dark: '{colors.primary.400}' }
+                fg: { base: '{colors.primary.700}', _dark: '{colors.primary.300}' }
+                emphasis: { base: '{colors.primary.600}', _dark: '{colors.primary.400}' }
+            link:
+                DEFAULT: { base: '{colors.primary.700}', _dark: '{colors.primary.400}' }
+                hover: { base: '{colors.primary.800}', _dark: '{colors.primary.300}' }
+            callout:
+                info: { base: '{colors.blue.600}', _dark: '{colors.blue.300}' }
+                tip: { base: '{colors.green.600}', _dark: '{colors.green.300}' }
+                warning: { base: '{colors.yellow.600}', _dark: '{colors.yellow.300}' }
+                danger: { base: '{colors.red.600}', _dark: '{colors.red.300}' }

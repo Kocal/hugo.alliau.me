@@ -16,6 +16,7 @@ parameters:
         #- tests/
     excludePaths:
         - config/reference.php
+        - config/reference_css.php
     scanFiles:
         - config/reference.php
 

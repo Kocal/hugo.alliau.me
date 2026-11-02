@@ -6,11 +6,45 @@
     <meta name="description" content="{{ 'cv.meta_description'|trans }}">
 {% endblock %}
 
+{% set card_class = css({
+    p: {base: '2', sm: '3'},
+    shadow: {_print: '[none]'},
+    borderWidth: {_print: 1},
+}) %}
+
+{% set heading_class = css({
+    fontSize: {base: '2xl', sm: '3xl', _print: 'xl'},
+    lineHeight: {base: '2xl', sm: '3xl', _print: 'xl'},
+    fontWeight: 'bold',
+    mb: {base: '4', _print: '2'},
+    letterSpacing: 'tight',
+}) %}
+
 {% block main %}
-    <main class="container mx-auto p-2 sm:p-4 print:p-0 max-w-screen-lg grid grid-cols-1 sm:grid-cols-[256px_1fr] print:grid-cols-[200px_1fr] gap-2 sm:gap-4 print:gap-2">
-        <div class="flex flex-col gap-2 sm:gap-4 print:gap-2">
-            <twig:Card class="p-2 sm:p-3 flex print:shadow-none print:border">
-                <div class="flex-1 flex flex-col justify-between gap-2">
+    <main class="{{ css({
+        w: 'full',
+        mx: 'auto',
+        p: {base: '2', sm: '4', _print: '0'},
+        maxW: 'breakpoint-lg',
+        display: 'grid',
+        gridTemplateColumns: {base: 'repeat(1, minmax(0, 1fr))', sm: '256px 1fr', _print: '200px 1fr'},
+        gap: {base: '2', sm: '4', _print: '2'},
+    }) }}">
+        <div class="{{ css({
+            display: 'flex',
+            flexDirection: 'column',
+            gap: {base: '2', sm: '4', _print: '2'},
+        }) }}">
+            <twig:Card class="{{ card_class }} {{ css({
+                display: 'flex',
+            }) }}">
+                <div class="{{ css({
+                    flex: '1',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                    gap: '2',
+                }) }}">
                     <img
                         src="{{ asset('build/images/hugo-alliaume.jpeg') }}"
                         width="169"
@@ -18,30 +52,71 @@
                         decoding="async"
                         loading="lazy"
                         alt="Hugo Alliaume"
-                         class="rounded-full mx-auto shadow-lg print:size-20 print:shadow-none"
+                        class="{{ css({
+                            rounded: 'full',
+                            mx: 'auto',
+                            shadow: {base: 'lg', _print: '[none]'},
+                            boxSize: {_print: '20'},
+                        }) }}"
                     />
 
-                    <h1 class="text-2xl sm:text-3xl print:text-xl font-extrabold tracking-tight text-center">Hugo Alliaume</h1>
+                    <h1 class="{{ css({
+                        fontSize: {base: '2xl', sm: '3xl', _print: 'xl'},
+                        lineHeight: {base: '2xl', sm: '3xl', _print: 'xl'},
+                        fontWeight: 'extrabold',
+                        letterSpacing: 'tight',
+                        textAlign: 'center',
+                    }) }}">Hugo Alliaume</h1>
 
-                    <div class="text-sm text-center">
+                    <div class="{{ css({
+                        fontSize: 'sm',
+                        lineHeight: 'sm',
+                        textAlign: 'center',
+                    }) }}">
                         <p>{{ 'cv.subtitle'|trans }}</p>
                     </div>
 
                     <twig:Divider />
 
-                    <ul class="flex print:flex-col gap-y-0.5 justify-around text-sm">
+                    <ul class="{{ css({
+                        display: 'flex',
+                        flexDirection: {_print: 'column'},
+                        rowGap: '0.5',
+                        justifyContent: 'space-around',
+                        fontSize: 'sm',
+                        lineHeight: 'sm',
+                    }) }}">
                         {% for network in [
-                            {title: 'Email', href: 'mailto:hugo@alliau.me', icon: 'bi:envelope', text: 'hugo[at]alliau.me', class: 'hover:text-primary-700 dark:hover:text-slate-400'},
-                            {title: 'LinkedIn', href: 'https://www.linkedin.com/in/%F0%9F%9A%B4-hugo-alliaume-34b475166/', icon: 'bi:linkedin', text: 'Hugo Alliaume', class: 'hover:text-linkedin'},
-                            {title: 'GitHub', href: 'https://github.com/Kocal', icon: 'bi:github', text: '@Kocal', class: 'hover:text-github'},
-                            {title: 'X (Twitter)', href: 'https://twitter.com/HugoAlliaume', icon: 'bi:twitter', text: '@HugoAlliaume', class: 'hover:text-twitter'},
-                            {title: 'Bluesky', href: 'https://bluesky.dev/hugo.alliau.me', icon: 'simple-icons:bluesky', text: 'hugo.alliau.me', class: 'hover:text-bsky'},
-                            {title: 'Mastodon', href: 'https://mastodon.social/@Kocal', icon: 'bi:mastodon', text: '@Kocal', class: 'hover:text-mastodon'},
+                            {title: 'Email', href: 'mailto:hugo@alliau.me', icon: 'bi:envelope', text: 'hugo[at]alliau.me', class: css({
+                                color: {_hover: 'fg.hover'},
+                            })},
+                            {title: 'LinkedIn', href: 'https://www.linkedin.com/in/%F0%9F%9A%B4-hugo-alliaume-34b475166/', icon: 'bi:linkedin', text: 'Hugo Alliaume', class: css({
+                                color: {_hover: 'brand.linkedin'},
+                            })},
+                            {title: 'GitHub', href: 'https://github.com/Kocal', icon: 'bi:github', text: '@Kocal', class: css({
+                                color: {_hover: 'brand.github'},
+                            })},
+                            {title: 'X (Twitter)', href: 'https://twitter.com/HugoAlliaume', icon: 'bi:twitter', text: '@HugoAlliaume', class: css({
+                                color: {_hover: 'brand.twitter'},
+                            })},
+                            {title: 'Bluesky', href: 'https://bluesky.dev/hugo.alliau.me', icon: 'simple-icons:bluesky', text: 'hugo.alliau.me', class: css({
+                                color: {_hover: 'brand.bsky'},
+                            })},
+                            {title: 'Mastodon', href: 'https://mastodon.social/@Kocal', icon: 'bi:mastodon', text: '@Kocal', class: css({
+                                color: {_hover: 'brand.mastodon'},
+                            })},
                         ] %}
                             <li>
-                                <a href="{{ network.href }}" title="{{ network.title }}" class="print:flex items-center gap-1 {{ network.class }} transition-colors" rel="me" itemprop="sameAs">
+                                <a href="{{ network.href }}" title="{{ network.title }}" class="{{ css({
+                                    display: {_print: 'flex'},
+                                    alignItems: 'center',
+                                    gap: '1',
+                                    transition: 'colors',
+                                }) }} {{ network.class }}" rel="me" itemprop="sameAs">
                                     <twig:UX:Icon :name="network.icon" width="1.6em" height="1.6em" />
-                                    <span class="hidden print:block">{{ network.text }}</span>
+                                    <span class="{{ css({
+                                        display: {base: 'none', _print: 'block'},
+                                    }) }}">{{ network.text }}</span>
                                 </a>
                             </li>
                         {% endfor %}
@@ -49,17 +124,30 @@
                 </div>
             </twig:Card>
 
-            <twig:Card class="p-2 sm:p-3 print:shadow-none print:border">
+            <twig:Card class="{{ card_class }}">
 
-                <h2 class="text-2xl sm:text-3xl print:text-xl font-bold mb-4 print:mb-2 tracking-tight">{{ 'cv.skills_heading'|trans }}</h2>
+                <h2 class="{{ heading_class }}">{{ 'cv.skills_heading'|trans }}</h2>
 
-                <div class="flex flex-col gap-3 print:gap-1">
+                <div class="{{ css({
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: {base: '3', _print: '1'},
+                }) }}">
                     {% for skill_group_name, skills_by_group in skills %}
                         <div>
-                            <h3 class="font-bold uppercase text-sm mb-1">
+                            <h3 class="{{ css({
+                                fontWeight: 'bold',
+                                textTransform: 'uppercase',
+                                fontSize: 'sm',
+                                lineHeight: 'sm',
+                                mb: '1',
+                            }) }}">
                                 {{ skill_group_name|trans }}
                             </h3>
-                            <p class="text-sm">
+                            <p class="{{ css({
+                                fontSize: 'sm',
+                                lineHeight: 'sm',
+                            }) }}">
                                 {% for skill in skills_by_group %}
                                     {{ skill }}{{ not loop.last ? ', ' : '.' }}
                                 {% endfor %}
@@ -70,26 +158,48 @@
             </twig:Card>
         </div>
 
-        <div class="flex flex-col gap-2 sm:gap-4">
-            <twig:Card class="p-2 sm:p-3 print:shadow-none print:border">
-                <h2 class="text-2xl sm:text-3xl print:text-xl font-bold mb-4 print:mb-2 tracking-tight">
+        <div class="{{ css({
+            display: 'flex',
+            flexDirection: 'column',
+            gap: {base: '2', sm: '4'},
+        }) }}">
+            <twig:Card class="{{ card_class }}">
+                <h2 class="{{ heading_class }}">
                     {{ 'cv.experiences_heading'|trans }}
                 </h2>
 
-                <div class="flex flex-col gap-4 sm:gap-5 print:gap-2">
+                <div class="{{ css({
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: {base: '4', sm: '5', _print: '2'},
+                }) }}">
                     {% for professional_experience in professional_experiences %}
                         {% set experience_translation = professional_experience.translate(app.request.locale) %}
                         <section>
                             <header>
-                                <span class="block text-xl sm:text-2xl print:text-lg font-bold tracking-tight">
+                                <span class="{{ css({
+                                    display: 'block',
+                                    fontSize: {base: 'xl', sm: '2xl', _print: 'lg'},
+                                    lineHeight: {base: 'xl', sm: '2xl', _print: 'lg'},
+                                    fontWeight: 'bold',
+                                    letterSpacing: 'tight',
+                                }) }}">
                                     {{ experience_translation.jobName }}
                                 </span>
 
-                                <a href="{{ professional_experience.url }}" rel="noreferrer noopener" class=" hover:text-primary-700 dark:hover:text-slate-400 transition-colors font-bold">
+                                <a href="{{ professional_experience.url }}" rel="noreferrer noopener" class="{{ css({
+                                    color: {_hover: 'fg.hover'},
+                                    transition: 'colors',
+                                    fontWeight: 'bold',
+                                }) }}">
                                     {{ professional_experience.company }}
                                 </a>
                                 &bullet;
-                                <span class=" text-sm font-bold">
+                                <span class="{{ css({
+                                    fontSize: 'sm',
+                                    lineHeight: 'sm',
+                                    fontWeight: 'bold',
+                                }) }}">
                                     <time datetime="{{ professional_experience.startDate|date }}">{{ professional_experience.startDate|format_datetime(pattern: 'MMM yyyy') }}</time>
                                     &rightarrow;
                                     {% if professional_experience.endDate is null %}
@@ -100,12 +210,22 @@
                                 </span>
                             </header>
 
-                            <div class="my-1 print:text-sm">
+                            <div class="{{ css({
+                                my: '1',
+                                fontSize: {_print: 'sm'},
+                                lineHeight: {_print: 'sm'},
+                            }) }}">
                                 {{ experience_translation.description|nl2br }}
                             </div>
 
-                            <footer class="print:hidden">
-                                <ul class="flex flex-wrap gap-1">
+                            <footer class="{{ css({
+                                display: {_print: 'none'},
+                            }) }}">
+                                <ul class="{{ css({
+                                    display: 'flex',
+                                    flexWrap: 'wrap',
+                                    gap: '1',
+                                }) }}">
                                     {% for badge in experience_translation.badges %}
                                         <li>
                                             <twig:Badge>{{ badge }}</twig:Badge>
@@ -116,7 +236,9 @@
                         </section>
 
                         {% if not loop.last %}
-                            <twig:Divider class="print:hidden" />
+                            <twig:Divider class="{{ css({
+                                display: {_print: 'none'},
+                            }) }}" />
                         {% endif %}
                     {% endfor %}
                 </div>
@@ -124,18 +246,50 @@
         </div>
 
         {% if projects %}
-            <twig:Card class="col-span-full p-2 sm:p-3 print:hidden">
-                <h2 class="text-2xl sm:text-3xl font-bold mb-4 tracking-tight">{{ 'cv.projects_heading'|trans }}</h2>
+            <twig:Card class="{{ css({
+                gridColumn: '1 / -1',
+                p: {base: '2', sm: '3'},
+                display: {_print: 'none'},
+            }) }}">
+                <h2 class="{{ css({
+                    fontSize: {base: '2xl', sm: '3xl'},
+                    lineHeight: {base: '2xl', sm: '3xl'},
+                    fontWeight: 'bold',
+                    mb: '4',
+                    letterSpacing: 'tight',
+                }) }}">{{ 'cv.projects_heading'|trans }}</h2>
 
-                <div class="grid sm:grid-cols-2">
+                <div class="{{ css({
+                    display: 'grid',
+                    gridTemplateColumns: {sm: 'repeat(2, minmax(0, 1fr))'},
+                }) }}">
                     {% for project in projects %}
                         {% set project_translation = project.translate(app.request.locale) %}
-                        <div class="flex flex-col gap-2 py-3 {{ loop.index is even ? 'pl-3' : 'pr-3' }}">
+                        <div class="{{ css({
+                            display: 'flex',
+                            flexDirection: 'column',
+                            gap: '2',
+                            py: '3',
+                        }) }} {{ loop.index is even ? css({
+                            pl: '3',
+                        }) : css({
+                            pr: '3',
+                        }) }}">
                             <header>
-                                <h3 class="text-xl sm:text-2xl font-bold tracking-tight">
+                                <h3 class="{{ css({
+                                    fontSize: {base: 'xl', sm: '2xl'},
+                                    lineHeight: {base: 'xl', sm: '2xl'},
+                                    fontWeight: 'bold',
+                                    letterSpacing: 'tight',
+                                }) }}">
                                     <a href="{{ project.url }}">{{ project.name }}</a>
                                 </h3>
-                                <span class="uppercase text-sm font-bold">{{ project.date|date('Y') }}</span>
+                                <span class="{{ css({
+                                    textTransform: 'uppercase',
+                                    fontSize: 'sm',
+                                    lineHeight: 'sm',
+                                    fontWeight: 'bold',
+                                }) }}">{{ project.date|date('Y') }}</span>
                             </header>
 
                             <p>
@@ -143,7 +297,11 @@
                             </p>
 
                             <footer>
-                                <ul class="flex flex-wrap gap-1">
+                                <ul class="{{ css({
+                                    display: 'flex',
+                                    flexWrap: 'wrap',
+                                    gap: '1',
+                                }) }}">
                                     {% for tech in project.techStack %}
                                         <li>
                                             <twig:Badge size="sm" color="gray">

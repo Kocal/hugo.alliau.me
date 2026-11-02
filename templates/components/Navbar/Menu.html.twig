@@ -1,5 +1,8 @@
 <ul{{ attributes.defaults({
-    class: 'flex gap-x-2 sm:gap-x-4'
+    class: css({
+        display: 'flex',
+        columnGap: {base: '2', sm: '4'},
+    }),
 }) }}>
     {% block content %}{% endblock %}
 </ul>

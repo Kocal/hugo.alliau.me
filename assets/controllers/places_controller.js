@@ -6,6 +6,7 @@ import "leaflet.markercluster/dist/MarkerCluster.css";
 /* stimulusFetch: 'lazy' */
 export default class extends Controller {
     static targets = ["map", "country"];
+    static classes = ["cluster"];
     static values = { countries: Object };
 
     connect() {
@@ -63,7 +64,7 @@ export default class extends Controller {
             showCoverageOnHover: false,
             iconCreateFunction: (cluster) =>
                 L.divIcon({
-                    html: `<div class="flex size-full items-center justify-center rounded-full border-2 border-white bg-[#126FC6] text-sm font-semibold text-white shadow-md">${cluster.getChildCount()}</div>`,
+                    html: `<div class="${this.clusterClasses.join(" ")}">${cluster.getChildCount()}</div>`,
                     iconSize: [36, 36],
                     className: "",
                 }),
@@ -97,7 +98,7 @@ export default class extends Controller {
         definition.bridgeOptions = {
             icon: L.divIcon({
                 html: `
-<div class="relative">
+<div style="position: relative">
     <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" fill-rule="evenodd" stroke-linecap="round" clip-rule="evenodd" viewBox="0 0 500 820">
         <defs>
            <linearGradient id="__sf_ux_map_gradient_marker_fill" x1="0" x2="1" y1="0" y2="0" gradientTransform="matrix(0 -37.57 37.57 0 416.45 541)" gradientUnits="userSpaceOnUse">
@@ -112,7 +113,7 @@ export default class extends Controller {
         <path fill="url(#__sf_ux_map_gradient_marker_fill)" stroke="url(#__sf_ux_map_gradient_marker_border)" stroke-width="1.1" d="M416.54 503.61c-6.57 0-12.04 5.7-12.04 11.87 0 2.78 1.56 6.3 2.7 8.74l9.3 17.88 9.26-17.88c1.13-2.43 2.74-5.79 2.74-8.74 0-6.18-5.38-11.87-11.96-11.87Z" transform="translate(-7889.1 -9807.44) scale(19.54)"/>
     </svg>
 
-    <img src="${definition.extra.icon_mask_uri}" alt="" class="absolute" style="width: 12px; top: 8px; transform: translate3d(50%, 0, 0); filter: invert(1)" />
+    <img src="${definition.extra.icon_mask_uri}" alt="" style="position: absolute; width: 12px; top: 8px; transform: translate3d(50%, 0, 0); filter: invert(1)" />
 </div>
 `,
                 iconSize: [25, 41],

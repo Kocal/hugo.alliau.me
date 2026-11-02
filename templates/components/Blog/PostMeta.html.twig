@@ -1,20 +1,46 @@
-<div{{ attributes }} class="flex flex-col gap-2">
-    <div class="flex items-center gap-x-1">
-        <twig:UX:Icon name="flowbite:clock-outline" aria-label="{{ 'blog.published_at'|trans }}" class="shrink-0"/>
+<div{{ attributes }} class="{{ css({
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '2',
+}) }}">
+    <div class="{{ css({
+        display: 'flex',
+        alignItems: 'center',
+        columnGap: '1',
+    }) }}">
+        <twig:UX:Icon name="flowbite:clock-outline" aria-label="{{ 'blog.published_at'|trans }}" class="{{ css({
+            flexShrink: 0,
+        }) }}"/>
 
-        <time datetime="{{ post.publishedAt|date('c') }}" class="text-sm font-bold">
+        <time datetime="{{ post.publishedAt|date('c') }}" class="{{ css({
+            fontSize: 'sm',
+            lineHeight: 'sm',
+            fontWeight: 'bold',
+        }) }}">
             {{ post.publishedAt|format_datetime('long', 'none') }}
         </time>
 
-        <span class="text-lg" title="{{ post.locale.toTranslatable|trans }}" aria-label="{{ post.locale.toTranslatable|trans }}">{{ post.locale.flag }}</span>
+        <span class="{{ css({
+            fontSize: 'lg',
+            lineHeight: 'lg',
+        }) }}" title="{{ post.locale.toTranslatable|trans }}" aria-label="{{ post.locale.toTranslatable|trans }}">{{ post.locale.flag }}</span>
     </div>
 
     {% if post.tags is not empty %}
-        <ul class="flex flex-row flex-wrap gap-1">
+        <ul class="{{ css({
+            display: 'flex',
+            flexDirection: 'row',
+            flexWrap: 'wrap',
+            gap: '1',
+        }) }}">
             {% for tag in post.tags %}
                 <li>
                     <twig:Badge href="{{ path(constant('App\\Blog\\Domain\\Data\\Route::TAG_VIEW').value, {tag}) }}">
-                        <twig:ux:icon name="tabler:tag-filled" class="size-3 inline mr-1" />
+                        <twig:ux:icon name="tabler:tag-filled" class="{{ css({
+                            boxSize: '3',
+                            display: 'inline',
+                            mr: '1',
+                        }) }}" />
                         {{- tag -}}
                     </twig:Badge>
                 </li>
