@@ -9,7 +9,7 @@
 {% set card_class = css({
     p: {base: '2', sm: '3'},
     shadow: {_print: '[none]'},
-    borderWidth: {_print: '1px'},
+    borderWidth: {_print: '[1px]'},
 }) %}
 
 {% set heading_class = css({
@@ -17,7 +17,7 @@
     lineHeight: {base: '2xl', sm: '3xl', _print: 'xl'},
     fontWeight: 'bold',
     mb: {base: '4', _print: '2'},
-    letterSpacing: '-0.025em',
+    letterSpacing: 'tight',
 }) %}
 
 {% block main %}
@@ -64,7 +64,7 @@
                         fontSize: {base: '2xl', sm: '3xl', _print: 'xl'},
                         lineHeight: {base: '2xl', sm: '3xl', _print: 'xl'},
                         fontWeight: 'extrabold',
-                        letterSpacing: '-0.025em',
+                        letterSpacing: 'tight',
                         textAlign: 'center',
                     }) }}">Hugo Alliaume</h1>
 
@@ -182,7 +182,7 @@
                                     fontSize: {base: 'xl', sm: '2xl', _print: 'lg'},
                                     lineHeight: {base: 'xl', sm: '2xl', _print: 'lg'},
                                     fontWeight: 'bold',
-                                    letterSpacing: '-0.025em',
+                                    letterSpacing: 'tight',
                                 }) }}">
                                     {{ experience_translation.jobName }}
                                 </span>
@@ -256,7 +256,7 @@
                     lineHeight: {base: '2xl', sm: '3xl'},
                     fontWeight: 'bold',
                     mb: '4',
-                    letterSpacing: '-0.025em',
+                    letterSpacing: 'tight',
                 }) }}">{{ 'cv.projects_heading'|trans }}</h2>
 
                 <div class="{{ css({
@@ -280,7 +280,7 @@
                                     fontSize: {base: 'xl', sm: '2xl'},
                                     lineHeight: {base: 'xl', sm: '2xl'},
                                     fontWeight: 'bold',
-                                    letterSpacing: '-0.025em',
+                                    letterSpacing: 'tight',
                                 }) }}">
                                     <a href="{{ project.url }}">{{ project.name }}</a>
                                 </h3>
