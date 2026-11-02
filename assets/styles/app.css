@@ -342,15 +342,3 @@
         text-decoration: line-through;
     }
 }
-
-@layer components {
-    .FooterQuote {
-        &::before {
-            content: "“";
-        }
-
-        &::after {
-            content: "”";
-        }
-    }
-}

@@ -103,7 +103,7 @@
             justifyContent: 'center',
             px: '2',
         }) }}">
-            <blockquote class="FooterQuote {{ css({
+            <blockquote class="{{ css({
                 display: {_empty: 'none'},
                 maxW: 'sm',
                 textAlign: 'center',
@@ -111,6 +111,12 @@
                 fontSize: '2xl',
                 lineHeight: '2xl',
                 fontFamily: 'serif',
+                _before: {
+                    content: '"“"',
+                },
+                _after: {
+                    content: '"”"',
+                },
             }) }}"></blockquote>
             <script>
                 const quotes = [
