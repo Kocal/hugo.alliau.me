@@ -20,6 +20,11 @@
         font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     }
 
+    /* Keep the browser's selection color rather than the one of the reset */
+    ::selection {
+        background-color: revert;
+    }
+
     /* Subtle dotted texture behind the page content. A radial mask keeps it
        invisible in the center (behind the content) and fades it in toward the
        edges. Fixed layer sits above the body background but below content. */
