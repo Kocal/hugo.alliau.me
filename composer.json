@@ -44,6 +44,7 @@
         "symfony/stimulus-bundle": "^3.4",
         "symfony/twig-bundle": "8.1.*",
         "symfony/uid": "8.1.*",
+        "symfony/ux-css": "3.x-dev@dev",
         "symfony/ux-icons": "^3.4",
         "symfony/ux-leaflet-map": "^3.4",
         "symfony/ux-map": "^3.4",

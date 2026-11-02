@@ -1,6 +1,5 @@
 import { defineConfig } from "vite";
 import Symfony from "@symfony/reprise/vite";
-import tailwindcss from "@tailwindcss/vite";
 import vue from "@vitejs/plugin-vue";
 
 export default defineConfig({
@@ -9,7 +8,6 @@ export default defineConfig({
         admin: "./assets/admin.js",
     },
     plugins: [
-        tailwindcss(),
         vue(),
         Symfony({
             stimulus: "./assets/controllers.json",

@@ -121,9 +121,6 @@ RUN pnpm install --frozen-lockfile
 # copy sources
 COPY --link --exclude=frankenphp/ . ./
 
-# build the front-end assets into public/build (Vite via @symfony/reprise)
-RUN pnpm run build
-
 RUN <<-EOF
 	mkdir -p var/cache var/log var/share
 	composer dump-autoload --classmap-authoritative --no-dev
@@ -134,6 +131,10 @@ RUN <<-EOF
 	chmod -R g=u var
 	sync
 EOF
+
+# build the front-end assets into public/build (Vite via @symfony/reprise)
+# after post-install-cmd, whose cache:warmup writes var/ux_css/styles.css
+RUN pnpm run build
 
 # Collect shared libraries needed by FrankenPHP and PHP extensions
 # hadolint ignore=DL3008,SC3054,DL4006

@@ -1,34 +1,10 @@
-@import "tailwindcss";
-@source not "../../public";
+@layer base, tokens, components, utilities;
 
-@theme {
-    --font-sans:
-        "Inter var", "Inter Variable Fallback", "ui-sans-serif", "system-ui", "sans-serif",
-        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI", "Symbol", "Noto Color Emoji";
-    --font-sans--font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+@import "./reset.css" layer(base);
+@import "../../var/ux_css/styles.css";
 
-    --color-primary-50: var(--color-pink-50);
-    --color-primary-300: var(--color-pink-300);
-    --color-primary-400: var(--color-pink-400);
-    --color-primary-500: var(--color-pink-500);
-    --color-primary-600: var(--color-pink-600);
-    --color-primary-700: var(--color-pink-700);
-    --color-primary-800: var(--color-pink-800);
-
-    /* Page canvas (dark): lifted from near-black zinc-950 so dark mode feels less harsh */
-    --color-canvas-dark: oklch(0.17 0.004 285.8);
-
-    /* Shared surface + hairline for prose containers (callouts, tables, code blocks) */
-    --color-prose-container: light-dark(var(--color-white), var(--color-zinc-900));
-    --color-prose-border: light-dark(var(--color-gray-300), transparent);
-
-    --color-bsky: #0a7aff;
-    --color-github: #181717;
-    --color-twitter: #00acee;
-    --color-linkedin: #0077b5;
-    --color-mastodon: #5c4adf;
-
-    --terminal-border-radius: var(--radius-lg);
+:root {
+    --terminal-border-radius: var(--radii-lg);
 }
 
 @layer base {
@@ -79,44 +55,44 @@
 
 @layer components {
     .prose {
-        font-size: var(--text-lg);
-        line-height: --spacing(8);
+        font-size: var(--font-sizes-lg);
+        line-height: var(--spacing-8);
         text-wrap: pretty;
 
         h2 {
-            font-size: var(--text-2xl);
-            margin: --spacing(7) 0;
-            line-height: --spacing(8);
-            color: light-dark(var(--color-black), var(--color-white));
+            font-size: var(--font-sizes-2xl);
+            margin: var(--spacing-7) 0;
+            line-height: var(--spacing-8);
+            color: light-dark(var(--colors-black), var(--colors-white));
         }
 
         h3 {
-            font-size: var(--text-xl);
-            margin: --spacing(5) 0;
-            line-height: --spacing(7);
-            color: light-dark(var(--color-black), var(--color-white));
+            font-size: var(--font-sizes-xl);
+            margin: var(--spacing-5) 0;
+            line-height: var(--spacing-7);
+            color: light-dark(var(--colors-black), var(--colors-white));
         }
 
         p,
         .CustomContainer,
         .Terminal,
         blockquote {
-            margin-top: --spacing(5);
-            margin-bottom: --spacing(5);
+            margin-top: var(--spacing-5);
+            margin-bottom: var(--spacing-5);
         }
 
         a {
-            color: light-dark(var(--color-primary-700), var(--color-primary-400));
+            color: var(--colors-link);
             text-decoration: underline;
             text-underline-offset: 2px;
 
             &:hover {
-                color: light-dark(var(--color-primary-800), var(--color-primary-300));
+                color: var(--colors-link-hover);
             }
         }
 
         *:not(pre) > code {
-            padding: --spacing(1);
+            padding: var(--spacing-1);
             border-radius: var(--terminal-border-radius);
             overflow-wrap: break-word;
             font-size: 85%;
@@ -126,44 +102,45 @@
 
         blockquote {
             font-style: italic;
-            border-inline-start: 4px solid light-dark(var(--color-gray-300), var(--color-gray-700));
-            background-color: light-dark(var(--color-gray-100), var(--color-gray-900));
-            padding: --spacing(2) --spacing(4);
+            border-inline-start: 4px solid
+                light-dark(var(--colors-gray-300), var(--colors-gray-700));
+            background-color: light-dark(var(--colors-gray-100), var(--colors-gray-900));
+            padding: var(--spacing-2) var(--spacing-4);
             quotes: "“" "”" "‘" "’";
         }
 
         table {
-            --table-border-color: light-dark(var(--color-gray-300), var(--color-gray-700));
+            --table-border-color: light-dark(var(--colors-gray-300), var(--colors-gray-700));
             width: 100%;
-            margin-block: --spacing(4);
+            margin-block: var(--spacing-4);
             border-collapse: collapse;
-            border-radius: var(--radius-md);
+            border-radius: var(--radii-md);
             outline: 1px solid var(--table-border-color);
 
             tbody {
-                background-color: var(--color-prose-container);
+                background-color: var(--colors-bg-surface);
             }
 
             th {
-                background-color: light-dark(var(--color-gray-100), var(--color-gray-800));
-                font-weight: var(--font-weight-semibold);
+                background-color: light-dark(var(--colors-gray-100), var(--colors-gray-800));
+                font-weight: var(--font-weights-semibold);
             }
 
             th,
             td {
-                padding: --spacing(1) --spacing(2);
+                padding: var(--spacing-1) var(--spacing-2);
                 border-bottom: 1px solid var(--table-border-color);
             }
         }
 
         ol,
         ul {
-            margin-top: --spacing(5);
-            margin-bottom: --spacing(5);
-            padding-inline-start: --spacing(6);
+            margin-top: var(--spacing-5);
+            margin-bottom: var(--spacing-5);
+            padding-inline-start: var(--spacing-6);
 
             > li {
-                padding-inline-start: --spacing(2);
+                padding-inline-start: var(--spacing-2);
             }
         }
 
@@ -176,32 +153,32 @@
         }
 
         li {
-            margin-top: --spacing(2);
-            margin-bottom: --spacing(2);
+            margin-top: var(--spacing-2);
+            margin-bottom: var(--spacing-2);
         }
 
         > ul > li p,
         > ol > li p {
-            margin-top: --spacing(2);
-            margin-bottom: --spacing(2);
+            margin-top: var(--spacing-2);
+            margin-bottom: var(--spacing-2);
         }
 
         > ul > li > p:first-child,
         > ol > li > p:first-child {
-            margin-top: --spacing(2);
+            margin-top: var(--spacing-2);
         }
 
         > ul > li > p:last-child,
         > ol > li > p:last-child {
-            margin-bottom: --spacing(2);
+            margin-bottom: var(--spacing-2);
         }
 
         ul ul,
         ul ol,
         ol ul,
         ol ol {
-            margin-top: --spacing(3);
-            margin-bottom: --spacing(3);
+            margin-top: var(--spacing-3);
+            margin-bottom: var(--spacing-3);
         }
 
         h2 + *,
@@ -217,19 +194,19 @@
             margin-bottom: 0;
         }
 
-        @media (width >= theme(--breakpoint-sm)) {
-            font-size: var(--text-xl);
-            line-height: --spacing(10);
+        @media (width >= 40rem) {
+            font-size: var(--font-sizes-xl);
+            line-height: var(--spacing-10);
 
             h2 {
-                font-size: var(--text-3xl);
-                margin: --spacing(8) 0;
-                line-height: --spacing(10);
+                font-size: var(--font-sizes-3xl);
+                margin: var(--spacing-8) 0;
+                line-height: var(--spacing-10);
             }
 
             h3 {
-                font-size: var(--text-2xl);
-                line-height: --spacing(8);
+                font-size: var(--font-sizes-2xl);
+                line-height: var(--spacing-8);
             }
         }
     }
@@ -237,9 +214,9 @@
 
 @layer components {
     .heading-permalink {
-        color: theme("colors.gray.500");
+        color: var(--colors-gray-500);
         text-decoration: none !important;
-        margin-right: theme("spacing.1");
+        margin-right: var(--spacing-1);
 
         &:before {
             content: "#";
@@ -259,23 +236,23 @@
         color: light-dark(#000000, #d4d4d4);
         background-color: light-dark(#fff, #1e1e1e);
         border-radius: var(--terminal-border-radius);
-        font-size: var(--text-sm);
-        line-height: --spacing(5);
-        border: 1px solid var(--color-prose-border);
+        font-size: var(--font-sizes-sm);
+        line-height: var(--spacing-5);
+        border: 1px solid var(--colors-border-prose);
 
-        @media (width >= theme(--breakpoint-sm)) {
+        @media (width >= 40rem) {
             font-size: 16px;
-            line-height: --spacing(6);
+            line-height: var(--spacing-6);
         }
     }
 
     .Terminal__Header {
-        background-color: light-dark(var(--color-gray-100), var(--color-gray-900));
+        background-color: light-dark(var(--colors-gray-100), var(--colors-gray-900));
         border-radius: var(--terminal-border-radius) var(--terminal-border-radius) 0 0;
-        font-family: var(--font-mono);
-        font-size: var(--text-sm);
+        font-family: var(--fonts-mono);
+        font-size: var(--font-sizes-sm);
         font-weight: bold;
-        padding: --spacing(1) --spacing(3);
+        padding: var(--spacing-1) var(--spacing-3);
         text-overflow: ellipsis;
         overflow: hidden;
     }
@@ -294,20 +271,20 @@
             overflow-x: auto;
             text-align: left;
             border-radius: var(--terminal-border-radius);
-            padding: --spacing(3) 0;
+            padding: var(--spacing-3) 0;
 
             code {
                 display: block;
                 width: fit-content;
                 min-width: 100%;
-                padding: 0 --spacing(3);
+                padding: 0 var(--spacing-3);
             }
 
-            @media (width >= theme(--breakpoint-sm)) {
-                padding: --spacing(4) 0;
+            @media (width >= 40rem) {
+                padding: var(--spacing-4) 0;
 
                 code {
-                    padding: 0 --spacing(4);
+                    padding: 0 var(--spacing-4);
                 }
             }
         }
@@ -334,20 +311,20 @@
             }
 
             &.diff.add {
-                background-color: color-mix(in srgb, var(--color-green-500) 20%, transparent);
+                background-color: color-mix(in srgb, var(--colors-green-500) 20%, transparent);
 
                 &::before {
                     content: "+ ";
-                    color: var(--color-green-500);
+                    color: var(--colors-green-500);
                 }
             }
 
             &.diff.remove {
-                background-color: color-mix(in srgb, var(--color-red-500) 20%, transparent);
+                background-color: color-mix(in srgb, var(--colors-red-500) 20%, transparent);
 
                 &::before {
                     content: "- ";
-                    color: var(--color-red-500);
+                    color: var(--colors-red-500);
                 }
             }
         }
@@ -358,5 +335,17 @@
     .is-done {
         opacity: 0.45;
         text-decoration: line-through;
+    }
+}
+
+@layer components {
+    .FooterQuote {
+        &::before {
+            content: "“";
+        }
+
+        &::after {
+            content: "”";
+        }
     }
 }

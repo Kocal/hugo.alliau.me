@@ -1,5 +1,14 @@
 <div{{ attributes }}>
-    <div class="container max-w-screen-lg mx-auto flex flex-wrap sm:flex-nowrap items-center px-2 sm:px-4 gap-x-3 sm:gap-x-5">
+    <div class="{{ css({
+        w: 'full',
+        maxW: 'breakpoint-lg',
+        mx: 'auto',
+        display: 'flex',
+        flexWrap: {base: 'wrap', sm: 'nowrap'},
+        alignItems: 'center',
+        px: {base: '2', sm: '4'},
+        columnGap: {base: '3', sm: '5'},
+    }) }}">
         {% block content %}{% endblock %}
     </div>
 </div>

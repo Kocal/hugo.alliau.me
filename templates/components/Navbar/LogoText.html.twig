@@ -1,6 +1,13 @@
 {% props as = 'span' %}
 <{{ as }}{{ attributes.defaults({
-    class: 'text-lg sm:text-2xl font-bold my-2 sm:my-3 tracking-tight whitespace-nowrap'
+    class: css({
+        fontSize: {base: 'lg', sm: '2xl'},
+        lineHeight: {base: 'lg', sm: '2xl'},
+        fontWeight: 'bold',
+        my: {base: '2', sm: '3'},
+        letterSpacing: '-0.025em',
+        whiteSpace: 'nowrap',
+    }),
 }) }}>
     {% block content %}{% endblock %}
 </{{ as }}>

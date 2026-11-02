@@ -18,6 +18,7 @@ return ECSConfig::configure()
     ->withSkip([
         __DIR__ . '/config/bundles.php',
         __DIR__ . '/config/reference.php',
+        __DIR__ . '/config/reference_css.php',
     ])
     ->withPreparedSets(
         psr12: true,

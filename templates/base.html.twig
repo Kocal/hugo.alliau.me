@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="{{ app.request.locale }}" dir="ltr" class="scroll-pt-23 sm:scroll-pt-16" style="scrollbar-gutter: stable">
+<html lang="{{ app.request.locale }}" dir="ltr" class="{{ css({
+    scrollPaddingTop: {base: '[5.75rem]', sm: '16'},
+    scrollbarGutter: 'stable',
+}) }}">
     <head>
         <meta charset="UTF-8">
         <title>{{ block('title') }}</title>
@@ -71,11 +74,21 @@
             }) }}
         {% endblock %}
     </head>
-    <body class="antialiased text-zinc-700 dark:text-zinc-300 bg-slate-50 dark:bg-canvas-dark min-h-dvh flex flex-col">
+    <body class="{{ css({
+        fontSmoothing: 'antialiased',
+        color: 'fg',
+        bgColor: 'bg.canvas',
+        minH: 'dvh',
+        display: 'flex',
+        flexDirection: 'column',
+    }) }}">
         {% block body %}
             <twig:AppHeader/>
 
-            <div class="flex flex-1">
+            <div class="{{ css({
+                display: 'flex',
+                flex: '1',
+            }) }}">
                 {% block main %}{% endblock %}
             </div>
 

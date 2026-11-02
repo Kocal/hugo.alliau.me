@@ -1,7 +1,17 @@
 {% props post %}
-<twig:Card as="article" class="p-4 sm:p-6">
+<twig:Card as="article" class="{{ css({
+    p: {base: '4', sm: '6'},
+}) }}">
     <header>
-        <h2 class="text-2xl sm:text-3xl font-bold mb-3 tracking-tight hover:text-primary-700 dark:hover:text-slate-400 transition-colors">
+        <h2 class="{{ css({
+            fontSize: {base: '2xl', sm: '3xl'},
+            lineHeight: {base: '2xl', sm: '3xl'},
+            fontWeight: 'bold',
+            mb: '3',
+            letterSpacing: '-0.025em',
+            color: {_hover: 'fg.hover'},
+            transition: 'colors',
+        }) }}">
             <a href="{{ path(constant('App\\Blog\\Domain\\Data\\Route::POST_VIEW').value, {slug: post.slug}) }}">
                 {{ post.title }}
             </a>
@@ -10,7 +20,9 @@
 
     <p>{{ post.description }}</p>
 
-    <footer class="mt-4">
+    <footer class="{{ css({
+        mt: '4',
+    }) }}">
         <twig:Blog:PostMeta :post="post" />
     </footer>
 </twig:Card>

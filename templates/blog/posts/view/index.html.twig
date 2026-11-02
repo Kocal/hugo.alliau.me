@@ -50,19 +50,38 @@
 {% endblock %}
 
 {% block main %}
-    <main class="container mx-auto p-2 max-w-full sm:max-w-screen-md">
+    <main class="{{ css({
+        w: 'full',
+        mx: 'auto',
+        p: '2',
+        maxW: {base: 'full', sm: 'breakpoint-md'},
+    }) }}">
         <article>
-            <header class="flex flex-col gap-4">
-                <h1 class="text-3xl sm:text-5xl p-4 font-extrabold sm:leading-14 text-center">
+            <header class="{{ css({
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '4',
+            }) }}">
+                <h1 class="{{ css({
+                    fontSize: {base: '3xl', sm: '5xl'},
+                    lineHeight: {base: '3xl', sm: '[3.5rem]'},
+                    p: '4',
+                    fontWeight: 'extrabold',
+                    textAlign: 'center',
+                }) }}">
                     {{ post.title }}
                 </h1>
 
                 <twig:Blog:PostMeta :post="post" tag-size="regular"/>
             </header>
 
-            <twig:Divider class="my-5" />
+            <twig:Divider class="{{ css({
+                my: '5',
+            }) }}" />
 
-            <section class="font-serif prose prose-xl dark:prose-invert prose-headings:relative max-w-none">
+            <section class="prose {{ css({
+                fontFamily: 'serif',
+            }) }}">
                 {{ rendered_content|raw }}
             </section>
 

@@ -7,17 +7,52 @@
 {% endblock %}
 
 {% block main %}
-<main class="container mx-auto px-2 py-12 sm:py-24 max-w-screen-md flex flex-col items-center gap-4 text-center">
-    <p class="text-7xl sm:text-9xl font-extrabold tracking-tight text-primary-600 dark:text-primary-400">404</p>
+<main class="{{ css({
+    w: 'full',
+    mx: 'auto',
+    px: '2',
+    py: {base: '12', sm: '24'},
+    maxW: 'breakpoint-md',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: '4',
+    textAlign: 'center',
+}) }}">
+    <p class="{{ css({
+        fontSize: {base: '7xl', sm: '9xl'},
+        lineHeight: {base: '7xl', sm: '9xl'},
+        fontWeight: 'extrabold',
+        letterSpacing: '-0.025em',
+        color: 'accent.emphasis',
+    }) }}">404</p>
 
-    <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight">
+    <h1 class="{{ css({
+        fontSize: {base: '3xl', sm: '5xl'},
+        lineHeight: {base: '3xl', sm: '5xl'},
+        fontWeight: 'extrabold',
+        letterSpacing: '-0.025em',
+    }) }}">
         {{ 'error.not_found.title'|trans }}
     </h1>
 
-    <p class="text-lg">{{ 'error.not_found.description'|trans }}</p>
+    <p class="{{ css({
+        fontSize: 'lg',
+        lineHeight: 'lg',
+    }) }}">{{ 'error.not_found.description'|trans }}</p>
 
     <a href="{{ path(constant('App\\Shared\\Domain\\Data\\Route::HOME').value) }}"
-       class="mt-4 rounded-lg border border-slate-200 px-4 py-2 text-zinc-600 transition-colors hover:bg-slate-100 dark:border-white/10 dark:text-zinc-300 dark:hover:bg-white/5">
+       class="{{ css({
+           mt: '4',
+           rounded: 'lg',
+           borderWidth: '1px',
+           borderColor: 'border',
+           px: '4',
+           py: '2',
+           color: 'fg.secondary',
+           transition: 'colors',
+           bgColor: {_hover: 'bg.hover'},
+       }) }}">
         {{ 'error.not_found.back_home'|trans }}
     </a>
 </main>
