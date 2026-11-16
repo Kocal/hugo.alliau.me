@@ -151,7 +151,8 @@
 
      @assets {
 		file
-		path *.css *.js *.svg *.png *.jpg *.jpeg *.gif *.webp *.ico *.woff *.woff2 *.ttf *.otf *.eot
+		path /build/*
+		not path *.json
 	 }
 	 header @assets Cache-Control "public, max-age=31536000, immutable"
 
