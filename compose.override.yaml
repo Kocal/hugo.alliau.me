@@ -3,4 +3,8 @@ services:
   database:
     ports:
       - "5432"
-###< doctrine/doctrine-bundle ###
+  ###< doctrine/doctrine-bundle ###
+
+  redis:
+    ports:
+      - "6379"
