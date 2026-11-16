@@ -136,6 +136,7 @@ final class GridBuilderTest extends TestCase
         foreach ($grid->rows as $rowIndex => $row) {
             foreach ($row->cells as $cell) {
                 if ($cell->isStep()) {
+                    $this->assertNotNull($cell->node);
                     $actual[$cell->node->id] = [
                         'col' => $cell->col,
                         'rowStart' => $rowIndex,
@@ -161,6 +162,7 @@ final class GridBuilderTest extends TestCase
         foreach ($grid->rows as $row) {
             foreach ($row->cells as $cell) {
                 if ($cell->isIngredient()) {
+                    $this->assertNotNull($cell->node);
                     $labels[] = $cell->node->id;
                 }
             }

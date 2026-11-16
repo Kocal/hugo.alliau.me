@@ -10,7 +10,7 @@ use App\Places\Domain\Repository\PlaceRepository;
 final class FakePlaceRepository implements PlaceRepository
 {
     /**
-     * @var array<Place>
+     * @var list<Place>
      */
     private array $places = [];
 
@@ -23,9 +23,10 @@ final class FakePlaceRepository implements PlaceRepository
     #[\Override]
     public function getOneLatestUpdated(): Place
     {
-        $max = max(array_map(fn (Place $place): ?\DateTimeImmutable => $place->getUpdatedAt(), $this->places));
+        $places = $this->places;
+        usort($places, fn (Place $a, Place $b): int => $b->getUpdatedAt() <=> $a->getUpdatedAt());
 
-        return array_filter($this->places, fn (Place $place): bool => $place->getUpdatedAt() === $max)[0];
+        return $places[0] ?? throw new \LogicException('No place has been added.');
     }
 
     #[\Override]
