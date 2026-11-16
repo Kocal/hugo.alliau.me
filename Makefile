@@ -163,7 +163,7 @@ phpstan.generate-baseline:
 #########
 
 ## Tests - Run all tests
-test: test.back
+test: test.back test.front
 
 ## Tests - Run backend tests
 test.back:
@@ -172,5 +172,9 @@ test.back:
 
 test.back.coverage:
 	$(PHP) vendor/bin/phpunit --coverage-html .cache/phpunit/coverage-html
+
+## Tests - Run frontend tests
+test.front:
+	pnpm test
 
 -include $(ROOT_DIR)/Makefile.local

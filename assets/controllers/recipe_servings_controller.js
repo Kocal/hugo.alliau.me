@@ -1,17 +1,5 @@
 import { Controller } from "@hotwired/stimulus";
-
-const FRACTIONS = [
-    [0.125, "⅛"],
-    [0.25, "¼"],
-    [1 / 3, "⅓"],
-    [0.375, "⅜"],
-    [0.5, "½"],
-    [0.625, "⅝"],
-    [2 / 3, "⅔"],
-    [0.75, "¾"],
-    [0.875, "⅞"],
-];
-const TOLERANCE = 0.01;
+import { formatIngredientQuantity } from "../recipes/quantity_formatter.js";
 
 /* stimulusFetch: 'lazy' */
 export default class extends Controller {
@@ -51,35 +39,19 @@ export default class extends Controller {
             const min = Number(element.dataset.qtyMin) * factor;
             const max = element.dataset.qtyMax ? Number(element.dataset.qtyMax) * factor : null;
 
-            let text =
-                max === null
-                    ? this._format(min)
-                    : this._format(min) + this.rangeSeparatorValue + this._format(max);
-
-            const one = element.dataset.unitOne;
-            const other = element.dataset.unitOther;
-            if (one && other) {
-                text += " " + (this.pluralRules.select(max ?? min) === "one" ? one : other);
-            }
-
-            quantity.textContent = text;
+            quantity.textContent = formatIngredientQuantity(
+                {
+                    min,
+                    max,
+                    unitOne: element.dataset.unitOne,
+                    unitOther: element.dataset.unitOther,
+                },
+                {
+                    rangeSeparator: this.rangeSeparatorValue,
+                    pluralRules: this.pluralRules,
+                    numberFormat: this.numberFormat,
+                },
+            );
         }
-    }
-
-    _format(value) {
-        const whole = Math.floor(value);
-        const fraction = value - whole;
-
-        if (fraction < TOLERANCE || fraction > 1 - TOLERANCE) {
-            return String(Math.round(value));
-        }
-
-        for (const [decimal, glyph] of FRACTIONS) {
-            if (Math.abs(fraction - decimal) < TOLERANCE) {
-                return whole > 0 ? `${whole} ${glyph}` : glyph;
-            }
-        }
-
-        return this.numberFormat.format(value);
     }
 }

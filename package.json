@@ -7,7 +7,8 @@
     "fmt": "oxfmt",
     "fmt:check": "oxfmt --check",
     "lint": "oxlint",
-    "lint:fix": "oxlint --fix"
+    "lint:fix": "oxlint --fix",
+    "test": "vitest run"
   },
   "dependencies": {
     "@codemirror/commands": "^6.11.0",
@@ -49,6 +50,7 @@
     "@vitejs/plugin-vue": "6.0.8",
     "oxfmt": "^0.65.0",
     "oxlint": "^1.80.0",
-    "vite": "^8.2.2"
+    "vite": "^8.2.2",
+    "vitest": "5.1.0"
   }
 }
