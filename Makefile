@@ -132,11 +132,11 @@ lint.fix: lint.back lint.front.fix
 ## Linter - Run linters for backend
 lint.back:
 	$(SF_CONSOLE) lint:container
-	$(SF_CONSOLE) lint:xliff translations
+	$(SF_CONSOLE) lint:translations
 	$(SF_CONSOLE) lint:yaml --parse-tags config
 	$(SF_CONSOLE) lint:yaml --parse-tags translations
 	$(SF_CONSOLE) lint:twig templates
-	#$(SF_CONSOLE) doctrine:schema:validate
+	$(SF_CONSOLE) doctrine:schema:validate
 
 ## Linter - Lint front files
 lint.front:
