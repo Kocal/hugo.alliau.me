@@ -60,9 +60,11 @@ final class RecipeContentTypeTest extends TestCase
         $content = new RecipeContent([new Ingredient('i1', 'de sel')]);
 
         $json = $this->type->convertToDatabaseValue($content, $this->platform);
-        $decoded = json_decode((string) $json, true, 512, \JSON_THROW_ON_ERROR);
 
-        $this->assertSame('ingredient', $decoded['roots'][0]['type']);
+        $this->assertJsonStringEqualsJsonString(
+            '{"roots": [{"type": "ingredient", "id": "i1", "label": "de sel", "min": null, "max": null, "unit": null}]}',
+            (string) $json,
+        );
     }
 
     public function testNullRoundTripsToNull(): void

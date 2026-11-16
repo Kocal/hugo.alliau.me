@@ -13,7 +13,7 @@ parameters:
         - public/
         - src/
         - tools/
-        #- tests/
+        - tests/
     excludePaths:
         - config/reference.php
         - config/reference_css.php

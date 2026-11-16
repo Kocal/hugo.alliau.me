@@ -29,7 +29,6 @@ final class RecipeContentTransformerTest extends TestCase
         ]);
 
         $json = $transformer->transform($content);
-        $this->assertIsString($json);
         $this->assertEquals($content, $transformer->reverseTransform($json));
     }
 

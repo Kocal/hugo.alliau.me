@@ -59,9 +59,11 @@ final class PlaceCrudControllerTest extends WebTestCase
 
         $places = self::getContainer()->get(PlaceRepository::class)->findAll();
         $this->assertCount(1, $places);
-        $this->assertSame('N Seoul Tower', $places[0]->getAddress()?->getName());
-        $this->assertSame('Seoul', $places[0]->getAddress()?->getCity());
-        $this->assertSame('Corée du Sud', $places[0]->getAddress()?->getCountry());
+        $address = $places[0]->getAddress();
+        $this->assertNotNull($address);
+        $this->assertSame('N Seoul Tower', $address->getName());
+        $this->assertSame('Seoul', $address->getCity());
+        $this->assertSame('Corée du Sud', $address->getCountry());
         $this->assertSame('https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet.svg', $places[0]->getIconMaskUri());
         $this->assertSame([
             PlaceType::TOURIST_ATTRACTION,

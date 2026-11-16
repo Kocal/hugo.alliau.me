@@ -37,11 +37,13 @@ final class CreatePlaceHandlerTest extends TestCase
         $handler = new CreatePlaceHandler($placeRepository);
         $place = $handler($command);
 
-        $this->assertSame('name', $place->getAddress()->getName());
-        $this->assertSame([41, 3], $place->getAddress()->getCoordinates());
-        $this->assertSame('formattedAddress', $place->getAddress()->getFormattedAddress());
-        $this->assertSame('country', $place->getAddress()->getCountry());
-        $this->assertSame('city', $place->getAddress()->getCity());
+        $address = $place->getAddress();
+        $this->assertInstanceOf(Address::class, $address);
+        $this->assertSame('name', $address->getName());
+        $this->assertSame([41, 3], $address->getCoordinates());
+        $this->assertSame('formattedAddress', $address->getFormattedAddress());
+        $this->assertSame('country', $address->getCountry());
+        $this->assertSame('city', $address->getCity());
         $this->assertSame('googleMapsUrl', $place->getGoogleMapsUrl());
         $this->assertSame('iconMaskUri', $place->getIconMaskUri());
         $this->assertSame([PlaceType::AIRPORT], $place->getTypes());
