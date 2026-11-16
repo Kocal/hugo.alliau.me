@@ -2,8 +2,8 @@
 
 My website, built with:
 
-- [Symfony 7](https://symfony.com/7)
-- [Asset Mapper](https://symfony.com/doc/current/frontend/asset_mapper.html)
+- [Symfony 8.1](https://symfony.com/8)
+- [Vite](https://vite.dev/) with [Symfony Reprise](https://github.com/symfony/reprise)
 - [Symfony UX CSS](https://github.com/symfony/ux-css)
 - [PostgreSQL](https://www.postgresql.org/)
 - [EasyAdminBundle](https://symfony.com/bundles/EasyAdminBundle/current/index.html)
@@ -16,7 +16,8 @@ My website, built with:
 
 - [Symfony CLI](https://symfony.com/download)
 - Docker and Docker Compose
-- PHP 8.3
+- PHP 8.5
+- Node.js 26 and [pnpm](https://pnpm.io/)
 
 ## Installation
 
@@ -33,10 +34,22 @@ cp .env .env.local
 make install
 ```
 
+4. Install the front-end dependencies
+
+```shell
+pnpm install
+```
+
 ## Usage
 
 Run the project:
 
 ```shell
 make start
+```
+
+Run the Vite dev server:
+
+```shell
+pnpm dev
 ```
