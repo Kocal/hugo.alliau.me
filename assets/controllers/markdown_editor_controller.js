@@ -44,17 +44,17 @@ export default class extends Controller {
         this.textareaTarget.parentNode.insertBefore(this.view.dom, this.textareaTarget);
         this.textareaTarget.style.display = "none";
 
-        window.addEventListener("resize", this.onWindowResize.bind(this));
+        window.addEventListener("resize", this.onWindowResize);
     }
 
     disconnect() {
-        window.removeEventListener("resize", this.onWindowResize.bind(this));
+        window.removeEventListener("resize", this.onWindowResize);
         this.view.destroy();
     }
 
-    onWindowResize() {
+    onWindowResize = () => {
         this.view.requestMeasure();
-    }
+    };
 
     undo() {
         commandUndo(this.view);
