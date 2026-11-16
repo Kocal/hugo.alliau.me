@@ -20,7 +20,6 @@ services:
 
   redis:
     image: "redis:alpine"
-    ports: [6379]
     volumes:
       - redis_data:/data:rw
   #valkey:
