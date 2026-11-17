@@ -43,12 +43,6 @@ parameters:
 			path: src/Places/Infrastructure/Doctrine/Repository/PlaceORMRepository.php
 
 		-
-			message: '#^Property App\\Shared\\Infrastructure\\Bus\\SymfonyMessengerCommandBus\:\:\$messageBus is never read, only written\.$#'
-			identifier: property.onlyWritten
-			count: 1
-			path: src/Shared/Infrastructure/Bus/SymfonyMessengerCommandBus.php
-
-		-
 			message: '#^Parameter \#1 \$url of method Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController\:\:redirect\(\) expects string, string\|null given\.$#'
 			identifier: argument.type
 			count: 1
@@ -111,11 +105,5 @@ parameters:
 		-
 			message: '#^Call to an undefined method PHPStan\\Type\\Type\:\:getClassName\(\)\.$#'
 			identifier: method.notFound
-			count: 1
-			path: tools/phpstan/src/Type/CommandBusDispatchDynamicMethodReturnTypeExtension.php
-
-		-
-			message: '#^Parameter \#2 \$args of static method PHPStan\\Reflection\\ParametersAcceptorSelector\:\:selectFromArgs\(\) expects array\<PhpParser\\Node\\Arg\>, array\<PhpParser\\Node\\Arg\|PhpParser\\Node\\VariadicPlaceholder\> given\.$#'
-			identifier: argument.type
 			count: 1
 			path: tools/phpstan/src/Type/CommandBusDispatchDynamicMethodReturnTypeExtension.php

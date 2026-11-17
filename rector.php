@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 use Rector\Config\RectorConfig;
-use Rector\Symfony\CodeQuality\Rector\Class_\ControllerMethodInjectionToConstructorRector;
 
 return RectorConfig::configure()
     ->withParallel()
@@ -32,6 +31,5 @@ return RectorConfig::configure()
         __DIR__ . '/config/bundles.php',
         __DIR__ . '/config/reference.php',
         __DIR__ . '/config/reference_css.php',
-        ControllerMethodInjectionToConstructorRector::class,
     ])
 ;

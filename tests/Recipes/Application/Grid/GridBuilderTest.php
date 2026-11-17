@@ -199,7 +199,7 @@ final class GridBuilderTest extends TestCase
         return new RecipeContent([
             new Step('s_serve', 'Servir nouilles, sauce et concombre', [
                 new Step('s_thicken', 'Verser mélange farine, laisser épaissir', [
-                    new Step('s_water', 'Verser eau bouillante, mijoter jusqu\'à cuisson', [
+                    new Step('s_water', "Verser eau bouillante, mijoter jusqu'à cuisson", [
                         new Step('s_paste', 'Ajouter pâte réservée, sucre et gochugaru', [
                             new Step('s_beans', 'Faire revenir la pâte de haricots noirs, 15 min', [
                                 new Ingredient('i_beans', 'de pâte de haricots noirs'),

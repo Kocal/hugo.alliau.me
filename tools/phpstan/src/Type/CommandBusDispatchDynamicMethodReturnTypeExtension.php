@@ -47,7 +47,7 @@ final readonly class CommandBusDispatchDynamicMethodReturnTypeExtension implemen
         $commandHandler = $this->reflectionProvider->getClass($commandHandlerClass);
         $commandInvoke = $commandHandler->getNativeMethod('__invoke');
 
-        return ParametersAcceptorSelector::selectFromArgs($scope, $methodCall->args, $commandInvoke->getVariants())->getReturnType();
+        return ParametersAcceptorSelector::selectFromArgs($scope, $methodCall->getArgs(), $commandInvoke->getVariants())->getReturnType();
     }
 
     /**
