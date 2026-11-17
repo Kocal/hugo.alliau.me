@@ -51,7 +51,7 @@ class RecipeCrudController extends AbstractCrudController
         yield TextField::new('name', 'Nom');
         yield SlugField::new('slug', 'Slug')
             ->setTargetFieldName('name')
-            ->setHelp('Utilisé dans l\'URL de la recette.')
+            ->setHelp("Utilisé dans l'URL de la recette.")
             ->onlyOnForms()
         ;
         yield TextField::new('description', 'Description')
