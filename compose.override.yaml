@@ -14,6 +14,7 @@ services:
     environment:
       RUSTFS_ACCESS_KEY: rustfsadmin
       RUSTFS_SECRET_KEY: rustfsadmin
+      RUSTFS_REGION: eu-west-3
       RUSTFS_CONSOLE_ENABLE: "true"
     volumes:
       - rustfs_data:/data
@@ -36,7 +37,7 @@ services:
       HTTP_LOADER_DISABLE: "1"
       AWS_ACCESS_KEY_ID: rustfsadmin
       AWS_SECRET_ACCESS_KEY: rustfsadmin
-      AWS_REGION: us-east-1
+      AWS_REGION: eu-west-3
       S3_ENDPOINT: http://rustfs:9000
       S3_FORCE_PATH_STYLE: "1"
       S3_LOADER_BUCKET: hugo.alliau.me

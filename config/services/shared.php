@@ -46,7 +46,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
             'endpoint' => env('S3_ENDPOINT'),
             'accessKeyId' => env('S3_ACCESS_KEY'),
             'accessKeySecret' => env('S3_SECRET_KEY'),
-            'region' => 'us-east-1',
+            'region' => env('S3_REGION'),
             'pathStyleEndpoint' => true,
         ]]);
 
