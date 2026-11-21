@@ -5,13 +5,7 @@ export async function uploadImage(file, { url, slug, csrfToken, fetch = globalTh
     body.append("_token", csrfToken);
 
     const response = await fetch(url, { method: "POST", body });
-
-    let payload = null;
-    try {
-        payload = await response.json();
-    } catch {
-        payload = null;
-    }
+    const payload = await response.json().catch(() => null);
 
     if (!response.ok) {
         throw new Error(payload?.error ?? `Upload failed (HTTP ${response.status})`);

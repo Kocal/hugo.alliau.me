@@ -8,12 +8,19 @@ use Symfony\Component\String\Slugger\AsciiSlugger;
 
 final readonly class PostImageKeyGenerator
 {
+    private AsciiSlugger $slugger;
+
+    public function __construct()
+    {
+        $this->slugger = new AsciiSlugger();
+    }
+
     /**
      * @param \Closure(string): bool $exists
      */
     public function generate(string $slug, string $clientBasename, string $extension, \Closure $exists): string
     {
-        $name = new AsciiSlugger()->slug($clientBasename)->lower()->toString();
+        $name = $this->slugger->slug($clientBasename)->lower()->toString();
 
         if ($name === '') {
             $name = 'image';

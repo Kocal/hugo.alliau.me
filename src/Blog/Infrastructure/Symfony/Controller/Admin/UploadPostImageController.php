@@ -16,7 +16,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsCsrfTokenValid;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 final class UploadPostImageController extends AbstractController
@@ -57,9 +56,9 @@ final class UploadPostImageController extends AbstractController
             return new JsonResponse([
                 'error' => $violation->getMessage(),
             ], match ($violation->getCode()) {
-                File::TOO_LARGE_ERROR => Response::HTTP_REQUEST_ENTITY_TOO_LARGE,
-                File::INVALID_MIME_TYPE_ERROR => Response::HTTP_UNSUPPORTED_MEDIA_TYPE,
-                default => 400,
+                Assert\File::TOO_LARGE_ERROR => Response::HTTP_REQUEST_ENTITY_TOO_LARGE,
+                Assert\File::INVALID_MIME_TYPE_ERROR => Response::HTTP_UNSUPPORTED_MEDIA_TYPE,
+                default => Response::HTTP_BAD_REQUEST,
             });
         }
 

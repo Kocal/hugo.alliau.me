@@ -195,19 +195,19 @@ ${this.view.state.doc.toString()}
         }
 
         event.preventDefault();
-        this.#uploadFiles(files, position ?? this.view.state.selection.main.head);
+        this.#uploadFiles(files, position);
 
         return true;
     }
 
-    async #uploadFiles(files, position = this.view.state.selection.main.head) {
+    async #uploadFiles(files, position = null) {
         const slug = document.querySelector(this.slugInputSelectorValue)?.value.trim();
         if (!slug) {
             this.#showError("Set the slug before adding an image.");
             return;
         }
 
-        let cursor = position;
+        let cursor = position ?? this.view.state.selection.main.head;
         const uploads = files.map((file) => {
             const placeholder = uploadingPlaceholder(file.name);
             this.view.dispatch({ changes: { from: cursor, insert: placeholder } });
