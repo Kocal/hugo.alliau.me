@@ -66,4 +66,33 @@ final class PostTest extends TestCase
 
         $this->assertEquals($this->clock->now(), $post->getUpdatedAt());
     }
+
+    public function testOpenGraphVersionIsAShortStableHashOfTheCard(): void
+    {
+        $post = new Post()
+            ->setTitle('MinIO is gone')
+            ->setDescription('How I replaced it with RustFS.');
+        $samePost = new Post()
+            ->setTitle('MinIO is gone')
+            ->setDescription('How I replaced it with RustFS.');
+
+        $version = $post->getOpenGraphVersion();
+
+        $this->assertMatchesRegularExpression('/^[0-9a-f]{8}$/', $version);
+        $this->assertSame($version, $samePost->getOpenGraphVersion());
+    }
+
+    public function testOpenGraphVersionChangesWithTheTitleOrTheDescription(): void
+    {
+        $post = new Post()
+            ->setTitle('MinIO is gone')
+            ->setDescription('How I replaced it with RustFS.');
+        $version = $post->getOpenGraphVersion();
+
+        $afterDescription = $post->setDescription('Shorter.')->getOpenGraphVersion();
+        $afterTitle = $post->setTitle('MinIO is archived')->getOpenGraphVersion();
+
+        $this->assertNotSame($version, $afterDescription);
+        $this->assertNotSame($afterDescription, $afterTitle);
+    }
 }

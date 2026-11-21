@@ -96,16 +96,18 @@ final class ViewControllerTest extends WebTestCase
     {
         $client = self::createClient();
 
-        PostFactory::createOne([
+        $post = PostFactory::createOne([
             'slug' => 'og-post',
             'status' => PostStatus::PUBLISHED,
             'publishedAt' => new \DateTimeImmutable('-1 day'),
         ]);
+        $expected = 'https://image.kocal.fr/og?url=http%3A%2F%2Flocalhost%2Fblog%2Fposts%2Fog-post&v=' . $post->getOpenGraphVersion();
 
         $client->request(Request::METHOD_GET, '/blog/posts/og-post');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorExists('meta[property="og:image"][content="https://image.kocal.fr/og?url=http%3A%2F%2Flocalhost%2Fblog%2Fposts%2Fog-post"]');
-        $this->assertSelectorExists('meta[property="twitter:image"][content="https://image.kocal.fr/og?url=http%3A%2F%2Flocalhost%2Fblog%2Fposts%2Fog-post"]');
+        $this->assertSelectorExists(sprintf('meta[property="og:image"][content="%s"]', $expected));
+        $this->assertSelectorExists(sprintf('meta[property="twitter:image"][content="%s"]', $expected));
+        $this->assertStringContainsString(sprintf('"url":"%s"', $expected), (string) $client->getResponse()->getContent());
     }
 }
