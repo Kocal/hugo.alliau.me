@@ -91,4 +91,21 @@ final class ViewControllerTest extends WebTestCase
         $this->assertStringContainsString('private', (string) $client->getResponse()->headers->get('Cache-Control'));
         $this->assertStringNotContainsString('s-maxage', (string) $client->getResponse()->headers->get('Cache-Control'));
     }
+
+    public function testOpenGraphImageComesFromTheImageService(): void
+    {
+        $client = self::createClient();
+
+        PostFactory::createOne([
+            'slug' => 'og-post',
+            'status' => PostStatus::PUBLISHED,
+            'publishedAt' => new \DateTimeImmutable('-1 day'),
+        ]);
+
+        $client->request(Request::METHOD_GET, '/blog/posts/og-post');
+
+        $this->assertResponseIsSuccessful();
+        $this->assertSelectorExists('meta[property="og:image"][content="https://image.kocal.fr/og?url=http%3A%2F%2Flocalhost%2Fblog%2Fposts%2Fog-post"]');
+        $this->assertSelectorExists('meta[property="twitter:image"][content="https://image.kocal.fr/og?url=http%3A%2F%2Flocalhost%2Fblog%2Fposts%2Fog-post"]');
+    }
 }

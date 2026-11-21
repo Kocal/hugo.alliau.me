@@ -3,6 +3,7 @@ twig:
     globals:
         GOOGLE_PLACES_PRIVATE_API_KEY: '%env(GOOGLE_PLACES_PRIVATE_API_KEY)%'
         SOURCE_COMMIT: '%env(SOURCE_COMMIT)%'
+        OG_IMAGE_URL: '%env(OG_IMAGE_URL)%'
 
 when@test:
     twig:

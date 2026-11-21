@@ -1,0 +1,4 @@
+App\Blog\Domain\Data\Post:
+    properties:
+        content:
+            - App\Blog\Infrastructure\Validator\RenderableMarkdown: ~
