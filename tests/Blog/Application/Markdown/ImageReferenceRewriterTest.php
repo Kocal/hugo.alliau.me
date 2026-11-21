@@ -95,15 +95,44 @@ final class ImageReferenceRewriterTest extends TestCase
         $this->assertSame([], $result->missingKeys);
     }
 
-    public function testExistingDimensionsAreNotProbed(): void
+    public function testExistingDimensionsKeepTheAuthorWidthAndTakeTheProbedRatio(): void
     {
-        $probe = new InMemoryImageProbe();
+        $probe = $this->probeWithPng();
         $rewriter = new ImageReferenceRewriter($probe);
 
-        $result = $rewriter->rewrite('![x](' . self::CDN . 'posts-assets/a/b.png){width=10 height=5}');
+        $result = $rewriter->rewrite('![x](' . self::CDN . 'posts-assets/a/b.png){width=600 height=600}');
 
-        $this->assertSame('![x](posts-assets/a/b.png){width=10 height=5}', $result->content);
-        $this->assertSame([], $probe->probed);
+        $this->assertSame('![x](posts-assets/a/b.png){width=600 height=315}', $result->content);
+        $this->assertSame(['posts-assets/a/b.png'], $probe->probed);
+    }
+
+    public function testQuotedKramdownAttributesAreReplacedByProbedDimensions(): void
+    {
+        $rewriter = new ImageReferenceRewriter($this->probeWithPng());
+
+        $result = $rewriter->rewrite('![x](' . self::CDN . 'posts-assets/a/b.png?width=1200){:width="1200" height="1009" loading="lazy"}');
+
+        $this->assertSame('![x](posts-assets/a/b.png){:loading="lazy" width=1200 height=630}', $result->content);
+    }
+
+    public function testAuthorWidthIsCappedToTheRealWidth(): void
+    {
+        $rewriter = new ImageReferenceRewriter($this->probeWithPng());
+
+        $result = $rewriter->rewrite('![x](' . self::CDN . 'posts-assets/a/b.png){:width="1600" height="900" fetchpriority="high"}');
+
+        $this->assertSame('![x](posts-assets/a/b.png){:fetchpriority="high" width=1200 height=630}', $result->content);
+    }
+
+    public function testMissingObjectWithExistingDimensionsKeepsTheUrl(): void
+    {
+        $rewriter = new ImageReferenceRewriter(new InMemoryImageProbe());
+        $markdown = '![x](' . self::CDN . 'posts-assets/a/b.png){width=10 height=5}';
+
+        $result = $rewriter->rewrite($markdown);
+
+        $this->assertSame($markdown, $result->content);
+        $this->assertSame(['posts-assets/a/b.png'], $result->missingKeys);
     }
 
     public function testWidthOnlyBlockGetsAComputedHeight(): void
@@ -121,7 +150,7 @@ final class ImageReferenceRewriterTest extends TestCase
 
         $result = $rewriter->rewrite('![x](' . self::CDN . 'posts-assets/a/b.png){height=315}');
 
-        $this->assertSame('![x](posts-assets/a/b.png){height=315 width=600}', $result->content);
+        $this->assertSame('![x](posts-assets/a/b.png){width=600 height=315}', $result->content);
     }
 
     public function testDataWidthDoesNotCountAsADimension(): void

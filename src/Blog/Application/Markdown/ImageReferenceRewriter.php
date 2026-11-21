@@ -25,26 +25,22 @@ final readonly class ImageReferenceRewriter
         $content = preg_replace_callback(
             self::PATTERN,
             function (array $match) use (&$replacements, &$missingKeys, &$unreadableKeys): string {
-                $attributes = $match['attrs'] ?? '';
                 $key = $match['key'];
+                $dimensions = $this->probe->probe($key);
 
-                if (! $this->hasAttribute($attributes, 'width') || ! $this->hasAttribute($attributes, 'height')) {
-                    $dimensions = $this->probe->probe($key);
+                if ($dimensions === null) {
+                    $missingKeys[] = $key;
 
-                    if ($dimensions === null) {
-                        $missingKeys[] = $key;
-
-                        return $match[0];
-                    }
-
-                    if ($dimensions === false) {
-                        $unreadableKeys[] = $key;
-
-                        return $match[0];
-                    }
-
-                    $attributes = $this->withDimensions($attributes, $dimensions);
+                    return $match[0];
                 }
+
+                if ($dimensions === false) {
+                    $unreadableKeys[] = $key;
+
+                    return $match[0];
+                }
+
+                $attributes = $this->withDimensions($match['attrs'] ?? '', $dimensions);
 
                 $replacements[] = [
                     'from' => $match['url'],
@@ -60,31 +56,32 @@ final readonly class ImageReferenceRewriter
         return new RewriteResult($content ?? $markdown, $replacements, $missingKeys, $unreadableKeys);
     }
 
-    private function hasAttribute(string $attributes, string $name): bool
-    {
-        return preg_match(\sprintf('~(?:^|[\s{])%s=~', $name), $attributes) === 1;
-    }
+    private const string DIMENSION_ATTRIBUTE = '~(?<=^|[\s{:])(?P<name>width|height)=["\']?(?P<value>\d+)["\']?~';
 
-    private function attributeValue(string $attributes, string $name): ?int
-    {
-        return preg_match(\sprintf('~(?:^|[\s{])%s=(\d+)~', $name), $attributes, $m) === 1 ? (int) $m[1] : null;
-    }
-
+    /**
+     * The author's width is a display size: it is kept (capped to the real width) and the height follows the real ratio.
+     */
     private function withDimensions(string $attributes, ImageDimensions $dimensions): string
     {
-        $width = $this->attributeValue($attributes, 'width');
-        $height = $this->attributeValue($attributes, 'height');
-
-        if ($width !== null) {
-            $added = \sprintf('height=%d', max(1, (int) round($width * $dimensions->height / $dimensions->width)));
-        } elseif ($height !== null) {
-            $added = \sprintf('width=%d', max(1, (int) round($height * $dimensions->width / $dimensions->height)));
-        } else {
-            $added = \sprintf('width=%d height=%d', $dimensions->width, $dimensions->height);
+        $authored = [];
+        if (preg_match_all(self::DIMENSION_ATTRIBUTE, $attributes, $matches, PREG_SET_ORDER) > 0) {
+            foreach ($matches as $m) {
+                $authored[$m['name']] = (int) $m['value'];
+            }
         }
 
-        $existing = trim(substr($attributes, 1, -1));
+        $width = $authored['width'] ?? null;
+        if ($width === null && isset($authored['height'])) {
+            $width = (int) round($authored['height'] * $dimensions->width / $dimensions->height);
+        }
 
-        return $existing === '' ? '{' . $added . '}' : \sprintf('{%s %s}', $existing, $added);
+        $width = max(1, min($width ?? $dimensions->width, $dimensions->width));
+        $height = max(1, (int) round($width * $dimensions->height / $dimensions->width));
+
+        $inner = trim(substr($attributes, 1, -1));
+        $prefix = str_starts_with($inner, ':') ? ':' : '';
+        $others = preg_split('~\s+~', trim(preg_replace(self::DIMENSION_ATTRIBUTE, '', ltrim($inner, ':')) ?? ''), -1, PREG_SPLIT_NO_EMPTY) ?: [];
+
+        return \sprintf('{%s%s}', $prefix, implode(' ', [...$others, \sprintf('width=%d', $width), \sprintf('height=%d', $height)]));
     }
 }
