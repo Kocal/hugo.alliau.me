@@ -187,6 +187,15 @@ class Post implements CacheableEntity
         return $this->seo;
     }
 
+    /**
+     * Changes only when the Open Graph card (title, description) changes, so the generated image gets a new URL
+     * and every cache in between, including the social networks', picks it up without a purge.
+     */
+    public function getOpenGraphVersion(): string
+    {
+        return substr(hash('xxh128', $this->title . "\0" . $this->description), 0, 8);
+    }
+
     public function setStatus(PostStatus $status): static
     {
         $this->status = $status;
