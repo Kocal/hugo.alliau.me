@@ -9,6 +9,8 @@ My website, built with:
 - [EasyAdminBundle](https://symfony.com/bundles/EasyAdminBundle/current/index.html)
 - [Docker](https://www.docker.com/) and [Docker Compose](https://docs.docker.com/compose/)
 - [FrankenPHP](https://frankenphp.dev/fr/)
+- [RustFS](https://rustfs.com/) as S3-compatible storage for blog images
+- [Imagor](https://github.com/cshum/imagor) as image server, through [Symfony UX Image](https://github.com/symfony/ux/tree/3.x/src/Image)
 - [Symfony CLI](https://github.com/symfony-cli/symfony-cli)
 - Deployed with [Coolify](https://coolify.io/)
 

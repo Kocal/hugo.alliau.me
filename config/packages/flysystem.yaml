@@ -2,6 +2,13 @@
 flysystem:
     storages:
         uploads.storage:
-            adapter: 'local'
+            adapter: 'asyncaws'
             options:
-                directory: '%kernel.project_dir%/var/storage/uploads'
+                client: 'app.s3_client'
+                bucket: '%env(S3_BUCKET)%'
+
+when@test:
+    flysystem:
+        storages:
+            uploads.storage:
+                adapter: 'memory'

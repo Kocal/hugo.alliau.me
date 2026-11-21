@@ -24,4 +24,5 @@ return [
     Zenstruck\Foundry\ZenstruckFoundryBundle::class => ['dev' => true, 'test' => true],
     Symfony\Reprise\RepriseBundle::class => ['all' => true],
     Symfony\UX\Css\UXCssBundle::class => ['all' => true],
+    Symfony\UX\Image\UXImageBundle::class => ['all' => true],
 ];

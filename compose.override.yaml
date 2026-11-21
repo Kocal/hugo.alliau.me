@@ -8,3 +8,40 @@ services:
   redis:
     ports:
       - "6379"
+
+  rustfs:
+    image: rustfs/rustfs:1.0.6
+    environment:
+      RUSTFS_ACCESS_KEY: rustfsadmin
+      RUSTFS_SECRET_KEY: rustfsadmin
+      RUSTFS_CONSOLE_ENABLE: "true"
+    volumes:
+      - rustfs_data:/data
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://127.0.0.1:9000/health"]
+      interval: 10s
+      retries: 5
+      start_period: 20s
+    ports:
+      - "9000"
+      - "9001"
+
+  imagor:
+    image: ghcr.io/cshum/imagor:1.10.4
+    depends_on:
+      rustfs:
+        condition: service_healthy
+    environment:
+      IMAGOR_UNSAFE: "1"
+      HTTP_LOADER_DISABLE: "1"
+      AWS_ACCESS_KEY_ID: rustfsadmin
+      AWS_SECRET_ACCESS_KEY: rustfsadmin
+      AWS_REGION: us-east-1
+      S3_ENDPOINT: http://rustfs:9000
+      S3_FORCE_PATH_STYLE: "1"
+      S3_LOADER_BUCKET: hugo.alliau.me
+    ports:
+      - "8000"
+
+volumes:
+  rustfs_data:

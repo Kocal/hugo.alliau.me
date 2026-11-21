@@ -26,6 +26,9 @@
     <div 
         data-controller="markdown-editor" 
         data-markdown-editor-editor-class="border border-dark-subtle rounded-2"
+        data-markdown-editor-upload-url-value="{{ path(constant('App\\Blog\\Domain\\Data\\Route::ADMIN_POST_IMAGE_UPLOAD').value) }}"
+        data-markdown-editor-csrf-token-value="{{ csrf_token('upload_post_image') }}"
+        data-markdown-editor-slug-input-selector-value="#Post_slug"
         class="d-flex flex-column gap-1"
     >
         <div data-markdown-editor-target="toolbar">
@@ -51,7 +54,7 @@
             
             <div class="btn-group" role="group">
                 {{ _self.code_editor_toolbar_btn({title: 'Insert link', icon: 'tabler:link-plus', action: 'click->markdown-editor#link'}) }}
-                {{ _self.code_editor_toolbar_btn({title: 'Insert image', icon: 'tabler:photo-plus', action: 'click->markdown-editor#image'}) }}
+                {{ _self.code_editor_toolbar_btn({title: 'Upload image', icon: 'tabler:photo-plus', action: 'click->markdown-editor#uploadImage'}) }}
                 {{ _self.code_editor_toolbar_btn({title: 'Insert code block', icon: 'tabler:code', action: 'click->markdown-editor#codeBlock'}) }}
                 {{ _self.code_editor_toolbar_btn({title: 'Insert quote', icon: 'tabler:blockquote', action: 'click->markdown-editor#quote'}) }}
                 {{ _self.code_editor_toolbar_btn({title: 'Insert unordered list', icon: 'tabler:list', action: 'click->markdown-editor#list', action_args: {'markdown-editor-type': 'unordered'}}) }}
@@ -70,6 +73,7 @@
                 {{ _self.code_editor_toolbar_btn({title: 'Spellcheck (ChatGPT)', icon: 'tabler:text-spellcheck', action: 'click->markdown-editor#chatGptSpellcheck'}) }}
             </div>
         </div>
+        <p data-markdown-editor-target="error" role="alert" class="text-danger small mb-0" hidden></p>
         
         {{ form_widget(form, {attr: attr|merge({
             'data-markdown-editor-target': 'textarea',

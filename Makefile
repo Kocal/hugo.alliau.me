@@ -46,6 +46,9 @@ app.install:
 	@$(call action, Running DB migrations...)
 	$(SF_CONSOLE) doctrine:migrations:migrate --no-interaction --all-or-nothing
 
+	@$(call action, Creating the S3 bucket...)
+	$(DC) exec -T rustfs curl -fsS -X PUT --aws-sigv4 aws:amz:us-east-1:s3 --user rustfsadmin:rustfsadmin http://127.0.0.1:9000/hugo.alliau.me || true
+
 ## App - Install the application (alias to "make app.install")
 app.update: app.install
 

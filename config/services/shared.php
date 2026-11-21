@@ -10,6 +10,7 @@ use App\Shared\Infrastructure\HttpCache\Adapter\CloudflareHttpCacheAdapter;
 use App\Shared\Infrastructure\HttpCache\Adapter\NoHttpCacheAdapter;
 use App\Shared\Infrastructure\Symfony\HttpCache\SymfonyHttpCache;
 use App\Shared\Infrastructure\Symfony\HttpCache\SymfonyHttpCacheAdapterFactory;
+use AsyncAws\S3\S3Client;
 use Symfony\Component\Uid\Command\GenerateUuidCommand;
 
 return static function (ContainerConfigurator $containerConfigurator): void {
@@ -39,6 +40,15 @@ return static function (ContainerConfigurator $containerConfigurator): void {
                 'no' => service(NoHttpCacheAdapter::class),
             ]),
         ]);
+
+    $services->set('app.s3_client', S3Client::class)
+        ->args([[
+            'endpoint' => env('S3_ENDPOINT'),
+            'accessKeyId' => env('S3_ACCESS_KEY'),
+            'accessKeySecret' => env('S3_SECRET_KEY'),
+            'region' => 'us-east-1',
+            'pathStyleEndpoint' => true,
+        ]]);
 
     if ($containerConfigurator->env() === 'dev') {
         $services->set(GenerateUuidCommand::class);

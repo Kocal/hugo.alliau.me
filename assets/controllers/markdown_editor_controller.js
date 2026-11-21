@@ -7,13 +7,25 @@ import { Controller } from "@hotwired/stimulus";
 import { basicSetup, EditorView } from "codemirror";
 import { codeLanguages } from "../codemirror/code_languages.js";
 import { lightDarkThemeSwitcher } from "../codemirror/light_dark_theme_switcher.js";
+import { imageFilesFrom } from "../markdown/image_files.js";
+import { altFromFilename, imageSnippet, uploadingPlaceholder } from "../markdown/image_snippet.js";
+import { uploadImage } from "../markdown/image_upload.js";
 
 /* stimulusFetch: 'lazy' */
 export default class extends Controller {
-    static targets = ["textarea"];
+    static targets = ["textarea", "error"];
     static classes = ["editor"];
+    static values = { uploadUrl: String, csrfToken: String, slugInputSelector: String };
 
     connect() {
+        this.fileInput = document.createElement("input");
+        this.fileInput.type = "file";
+        this.fileInput.accept = "image/*";
+        this.fileInput.multiple = true;
+        this.fileInput.hidden = true;
+        this.fileInput.addEventListener("change", this.onFileInputChange);
+        this.element.append(this.fileInput);
+
         const editorTheme = new Compartment();
 
         this.view = new EditorView({
@@ -34,6 +46,14 @@ export default class extends Controller {
                     darkTheme: githubDark,
                     lightTheme: githubLight,
                 }),
+                EditorView.domEventHandlers({
+                    drop: (event, view) => {
+                        const position = view.posAtCoords({ x: event.clientX, y: event.clientY });
+
+                        return this.#handleImageTransfer(event, event.dataTransfer, position);
+                    },
+                    paste: (event) => this.#handleImageTransfer(event, event.clipboardData),
+                }),
                 EditorView.updateListener.of((viewUpdate) => {
                     this.textareaTarget.value = viewUpdate.view.state.doc.toString();
                 }),
@@ -48,12 +68,19 @@ export default class extends Controller {
     }
 
     disconnect() {
+        this.fileInput.remove();
         window.removeEventListener("resize", this.onWindowResize);
         this.view.destroy();
     }
 
     onWindowResize = () => {
         this.view.requestMeasure();
+    };
+
+    onFileInputChange = () => {
+        const files = Array.from(this.fileInput.files);
+        this.fileInput.value = "";
+        this.#uploadFiles(files);
     };
 
     undo() {
@@ -97,8 +124,8 @@ export default class extends Controller {
         this.#insertSyntax("[${cursor}](https://)");
     }
 
-    image() {
-        this.#insertSyntax("![](${cursor})(https://)");
+    uploadImage() {
+        this.fileInput.click();
     }
 
     codeBlock() {
@@ -159,6 +186,76 @@ The source text can be found after "@@@source@@@" and before "@@@end@@@".
 ${this.view.state.doc.toString()}
 @@@end@@@`);
         window.open("https://chat.openai.com/", "_blank");
+    }
+
+    #handleImageTransfer(event, dataTransfer, position = null) {
+        const files = imageFilesFrom(dataTransfer);
+        if (!files.length) {
+            return false;
+        }
+
+        event.preventDefault();
+        this.#uploadFiles(files, position ?? this.view.state.selection.main.head);
+
+        return true;
+    }
+
+    async #uploadFiles(files, position = this.view.state.selection.main.head) {
+        const slug = document.querySelector(this.slugInputSelectorValue)?.value.trim();
+        if (!slug) {
+            this.#showError("Set the slug before adding an image.");
+            return;
+        }
+
+        let cursor = position;
+        const uploads = files.map((file) => {
+            const placeholder = uploadingPlaceholder(file.name);
+            this.view.dispatch({ changes: { from: cursor, insert: placeholder } });
+            cursor += placeholder.length;
+
+            return this.#uploadAndReplace(file, placeholder, slug);
+        });
+
+        await Promise.all(uploads);
+    }
+
+    async #uploadAndReplace(file, placeholder, slug) {
+        try {
+            const result = await uploadImage(file, {
+                url: this.uploadUrlValue,
+                slug,
+                csrfToken: this.csrfTokenValue,
+            });
+            this.#replacePlaceholder(
+                placeholder,
+                imageSnippet({ alt: altFromFilename(file.name), ...result }),
+            );
+            this.#clearError();
+        } catch (error) {
+            this.#replacePlaceholder(placeholder, "");
+            this.#showError(error.message);
+        }
+    }
+
+    #replacePlaceholder(placeholder, replacement) {
+        const from = this.view.state.doc.toString().indexOf(placeholder);
+        if (from === -1) {
+            return;
+        }
+
+        this.view.dispatch({
+            changes: { from, to: from + placeholder.length, insert: replacement },
+        });
+    }
+
+    #showError(message) {
+        this.errorTarget.textContent = message;
+        this.errorTarget.hidden = false;
+    }
+
+    #clearError() {
+        this.errorTarget.textContent = "";
+        this.errorTarget.hidden = true;
     }
 
     #insertSyntax(text) {

@@ -1,0 +1,7 @@
+ux_image:
+    provider: '%env(UX_IMAGE_DSN)%'
+    formats: ['webp']
+    presets:
+        post:
+            format: webp
+            quality: 80
