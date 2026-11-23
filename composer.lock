@@ -8713,16 +8713,16 @@
         },
         {
             "name": "symfony/ux-icons",
-            "version": "v3.7.0",
+            "version": "v3.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/ux-icons.git",
-                "reference": "6411c1ca64613d2bcec71446e75ffdb3df3c4212"
+                "reference": "b4701c2e843d1ba77c83b01295cd00913385f27b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/ux-icons/zipball/6411c1ca64613d2bcec71446e75ffdb3df3c4212",
-                "reference": "6411c1ca64613d2bcec71446e75ffdb3df3c4212",
+                "url": "https://api.github.com/repos/symfony/ux-icons/zipball/b4701c2e843d1ba77c83b01295cd00913385f27b",
+                "reference": "b4701c2e843d1ba77c83b01295cd00913385f27b",
                 "shasum": ""
             },
             "require": {
@@ -8784,7 +8784,7 @@
                 "twig"
             ],
             "support": {
-                "source": "https://github.com/symfony/ux-icons/tree/v3.7.0"
+                "source": "https://github.com/symfony/ux-icons/tree/v3.8.0"
             },
             "funding": [
                 {
@@ -8804,11 +8804,11 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-10-18T10:57:24+00:00"
+            "time": "2026-11-15T08:13:44+00:00"
         },
         {
             "name": "symfony/ux-image",
-            "version": "v3.7.0",
+            "version": "v3.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/ux-image.git",
@@ -8872,7 +8872,7 @@
                 "symfony-ux"
             ],
             "support": {
-                "source": "https://github.com/symfony/ux-image/tree/v3.7.0"
+                "source": "https://github.com/symfony/ux-image/tree/v3.8.0"
             },
             "funding": [
                 {
@@ -8896,7 +8896,7 @@
         },
         {
             "name": "symfony/ux-imagor-image",
-            "version": "v3.7.0",
+            "version": "v3.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/ux-imagor-image.git",
@@ -8942,7 +8942,7 @@
                 "symfony-ux"
             ],
             "support": {
-                "source": "https://github.com/symfony/ux-imagor-image/tree/v3.7.0"
+                "source": "https://github.com/symfony/ux-imagor-image/tree/v3.8.0"
             },
             "funding": [
                 {
