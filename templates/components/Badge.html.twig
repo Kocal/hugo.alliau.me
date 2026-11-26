@@ -1,51 +1,53 @@
 {% props href = false, color = 'primary', size = 'regular' %}
 
-{% set style_badge = html_cva(
-    base: css({
+{% set style_badge = cva(
+    base: {
         display: 'inline-flex',
         alignItems: 'center',
         rounded: 'md',
         borderWidth: 1,
         fontWeight: 'medium',
         transition: 'colors',
-    }),
+    },
     variants: {
         color: {
-            primary: css({
+            primary: {
                 color: 'accent.fg',
                 bgColor: 'accent/10',
                 borderColor: 'accent/20',
-            }),
-            gray: css({
+            },
+            gray: {
                 color: 'fg.secondary',
                 bgColor: 'fg.muted/10',
                 borderColor: 'fg.muted/20',
-            }),
+            },
         },
         size: {
-            regular: css({
+            regular: {
                 px: '2',
                 py: '0.5',
                 fontSize: 'sm',
                 lineHeight: 'sm',
-            }),
-            sm: css({
+            },
+            sm: {
                 px: '1.5',
                 py: '0.5',
                 fontSize: 'xs',
                 lineHeight: 'xs',
-            }),
+            },
         },
         hoverable: {
-            'true': css({
+            'true': {
                 bgColor: {_hover: 'accent/20'},
-            }),
-            'false': '',
+            },
+            'false': {},
         },
     },
 ) %}
 
-<{{ href ? 'a' : 'span' }} class="{{ style_badge.apply({color, size, hoverable: href ? 'true' : 'false'}, attributes.render('class') ?? '') }}" {{
-    attributes.defaults({href}) }}>
+<{{ href ? 'a' : 'span' }} {{ attributes.defaults({
+    class: style_badge.apply({color, size, hoverable: href ? 'true' : 'false'}),
+    href,
+}) }}>
     {{- block('content') -}}
 </{{ href ? 'a' : 'span' }}>
